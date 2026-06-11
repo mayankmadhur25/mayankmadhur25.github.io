@@ -883,3 +883,9 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 @media(max-width:540px){ .stat-row { grid-template-columns: 88px 1fr 52px; gap: 10px; } .stat-name { font-size: 12.5px; } }
 [data-theme="dark"] .stats-section { background: #13212A; }
 [data-theme="dark"] .stat-track { background: rgba(255,255,255,.08); }
+
+/* ── Back to top button ── */
+.to-top { position: fixed; bottom: 24px; right: 24px; width: 46px; height: 46px; border-radius: 50%; background: var(--navy); color: #fff; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transform: translateY(10px); transition: opacity .25s ease, transform .25s ease; z-index: 60; box-shadow: 0 6px 18px rgba(27,58,75,.28); }
+.to-top.show { opacity: 1; pointer-events: auto; transform: none; }
+.to-top:hover { background: var(--teal); }
+[data-theme="dark"] .to-top { background: var(--teal); }
