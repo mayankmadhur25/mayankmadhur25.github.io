@@ -1,0 +1,124 @@
+---
+layout: default
+title: Ask Me Anything
+permalink: /ask/
+---
+<section class="ama-wrap">
+  <div class="ama-head">
+    <p class="eyebrow">ASK HEALTHCARE PULSE</p>
+    <h1>Ask me anything</h1>
+    <p class="ama-sub">Type a healthcare question. I'll point you to the editions that cover it. If I haven't written about it yet, you can suggest it as a future topic.</p>
+  </div>
+
+  <div class="ama-box">
+    <input type="text" id="amaInput" class="ama-input" placeholder="e.g. What's happening with pharma pricing? or How does ABHA work?" autocomplete="off">
+    <button id="amaBtn" class="ama-btn" type="button">Ask →</button>
+  </div>
+
+  <div class="ama-suggest">
+    <span class="ama-sg-label">TRY:</span>
+    <button class="ama-chip" type="button">pharma pricing</button>
+    <button class="ama-chip" type="button">data privacy law</button>
+    <button class="ama-chip" type="button">medical tourism</button>
+    <button class="ama-chip" type="button">health insurance</button>
+    <button class="ama-chip" type="button">ayushman bharat</button>
+  </div>
+
+  <div id="amaResult" class="ama-result"></div>
+</section>
+
+<script>
+(function(){
+  var EDITIONS = [
+    {ed:61,url:"/the-100-crore-illusion.html",title:"The 100 Crore Illusion",cat:"Digital Health",kw:"abha ayushman bharat digital health id mission abdm adoption emr ehr records interoperability 100 crore number proof works digital infrastructure health stack"},
+    {ed:60,url:"/posts/edition-60-nfhs6/",title:"What India's newest NFHS really tells us",cat:"Policy",kw:"nfhs national family health survey fertility maternal child mortality demographics population ncd non communicable disease nutrition data districts households next decade"},
+    {ed:59,url:"/edition-59-dpdpa.html",title:"What DPDPA changes for healthcare",cat:"Policy",kw:"dpdpa data protection privacy law consent patient records hospital lab insurer telemedicine researcher compliance regulation personal data"},
+    {ed:58,url:"/edition-58-ebola.html",title:"Ebola is back",cat:"Biotech",kw:"ebola outbreak bundibugyo virus diagnostics preparedness india biosecurity infectious disease epidemic surveillance vaccine"},
+    {ed:57,url:"/edition-57-pharma-fmcg.html",title:"The 1% Problem Every Indian Pharma CEO Is Ignoring",cat:"Pharma",kw:"pharma pharmaceutical pricing price volume growth nlem generics fmcg consumer health otc nutraceuticals ayush dabur patanjali marico apollo dermatology glp1 mounjaro market"},
+    {ed:56,url:"/edition-56-orchestration.html",title:"The Orchestration Gap: Mid-Tier Hospitals",cat:"Strategy",kw:"medical tourism international patients hospitals orchestration apollo fortis manipal medanta max tier1 midtier conversion inquiry referral hfs"},
+    {ed:55,url:"/edition-55-pyramid.html",title:"India's biggest healthcare bet isn't a hospital",cat:"Policy",kw:"healthcare pyramid prevention primary care pmjay ayushman arogya mandir asha workforce abha out of pocket expenditure oope ncd public health system"},
+    {ed:54,url:"/edition-54-four-indias.html",title:"The Four Indias of Healthcare",cat:"Strategy",kw:"four indias segmentation market affluent insured missing middle pmjay esic cghs irdai bima sugam insurance opd payer"},
+    {ed:53,url:"/edition-53-nuclear.html",title:"India cracked 400 years of energy independence",cat:"General",kw:"nuclear energy fast breeder reactor pfbr kalpakkam thorium uranium bhabha three stage criticality net zero reliance tata adani smr"},
+    {ed:52,url:"/edition-52-preventive.html",title:"India's largest preventive health system",cat:"Digital Health",kw:"preventive health screening corporate wellness blue collar ncd ayushman arogya mandir abha telemanas mental health elderly women hpv vaccination ai primary care gcc ayush medical tourism"},
+    {ed:51,url:"/edition-51-autism.html",title:"Autism is a system design failure",cat:"Policy",kw:"autism neurodevelopmental special educators caregivers mothers system design fragmentation disability mental health stigma rural urban diagnosis therapy inclusive"}
+  ];
+
+  var STOP = "the a an is are was what how why when where who which of to in on for and or do does my your me i india indian about with this that it its".split(" ");
+
+  var input = document.getElementById('amaInput');
+  var btn = document.getElementById('amaBtn');
+  var result = document.getElementById('amaResult');
+
+  function tokenize(s){
+    return (s||"").toLowerCase().replace(/[^a-z0-9 ]/g," ").split(/\s+/)
+      .filter(function(w){ return w.length>2 && STOP.indexOf(w)<0; });
+  }
+
+  function score(qTokens, ed){
+    var hay = (ed.kw + " " + ed.title + " " + ed.cat).toLowerCase();
+    var s = 0;
+    qTokens.forEach(function(t){
+      if(hay.indexOf(t) > -1) s += 2;
+      else {
+        // partial / stem match
+        var stem = t.length > 5 ? t.slice(0,5) : t;
+        if(hay.indexOf(stem) > -1) s += 1;
+      }
+    });
+    return s;
+  }
+
+  function ask(){
+    var q = input.value.trim();
+    if(!q){ result.innerHTML=""; return; }
+    var qTokens = tokenize(q);
+    if(qTokens.length === 0){
+      showNotCovered(q); return;
+    }
+    var ranked = EDITIONS.map(function(ed){ return {ed:ed, s:score(qTokens, ed)}; })
+      .filter(function(x){ return x.s > 0; })
+      .sort(function(a,b){ return b.s - a.s; });
+
+    if(ranked.length === 0 || ranked[0].s < 2){
+      showNotCovered(q);
+    } else {
+      showResults(ranked.slice(0,3), q);
+    }
+  }
+
+  function showResults(top, q){
+    var html = '<div class="ama-answer">';
+    html += '<p class="ama-found">Here\'s what I\'ve written that\'s most relevant:</p>';
+    top.forEach(function(x){
+      var ed = x.ed;
+      html += '<a class="ama-card cat-'+ed.cat.toLowerCase().replace(/ /g,"-")+'" href="'+ed.url+'">'
+        + '<span class="amc-ed">ED. '+ed.ed+' · '+ed.cat+'</span>'
+        + '<span class="amc-title">'+ed.title+'</span>'
+        + '<span class="amc-go">Read this issue →</span>'
+        + '</a>';
+    });
+    html += '</div>';
+    result.innerHTML = html;
+  }
+
+  function showNotCovered(q){
+    var subject = encodeURIComponent("Topic suggestion: " + q);
+    result.innerHTML = '<div class="ama-answer ama-none">'
+      + '<p class="ama-none-title">I haven\'t covered that yet.</p>'
+      + '<p class="ama-none-sub">That topic isn\'t in the Healthcare Pulse archive so far. If it\'s a healthcare, policy, pharma, or digital-health question, I\'d love to write about it.</p>'
+      + '<a class="ama-suggest-btn" href="mailto:mayankmadhur25@gmail.com?subject='+subject+'">Suggest this as a topic →</a>'
+      + '<a class="ama-browse" href="/archive/">Or browse the full archive →</a>'
+      + '</div>';
+  }
+
+  btn.addEventListener('click', ask);
+  input.addEventListener('keydown', function(e){ if(e.key==='Enter') ask(); });
+  // live as they type (debounced)
+  var t;
+  input.addEventListener('input', function(){ clearTimeout(t); t=setTimeout(ask, 350); });
+
+  document.querySelectorAll('.ama-chip').forEach(function(chip){
+    chip.addEventListener('click', function(){ input.value = chip.textContent; ask(); input.focus(); });
+  });
+})();
+</script>
