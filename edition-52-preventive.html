@@ -875,6 +875,35 @@ a:focus-visible, button:focus-visible, input:focus-visible {
     <p>That means turning 834 million digital IDs into actionable population health intelligence, closing the blue-collar health gap before it becomes a productivity crisis, embedding AI into primary care at the AAM level (not just tertiary hospitals), and ensuring prevention is continuous and outcome-linked, not episodic and input-counted. The winners won't be those who understand the system. They'll be the ones who build value on top of it.</p>
   </div>
 
+    <div class="share-bar">
+      <span class="share-label">Share this issue:</span>
+      <a class="share-btn share-wa" id="shWa" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.6.2-.2.3-.7.9-.8 1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.2-.6-1.5-.9-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.3 0 1.4 1 2.7 1.1 2.9.2.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3M12 22a10 10 0 0 1-5.1-1.4l-3.6 1 1-3.5A10 10 0 1 1 12 22"/></svg>WhatsApp
+      </a>
+      <a class="share-btn share-li" id="shLi" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45z"/></svg>LinkedIn
+      </a>
+      <a class="share-btn share-x" id="shX" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>X
+      </a>
+      <button class="share-btn" id="shCopy" type="button">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copy link
+      </button>
+    </div>
+    <script>
+    (function(){
+      var url=encodeURIComponent(location.href);
+      var txt=encodeURIComponent("India built the world's largest preventive health system. Now it must prove it works — Healthcare Pulse by Mayank Madhur");
+      var wa=document.getElementById('shWa'); if(wa) wa.href="https://wa.me/?text="+txt+"%20"+url;
+      var li=document.getElementById('shLi'); if(li) li.href="https://www.linkedin.com/sharing/share-offsite/?url="+url;
+      var x=document.getElementById('shX'); if(x) x.href="https://twitter.com/intent/tweet?text="+txt+"&url="+url;
+      var cp=document.getElementById('shCopy');
+      if(cp) cp.addEventListener('click',function(){
+        navigator.clipboard.writeText(location.href).then(function(){ cp.innerHTML='Copied!'; setTimeout(function(){ location.reload(); },1200); });
+      });
+    })();
+    </script>
+
   <aside class="author-box">
     <img src="/logo.png" alt="Healthcare Pulse" style="width:52px;height:52px;border-radius:10px;object-fit:contain;flex:none;">
     <div>
