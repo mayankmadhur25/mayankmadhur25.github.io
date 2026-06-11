@@ -1,0 +1,77 @@
+---
+layout: default
+---
+<article class="post">
+  <div class="post-banner cat-{{ page.category | default: 'general' | slugify }}">
+    <svg class="banner-ecg" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <path d="M0 130 H180 l18 -34 22 64 26 -96 24 120 20 -78 16 24 H420 l18 -34 22 64 26 -96 24 120 20 -78 16 24 H800"
+        fill="none" stroke="rgba(255,255,255,.85)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <div class="post-meta">
+    {% if page.edition %}<span class="meta-ed">EDITION {{ page.edition }}</span>{% endif %}
+    <span>{{ page.date | date: "%a %-d %b %Y" | upcase }}</span>
+    <span class="meta-cat">{{ page.category | default: "General" }}</span>
+    <span>{% assign words = content | number_of_words %}{% if words < 200 %}1{% else %}{{ words | divided_by: 200 }}{% endif %} MIN READ</span>
+  </div>
+  <h1 class="post-title">{{ page.title }}</h1>
+  <div class="post-body">{{ content }}</div>
+
+  <div class="share-bar">
+    <span class="share-label">Share this issue:</span>
+    <a class="share-btn share-wa" id="shWa" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.6.2-.2.3-.7.9-.8 1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.2-.6-1.5-.9-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.3 0 1.4 1 2.7 1.1 2.9.2.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3M12 22a10 10 0 0 1-5.1-1.4l-3.6 1 1-3.5A10 10 0 1 1 12 22"/></svg>WhatsApp
+    </a>
+    <a class="share-btn share-li" id="shLi" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45z"/></svg>LinkedIn
+    </a>
+    <a class="share-btn share-x" id="shX" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>X
+    </a>
+    <button class="share-btn" id="shCopy" type="button">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copy link
+    </button>
+  </div>
+  <script>
+  (function(){
+    var url=encodeURIComponent(location.href);
+    var txt=encodeURIComponent("{{ page.title }} — Healthcare Pulse by Mayank Madhur");
+    var wa=document.getElementById('shWa'); if(wa) wa.href="https://wa.me/?text="+txt+"%20"+url;
+    var li=document.getElementById('shLi'); if(li) li.href="https://www.linkedin.com/sharing/share-offsite/?url="+url;
+    var x=document.getElementById('shX'); if(x) x.href="https://twitter.com/intent/tweet?text="+txt+"&url="+url;
+    var cp=document.getElementById('shCopy');
+    if(cp) cp.addEventListener('click',function(){
+      navigator.clipboard.writeText(location.href).then(function(){
+        var o=cp.innerHTML; cp.classList.add('share-copied'); cp.innerHTML='Copied!';
+        setTimeout(function(){cp.classList.remove('share-copied');cp.innerHTML=o;},1600);
+      });
+    });
+  })();
+  </script>
+
+  <aside class="author-box">
+    <img src="/logo.png" alt="Healthcare Pulse" style="width:52px;height:52px;border-radius:10px;object-fit:contain;flex:none;">
+    <div>
+      <p class="author-name">{{ site.author }} <span>He/Him</span></p>
+      <p class="author-bio">{{ site.author_bio }}</p>
+      <a href="{{ site.linkedin_profile }}" target="_blank">Connect on LinkedIn →</a>
+    </div>
+  </aside>
+  <a class="back-link" href="/">← All issues</a>
+</article>
+
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+    <p class="eyebrow">GET IN TOUCH</p>
+    <h2>Send Mayank a message</h2>
+    <p>Questions, feedback, collaboration ideas — drop a note. It comes straight to my inbox.</p>
+    <form class="cform" action="https://formspree.io/f/xlgklwdl" method="POST">
+      <div class="row2">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Your email" required>
+      </div>
+      <textarea name="message" placeholder="Your message" required></textarea>
+      <button type="submit">Send message →</button>
+    </form>
+  </div>
+</section>

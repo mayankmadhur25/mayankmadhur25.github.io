@@ -1,0 +1,20 @@
+title: Healthcare Pulse
+tagline: Digital health, decoded. Every Friday.
+author: Mayank Madhur
+linkedin_profile: https://www.linkedin.com/in/mayank-madhur/
+linkedin_newsletter: https://www.linkedin.com/newsletters/7311231782241083393/
+author_bio: "PMP, SCR, MBA & PGPM Healthcare, PGD Public Health, Analyst and Advisor Healthcare, Digital Engineering, Ex HCL & Altimetrik"
+description: Sharp, contrarian reads on India's digital health story and global healthcare, every Friday.
+baseurl: ""
+url: "https://mayankmadhur25.github.io"
+permalink: /posts/:title/
+markdown: kramdown
+future: true
+plugins:
+  - jekyll-feed
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - post-template.md
+  - HOW-TO-ADD-A-POST.md

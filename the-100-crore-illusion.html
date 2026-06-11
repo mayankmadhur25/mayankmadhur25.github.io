@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The 100 Crore Illusion · Healthcare Pulse</title>
+<meta name="description" content="India built the world's largest digital health ID system. The number that proves it works has quietly disappeared.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+/* ==========================================================
+   Healthcare Pulse — design system
+   Brand: navy ink, teal→blue gradient, amber accent.
+   ========================================================== */
+
+:root {
+  --bg: #FAFDFD;
+  --navy: #1B3A4B;
+  --ink: #173441;
+  --body-c: #37505B;
+  --muted: #6E828C;
+  --teal: #0FA3A3;
+  --blue: #2E7CB8;
+  --green: #37B68A;
+  --amber: #E08A3C;
+  --amberdk: #B96A14;
+  --line: #E2EDED;
+  --tintT: #E7F5F4;
+  --grad: linear-gradient(135deg, #0FA3A3 0%, #2E7CB8 100%);
+  --radius: 16px;
+  --mono: 'IBM Plex Mono', monospace;
+  --sans: 'Manrope', 'Segoe UI', system-ui, sans-serif;
+  --shadow: 0 14px 34px rgba(27, 58, 75, .12);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--body-c);
+  font-family: var(--sans);
+  font-size: 17.5px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--blue); }
+
+/* ---------- progress bar ---------- */
+#prog {
+  position: fixed; top: 0; left: 0;
+  height: 4px; width: 0;
+  background: var(--grad);
+  z-index: 99;
+}
+
+/* ---------- utility bar ---------- */
+.util { background: var(--navy); color: #CFE6E6; font-size: 12.5px; letter-spacing: .5px; }
+
+.util-in {
+  max-width: 1240px; margin: 0 auto;
+  padding: 8px 24px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+
+.util b { color: #fff; letter-spacing: 2.5px; font-family: var(--mono); font-weight: 600; }
+
+.util a { color: #9FDEDD; font-weight: 700; text-decoration: none; }
+
+.util a:hover { color: #fff; }
+
+/* ---------- masthead ---------- */
+.site-header {
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  padding: 16px clamp(20px, 4vw, 48px);
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+  position: sticky; top: 0; z-index: 10;
+}
+
+.logo { display: flex; align-items: center; gap: 13px; text-decoration: none; }
+
+.avatar {
+  width: 50px; height: 50px; flex: none;
+  border-radius: 50%;
+  background: var(--grad);
+  color: #fff;
+  font-weight: 800; font-size: 17px; letter-spacing: .5px;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.avatar-sm { width: 44px; height: 44px; font-size: 15px; border-radius: 12px; }
+
+.logo-name {
+  display: block;
+  font-weight: 800; font-size: 22px;
+  color: var(--navy); letter-spacing: -.4px; line-height: 1.1;
+}
+
+.logo-tag { display: block; font-size: 12.5px; color: var(--muted); }
+
+.site-header nav { display: flex; gap: 20px; align-items: center; }
+
+.site-header nav a { text-decoration: none; font-weight: 700; font-size: 15px; color: var(--ink); }
+
+.site-header nav a:hover { color: var(--teal); }
+
+.nav-subscribe {
+  background: var(--grad);
+  color: #fff !important;
+  padding: 9px 20px;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(15, 163, 163, .35);
+}
+
+.nav-subscribe:hover { filter: brightness(1.08); }
+
+/* ---------- hero ---------- */
+.hero {
+  padding: clamp(54px, 8vw, 96px) clamp(20px, 4vw, 48px) clamp(34px, 5vw, 56px);
+  max-width: 1240px; margin: 0 auto;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 11.5px; font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--teal);
+  background: var(--tintT);
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.hero-title {
+  font-weight: 800;
+  font-size: clamp(44px, 7.5vw, 86px);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  color: var(--navy);
+  max-width: 16ch;
+}
+
+.hi-grad {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-ecg { width: min(560px, 100%); height: 64px; margin: 18px 0 4px; display: block; }
+
+.ecg-path {
+  stroke: url(#g) var(--teal);
+  stroke: var(--teal);
+  stroke-dasharray: 1400;
+  stroke-dashoffset: 1400;
+  animation: trace 2.6s ease-out forwards .3s;
+}
+
+@keyframes trace { to { stroke-dashoffset: 0; } }
+
+.hero-sub {
+  margin-top: 16px;
+  font-size: clamp(17px, 2vw, 21px);
+  color: var(--ink);
+  max-width: 56ch;
+  line-height: 1.5;
+}
+
+.hero-actions { display: flex; gap: 14px; align-items: center; margin-top: 28px; flex-wrap: wrap; }
+
+.hero-cta {
+  display: inline-block;
+  font-weight: 800; font-size: 17px;
+  text-decoration: none;
+  background: var(--grad);
+  color: #fff;
+  padding: 14px 30px;
+  border-radius: 999px;
+  box-shadow: 0 8px 22px rgba(15, 163, 163, .38);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.hero-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(15, 163, 163, .45); }
+
+.hero-ghost {
+  font-weight: 700; font-size: 16px;
+  text-decoration: none;
+  color: var(--navy);
+  border: 2px solid var(--line);
+  padding: 12px 24px;
+  border-radius: 999px;
+}
+
+.hero-ghost:hover { border-color: var(--teal); color: var(--teal); }
+
+/* ---------- post grid ---------- */
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 26px;
+  padding: 8px clamp(20px, 4vw, 48px) 80px;
+  max-width: 1280px; margin: 0 auto;
+}
+
+.card {
+  text-decoration: none;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  box-shadow: 0 4px 14px rgba(27, 58, 75, .07);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .55s ease, transform .55s ease; }
+
+.reveal.in { opacity: 1; transform: none; }
+
+.card-banner { height: 116px; position: relative; overflow: hidden; }
+
+.card-banner svg, .banner-ecg { width: 100%; height: 100%; display: block; }
+
+.card-ed {
+  position: absolute; top: 12px; right: 12px;
+  font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 1.5px;
+  background: rgba(255, 255, 255, .92);
+  color: var(--navy);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+/* category colors */
+.cat-digital-health .card-banner, .post-banner.cat-digital-health { background: var(--grad); }
+.cat-pharma .card-banner,         .post-banner.cat-pharma         { background: linear-gradient(135deg, #2E7CB8, #1B3A4B); }
+.cat-biotech .card-banner,        .post-banner.cat-biotech        { background: linear-gradient(135deg, #37B68A, #0FA3A3); }
+.cat-policy .card-banner,         .post-banner.cat-policy         { background: linear-gradient(135deg, #E08A3C, #B96A14); }
+.cat-general .card-banner,        .post-banner.cat-general        { background: linear-gradient(135deg, #1B3A4B, #2E7CB8); }
+
+.cat-digital-health .card-meta { color: var(--teal); }
+.cat-pharma .card-meta         { color: var(--blue); }
+.cat-biotech .card-meta        { color: var(--green); }
+.cat-policy .card-meta         { color: var(--amberdk); }
+.cat-general .card-meta        { color: var(--navy); }
+
+.card-body { padding: 20px 22px 24px; display: flex; flex-direction: column; flex: 1; }
+
+.card-meta {
+  font-family: var(--mono);
+  font-size: 12px; font-weight: 600; letter-spacing: .8px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.card-body h2 {
+  font-weight: 800; font-size: 21.5px; line-height: 1.2;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+
+.card-excerpt { font-size: 15px; color: var(--body-c); }
+
+.card-read {
+  margin-top: auto; padding-top: 16px;
+  font-weight: 800; font-size: 14.5px;
+  color: var(--teal);
+}
+
+.card:hover .card-read { color: var(--blue); }
+
+/* ---------- single post ---------- */
+.post { max-width: 780px; margin: 0 auto; padding: 40px 20px 70px; }
+
+.post-banner {
+  height: clamp(140px, 24vw, 220px);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.post-meta {
+  display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center;
+  font-family: var(--mono);
+  font-size: 12.5px; font-weight: 600; letter-spacing: 1px;
+  color: var(--muted);
+  margin: 26px 0 14px;
+}
+
+.meta-ed { color: var(--teal); }
+
+.meta-cat {
+  background: var(--navy);
+  color: #fff;
+  padding: 3px 13px;
+  border-radius: 999px;
+}
+
+.post-title {
+  font-weight: 800;
+  font-size: clamp(32px, 5.5vw, 54px);
+  line-height: 1.06; letter-spacing: -0.02em;
+  color: var(--navy);
+  margin-bottom: 28px;
+}
+
+.post-body h2 {
+  font-weight: 800; font-size: 27px; color: var(--navy);
+  margin: 38px 0 14px;
+}
+
+.post-body h3 { font-weight: 700; font-size: 21px; color: var(--navy); margin: 30px 0 10px; }
+
+.post-body p { margin-bottom: 18px; }
+
+.post-body ul, .post-body ol { margin: 0 0 18px 24px; }
+
+.post-body li { margin-bottom: 8px; }
+
+.post-body blockquote {
+  border-left: 5px solid var(--amber);
+  background: #FBF0E1;
+  color: var(--ink);
+  padding: 16px 22px;
+  border-radius: 0 12px 12px 0;
+  margin: 24px 0;
+  font-weight: 600;
+}
+
+.post-body img { max-width: 100%; border-radius: 12px; box-shadow: var(--shadow); }
+
+.post-body strong { color: var(--navy); }
+
+/* ---------- author box ---------- */
+.author-box {
+  display: flex; gap: 16px; align-items: flex-start;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px;
+  margin-top: 46px;
+  box-shadow: 0 4px 14px rgba(27, 58, 75, .06);
+}
+
+.author-name { font-weight: 800; color: var(--navy); font-size: 17px; }
+
+.author-name span { font-weight: 500; color: var(--muted); font-size: 13px; }
+
+.author-bio { font-size: 13.5px; color: var(--muted); line-height: 1.55; margin: 4px 0 8px; }
+
+.author-box a { font-weight: 800; font-size: 14.5px; text-decoration: none; color: var(--teal); }
+
+.back-link {
+  display: inline-block; margin-top: 34px;
+  font-family: var(--mono); font-size: 14px;
+  text-decoration: none; color: var(--navy);
+  border-bottom: 2px solid var(--teal);
+  padding-bottom: 2px;
+}
+
+/* ---------- subscribe ---------- */
+.subscribe { background: var(--navy); color: #E8F4F4; padding: clamp(50px, 8vw, 90px) clamp(20px, 4vw, 48px); }
+
+.subscribe-inner { max-width: 660px; margin: 0 auto; text-align: center; }
+
+.subscribe .eyebrow { background: rgba(255, 255, 255, .08); color: #FFC987; }
+
+.subscribe h2 {
+  font-weight: 800;
+  font-size: clamp(28px, 4.5vw, 42px);
+  line-height: 1.12;
+  color: #fff;
+}
+
+.subscribe-sub { margin-top: 14px; color: #B9D2D6; }
+
+.subscribe-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 28px; }
+
+.btn-li {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: var(--grad);
+  color: #fff;
+  font-weight: 800; font-size: 16px;
+  text-decoration: none;
+  padding: 14px 26px;
+  border-radius: 999px;
+  box-shadow: 0 8px 22px rgba(15, 163, 163, .4);
+  transition: transform .15s ease;
+}
+
+.btn-li:hover { transform: translateY(-2px); }
+
+.btn-ghost {
+  display: inline-flex; align-items: center;
+  color: #fff; font-weight: 700; font-size: 15px;
+  text-decoration: none;
+  border: 2px solid rgba(255, 255, 255, .25);
+  padding: 12px 22px;
+  border-radius: 999px;
+}
+
+.btn-ghost:hover { border-color: var(--teal); color: #9FDEDD; }
+
+.subscribe-form { margin-top: 22px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+
+.subscribe-form input {
+  font-family: var(--sans); font-size: 16px;
+  padding: 13px 18px;
+  border-radius: 999px; border: none;
+  width: min(320px, 100%);
+}
+
+.subscribe-form button {
+  font-family: var(--sans); font-weight: 800; font-size: 16px;
+  padding: 13px 26px;
+  border-radius: 999px; border: none;
+  background: var(--amber); color: #fff;
+  cursor: pointer;
+}
+
+.rss-line { margin-top: 20px; font-size: 14px; color: #B9D2D6; }
+
+.rss-line a { color: #9FDEDD; }
+
+/* ---------- footer ---------- */
+.site-footer {
+  padding: 24px clamp(20px, 4vw, 48px);
+  font-family: var(--mono);
+  font-size: 12.5px;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+
+/* ---------- about page ---------- */
+.page { max-width: 720px; margin: 0 auto; padding: 60px 20px 80px; }
+
+.page h1 {
+  font-weight: 800;
+  font-size: clamp(34px, 6vw, 56px);
+  color: var(--navy);
+  letter-spacing: -.02em;
+  margin-bottom: 24px;
+}
+
+.page p { margin-bottom: 18px; }
+
+/* ---------- focus & motion ---------- */
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 3px solid var(--amber);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+  .ecg-path { stroke-dashoffset: 0; }
+  .reveal { opacity: 1; transform: none; }
+}
+
+/* ---------- mobile ---------- */
+@media (max-width: 600px) {
+  .site-header { flex-direction: column; gap: 12px; }
+  .post-grid { grid-template-columns: 1fr; }
+  .util-in { flex-direction: column; gap: 4px; }
+}
+
+/* logo image */
+.logo-img{width:48px;height:48px;object-fit:contain;border-radius:10px;}
+/* hp-blocks (used inside posts) */
+.hp-block{background:#fff;border:1px solid #E2EDED;border-radius:16px;padding:28px 26px;margin:32px 0;box-shadow:0 4px 14px rgba(27,58,75,.06)}
+.hp-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:2px;color:#E08A3C;text-transform:uppercase;margin-bottom:8px}
+.hp-h2{font-size:26px;font-weight:800;color:#1B3A4B;margin-bottom:8px;line-height:1.15}
+.hp-sub{color:#37505B;margin-bottom:20px;font-size:15.5px}
+.hp-stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-top:20px}
+.hp-stat{background:#FAFDFD;border:1px solid #E2EDED;border-radius:12px;padding:18px 16px}
+.hp-num{display:block;font-size:32px;font-weight:800;line-height:1.1;margin-bottom:8px}
+.hp-num.up{color:#0FA3A3}.hp-num.down{color:#C0392B}.hp-num.warn{color:#E08A3C}.hp-num.flat{color:#2E7CB8}
+.hp-stat p{font-size:14px;color:#37505B;line-height:1.5}
+.hp-three{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:16px;margin-top:20px}
+.hp-col{border-radius:12px;padding:20px 18px}.hp-col ul{margin:10px 0 0 16px}.hp-col li{font-size:14px;margin-bottom:8px;color:#37505B}
+.hp-gain{background:#E7F5F4;border-top:4px solid #0FA3A3}.hp-stall{background:#FBF0E1;border-top:4px solid #E08A3C}.hp-rev{background:#FDECEA;border-top:4px solid #C0392B}
+.hp-col-head{font-weight:800;font-size:17px;color:#1B3A4B}.hp-col-sub{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:1.5px;color:#6E828C;margin:4px 0 12px}
+.hp-swot{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+.hp-swot-cell{border-radius:12px;padding:18px 16px}.hp-swot-cell ul{margin:10px 0 0 16px}.hp-swot-cell li{font-size:14px;margin-bottom:8px;color:#37505B}
+.hp-swot-label{font-weight:800;font-size:16px;margin-bottom:4px}
+.hp-s{background:#E7F5F4}.hp-s .hp-swot-label{color:#0FA3A3}.hp-w{background:#FDECEA}.hp-w .hp-swot-label{color:#C0392B}
+.hp-o{background:#EEF2FF}.hp-o .hp-swot-label{color:#2E7CB8}.hp-t{background:#FBF0E1}.hp-t .hp-swot-label{color:#E08A3C}
+.hp-balance{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+.hp-pros{background:#E7F5F4;border-radius:12px;padding:20px 18px}.hp-cons{background:#FDECEA;border-radius:12px;padding:20px 18px}
+.hp-pros ul,.hp-cons ul{margin:10px 0 0 0;list-style:none}
+.hp-pros li,.hp-cons li{font-size:14px;margin-bottom:10px;color:#37505B;padding-left:20px;position:relative}
+.hp-pros li::before{content:"+";position:absolute;left:0;color:#0FA3A3;font-weight:800}
+.hp-cons li::before{content:"–";position:absolute;left:0;color:#C0392B;font-weight:800}
+.hp-pros-head{font-weight:800;font-size:17px;color:#0FA3A3}.hp-cons-head{font-weight:800;font-size:17px;color:#C0392B}
+@media(max-width:560px){.hp-swot,.hp-balance{grid-template-columns:1fr}}
+
+/* ── header thinning patch ── */
+.site-header {
+  padding: 10px clamp(16px, 3vw, 40px) !important;
+}
+.logo-img {
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 8px !important;
+}
+.logo-name {
+  font-size: 18px !important;
+}
+.logo-tag {
+  font-size: 11.5px !important;
+}
+.logo {
+  gap: 10px !important;
+}
+.util {
+  font-size: 11.5px !important;
+}
+.util-in {
+  padding: 5px 24px !important;
+}
+
+/* ── header compact v2 ── */
+.site-header {
+  padding: 8px clamp(16px, 3vw, 40px) !important;
+  min-height: unset !important;
+}
+.logo {
+  gap: 8px !important;
+  align-items: center !important;
+}
+.logo-img {
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 6px !important;
+  flex: none !important;
+  object-fit: contain !important;
+}
+.logo-name { font-size: 16px !important; }
+.logo-tag  { font-size: 11px !important; }
+.util-in   { padding: 4px 24px !important; }
+.util      { font-size: 11px !important; }
+.site-header nav a { font-size: 14px !important; }
+.nav-subscribe { padding: 7px 16px !important; font-size: 14px !important; }
+
+
+/* ── edition-specific overrides ── */
+:root {
+  --navy:#1B3A4B; --ink:#173441; --body-c:#37505b; --muted:#6e828c;
+  --teal:#0FA3A3; --blue:#2E7CB8; --amber:#E08A3C; --amberdk:#B96A14;
+  --bg:#FAFDFD; --line:#E2EDED; --tintT:#E7F5F4; --tintA:#FBF0E1; --hl:#FFF0D4;
+}
+.post { max-width: 900px; }
+.lede { font-size: 21px; color: var(--ink); }
+.lede::first-letter { float:left;font-size:70px;line-height:.8;padding:8px 12px 0 0;color:var(--teal);font-weight:800; }
+.post-body h2 { font-size: 28px; }
+.post-body .eyebrow-act { color:var(--amberdk);font-weight:800;letter-spacing:2px;font-size:11.5px;text-transform:uppercase;margin:48px 0 -8px;display:block; }
+.hl { background:linear-gradient(transparent 58%,var(--hl) 58%);padding:0 2px;font-weight:600; }
+.post-body blockquote { font-size:22px;line-height:1.45;color:var(--navy);font-weight:700;background:none;border-left:4px solid var(--teal);padding:8px 0 8px 24px;border-radius:0; }
+.post-body blockquote b { color:var(--amberdk); }
+figure.chart-fig { background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 22px 18px;box-shadow:0 6px 20px rgba(27,58,75,.06);margin:32px 0; }
+figure.chart-fig h4 { font-size:12.5px;letter-spacing:1px;text-transform:uppercase;color:var(--teal);font-weight:800;margin-bottom:4px; }
+.cap { font-size:13px;color:var(--muted);margin-top:12px;line-height:1.5; }
+.cbox { position:relative;height:300px; }
+.cgrid { display:grid;grid-template-columns:1.5fr 1fr;gap:18px;align-items:center; }
+.cgrid .cbox { height:240px; }
+.compare { margin:14px 0 4px; }
+.crow { margin:18px 0; }
+.crow .lab { display:flex;justify-content:space-between;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:6px; }
+.track { height:34px;background:#eef5f5;border-radius:8px;overflow:hidden; }
+.bar { height:100%;width:0;border-radius:8px;transition:width 1.4s cubic-bezier(.2,.7,.2,1); }
+.bar.t { background:var(--teal); } .bar.a { background:var(--amber); }
+.reasons { list-style:none;margin:10px 0; }
+.reasons li { display:flex;gap:18px;margin:22px 0;align-items:flex-start; }
+.reasons .num { flex:none;width:42px;height:42px;border-radius:50%;background:var(--navy);color:#fff;font-weight:800;font-size:19px;display:flex;align-items:center;justify-content:center; }
+.reasons li:nth-child(4) .num { background:var(--amber); }
+.reasons .rt { font-size:17px;line-height:1.6; }
+.swap { margin:14px 0; }
+.swap .row { display:grid;grid-template-columns:1fr 30px 1fr;gap:10px;align-items:center;margin-bottom:10px; }
+.swap .v { background:#fff;border:1px solid var(--line);border-radius:9px;padding:11px 15px;font-size:14.5px;color:var(--muted); }
+.swap .ar { text-align:center;color:var(--teal);font-weight:800;font-size:18px; }
+.swap .w { background:var(--tintT);border-radius:9px;padding:11px 15px;font-size:14.5px;font-weight:700;color:var(--ink); }
+.closing { background:var(--navy);color:#e8f3f3;border-radius:18px;padding:38px 34px;margin:46px 0 10px; }
+.closing p { font-size:22px;line-height:1.6;color:#fff;margin:0; }
+.closing b { color:var(--amber); }
+.cta-q { font-style:italic;color:var(--muted);font-size:18px;margin:34px 0 8px;text-align:center; }
+.tags { text-align:center;color:var(--teal);font-size:13px;font-weight:700;margin-top:4px; }
+@media(max-width:600px){.cgrid{grid-template-columns:1fr}.swap .row{grid-template-columns:1fr}.swap .ar{display:none}}
+
+/* share + contact (injected) */
+.share-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:36px 0 10px;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.share-bar .share-label{font-weight:800;font-size:14px;color:var(--navy);margin-right:4px;}
+.share-btn{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:13.5px;text-decoration:none;padding:8px 15px;border-radius:999px;border:1px solid var(--line);color:var(--navy);background:#fff;cursor:pointer;}
+.share-btn:hover{border-color:var(--teal);color:var(--teal);}
+.share-wa:hover{border-color:#25D366;color:#1a9e4b;}.share-li:hover{border-color:#0A66C2;color:#0A66C2;}.share-x:hover{border-color:#000;color:#000;}
+.share-copied{color:var(--teal)!important;border-color:var(--teal)!important;}
+.contact-section{background:var(--tintT);padding:60px clamp(20px,4vw,48px);}
+.contact-inner{max-width:620px;margin:0 auto;}
+.contact-inner h2{font-size:30px;font-weight:800;color:var(--navy);margin:10px 0 8px;}
+.contact-inner>p{color:var(--body-c);margin-bottom:24px;}
+.cform{display:grid;gap:14px;}
+.cform input,.cform textarea{font-family:var(--sans);font-size:15.5px;padding:14px 16px;border-radius:12px;border:1px solid var(--line);background:#fff;width:100%;color:var(--ink);}
+.cform input:focus,.cform textarea:focus{outline:2px solid var(--teal);border-color:var(--teal);}
+.cform textarea{min-height:130px;resize:vertical;}
+.cform button{font-family:var(--sans);font-weight:800;font-size:16px;padding:14px 28px;border-radius:999px;border:none;background:var(--grad);color:#fff;cursor:pointer;justify-self:start;box-shadow:0 8px 22px rgba(15,163,163,.35);}
+.cform .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:520px){.cform .row2{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<div class="util"><div class="util-in"><b>HEALTHCARE PULSE</b><a href="https://www.linkedin.com/newsletters/7311231782241083393/" target="_blank">Subscribe on LinkedIn →</a></div></div>
+<header class="site-header">
+  <a class="logo" href="index.html">
+    <img src="logo.png" alt="Healthcare Pulse" class="logo-img">
+    <span class="logo-text">
+      <span class="logo-name">Healthcare Pulse</span>
+      <span class="logo-tag">Digital health, decoded · by Mayank Madhur</span>
+    </span>
+  </a>
+  <nav>
+    <a href="index.html">Issues</a>
+    <a href="about.html">About</a>
+    <a href="podcast.html">Podcast</a>
+    <a class="nav-subscribe" href="#subscribe">Subscribe</a>
+  </nav>
+</header>
+
+<main>
+<article class="post">
+  <div class="post-banner cat-digital-health">
+    <svg class="banner-ecg" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <path d="M0 130 H180 l18 -34 22 64 26 -96 24 120 20 -78 16 24 H420 l18 -34 22 64 26 -96 24 120 20 -78 16 24 H800"
+        fill="none" stroke="rgba(255,255,255,.85)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+
+  <div class="post-meta">
+    <span class="meta-ed">EDITION 61</span>
+    <span>FRI 12 JUN 2026</span>
+    <span class="meta-cat">Digital Health</span>
+    <span>8 MIN READ</span>
+  </div>
+
+  <h1 class="post-title">The 100 Crore Illusion</h1>
+
+  <div class="post-body">
+    <p class="lede">India just crossed a milestone almost no country could attempt. 90 crore digital health accounts. 100 crore linked health records. One of the fastest digital health rollouts the world has ever seen. And yet the single number that would prove the system actually works has quietly disappeared from the government's own announcements.</p>
+
+    <span class="eyebrow-act">Act 1 · The triumph</span>
+    <h2>The achievement is real. The reading is where it goes wrong.</h2>
+    <p>By mid-2026, the Ayushman Bharat Digital Mission had real numbers to celebrate. ABHA accounts grew from under 15 crore in 2021 to more than 90 crore in 2026, a six-fold rise. Linked records doubled from 50 crore to 100 crore in just fifteen months. Several states crossed 90% population saturation, and nearly half of all accounts are held by women.</p>
+    <p>Building a national patient identifier for 1.4 billion people is the single hardest problem in health data, and India solved it first. <span class="hl">This is genuinely world-leading.</span> The problem is only how it is being read.</p>
+
+    <figure class="chart-fig">
+      <h4>ABHA accounts: a sixfold rise in five years</h4>
+      <div class="cbox"><canvas id="cAdopt"></canvas></div>
+      <div class="cap">One line, one unit: the number of ABHA accounts created, in crore. From under 15 crore in 2021 to over 90 crore in 2026. Impressive scale. Whether people actually use those accounts is the next chart.</div>
+    </figure>
+
+    <span class="eyebrow-act">Act 2 · The turn</span>
+    <h2>The number that disappeared</h2>
+    <p>Every figure being celebrated measures <strong>supply</strong>: IDs issued, documents linked, facilities registered. None of them measures <strong>demand</strong> — which is whether anyone actually uses the system. So here is the number nobody puts on a slide.</p>
+
+    <blockquote>In December 2023, against roughly 70 crore accounts, only about <b>50 lakh people</b> were actively using the ABHA app. On the order of half of one percent.</blockquote>
+
+    <figure class="chart-fig">
+      <h4>Accounts created vs people actually using them (2023)</h4>
+      <div class="compare">
+        <div class="crow"><div class="lab"><span>ABHA accounts</span><span>~70 crore</span></div><div class="track"><div class="bar t" data-w="100"></div></div></div>
+        <div class="crow"><div class="lab"><span>Active app users</span><span>~0.5 crore</span></div><div class="track"><div class="bar a" data-w="0.7"></div></div></div>
+      </div>
+      <div class="cap">Same scale. Active usage is so small next to account creation that it barely registers — which is why the figure quietly left the milestone releases.</div>
+    </figure>
+
+    <p>Since then, the government stopped foregrounding active-usage figures and pivoted entirely to ever-larger linkage counts. <span class="hl">When an organisation tracks a metric, then stops publishing it in favour of a bigger-sounding one, the simplest explanation is that the original number was not flattering.</span></p>
+
+    <span class="eyebrow-act">Act 3 · The core insight</span>
+    <h2>EMR versus EHR, and why India is doing it backwards</h2>
+    <p>This is the part most coverage skips, and it is the heart of the matter. An <strong>EMR</strong>, an electronic medical record, is one hospital's internal digital chart. It was never designed to leave the building. An <strong>EHR</strong>, an electronic health record, is the patient's full history stitched across every provider, designed to travel and be shared with consent.</p>
+    <p>The word that separates them is <strong>interoperability</strong>. An EMR is a silo. An EHR is a network. In the West, hospitals digitised their internal records first, then networked them. The foundation came before the network.</p>
+    <p>India is doing the reverse. ABHA is building a national EHR layer on top of a country where the EMR foundation barely exists. You are networking records that, in two thirds of facilities, were never properly created in the first place.</p>
+
+    <figure class="chart-fig">
+      <div class="cgrid">
+        <div class="cbox"><canvas id="cEmr"></canvas></div>
+        <div>
+          <h4>The foundation gap</h4>
+          <p class="cap" style="font-size:15px;color:var(--body-c)">Only about 35% of hospitals run any EMR, and much of that is billing software rather than true clinical records. A national EHR built on absent EMRs is a beautiful network with very little real signal flowing through it.</p>
+        </div>
+      </div>
+    </figure>
+
+    <span class="eyebrow-act">Act 4 · The market mirror</span>
+    <h2>Largest ID system on earth. Two percent of the market.</h2>
+    <p>India runs the world's largest digital health ID system, yet holds only about <strong>2.1% of the global EHR market</strong> — a market worth roughly $36 billion in 2025.</p>
+    <p>The layers grow at completely different speeds. Linked records grew about 75% in the last year. The overall digital health market grows around 20% a year. But the EHR and EMR software layer that actually creates the records crawls at 6 to 8%. <span class="hl">The demand signal was built before the supply.</span></p>
+
+    <figure class="chart-fig">
+      <div class="cgrid">
+        <div class="cbox"><canvas id="cLayer"></canvas></div>
+        <div class="cbox"><canvas id="cShare"></canvas></div>
+      </div>
+      <div class="cap">Left: approximate annual growth by layer of the stack. Right: India's share of the global EHR market despite ~18% of the world's population.</div>
+    </figure>
+
+    <span class="eyebrow-act">Act 5 · Why it persists</span>
+    <h2>Four forces hold the gap open</h2>
+    <ol class="reasons">
+      <li><div class="num">1</div><div class="rt"><strong>The average launders the dormancy.</strong> Roughly one record per account sounds healthy, but records concentrate in a few active urban patients. The silent majority of accounts hold almost nothing.</div></li>
+      <li><div class="num">2</div><div class="rt"><strong>Linkage overcounts low-value documents.</strong> Much of the 100 crore are vaccination certificates and scheme stubs. A certificate is a record, but it tells a treating doctor almost nothing.</div></li>
+      <li><div class="num">3</div><div class="rt"><strong>The fetch is invisible.</strong> A doctor at one hospital retrieving a record made at another is the only thing that proves interoperability. That number appears in no milestone release.</div></li>
+      <li><div class="num">4</div><div class="rt"><strong>Supply is the constraint.</strong> Only ~35% of hospitals run EMRs, and a per-transaction incentive propping up linkage tapers in March 2026. Velocity bought by subsidy is not organic adoption.</div></li>
+    </ol>
+
+    <span class="eyebrow-act">In fairness</span>
+    <h2>The optimist may be right about direction</h2>
+    <p>Rails-first is the correct sequence. UPI itself looked dormant for two to three years before it went exponential, so judging this on 2023 usage may be premature. Network effects compound, and the inclusion gains are real. <span class="hl">The bull case is right about direction. The bear case is right about the present claim.</span> The danger is declaring victory on a milestone that measures the wrong thing.</p>
+
+    <span class="eyebrow-act">The fix</span>
+    <h2>Stop measuring vanity. Start measuring value.</h2>
+    <div class="swap">
+      <div class="row"><div class="v">ABHA accounts created</div><div class="ar">→</div><div class="w">Monthly active users who accessed a record</div></div>
+      <div class="row"><div class="v">Records linked</div><div class="ar">→</div><div class="w">Consented cross-provider fetches per month</div></div>
+      <div class="row"><div class="v">Solutions integrated</div><div class="ar">→</div><div class="w">Integrations enabling outbound structured data</div></div>
+      <div class="row"><div class="v">Total documents</div><div class="ar">→</div><div class="w">Share that is FHIR-structured, machine-readable</div></div>
+    </div>
+
+    <div class="closing">
+      <p>India did the hard, unglamorous thing first and built the rails. But the easy metric is near the top of its usefulness, while the hard one has barely begun.<br><br>The story is not that India crossed 100 crore records. Everyone has that. <b>It is that the number which will define India's digital health decade is the one the government used to publish, and quietly stopped.</b></p>
+    </div>
+
+    <p class="cta-q">What would you measure to prove a national digital health system actually works?</p>
+    <div class="tags">#DigitalHealth · #HealthTech · #India · #EHR · #Interoperability · #AyushmanBharat</div>
+  </div>
+
+
+    <div class="share-bar">
+      <span class="share-label">Share this issue:</span>
+      <a class="share-btn share-wa" id="shWa" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.6.2-.2.3-.7.9-.8 1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.2-.6-1.5-.9-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.3 0 1.4 1 2.7 1.1 2.9.2.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3M12 22a10 10 0 0 1-5.1-1.4l-3.6 1 1-3.5A10 10 0 1 1 12 22"/></svg>WhatsApp
+      </a>
+      <a class="share-btn share-li" id="shLi" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45z"/></svg>LinkedIn
+      </a>
+      <a class="share-btn share-x" id="shX" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>X
+      </a>
+      <button class="share-btn" id="shCopy" type="button">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copy link
+      </button>
+    </div>
+    <script>
+    (function(){
+      var url=encodeURIComponent(location.href);
+      var txt=encodeURIComponent("The 100 Crore Illusion — Healthcare Pulse by Mayank Madhur");
+      var wa=document.getElementById('shWa'); if(wa) wa.href="https://wa.me/?text="+txt+"%20"+url;
+      var li=document.getElementById('shLi'); if(li) li.href="https://www.linkedin.com/sharing/share-offsite/?url="+url;
+      var x=document.getElementById('shX'); if(x) x.href="https://twitter.com/intent/tweet?text="+txt+"&url="+url;
+      var cp=document.getElementById('shCopy');
+      if(cp) cp.addEventListener('click',function(){
+        navigator.clipboard.writeText(location.href).then(function(){
+          var o=cp.innerHTML; cp.classList.add('share-copied'); cp.innerHTML='✓ Copied!';
+          setTimeout(function(){cp.classList.remove('share-copied');cp.innerHTML=o;},1600);
+        });
+      });
+    })();
+    </script>
+
+  <aside class="author-box">
+    <img src="logo.png" alt="Healthcare Pulse" style="width:52px;height:52px;border-radius:10px;object-fit:contain;flex:none;">
+    <div>
+      <p class="author-name">Mayank Madhur <span>He/Him</span></p>
+      <p class="author-bio">PMP®, SCR® · MBA &amp; PGPM (Healthcare) · PGD Public Health · Analyst and Advisor, Healthcare · Digital Engineering · Ex HCL &amp; Altimetrik</p>
+      <a href="https://www.linkedin.com/in/mayank-madhur/" target="_blank">Connect on LinkedIn →</a>
+    </div>
+  </aside>
+  <a class="back-link" href="index.html">← All issues</a>
+</article>
+</main>
+
+
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+    <p class="eyebrow">GET IN TOUCH</p>
+    <h2>Send Mayank a message</h2>
+    <p>Questions, feedback, collaboration ideas — drop a note. It comes straight to my inbox.</p>
+    <form class="cform" action="https://formspree.io/f/xlgklwdl" method="POST">
+      <div class="row2">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Your email" required>
+      </div>
+      <textarea name="message" placeholder="Your message" required></textarea>
+      <button type="submit">Send message →</button>
+    </form>
+  </div>
+</section>
+
+<section class="subscribe" id="subscribe">
+  <div class="subscribe-inner">
+    <p class="eyebrow">EVERY FRIDAY · FREE</p>
+    <h2>Enjoyed this issue of Healthcare Pulse?</h2>
+    <p class="subscribe-sub">Sharp, contrarian reads on India's digital health story, every issue.</p>
+    <div class="subscribe-actions">
+      <a class="btn-li" href="https://www.linkedin.com/newsletters/7311231782241083393/" target="_blank">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45z"/></svg>
+        Subscribe on LinkedIn
+      </a>
+      <a class="btn-ghost" href="https://www.linkedin.com/in/mayank-madhur/" target="_blank">Connect with Mayank →</a>
+    </div>
+  </div>
+</section>
+<footer class="site-footer"><p>© 2026 Healthcare Pulse by Mayank Madhur · Independent analysis and opinion.</p></footer>
+
+
+<script>
+
+const C={navy:"#1B3A4B",teal:"#0FA3A3",blue:"#2E7CB8",amber:"#E08A3C",muted:"#6e828c",line:"#E2EDED"};
+if(typeof Chart!=="undefined"){Chart.defaults.font.family='"Aptos","Segoe UI",system-ui,sans-serif';Chart.defaults.color="#6e828c";}
+
+// reading progress (guarded)
+const prog=document.getElementById("prog");
+addEventListener("scroll",()=>{
+  const h=document.documentElement;
+  const denom=h.scrollHeight-h.clientHeight;
+  const p=denom>0?(h.scrollTop/denom*100):0;
+  prog.style.width=p.toFixed(2)+"%";
+});
+
+// reveal on scroll
+const ro=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");ro.unobserve(e.target);}}),{threshold:.12});
+document.querySelectorAll(".reveal").forEach(el=>{if(el instanceof Element)ro.observe(el);});
+
+// count-up (NaN-guarded)
+function animNum(el){
+  const to=Number(el.dataset.to);
+  const dec=Number(el.dataset.dec||0);
+  const suf=el.dataset.suffix||"";
+  if(!Number.isFinite(to)){el.textContent=(el.dataset.to||"")+suf;return;}
+  const dur=1300,t0=performance.now();
+  function step(t){
+    let k=Math.min((t-t0)/dur,1);k=1-Math.pow(1-k,3);
+    el.textContent=(to*k).toFixed(dec)+suf;
+    if(k<1)requestAnimationFrame(step); else el.textContent=to.toFixed(dec)+suf;
+  }
+  requestAnimationFrame(step);
+}
+const statsEl=document.getElementById("stats");
+const so=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){document.querySelectorAll(".num").forEach(animNum);so.disconnect();}}),{threshold:.3});
+if(statsEl instanceof Element)so.observe(statsEl);
+
+// compare bars
+const compEl=document.getElementById("compare");
+const co=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){compEl.querySelectorAll(".bar").forEach(b=>b.style.width=(b.dataset.w||0)+"%");co.unobserve(compEl);}}),{threshold:.4});
+if(compEl instanceof Element)co.observe(compEl);
+
+// lazy charts (guarded)
+function lazyChart(id,build){
+  const el=document.getElementById(id);if(!el)return;
+  const o=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){
+    if(typeof Chart!=="undefined"){try{build();}catch(err){console.warn(err);}}o.disconnect();
+  }}),{threshold:.2});
+  if(el instanceof Element)o.observe(el);
+}
+lazyChart("cAdopt",()=>new Chart(document.getElementById("cAdopt"),{type:"line",
+  data:{labels:[2021,2022,2023,2024,2025,2026],datasets:[
+    {label:"ABHA accounts (crore)",data:[14.7,30.4,50.6,72.2,84.5,90.2],borderColor:C.teal,backgroundColor:"rgba(15,163,163,.14)",tension:.35,borderWidth:3,pointRadius:4,pointBackgroundColor:C.teal,fill:true}
+  ]},
+  plugins:[{id:"ptlabels",afterDatasetsDraw(ch){const ctx=ch.ctx,meta=ch.getDatasetMeta(0);ch.data.datasets[0].data.forEach((v,i)=>{const p=meta.data[i];if(!p)return;ctx.save();ctx.font='700 12px Aptos,"Segoe UI",sans-serif';ctx.fillStyle=C.navy;ctx.textAlign="center";ctx.fillText(v+" cr",p.x,p.y-12);ctx.restore();});}}],
+  options:{responsive:true,maintainAspectRatio:false,layout:{padding:{top:24}},
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+" crore accounts"}}},
+    scales:{y:{title:{display:true,text:"Crore of accounts"},grid:{color:C.line},suggestedMax:108},x:{grid:{display:false}}}}}));
+lazyChart("cEmr",()=>new Chart(document.getElementById("cEmr"),{type:"doughnut",
+  data:{labels:["Hospitals with EMR","No EMR system"],datasets:[{data:[35,65],backgroundColor:[C.teal,"#e2eded"],borderWidth:0}]},
+  options:{responsive:true,maintainAspectRatio:false,cutout:"66%",
+    plugins:{legend:{position:"bottom",labels:{usePointStyle:true,boxWidth:8}},title:{display:true,text:"EMR penetration"}}}}));
+lazyChart("cLayer",()=>new Chart(document.getElementById("cLayer"),{type:"bar",
+  data:{labels:["Records linkage","Digital health","EHR / EMR software"],datasets:[{data:[75,20,7],backgroundColor:[C.teal,C.blue,C.amber],borderRadius:7}]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},title:{display:true,text:"Annual growth by layer (%)"},
+      tooltip:{callbacks:{label:c=>c.parsed.y+"%"}}},
+    scales:{y:{grid:{color:C.line},ticks:{callback:v=>v+"%"}},x:{grid:{display:false}}}}}));
+lazyChart("cShare",()=>new Chart(document.getElementById("cShare"),{type:"doughnut",
+  data:{labels:["India","Rest of world"],datasets:[{data:[2.1,97.9],backgroundColor:[C.amber,"#e2eded"],borderWidth:0}]},
+  options:{responsive:true,maintainAspectRatio:false,cutout:"66%",
+    plugins:{legend:{position:"bottom",labels:{usePointStyle:true,boxWidth:8}},title:{display:true,text:"Global EHR market share"}}}}));
+
+</script>
+</body></html>
