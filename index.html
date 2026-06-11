@@ -154,10 +154,12 @@ layout: default
     count.textContent = '';
   }
 
+  // real-time filtering as the user types or changes dropdowns
+  if(search) search.addEventListener('input', runFilter);
+  if(year) year.addEventListener('change', runFilter);
+  if(topic) topic.addEventListener('change', runFilter);
   if(btn) btn.addEventListener('click', runFilter);
   if(clear) clear.addEventListener('click', clearFilter);
-  // also allow Enter key in search box
-  if(search) search.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ runFilter(); }});
 })();
 </script>
 
