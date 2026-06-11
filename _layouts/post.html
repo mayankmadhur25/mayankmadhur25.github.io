@@ -58,6 +58,21 @@ layout: default
     </div>
   </aside>
   <a class="back-link" href="/">← All issues</a>
+
+  {% assign related = site.posts | where: "category", page.category | where_exp: "p", "p.url != page.url" %}
+  {% if related.size > 0 %}
+  <section class="related">
+    <p class="related-label">More on {{ page.category }}</p>
+    <div class="related-grid">
+      {% for post in related limit:3 %}
+      <a class="related-card cat-{{ post.category | default: 'general' | slugify }}" href="{% if post.external_link %}{{ post.external_link }}{% else %}{{ post.url }}{% endif %}">
+        <span class="rc-ed">ED. {{ post.edition }}</span>
+        <span class="rc-title">{{ post.title }}</span>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
 </article>
 
 <section class="contact-section" id="contact">
