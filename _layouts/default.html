@@ -5,6 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% if page.title %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }} — Digital health, decoded{% endif %}</title>
   <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | truncate: 160 }}">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/logo.png">
+  <link rel="apple-touch-icon" href="/logo.png">
+
+  <!-- Open Graph (LinkedIn, WhatsApp, Facebook) -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Healthcare Pulse">
+  <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}Healthcare Pulse — Digital health, decoded{% endif %}">
+  <meta property="og:description" content="{{ page.excerpt | default: site.description | strip_html | truncate: 160 }}">
+  <meta property="og:image" content="{{ site.url }}/logo.png">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+
+  <!-- Twitter / X card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}Healthcare Pulse{% endif %}">
+  <meta name="twitter:description" content="{{ page.excerpt | default: site.description | strip_html | truncate: 160 }}">
+  <meta name="twitter:image" content="{{ site.url }}/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -85,6 +103,19 @@
     if(isDark){ root.removeAttribute('data-theme'); try{localStorage.setItem('hp-theme','light');}catch(e){} }
     else { root.setAttribute('data-theme','dark'); try{localStorage.setItem('hp-theme','dark');}catch(e){} }
   });
+
+  // back to top
+  var toTop = document.getElementById('toTop');
+  if(toTop){
+    addEventListener('scroll', function(){
+      if(window.scrollY > 600) toTop.classList.add('show');
+      else toTop.classList.remove('show');
+    }, {passive:true});
+    toTop.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+  }
 })();
 </script>
+<button id="toTop" class="to-top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
 </body></html>
