@@ -633,6 +633,18 @@ figure.chart-fig h4 { font-size:12.5px;letter-spacing:1px;text-transform:upperca
 [data-theme="dark"] .cform input, [data-theme="dark"] .cform textarea { background:#0F1B22; color:#DCEAEA; border-color:#25373F; }
 
 </style>
+  <link rel="icon" type="image/png" href="/logo.png">
+  <link rel="apple-touch-icon" href="/logo.png">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Healthcare Pulse">
+  <meta property="og:title" content="Edition 61: The 100 Crore Illusion">
+  <meta property="og:description" content="India built the world's largest digital health ID system. The one number that proves it works has gone missing.">
+  <meta property="og:image" content="https://mayankmadhur.in/logo.png">
+  <meta property="og:url" content="https://mayankmadhur.in/the-100-crore-illusion.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Edition 61: The 100 Crore Illusion">
+  <meta name="twitter:description" content="India built the world's largest digital health ID system. The one number that proves it works has gone missing.">
+  <meta name="twitter:image" content="https://mayankmadhur.in/logo.png">
 </head>
 <body>
 <script>(function(){try{if(localStorage.getItem('hp-theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
@@ -797,7 +809,9 @@ figure.chart-fig h4 { font-size:12.5px;letter-spacing:1px;text-transform:upperca
           setTimeout(function(){cp.classList.remove('share-copied');cp.innerHTML=o;},1600);
         });
       });
-    })();
+      var toTop=document.getElementById('toTop');
+  if(toTop){addEventListener('scroll',function(){if(window.scrollY>600)toTop.classList.add('show');else toTop.classList.remove('show');},{passive:true});toTop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});}
+})();
     </script>
 
   <aside class="author-box">
@@ -808,6 +822,12 @@ figure.chart-fig h4 { font-size:12.5px;letter-spacing:1px;text-transform:upperca
       <a href="https://www.linkedin.com/in/mayank-madhur/" target="_blank">Connect on LinkedIn →</a>
     </div>
   </aside>
+  <section class="related">
+    <p class="related-label">More on Digital Health</p>
+    <div class="related-grid">
+      <a class="related-card cat-digital-health" href="/edition-52-preventive.html"><span class="rc-ed">ED. 52</span><span class="rc-title">India's largest preventive health system</span></a>
+      </div>
+  </section>
   <a class="back-link" href="index.html">← All issues</a>
 </article>
 </main>
@@ -927,4 +947,5 @@ if(tt) tt.addEventListener('click',function(){
   else{r.setAttribute('data-theme','dark');try{localStorage.setItem('hp-theme','dark');}catch(e){}}
 });
 </script>
+<button id="toTop" class="to-top" aria-label="Back to top"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg></button>
 </body></html>

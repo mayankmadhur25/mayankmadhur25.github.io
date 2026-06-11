@@ -671,6 +671,18 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 [data-theme="dark"] .cform input, [data-theme="dark"] .cform textarea { background:#0F1B22; color:#DCEAEA; border-color:#25373F; }
 
 </style>
+  <link rel="icon" type="image/png" href="/logo.png">
+  <link rel="apple-touch-icon" href="/logo.png">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Healthcare Pulse">
+  <meta property="og:title" content="Edition 58: Ebola is back">
+  <meta property="og:description" content="A 2026 Bundibugyo Ebola outbreak. Why India should pay attention to diagnostics and preparedness.">
+  <meta property="og:image" content="https://mayankmadhur.in/logo.png">
+  <meta property="og:url" content="https://mayankmadhur.in/edition-58-ebola.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Edition 58: Ebola is back">
+  <meta name="twitter:description" content="A 2026 Bundibugyo Ebola outbreak. Why India should pay attention to diagnostics and preparedness.">
+  <meta name="twitter:image" content="https://mayankmadhur.in/logo.png">
 </head>
 <body>
 <script>(function(){try{if(localStorage.getItem('hp-theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
@@ -868,6 +880,9 @@ a:focus-visible, button:focus-visible, input:focus-visible {
     if(r.getAttribute('data-theme')==='dark'){r.removeAttribute('data-theme');try{localStorage.setItem('hp-theme','light');}catch(e){}}
     else{r.setAttribute('data-theme','dark');try{localStorage.setItem('hp-theme','dark');}catch(e){}}
   });
+  var toTop=document.getElementById('toTop');
+  if(toTop){addEventListener('scroll',function(){if(window.scrollY>600)toTop.classList.add('show');else toTop.classList.remove('show');},{passive:true});toTop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});}
 })();
 </script>
+<button id="toTop" class="to-top" aria-label="Back to top"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg></button>
 </body></html>
