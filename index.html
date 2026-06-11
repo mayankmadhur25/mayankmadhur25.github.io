@@ -136,6 +136,33 @@ layout: default
   {% endfor %}
 </section>
 
+<section class="stats-section" id="coverage">
+  <div class="stats-inner">
+    <p class="eyebrow">WHAT I COVER</p>
+    <h2>Coverage across topics</h2>
+    <p class="stats-sub">Where Healthcare Pulse has focused so far, across {{ site.posts | size }} editions.</p>
+
+    {% assign total = site.posts | size %}
+    {% assign cats = "Policy,Strategy,Digital Health,Pharma,Biotech,General" | split: "," %}
+    <div class="stats-bars" id="statsBars">
+      {% for cat in cats %}
+        {% assign c = site.posts | where: "category", cat | size %}
+        {% if c > 0 %}
+        {% assign pct = c | times: 100 | divided_by: total %}
+        <div class="stat-row">
+          <span class="stat-name">{{ cat }}</span>
+          <div class="stat-track">
+            <div class="stat-fill cat-{{ cat | slugify }}" data-pct="{{ pct }}" style="width:0%"></div>
+          </div>
+          <span class="stat-val">{{ pct }}%<span class="stat-count"> · {{ c }}</span></span>
+        </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <p class="stats-foot">Want a topic covered that's missing here? <a href="/ask/">Ask or suggest it →</a></p>
+  </div>
+</section>
+
 <section class="contact-section" id="contact">
   <div class="contact-inner">
     <p class="eyebrow">GET IN TOUCH</p>
@@ -201,6 +228,27 @@ layout: default
   if(topic) topic.addEventListener('change', runFilter);
   if(btn) btn.addEventListener('click', runFilter);
   if(clear) clear.addEventListener('click', clearFilter);
+
+  // animate coverage bars when scrolled into view
+  var statsBars = document.getElementById('statsBars');
+  if(statsBars && 'IntersectionObserver' in window){
+    var sObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          statsBars.querySelectorAll('.stat-fill').forEach(function(bar){
+            bar.style.width = (bar.getAttribute('data-pct') || 0) + '%';
+          });
+          sObs.disconnect();
+        }
+      });
+    }, {threshold: .3});
+    sObs.observe(statsBars);
+  } else if(statsBars){
+    statsBars.querySelectorAll('.stat-fill').forEach(function(bar){
+      bar.style.width = (bar.getAttribute('data-pct') || 0) + '%';
+    });
+  }
+
 })();
 </script>
 
