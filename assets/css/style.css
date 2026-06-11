@@ -143,23 +143,15 @@ a { color: var(--blue); }
 
 .hero-ecg { width: min(560px, 100%); height: 64px; margin: 18px 0 4px; display: block; }
 
-.ecg-track {
-  stroke: var(--line);
-  opacity: .5;
+.ecg-line {
+  stroke: #2E7CB8;
+  opacity: .9;
 }
-.ecg-live {
-  stroke-dasharray: 90 1400;
-  stroke-dashoffset: 1490;
-  animation: heartbeat 2.4s linear infinite;
-  filter: drop-shadow(0 0 5px rgba(15,163,163,.55));
+.ecg-dot {
+  filter: drop-shadow(0 0 6px rgba(46,124,184,.85));
 }
-@keyframes heartbeat {
-  from { stroke-dashoffset: 1490; }
-  to   { stroke-dashoffset: 0; }
-}
-/* respect users who prefer no motion */
 @media (prefers-reduced-motion: reduce) {
-  .ecg-live { animation: none; stroke-dasharray: none; stroke-dashoffset: 0; }
+  .ecg-dot { display: none; }
 }
 
 .hero-sub {
@@ -461,7 +453,6 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   * { transition: none !important; animation: none !important; }
-  .ecg-live { animation-duration: 3s; }
   .reveal { opacity: 1; transform: none; }
 }
 
