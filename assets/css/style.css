@@ -823,3 +823,63 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .rc-ed { font-family: var(--mono); font-size: 11px; font-weight: 600; opacity: .9; }
 .rc-title { font-weight: 700; font-size: 15px; line-height: 1.3; }
 @media(max-width:700px){ .related-grid { grid-template-columns: 1fr; } }
+
+/* ── Ask Me Anything ── */
+.ama-wrap { max-width: 760px; margin: 0 auto; padding: 52px 24px 80px; }
+.ama-head { text-align: center; margin-bottom: 28px; }
+.ama-head h1 { font-size: clamp(30px,5vw,46px); font-weight: 800; color: var(--navy); margin: 8px 0; }
+.ama-sub { color: var(--body-c); font-size: 16px; line-height: 1.6; max-width: 560px; margin: 0 auto; }
+.ama-box { display: flex; gap: 10px; margin-bottom: 16px; }
+.ama-input { flex: 1; padding: 16px 18px; border: 2px solid var(--line); border-radius: 12px; font-size: 16px; font-family: inherit; color: var(--ink); background: #fff; }
+.ama-input:focus { outline: none; border-color: var(--teal); }
+.ama-btn { padding: 0 26px; background: var(--grad); color: #fff; border: none; border-radius: 12px; font-weight: 800; font-size: 15px; cursor: pointer; white-space: nowrap; }
+.ama-btn:hover { filter: brightness(1.08); }
+.ama-suggest { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 30px; }
+.ama-sg-label { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+.ama-chip { background: var(--tintT); border: none; border-radius: 999px; padding: 7px 14px; font-size: 13px; font-weight: 600; color: var(--navy); cursor: pointer; }
+.ama-chip:hover { background: var(--teal); color: #fff; }
+.ama-result { min-height: 40px; }
+.ama-answer { animation: amaFade .3s ease; }
+@keyframes amaFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.ama-found { font-weight: 700; color: var(--navy); margin-bottom: 14px; font-size: 15px; }
+.ama-card { display: flex; flex-direction: column; gap: 5px; padding: 18px 20px; border-radius: 12px; text-decoration: none; color: #fff; margin-bottom: 12px; transition: transform .15s ease; }
+.ama-card:hover { transform: translateX(4px); }
+.ama-card.cat-digital-health { background: var(--grad); }
+.ama-card.cat-policy { background: linear-gradient(135deg,#E08A3C,#B96A14); }
+.ama-card.cat-strategy { background: linear-gradient(135deg,#6C4AB6,#3A2E7C); }
+.ama-card.cat-pharma { background: linear-gradient(135deg,#2E7CB8,#1B3A4B); }
+.ama-card.cat-biotech { background: linear-gradient(135deg,#37B68A,#0FA3A3); }
+.ama-card.cat-general { background: linear-gradient(135deg,#1B3A4B,#2E7CB8); }
+.amc-ed { font-family: var(--mono); font-size: 11px; font-weight: 600; opacity: .9; }
+.amc-title { font-weight: 800; font-size: 17px; line-height: 1.25; }
+.amc-go { font-size: 13px; font-weight: 700; margin-top: 4px; opacity: .95; }
+.ama-none { background: var(--tintT); border-radius: 14px; padding: 28px 26px; text-align: center; }
+.ama-none-title { font-size: 19px; font-weight: 800; color: var(--navy); margin-bottom: 8px; }
+.ama-none-sub { color: var(--body-c); font-size: 14.5px; line-height: 1.6; margin-bottom: 18px; }
+.ama-suggest-btn { display: inline-block; background: var(--grad); color: #fff; font-weight: 800; font-size: 14px; text-decoration: none; padding: 12px 24px; border-radius: 999px; margin: 0 6px 10px; }
+.ama-browse { display: block; color: var(--teal); font-weight: 700; font-size: 14px; text-decoration: none; margin-top: 6px; }
+[data-theme="dark"] .ama-input { background: #16252C; color: var(--ink); }
+
+/* ── Coverage stats section ── */
+.stats-section { background: var(--tintT); padding: 56px 24px; }
+.stats-inner { max-width: 760px; margin: 0 auto; }
+.stats-inner h2 { font-size: clamp(24px,4vw,34px); font-weight: 800; color: var(--navy); margin: 6px 0 4px; }
+.stats-sub { color: var(--body-c); font-size: 15px; margin-bottom: 28px; }
+.stats-bars { display: flex; flex-direction: column; gap: 16px; }
+.stat-row { display: grid; grid-template-columns: 120px 1fr 64px; gap: 14px; align-items: center; }
+.stat-name { font-size: 14px; font-weight: 700; color: var(--navy); }
+.stat-track { background: rgba(27,58,75,.08); border-radius: 999px; height: 14px; overflow: hidden; }
+.stat-fill { height: 100%; border-radius: 999px; transition: width 1.1s cubic-bezier(.22,1,.36,1); }
+.stat-fill.cat-policy { background: linear-gradient(90deg,#E08A3C,#B96A14); }
+.stat-fill.cat-strategy { background: linear-gradient(90deg,#6C4AB6,#3A2E7C); }
+.stat-fill.cat-digital-health { background: var(--grad); }
+.stat-fill.cat-pharma { background: linear-gradient(90deg,#2E7CB8,#1B3A4B); }
+.stat-fill.cat-biotech { background: linear-gradient(90deg,#37B68A,#0FA3A3); }
+.stat-fill.cat-general { background: linear-gradient(90deg,#1B3A4B,#2E7CB8); }
+.stat-val { font-family: var(--mono); font-size: 14px; font-weight: 600; color: var(--navy); text-align: right; }
+.stat-count { color: var(--muted); font-size: 12px; }
+.stats-foot { margin-top: 26px; font-size: 14px; color: var(--body-c); }
+.stats-foot a { color: var(--teal); font-weight: 700; text-decoration: none; }
+@media(max-width:540px){ .stat-row { grid-template-columns: 88px 1fr 52px; gap: 10px; } .stat-name { font-size: 12.5px; } }
+[data-theme="dark"] .stats-section { background: #13212A; }
+[data-theme="dark"] .stat-track { background: rgba(255,255,255,.08); }
