@@ -6,7 +6,7 @@ linkedin_newsletter: https://www.linkedin.com/newsletters/7311231782241083393/
 author_bio: "PMP, SCR, MBA & PGPM Healthcare, PGD Public Health, Analyst and Advisor Healthcare, Digital Engineering, Ex HCL & Altimetrik"
 description: Sharp, contrarian reads on India's digital health story and global healthcare, every Friday.
 baseurl: ""
-url: "https://mayankmadhur25.github.io"
+url: "https://mayankmadhur.in"
 permalink: /posts/:title/
 markdown: kramdown
 future: true
