@@ -1,0 +1,35 @@
+---
+layout: default
+title: Biotech — Healthcare Pulse
+permalink: /topics/biotech/
+---
+<section class="topic-wrap">
+  <div class="topic-head">
+    <p class="eyebrow">TOPIC</p>
+    <h1>Biotech</h1>
+    <p class="topic-sub">Every Healthcare Pulse edition on Biotech. Newest first.</p>
+    <a class="topic-back" href="/">← All issues</a>
+  </div>
+  <div class="post-grid">
+    {% assign topicposts = site.posts | where: "category", "Biotech" %}
+    {% for post in topicposts %}
+    <a class="card cat-{{ post.category | default: 'general' | slugify }}"
+       href="{% if post.external_link %}{{ post.external_link }}{% else %}{{ post.url }}{% endif %}">
+      <div class="card-banner">
+        <svg viewBox="0 0 400 140" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <path d="M0 84 H86 l11 -19 13 36 16 -52 14 60 12 -38 10 13 H230 l11 -19 13 36 16 -52 14 60 12 -38 10 13 H400"
+            fill="none" stroke="rgba(255,255,255,.85)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        {% if post.edition %}<span class="card-ed">ED. {{ post.edition }}</span>{% endif %}
+      </div>
+      <div class="card-body">
+        <p class="card-meta">{{ post.date | date: "%b %-d, %Y" }} · {{ post.category }}</p>
+        <h2>{{ post.title }}</h2>
+        <p class="card-excerpt">{{ post.excerpt | strip_html | truncate: 130 }}</p>
+        <div class="card-foot"><span class="card-read">Read issue →</span></div>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  {% if topicposts.size == 0 %}<p class="topic-empty">No editions in this topic yet.</p>{% endif %}
+</section>

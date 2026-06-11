@@ -9,7 +9,7 @@ layout: default
       <path class="ecg-path" d="M0 40 H140 l14 -22 16 42 20 -58 18 66 14 -44 12 16 H340 l14 -22 16 42 20 -58 18 66 14 -44 12 16 H600"
         fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
-    <p class="hero-sub">Sharp, contrarian reads on India's digital health story and global healthcare. One deep dive every Friday, by Mayank Madhur.</p>
+    <p class="hero-sub">The real story behind India's healthcare numbers, for operators, investors, and policy people who want signal, not press releases. One deep dive every Friday, by Mayank Madhur.</p>
     <div class="hero-actions">
       <a class="hero-cta" href="#subscribe">Subscribe free →</a>
       <a class="hero-ghost" href="{{ site.linkedin_profile }}" target="_blank">LinkedIn ↗</a>
@@ -44,6 +44,33 @@ layout: default
   </aside>
 </section>
 
+<section class="picks">
+  <div class="picks-head">
+    <p class="eyebrow">EDITOR'S PICKS</p>
+    <h2 class="picks-title">Start here</h2>
+  </div>
+  <div class="picks-grid">
+    <a class="pick-card cat-digital-health" href="/the-100-crore-illusion.html">
+      <span class="pick-ed">ED. 61</span>
+      <h3>The 100 Crore Illusion</h3>
+      <p>India built the world's largest digital health ID system. The one number that proves it works has gone missing.</p>
+      <span class="pick-read">Read →</span>
+    </a>
+    <a class="pick-card cat-policy" href="/edition-59-dpdpa.html">
+      <span class="pick-ed">ED. 59</span>
+      <h3>What DPDPA changes for healthcare</h3>
+      <p>The Act flipped the asymmetry between provider and patient. Five stakeholder snapshots of what actually changed.</p>
+      <span class="pick-read">Read →</span>
+    </a>
+    <a class="pick-card cat-strategy" href="/edition-54-four-indias.html">
+      <span class="pick-ed">ED. 54</span>
+      <h3>The Four Indias of Healthcare</h3>
+      <p>Why "pan-India" is usually a lie. The market isn't one, it's four, each with different economics and failure modes.</p>
+      <span class="pick-read">Read →</span>
+    </a>
+  </div>
+</section>
+
 <section class="filter-bar">
   <div class="filter-inner">
     <input type="text" id="fSearch" class="f-search" placeholder="Search issues...">
@@ -70,6 +97,17 @@ layout: default
   <p id="fCount" class="f-count"></p>
 </section>
 
+<div class="topic-chips">
+  <span class="tc-label">BROWSE BY TOPIC:</span>
+  <a class="topic-chip" href="/topics/digital-health/">Digital Health</a>
+  <a class="topic-chip" href="/topics/policy/">Policy</a>
+  <a class="topic-chip" href="/topics/strategy/">Strategy</a>
+  <a class="topic-chip" href="/topics/pharma/">Pharma</a>
+  <a class="topic-chip" href="/topics/biotech/">Biotech</a>
+  <a class="topic-chip" href="/topics/general/">General</a>
+  <a class="topic-chip" href="/archive.html">All issues →</a>
+</div>
+
 <section class="post-grid" id="postGrid">
   {% for post in site.posts %}
   <a class="card reveal cat-{{ post.category | default: 'general' | slugify }}"
@@ -89,7 +127,10 @@ layout: default
       <p class="card-meta">{{ post.date | date: "%b %-d, %Y" }} · {{ post.category | default: "General" }}</p>
       <h2>{{ post.title }}</h2>
       <p class="card-excerpt">{{ post.excerpt | strip_html | truncate: 130 }}</p>
-      <p class="card-read">Read issue →</p>
+      <div class="card-foot">
+        <span class="card-read">Read issue →</span>
+        <span class="card-views" data-views-key="ed{{ post.edition }}">{% assign w = post.content | number_of_words %}{% if w < 200 %}3{% else %}{{ w | divided_by: 200 }}{% endif %} min read</span>
+      </div>
     </div>
   </a>
   {% endfor %}

@@ -1,0 +1,22 @@
+---
+layout: default
+title: Archive
+---
+<section class="archive-wrap">
+  <div class="archive-head">
+    <p class="eyebrow">THE FULL ARCHIVE</p>
+    <h1>Every issue of Healthcare Pulse</h1>
+    <p class="archive-sub">All editions, newest first. Use the search on the homepage to filter by topic or year.</p>
+  </div>
+  <ul class="archive-list">
+    {% for post in site.posts %}
+    <li class="archive-item">
+      <a href="{% if post.external_link %}{{ post.external_link }}{% else %}{{ post.url }}{% endif %}">
+        <span class="ai-ed">ED. {{ post.edition }}</span>
+        <span class="ai-title">{{ post.title }}</span>
+        <span class="ai-meta">{{ post.date | date: "%b %-d, %Y" }} · {{ post.category | default: "General" }}</span>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
