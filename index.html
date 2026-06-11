@@ -6,8 +6,17 @@ layout: default
     <p class="eyebrow">INDIA · DIGITAL HEALTH · HEALTHCARE STRATEGY</p>
     <h1 class="hero-title">Digital health, <span class="hi-grad">decoded</span>.</h1>
     <svg class="hero-ecg" viewBox="0 0 600 70" preserveAspectRatio="none" aria-hidden="true">
-      <path class="ecg-path" d="M0 40 H140 l14 -22 16 42 20 -58 18 66 14 -44 12 16 H340 l14 -22 16 42 20 -58 18 66 14 -44 12 16 H600"
-        fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <defs>
+        <linearGradient id="ecgGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#0FA3A3"/>
+          <stop offset="100%" stop-color="#2E7CB8"/>
+        </linearGradient>
+      </defs>
+      <!-- faint baseline track -->
+      <path class="ecg-track" d="M0 40 H600" fill="none" stroke-width="2"/>
+      <!-- the repeating heartbeat trace -->
+      <path class="ecg-live" d="M0 40 H120 l10 0 8 -20 10 38 14 -54 12 60 10 -38 9 14 H300 l10 0 8 -20 10 38 14 -54 12 60 10 -38 9 14 H480 l10 0 8 -20 10 38 14 -54 12 60 10 -38 9 14 H600"
+        fill="none" stroke="url(#ecgGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
     <p class="hero-sub">The real story behind India's healthcare numbers, for operators, investors, and policy people who want signal, not press releases. One deep dive every Friday, by Mayank Madhur.</p>
     <div class="hero-actions">
