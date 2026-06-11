@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Edition 54: The Four Indias of Healthcare"
-category: General
+category: Strategy
 edition: 54
 external_link: /edition-54-four-indias.html
 ---

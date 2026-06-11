@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Edition 56: The Orchestration Gap — Why Mid-Tier Indian Hospitals Are Losing"
-category: General
+category: Strategy
 edition: 56
 external_link: /edition-56-orchestration.html
 ---
