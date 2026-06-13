@@ -807,6 +807,8 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .topic-chips .tc-label { font-family: var(--mono); font-size: 12px; color: var(--muted); margin-right: 4px; }
 .topic-chip { text-decoration: none; font-size: 13px; font-weight: 700; padding: 7px 16px; border-radius: 999px; border: 1px solid var(--line); color: var(--navy); transition: all .15s ease; }
 .topic-chip:hover { border-color: var(--teal); color: var(--teal); }
+.topic-chip-theme { background: #FBF0E1; border-color: #F0D8B4; color: #B96A14; }
+.topic-chip-theme:hover { border-color: var(--amber); color: var(--amber); }
 
 /* ── Related issues ── */
 .related { max-width: 860px; margin: 40px auto 0; padding: 0 24px; }
