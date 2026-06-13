@@ -3,13 +3,12 @@ tagline: Digital health, decoded. Every Friday.
 author: Mayank Madhur
 linkedin_profile: https://www.linkedin.com/in/mayank-madhur/
 linkedin_newsletter: https://www.linkedin.com/newsletters/7311231782241083393/
-author_bio: "PMP, SCR, MBA & PGPM Healthcare, PGD Public Health, Analyst and Advisor Healthcare, Digital Engineering, Ex HCL & Altimetrik"
+author_bio: "PMP®, SCR® · MBA & PGPM (Healthcare) · Practice Leader, Healthcare & Life Sciences at HFS Research · 11+ years across payer, provider & digital health · UGC NET qualified (97.7 percentile) · Ex HCL (Medical Devices) & Altimetrik. Passionate about making healthcare better."
 description: Sharp, contrarian reads on India's digital health story and global healthcare, every Friday.
 baseurl: ""
 url: "https://mayankmadhur.in"
 permalink: /posts/:title/
 markdown: kramdown
-future: true
 plugins:
   - jekyll-feed
 exclude:
@@ -18,3 +17,5 @@ exclude:
   - README.md
   - post-template.md
   - HOW-TO-ADD-A-POST.md
+
+future: true

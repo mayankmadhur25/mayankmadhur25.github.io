@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THRIVE–SDOH · Tech-Enabled Holistic Healthcare in India</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#13211F;
+    --ink-soft:#3A4A47;
+    --paper:#F6F3EC;
+    --paper-2:#EFEADF;
+    --card:#FCFAF4;
+    --line:#D9D2C2;
+    --teal:#0F5C57;
+    --teal-2:#15716A;
+    --teal-3:#1C8A7E;
+    --teal-deep:#0A3F3B;
+    --marigold:#E0992E;
+    --marigold-2:#CE7A2C;
+    --coral:#C2563F;
+    --sage:#6FA39B;
+    --good:#2E7D5B;
+    --flag:#C2563F;
+    --font-serif:'Fraunces',Georgia,serif;
+    --font-tech:'Space Grotesk',system-ui,sans-serif;
+    --font-body:'Inter',system-ui,sans-serif;
+    --shadow:0 1px 0 rgba(19,33,31,.04), 0 18px 40px -28px rgba(10,63,59,.45);
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--font-body);font-size:16px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--teal);text-decoration:none}
+  ::selection{background:var(--marigold);color:#1b1405}
+
+  /* ---------- MASTHEAD ---------- */
+  .masthead{
+    background:
+      radial-gradient(900px 420px at 88% -10%, rgba(224,153,46,.18), transparent 60%),
+      radial-gradient(700px 500px at -5% 10%, rgba(28,138,126,.16), transparent 55%),
+      linear-gradient(180deg,#0A3F3B 0%, #0C4843 100%);
+    color:#F4EFE2;position:relative;overflow:hidden;
+  }
+  .masthead::after{
+    content:"";position:absolute;inset:0;opacity:.05;pointer-events:none;
+    background-image:linear-gradient(rgba(255,255,255,.6) 1px,transparent 1px);
+    background-size:100% 34px;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .mast-inner{padding:30px 24px 26px;max-width:var(--maxw);margin:0 auto;position:relative;z-index:1}
+  .eyebrow{
+    font-family:var(--font-tech);text-transform:uppercase;letter-spacing:.26em;
+    font-size:11px;font-weight:600;color:var(--marigold);
+  }
+  .mast-grid{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-top:14px}
+  h1.title{
+    font-family:var(--font-serif);font-weight:600;
+    font-size:clamp(30px,5.4vw,58px);line-height:.98;letter-spacing:-.01em;margin:0;
+  }
+  h1.title em{font-style:italic;color:var(--marigold)}
+  .subtitle{
+    font-family:var(--font-body);max-width:54ch;color:#CFE0DB;
+    font-size:clamp(14px,1.7vw,17px);margin-top:14px;line-height:1.5;
+  }
+  .mast-meta{
+    font-family:var(--font-tech);font-size:12px;color:#9FBEB7;
+    border-left:2px solid var(--marigold);padding-left:14px;min-width:200px;
+  }
+  .mast-meta b{color:#F4EFE2;font-weight:600;display:block;font-size:13.5px}
+  .mast-meta span{display:block;margin-top:4px}
+
+  /* ---------- TABS ---------- */
+  .tabbar-outer{position:sticky;top:0;z-index:30;background:rgba(246,243,236,.92);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .tabbar{display:flex;gap:2px;max-width:var(--maxw);margin:0 auto;padding:0 14px;
+    overflow-x:auto;scrollbar-width:none}
+  .tabbar::-webkit-scrollbar{display:none}
+  .tab{
+    appearance:none;border:0;background:none;cursor:pointer;white-space:nowrap;
+    font-family:var(--font-tech);font-size:13px;font-weight:500;color:var(--ink-soft);
+    padding:16px 15px 13px;border-bottom:3px solid transparent;letter-spacing:.01em;
+    transition:color .18s, border-color .18s;
+  }
+  .tab .tnum{font-size:10.5px;color:var(--marigold-2);margin-right:6px;font-weight:600}
+  .tab:hover{color:var(--ink)}
+  .tab[aria-selected="true"]{color:var(--teal-deep);border-color:var(--marigold);font-weight:600}
+  .tab:focus-visible{outline:2px solid var(--teal);outline-offset:-2px;border-radius:4px}
+
+  .panel{display:none;animation:fade .4s ease}
+  .panel.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){
+    .panel{animation:none}*{scroll-behavior:auto !important}
+  }
+  section.pad{padding:42px 0 56px}
+
+  .sec-head{margin-bottom:26px;max-width:74ch}
+  .sec-head .eyebrow{color:var(--marigold-2)}
+  .sec-head h2{font-family:var(--font-serif);font-weight:600;font-size:clamp(24px,3.4vw,36px);
+    line-height:1.04;margin:10px 0 0;letter-spacing:-.01em}
+  .sec-head p{color:var(--ink-soft);margin:12px 0 0;font-size:16px;max-width:68ch}
+
+  /* ---------- HERO FRAMEWORK ---------- */
+  .framework-hero{background:var(--card);border:1px solid var(--line);border-radius:22px;
+    padding:30px clamp(16px,3vw,40px) 24px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .fh-top{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:flex-start}
+  .fh-name{font-family:var(--font-serif);font-weight:600;font-size:clamp(34px,6vw,64px);
+    line-height:.95;letter-spacing:-.02em;margin:0}
+  .fh-name .dash{color:var(--marigold)}
+  .fh-expand{font-family:var(--font-tech);font-size:12.5px;color:var(--teal);
+    letter-spacing:.02em;max-width:40ch;border-left:2px solid var(--marigold);padding-left:12px;margin-top:8px}
+
+  .engine{display:block;width:100%;height:auto;margin:6px auto 0;max-width:760px}
+  .engine .node{cursor:pointer;transition:transform .2s ease}
+  .engine .node:hover{transform:translateY(-3px)}
+  .engine .node circle{transition:filter .2s,stroke-width .2s}
+  .engine .node:hover circle{filter:brightness(1.07)}
+  .engine .node.dim{opacity:.32}
+  .engine text{font-family:var(--font-tech)}
+  .engine .pl-letter{font-weight:700}
+  .engine .pl-label{font-weight:500}
+  .engine .spoke{stroke:var(--line);stroke-width:2}
+  .engine .ring{fill:none;stroke:var(--marigold);stroke-width:1.4;stroke-dasharray:3 7;opacity:.55}
+
+  .io-strip{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:center;margin-top:14px}
+  .io-box{border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:var(--paper)}
+  .io-box .ttl{font-family:var(--font-tech);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--marigold-2);font-weight:600}
+  .io-box .items{font-size:13.5px;color:var(--ink-soft);margin-top:6px}
+  .io-arrow{font-family:var(--font-tech);font-weight:700;color:var(--teal-3);font-size:22px;text-align:center}
+  .io-out{border-color:var(--teal-3);background:linear-gradient(180deg,#F2F8F6,#EAF3F0)}
+  .io-out .ttl{color:var(--teal)}
+  .io-out .items b{color:var(--teal-deep)}
+
+  /* pillar cards */
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}
+  .pcard{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--teal);
+    border-radius:14px;padding:18px 18px 16px;scroll-margin-top:90px;transition:box-shadow .2s,transform .2s,border-color .2s}
+  .pcard:target,.pcard.lit{box-shadow:0 0 0 3px rgba(224,153,46,.4),var(--shadow);transform:translateY(-2px)}
+  .pcard .ph{display:flex;align-items:center;gap:12px}
+  .pcard .badge{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;
+    font-family:var(--font-tech);font-weight:700;font-size:20px;color:#fff;flex:none}
+  .pcard h3{font-family:var(--font-serif);font-weight:600;font-size:18px;margin:0;line-height:1.1}
+  .pcard h3 .full{display:block;font-family:var(--font-tech);font-size:10.5px;font-weight:500;
+    letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-top:3px}
+  .pcard p{font-size:14px;color:var(--ink-soft);margin:12px 0 0}
+  .pcard .tags{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px}
+  .pcard .tag{font-family:var(--font-tech);font-size:10.5px;background:var(--paper-2);
+    border:1px solid var(--line);color:var(--ink-soft);padding:3px 8px;border-radius:20px}
+
+  /* color variants for pillars (system=teal, human=warm) */
+  .p-T{border-top-color:var(--teal)} .p-T .badge{background:var(--teal)}
+  .p-H{border-top-color:var(--marigold)} .p-H .badge{background:var(--marigold)}
+  .p-R{border-top-color:var(--teal-2)} .p-R .badge{background:var(--teal-2)}
+  .p-I{border-top-color:var(--marigold-2)} .p-I .badge{background:var(--marigold-2)}
+  .p-V{border-top-color:var(--teal-3)} .p-V .badge{background:var(--teal-3)}
+  .p-E{border-top-color:var(--coral)} .p-E .badge{background:var(--coral)}
+
+  /* ---------- GENERIC CARD GRIDS ---------- */
+  .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow)}
+  .card h3{font-family:var(--font-serif);font-weight:600;font-size:19px;margin:0 0 4px;line-height:1.12}
+  .card .kicker{font-family:var(--font-tech);font-size:11px;text-transform:uppercase;letter-spacing:.14em;
+    color:var(--marigold-2);font-weight:600}
+  .card p{font-size:14px;color:var(--ink-soft);margin:8px 0 0}
+  .card ul{margin:10px 0 0;padding-left:18px;font-size:13.5px;color:var(--ink-soft)}
+  .card li{margin:5px 0}
+
+  /* stat tiles */
+  .stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;position:relative;overflow:hidden}
+  .stat::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--marigold)}
+  .stat .num{font-family:var(--font-serif);font-weight:600;font-size:clamp(26px,3.6vw,38px);line-height:1;color:var(--teal-deep)}
+  .stat .num small{font-size:.5em;color:var(--marigold-2);font-family:var(--font-tech);font-weight:600}
+  .stat .lab{font-size:13px;color:var(--ink-soft);margin-top:7px;line-height:1.35}
+  .stat .src{font-family:var(--font-tech);font-size:10px;color:#8a8474;margin-top:8px;letter-spacing:.02em}
+
+  /* charts */
+  .chart-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow)}
+  .chart-card h3{font-family:var(--font-serif);font-weight:600;font-size:18px;margin:0}
+  .chart-card .csub{font-size:13px;color:var(--ink-soft);margin:4px 0 14px}
+  .chart-card .csrc{font-family:var(--font-tech);font-size:10.5px;color:#8a8474;margin-top:12px;letter-spacing:.02em}
+  .chart-svg{width:100%;height:auto;display:block;font-family:var(--font-tech)}
+  .chart-svg .axis{stroke:var(--line);stroke-width:1}
+  .chart-svg .grid{stroke:var(--line);stroke-width:1;stroke-dasharray:2 5;opacity:.7}
+  .chart-svg .lbl{font-size:11px;fill:var(--ink-soft)}
+  .chart-svg .val{font-size:12px;font-weight:600;fill:var(--teal-deep)}
+  .legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:10px;font-family:var(--font-tech);font-size:12px;color:var(--ink-soft)}
+  .legend i{width:12px;height:12px;border-radius:3px;display:inline-block;margin-right:6px;vertical-align:-1px}
+
+  /* table */
+  .tbl-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
+  table{border-collapse:collapse;width:100%;min-width:720px;background:var(--card);font-size:13.5px}
+  thead th{background:var(--teal-deep);color:#EAF3F0;font-family:var(--font-tech);font-weight:500;
+    text-align:left;padding:12px 14px;font-size:12px;letter-spacing:.04em;position:sticky;top:0}
+  tbody td{padding:12px 14px;border-top:1px solid var(--line);vertical-align:top;color:var(--ink-soft)}
+  tbody tr:nth-child(even){background:var(--paper)}
+  tbody td:first-child{color:var(--ink);font-weight:500}
+  .pill{font-family:var(--font-tech);font-size:10.5px;font-weight:600;padding:3px 9px;border-radius:20px;white-space:nowrap;display:inline-block}
+  .pill.update{background:rgba(194,86,63,.14);color:#9c3d29;border:1px solid rgba(194,86,63,.35)}
+  .pill.valid{background:rgba(46,125,91,.14);color:#1f6045;border:1px solid rgba(46,125,91,.35)}
+
+  /* domain rows */
+  .domain{display:grid;grid-template-columns:170px 1fr;gap:0;border:1px solid var(--line);border-radius:12px;
+    overflow:hidden;margin-bottom:10px;background:var(--card)}
+  .domain .dname{background:var(--paper-2);padding:16px;font-family:var(--font-serif);font-weight:600;font-size:16px;
+    display:flex;align-items:center;border-right:1px solid var(--line)}
+  .domain .dbody{padding:14px 16px}
+  .domain .dtech{font-family:var(--font-tech);font-size:11px;text-transform:uppercase;letter-spacing:.1em;
+    color:var(--teal);font-weight:600}
+  .domain .dmech{font-size:14px;color:var(--ink-soft);margin-top:5px}
+
+  /* benchmark */
+  .bench{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .bench .card{border-left:4px solid var(--teal-3)}
+  .bench .flag{font-family:var(--font-tech);font-size:22px}
+  .bench .lesson{margin-top:10px;font-size:13px;background:var(--paper-2);border-radius:10px;padding:10px 12px;color:var(--ink)}
+  .bench .lesson b{color:var(--teal-deep);font-family:var(--font-tech);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+
+  /* roadmap */
+  .road{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+  .road .card{padding:16px;border-top:4px solid var(--marigold)}
+  .road .card h3{font-size:16px}
+  .road .who{font-family:var(--font-tech);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--marigold-2);font-weight:600}
+
+  .callout{background:linear-gradient(180deg,#0C4843,#0A3F3B);color:#EAF3F0;border-radius:16px;
+    padding:24px 26px;margin-top:24px}
+  .callout .eyebrow{color:var(--marigold)}
+  .callout p{font-family:var(--font-serif);font-size:clamp(18px,2.6vw,24px);line-height:1.3;margin:8px 0 0;max-width:62ch}
+  .callout p em{color:var(--marigold);font-style:italic}
+
+  footer{background:#0A3F3B;color:#9FBEB7;padding:30px 0;margin-top:10px;font-family:var(--font-tech);font-size:12px}
+  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+  footer b{color:#F4EFE2}
+  .src-note{font-family:var(--font-tech);font-size:11px;color:#8a8474;margin-top:14px;letter-spacing:.01em}
+
+  /* responsive */
+  @media(max-width:900px){
+    .pillars,.grid-3,.road{grid-template-columns:1fr 1fr}
+    .grid-4,.stat-row{grid-template-columns:1fr 1fr}
+    .road{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:620px){
+    .pillars,.grid-2,.grid-3,.grid-4,.stat-row,.bench,.road{grid-template-columns:1fr}
+    .io-strip{grid-template-columns:1fr}
+    .io-arrow{transform:rotate(90deg)}
+    .domain{grid-template-columns:1fr}
+    .domain .dname{border-right:0;border-bottom:1px solid var(--line)}
+    .mast-grid{flex-direction:column;align-items:flex-start}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= MASTHEAD ================= -->
+<header class="masthead">
+  <div class="mast-inner">
+    <a href="/about.html" style="display:inline-flex;align-items:center;gap:6px;font-family:var(--font-tech);font-size:12.5px;letter-spacing:.04em;color:#B9D2D6;margin-bottom:16px;text-decoration:none">&larr; Back to Healthcare Pulse</a>
+    <div class="eyebrow">Executive Visual Summary · Doctoral Research Distilled</div>
+    <div class="mast-grid">
+      <div>
+        <h1 class="title">A Strategic Framework for<br><em>Tech-Enabled Holistic Healthcare</em> in India</h1>
+        <p class="subtitle">Integrating the Social Determinants of Health with India's Digital Public Infrastructure — built around the <strong style="color:#F4EFE2">THRIVE–SDOH</strong> model.</p>
+      </div>
+      <div class="mast-meta">
+        <b>Mayank Madhur</b>
+        <span>My thesis</span>
+        <span style="color:var(--marigold)">Figures validated to 2025–26</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= TABS ================= -->
+<div class="tabbar-outer">
+  <div class="tabbar" role="tablist" aria-label="Sections">
+    <button class="tab" role="tab" aria-selected="true" data-tab="framework"><span class="tnum">01</span>The Framework</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="imperative"><span class="tnum">02</span>The Imperative</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="evidence"><span class="tnum">03</span>Evidence &amp; Data</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="engine"><span class="tnum">04</span>Technology Engine</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="sdoh"><span class="tnum">05</span>SDOH Integration</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="global"><span class="tnum">06</span>Global Benchmarks</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="roadmap"><span class="tnum">07</span>Roadmap</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="validation"><span class="tnum">08</span>Data Validation</button>
+  </div>
+</div>
+
+<main class="wrap">
+
+<!-- ============ 01 · FRAMEWORK ============ -->
+<section class="panel active pad" id="framework" role="tabpanel">
+  <div class="framework-hero">
+    <div class="fh-top">
+      <div>
+        <div class="eyebrow" style="color:var(--marigold-2)">The Core Model</div>
+        <h2 class="fh-name">THRIVE<span class="dash">–</span>SDOH</h2>
+      </div>
+      <div class="fh-expand">Technologically enabled, Holistic Reform and Integration for Value and Equity — through the Social Determinants Of Health.</div>
+    </div>
+
+    <!-- BIG ENGINE DIAGRAM -->
+    <svg class="engine" viewBox="0 0 760 600" role="img" aria-label="THRIVE-SDOH framework diagram: six pillars surrounding a Social Determinants of Health core, feeding the Quadruple Aim">
+      <!-- outcomes ring -->
+      <circle class="ring" cx="380" cy="300" r="278"></circle>
+      <!-- spokes -->
+      <g class="spokes">
+        <line class="spoke" x1="380" y1="300" x2="380" y2="118"></line>
+        <line class="spoke" x1="380" y1="300" x2="538" y2="209"></line>
+        <line class="spoke" x1="380" y1="300" x2="538" y2="391"></line>
+        <line class="spoke" x1="380" y1="300" x2="380" y2="482"></line>
+        <line class="spoke" x1="380" y1="300" x2="222" y2="391"></line>
+        <line class="spoke" x1="380" y1="300" x2="222" y2="209"></line>
+      </g>
+
+      <!-- core -->
+      <circle cx="380" cy="300" r="86" fill="#0A3F3B"></circle>
+      <circle cx="380" cy="300" r="86" fill="none" stroke="#E0992E" stroke-width="2" stroke-dasharray="2 6"></circle>
+      <text x="380" y="288" text-anchor="middle" fill="#F4EFE2" style="font-size:30px;font-weight:700">SDOH</text>
+      <text x="380" y="312" text-anchor="middle" fill="#9FBEB7" style="font-size:10.5px;font-weight:500">SOCIAL DETERMINANTS</text>
+      <text x="380" y="326" text-anchor="middle" fill="#9FBEB7" style="font-size:10.5px;font-weight:500">OF HEALTH</text>
+
+      <!-- T (top) -->
+      <g class="node" data-pillar="T" tabindex="0" role="button" aria-label="Technology Backbone">
+        <circle cx="380" cy="118" r="58" fill="#0F5C57"></circle>
+        <text class="pl-letter" x="380" y="112" text-anchor="middle" fill="#fff" style="font-size:30px">T</text>
+        <text class="pl-label" x="380" y="132" text-anchor="middle" fill="#CFE0DB" style="font-size:9.5px">TECHNOLOGY</text>
+      </g>
+      <!-- H (top-right) -->
+      <g class="node" data-pillar="H" tabindex="0" role="button" aria-label="Human Capital and Capacity">
+        <circle cx="538" cy="209" r="58" fill="#E0992E"></circle>
+        <text class="pl-letter" x="538" y="203" text-anchor="middle" fill="#fff" style="font-size:30px">H</text>
+        <text class="pl-label" x="538" y="223" text-anchor="middle" fill="#fff7e8" style="font-size:9.5px">HUMAN CAPITAL</text>
+      </g>
+      <!-- R (bottom-right) -->
+      <g class="node" data-pillar="R" tabindex="0" role="button" aria-label="Responsible Governance">
+        <circle cx="538" cy="391" r="58" fill="#15716A"></circle>
+        <text class="pl-letter" x="538" y="385" text-anchor="middle" fill="#fff" style="font-size:30px">R</text>
+        <text class="pl-label" x="538" y="405" text-anchor="middle" fill="#CFE0DB" style="font-size:9.5px">GOVERNANCE</text>
+      </g>
+      <!-- I (bottom) -->
+      <g class="node" data-pillar="I" tabindex="0" role="button" aria-label="Inclusive SDOH Integration">
+        <circle cx="380" cy="482" r="58" fill="#CE7A2C"></circle>
+        <text class="pl-letter" x="380" y="476" text-anchor="middle" fill="#fff" style="font-size:30px">I</text>
+        <text class="pl-label" x="380" y="496" text-anchor="middle" fill="#fff7e8" style="font-size:9.5px">INCLUSION</text>
+      </g>
+      <!-- V (bottom-left) -->
+      <g class="node" data-pillar="V" tabindex="0" role="button" aria-label="Value and Cost-Effectiveness">
+        <circle cx="222" cy="391" r="58" fill="#1C8A7E"></circle>
+        <text class="pl-letter" x="222" y="385" text-anchor="middle" fill="#fff" style="font-size:30px">V</text>
+        <text class="pl-label" x="222" y="405" text-anchor="middle" fill="#CFE0DB" style="font-size:9.5px">VALUE</text>
+      </g>
+      <!-- E (top-left) -->
+      <g class="node" data-pillar="E" tabindex="0" role="button" aria-label="Empowered Patient and Community Experience">
+        <circle cx="222" cy="209" r="58" fill="#C2563F"></circle>
+        <text class="pl-letter" x="222" y="203" text-anchor="middle" fill="#fff" style="font-size:30px">E</text>
+        <text class="pl-label" x="222" y="223" text-anchor="middle" fill="#ffeee8" style="font-size:9.5px">EMPOWERMENT</text>
+      </g>
+
+      <!-- outcomes labels on ring -->
+      <text x="380" y="14" text-anchor="middle" fill="#0A3F3B" style="font-size:11px;font-weight:600;letter-spacing:.1em">↑ BETTER OUTCOMES</text>
+      <text x="744" y="304" text-anchor="end" fill="#0A3F3B" style="font-size:11px;font-weight:600;letter-spacing:.06em">LOWER COST →</text>
+      <text x="380" y="594" text-anchor="middle" fill="#0A3F3B" style="font-size:11px;font-weight:600;letter-spacing:.1em">↓ HEALTH EQUITY</text>
+      <text x="16" y="304" text-anchor="start" fill="#0A3F3B" style="font-size:11px;font-weight:600;letter-spacing:.06em">← BETTER EXPERIENCE</text>
+    </svg>
+    <p style="text-align:center;font-family:var(--font-tech);font-size:11px;color:#8a8474;margin:0 0 18px;letter-spacing:.04em">
+      Tap any pillar to jump to its definition. The dashed ring is the <strong>Quadruple Aim</strong> the model is engineered to deliver.
+    </p>
+
+    <!-- inputs -> engine -> outputs -->
+    <div class="io-strip">
+      <div class="io-box">
+        <div class="ttl">Inputs · Tech tools</div>
+        <div class="items">AI &amp; predictive analytics · IoT &amp; remote monitoring · Telehealth · mHealth · ABDM rails (ABHA, UHI)</div>
+      </div>
+      <div class="io-arrow">→</div>
+      <div class="io-box io-out">
+        <div class="ttl">Outputs · Quadruple Aim</div>
+        <div class="items"><b>Better outcomes · Lower cost · Better patient &amp; provider experience · Health equity</b></div>
+      </div>
+    </div>
+    <div class="io-strip" style="margin-top:10px;grid-template-columns:1fr auto 1fr">
+      <div class="io-box">
+        <div class="ttl">Inputs · Community &amp; SDOH</div>
+        <div class="items">Nutrition · Sanitation · Education &amp; literacy · Livelihood · Gender &amp; caste equity · Housing</div>
+      </div>
+      <div class="io-arrow" style="visibility:hidden">→</div>
+      <div class="io-box" style="border-style:dashed">
+        <div class="ttl" style="color:var(--ink-soft)">Enablers</div>
+        <div class="items">Intersectoral coordination · Privacy &amp; consent · Equity-aligned financing · Community trust</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILLAR EXPLANATIONS -->
+  <div class="sec-head" style="margin-top:38px">
+    <div class="eyebrow">The Six Pillars</div>
+    <h2>What each letter does</h2>
+    <p>THRIVE is built so technology (the system pillars, in teal) and people (the human pillars, in amber) reinforce each other rather than competing. SDOH sits at the core because, in India, social conditions, not clinics alone, decide who stays healthy.</p>
+  </div>
+
+  <div class="pillars">
+    <article class="pcard p-T" id="pillar-T">
+      <div class="ph"><div class="badge">T</div><h3>Technology Backbone<span class="full">System pillar</span></h3></div>
+      <p>The digital rails. India's stack — ABDM, ABHA health IDs, the Unified Health Interface, AI and IoT — turns scattered services into a connected, data-driven system that reaches the last mile.</p>
+      <div class="tags"><span class="tag">ABDM</span><span class="tag">ABHA</span><span class="tag">AI / IoT</span><span class="tag">Telehealth</span></div>
+    </article>
+    <article class="pcard p-H" id="pillar-H">
+      <div class="ph"><div class="badge">H</div><h3>Human Capital &amp; Capacity<span class="full">Human pillar</span></h3></div>
+      <p>Tech is only as strong as the workforce running it. ASHAs, ANMs and frontline staff are upskilled and freed from drudgery, so clinical judgement and trust scale alongside the platforms.</p>
+      <div class="tags"><span class="tag">ASHA / ANM</span><span class="tag">Upskilling</span><span class="tag">Burnout relief</span></div>
+    </article>
+    <article class="pcard p-R" id="pillar-R">
+      <div class="ph"><div class="badge">R</div><h3>Responsible Governance<span class="full">System pillar</span></h3></div>
+      <p>Privacy, consent, ethics and accountability are designed in, not bolted on. Cross-sector rules let health, welfare and tech data work together without eroding citizen trust.</p>
+      <div class="tags"><span class="tag">Consent</span><span class="tag">Data ethics</span><span class="tag">Accountability</span></div>
+    </article>
+    <article class="pcard p-I" id="pillar-I">
+      <div class="ph"><div class="badge">I</div><h3>Inclusive SDOH Integration<span class="full">Human pillar</span></h3></div>
+      <p>The bridge to the social roots of illness. Health tech is linked to welfare schemes, nutrition, sanitation and education, with low-tech and offline-first design so no one is left behind.</p>
+      <div class="tags"><span class="tag">Welfare linkage</span><span class="tag">Offline-first</span><span class="tag">Gender &amp; caste</span></div>
+    </article>
+    <article class="pcard p-V" id="pillar-V">
+      <div class="ph"><div class="badge">V</div><h3>Value &amp; Cost-Effectiveness<span class="full">System pillar</span></h3></div>
+      <p>Redefines cost as value. Blockchain claims, bundled payments and digital micro-insurance cut waste and out-of-pocket spend, while prevention reduces downstream costs.</p>
+      <div class="tags"><span class="tag">Value-based care</span><span class="tag">Bundled pay</span><span class="tag">Micro-insurance</span></div>
+    </article>
+    <article class="pcard p-E" id="pillar-E">
+      <div class="ph"><div class="badge">E</div><h3>Empowered Experience<span class="full">Human pillar</span></h3></div>
+      <p>Patients and providers as partners. Multilingual platforms, wearables and health literacy give people agency and dignity, broadening "experience" to include trust and cultural fit.</p>
+      <div class="tags"><span class="tag">Multilingual UX</span><span class="tag">Wearables</span><span class="tag">Agency</span></div>
+    </article>
+  </div>
+
+  <div class="callout">
+    <div class="eyebrow">The thesis in one line</div>
+    <p>Digital tools alone do not change health outcomes. They do so only when paired with <em>equity-centred design, intersectoral collaboration, community trust and inclusive policy</em>. THRIVE–SDOH is the operating system for that pairing.</p>
+  </div>
+</section>
+
+<!-- ============ 02 · IMPERATIVE ============ -->
+<section class="panel pad" id="imperative" role="tabpanel">
+  <div class="sec-head">
+    <div class="eyebrow">Why this matters now</div>
+    <h2>India's health gap is a social gap, not just a clinical one</h2>
+    <p>Despite landmark reforms, outcomes still track income, education, caste, gender and geography. A purely medical response treats symptoms of a system whose root causes sit upstream, in the social determinants of health.</p>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat">
+      <div class="num">70.7<small>yrs</small></div>
+      <div class="lab">India's life expectancy — roughly 13 years behind Japan and Singapore</div>
+      <div class="src">World Bank / WHO, 2023</div>
+    </div>
+    <div class="stat">
+      <div class="num">2<small>×</small></div>
+      <div class="lab">Under-5 mortality for children of mothers with no schooling vs. educated mothers</div>
+      <div class="src">NFHS · thesis analysis</div>
+    </div>
+    <div class="stat">
+      <div class="num">39.4<small>%</small></div>
+      <div class="lab">Health spend still paid out-of-pocket — down sharply, but far above OECD norms</div>
+      <div class="src">NHA 2021-22 · updated figure</div>
+    </div>
+    <div class="stat">
+      <div class="num">1<small>bn+</small></div>
+      <div class="lab">Mobile users — the largest reach lever any health system has ever had</div>
+      <div class="src">TRAI / thesis</div>
+    </div>
+  </div>
+
+  <div class="grid-3" style="margin-top:24px">
+    <div class="card">
+      <div class="kicker">The structural problem</div>
+      <h3>Fragmented &amp; reactive</h3>
+      <p>Care is organised around hospitals and episodes, not people and prevention. Health, welfare, water and education operate in silos, so a single illness in a poor family can cascade into debt.</p>
+    </div>
+    <div class="card">
+      <div class="kicker">The equity problem</div>
+      <h3>Patterned inequality</h3>
+      <p>Rural, tribal, female and lower-caste populations carry a heavier disease burden and worse access. The gradient is "strongly patterned" by socioeconomic status, not random.</p>
+    </div>
+    <div class="card">
+      <div class="kicker">The opportunity</div>
+      <h3>A digital tailwind</h3>
+      <p>India built world-scale digital public infrastructure in five years — ABDM, eSanjeevani, CoWIN, PM-JAY. The question is no longer "can we digitise?" but "can we digitise equitably?"</p>
+    </div>
+  </div>
+
+  <div class="chart-card" style="margin-top:24px">
+    <h3>The life-expectancy gap</h3>
+    <p class="csub">Years at birth, 2023. India trails high-income peers by a decade or more.</p>
+    <svg class="chart-svg" viewBox="0 0 760 320" role="img" aria-label="Bar chart comparing life expectancy across countries">
+      <!-- baseline -->
+      <line class="axis" x1="150" y1="20" x2="150" y2="300"></line>
+      <!-- bars: scale 60-86 across width 150..720 -->
+      <!-- helper: x = 150 + (val-60)/(86-60)*560 -->
+      <g>
+        <!-- Japan 84.7 -->
+        <rect x="150" y="28" width="531" height="24" fill="#0F5C57"></rect>
+        <text class="lbl" x="144" y="44" text-anchor="end">Japan</text>
+        <text class="val" x="688" y="44">84.7</text>
+        <!-- Singapore 83.7 -->
+        <rect x="150" y="62" width="510" height="24" fill="#15716A"></rect>
+        <text class="lbl" x="144" y="78" text-anchor="end">Singapore</text>
+        <text class="val" x="667" y="78">83.7</text>
+        <!-- Sweden 83.3 -->
+        <rect x="150" y="96" width="502" height="24" fill="#15716A"></rect>
+        <text class="lbl" x="144" y="112" text-anchor="end">Sweden</text>
+        <text class="val" x="659" y="112">83.3</text>
+        <!-- UK 81.2 -->
+        <rect x="150" y="130" width="457" height="24" fill="#1C8A7E"></rect>
+        <text class="lbl" x="144" y="146" text-anchor="end">UK</text>
+        <text class="val" x="614" y="146">81.2</text>
+        <!-- US 78.7 -->
+        <rect x="150" y="164" width="403" height="24" fill="#6FA39B"></rect>
+        <text class="lbl" x="144" y="180" text-anchor="end">USA</text>
+        <text class="val" x="560" y="180">78.7</text>
+        <!-- China 77.3 -->
+        <rect x="150" y="198" width="373" height="24" fill="#6FA39B"></rect>
+        <text class="lbl" x="144" y="214" text-anchor="end">China</text>
+        <text class="val" x="530" y="214">77.3</text>
+        <!-- Bangladesh 74.0 -->
+        <rect x="150" y="232" width="301" height="24" fill="#CE7A2C"></rect>
+        <text class="lbl" x="144" y="248" text-anchor="end">Bangladesh</text>
+        <text class="val" x="458" y="248">74.0</text>
+        <!-- India 70.7 -->
+        <rect x="150" y="266" width="230" height="24" fill="#C2563F"></rect>
+        <text class="lbl" x="144" y="282" text-anchor="end" style="font-weight:600;fill:#C2563F">INDIA</text>
+        <text class="val" x="387" y="282" style="fill:#C2563F">70.7</text>
+      </g>
+    </svg>
+    <div class="csrc">Source: World Bank &amp; WHO life-expectancy data, 2023 (thesis Table 1.1). Status: current.</div>
+  </div>
+</section>
+
+<!-- ============ 03 · EVIDENCE ============ -->
+<section class="panel pad" id="evidence" role="tabpanel">
+  <div class="sec-head">
+    <div class="eyebrow">Validated against 2025–26 sources</div>
+    <h2>The proof points have moved — mostly in India's favour</h2>
+    <p>Every headline figure below was re-checked against the National Health Authority, MoHFW, NHA dashboards and parliamentary replies. Where the thesis used older numbers, the chart shows the updated reality.</p>
+  </div>
+
+  <div class="grid-2">
+    <!-- OOP decline -->
+    <div class="chart-card">
+      <h3>Out-of-pocket spending is falling fast</h3>
+      <p class="csub">Share of total health expenditure. Government spending overtook household spending for the first time.</p>
+      <svg class="chart-svg" viewBox="0 0 480 300" role="img" aria-label="Line chart of out-of-pocket vs government health expenditure share">
+        <!-- axes -->
+        <line class="axis" x1="50" y1="30" x2="50" y2="250"></line>
+        <line class="axis" x1="50" y1="250" x2="450" y2="250"></line>
+        <!-- gridlines 0,20,40,60,70 -> y: 250 - val/70*210 -->
+        <line class="grid" x1="50" y1="190" x2="450" y2="190"></line><text class="lbl" x="44" y="194" text-anchor="end">20</text>
+        <line class="grid" x1="50" y1="130" x2="450" y2="130"></line><text class="lbl" x="44" y="134" text-anchor="end">40</text>
+        <line class="grid" x1="50" y1="70" x2="450" y2="70"></line><text class="lbl" x="44" y="74" text-anchor="end">60</text>
+        <!-- x labels: 4 points across 80..420 -->
+        <text class="lbl" x="80" y="268" text-anchor="middle">2013-14</text>
+        <text class="lbl" x="193" y="268" text-anchor="middle">2014-15</text>
+        <text class="lbl" x="307" y="268" text-anchor="middle">2019-20</text>
+        <text class="lbl" x="420" y="268" text-anchor="middle">2021-22</text>
+        <!-- OOP line: 64.2,62.6,47,39.4 -> y=250-val/70*210 -->
+        <!-- 64.2->57.4 ; 62.6->62.2 ; 47->109 ; 39.4->131.8 -->
+        <polyline fill="none" stroke="#C2563F" stroke-width="3" points="80,57.4 193,62.2 307,109 420,131.8"></polyline>
+        <circle cx="80" cy="57.4" r="4" fill="#C2563F"></circle><text class="val" x="80" y="48" text-anchor="middle" style="fill:#C2563F">64.2</text>
+        <circle cx="193" cy="62.2" r="4" fill="#C2563F"></circle>
+        <circle cx="307" cy="109" r="4" fill="#C2563F"></circle>
+        <circle cx="420" cy="131.8" r="4" fill="#C2563F"></circle><text class="val" x="420" y="124" text-anchor="middle" style="fill:#C2563F">39.4</text>
+        <!-- GHE line: 28.6,29,41,48 -> 28.6->164.2 ; 29->163 ; 41->127 ; 48->106 -->
+        <polyline fill="none" stroke="#0F5C57" stroke-width="3" points="80,164.2 193,163 307,127 420,106"></polyline>
+        <circle cx="80" cy="164.2" r="4" fill="#0F5C57"></circle><text class="val" x="80" y="180" text-anchor="middle">28.6</text>
+        <circle cx="420" cy="106" r="4" fill="#0F5C57"></circle><text class="val" x="420" y="98" text-anchor="middle">48.0</text>
+      </svg>
+      <div class="legend"><span><i style="background:#C2563F"></i>Out-of-pocket (% of THE)</span><span><i style="background:#0F5C57"></i>Government health spend (% of THE)</span></div>
+      <div class="csrc">Source: National Health Accounts 2021-22, released Sept 2024 (NHA / NITI Aayog). Thesis cited ~60–62%; <b style="color:var(--flag)">updated to 39.4%</b>.</div>
+    </div>
+
+    <!-- eSanjeevani -->
+    <div class="chart-card">
+      <h3>eSanjeevani: the world's largest telemedicine service</h3>
+      <p class="csub">Cumulative teleconsultations, in crore. 57% of users are women; ~12% are seniors.</p>
+      <svg class="chart-svg" viewBox="0 0 480 300" role="img" aria-label="Bar chart of cumulative eSanjeevani teleconsultations">
+        <line class="axis" x1="50" y1="30" x2="50" y2="250"></line>
+        <line class="axis" x1="50" y1="250" x2="450" y2="250"></line>
+        <!-- scale 0..45 -> height; y=250-val/45*210 ; bar width 50 -->
+        <!-- Mar21 0.3 -->
+        <rect x="62" y="248.6" width="50" height="1.4" fill="#1C8A7E"></rect>
+        <text class="lbl" x="87" y="268" text-anchor="middle">Mar'21</text><text class="val" x="87" y="242" text-anchor="middle">0.3</text>
+        <!-- 2022 ~10 -->
+        <rect x="142" y="203.3" width="50" height="46.7" fill="#1C8A7E"></rect>
+        <text class="lbl" x="167" y="268" text-anchor="middle">2022</text><text class="val" x="167" y="196" text-anchor="middle">10</text>
+        <!-- Jul23 13.9 -->
+        <rect x="222" y="185.1" width="50" height="64.9" fill="#15716A"></rect>
+        <text class="lbl" x="247" y="268" text-anchor="middle">Jul'23</text><text class="val" x="247" y="178" text-anchor="middle">13.9</text>
+        <!-- Dec24 31.86 -->
+        <rect x="302" y="101.3" width="50" height="148.7" fill="#0F5C57"></rect>
+        <text class="lbl" x="327" y="268" text-anchor="middle">Dec'24</text><text class="val" x="327" y="94" text-anchor="middle">31.9</text>
+        <!-- Nov25 43 -->
+        <rect x="382" y="49.3" width="50" height="200.7" fill="#0A3F3B"></rect>
+        <text class="lbl" x="407" y="268" text-anchor="middle">Nov'25</text><text class="val" x="407" y="42" text-anchor="middle">43</text>
+      </svg>
+      <div class="csrc">Source: MoHFW / NHA, Rajya Sabha reply 23 Nov 2025. Status: <b style="color:var(--good)">current &amp; valid</b>.</div>
+    </div>
+
+    <!-- ABHA growth -->
+    <div class="chart-card">
+      <h3>ABHA health IDs: 90 crore and climbing</h3>
+      <p class="csub">Cumulative Ayushman Bharat Health Accounts created, in crore (calendar year).</p>
+      <svg class="chart-svg" viewBox="0 0 480 300" role="img" aria-label="Area chart of cumulative ABHA health IDs">
+        <line class="axis" x1="50" y1="30" x2="50" y2="250"></line>
+        <line class="axis" x1="50" y1="250" x2="450" y2="250"></line>
+        <!-- scale 0..100 -> y=250-val/100*210 ; x: 6 pts 80..420 step 68 -->
+        <!-- 14.7->219.1 ;30.4->186.2 ;50.6->143.7 ;72.2->98.4 ;84.5->72.5 ;90->61 -->
+        <polygon points="80,250 80,219.1 148,186.2 216,143.7 284,98.4 352,72.5 420,61 420,250" fill="rgba(15,92,87,.16)"></polygon>
+        <polyline fill="none" stroke="#0F5C57" stroke-width="3" points="80,219.1 148,186.2 216,143.7 284,98.4 352,72.5 420,61"></polyline>
+        <g fill="#0F5C57">
+          <circle cx="80" cy="219.1" r="4"></circle><circle cx="148" cy="186.2" r="4"></circle>
+          <circle cx="216" cy="143.7" r="4"></circle><circle cx="284" cy="98.4" r="4"></circle>
+          <circle cx="352" cy="72.5" r="4"></circle><circle cx="420" cy="61" r="5" fill="#E0992E"></circle>
+        </g>
+        <text class="val" x="80" y="211" text-anchor="middle">14.7</text>
+        <text class="val" x="420" y="52" text-anchor="middle" style="fill:#C2823A">90+</text>
+        <g class="lbl">
+          <text x="80" y="268" text-anchor="middle">2021</text><text x="148" y="268" text-anchor="middle">2022</text>
+          <text x="216" y="268" text-anchor="middle">2023</text><text x="284" y="268" text-anchor="middle">2024</text>
+          <text x="352" y="268" text-anchor="middle">2025</text><text x="420" y="268" text-anchor="middle">2026</text>
+        </g>
+      </svg>
+      <div class="csrc">Source: NHA / ABDM, May 2026. Thesis cited ~74–80 cr; <b style="color:var(--flag)">updated to 90+ cr</b>, with 100+ cr records linked.</div>
+    </div>
+
+    <!-- PM-JAY scale -->
+    <div class="chart-card">
+      <h3>PM-JAY: the world's largest public health-assurance scheme</h3>
+      <p class="csub">Coverage and reach as of 2025–26. Now extended to all seniors 70+ regardless of income.</p>
+      <div class="grid-2" style="gap:12px;margin-top:4px">
+        <div class="stat" style="box-shadow:none"><div class="num">55<small>cr</small></div><div class="lab">individuals covered (12.34 cr families)</div></div>
+        <div class="stat" style="box-shadow:none"><div class="num">₹5<small>lakh</small></div><div class="lab">cover per family, per year</div></div>
+        <div class="stat" style="box-shadow:none"><div class="num">42<small>cr+</small></div><div class="lab">Ayushman cards issued (Oct 2025)</div></div>
+        <div class="stat" style="box-shadow:none"><div class="num">7.37<small>cr</small></div><div class="lab">hospital admissions · 49% women</div></div>
+      </div>
+      <div class="csrc">Source: National Health Authority &amp; PMINDIA, 2024–25. Thesis cited "bottom 40% / ~500M"; <b style="color:var(--flag)">updated to 55 cr</b> + Ayushman Vay Vandana (70+).</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 · TECHNOLOGY ENGINE ============ -->
+<section class="panel pad" id="engine" role="tabpanel">
+  <div class="sec-head">
+    <div class="eyebrow">The "T" pillar, mechanically</div>
+    <h2>Four technologies, one closed loop</h2>
+    <p>The model's power is in how the tools chain together: AI decides who needs attention, IoT senses the field, telehealth delivers care across distance, and mHealth keeps people engaged daily. Each is wired to a social determinant, not just a clinical metric.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="kicker">The brain</div>
+      <h3>AI &amp; predictive analytics</h3>
+      <p>Risk-stratifies populations from clinical and socioeconomic data, flags high-risk pregnancies, and gives frontline workers point-of-care decision support. The thesis cites an Indian model predicting malaria outbreaks from weather and satellite data with reported &gt;94% accuracy.</p>
+      <ul><li>Community health prediction &amp; risk stratification</li><li>Clinical decision support for non-specialist staff</li><li>Resource allocation: beds, referrals, supplies</li></ul>
+    </div>
+    <div class="card">
+      <div class="kicker">The senses</div>
+      <h3>IoT &amp; remote monitoring</h3>
+      <p>Wearables and home devices stream real-time data; the same network watches the environment. A village well sensor detecting contamination can simultaneously alert health authorities and trigger water-purification deployment, linking a reading to an SDOH response.</p>
+      <ul><li>Home monitoring for diabetes &amp; hypertension</li><li>Cold-chain &amp; nutrition supply tracking</li><li>Automated red-flag alerts to health workers</li></ul>
+    </div>
+    <div class="card">
+      <div class="kicker">The reach</div>
+      <h3>Telehealth</h3>
+      <p>Collapses distance, the single biggest geographic determinant of access. eSanjeevani has crossed 43 crore consultations. Beyond clinical advice, tele-consults can screen for social needs and route patients to nutrition or welfare programs.</p>
+      <ul><li>Specialist access for rural &amp; tribal communities</li><li>Remote training &amp; mentoring of local providers</li><li>Tele-ICU and antenatal-care expansion</li></ul>
+    </div>
+    <div class="card">
+      <div class="kicker">The daily interface</div>
+      <h3>mHealth</h3>
+      <p>Personalised nudges and behaviour change in the patient's hand and language. Kilkari-style voice messaging guides safe pregnancy; low-text, audio-visual, local-dialect design reaches low-literacy populations and turns citizens into reporters of public-health problems.</p>
+      <ul><li>Gestational-age-specific maternal messaging</li><li>Local-language, voice-first content</li><li>Citizen feedback loops on service gaps</li></ul>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="eyebrow">Worked example</div>
+    <p>An IoT sensor flags contaminated well water → AI forecasts a diarrhoeal outbreak → a telehealth hotline opens for the village → mHealth pushes "boil water" messages → a health worker arrives with rehydration kits and coordinates with the village council. <em>One social-environmental risk, neutralised by four linked technologies.</em></p>
+  </div>
+</section>
+
+<!-- ============ 05 · SDOH INTEGRATION ============ -->
+<section class="panel pad" id="sdoh" role="tabpanel">
+  <div class="sec-head">
+    <div class="eyebrow">The "I" pillar in practice</div>
+    <h2>Every social determinant gets a matched technology lever</h2>
+    <p>This is the bridge most frameworks miss. THRIVE–SDOH maps each upstream determinant to a specific enabler and operational mechanism, so social risk is designed into the care pathway rather than treated as someone else's problem.</p>
+  </div>
+
+  <div class="domain">
+    <div class="dname">Education<br>&amp; literacy</div>
+    <div class="dbody"><div class="dtech">mHealth + AI</div><div class="dmech">Literacy-segmented, local-language maternal &amp; child health nudges; interactive audio-visual content for low-literacy populations.</div></div>
+  </div>
+  <div class="domain">
+    <div class="dname">Nutrition</div>
+    <div class="dbody"><div class="dtech">IoT + Telehealth</div><div class="dmech">Home growth monitoring with connected scales; cold-chain tracking to cut spoilage; tele-nutrition counselling using locally available foods.</div></div>
+  </div>
+  <div class="domain">
+    <div class="dname">Health access<br>(geography)</div>
+    <div class="dbody"><div class="dtech">Telemedicine networks</div><div class="dmech">Specialist consults reach remote patients; village telemedicine centres and mobile units make location irrelevant to first contact.</div></div>
+  </div>
+  <div class="domain">
+    <div class="dname">Sanitation</div>
+    <div class="dbody"><div class="dtech">Remote monitoring</div><div class="dmech">Water-quality sensing and sanitation tracking; SMS behaviour-change campaigns triggered by detected risk.</div></div>
+  </div>
+  <div class="domain">
+    <div class="dname">Livelihood<br>&amp; economy</div>
+    <div class="dbody"><div class="dtech">Digital identity</div><div class="dmech">ABHA-linked welfare and insurance enrolment; portable, job-linked benefits; conditional cash transfers with lower leakage.</div></div>
+  </div>
+  <div class="domain">
+    <div class="dname">Gender<br>equity</div>
+    <div class="dbody"><div class="dtech">UX / UI localisation</div><div class="dmech">Multi-language interfaces, female-first helplines, women's-health apps; tele-consultation to bypass mobility and privacy barriers.</div></div>
+  </div>
+
+  <div class="grid-3" style="margin-top:24px">
+    <div class="card"><div class="kicker">Design rule</div><h3>Offline-first</h3><p>Low-tech and offline-capable design so connectivity gaps don't become care gaps. Inclusion is engineered, not assumed.</p></div>
+    <div class="card"><div class="kicker">Design rule</div><h3>Community-embedded</h3><p>Digital health volunteers and ASHAs mediate the tech, building the trust that adoption depends on in caste- and gender-stratified settings.</p></div>
+    <div class="card"><div class="kicker">Design rule</div><h3>Welfare-linked</h3><p>Health IDs connect to welfare databases so a clinical encounter can resolve a social need in the same workflow.</p></div>
+  </div>
+</section>
+
+<!-- ============ 06 · GLOBAL BENCHMARKS ============ -->
+<section class="panel pad" id="global" role="tabpanel">
+  <div class="sec-head">
+    <div class="eyebrow">What India can borrow — and adapt</div>
+    <h2>Global models, localised to Indian realities</h2>
+    <p>THRIVE–SDOH is validated against mature systems, but the thesis is explicit: none transfer directly to India's resource constraints, social hierarchies and digital-public-infrastructure scale. Each lends one pillar a proof of concept.</p>
+  </div>
+
+  <div class="bench">
+    <div class="card">
+      <div class="flag">🇬🇧</div>
+      <h3>UK — NHS Integrated Care Systems</h3>
+      <p>Statutory partnerships pooling health and social care across a geography, ending the split between hospital, community and council services.</p>
+      <div class="lesson"><b>Feeds pillar H</b> Holistic, coordinated care — the strongest live model for breaking clinical/social silos at system scale.</div>
+    </div>
+    <div class="card">
+      <div class="flag">🇨🇦</div>
+      <h3>Canada — Social Prescribing</h3>
+      <p>Clinicians "prescribe" non-clinical support — housing help, community activity, income advice — treating social need as a clinical input.</p>
+      <div class="lesson"><b>Feeds pillars V &amp; I</b> Value and inclusion: addressing social roots lowers downstream cost and improves equity.</div>
+    </div>
+    <div class="card">
+      <div class="flag">🇸🇪</div>
+      <h3>Sweden — Municipal Health–Social Care</h3>
+      <p>Municipalities own elder and social care, tightly linked to regional health services, with strong continuity for ageing populations.</p>
+      <div class="lesson"><b>Feeds pillars I &amp; R</b> Inclusive, resilient care — a template for India's Ayushman Vay Vandana senior-care push.</div>
+    </div>
+    <div class="card">
+      <div class="flag">🇸🇬</div>
+      <h3>Singapore — Healthier SG</h3>
+      <p>A national shift from hospital-centric treatment to enrolled, prevention-first primary care with one family doctor and population health plans.</p>
+      <div class="lesson"><b>Feeds pillars T &amp; V</b> A prevention-and-value north star, powered by tight digital enrolment and data.</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="eyebrow">India's distinctive edge</div>
+    <p>No peer combines India's two assets: <em>population-scale digital public infrastructure</em> (ABDM, ABHA, UHI) and a <em>frontline workforce of a million ASHAs</em>. THRIVE–SDOH is designed to fuse them — positioning India as a pathfinder for other low- and middle-income countries.</p>
+  </div>
+</section>
+
+<!-- ============ 07 · ROADMAP ============ -->
+<section class="panel pad" id="roadmap" role="tabpanel">
+  <div class="sec-head">
+    <div class="eyebrow">From framework to field</div>
+    <h2>Who does what to institutionalise THRIVE–SDOH</h2>
+    <p>The model only matters if it changes incentives. Each actor has a distinct lever; the thesis assigns concrete roles rather than generic appeals to "collaboration."</p>
+  </div>
+
+  <div class="road">
+    <div class="card">
+      <div class="who">Government</div>
+      <h3>Institutionalise</h3>
+      <p>Embed THRIVE metrics in policy via the NHA; stand up multi-sector task forces; align financing to equity outcomes.</p>
+    </div>
+    <div class="card">
+      <div class="who">Payers / Insurers</div>
+      <h3>Reward value</h3>
+      <p>Incentivise THRIVE metrics; fund bundled and value-based payments; design financing reforms that protect the poor.</p>
+    </div>
+    <div class="card">
+      <div class="who">Providers</div>
+      <h3>Adopt benchmarks</h3>
+      <p>Holistic care pathways, inclusive UX, SDOH screening, and AI training for clinical and frontline teams.</p>
+    </div>
+    <div class="card">
+      <div class="who">Tech developers</div>
+      <h3>Build it in</h3>
+      <p>Privacy-first, explainable, offline-capable, gender-aware, modular products — "THRIVE-native" by design.</p>
+    </div>
+    <div class="card">
+      <div class="who">Civil society / NGOs</div>
+      <h3>Localise &amp; earn trust</h3>
+      <p>Bottom-up co-design, digital-literacy drives, SDOH mapping, and feedback loops that keep the system honest.</p>
+    </div>
+  </div>
+
+  <div class="sec-head" style="margin-top:38px">
+    <div class="eyebrow">Suggested pilots &amp; proof</div>
+    <h2>Where to test it first</h2>
+  </div>
+  <div class="grid-3">
+    <div class="card"><div class="kicker">Pilot 1</div><h3>Tamil Nadu digital-equity initiative</h3><p>Build on the state's strong PHC digital base to demonstrate measurable equity and cost gains.</p></div>
+    <div class="card"><div class="kicker">Pilot 2</div><h3>Assam &amp; tribal outreach</h3><p>Test offline-first, community-mediated delivery in low-connectivity, high-need geographies.</p></div>
+    <div class="card"><div class="kicker">Toolkit</div><h3>THRIVE evaluation scorecard</h3><p>A 0–3 rubric scoring local systems on each pillar, plus SDOH-equity, cost-saving and experience metrics.</p></div>
+  </div>
+</section>
+
+<!-- ============ 08 · VALIDATION ============ -->
+<section class="panel pad" id="validation" role="tabpanel">
+  <div class="sec-head">
+    <div class="eyebrow">Research integrity</div>
+    <h2>Thesis claim vs. current evidence</h2>
+    <p>Headline figures from the thesis, re-validated against the latest official sources. Where reality has moved, the figure is flagged for update — the framework's logic holds, but the numbers are now stronger.</p>
+  </div>
+
+  <div class="tbl-scroll">
+    <table>
+      <thead>
+        <tr><th>Claim</th><th>Thesis figure</th><th>Current validated figure</th><th>Latest source (year)</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Out-of-pocket health spend</td>
+          <td>~60–62% of total health expenditure</td>
+          <td>39.4% (2021-22), down from 64.2% in 2013-14; govt share now 48%</td>
+          <td>National Health Accounts 2021-22, NHA / NITI Aayog (2024)</td>
+          <td><span class="pill update">Update required</span></td>
+        </tr>
+        <tr>
+          <td>ABHA health IDs created</td>
+          <td>~74–80 crore (2025)</td>
+          <td>90+ crore (2026); 84.5 cr in 2025</td>
+          <td>NHA / ABDM (2026)</td>
+          <td><span class="pill update">Update required</span></td>
+        </tr>
+        <tr>
+          <td>Health records linked to ABHA</td>
+          <td>~49–67 crore</td>
+          <td>100+ crore; doubled from 50 cr (Feb 2025) in 15 months</td>
+          <td>NHA / ABDM (2026)</td>
+          <td><span class="pill update">Update required</span></td>
+        </tr>
+        <tr>
+          <td>PM-JAY coverage</td>
+          <td>₹5 lakh cover, bottom 40% (~500M)</td>
+          <td>55 crore people / 12.34 cr families; extended to all seniors 70+ (Ayushman Vay Vandana, Oct 2024)</td>
+          <td>NHA &amp; PMINDIA (2024–25)</td>
+          <td><span class="pill update">Update required</span></td>
+        </tr>
+        <tr>
+          <td>eSanjeevani teleconsultations</td>
+          <td>43 crore (Nov 2025)</td>
+          <td>43 crore as of 23 Nov 2025; world's largest telemedicine service</td>
+          <td>MoHFW / NHA, Rajya Sabha reply (2025)</td>
+          <td><span class="pill valid">Valid</span></td>
+        </tr>
+        <tr>
+          <td>India life expectancy</td>
+          <td>70.73 years (2023)</td>
+          <td>~70.7 years — confirmed; ~13-yr gap to top peers</td>
+          <td>World Bank / WHO (2023)</td>
+          <td><span class="pill valid">Valid</span></td>
+        </tr>
+        <tr>
+          <td>Total health expenditure (% GDP)</td>
+          <td>Historically ~1% (govt)</td>
+          <td>3.83% of GDP total; govt health spend 1.84% of GDP (2021-22)</td>
+          <td>National Health Accounts 2021-22 (2024)</td>
+          <td><span class="pill update">Update required</span></td>
+        </tr>
+        <tr>
+          <td>ABDM ecosystem integrations</td>
+          <td>Registries &amp; HFR rollout</td>
+          <td>450+ public &amp; private health-tech solutions integrated</td>
+          <td>NHA / ABDM (2026)</td>
+          <td><span class="pill valid">Valid</span></td>
+        </tr>
+        <tr>
+          <td>PM-JAY hospital procedures</td>
+          <td>40 million+ (early 2020s)</td>
+          <td>7.37 crore admissions; 49% women beneficiaries</td>
+          <td>PMINDIA / NHA (2024)</td>
+          <td><span class="pill update">Update required</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid-3" style="margin-top:24px">
+    <div class="card"><div class="kicker">Gap to address</div><h3>Outcome evidence</h3><p>The model is validated by triangulation and case scoring, not yet by longitudinal field trials. The proposed pilots are how that gap closes.</p></div>
+    <div class="card"><div class="kicker">Gap to address</div><h3>Data interoperability</h3><p>Linking health, welfare and social data across sectors remains the binding constraint on the "R" and "I" pillars.</p></div>
+    <div class="card"><div class="kicker">Enhancement</div><h3>Equity guardrails</h3><p>As AI scales, fairness auditing and offline access must be mandated to prevent the poor being excluded from the very tools meant to help them.</p></div>
+  </div>
+
+  <p class="src-note">Sources prioritised: National Health Authority, Ministry of Health &amp; Family Welfare, NITI Aayog, World Bank, WHO, PIB and parliamentary replies. Figures current to mid-2026. Statistics are drawn from official dashboards and releases; AI-accuracy and behaviour-change figures reflect the thesis's cited studies and are noted as such.</p>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><b>THRIVE–SDOH</b> · A Strategic Framework for Tech-Enabled Holistic Healthcare in India</div>
+    <div>Executive visual summary · Mayank Madhur · Figures validated to 2025–26</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  var panels = Array.prototype.slice.call(document.querySelectorAll('.panel'));
+
+  function activate(id){
+    tabs.forEach(function(t){
+      var on = t.getAttribute('data-tab') === id;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    panels.forEach(function(p){ p.classList.toggle('active', p.id === id); });
+    window.scrollTo({top:0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto':'smooth'});
+  }
+
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(){ activate(t.getAttribute('data-tab')); });
+  });
+
+  // keyboard arrow nav across tabs
+  document.querySelector('.tabbar').addEventListener('keydown', function(e){
+    if(e.key!=='ArrowRight' && e.key!=='ArrowLeft') return;
+    var i = tabs.findIndex(function(t){return t.getAttribute('aria-selected')==='true';});
+    var n = e.key==='ArrowRight' ? (i+1)%tabs.length : (i-1+tabs.length)%tabs.length;
+    tabs[n].focus(); activate(tabs[n].getAttribute('data-tab'));
+  });
+
+  // pillar node -> highlight + scroll to matching card
+  var nodes = Array.prototype.slice.call(document.querySelectorAll('.engine .node'));
+  function lightPillar(letter){
+    var card = document.getElementById('pillar-'+letter);
+    if(!card) return;
+    document.querySelectorAll('.pcard').forEach(function(c){c.classList.remove('lit');});
+    card.classList.add('lit');
+    card.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto':'smooth', block:'center'});
+    nodes.forEach(function(nd){ nd.classList.toggle('dim', nd.getAttribute('data-pillar')!==letter); });
+    setTimeout(function(){ nodes.forEach(function(nd){nd.classList.remove('dim');}); }, 1600);
+  }
+  nodes.forEach(function(nd){
+    var letter = nd.getAttribute('data-pillar');
+    nd.addEventListener('click', function(){ lightPillar(letter); });
+    nd.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); lightPillar(letter);} });
+  });
+})();
+</script>
+</body>
+</html>

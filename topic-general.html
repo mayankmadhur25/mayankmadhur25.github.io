@@ -11,7 +11,9 @@ permalink: /topics/general/
     <a class="topic-back" href="/">← All perspectives</a>
   </div>
   <div class="post-grid">
-    {% assign topicposts = site.posts | where: "category", "General" %}
+    {% assign bycat = site.posts | where: "category", "General" %}
+    {% assign bytag = site.posts | where_exp: "p", "p.tags contains 'General'" %}
+    {% assign topicposts = bycat | concat: bytag | uniq | sort: "date" | reverse %}
     {% for post in topicposts %}
     <a class="card cat-{{ post.category | default: 'general' | slugify }}"
        href="{% if post.external_link %}{{ post.external_link }}{% else %}{{ post.url }}{% endif %}">

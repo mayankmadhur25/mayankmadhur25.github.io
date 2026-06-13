@@ -123,7 +123,7 @@ layout: default
      data-title="{{ post.title | downcase }}"
      data-excerpt="{{ post.excerpt | strip_html | downcase }}"
      data-year="{{ post.date | date: '%Y' }}"
-     data-topic="{{ post.category | default: 'General' }}"
+     data-topic="{{ post.category | default: 'General' }}{% if post.tags %}, {{ post.tags | join: ', ' }}{% endif %}"
      href="{% if post.external_link %}{{ post.external_link }}{% else %}{{ post.url }}{% endif %}">
     <div class="card-banner">
       <svg viewBox="0 0 400 140" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
@@ -210,7 +210,7 @@ layout: default
       var cardTopic = card.getAttribute('data-topic') || '';
       var matchText = !q || title.indexOf(q) > -1 || excerpt.indexOf(q) > -1;
       var matchYear = !y || cardYear === y;
-      var matchTopic = !t || cardTopic === t;
+      var matchTopic = !t || cardTopic.split(',').map(function(s){return s.trim();}).indexOf(t) > -1;
       if(matchText && matchYear && matchTopic){
         card.style.display = '';
         shown++;
