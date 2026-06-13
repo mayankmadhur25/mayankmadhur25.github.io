@@ -57,7 +57,7 @@ layout: default
       <a href="{{ site.linkedin_profile }}" target="_blank">Connect on LinkedIn →</a>
     </div>
   </aside>
-  <a class="back-link" href="/">← All issues</a>
+  <a class="back-link" href="/">← All perspectives</a>
 
   {% assign related = site.posts | where: "category", page.category | where_exp: "p", "p.url != page.url" %}
   {% if related.size > 0 %}
