@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "Edition 2: Tackling physician burnout requires reimagining healthcare"
-category: Policy
+category: Strategy
+tags: [Policy]
 edition: 2
 external_link: /edition-2-physician-burnout.html
 ---

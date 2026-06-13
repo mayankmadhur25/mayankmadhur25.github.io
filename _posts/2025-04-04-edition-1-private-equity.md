@@ -2,6 +2,7 @@
 layout: post
 title: "Edition 1: Private equity can transform India's healthcare, if done right"
 category: Strategy
+tags: [Policy]
 edition: 1
 external_link: /edition-1-private-equity.html
 ---

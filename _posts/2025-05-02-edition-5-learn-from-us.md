@@ -2,6 +2,7 @@
 layout: post
 title: "Edition 5: India Must Learn from US Healthcare Failures, Not Repeat Them"
 category: Strategy
+tags: [Policy]
 edition: 5
 external_link: /edition-5-learn-from-us.html
 ---

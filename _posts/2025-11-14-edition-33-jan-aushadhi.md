@@ -2,6 +2,7 @@
 layout: post
 title: "Edition 33: Generic Medicines at Scale: Jan Aushadhi's 16,900+ stores"
 category: Pharma
+tags: [Digital Health]
 edition: 33
 external_link: /edition-33-jan-aushadhi.html
 ---

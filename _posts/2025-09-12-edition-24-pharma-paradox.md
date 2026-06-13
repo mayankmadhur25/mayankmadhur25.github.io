@@ -2,6 +2,7 @@
 layout: post
 title: "Edition 24: India's Pharma Paradox: Big Market, Bigger Gaps"
 category: Pharma
+tags: [Strategy]
 edition: 24
 external_link: /edition-24-pharma-paradox.html
 ---

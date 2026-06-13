@@ -2,6 +2,7 @@
 layout: post
 title: "Edition 61: The 100 Crore Illusion"
 category: Digital Health
+tags: [Policy]
 edition: 61
 external_link: /the-100-crore-illusion.html
 ---

@@ -2,6 +2,7 @@
 layout: post
 title: "Edition 31: India's IVF Boom: Technology and Lifestyle Redefining Parenthood"
 category: Strategy
+tags: [Digital Health]
 edition: 31
 external_link: /edition-31-ivf-boom.html
 ---

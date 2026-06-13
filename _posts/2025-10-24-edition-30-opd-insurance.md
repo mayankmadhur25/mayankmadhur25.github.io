@@ -2,6 +2,7 @@
 layout: post
 title: "Edition 30: Health insurance is growing, but real financial protection is not"
 category: Strategy
+tags: [Policy]
 edition: 30
 external_link: /edition-30-opd-insurance.html
 ---

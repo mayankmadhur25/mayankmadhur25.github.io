@@ -2,6 +2,7 @@
 layout: post
 title: "Edition 34: Why a country that meets WHO's doctor benchmark still struggles"
 category: Policy
+tags: [Digital Health]
 edition: 34
 external_link: /edition-34-doctor-distribution.html
 ---

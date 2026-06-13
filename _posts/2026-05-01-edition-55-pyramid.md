@@ -2,6 +2,7 @@
 layout: post
 title: "Edition 55: India's biggest healthcare bet isn't a hospital"
 category: Policy
+tags: [Strategy]
 edition: 55
 external_link: /edition-55-pyramid.html
 ---

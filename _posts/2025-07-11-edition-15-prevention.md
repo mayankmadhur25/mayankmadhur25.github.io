@@ -2,6 +2,7 @@
 layout: post
 title: "Edition 15: Act Now: Stop Funding Sickness and Invest in Prevention"
 category: Policy
+tags: [Strategy]
 edition: 15
 external_link: /edition-15-prevention.html
 ---

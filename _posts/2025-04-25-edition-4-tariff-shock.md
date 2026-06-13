@@ -2,6 +2,7 @@
 layout: post
 title: "Edition 4: Tariff Shock: Why India must build healthcare resilience now"
 category: General
+tags: [Policy]
 edition: 4
 external_link: /edition-4-tariff-shock.html
 ---

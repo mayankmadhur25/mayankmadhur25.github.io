@@ -2,6 +2,7 @@
 layout: post
 title: "Edition 42: India's diagnostics boom: the next scalable Healthcare Platform Play"
 category: Strategy
+tags: [Digital Health]
 edition: 42
 external_link: /edition-42-diagnostics-boom.html
 ---

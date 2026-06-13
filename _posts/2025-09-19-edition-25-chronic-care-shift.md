@@ -2,6 +2,7 @@
 layout: post
 title: "Edition 25: From Infections to Chronic Care: India's Inflection Point"
 category: Strategy
+tags: [Policy]
 edition: 25
 external_link: /edition-25-chronic-care-shift.html
 ---

@@ -2,6 +2,7 @@
 layout: post
 title: "Edition 26: India's Mental Health Crisis: The Silent Epidemic"
 category: Policy
+tags: [Digital Health]
 edition: 26
 external_link: /edition-26-mental-health.html
 ---

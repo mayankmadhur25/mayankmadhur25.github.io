@@ -2,6 +2,7 @@
 layout: post
 title: "Edition 20: India's phygital healthcare is scaling: tap eSanjeevani"
 category: Digital Health
+tags: [Strategy]
 edition: 20
 external_link: /edition-20-esanjeevani-phygital.html
 ---

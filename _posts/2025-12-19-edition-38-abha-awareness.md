@@ -2,6 +2,7 @@
 layout: post
 title: "Edition 38: 800 Million Health IDs; And People Still Ask 'What Is ABHA?'"
 category: Digital Health
+tags: [Policy]
 edition: 38
 external_link: /edition-38-abha-awareness.html
 ---

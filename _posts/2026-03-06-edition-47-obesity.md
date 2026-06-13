@@ -2,6 +2,7 @@
 layout: post
 title: "Edition 47: India's Obesity Crisis"
 category: Policy
+tags: [Digital Health]
 edition: 47
 external_link: /edition-47-obesity.html
 ---

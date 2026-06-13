@@ -2,6 +2,7 @@
 layout: post
 title: "Edition 7: Embrace Technology to Address the Healthcare Delivery Crisis"
 category: Digital Health
+tags: [Strategy]
 edition: 7
 external_link: /edition-7-tech-delivery-crisis.html
 ---

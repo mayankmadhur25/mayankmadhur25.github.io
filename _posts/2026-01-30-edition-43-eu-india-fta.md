@@ -2,6 +2,7 @@
 layout: post
 title: "Edition 43: EU–India FTA & Healthcare: What It Means"
 category: Policy
+tags: [Strategy]
 edition: 43
 external_link: /edition-43-eu-india-fta.html
 ---

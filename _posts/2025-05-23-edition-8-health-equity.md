@@ -2,6 +2,7 @@
 layout: post
 title: "Edition 8: Four is Greater Than Three: Why Health Equity Completes the Puzzle"
 category: Policy
+tags: [Strategy]
 edition: 8
 external_link: /edition-8-health-equity.html
 ---

@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "Edition 32: From Zero to 18,900: The Organ Story No One Signed Up For"
-category: General
+category: Policy
+tags: [Digital Health]
 edition: 32
 external_link: /edition-32-organ-transplants.html
 ---

@@ -2,6 +2,7 @@
 layout: post
 title: "Edition 35: India's Rural–Urban Healthcare Gap"
 category: Policy
+tags: [Strategy]
 edition: 35
 external_link: /edition-35-rural-urban-gap.html
 ---

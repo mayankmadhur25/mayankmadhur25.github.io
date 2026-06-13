@@ -2,6 +2,7 @@
 layout: post
 title: "Edition 45: India just institutionalized Healthcare AI"
 category: Digital Health
+tags: [Policy]
 edition: 45
 external_link: /edition-45-sahi-bodh.html
 ---

@@ -2,6 +2,7 @@
 layout: post
 title: "Edition 58: Ebola is back — why India should pay attention"
 category: Biotech
+tags: [Policy]
 edition: 58
 external_link: /edition-58-ebola.html
 ---

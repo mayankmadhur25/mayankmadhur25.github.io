@@ -2,6 +2,7 @@
 layout: post
 title: "Edition 21: Lead with the local: India proves healthcare is hyperlocal"
 category: Strategy
+tags: [Policy]
 edition: 21
 external_link: /edition-21-hyperlocal.html
 ---

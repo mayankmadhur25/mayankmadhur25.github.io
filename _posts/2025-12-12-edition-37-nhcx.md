@@ -2,6 +2,7 @@
 layout: post
 title: "Edition 37: India's National Health Claims Exchange (NHCX)"
 category: Digital Health
+tags: [Policy]
 edition: 37
 external_link: /edition-37-nhcx.html
 ---

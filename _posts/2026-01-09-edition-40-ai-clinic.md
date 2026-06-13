@@ -2,6 +2,7 @@
 layout: post
 title: "Edition 40: India's First Government AI Clinic Is Live"
 category: Digital Health
+tags: [Policy]
 edition: 40
 external_link: /edition-40-ai-clinic.html
 ---

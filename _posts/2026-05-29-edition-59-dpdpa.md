@@ -2,6 +2,7 @@
 layout: post
 title: "Edition 59: What India's DPDPA actually changes for healthcare"
 category: Policy
+tags: [Digital Health]
 edition: 59
 external_link: /edition-59-dpdpa.html
 ---

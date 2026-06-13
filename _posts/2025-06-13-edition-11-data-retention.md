@@ -2,6 +2,7 @@
 layout: post
 title: "Edition 11: Data retention poses a lurking threat in healthcare"
 category: Digital Health
+tags: [Policy]
 edition: 11
 external_link: /edition-11-data-retention.html
 ---

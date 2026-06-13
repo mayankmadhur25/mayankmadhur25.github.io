@@ -2,6 +2,7 @@
 layout: post
 title: "Edition 57: The 1% Problem Every Indian Pharma CEO Is Ignoring"
 category: Pharma
+tags: [Strategy]
 edition: 57
 external_link: /edition-57-pharma-fmcg.html
 ---

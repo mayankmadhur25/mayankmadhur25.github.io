@@ -2,6 +2,7 @@
 layout: post
 title: "Edition 3: Harness IoT to revolutionize autism care"
 category: Digital Health
+tags: [Policy]
 edition: 3
 external_link: /edition-3-iot-autism.html
 ---
