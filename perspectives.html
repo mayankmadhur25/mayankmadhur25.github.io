@@ -1,0 +1,137 @@
+---
+layout: default
+title: Perspectives
+permalink: /perspectives/
+---
+<section class="persp-head">
+  <p class="eyebrow">ALL PERSPECTIVES</p>
+  <h1>Every issue of Healthcare Pulse</h1>
+  <p class="persp-sub">Sharp, contrarian reads on India's digital health story and global healthcare. Search or filter by topic and year.</p>
+</section>
+
+<section class="filter-bar">
+  <div class="filter-inner">
+    <input type="text" id="fSearch" class="f-search" placeholder="Search perspectives...">
+    <select id="fYear" class="f-select">
+      <option value="">All years</option>
+      {% assign yearlist = "" %}
+      {% for post in site.posts %}{% capture y %}{{ post.date | date: '%Y' }}{% endcapture %}{% unless yearlist contains y %}{% assign yearlist = yearlist | append: y | append: "," %}{% endunless %}{% endfor %}
+      {% assign uniqueyears = yearlist | split: "," %}
+      {% for y in uniqueyears %}<option value="{{ y }}">{{ y }}</option>{% endfor %}
+    </select>
+    <select id="fTopic" class="f-select">
+      <option value="">All topics</option>
+      <option value="Digital Health">Digital Health</option>
+      <option value="Policy">Policy</option>
+      <option value="Strategy">Strategy</option>
+      <option value="Biotech">Biotech</option>
+      <option value="Pharma">Pharma</option>
+      <option value="General">General</option>
+    </select>
+    <button id="fBtn" class="f-btn" type="button">Search</button>
+    <button id="fClear" class="f-clear" type="button">Clear</button>
+  </div>
+  <p id="fCount" class="f-count"></p>
+</section>
+
+<div class="topic-chips">
+  <span class="tc-label">BROWSE BY TOPIC:</span>
+  <a class="topic-chip" href="/topics/digital-health/">Digital Health</a>
+  <a class="topic-chip" href="/topics/policy/">Policy</a>
+  <a class="topic-chip" href="/topics/strategy/">Strategy</a>
+  <a class="topic-chip" href="/topics/pharma/">Pharma</a>
+  <a class="topic-chip" href="/topics/biotech/">Biotech</a>
+  <a class="topic-chip" href="/topics/general/">General</a>
+  <a class="topic-chip topic-chip-theme" href="#" data-search="autism">Autism</a>
+  <a class="topic-chip" href="/archive/">Compact archive list →</a>
+</div>
+
+<section class="post-grid" id="postGrid">
+  {% for post in site.posts %}
+  <a class="card reveal cat-{{ post.category | default: 'general' | slugify }}"
+     data-title="{{ post.title | downcase }}"
+     data-excerpt="{{ post.excerpt | strip_html | downcase }}"
+     data-year="{{ post.date | date: '%Y' }}"
+     data-topic="{{ post.category | default: 'General' }}{% if post.tags %}, {{ post.tags | join: ', ' }}{% endif %}"
+     href="{% if post.external_link %}{{ post.external_link }}{% else %}{{ post.url }}{% endif %}">
+    <div class="card-banner">
+      <svg viewBox="0 0 400 140" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <path d="M0 84 H86 l11 -19 13 36 16 -52 14 60 12 -38 10 13 H230 l11 -19 13 36 16 -52 14 60 12 -38 10 13 H400"
+          fill="none" stroke="rgba(255,255,255,.85)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      {% if post.edition %}<span class="card-ed">ED. {{ post.edition }}</span>{% endif %}
+    </div>
+    <div class="card-body">
+      <p class="card-meta">{{ post.date | date: "%b %-d, %Y" }} · {{ post.category | default: "General" }}</p>
+      <h2>{{ post.title }}</h2>
+      <p class="card-excerpt">{{ post.excerpt | strip_html | truncate: 130 }}</p>
+      <div class="card-foot">
+        <span class="card-read">Read perspective →</span>
+        <span class="card-views">{% assign w = post.content | number_of_words %}{% if w < 200 %}3{% else %}{{ w | divided_by: 200 }}{% endif %} min read</span>
+      </div>
+    </div>
+  </a>
+  {% endfor %}
+</section>
+
+<style>
+  .persp-head { max-width: 1340px; margin: 0 auto; padding: 48px clamp(20px,4vw,48px) 8px; }
+  .persp-head .eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .18em; color: var(--teal); }
+  .persp-head h1 { font-size: clamp(28px,4vw,40px); font-weight: 800; color: var(--navy); margin: 8px 0 6px; line-height: 1.1; }
+  .persp-sub { font-size: 15.5px; color: var(--muted); max-width: 60ch; line-height: 1.6; }
+  [data-theme="dark"] .persp-head h1 { color: #E8F4F4; }
+</style>
+
+<script>
+(function(){
+  var search = document.getElementById('fSearch');
+  var year = document.getElementById('fYear');
+  var topic = document.getElementById('fTopic');
+  var btn = document.getElementById('fBtn');
+  var clear = document.getElementById('fClear');
+  var count = document.getElementById('fCount');
+  var cards = Array.prototype.slice.call(document.querySelectorAll('#postGrid .card'));
+
+  function runFilter(){
+    var q = (search.value || '').trim().toLowerCase();
+    var y = year.value;
+    var t = topic.value;
+    var shown = 0;
+    cards.forEach(function(card){
+      var title = card.getAttribute('data-title') || '';
+      var excerpt = card.getAttribute('data-excerpt') || '';
+      var cardYear = card.getAttribute('data-year') || '';
+      var cardTopic = card.getAttribute('data-topic') || '';
+      var matchText = !q || title.indexOf(q) > -1 || excerpt.indexOf(q) > -1;
+      var matchYear = !y || cardYear === y;
+      var matchTopic = !t || cardTopic.split(',').map(function(s){return s.trim();}).indexOf(t) > -1;
+      if(matchText && matchYear && matchTopic){ card.style.display = ''; shown++; }
+      else { card.style.display = 'none'; }
+    });
+    count.textContent = (q || y || t) ? shown + (shown === 1 ? ' perspective found' : ' perspectives found') : '';
+  }
+  function clearFilter(){
+    search.value=''; year.value=''; topic.value='';
+    cards.forEach(function(c){ c.style.display=''; });
+    count.textContent='';
+  }
+  if(search) search.addEventListener('input', runFilter);
+  if(year) year.addEventListener('change', runFilter);
+  if(topic) topic.addEventListener('change', runFilter);
+  if(btn) btn.addEventListener('click', runFilter);
+  if(clear) clear.addEventListener('click', clearFilter);
+
+  document.querySelectorAll('.topic-chip-theme').forEach(function(chip){
+    chip.addEventListener('click', function(e){
+      e.preventDefault();
+      var term = chip.getAttribute('data-search') || '';
+      if(search){ search.value = term; runFilter(); }
+      var fb = document.querySelector('.filter-bar');
+      if(fb){ fb.scrollIntoView({behavior:'smooth', block:'start'}); }
+    });
+  });
+
+  // reveal cards on load (no hero, so just show them)
+  document.querySelectorAll('#postGrid .card.reveal').forEach(function(c){ c.classList.add('in'); });
+})();
+</script>
