@@ -36,10 +36,10 @@ layout: default
     <p class="pc-bio">PMP®, SCR® · MBA &amp; PGPM Healthcare. Healthcare domain analyst at HFS Research with 11+ years across payer, provider, and digital health.</p>
     <ul class="pc-list">
       <li>Practice Leader, Healthcare &amp; Life Sciences — HFS Research</li>
-      <li>Leads the HFS Horizon Center of Excellence</li>
-      <li>UGC NET qualified (97.7 percentile) — Assistant Professor</li>
+      <li>UGC NET qualified (97.7 percentile) — eligible for Assistant Professor</li>
       <li>Advisor to CXOs across US payers, providers &amp; health IT</li>
       <li>Ex HCL (Medical Devices) &amp; Altimetrik</li>
+      <li>Passionate about making healthcare better</li>
     </ul>
     <div class="pc-links">
       <a href="{{ site.linkedin_profile }}" target="_blank" aria-label="LinkedIn">
@@ -114,6 +114,7 @@ layout: default
   <a class="topic-chip" href="/topics/pharma/">Pharma</a>
   <a class="topic-chip" href="/topics/biotech/">Biotech</a>
   <a class="topic-chip" href="/topics/general/">General</a>
+  <a class="topic-chip topic-chip-theme" href="#" data-search="autism">Autism</a>
   <a class="topic-chip" href="/archive.html">All perspectives →</a>
 </div>
 
@@ -237,6 +238,17 @@ layout: default
   if(topic) topic.addEventListener('change', runFilter);
   if(btn) btn.addEventListener('click', runFilter);
   if(clear) clear.addEventListener('click', clearFilter);
+
+  // theme chips (e.g. Autism) fill the search box and filter
+  document.querySelectorAll('.topic-chip-theme').forEach(function(chip){
+    chip.addEventListener('click', function(e){
+      e.preventDefault();
+      var term = chip.getAttribute('data-search') || '';
+      if(search){ search.value = term; runFilter(); }
+      var fb = document.querySelector('.filter-bar');
+      if(fb){ fb.scrollIntoView({behavior:'smooth', block:'start'}); }
+    });
+  });
 
   // animate coverage bars when scrolled into view
   var statsBars = document.getElementById('statsBars');
