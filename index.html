@@ -82,7 +82,7 @@ layout: default
 
 <section class="filter-bar">
   <div class="filter-inner">
-    <input type="text" id="fSearch" class="f-search" placeholder="Search issues...">
+    <input type="text" id="fSearch" class="f-search" placeholder="Search perspectives...">
     <select id="fYear" class="f-select">
       <option value="">All years</option>
       {% assign years = site.posts | map: "date" | uniq %}
@@ -114,7 +114,7 @@ layout: default
   <a class="topic-chip" href="/topics/pharma/">Pharma</a>
   <a class="topic-chip" href="/topics/biotech/">Biotech</a>
   <a class="topic-chip" href="/topics/general/">General</a>
-  <a class="topic-chip" href="/archive.html">All issues →</a>
+  <a class="topic-chip" href="/archive.html">All perspectives →</a>
 </div>
 
 <section class="post-grid" id="postGrid">
@@ -137,7 +137,7 @@ layout: default
       <h2>{{ post.title }}</h2>
       <p class="card-excerpt">{{ post.excerpt | strip_html | truncate: 130 }}</p>
       <div class="card-foot">
-        <span class="card-read">Read issue →</span>
+        <span class="card-read">Read perspective →</span>
         <span class="card-views" data-views-key="ed{{ post.edition }}">{% assign w = post.content | number_of_words %}{% if w < 200 %}3{% else %}{{ w | divided_by: 200 }}{% endif %} min read</span>
       </div>
     </div>
@@ -219,7 +219,7 @@ layout: default
       }
     });
     if(q || y || t){
-      count.textContent = shown + (shown === 1 ? ' issue found' : ' issues found');
+      count.textContent = shown + (shown === 1 ? ' perspective found' : ' perspectives found');
     } else {
       count.textContent = '';
     }

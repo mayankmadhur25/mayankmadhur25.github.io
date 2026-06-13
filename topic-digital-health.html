@@ -8,7 +8,7 @@ permalink: /topics/digital-health/
     <p class="eyebrow">TOPIC</p>
     <h1>Digital Health</h1>
     <p class="topic-sub">Every Healthcare Pulse edition on Digital Health. Newest first.</p>
-    <a class="topic-back" href="/">← All issues</a>
+    <a class="topic-back" href="/">← All perspectives</a>
   </div>
   <div class="post-grid">
     {% assign topicposts = site.posts | where: "category", "Digital Health" %}
@@ -26,7 +26,7 @@ permalink: /topics/digital-health/
         <p class="card-meta">{{ post.date | date: "%b %-d, %Y" }} · {{ post.category }}</p>
         <h2>{{ post.title }}</h2>
         <p class="card-excerpt">{{ post.excerpt | strip_html | truncate: 130 }}</p>
-        <div class="card-foot"><span class="card-read">Read issue →</span></div>
+        <div class="card-foot"><span class="card-read">Read perspective →</span></div>
       </div>
     </a>
     {% endfor %}
