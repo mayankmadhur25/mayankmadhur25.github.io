@@ -775,6 +775,10 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 [data-theme="dark"] .card-banner svg path { stroke: rgba(255,255,255,.7); }
 [data-theme="dark"] .logo-name { color: #E8F4F4; }
 [data-theme="dark"] .nav-subscribe { color: #fff !important; }
+[data-theme="dark"] .subscribe { background: #0A1418; color: #E8F4F4; }
+[data-theme="dark"] .meta-cat { background: #16252C; color: #E8F4F4; }
+[data-theme="dark"] .subscribe h2 { color: #fff; }
+[data-theme="dark"] .ml-signup input { background: #16252C; color: #E8F4F4; border-color: #25373F; }
 [data-theme="dark"] .util { background: #0A1418; }
 [data-theme="dark"] .contact-section { background: #13212A; }
 [data-theme="dark"] .cform input, [data-theme="dark"] .cform textarea { background: #0F1B22; color: var(--ink); border-color: #25373F; }
