@@ -810,7 +810,15 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 /* ── Related issues ── */
 .related { max-width: 860px; margin: 40px auto 0; padding: 0 24px; }
 .related-label { font-family: var(--mono); font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
-.related-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+.related-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+.related-nav { display: flex; align-items: center; gap: 8px; }
+.related-seeall { font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--teal); text-decoration: none; letter-spacing: .5px; }
+.related-seeall:hover { text-decoration: underline; }
+.rel-arrow { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--line); background: var(--tintT); color: var(--navy); font-size: 16px; cursor: pointer; line-height: 1; transition: all .15s ease; display: inline-flex; align-items: center; justify-content: center; }
+.rel-arrow:hover { background: var(--teal); color: #fff; border-color: var(--teal); }
+.related-grid { display: flex; gap: 14px; overflow-x: auto; scroll-behavior: smooth; scroll-snap-type: x mandatory; padding-bottom: 6px; -ms-overflow-style: none; scrollbar-width: thin; }
+.related-grid::-webkit-scrollbar { height: 6px; }
+.related-grid::-webkit-scrollbar-thumb { background: var(--line); border-radius: 999px; }
 .related-card { display: flex; flex-direction: column; gap: 8px; padding: 18px 18px; border-radius: 12px; text-decoration: none; color: #fff; min-height: 110px; transition: transform .2s ease; }
 .related-card:hover { transform: translateY(-3px); }
 .related-card.cat-digital-health { background: var(--grad); }
@@ -916,17 +924,6 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 [data-theme="dark"] .logo-name { color:#E8F4F4; }
 [data-theme="dark"] .nav-subscribe { color:#fff !important; }
 [data-theme="dark"] .num-card, [data-theme="dark"] .row-item, [data-theme="dark"] .author-box { background:#16252C !important; border-color:#25373F; }
-.related { margin: 40px 0 10px; }
-.related-label { font-family: var(--mono); font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
-.related-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
-.related-card { display: flex; flex-direction: column; gap: 8px; padding: 18px 18px; border-radius: 12px; text-decoration: none; color: #fff; min-height: 120px; transition: transform .2s ease, box-shadow .2s ease; }
-.related-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(27,58,75,.20); }
-.related-card.cat-digital-health { background: linear-gradient(135deg,#0FA3A3,#2E7CB8); }
-.related-card.cat-policy { background: linear-gradient(135deg,#E08A3C,#B96A14); }
-.related-card.cat-strategy { background: linear-gradient(135deg,#6C4AB6,#3A2E7C); }
-.related-card.cat-pharma { background: linear-gradient(135deg,#2E7CB8,#1B3A4B); }
-.related-card.cat-biotech { background: linear-gradient(135deg,#37B68A,#0FA3A3); }
-.related-card.cat-general { background: linear-gradient(135deg,#1B3A4B,#2E7CB8); }
 .related-card .rc-ed { font-family: var(--mono); font-size: 11px; font-weight: 600; opacity: .9; }
 .related-card .rc-title { font-weight: 800; font-size: 15px; line-height: 1.3; }
 .related-card .rc-go { font-size: 12.5px; font-weight: 700; margin-top: auto; opacity: .92; }
@@ -1013,10 +1010,35 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   })();
   </script>
   <section class="related">
-    <p class="related-label">More on Policy</p>
+    <div class="related-head">
+      <p class="related-label">More on Policy</p>
+      <div class="related-nav">
+        <a class="related-seeall" href="/topics/policy/">See all &rarr;</a>
+        <button class="rel-arrow" data-dir="-1" aria-label="Scroll left" type="button">&larr;</button>
+        <button class="rel-arrow" data-dir="1" aria-label="Scroll right" type="button">&rarr;</button>
+      </div>
+    </div>
     <div class="related-grid">
-      <a class="related-card cat-policy" href="/edition-55-pyramid.html"><span class="rc-ed">ED. 55</span><span class="rc-title">India's biggest healthcare bet isn't a hospital</span><span class="rc-go">Read this perspective &rarr;</span></a>
-      <a class="related-card cat-policy" href="/edition-51-autism.html"><span class="rc-ed">ED. 51</span><span class="rc-title">Autism is a system design failure</span><span class="rc-go">Read this perspective &rarr;</span></a>
+        <a class="related-card cat-policy" href="/edition-60.html"><span class="rc-ed">ED. 60</span><span class="rc-title">What India's newest National Family Health Survey really tells us — and why the next decade of health will look nothing like the last</span><span class="rc-go">Read this perspective &rarr;</span></a>
+        <a class="related-card cat-policy" href="/edition-59-dpdpa.html"><span class="rc-ed">ED. 59</span><span class="rc-title">What India's DPDPA actually changes for healthcare</span><span class="rc-go">Read this perspective &rarr;</span></a>
+        <a class="related-card cat-policy" href="/edition-55-pyramid.html"><span class="rc-ed">ED. 55</span><span class="rc-title">India's biggest healthcare bet isn't a hospital</span><span class="rc-go">Read this perspective &rarr;</span></a>
+        <a class="related-card cat-policy" href="/edition-51-autism.html"><span class="rc-ed">ED. 51</span><span class="rc-title">Autism is a system design failure India can no longer ignore</span><span class="rc-go">Read this perspective &rarr;</span></a>
+        <a class="related-card cat-policy" href="/edition-44-budget-2026.html"><span class="rc-ed">ED. 44</span><span class="rc-title">India Budget 2026: Healthcare Bets on Innovation, But Execution Will Decide</span><span class="rc-go">Read this perspective &rarr;</span></a>
+        <a class="related-card cat-policy" href="/edition-43-eu-india-fta.html"><span class="rc-ed">ED. 43</span><span class="rc-title">EU–India FTA & Healthcare: What It Means</span><span class="rc-go">Read this perspective &rarr;</span></a>
+        <a class="related-card cat-policy" href="/edition-36-antibiotic-resistance.html"><span class="rc-ed">ED. 36</span><span class="rc-title">India's antibiotic resistance crisis is a ticking time bomb</span><span class="rc-go">Read this perspective &rarr;</span></a>
+        <a class="related-card cat-policy" href="/edition-35-rural-urban-gap.html"><span class="rc-ed">ED. 35</span><span class="rc-title">India's Rural–Urban Healthcare Gap</span><span class="rc-go">Read this perspective &rarr;</span></a>
+        <a class="related-card cat-policy" href="/edition-34-doctor-distribution.html"><span class="rc-ed">ED. 34</span><span class="rc-title">Why a country that meets WHO's doctor benchmark still struggles</span><span class="rc-go">Read this perspective &rarr;</span></a>
+        <a class="related-card cat-policy" href="/edition-32-organ-transplants.html"><span class="rc-ed">ED. 32</span><span class="rc-title">From Zero to 18,900: The Organ Story No One Signed Up For</span><span class="rc-go">Read this perspective &rarr;</span></a>
+        <a class="related-card cat-policy" href="/edition-29-cghs-2025.html"><span class="rc-ed">ED. 29</span><span class="rc-title">CGHS 2025: A long-awaited overhaul</span><span class="rc-go">Read this perspective &rarr;</span></a>
+        <a class="related-card cat-policy" href="/edition-28-csection-economy.html"><span class="rc-ed">ED. 28</span><span class="rc-title">Rewiring India's C-section economy</span><span class="rc-go">Read this perspective &rarr;</span></a>
+        <a class="related-card cat-policy" href="/edition-27-dpdp-act-2023.html"><span class="rc-ed">ED. 27</span><span class="rc-title">DPDP Act 2023: Turn compliance into competitive advantage</span><span class="rc-go">Read this perspective &rarr;</span></a>
+        <a class="related-card cat-policy" href="/edition-26-mental-health.html"><span class="rc-ed">ED. 26</span><span class="rc-title">India's Mental Health Crisis: The Silent Epidemic</span><span class="rc-go">Read this perspective &rarr;</span></a>
+        <a class="related-card cat-policy" href="/edition-23-autism-2025.html"><span class="rc-ed">ED. 23</span><span class="rc-title">Autism 2025: Rising prevalence, real impact, enterprise role</span><span class="rc-go">Read this perspective &rarr;</span></a>
+        <a class="related-card cat-policy" href="/edition-17-public-health-journey.html"><span class="rc-ed">ED. 17</span><span class="rc-title">India's Public Health Journey: A 20-Year Sprint</span><span class="rc-go">Read this perspective &rarr;</span></a>
+        <a class="related-card cat-policy" href="/edition-16-ayushman-bharat.html"><span class="rc-ed">ED. 16</span><span class="rc-title">Take Action on Ayushman Bharat</span><span class="rc-go">Read this perspective &rarr;</span></a>
+        <a class="related-card cat-policy" href="/edition-15-prevention.html"><span class="rc-ed">ED. 15</span><span class="rc-title">Act Now: Stop Funding Sickness and Invest in Prevention</span><span class="rc-go">Read this perspective &rarr;</span></a>
+        <a class="related-card cat-policy" href="/edition-14-nhp-2017.html"><span class="rc-ed">ED. 14</span><span class="rc-title">National Health Policy 2017 – Still Setting the Agenda in 2025</span><span class="rc-go">Read this perspective &rarr;</span></a>
+        <a class="related-card cat-policy" href="/edition-8-health-equity.html"><span class="rc-ed">ED. 8</span><span class="rc-title">Four is Greater Than Three: Why Health Equity Completes the Puzzle</span><span class="rc-go">Read this perspective &rarr;</span></a>
     </div>
   </section>
   <aside class="author-box">
@@ -1054,6 +1076,18 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   if(tt) tt.addEventListener('click',function(){ var r=document.documentElement; if(r.getAttribute('data-theme')==='dark'){r.removeAttribute('data-theme');try{localStorage.setItem('hp-theme','light');}catch(e){}} else {r.setAttribute('data-theme','dark');try{localStorage.setItem('hp-theme','dark');}catch(e){}} });
   var toTop=document.getElementById('toTop');
   if(toTop){addEventListener('scroll',function(){if(window.scrollY>600)toTop.classList.add('show');else toTop.classList.remove('show');},{passive:true});toTop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});}
+  // related carousel arrows
+  document.querySelectorAll('.related').forEach(function(sec){
+    var track = sec.querySelector('.related-grid');
+    sec.querySelectorAll('.rel-arrow').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var dir = parseInt(btn.getAttribute('data-dir'),10) || 1;
+        var card = track.querySelector('.related-card');
+        var step = card ? (card.offsetWidth + 14) * 2 : 300;
+        track.scrollBy({ left: dir * step, behavior: 'smooth' });
+      });
+    });
+  });
 })();
 </script>
 </body></html>

@@ -810,7 +810,15 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 /* ── Related issues ── */
 .related { max-width: 860px; margin: 40px auto 0; padding: 0 24px; }
 .related-label { font-family: var(--mono); font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
-.related-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+.related-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+.related-nav { display: flex; align-items: center; gap: 8px; }
+.related-seeall { font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--teal); text-decoration: none; letter-spacing: .5px; }
+.related-seeall:hover { text-decoration: underline; }
+.rel-arrow { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--line); background: var(--tintT); color: var(--navy); font-size: 16px; cursor: pointer; line-height: 1; transition: all .15s ease; display: inline-flex; align-items: center; justify-content: center; }
+.rel-arrow:hover { background: var(--teal); color: #fff; border-color: var(--teal); }
+.related-grid { display: flex; gap: 14px; overflow-x: auto; scroll-behavior: smooth; scroll-snap-type: x mandatory; padding-bottom: 6px; -ms-overflow-style: none; scrollbar-width: thin; }
+.related-grid::-webkit-scrollbar { height: 6px; }
+.related-grid::-webkit-scrollbar-thumb { background: var(--line); border-radius: 999px; }
 .related-card { display: flex; flex-direction: column; gap: 8px; padding: 18px 18px; border-radius: 12px; text-decoration: none; color: #fff; min-height: 110px; transition: transform .2s ease; }
 .related-card:hover { transform: translateY(-3px); }
 .related-card.cat-digital-health { background: var(--grad); }
@@ -916,17 +924,6 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 [data-theme="dark"] .logo-name { color:#E8F4F4; }
 [data-theme="dark"] .nav-subscribe { color:#fff !important; }
 [data-theme="dark"] .num-card, [data-theme="dark"] .row-item, [data-theme="dark"] .author-box { background:#16252C !important; border-color:#25373F; }
-.related { margin: 40px 0 10px; }
-.related-label { font-family: var(--mono); font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
-.related-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
-.related-card { display: flex; flex-direction: column; gap: 8px; padding: 18px 18px; border-radius: 12px; text-decoration: none; color: #fff; min-height: 120px; transition: transform .2s ease, box-shadow .2s ease; }
-.related-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(27,58,75,.20); }
-.related-card.cat-digital-health { background: linear-gradient(135deg,#0FA3A3,#2E7CB8); }
-.related-card.cat-policy { background: linear-gradient(135deg,#E08A3C,#B96A14); }
-.related-card.cat-strategy { background: linear-gradient(135deg,#6C4AB6,#3A2E7C); }
-.related-card.cat-pharma { background: linear-gradient(135deg,#2E7CB8,#1B3A4B); }
-.related-card.cat-biotech { background: linear-gradient(135deg,#37B68A,#0FA3A3); }
-.related-card.cat-general { background: linear-gradient(135deg,#1B3A4B,#2E7CB8); }
 .related-card .rc-ed { font-family: var(--mono); font-size: 11px; font-weight: 600; opacity: .9; }
 .related-card .rc-title { font-weight: 800; font-size: 15px; line-height: 1.3; }
 .related-card .rc-go { font-size: 12.5px; font-weight: 700; margin-top: auto; opacity: .92; }
@@ -1013,10 +1010,26 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   })();
   </script>
   <section class="related">
-    <p class="related-label">More on Digital Health</p>
+    <div class="related-head">
+      <p class="related-label">More on Digital Health</p>
+      <div class="related-nav">
+        <a class="related-seeall" href="/topics/digital-health/">See all &rarr;</a>
+        <button class="rel-arrow" data-dir="-1" aria-label="Scroll left" type="button">&larr;</button>
+        <button class="rel-arrow" data-dir="1" aria-label="Scroll right" type="button">&rarr;</button>
+      </div>
+    </div>
     <div class="related-grid">
-      <a class="related-card cat-digital-health" href="/edition-45-sahi-bodh.html"><span class="rc-ed">ED. 45</span><span class="rc-title">India just institutionalized Healthcare AI</span><span class="rc-go">Read this perspective &rarr;</span></a>
-      <a class="related-card cat-digital-health" href="/edition-41-hospital-readiness.html"><span class="rc-ed">ED. 41</span><span class="rc-title">India's Hospitals Are Not Ready for NHCX and DPDP</span><span class="rc-go">Read this perspective &rarr;</span></a>
+        <a class="related-card cat-digital-health" href="/the-100-crore-illusion.html"><span class="rc-ed">ED. 61</span><span class="rc-title">The 100 Crore Illusion</span><span class="rc-go">Read this perspective &rarr;</span></a>
+        <a class="related-card cat-digital-health" href="/edition-52-preventive.html"><span class="rc-ed">ED. 52</span><span class="rc-title">India has built the world's largest preventive health system. Now it must prove it works.</span><span class="rc-go">Read this perspective &rarr;</span></a>
+        <a class="related-card cat-digital-health" href="/edition-46-ai-readiness.html"><span class="rc-ed">ED. 46</span><span class="rc-title">India Is Ready for AI in Healthcare. But Only in Parts.</span><span class="rc-go">Read this perspective &rarr;</span></a>
+        <a class="related-card cat-digital-health" href="/edition-45-sahi-bodh.html"><span class="rc-ed">ED. 45</span><span class="rc-title">India just institutionalized Healthcare AI</span><span class="rc-go">Read this perspective &rarr;</span></a>
+        <a class="related-card cat-digital-health" href="/edition-41-hospital-readiness.html"><span class="rc-ed">ED. 41</span><span class="rc-title">India's Hospitals Are Not Ready for NHCX and DPDP</span><span class="rc-go">Read this perspective &rarr;</span></a>
+        <a class="related-card cat-digital-health" href="/edition-40-ai-clinic.html"><span class="rc-ed">ED. 40</span><span class="rc-title">India's First Government AI Clinic Is Live</span><span class="rc-go">Read this perspective &rarr;</span></a>
+        <a class="related-card cat-digital-health" href="/edition-38-abha-awareness.html"><span class="rc-ed">ED. 38</span><span class="rc-title">800 Million Health IDs; And People Still Ask 'What Is ABHA?'</span><span class="rc-go">Read this perspective &rarr;</span></a>
+        <a class="related-card cat-digital-health" href="/edition-20-esanjeevani-phygital.html"><span class="rc-ed">ED. 20</span><span class="rc-title">India's phygital healthcare is scaling: tap eSanjeevani</span><span class="rc-go">Read this perspective &rarr;</span></a>
+        <a class="related-card cat-digital-health" href="/edition-11-data-retention.html"><span class="rc-ed">ED. 11</span><span class="rc-title">Data retention poses a lurking threat in healthcare</span><span class="rc-go">Read this perspective &rarr;</span></a>
+        <a class="related-card cat-digital-health" href="/edition-7-tech-delivery-crisis.html"><span class="rc-ed">ED. 7</span><span class="rc-title">Embrace Technology to Address the Healthcare Delivery Crisis</span><span class="rc-go">Read this perspective &rarr;</span></a>
+        <a class="related-card cat-digital-health" href="/edition-3-iot-autism.html"><span class="rc-ed">ED. 3</span><span class="rc-title">Harness IoT to revolutionize autism care</span><span class="rc-go">Read this perspective &rarr;</span></a>
     </div>
   </section>
   <aside class="author-box">
@@ -1054,6 +1067,18 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   if(tt) tt.addEventListener('click',function(){ var r=document.documentElement; if(r.getAttribute('data-theme')==='dark'){r.removeAttribute('data-theme');try{localStorage.setItem('hp-theme','light');}catch(e){}} else {r.setAttribute('data-theme','dark');try{localStorage.setItem('hp-theme','dark');}catch(e){}} });
   var toTop=document.getElementById('toTop');
   if(toTop){addEventListener('scroll',function(){if(window.scrollY>600)toTop.classList.add('show');else toTop.classList.remove('show');},{passive:true});toTop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});}
+  // related carousel arrows
+  document.querySelectorAll('.related').forEach(function(sec){
+    var track = sec.querySelector('.related-grid');
+    sec.querySelectorAll('.rel-arrow').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var dir = parseInt(btn.getAttribute('data-dir'),10) || 1;
+        var card = track.querySelector('.related-card');
+        var step = card ? (card.offsetWidth + 14) * 2 : 300;
+        track.scrollBy({ left: dir * step, behavior: 'smooth' });
+      });
+    });
+  });
 })();
 </script>
 </body></html>
