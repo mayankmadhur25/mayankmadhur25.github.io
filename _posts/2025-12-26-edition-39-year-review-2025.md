@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Edition 39: 2025 Year in Review: learnings and forecasts"
-category: General
+category: Strategy
 edition: 39
 external_link: /edition-39-year-review-2025.html
 ---

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Edition 6: New Tariffs Threaten US Health Systems While Health Plans Skate By"
-category: General
+category: Geopolitics
 tags: [Strategy]
 edition: 6
 external_link: /edition-6-tariffs-health-systems.html

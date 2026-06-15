@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Edition 49: War is quietly rewriting the rules of healthcare"
-category: General
+category: Geopolitics
 tags: [Strategy]
 edition: 49
 external_link: /edition-49-war-healthcare.html

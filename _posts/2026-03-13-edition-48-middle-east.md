@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Edition 48: The Middle East conflict and Indian healthcare"
-category: General
+category: Geopolitics
 tags: [Policy]
 edition: 48
 external_link: /edition-48-middle-east.html

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Edition 53: India just cracked the code on 400 years of energy independence"
-category: General
+category: Geopolitics
 edition: 53
 external_link: /edition-53-nuclear.html
 ---
