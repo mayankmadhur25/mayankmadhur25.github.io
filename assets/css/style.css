@@ -233,14 +233,14 @@ a { color: var(--blue); }
 .cat-pharma .card-banner,         .post-banner.cat-pharma         { background: linear-gradient(135deg, #2E7CB8, #1B3A4B); }
 .cat-biotech .card-banner,        .post-banner.cat-biotech        { background: linear-gradient(135deg, #37B68A, #0FA3A3); }
 .cat-policy .card-banner,         .post-banner.cat-policy         { background: linear-gradient(135deg, #E08A3C, #B96A14); }
-.cat-general .card-banner,        .post-banner.cat-general        { background: linear-gradient(135deg, #1B3A4B, #2E7CB8); }
+.cat-geopolitics .card-banner,    .post-banner.cat-geopolitics    { background: linear-gradient(135deg, #8B2635, #C04A3C); }
 .cat-strategy .card-banner,       .post-banner.cat-strategy       { background: linear-gradient(135deg, #6C4AB6, #3A2E7C); }
 
 .cat-digital-health .card-meta { color: var(--teal); }
 .cat-pharma .card-meta         { color: var(--blue); }
 .cat-biotech .card-meta        { color: var(--green); }
 .cat-policy .card-meta         { color: var(--amberdk); }
-.cat-general .card-meta        { color: var(--navy); }
+.cat-geopolitics .card-meta   { color: #8B2635; }
 .cat-strategy .card-meta       { color: #6C4AB6; }
 
 .card-body { padding: 20px 22px 24px; display: flex; flex-direction: column; flex: 1; }
@@ -825,7 +825,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .related-card.cat-strategy { background: linear-gradient(135deg,#6C4AB6,#3A2E7C); }
 .related-card.cat-pharma { background: linear-gradient(135deg,#2E7CB8,#1B3A4B); }
 .related-card.cat-biotech { background: linear-gradient(135deg,#37B68A,#0FA3A3); }
-.related-card.cat-general { background: linear-gradient(135deg,#1B3A4B,#2E7CB8); }
+.related-card.cat-geopolitics { background: linear-gradient(135deg,#8B2635,#C04A3C); }
 .rc-ed { font-family: var(--mono); font-size: 11px; font-weight: 600; opacity: .9; }
 .rc-title { font-weight: 700; font-size: 15px; line-height: 1.3; }
 @media(max-width:700px){ .related-grid { grid-template-columns: 1fr; } }
@@ -855,7 +855,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .ama-card.cat-strategy { background: linear-gradient(135deg,#6C4AB6,#3A2E7C); }
 .ama-card.cat-pharma { background: linear-gradient(135deg,#2E7CB8,#1B3A4B); }
 .ama-card.cat-biotech { background: linear-gradient(135deg,#37B68A,#0FA3A3); }
-.ama-card.cat-general { background: linear-gradient(135deg,#1B3A4B,#2E7CB8); }
+.ama-card.cat-geopolitics { background: linear-gradient(135deg,#8B2635,#C04A3C); }
 .amc-ed { font-family: var(--mono); font-size: 11px; font-weight: 600; opacity: .9; }
 .amc-title { font-weight: 800; font-size: 17px; line-height: 1.25; }
 .amc-go { font-size: 13px; font-weight: 700; margin-top: 4px; opacity: .95; }
@@ -881,7 +881,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .stat-fill.cat-digital-health { background: var(--grad); }
 .stat-fill.cat-pharma { background: linear-gradient(90deg,#2E7CB8,#1B3A4B); }
 .stat-fill.cat-biotech { background: linear-gradient(90deg,#37B68A,#0FA3A3); }
-.stat-fill.cat-general { background: linear-gradient(90deg,#1B3A4B,#2E7CB8); }
+.stat-fill.cat-geopolitics { background: linear-gradient(90deg,#8B2635,#C04A3C); }
 .stat-val { font-family: var(--mono); font-size: 14px; font-weight: 600; color: var(--navy); text-align: right; }
 .stat-count { color: var(--muted); font-size: 12px; }
 .stats-foot { margin-top: 26px; font-size: 14px; color: var(--body-c); }
