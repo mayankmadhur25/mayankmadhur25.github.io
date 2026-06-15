@@ -901,6 +901,8 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .ed-callout p { font-size: 19px; line-height: 1.5; margin: 0; color: #fff; }
 .ed-callout b { color: #FFC987; }
 .num-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 14px; margin: 26px 0; }
+.ed-chart { margin: 28px 0; padding: 22px 24px; background: var(--tintT); border: 1px solid var(--line); border-radius: 14px; }
+.ed-chart svg { width: 100%; height: auto; display: block; }
 .num-card { background: var(--tintT); border-radius: 14px; padding: 18px 16px; }
 .num-big { font-size: 24px; font-weight: 800; color: var(--teal); line-height: 1.1; margin-bottom: 6px; }
 .num-card p { font-size: 13.5px; color: var(--body-c); line-height: 1.5; margin: 0; }
@@ -984,10 +986,29 @@ a:focus-visible, button:focus-visible, input:focus-visible {
     <div class="ed-callout"><p>Treat profit-versus-care as a <b>trade-off to price and watch, not a virtue to claim in the annual report.</b></p></div>
     <h2>Four aims of good care, and a fifth your board should add</h2>
     <p>Good healthcare is usually summed up in four aims: better patient experience, healthier populations, lower cost per person, and a workforce that isn't burned out. A fifth, fairness of access, was added more recently and matters most of all in India.</p>
-    <div class="num-grid">
-      <div class="num-card"><div class="num-big">2008</div><p>Triple Aim: 3 goals.</p></div>
-      <div class="num-card"><div class="num-big">2014</div><p>Staff wellbeing: 4th goal added.</p></div>
-      <div class="num-card"><div class="num-big">2022</div><p>Equity: 5th goal added.</p></div>
+    <div class="ed-chart">
+      <svg viewBox="0 0 680 150" role="img" xmlns="http://www.w3.org/2000/svg" aria-label="Timeline of healthcare aims: 2008 Triple Aim with 3 goals, 2014 staff wellbeing added as 4th goal, 2022 equity added as 5th goal">
+        <title>How the aims of good care grew from three to five</title>
+        <line x1="60" y1="75" x2="620" y2="75" stroke="var(--line)" stroke-width="2"/>
+        <g>
+          <circle cx="110" cy="75" r="9" fill="#0FA3A3"/>
+          <text x="110" y="48" text-anchor="middle" font-size="15" font-weight="700" fill="var(--navy)">2008</text>
+          <text x="110" y="108" text-anchor="middle" font-size="12" fill="var(--body-c)">Triple Aim</text>
+          <text x="110" y="124" text-anchor="middle" font-size="11.5" font-weight="600" fill="#0FA3A3">3 goals</text>
+        </g>
+        <g>
+          <circle cx="340" cy="75" r="9" fill="#2E7CB8"/>
+          <text x="340" y="48" text-anchor="middle" font-size="15" font-weight="700" fill="var(--navy)">2014</text>
+          <text x="340" y="108" text-anchor="middle" font-size="12" fill="var(--body-c)">Staff wellbeing</text>
+          <text x="340" y="124" text-anchor="middle" font-size="11.5" font-weight="600" fill="#2E7CB8">4th goal added</text>
+        </g>
+        <g>
+          <circle cx="570" cy="75" r="9" fill="#6C4AB6"/>
+          <text x="570" y="48" text-anchor="middle" font-size="15" font-weight="700" fill="var(--navy)">2022</text>
+          <text x="570" y="108" text-anchor="middle" font-size="12" fill="var(--body-c)">Equity</text>
+          <text x="570" y="124" text-anchor="middle" font-size="11.5" font-weight="600" fill="#6C4AB6">5th goal added</text>
+        </g>
+      </svg>
     </div>
     <p>Only one of these costs money to chase and saves money to ignore: cost itself. That's the single aim profit pressure squeezes, which points straight to the fix.</p>
     <h2>It all comes down to how the money flows</h2>
@@ -995,11 +1016,32 @@ a:focus-visible, button:focus-visible, input:focus-visible {
     <div class="ed-callout"><p>The board's strongest lever isn't a values statement. <b>It's shifting income toward getting paid for outcomes.</b></p></div>
     <h2>In India the tension is sharper, not softer</h2>
     <p>India sits on the far left of that spectrum. Patients still pay close to half the bill out of pocket, and providers still mostly get paid per service. So the pull toward "do more" rather than "do better" is baked in, showing up as device markups, extra tests, and target-driven care.</p>
-    <div class="num-grid">
-      <div class="num-card"><div class="num-big">46%</div><p>India: share of health spend paid out of pocket.</p></div>
-      <div class="num-card"><div class="num-big">34%</div><p>China.</p></div>
-      <div class="num-card"><div class="num-big">15%</div><p>Australia.</p></div>
-      <div class="num-card"><div class="num-big">11%</div><p>USA.</p></div>
+    <div class="ed-chart">
+      <svg viewBox="0 0 680 280" role="img" xmlns="http://www.w3.org/2000/svg" aria-label="Out-of-pocket share of total health spend: India 46 percent, China 34 percent, Australia 15 percent, USA 11 percent">
+        <title>Out-of-pocket share of total health spend</title>
+        <text x="0" y="22" font-size="13.5" font-weight="700" fill="var(--navy)">Out-of-pocket share of total health spend</text>
+        <g font-size="13" font-weight="600" fill="var(--navy)">
+          <text x="0" y="70">India</text>
+          <text x="0" y="120">China</text>
+          <text x="0" y="170">Australia</text>
+          <text x="0" y="220">USA</text>
+        </g>
+        <g>
+          <rect x="92" y="54" width="560" height="22" rx="4" fill="var(--tintT)"/>
+          <rect x="92" y="54" width="515" height="22" rx="4" fill="#0FA3A3"/>
+          <text x="617" y="71" font-size="13" font-weight="700" fill="#0FA3A3">46%</text>
+          <rect x="92" y="104" width="560" height="22" rx="4" fill="var(--tintT)"/>
+          <rect x="92" y="104" width="381" height="22" rx="4" fill="#2E7CB8"/>
+          <text x="483" y="121" font-size="13" font-weight="700" fill="#2E7CB8">34%</text>
+          <rect x="92" y="154" width="560" height="22" rx="4" fill="var(--tintT)"/>
+          <rect x="92" y="154" width="168" height="22" rx="4" fill="#6C4AB6"/>
+          <text x="270" y="171" font-size="13" font-weight="700" fill="#6C4AB6">15%</text>
+          <rect x="92" y="204" width="560" height="22" rx="4" fill="var(--tintT)"/>
+          <rect x="92" y="204" width="123" height="22" rx="4" fill="#3C5A6E"/>
+          <text x="225" y="221" font-size="13" font-weight="700" fill="#3C5A6E">11%</text>
+        </g>
+        <text x="0" y="262" font-size="11" fill="var(--muted)" font-style="italic">Directional. When patients pay directly and providers are paid per service, "do more" is the built-in incentive.</text>
+      </svg>
     </div>
     <p>Most Indian hospital boards are strong on finance and weak on clinical oversight. For an independent director, the real value isn't another margin review, it's putting patient safety, clinical quality, and fairness of access on the agenda with the same weight as the P&L.</p>
     <h2>Four boardroom cases</h2>
