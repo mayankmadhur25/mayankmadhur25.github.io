@@ -15,7 +15,7 @@ permalink: /archive/
       <a href="{% if post.external_link %}{{ post.external_link }}{% else %}{{ post.url }}{% endif %}">
         <span class="ai-ed">ED. {{ post.edition }}</span>
         <span class="ai-title">{{ post.title }}</span>
-        <span class="ai-meta">{{ post.date | date: "%b %-d, %Y" }} &middot; {{ post.category | default: "General" }}</span>
+        <span class="ai-meta">{{ post.date | date: "%b %-d, %Y" }} &middot; {{ post.category | default: "Policy" }}</span>
       </a>
     </li>
     {% endfor %}

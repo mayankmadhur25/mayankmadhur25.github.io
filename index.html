@@ -98,7 +98,7 @@ layout: default
       <option value="Strategy">Strategy</option>
       <option value="Biotech">Biotech</option>
       <option value="Pharma">Pharma</option>
-      <option value="General">General</option>
+      <option value="Geopolitics">Geopolitics</option>
     </select>
     <button id="fBtn" class="f-btn" type="button">Search</button>
     <button id="fClear" class="f-clear" type="button">Clear</button>
@@ -113,7 +113,7 @@ layout: default
   <a class="topic-chip" href="/topics/strategy/">Strategy</a>
   <a class="topic-chip" href="/topics/pharma/">Pharma</a>
   <a class="topic-chip" href="/topics/biotech/">Biotech</a>
-  <a class="topic-chip" href="/topics/general/">General</a>
+  <a class="topic-chip" href="/topics/geopolitics/">Geopolitics</a>
   <a class="topic-chip topic-chip-theme" href="#" data-search="autism">Autism</a>
   <a class="topic-chip" href="/archive/">All perspectives →</a>
 </div>
@@ -124,7 +124,7 @@ layout: default
      data-title="{{ post.title | downcase }}"
      data-excerpt="{{ post.excerpt | strip_html | downcase }}"
      data-year="{{ post.date | date: '%Y' }}"
-     data-topic="{{ post.category | default: 'General' }}{% if post.tags %}, {{ post.tags | join: ', ' }}{% endif %}"
+     data-topic="{{ post.category | default: 'Policy' }}{% if post.tags %}, {{ post.tags | join: ', ' }}{% endif %}"
      href="{% if post.external_link %}{{ post.external_link }}{% else %}{{ post.url }}{% endif %}">
     <div class="card-banner">
       <svg viewBox="0 0 400 140" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
@@ -134,7 +134,7 @@ layout: default
       {% if post.edition %}<span class="card-ed">ED. {{ post.edition }}</span>{% endif %}
     </div>
     <div class="card-body">
-      <p class="card-meta">{{ post.date | date: "%b %-d, %Y" }} · {{ post.category | default: "General" }}</p>
+      <p class="card-meta">{{ post.date | date: "%b %-d, %Y" }} · {{ post.category | default: "Policy" }}</p>
       <h2>{{ post.title }}</h2>
       <p class="card-excerpt">{{ post.excerpt | strip_html | truncate: 130 }}</p>
       <div class="card-foot">
@@ -153,7 +153,7 @@ layout: default
     <p class="stats-sub">Where Healthcare Pulse has focused so far, across {{ site.posts | size }} editions.</p>
 
     {% assign total = site.posts | size %}
-    {% assign cats = "Policy,Strategy,Digital Health,Pharma,Biotech,General" | split: "," %}
+    {% assign cats = "Policy,Strategy,Digital Health,Geopolitics,Pharma,Biotech" | split: "," %}
     <div class="stats-bars" id="statsBars">
       {% for cat in cats %}
         {% assign c = site.posts | where: "category", cat | size %}
