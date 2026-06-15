@@ -99,6 +99,7 @@ layout: default
       <option value="Biotech">Biotech</option>
       <option value="Pharma">Pharma</option>
       <option value="Geopolitics">Geopolitics</option>
+      <option value="Governance">Governance</option>
     </select>
     <button id="fBtn" class="f-btn" type="button">Search</button>
     <button id="fClear" class="f-clear" type="button">Clear</button>
@@ -114,6 +115,7 @@ layout: default
   <a class="topic-chip" href="/topics/pharma/">Pharma</a>
   <a class="topic-chip" href="/topics/biotech/">Biotech</a>
   <a class="topic-chip" href="/topics/geopolitics/">Geopolitics</a>
+  <a class="topic-chip" href="/topics/governance/">Governance</a>
   <a class="topic-chip topic-chip-theme" href="#" data-search="autism">Autism</a>
   <a class="topic-chip" href="/archive/">All perspectives →</a>
 </div>
@@ -153,7 +155,7 @@ layout: default
     <p class="stats-sub">Where Healthcare Pulse has focused so far, across {{ site.posts | size }} editions.</p>
 
     {% assign total = site.posts | size %}
-    {% assign cats = "Policy,Strategy,Digital Health,Geopolitics,Pharma,Biotech" | split: "," %}
+    {% assign cats = "Policy,Strategy,Digital Health,Geopolitics,Governance,Pharma,Biotech" | split: "," %}
     <div class="stats-bars" id="statsBars">
       {% for cat in cats %}
         {% assign c = site.posts | where: "category", cat | size %}
