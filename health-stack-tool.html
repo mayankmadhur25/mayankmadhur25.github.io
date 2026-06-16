@@ -62,6 +62,8 @@ permalink: /tools/health-stack/
   .kpi.good .kv{color:var(--realized)} .kpi.bad .kv{color:var(--gap)}
 
   section{padding:40px 0}
+  .wrap > section{margin-top:56px}
+  .wrap > section:first-of-type{margin-top:40px}
   .sec-head{display:flex;align-items:baseline;gap:15px;margin-bottom:6px}
   .sec-num{font-family:var(--fm);font-size:12px;color:var(--faint);font-weight:500;padding-top:6px}
   .sec-title{font-family:var(--fd);font-size:30px;font-weight:600;letter-spacing:-.02em}
@@ -353,16 +355,19 @@ permalink: /tools/health-stack/
     </div>
   </div>
 
-  <p class="kpi-intro">Four headline reads on the whole stack. <b>Portfolio reality</b> is the average of all ten programmes — how much of everything announced is actually real. The next two split that average by type: rails that <b>deliver a service to a person</b> vs rails that <b>move data between institutions</b>. <b>Widest gap</b> flags the single programme furthest from its own promise.</p>
-  <div class="kpis" id="kpis">
-    <div class="kpi"><div class="kl">Portfolio reality</div><div class="kv" id="kPort">—</div><div class="ks">across all ten rails</div></div>
-    <div class="kpi good"><div class="kl">Direct-service rails</div><div class="kv" id="kServ">—</div><div class="ks" id="kServSub">care or product delivered</div></div>
-    <div class="kpi bad"><div class="kl">Digital-plumbing rails</div><div class="kv" id="kInfra">—</div><div class="ks" id="kInfraSub">data must flow between bodies</div></div>
-    <div class="kpi"><div class="kl">Widest gap</div><div class="kv" id="kGap">—</div><div class="ks" id="kGapName">—</div></div>
-  </div>
-  <p class="kpi-finding" id="kpiFinding"></p>
+  <section>
+    <div class="sec-head"><span class="sec-num">00</span><span class="sec-title">The verdict</span></div>
+    <p class="kpi-intro">Four headline reads on the whole stack. <b>Portfolio reality</b> is the average of all ten programmes — how much of everything announced is actually real. The next two split that average by type: rails that <b>deliver a service to a person</b> vs rails that <b>move data between institutions</b>. <b>Widest gap</b> flags the single programme furthest from its own promise.</p>
+    <div class="kpis" id="kpis">
+      <div class="kpi"><div class="kl">Portfolio reality</div><div class="kv" id="kPort">—</div><div class="ks">across all ten rails</div></div>
+      <div class="kpi good"><div class="kl">Direct-service rails</div><div class="kv" id="kServ">—</div><div class="ks" id="kServSub">care or product delivered</div></div>
+      <div class="kpi bad"><div class="kl">Digital-plumbing rails</div><div class="kv" id="kInfra">—</div><div class="ks" id="kInfraSub">data must flow between bodies</div></div>
+      <div class="kpi"><div class="kl">Widest gap</div><div class="kv" id="kGap">—</div><div class="ks" id="kGapName">—</div></div>
+    </div>
+    <p class="kpi-finding" id="kpiFinding"></p>
+  </section>
 
-  <section style="padding-top:28px">
+  <section>
     <div class="sec-head"><span class="sec-num">01</span><span class="sec-title">Weighting console</span></div>
     <p class="sec-note">Reality blends two things: is it being <b>used</b> (adoption) and is it <b>working</b> (outcome). Decide how much each counts. An investor weights outcome; a ministry tracking rollout weights adoption. The whole board moves with the dial.</p>
     <div class="console">
@@ -378,7 +383,7 @@ permalink: /tools/health-stack/
     </div>
   </section>
 
-  <section style="padding-top:10px">
+  <section>
     <div class="sec-head"><span class="sec-num">02</span><span class="sec-title">The portfolio matrix</span></div>
     <p class="sec-note">A BCG-style read of the stack, adapted. Horizontal axis is <b>adoption</b> (is it used?), vertical is <b>outcome</b> (is it working?), bubble size is the population at stake. The four corners tell you what to do: <b>top-right</b> (high both) = scale and protect it; <b>bottom-right</b> (used but not working) = fix the outcome; <b>top-left</b> (works but unused) = drive adoption; <b>bottom-left</b> (low both) = stop announcing, rebuild. Bubbles redraw as you edit scores.</p>
     <div class="matrix-wrap">
