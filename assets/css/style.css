@@ -497,53 +497,6 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .hp-pros-head{font-weight:800;font-size:17px;color:#0FA3A3}.hp-cons-head{font-weight:800;font-size:17px;color:#C0392B}
 @media(max-width:560px){.hp-swot,.hp-balance{grid-template-columns:1fr}}
 
-/* ── header thinning patch ── */
-.site-header {
-  padding: 10px clamp(16px, 3vw, 40px) !important;
-}
-.logo-img {
-  width: 38px !important;
-  height: 38px !important;
-  border-radius: 8px !important;
-}
-.logo-name {
-  font-size: 18px !important;
-}
-.logo-tag {
-  font-size: 11.5px !important;
-}
-.logo {
-  gap: 10px !important;
-}
-.util {
-  font-size: 11.5px !important;
-}
-.util-in {
-  padding: 5px 24px !important;
-}
-
-/* ── header compact v2 ── */
-.site-header {
-  padding: 8px clamp(16px, 3vw, 40px) !important;
-  min-height: unset !important;
-}
-.logo {
-  gap: 8px !important;
-  align-items: center !important;
-}
-.logo-img {
-  width: 32px !important;
-  height: 32px !important;
-  border-radius: 6px !important;
-  flex: none !important;
-  object-fit: contain !important;
-}
-.logo-name { font-size: 16px !important; }
-.logo-tag  { font-size: 11px !important; }
-.util-in   { padding: 4px 24px !important; }
-.util      { font-size: 11px !important; }
-.site-header nav a { font-size: 14px !important; }
-.nav-subscribe { padding: 7px 16px !important; font-size: 14px !important; }
 
 
 /* ── wider layout ── */
