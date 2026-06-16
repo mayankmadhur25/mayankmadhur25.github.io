@@ -150,6 +150,17 @@ permalink: /tools/health-stack/
   .gap-callout p{font-size:13.5px;color:var(--ink);line-height:1.55}
 
   /* RAILS */
+  .read-key{background:var(--raise);border:1px solid var(--line);border-radius:var(--r);padding:18px 22px;margin:0 0 22px 39px;max-width:70ch;display:flex;flex-direction:column;gap:9px}
+  @media (max-width:760px){.read-key{margin-left:0}}
+  .rk-item{font-size:13.5px;color:var(--ink);line-height:1.5;display:flex;align-items:flex-start;gap:9px}
+  .rk-item b{color:var(--ink);font-weight:700}
+  .rk-dot{width:11px;height:11px;border-radius:3px;flex:0 0 auto;margin-top:3px}
+  .rk-amb{background:var(--line-strong)}
+  .rk-adopt{background:var(--teal)}
+  .rk-out{background:#2E7CB8}
+  .rk-real{background:var(--realized)}
+  .rk-gap{background:repeating-linear-gradient(45deg,var(--gap),var(--gap) 2px,transparent 2px,transparent 5px);border:1px solid var(--gap)}
+  .rk-note{font-size:12.5px;color:var(--muted);font-style:italic;line-height:1.5;margin-top:4px;border-top:1px dashed var(--line-strong);padding-top:10px}
   .rails{display:flex;flex-direction:column;gap:15px}
   .rail{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px 24px;box-shadow:var(--shadow)}
   .rail-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
@@ -385,6 +396,14 @@ permalink: /tools/health-stack/
   <section>
     <div class="sec-head"><span class="sec-num">04</span><span class="sec-title">The rails</span></div>
     <p class="sec-note">Each programme scored 0–5 on ambition, adoption and outcome. Green is what's real; the hatched zone is the gap to what was promised. Below each: why the gap exists, and what would close it. This is analysis, not a press release.</p>
+    <div class="read-key">
+      <div class="rk-item"><span class="rk-dot rk-amb"></span><b>Ambition</b> — how big and well-backed the promise was. The bar's full length.</div>
+      <div class="rk-item"><span class="rk-dot rk-adopt"></span><b>Adoption</b> — is it actually being used? (usage vs target)</div>
+      <div class="rk-item"><span class="rk-dot rk-out"></span><b>Outcome</b> — is it actually working? (evidence of real impact)</div>
+      <div class="rk-item"><span class="rk-dot rk-real"></span><b>Realized</b> = a blend of adoption + outcome, set by the dial above. The green bar.</div>
+      <div class="rk-item"><span class="rk-dot rk-gap"></span><b>Gap</b> = ambition − realized. The hatched zone: how far reality falls short of the promise.</div>
+      <div class="rk-note">Edit any score to test it: "if usage doubled, how much would the gap close?" A reality score caps at 100% — a programme can meet its promise but not exceed its own stated ambition.</div>
+    </div>
     <div class="rails" id="rails"></div>
   </section>
 
@@ -561,8 +580,8 @@ let state = structuredClone(DEFAULTS);
 let weight = 0.5;
 const $ = s => document.querySelector(s);
 const realized = r => (1-weight)*r.adoption + weight*r.outcome;
-const reality  = r => r.ambition>0 ? realized(r)/r.ambition : 0;
-const gapPts   = r => r.ambition - realized(r);
+const reality  = r => r.ambition>0 ? Math.min(1, realized(r)/r.ambition) : 0;
+const gapPts   = r => Math.max(0, r.ambition - realized(r));
 const pct = v => Math.round(v*100) + "%";
 const avg = a => a.length ? a.reduce((x,y)=>x+y,0)/a.length : 0;
 
