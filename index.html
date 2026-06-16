@@ -7,16 +7,20 @@ layout: default
     <h1 class="hero-title">Digital health, <span class="hi-grad">decoded</span>.</h1>
     <svg class="hero-ecg" viewBox="0 0 600 70" preserveAspectRatio="none" aria-hidden="true">
       <defs>
-        <path id="hbPath" d="M0 40 H110 l10 0 8 -22 10 42 14 -58 12 64 10 -40 9 14 H300 l10 0 8 -22 10 42 14 -58 12 64 10 -40 9 14 H490 l10 0 8 -22 10 42 14 -58 12 64 10 -40 9 14 H600"/>
+        <pattern id="ecgGridSm" width="8" height="8" patternUnits="userSpaceOnUse">
+          <path d="M8 0 L0 0 0 8" fill="none" class="ecg-grid-sm" stroke-width="0.5"/>
+        </pattern>
+        <pattern id="ecgGridBig" width="40" height="40" patternUnits="userSpaceOnUse">
+          <rect width="40" height="40" fill="url(#ecgGridSm)"/>
+          <path d="M40 0 L0 0 0 40" fill="none" class="ecg-grid-big" stroke-width="1"/>
+        </pattern>
+        <path id="hbPath" d="M0 44 L40 44 C52 44 56 43 60 43 C66 43 68 36 74 36 C80 36 82 44 88 44 C93 44 97 44 110 44 L120 44 L126 46 L130 47 L134 58 L140 14 L146 54 L150 45 L156 44 L168 44 C182 44 184 33 196 33 C208 33 210 44 224 44 L268 44 C280 44 284 43 288 43 C294 43 296 36 302 36 C308 36 310 44 316 44 C321 44 325 44 338 44 L348 44 L354 46 L358 47 L362 58 L368 14 L374 54 L378 45 L384 44 L396 44 C410 44 412 33 424 33 C436 33 438 44 452 44 L496 44 C508 44 512 43 516 43 C522 43 524 36 530 36 C536 36 538 44 544 44 C549 44 553 44 566 44 L600 44"/>
       </defs>
-      <!-- the blue heartbeat line -->
-      <use href="#hbPath" class="ecg-line" fill="none" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-      <!-- the big glowing dot riding the line -->
-      <circle class="ecg-dot" r="6" fill="#2E7CB8">
-        <animateMotion dur="3s" repeatCount="indefinite" rotate="0">
-          <mpath href="#hbPath"/>
-        </animateMotion>
-      </circle>
+      <rect x="0" y="0" width="600" height="70" fill="url(#ecgGridBig)"/>
+      <use href="#hbPath" class="ecg-base" fill="none" stroke-width="2"/>
+      <use href="#hbPath" class="ecg-sweep" fill="none" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="150 1100">
+        <animate attributeName="stroke-dashoffset" from="0" to="-1250" dur="4s" repeatCount="indefinite"/>
+      </use>
     </svg>
     <p class="hero-sub">The real story behind India's healthcare numbers, for operators, investors, and policy people who want signal, not press releases. One deep dive every Friday, by Mayank Madhur.</p>
     <div class="hero-actions">
