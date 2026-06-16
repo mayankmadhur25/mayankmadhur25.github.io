@@ -14,26 +14,26 @@ sitemap: true
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#13211F;
-    --ink-soft:#3A4A47;
-    --paper:#F6F3EC;
-    --paper-2:#EFEADF;
-    --card:#FCFAF4;
-    --line:#D9D2C2;
-    --teal:#0F5C57;
-    --teal-2:#15716A;
-    --teal-3:#1C8A7E;
-    --teal-deep:#0A3F3B;
-    --marigold:#E0992E;
-    --marigold-2:#CE7A2C;
+    --ink:#1B3A4B;
+    --ink-soft:#43525A;
+    --paper:#F7FAFA;
+    --paper-2:#EAF4F4;
+    --card:#FFFFFF;
+    --line:#E2EDED;
+    --teal:#0FA3A3;
+    --teal-2:#0E8F8F;
+    --teal-3:#2E7CB8;
+    --teal-deep:#1B3A4B;
+    --marigold:#E08A3C;
+    --marigold-2:#C77428;
     --coral:#C2563F;
-    --sage:#6FA39B;
-    --good:#2E7D5B;
+    --sage:#5DA9C4;
+    --good:#37B68A;
     --flag:#C2563F;
     --font-serif:'Fraunces',Georgia,serif;
     --font-tech:'Space Grotesk',system-ui,sans-serif;
     --font-body:'Inter',system-ui,sans-serif;
-    --shadow:0 1px 0 rgba(19,33,31,.04), 0 18px 40px -28px rgba(10,63,59,.45);
+    --shadow:0 1px 0 rgba(27,58,75,.04), 0 18px 40px -28px rgba(15,163,163,.4);
     --maxw:1180px;
   }
   *{box-sizing:border-box}
@@ -49,10 +49,10 @@ sitemap: true
   /* ---------- MASTHEAD ---------- */
   .masthead{
     background:
-      radial-gradient(900px 420px at 88% -10%, rgba(224,153,46,.18), transparent 60%),
-      radial-gradient(700px 500px at -5% 10%, rgba(28,138,126,.16), transparent 55%),
-      linear-gradient(180deg,#0A3F3B 0%, #0C4843 100%);
-    color:#F4EFE2;position:relative;overflow:hidden;
+      radial-gradient(900px 420px at 88% -10%, rgba(224,138,60,.18), transparent 60%),
+      radial-gradient(700px 500px at -5% 10%, rgba(15,163,163,.18), transparent 55%),
+      linear-gradient(180deg,#1B3A4B 0%, #0FA3A3 100%);
+    color:#FFFFFF;position:relative;overflow:hidden;
   }
   .masthead::after{
     content:"";position:absolute;inset:0;opacity:.05;pointer-events:none;
@@ -72,18 +72,18 @@ sitemap: true
   }
   h1.title em{font-style:italic;color:var(--marigold)}
   .subtitle{
-    font-family:var(--font-body);max-width:54ch;color:#CFE0DB;
+    font-family:var(--font-body);max-width:54ch;color:#CFE6EC;
     font-size:clamp(14px,1.7vw,17px);margin-top:14px;line-height:1.5;
   }
   .mast-meta{
-    font-family:var(--font-tech);font-size:12px;color:#9FBEB7;
+    font-family:var(--font-tech);font-size:12px;color:#9FC4D2;
     border-left:2px solid var(--marigold);padding-left:14px;min-width:200px;
   }
-  .mast-meta b{color:#F4EFE2;font-weight:600;display:block;font-size:13.5px}
+  .mast-meta b{color:#FFFFFF;font-weight:600;display:block;font-size:13.5px}
   .mast-meta span{display:block;margin-top:4px}
 
   /* ---------- TABS ---------- */
-  .tabbar-outer{position:sticky;top:0;z-index:30;background:rgba(246,243,236,.92);
+  .tabbar-outer{position:sticky;top:81px;z-index:30;background:rgba(246,243,236,.92);
     backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
   .tabbar{display:flex;gap:2px;max-width:var(--maxw);margin:0 auto;padding:0 14px;
     overflow-x:auto;scrollbar-width:none}
@@ -141,7 +141,7 @@ sitemap: true
     color:var(--marigold-2);font-weight:600}
   .io-box .items{font-size:13.5px;color:var(--ink-soft);margin-top:6px}
   .io-arrow{font-family:var(--font-tech);font-weight:700;color:var(--teal-3);font-size:22px;text-align:center}
-  .io-out{border-color:var(--teal-3);background:linear-gradient(180deg,#F2F8F6,#EAF3F0)}
+  .io-out{border-color:var(--teal-3);background:linear-gradient(180deg,#F2F8F6,#EAF4F4)}
   .io-out .ttl{color:var(--teal)}
   .io-out .items b{color:var(--teal-deep)}
 
@@ -188,13 +188,13 @@ sitemap: true
   .stat .num{font-family:var(--font-serif);font-weight:600;font-size:clamp(26px,3.6vw,38px);line-height:1;color:var(--teal-deep)}
   .stat .num small{font-size:.5em;color:var(--marigold-2);font-family:var(--font-tech);font-weight:600}
   .stat .lab{font-size:13px;color:var(--ink-soft);margin-top:7px;line-height:1.35}
-  .stat .src{font-family:var(--font-tech);font-size:10px;color:#8a8474;margin-top:8px;letter-spacing:.02em}
+  .stat .src{font-family:var(--font-tech);font-size:10px;color:#7E939B;margin-top:8px;letter-spacing:.02em}
 
   /* charts */
   .chart-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow)}
   .chart-card h3{font-family:var(--font-serif);font-weight:600;font-size:18px;margin:0}
   .chart-card .csub{font-size:13px;color:var(--ink-soft);margin:4px 0 14px}
-  .chart-card .csrc{font-family:var(--font-tech);font-size:10.5px;color:#8a8474;margin-top:12px;letter-spacing:.02em}
+  .chart-card .csrc{font-family:var(--font-tech);font-size:10.5px;color:#7E939B;margin-top:12px;letter-spacing:.02em}
   .chart-svg{width:100%;height:auto;display:block;font-family:var(--font-tech)}
   .chart-svg .axis{stroke:var(--line);stroke-width:1}
   .chart-svg .grid{stroke:var(--line);stroke-width:1;stroke-dasharray:2 5;opacity:.7}
@@ -206,7 +206,7 @@ sitemap: true
   /* table */
   .tbl-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
   table{border-collapse:collapse;width:100%;min-width:720px;background:var(--card);font-size:13.5px}
-  thead th{background:var(--teal-deep);color:#EAF3F0;font-family:var(--font-tech);font-weight:500;
+  thead th{background:var(--teal-deep);color:#EAF4F4;font-family:var(--font-tech);font-weight:500;
     text-align:left;padding:12px 14px;font-size:12px;letter-spacing:.04em;position:sticky;top:0}
   tbody td{padding:12px 14px;border-top:1px solid var(--line);vertical-align:top;color:var(--ink-soft)}
   tbody tr:nth-child(even){background:var(--paper)}
@@ -238,16 +238,16 @@ sitemap: true
   .road .card h3{font-size:16px}
   .road .who{font-family:var(--font-tech);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--marigold-2);font-weight:600}
 
-  .callout{background:linear-gradient(180deg,#0C4843,#0A3F3B);color:#EAF3F0;border-radius:16px;
+  .callout{background:linear-gradient(180deg,#0FA3A3,#1B3A4B);color:#EAF4F4;border-radius:16px;
     padding:24px 26px;margin-top:24px}
   .callout .eyebrow{color:var(--marigold)}
   .callout p{font-family:var(--font-serif);font-size:clamp(18px,2.6vw,24px);line-height:1.3;margin:8px 0 0;max-width:62ch}
   .callout p em{color:var(--marigold);font-style:italic}
 
-  footer{background:#0A3F3B;color:#9FBEB7;padding:30px 0;margin-top:10px;font-family:var(--font-tech);font-size:12px}
+  footer{background:#1B3A4B;color:#9FC4D2;padding:30px 0;margin-top:10px;font-family:var(--font-tech);font-size:12px}
   footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
-  footer b{color:#F4EFE2}
-  .src-note{font-family:var(--font-tech);font-size:11px;color:#8a8474;margin-top:14px;letter-spacing:.01em}
+  footer b{color:#FFFFFF}
+  .src-note{font-family:var(--font-tech);font-size:11px;color:#7E939B;margin-top:14px;letter-spacing:.01em}
 
   /* responsive */
   @media(max-width:900px){
@@ -263,19 +263,81 @@ sitemap: true
     .domain .dname{border-right:0;border-bottom:1px solid var(--line)}
     .mast-grid{flex-direction:column;align-items:flex-start}
   }
+  .hp-siteheader {
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    padding: 16px clamp(20px, 4vw, 48px);
+    background: #fff;
+    border-bottom: 1px solid #E2EDED;
+    position: sticky; top: 0; z-index: 50;
+    font-family: 'Manrope', 'Inter', system-ui, sans-serif;
+  }
+  .hp-logo { display: flex; align-items: center; gap: 13px; text-decoration: none; }
+  .hp-logo-img { width: 48px; height: 48px; object-fit: contain; border-radius: 10px; }
+  .hp-logo-name { display: block; font-weight: 800; font-size: 22px; color: #1B3A4B; letter-spacing: -.4px; line-height: 1.1; }
+  .hp-logo-tag { display: block; font-size: 12.5px; color: #7E939B; }
+  .hp-nav { display: flex; gap: 20px; align-items: center; }
+  .hp-nav a { text-decoration: none; font-weight: 700; font-size: 15px; color: #2B3F47; }
+  .hp-nav a:hover { color: #0FA3A3; }
+  .hp-nav a.hp-active { color: #0FA3A3; }
+  .hp-nav-subscribe {
+    background: linear-gradient(90deg,#0FA3A3,#2E7CB8);
+    color: #fff !important; padding: 9px 20px; border-radius: 999px;
+    box-shadow: 0 4px 12px rgba(15,163,163,.35);
+  }
+  .hp-nav-subscribe:hover { filter: brightness(1.08); }
+  .hp-theme-toggle {
+    background: none; border: 1px solid #E2EDED; border-radius: 999px;
+    width: 38px; height: 38px; cursor: pointer; color: #1B3A4B;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .hp-theme-toggle .t-moon { display: none; }
+  [data-theme="dark"] .hp-theme-toggle .t-sun { display: none; }
+  [data-theme="dark"] .hp-theme-toggle .t-moon { display: inline; }
+  [data-theme="dark"] .hp-siteheader { background: #0F1B22; border-bottom-color: #25373F; }
+  [data-theme="dark"] .hp-logo-name { color: #E8F4F4; }
+  [data-theme="dark"] .hp-nav a { color: #B4C7CE; }
+  [data-theme="dark"] .hp-theme-toggle { color: #E8F4F4; border-color: #25373F; }
+  @media (max-width: 760px) {
+    .hp-siteheader { flex-direction: column; gap: 12px; }
+    .hp-nav { flex-wrap: wrap; justify-content: center; gap: 12px; }
+    .hp-logo-tag { display: none; }
+  }
 </style>
 </head>
 <body>
+
+<header class="hp-siteheader">
+  <a class="hp-logo" href="/">
+    <img src="/logo.png" alt="Healthcare Pulse" class="hp-logo-img">
+    <span class="hp-logo-text">
+      <span class="hp-logo-name">Healthcare Pulse</span>
+      <span class="hp-logo-tag">Digital health, decoded · by Mayank Madhur</span>
+    </span>
+  </a>
+  <nav class="hp-nav">
+    <a href="/perspectives/">Perspectives</a>
+    <a href="/about.html">About</a>
+    <a href="/podcast.html">Podcast</a>
+    <a href="/archive/">Archive</a>
+    <a href="/ask/">Ask</a>
+    <a href="/research/" class="hp-active">Research</a>
+    <a class="hp-nav-subscribe" href="https://www.linkedin.com/newsletters/7311231782241083393/" target="_blank" rel="noopener">Subscribe</a>
+    <button id="themeToggle" class="hp-theme-toggle" type="button" aria-label="Toggle dark mode">
+      <svg class="t-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <svg class="t-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+  </nav>
+</header>
 
 <!-- ================= MASTHEAD ================= -->
 <header class="masthead">
   <div class="mast-inner">
     <a href="/about.html" style="display:inline-flex;align-items:center;gap:6px;font-family:var(--font-tech);font-size:12.5px;letter-spacing:.04em;color:#B9D2D6;margin-bottom:16px;text-decoration:none">&larr; Back to Healthcare Pulse</a>
-    <div class="eyebrow">Executive Visual Summary · Doctoral Research Distilled</div>
+    <div class="eyebrow">Executive Visual Summary · Master's Thesis Distilled</div>
     <div class="mast-grid">
       <div>
         <h1 class="title">A Strategic Framework for<br><em>Tech-Enabled Holistic Healthcare</em> in India</h1>
-        <p class="subtitle">Integrating the Social Determinants of Health with India's Digital Public Infrastructure — built around the <strong style="color:#F4EFE2">THRIVE–SDOH</strong> model.</p>
+        <p class="subtitle">Integrating the Social Determinants of Health with India's Digital Public Infrastructure — built around the <strong style="color:#FFFFFF">THRIVE–SDOH</strong> model.</p>
       </div>
       <div class="mast-meta">
         <b>Mayank Madhur</b>
@@ -296,7 +358,6 @@ sitemap: true
     <button class="tab" role="tab" aria-selected="false" data-tab="sdoh"><span class="tnum">05</span>SDOH Integration</button>
     <button class="tab" role="tab" aria-selected="false" data-tab="global"><span class="tnum">06</span>Global Benchmarks</button>
     <button class="tab" role="tab" aria-selected="false" data-tab="roadmap"><span class="tnum">07</span>Roadmap</button>
-    <button class="tab" role="tab" aria-selected="false" data-tab="validation"><span class="tnum">08</span>Data Validation</button>
   </div>
 </div>
 
@@ -328,56 +389,56 @@ sitemap: true
       </g>
 
       <!-- core -->
-      <circle cx="380" cy="300" r="86" fill="#0A3F3B"></circle>
-      <circle cx="380" cy="300" r="86" fill="none" stroke="#E0992E" stroke-width="2" stroke-dasharray="2 6"></circle>
-      <text x="380" y="288" text-anchor="middle" fill="#F4EFE2" style="font-size:30px;font-weight:700">SDOH</text>
-      <text x="380" y="312" text-anchor="middle" fill="#9FBEB7" style="font-size:10.5px;font-weight:500">SOCIAL DETERMINANTS</text>
-      <text x="380" y="326" text-anchor="middle" fill="#9FBEB7" style="font-size:10.5px;font-weight:500">OF HEALTH</text>
+      <circle cx="380" cy="300" r="86" fill="#1B3A4B"></circle>
+      <circle cx="380" cy="300" r="86" fill="none" stroke="#E08A3C" stroke-width="2" stroke-dasharray="2 6"></circle>
+      <text x="380" y="288" text-anchor="middle" fill="#FFFFFF" style="font-size:30px;font-weight:700">SDOH</text>
+      <text x="380" y="312" text-anchor="middle" fill="#9FC4D2" style="font-size:10.5px;font-weight:500">SOCIAL DETERMINANTS</text>
+      <text x="380" y="326" text-anchor="middle" fill="#9FC4D2" style="font-size:10.5px;font-weight:500">OF HEALTH</text>
 
       <!-- T (top) -->
       <g class="node" data-pillar="T" tabindex="0" role="button" aria-label="Technology Backbone">
-        <circle cx="380" cy="118" r="58" fill="#0F5C57"></circle>
+        <circle cx="380" cy="118" r="58" fill="#0FA3A3"></circle>
         <text class="pl-letter" x="380" y="112" text-anchor="middle" fill="#fff" style="font-size:30px">T</text>
-        <text class="pl-label" x="380" y="132" text-anchor="middle" fill="#CFE0DB" style="font-size:9.5px">TECHNOLOGY</text>
+        <text class="pl-label" x="380" y="132" text-anchor="middle" fill="#CFE6EC" style="font-size:9.5px">TECHNOLOGY</text>
       </g>
       <!-- H (top-right) -->
       <g class="node" data-pillar="H" tabindex="0" role="button" aria-label="Human Capital and Capacity">
-        <circle cx="538" cy="209" r="58" fill="#E0992E"></circle>
+        <circle cx="538" cy="209" r="58" fill="#E08A3C"></circle>
         <text class="pl-letter" x="538" y="203" text-anchor="middle" fill="#fff" style="font-size:30px">H</text>
-        <text class="pl-label" x="538" y="223" text-anchor="middle" fill="#fff7e8" style="font-size:9.5px">HUMAN CAPITAL</text>
+        <text class="pl-label" x="538" y="223" text-anchor="middle" fill="#FFF4E8" style="font-size:9.5px">HUMAN CAPITAL</text>
       </g>
       <!-- R (bottom-right) -->
       <g class="node" data-pillar="R" tabindex="0" role="button" aria-label="Responsible Governance">
-        <circle cx="538" cy="391" r="58" fill="#15716A"></circle>
+        <circle cx="538" cy="391" r="58" fill="#0E8F8F"></circle>
         <text class="pl-letter" x="538" y="385" text-anchor="middle" fill="#fff" style="font-size:30px">R</text>
-        <text class="pl-label" x="538" y="405" text-anchor="middle" fill="#CFE0DB" style="font-size:9.5px">GOVERNANCE</text>
+        <text class="pl-label" x="538" y="405" text-anchor="middle" fill="#CFE6EC" style="font-size:9.5px">GOVERNANCE</text>
       </g>
       <!-- I (bottom) -->
       <g class="node" data-pillar="I" tabindex="0" role="button" aria-label="Inclusive SDOH Integration">
-        <circle cx="380" cy="482" r="58" fill="#CE7A2C"></circle>
+        <circle cx="380" cy="482" r="58" fill="#C77428"></circle>
         <text class="pl-letter" x="380" y="476" text-anchor="middle" fill="#fff" style="font-size:30px">I</text>
-        <text class="pl-label" x="380" y="496" text-anchor="middle" fill="#fff7e8" style="font-size:9.5px">INCLUSION</text>
+        <text class="pl-label" x="380" y="496" text-anchor="middle" fill="#FFF4E8" style="font-size:9.5px">INCLUSION</text>
       </g>
       <!-- V (bottom-left) -->
       <g class="node" data-pillar="V" tabindex="0" role="button" aria-label="Value and Cost-Effectiveness">
-        <circle cx="222" cy="391" r="58" fill="#1C8A7E"></circle>
+        <circle cx="222" cy="391" r="58" fill="#2E7CB8"></circle>
         <text class="pl-letter" x="222" y="385" text-anchor="middle" fill="#fff" style="font-size:30px">V</text>
-        <text class="pl-label" x="222" y="405" text-anchor="middle" fill="#CFE0DB" style="font-size:9.5px">VALUE</text>
+        <text class="pl-label" x="222" y="405" text-anchor="middle" fill="#CFE6EC" style="font-size:9.5px">VALUE</text>
       </g>
       <!-- E (top-left) -->
       <g class="node" data-pillar="E" tabindex="0" role="button" aria-label="Empowered Patient and Community Experience">
         <circle cx="222" cy="209" r="58" fill="#C2563F"></circle>
         <text class="pl-letter" x="222" y="203" text-anchor="middle" fill="#fff" style="font-size:30px">E</text>
-        <text class="pl-label" x="222" y="223" text-anchor="middle" fill="#ffeee8" style="font-size:9.5px">EMPOWERMENT</text>
+        <text class="pl-label" x="222" y="223" text-anchor="middle" fill="#FFEEE8" style="font-size:9.5px">EMPOWERMENT</text>
       </g>
 
       <!-- outcomes labels on ring -->
-      <text x="380" y="14" text-anchor="middle" fill="#0A3F3B" style="font-size:11px;font-weight:600;letter-spacing:.1em">↑ BETTER OUTCOMES</text>
-      <text x="744" y="304" text-anchor="end" fill="#0A3F3B" style="font-size:11px;font-weight:600;letter-spacing:.06em">LOWER COST →</text>
-      <text x="380" y="594" text-anchor="middle" fill="#0A3F3B" style="font-size:11px;font-weight:600;letter-spacing:.1em">↓ HEALTH EQUITY</text>
-      <text x="16" y="304" text-anchor="start" fill="#0A3F3B" style="font-size:11px;font-weight:600;letter-spacing:.06em">← BETTER EXPERIENCE</text>
+      <text x="380" y="14" text-anchor="middle" fill="#1B3A4B" style="font-size:11px;font-weight:600;letter-spacing:.1em">↑ BETTER OUTCOMES</text>
+      <text x="744" y="304" text-anchor="end" fill="#1B3A4B" style="font-size:11px;font-weight:600;letter-spacing:.06em">LOWER COST →</text>
+      <text x="380" y="594" text-anchor="middle" fill="#1B3A4B" style="font-size:11px;font-weight:600;letter-spacing:.1em">↓ HEALTH EQUITY</text>
+      <text x="16" y="304" text-anchor="start" fill="#1B3A4B" style="font-size:11px;font-weight:600;letter-spacing:.06em">← BETTER EXPERIENCE</text>
     </svg>
-    <p style="text-align:center;font-family:var(--font-tech);font-size:11px;color:#8a8474;margin:0 0 18px;letter-spacing:.04em">
+    <p style="text-align:center;font-family:var(--font-tech);font-size:11px;color:#7E939B;margin:0 0 18px;letter-spacing:.04em">
       Tap any pillar to jump to its definition. The dashed ring is the <strong>Quadruple Aim</strong> the model is engineered to deliver.
     </p>
 
@@ -511,31 +572,31 @@ sitemap: true
       <!-- helper: x = 150 + (val-60)/(86-60)*560 -->
       <g>
         <!-- Japan 84.7 -->
-        <rect x="150" y="28" width="531" height="24" fill="#0F5C57"></rect>
+        <rect x="150" y="28" width="531" height="24" fill="#0FA3A3"></rect>
         <text class="lbl" x="144" y="44" text-anchor="end">Japan</text>
         <text class="val" x="688" y="44">84.7</text>
         <!-- Singapore 83.7 -->
-        <rect x="150" y="62" width="510" height="24" fill="#15716A"></rect>
+        <rect x="150" y="62" width="510" height="24" fill="#0E8F8F"></rect>
         <text class="lbl" x="144" y="78" text-anchor="end">Singapore</text>
         <text class="val" x="667" y="78">83.7</text>
         <!-- Sweden 83.3 -->
-        <rect x="150" y="96" width="502" height="24" fill="#15716A"></rect>
+        <rect x="150" y="96" width="502" height="24" fill="#0E8F8F"></rect>
         <text class="lbl" x="144" y="112" text-anchor="end">Sweden</text>
         <text class="val" x="659" y="112">83.3</text>
         <!-- UK 81.2 -->
-        <rect x="150" y="130" width="457" height="24" fill="#1C8A7E"></rect>
+        <rect x="150" y="130" width="457" height="24" fill="#2E7CB8"></rect>
         <text class="lbl" x="144" y="146" text-anchor="end">UK</text>
         <text class="val" x="614" y="146">81.2</text>
         <!-- US 78.7 -->
-        <rect x="150" y="164" width="403" height="24" fill="#6FA39B"></rect>
+        <rect x="150" y="164" width="403" height="24" fill="#5DA9C4"></rect>
         <text class="lbl" x="144" y="180" text-anchor="end">USA</text>
         <text class="val" x="560" y="180">78.7</text>
         <!-- China 77.3 -->
-        <rect x="150" y="198" width="373" height="24" fill="#6FA39B"></rect>
+        <rect x="150" y="198" width="373" height="24" fill="#5DA9C4"></rect>
         <text class="lbl" x="144" y="214" text-anchor="end">China</text>
         <text class="val" x="530" y="214">77.3</text>
         <!-- Bangladesh 74.0 -->
-        <rect x="150" y="232" width="301" height="24" fill="#CE7A2C"></rect>
+        <rect x="150" y="232" width="301" height="24" fill="#C77428"></rect>
         <text class="lbl" x="144" y="248" text-anchor="end">Bangladesh</text>
         <text class="val" x="458" y="248">74.0</text>
         <!-- India 70.7 -->
@@ -582,11 +643,11 @@ sitemap: true
         <circle cx="307" cy="109" r="4" fill="#C2563F"></circle>
         <circle cx="420" cy="131.8" r="4" fill="#C2563F"></circle><text class="val" x="420" y="124" text-anchor="middle" style="fill:#C2563F">39.4</text>
         <!-- GHE line: 28.6,29,41,48 -> 28.6->164.2 ; 29->163 ; 41->127 ; 48->106 -->
-        <polyline fill="none" stroke="#0F5C57" stroke-width="3" points="80,164.2 193,163 307,127 420,106"></polyline>
-        <circle cx="80" cy="164.2" r="4" fill="#0F5C57"></circle><text class="val" x="80" y="180" text-anchor="middle">28.6</text>
-        <circle cx="420" cy="106" r="4" fill="#0F5C57"></circle><text class="val" x="420" y="98" text-anchor="middle">48.0</text>
+        <polyline fill="none" stroke="#0FA3A3" stroke-width="3" points="80,164.2 193,163 307,127 420,106"></polyline>
+        <circle cx="80" cy="164.2" r="4" fill="#0FA3A3"></circle><text class="val" x="80" y="180" text-anchor="middle">28.6</text>
+        <circle cx="420" cy="106" r="4" fill="#0FA3A3"></circle><text class="val" x="420" y="98" text-anchor="middle">48.0</text>
       </svg>
-      <div class="legend"><span><i style="background:#C2563F"></i>Out-of-pocket (% of THE)</span><span><i style="background:#0F5C57"></i>Government health spend (% of THE)</span></div>
+      <div class="legend"><span><i style="background:#C2563F"></i>Out-of-pocket (% of THE)</span><span><i style="background:#0FA3A3"></i>Government health spend (% of THE)</span></div>
       <div class="csrc">Source: National Health Accounts 2021-22, released Sept 2024 (NHA / NITI Aayog). Thesis cited ~60–62%; <b style="color:var(--flag)">updated to 39.4%</b>.</div>
     </div>
 
@@ -599,19 +660,19 @@ sitemap: true
         <line class="axis" x1="50" y1="250" x2="450" y2="250"></line>
         <!-- scale 0..45 -> height; y=250-val/45*210 ; bar width 50 -->
         <!-- Mar21 0.3 -->
-        <rect x="62" y="248.6" width="50" height="1.4" fill="#1C8A7E"></rect>
+        <rect x="62" y="248.6" width="50" height="1.4" fill="#2E7CB8"></rect>
         <text class="lbl" x="87" y="268" text-anchor="middle">Mar'21</text><text class="val" x="87" y="242" text-anchor="middle">0.3</text>
         <!-- 2022 ~10 -->
-        <rect x="142" y="203.3" width="50" height="46.7" fill="#1C8A7E"></rect>
+        <rect x="142" y="203.3" width="50" height="46.7" fill="#2E7CB8"></rect>
         <text class="lbl" x="167" y="268" text-anchor="middle">2022</text><text class="val" x="167" y="196" text-anchor="middle">10</text>
         <!-- Jul23 13.9 -->
-        <rect x="222" y="185.1" width="50" height="64.9" fill="#15716A"></rect>
+        <rect x="222" y="185.1" width="50" height="64.9" fill="#0E8F8F"></rect>
         <text class="lbl" x="247" y="268" text-anchor="middle">Jul'23</text><text class="val" x="247" y="178" text-anchor="middle">13.9</text>
         <!-- Dec24 31.86 -->
-        <rect x="302" y="101.3" width="50" height="148.7" fill="#0F5C57"></rect>
+        <rect x="302" y="101.3" width="50" height="148.7" fill="#0FA3A3"></rect>
         <text class="lbl" x="327" y="268" text-anchor="middle">Dec'24</text><text class="val" x="327" y="94" text-anchor="middle">31.9</text>
         <!-- Nov25 43 -->
-        <rect x="382" y="49.3" width="50" height="200.7" fill="#0A3F3B"></rect>
+        <rect x="382" y="49.3" width="50" height="200.7" fill="#1B3A4B"></rect>
         <text class="lbl" x="407" y="268" text-anchor="middle">Nov'25</text><text class="val" x="407" y="42" text-anchor="middle">43</text>
       </svg>
       <div class="csrc">Source: MoHFW / NHA, Rajya Sabha reply 23 Nov 2025. Status: <b style="color:var(--good)">current &amp; valid</b>.</div>
@@ -627,11 +688,11 @@ sitemap: true
         <!-- scale 0..100 -> y=250-val/100*210 ; x: 6 pts 80..420 step 68 -->
         <!-- 14.7->219.1 ;30.4->186.2 ;50.6->143.7 ;72.2->98.4 ;84.5->72.5 ;90->61 -->
         <polygon points="80,250 80,219.1 148,186.2 216,143.7 284,98.4 352,72.5 420,61 420,250" fill="rgba(15,92,87,.16)"></polygon>
-        <polyline fill="none" stroke="#0F5C57" stroke-width="3" points="80,219.1 148,186.2 216,143.7 284,98.4 352,72.5 420,61"></polyline>
-        <g fill="#0F5C57">
+        <polyline fill="none" stroke="#0FA3A3" stroke-width="3" points="80,219.1 148,186.2 216,143.7 284,98.4 352,72.5 420,61"></polyline>
+        <g fill="#0FA3A3">
           <circle cx="80" cy="219.1" r="4"></circle><circle cx="148" cy="186.2" r="4"></circle>
           <circle cx="216" cy="143.7" r="4"></circle><circle cx="284" cy="98.4" r="4"></circle>
-          <circle cx="352" cy="72.5" r="4"></circle><circle cx="420" cy="61" r="5" fill="#E0992E"></circle>
+          <circle cx="352" cy="72.5" r="4"></circle><circle cx="420" cy="61" r="5" fill="#E08A3C"></circle>
         </g>
         <text class="val" x="80" y="211" text-anchor="middle">14.7</text>
         <text class="val" x="420" y="52" text-anchor="middle" style="fill:#C2823A">90+</text>
@@ -828,96 +889,6 @@ sitemap: true
   </div>
 </section>
 
-<!-- ============ 08 · VALIDATION ============ -->
-<section class="panel pad" id="validation" role="tabpanel">
-  <div class="sec-head">
-    <div class="eyebrow">Research integrity</div>
-    <h2>Thesis claim vs. current evidence</h2>
-    <p>Headline figures from the thesis, re-validated against the latest official sources. Where reality has moved, the figure is flagged for update — the framework's logic holds, but the numbers are now stronger.</p>
-  </div>
-
-  <div class="tbl-scroll">
-    <table>
-      <thead>
-        <tr><th>Claim</th><th>Thesis figure</th><th>Current validated figure</th><th>Latest source (year)</th><th>Status</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Out-of-pocket health spend</td>
-          <td>~60–62% of total health expenditure</td>
-          <td>39.4% (2021-22), down from 64.2% in 2013-14; govt share now 48%</td>
-          <td>National Health Accounts 2021-22, NHA / NITI Aayog (2024)</td>
-          <td><span class="pill update">Update required</span></td>
-        </tr>
-        <tr>
-          <td>ABHA health IDs created</td>
-          <td>~74–80 crore (2025)</td>
-          <td>90+ crore (2026); 84.5 cr in 2025</td>
-          <td>NHA / ABDM (2026)</td>
-          <td><span class="pill update">Update required</span></td>
-        </tr>
-        <tr>
-          <td>Health records linked to ABHA</td>
-          <td>~49–67 crore</td>
-          <td>100+ crore; doubled from 50 cr (Feb 2025) in 15 months</td>
-          <td>NHA / ABDM (2026)</td>
-          <td><span class="pill update">Update required</span></td>
-        </tr>
-        <tr>
-          <td>PM-JAY coverage</td>
-          <td>₹5 lakh cover, bottom 40% (~500M)</td>
-          <td>55 crore people / 12.34 cr families; extended to all seniors 70+ (Ayushman Vay Vandana, Oct 2024)</td>
-          <td>NHA &amp; PMINDIA (2024–25)</td>
-          <td><span class="pill update">Update required</span></td>
-        </tr>
-        <tr>
-          <td>eSanjeevani teleconsultations</td>
-          <td>43 crore (Nov 2025)</td>
-          <td>43 crore as of 23 Nov 2025; world's largest telemedicine service</td>
-          <td>MoHFW / NHA, Rajya Sabha reply (2025)</td>
-          <td><span class="pill valid">Valid</span></td>
-        </tr>
-        <tr>
-          <td>India life expectancy</td>
-          <td>70.73 years (2023)</td>
-          <td>~70.7 years — confirmed; ~13-yr gap to top peers</td>
-          <td>World Bank / WHO (2023)</td>
-          <td><span class="pill valid">Valid</span></td>
-        </tr>
-        <tr>
-          <td>Total health expenditure (% GDP)</td>
-          <td>Historically ~1% (govt)</td>
-          <td>3.83% of GDP total; govt health spend 1.84% of GDP (2021-22)</td>
-          <td>National Health Accounts 2021-22 (2024)</td>
-          <td><span class="pill update">Update required</span></td>
-        </tr>
-        <tr>
-          <td>ABDM ecosystem integrations</td>
-          <td>Registries &amp; HFR rollout</td>
-          <td>450+ public &amp; private health-tech solutions integrated</td>
-          <td>NHA / ABDM (2026)</td>
-          <td><span class="pill valid">Valid</span></td>
-        </tr>
-        <tr>
-          <td>PM-JAY hospital procedures</td>
-          <td>40 million+ (early 2020s)</td>
-          <td>7.37 crore admissions; 49% women beneficiaries</td>
-          <td>PMINDIA / NHA (2024)</td>
-          <td><span class="pill update">Update required</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="grid-3" style="margin-top:24px">
-    <div class="card"><div class="kicker">Gap to address</div><h3>Outcome evidence</h3><p>The model is validated by triangulation and case scoring, not yet by longitudinal field trials. The proposed pilots are how that gap closes.</p></div>
-    <div class="card"><div class="kicker">Gap to address</div><h3>Data interoperability</h3><p>Linking health, welfare and social data across sectors remains the binding constraint on the "R" and "I" pillars.</p></div>
-    <div class="card"><div class="kicker">Enhancement</div><h3>Equity guardrails</h3><p>As AI scales, fairness auditing and offline access must be mandated to prevent the poor being excluded from the very tools meant to help them.</p></div>
-  </div>
-
-  <p class="src-note">Sources prioritised: National Health Authority, Ministry of Health &amp; Family Welfare, NITI Aayog, World Bank, WHO, PIB and parliamentary replies. Figures current to mid-2026. Statistics are drawn from official dashboards and releases; AI-accuracy and behaviour-change figures reflect the thesis's cited studies and are noted as such.</p>
-</section>
-
 </main>
 
 <footer>
@@ -969,6 +940,20 @@ sitemap: true
     nd.addEventListener('click', function(){ lightPillar(letter); });
     nd.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); lightPillar(letter);} });
   });
+})();
+</script>
+<script>
+(function(){
+  var saved = localStorage.getItem('hp-theme');
+  if(saved === 'dark'){ document.documentElement.setAttribute('data-theme','dark'); }
+  var tt = document.getElementById('themeToggle');
+  if(tt){
+    tt.addEventListener('click', function(){
+      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      if(isDark){ document.documentElement.removeAttribute('data-theme'); localStorage.setItem('hp-theme','light'); }
+      else { document.documentElement.setAttribute('data-theme','dark'); localStorage.setItem('hp-theme','dark'); }
+    });
+  }
 })();
 </script>
 <script data-goatcounter="https://mayankmadhur.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
