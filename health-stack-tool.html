@@ -145,6 +145,7 @@ permalink: /tools/health-stack/
   .aim .acount small{font-size:14px;color:var(--faint);font-weight:400}
   .aim .ad{font-size:11.5px;color:var(--muted);margin-top:7px;line-height:1.4}
   .aim .aavg{font-family:var(--fm);font-size:11px;font-weight:600;margin-top:9px}
+  .aim .awhy{font-size:12px;color:var(--ink);line-height:1.5;margin-top:12px;padding-top:11px;border-top:1px solid var(--line)}
   .gap-callout{margin-top:16px;background:color-mix(in srgb,var(--gap) 9%,transparent);border:1px solid color-mix(in srgb,var(--gap) 26%,transparent);border-radius:var(--r);padding:16px 18px}
   .gap-callout h4{font-family:var(--fd);font-size:17px;font-weight:600;margin-bottom:5px}
   .gap-callout p{font-size:13.5px;color:var(--ink);line-height:1.55}
@@ -568,11 +569,11 @@ const BANDS = [
 ];
 const band = r => BANDS.find(b => r >= b.min);
 const AIM_META = {
-  "Outcomes":  {c:"var(--realized)", d:"Better population health"},
-  "Experience":{c:"var(--teal)",     d:"Better patient experience"},
-  "Cost":      {c:"var(--warn)",      d:"Lower out-of-pocket cost"},
-  "Care team": {c:"var(--gap)",       d:"A well, supported workforce"},
-  "Equity":    {c:"var(--bad)",       d:"Care that reaches everyone"}
+  "Outcomes":  {c:"var(--realized)", d:"Better population health", why:"Most rails claim an outcomes link, but few prove it. Records and IDs are counted; actual health change is rarely measured. The gap is evidence, not ambition."},
+  "Experience":{c:"var(--teal)",     d:"Better patient experience", why:"Teleconsultation and faster claims genuinely improve experience where they reach people. The gap is coverage: the smooth experience exists for some, not the majority still seen outside the network."},
+  "Cost":      {c:"var(--warn)",      d:"Lower out-of-pocket cost", why:"Insurance-exchange and scheme rails target cost, but India still pays ~46% out of pocket. Thin payer participation means the promised savings haven't reached patients at scale."},
+  "Care team": {c:"var(--gap)",       d:"A well, supported workforce", why:"The emptiest column. Almost no rail is built for the doctors, nurses and ASHAs delivering care. A burnt-out workforce quietly breaks everything above it — this is the stack's blind spot."},
+  "Equity":    {c:"var(--bad)",       d:"Care that reaches everyone", why:"India's strongest aim. Human-channel programmes (Arogya Mandirs, eSanjeevani) reach people where they are, so equity-serving rails score highest. The gap is depth of service, not reach."}
 };
 const AIM_ORDER = ["Outcomes","Experience","Cost","Care team","Equity"];
 
@@ -734,7 +735,8 @@ function buildAims(){
     const m=AIM_META[a];
     return `<div class="aim"><div class="acap" style="background:${m.c}"></div>
       <div class="an">${a}</div><div class="acount" id="ac-${a.replace(' ','')}">—<small>/10</small></div>
-      <div class="ad">${m.d}</div><div class="aavg" id="aa-${a.replace(' ','')}" style="color:${m.c}"></div></div>`;
+      <div class="ad">${m.d}</div><div class="aavg" id="aa-${a.replace(' ','')}" style="color:${m.c}"></div>
+      <div class="awhy">${m.why}</div></div>`;
   }).join("");
 }
 
