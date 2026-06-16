@@ -134,6 +134,8 @@ permalink: /tools/health-stack/
   .band-chip .bd{width:9px;height:9px;border-radius:50%}
   .kpi-finding{font-size:13.5px;color:var(--muted);margin:15px 0 0 2px;line-height:1.55;max-width:80ch}
   .kpi-finding b{color:var(--ink);font-weight:600}
+  .kpi-intro{font-size:13.5px;color:var(--muted);margin:0 0 16px 2px;line-height:1.55;max-width:80ch}
+  .kpi-intro b{color:var(--ink);font-weight:600}
   @media (max-width:760px){.about{grid-template-columns:1fr}}
 
   /* QUINTUPLE AIM */
@@ -351,6 +353,7 @@ permalink: /tools/health-stack/
     </div>
   </div>
 
+  <p class="kpi-intro">Four headline reads on the whole stack. <b>Portfolio reality</b> is the average of all ten programmes — how much of everything announced is actually real. The next two split that average by type: rails that <b>deliver a service to a person</b> vs rails that <b>move data between institutions</b>. <b>Widest gap</b> flags the single programme furthest from its own promise.</p>
   <div class="kpis" id="kpis">
     <div class="kpi"><div class="kl">Portfolio reality</div><div class="kv" id="kPort">—</div><div class="ks">across all ten rails</div></div>
     <div class="kpi good"><div class="kl">Direct-service rails</div><div class="kv" id="kServ">—</div><div class="ks" id="kServSub">care or product delivered</div></div>
@@ -377,7 +380,7 @@ permalink: /tools/health-stack/
 
   <section style="padding-top:10px">
     <div class="sec-head"><span class="sec-num">02</span><span class="sec-title">The portfolio matrix</span></div>
-    <p class="sec-note">A BCG-style read of the stack, adapted. Horizontal axis is adoption, vertical is outcome, bubble size is the population at stake. Where a programme lands tells you what to do with it: scale it, fix it, or stop announcing it. Bubbles redraw as you edit scores.</p>
+    <p class="sec-note">A BCG-style read of the stack, adapted. Horizontal axis is <b>adoption</b> (is it used?), vertical is <b>outcome</b> (is it working?), bubble size is the population at stake. The four corners tell you what to do: <b>top-right</b> (high both) = scale and protect it; <b>bottom-right</b> (used but not working) = fix the outcome; <b>top-left</b> (works but unused) = drive adoption; <b>bottom-left</b> (low both) = stop announcing, rebuild. Bubbles redraw as you edit scores.</p>
     <div class="matrix-wrap">
       <svg class="matrix-svg" id="matrix" viewBox="0 0 620 560" role="img" aria-label="Portfolio matrix of adoption versus outcome"></svg>
       <div class="mtip" id="mtip"></div>
