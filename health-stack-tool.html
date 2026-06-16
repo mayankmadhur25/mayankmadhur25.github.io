@@ -1,0 +1,816 @@
+---
+layout: null
+permalink: /tools/health-stack/
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>India Digital Health Adoption Index — Healthcare Pulse</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F7FAFA; --card:#FFFFFF; --raise:#FBFDFD;
+    --ink:#1B3A4B; --muted:#566561; --faint:#7E939B;
+    --line:#E2EDED; --line-strong:#CFDDDD;
+    --teal:#0FA3A3; --realized:#0FA3A3; --gap:#E08A3C;
+    --good:#37B68A; --warn:#E08A3C; --bad:#C2563F;
+    --shadow:0 1px 2px rgba(27,58,75,.05), 0 14px 36px -22px rgba(15,163,163,.3);
+    --r:12px; --r-sm:8px;
+    --fd:"Manrope","Inter",system-ui,sans-serif; --fb:"Manrope","Inter",system-ui,sans-serif; --fm:"IBM Plex Mono",ui-monospace,monospace;
+  }
+  html[data-theme="dark"]{
+    --paper:#0F1B22; --card:#16252C; --raise:#1A2B33;
+    --ink:#E8F4F4; --muted:#9AADA8; --faint:#7E939B;
+    --line:#25373F; --line-strong:#2F444C;
+    --teal:#1DB6B6; --realized:#37B68A; --gap:#E8A05A;
+    --good:#37B68A; --warn:#E8A05A; --bad:#D6694F;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 22px 46px -24px rgba(0,0,0,.75);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{font-family:var(--fb);background:var(--paper);color:var(--ink);font-size:16px;line-height:1.5;letter-spacing:-.005em;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;transition:background .4s,color .4s}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 26px}
+  a{color:var(--teal);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--teal) 32%,transparent)}
+  a:hover{border-bottom-color:var(--teal)}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+  :focus-visible{outline:2px solid var(--realized);outline-offset:2px;border-radius:5px}
+
+  /* HEADER */
+  header{padding:46px 0 30px;border-bottom:1px solid var(--line)}
+  .eyebrow{font-family:var(--fm);font-size:11.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--realized)}
+  .head-row{display:flex;justify-content:space-between;align-items:flex-start;gap:28px;margin-top:16px;flex-wrap:wrap}
+  h1{font-family:var(--fd);font-weight:600;font-size:clamp(34px,6vw,62px);line-height:.98;letter-spacing:-.025em;max-width:16ch}
+  h1 em{font-style:italic;font-weight:500;color:var(--realized)}
+  .lede{margin-top:18px;color:var(--muted);font-size:18.5px;max-width:60ch;font-family:var(--fd);font-weight:400;line-height:1.45}
+  .head-tools{display:flex;flex-direction:column;align-items:flex-end;gap:11px;flex-shrink:0}
+  .chip{font-family:var(--fm);font-size:11px;color:var(--muted);border:1px solid var(--line-strong);border-radius:100px;padding:6px 12px;white-space:nowrap}
+  .toggle{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line-strong);border-radius:100px;padding:7px 13px;font-size:12.5px;font-weight:500;color:var(--muted);transition:.2s}
+  .toggle:hover{color:var(--ink);border-color:var(--faint)}
+  .toggle svg{width:14px;height:14px}
+
+  /* KPI BAND */
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:30px 0 6px;background:var(--card);box-shadow:var(--shadow)}
+  .kpi{padding:22px 24px;border-right:1px solid var(--line)}
+  .kpi:last-child{border-right:none}
+  .kpi .kl{font-size:11.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--faint)}
+  .kpi .kv{font-family:var(--fm);font-weight:600;font-size:44px;line-height:1;margin-top:12px;letter-spacing:-.04em;font-variant-numeric:tabular-nums;transition:color .3s}
+  .kpi .ks{font-size:12.5px;color:var(--muted);margin-top:8px;min-height:1.2em}
+  .kpi.good .kv{color:var(--realized)} .kpi.bad .kv{color:var(--gap)}
+
+  section{padding:40px 0}
+  .sec-head{display:flex;align-items:baseline;gap:15px;margin-bottom:6px}
+  .sec-num{font-family:var(--fm);font-size:12px;color:var(--faint);font-weight:500;padding-top:6px}
+  .sec-title{font-family:var(--fd);font-size:30px;font-weight:600;letter-spacing:-.02em}
+  .sec-note{color:var(--muted);font-size:15px;margin:6px 0 24px 39px;max-width:70ch;line-height:1.55}
+  @media (max-width:760px){.sec-note{margin-left:0}}
+
+  /* CONSOLE */
+  .console{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px 26px;box-shadow:var(--shadow);display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center}
+  .wtop{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--fm);font-size:13.5px;margin-bottom:7px}
+  .wtop b{font-weight:600}
+  .wlab{display:flex;justify-content:space-between;font-size:11.5px;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;margin-top:9px}
+  .console-actions{display:flex;gap:10px;align-items:center}
+  .btn{border:1px solid var(--line-strong);border-radius:var(--r-sm);padding:10px 16px;font-size:13px;font-weight:600;color:var(--ink);background:var(--raise);transition:.18s;display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+  .btn:hover{border-color:var(--realized);color:var(--realized)}
+  .btn svg{width:14px;height:14px}
+  .btn.primary{background:var(--teal);color:#fff;border-color:var(--teal)}
+  html[data-theme="dark"] .btn.primary{color:#08110F}
+  .btn.primary:hover{filter:brightness(1.08)}
+
+  input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:5px;border-radius:100px;background:var(--line-strong);outline-offset:6px}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:19px;height:19px;border-radius:50%;background:var(--card);border:2.5px solid var(--realized);box-shadow:0 1px 4px rgba(0,0,0,.18);cursor:pointer;transition:transform .12s}
+  input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.12)}
+  input[type=range]::-moz-range-thumb{width:19px;height:19px;border-radius:50%;background:var(--card);border:2.5px solid var(--realized);cursor:pointer}
+  input[type=range].score{height:4px}
+  input[type=range].score::-webkit-slider-thumb{width:15px;height:15px;border-width:2px}
+
+  /* MATRIX */
+  .matrix-wrap{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:22px 24px;position:relative}
+  .matrix-svg{width:100%;height:auto;display:block;overflow:visible}
+  .q-rect{transition:fill .3s}
+  .q-label{font-family:var(--fm);font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+  .q-sub{font-family:var(--fb);font-size:10px}
+  .axis-t{font-family:var(--fm);font-size:11px;fill:var(--muted);font-weight:500}
+  .axis-title{font-family:var(--fm);font-size:11.5px;font-weight:600;fill:var(--ink);letter-spacing:.05em;text-transform:uppercase}
+  .bub{cursor:pointer;transition:transform .12s}
+  .bub:hover{transform:scale(1.06)}
+  .bub-code{font-family:var(--fm);font-weight:600;font-size:11px;pointer-events:none;text-anchor:middle;dominant-baseline:central}
+  .mtip{position:absolute;pointer-events:none;background:var(--ink);color:var(--paper);border-radius:9px;padding:11px 13px;font-size:12px;max-width:230px;opacity:0;transform:translateY(4px);transition:opacity .18s,transform .18s;z-index:20;box-shadow:0 10px 30px rgba(0,0,0,.32)}
+  .mtip.show{opacity:1;transform:translateY(0)}
+  .mtip b{font-family:var(--fd);font-size:14px;font-weight:600;display:block;margin-bottom:4px}
+  .mtip .row{display:flex;justify-content:space-between;gap:14px;font-family:var(--fm);margin-top:2px}
+  .mtip .row span:last-child{font-weight:600}
+  .legend{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:6px 18px;margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
+  .leg{display:flex;align-items:center;gap:9px;font-size:12.5px}
+  .leg .lc{font-family:var(--fm);font-weight:600;font-size:10px;color:#fff;width:30px;height:18px;border-radius:5px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+  .leg .ln{color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .leg .lv{margin-left:auto;font-family:var(--fm);font-weight:600;font-variant-numeric:tabular-nums}
+  .mhint{font-size:12px;color:var(--muted);margin-top:14px}
+  .mhint b{color:var(--ink)}
+  .gridline{stroke:var(--line);opacity:.55}
+  .matrix-finding{margin-top:16px;background:color-mix(in srgb,var(--realized) 7%,transparent);border:1px solid color-mix(in srgb,var(--realized) 22%,transparent);border-radius:var(--r-sm);padding:14px 16px;font-size:13.5px;color:var(--ink);line-height:1.55}
+  .matrix-finding b{font-weight:600}
+  .matrix-finding .ft{font-family:var(--fm);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--realized);display:block;margin-bottom:5px}
+
+  /* ABOUT / HOW TO USE */
+  .about{display:grid;grid-template-columns:1.12fr 1fr;gap:18px;margin-top:32px}
+  .about-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:24px 26px}
+  .about-eyebrow{font-family:var(--fm);font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--realized);margin-bottom:11px}
+  .about-card h3{font-family:var(--fd);font-size:22px;font-weight:600;letter-spacing:-.015em;margin-bottom:8px}
+  .lede2{font-size:14px;color:var(--muted);line-height:1.58}
+  .lede2 b{color:var(--ink);font-weight:600}
+  .how{display:flex;flex-direction:column;gap:14px}
+  .how-step{display:grid;grid-template-columns:28px 1fr;gap:13px;align-items:start}
+  .how-step .n{font-family:var(--fm);font-weight:600;font-size:13px;color:#fff;background:var(--teal);width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center}
+  html[data-theme="dark"] .how-step .n{color:#08110F}
+  .how-step .t{font-size:13.5px;color:var(--ink);line-height:1.45}
+  .how-step .t b{font-weight:600}
+  .band-legend{display:flex;flex-wrap:wrap;gap:10px 14px;margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
+  .band-chip{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;color:var(--muted);font-weight:500}
+  .band-chip .bd{width:9px;height:9px;border-radius:50%}
+  .kpi-finding{font-size:13.5px;color:var(--muted);margin:15px 0 0 2px;line-height:1.55;max-width:80ch}
+  .kpi-finding b{color:var(--ink);font-weight:600}
+  @media (max-width:760px){.about{grid-template-columns:1fr}}
+
+  /* QUINTUPLE AIM */
+  .aims{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+  .aim{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px 16px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .aim .acap{position:absolute;top:0;left:0;right:0;height:4px}
+  .aim .an{font-family:var(--fd);font-weight:600;font-size:16px;letter-spacing:-.01em;margin-top:4px}
+  .aim .acount{font-family:var(--fm);font-weight:600;font-size:34px;letter-spacing:-.03em;margin-top:10px;line-height:1}
+  .aim .acount small{font-size:14px;color:var(--faint);font-weight:400}
+  .aim .ad{font-size:11.5px;color:var(--muted);margin-top:7px;line-height:1.4}
+  .aim .aavg{font-family:var(--fm);font-size:11px;font-weight:600;margin-top:9px}
+  .gap-callout{margin-top:16px;background:color-mix(in srgb,var(--gap) 9%,transparent);border:1px solid color-mix(in srgb,var(--gap) 26%,transparent);border-radius:var(--r);padding:16px 18px}
+  .gap-callout h4{font-family:var(--fd);font-size:17px;font-weight:600;margin-bottom:5px}
+  .gap-callout p{font-size:13.5px;color:var(--ink);line-height:1.55}
+
+  /* RAILS */
+  .rails{display:flex;flex-direction:column;gap:15px}
+  .rail{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px 24px;box-shadow:var(--shadow)}
+  .rail-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+  .rail-id{display:flex;align-items:center;gap:13px}
+  .rail-code{font-family:var(--fm);font-weight:600;font-size:12px;color:#fff;min-width:34px;height:24px;padding:0 6px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center}
+  .rail-name{font-family:var(--fd);font-size:21px;font-weight:600;letter-spacing:-.015em}
+  .rail-name span{font-family:var(--fb);font-weight:400;font-size:13px;color:var(--muted);display:block;margin-top:0}
+  .rail-right{display:flex;align-items:center;gap:14px}
+  .rail-score{font-family:var(--fm);font-weight:600;font-size:30px;letter-spacing:-.03em;font-variant-numeric:tabular-nums;transition:color .3s}
+  .pill{font-size:12px;font-weight:600;padding:6px 12px;border-radius:100px;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+  .pill .dot{width:7px;height:7px;border-radius:50%;background:currentColor}
+  .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px}
+  .tag{font-family:var(--fm);font-size:10.5px;font-weight:500;color:var(--muted);background:color-mix(in srgb,var(--teal) 8%,transparent);border:1px solid color-mix(in srgb,var(--teal) 18%,transparent);padding:3px 9px;border-radius:100px}
+  .tag.layer{color:var(--ink);font-weight:600;background:color-mix(in srgb,var(--ink) 6%,transparent);border-color:color-mix(in srgb,var(--ink) 14%,transparent)}
+
+  .meter-wrap{margin:18px 0 4px}
+  .meter{position:relative;height:18px;border-radius:5px;background:color-mix(in srgb,var(--line) 80%,transparent)}
+  .m-real{position:absolute;left:0;top:0;bottom:0;background:var(--realized);border-radius:5px 0 0 5px;transition:width .45s cubic-bezier(.22,1,.36,1)}
+  .m-gap{position:absolute;top:0;bottom:0;background:color-mix(in srgb,var(--gap) 13%,transparent);background-image:repeating-linear-gradient(135deg,color-mix(in srgb,var(--gap) 52%,transparent) 0 1.5px,transparent 1.5px 7px);transition:left .45s cubic-bezier(.22,1,.36,1),width .45s cubic-bezier(.22,1,.36,1)}
+  .m-amb{position:absolute;top:-5px;bottom:-5px;width:2px;background:var(--ink);opacity:.55;transition:left .45s cubic-bezier(.22,1,.36,1)}
+  .m-amb::after{content:attr(data-l);position:absolute;top:-17px;left:50%;transform:translateX(-50%);font-family:var(--fm);font-size:9.5px;color:var(--muted);white-space:nowrap}
+  .m-scale{display:flex;justify-content:space-between;font-family:var(--fm);font-size:10px;color:var(--faint);margin-top:6px}
+  .m-legend{display:flex;gap:18px;font-size:11.5px;color:var(--muted);margin-top:11px;flex-wrap:wrap}
+  .m-legend span{display:inline-flex;align-items:center;gap:6px}
+  .sw{width:11px;height:11px;border-radius:3px;display:inline-block}
+  .sw.real{background:var(--realized)}
+  .sw.gap{background-image:repeating-linear-gradient(135deg,color-mix(in srgb,var(--gap) 52%,transparent) 0 1.5px,color-mix(in srgb,var(--gap) 13%,transparent) 1.5px 7px)}
+
+  .controls{display:grid;grid-template-columns:repeat(3,1fr);gap:18px 26px;margin-top:18px;padding-top:18px;border-top:1px solid var(--line)}
+  .ctl-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:9px}
+  .ctl-name{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+  .ctl-val{font-family:var(--fm);font-weight:600;font-size:15px;font-variant-numeric:tabular-nums}
+  .ctl-hint{font-size:11.5px;color:var(--faint);margin-top:7px;line-height:1.35}
+
+  .analysis{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .ablk{border-left:2px solid var(--line-strong);padding-left:15px}
+  .ablk.why{border-color:var(--realized)} .ablk.fix{border-color:var(--gap)}
+  .ablk h5{font-family:var(--fm);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+  .ablk.why h5{color:var(--realized)} .ablk.fix h5{color:var(--gap)}
+  .ablk p{font-size:13.5px;color:var(--ink);line-height:1.55}
+
+  .proof-toggle{margin-top:16px;font-family:var(--fm);font-size:12px;font-weight:500;color:var(--muted);display:inline-flex;align-items:center;gap:7px;transition:.18s}
+  .proof-toggle:hover{color:var(--realized)}
+  .proof-toggle svg{width:12px;height:12px;transition:transform .25s}
+  .proof-toggle[aria-expanded="true"] svg{transform:rotate(90deg)}
+  .proof{display:none;margin-top:14px;border-top:1px dashed var(--line-strong);padding-top:16px}
+  .proof.open{display:block;animation:fade .3s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:none}}
+  .proof-row{display:grid;grid-template-columns:160px 1fr;gap:6px 18px;padding:11px 0;border-bottom:1px solid var(--line)}
+  .proof-row:last-child{border-bottom:none}
+  .pr-ind{font-size:12px;font-weight:600;color:var(--ink)}
+  .pr-asof{font-family:var(--fm);font-size:10.5px;color:var(--faint);margin-top:2px}
+  .pr-fig{font-size:13.5px;color:var(--ink);font-weight:500}
+  .pr-meta{font-size:12px;color:var(--muted);margin-top:4px}
+  .src-tag{font-size:10px;font-family:var(--fm);background:color-mix(in srgb,var(--teal) 10%,transparent);color:var(--teal);padding:2px 7px;border-radius:4px;border:1px solid color-mix(in srgb,var(--teal) 22%,transparent)}
+
+  /* RANKED */
+  .chart{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px 26px;box-shadow:var(--shadow)}
+  .plot{position:relative}
+  .bar-row{display:grid;grid-template-columns:180px 1fr 56px;align-items:center;gap:16px;padding:9px 0}
+  .bar-label{font-size:13px;font-weight:500;text-align:right;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .bar-track{height:24px;background:color-mix(in srgb,var(--line) 70%,transparent);border-radius:5px;position:relative;overflow:hidden}
+  .bar-fill{height:100%;border-radius:5px;transition:width .5s cubic-bezier(.22,1,.36,1),background .3s}
+  .bar-val{font-family:var(--fm);font-size:13px;font-weight:600;font-variant-numeric:tabular-nums;text-align:right}
+  .avg-line{position:absolute;top:9px;bottom:9px;width:0;border-left:2px dashed var(--gap);opacity:.85;transition:left .5s cubic-bezier(.22,1,.36,1);pointer-events:none}
+  .avg-line::after{content:attr(data-l);position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-family:var(--fm);font-size:10px;color:var(--gap);white-space:nowrap;font-weight:600}
+  .chart-foot{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+
+  /* METHOD + SOURCES */
+  details.box{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden;margin-bottom:15px}
+  details.box>summary{list-style:none;cursor:pointer;padding:20px 24px;display:flex;justify-content:space-between;align-items:center;font-family:var(--fd);font-size:20px;font-weight:600}
+  details.box>summary::-webkit-details-marker{display:none}
+  details.box>summary .plus{font-family:var(--fm);font-size:22px;color:var(--muted);transition:transform .25s}
+  details.box[open]>summary .plus{transform:rotate(45deg)}
+  .box-body{padding:0 24px 24px}
+  .mgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px 30px}
+  .mblk h4{font-family:var(--fm);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--realized);margin-bottom:5px}
+  .mblk p{font-size:13.5px;color:var(--muted);line-height:1.55}
+  .mblk code{font-family:var(--fm);font-size:12.5px;background:color-mix(in srgb,var(--ink) 6%,transparent);padding:1px 5px;border-radius:4px;color:var(--ink)}
+  .disclaimer{margin-top:20px;padding:14px 16px;background:color-mix(in srgb,var(--gap) 8%,transparent);border:1px solid color-mix(in srgb,var(--gap) 22%,transparent);border-radius:var(--r-sm);font-size:12.5px;color:var(--ink)}
+  .src-list{display:flex;flex-direction:column;gap:0}
+  .src-item{display:grid;grid-template-columns:90px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);align-items:baseline}
+  .src-item:last-child{border-bottom:none}
+  .src-item .sk{font-family:var(--fm);font-size:10.5px;font-weight:600;color:var(--muted);text-transform:uppercase}
+  .src-item .sv{font-size:13px;color:var(--ink)}
+  .src-item .sv .sm{color:var(--muted)}
+
+  footer{border-top:1px solid var(--line);padding:32px 0 54px;margin-top:22px;font-size:13px;color:var(--muted);display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+  footer .f-thesis{font-family:var(--fd);font-style:italic;font-size:16px;color:var(--ink);max-width:54ch;line-height:1.45}
+
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--paper);font-size:13px;font-weight:600;padding:12px 19px;border-radius:100px;opacity:0;pointer-events:none;transition:.25s;z-index:50;box-shadow:0 8px 30px rgba(0,0,0,.3)}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  @media (max-width:860px){.aims{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:760px){
+    .kpis{grid-template-columns:1fr 1fr}.kpi:nth-child(2){border-right:none}.kpi:nth-child(1),.kpi:nth-child(2){border-bottom:1px solid var(--line)}
+    .console{grid-template-columns:1fr;gap:18px}.console-actions{justify-content:flex-start}
+    .controls{grid-template-columns:1fr}.analysis{grid-template-columns:1fr}.mgrid{grid-template-columns:1fr}
+    .bar-row{grid-template-columns:120px 1fr 48px;gap:10px}.avg-line{display:none}.proof-row{grid-template-columns:1fr}
+    .aims{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+  .hp-siteheader {
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    padding: 16px clamp(20px, 4vw, 48px);
+    background: #fff; border-bottom: 1px solid #E2EDED;
+    position: sticky; top: 0; z-index: 50;
+    font-family: 'Manrope','IBM Plex Sans', system-ui, sans-serif;
+  }
+  .hp-logo { display: flex; align-items: center; gap: 13px; text-decoration: none; }
+  .hp-logo-img { width: 48px; height: 48px; object-fit: contain; border-radius: 10px; }
+  .hp-logo-name { display: block; font-weight: 800; font-size: 22px; color: #1B3A4B; letter-spacing: -.4px; line-height: 1.1; }
+  .hp-logo-tag { display: block; font-size: 12.5px; color: #7E939B; }
+  .hp-nav { display: flex; gap: 20px; align-items: center; }
+  .hp-nav a { text-decoration: none; font-weight: 700; font-size: 15px; color: #2B3F47; }
+  .hp-nav a:hover { color: #0FA3A3; }
+  .hp-nav a.hp-active { color: #0FA3A3; }
+  .hp-nav-subscribe { background: linear-gradient(90deg,#0FA3A3,#2E7CB8); color: #fff !important; padding: 9px 20px; border-radius: 999px; box-shadow: 0 4px 12px rgba(15,163,163,.35); }
+  .hp-nav-subscribe:hover { filter: brightness(1.08); }
+  .hp-theme-toggle { background: none; border: 1px solid #E2EDED; border-radius: 999px; width: 38px; height: 38px; cursor: pointer; color: #1B3A4B; display: inline-flex; align-items: center; justify-content: center; }
+  .hp-theme-toggle .t-moon { display: none; }
+  [data-theme="dark"] .hp-theme-toggle .t-sun { display: none; }
+  [data-theme="dark"] .hp-theme-toggle .t-moon { display: inline; }
+  [data-theme="dark"] .hp-siteheader { background: #0F1B22; border-bottom-color: #25373F; }
+  [data-theme="dark"] .hp-logo-name { color: #E8F4F4; }
+  [data-theme="dark"] .hp-nav a { color: #B4C7CE; }
+  [data-theme="dark"] .hp-theme-toggle { color: #E8F4F4; border-color: #25373F; }
+  @media (max-width: 760px) {
+    .hp-siteheader { flex-direction: column; gap: 12px; }
+    .hp-nav { flex-wrap: wrap; justify-content: center; gap: 12px; }
+    .hp-logo-tag { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hp-siteheader">
+  <a class="hp-logo" href="/">
+    <img src="/logo.png" alt="Healthcare Pulse" class="hp-logo-img">
+    <span class="hp-logo-text">
+      <span class="hp-logo-name">Healthcare Pulse</span>
+      <span class="hp-logo-tag">Digital health, decoded · by Mayank Madhur</span>
+    </span>
+  </a>
+  <nav class="hp-nav">
+    <a href="/perspectives/">Perspectives</a>
+    <a href="/about.html">About</a>
+    <a href="/podcast.html">Podcast</a>
+    <a href="/archive/">Archive</a>
+    <a href="/ask/">Ask</a>
+    <a href="/research/">Research</a>
+    <a href="/index-tool/">Tool</a>
+    <a class="hp-nav-subscribe" href="https://www.linkedin.com/newsletters/7311231782241083393/" target="_blank" rel="noopener">Subscribe</a>
+    <button id="themeToggle" class="hp-theme-toggle" type="button" aria-label="Toggle dark mode">
+      <svg class="t-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <svg class="t-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+  </nav>
+</header>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Healthcare Pulse · Digital health, decoded</div>
+    <div class="head-row">
+      <div>
+        <h1>India Digital Health <em>Adoption Index</em></h1>
+        <p class="lede">Ten flagship programmes. One question: of everything India announced, how much is actually adopted and working? Re-weight the evidence, edit the scores, read the analysis, open the proof. Every verdict recalculates live.</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="about">
+    <div class="about-card">
+      <div class="about-eyebrow">What this is</div>
+      <h3>A live audit, not a report</h3>
+      <p class="lede2">India announces digital-health milestones constantly. This tool asks the harder question for ten flagship programmes: of what was <b>announced</b>, how much is actually <b>adopted</b> and <b>working</b>? Each is scored 0–5 on three axes against sourced evidence, and a single <b>reality score</b> shows how much of the promise is real. Nothing here is fixed — you set the assumptions and the whole board responds.</p>
+      <div class="band-legend" id="bandLegend"></div>
+    </div>
+    <div class="about-card">
+      <div class="about-eyebrow">How to use it</div>
+      <div class="how">
+        <div class="how-step"><span class="n">1</span><span class="t"><b>Set the weights.</b> Decide how much adoption (being used) counts versus outcome (working). The dial below moves every score at once.</span></div>
+        <div class="how-step"><span class="n">2</span><span class="t"><b>Read the matrix.</b> Where a programme sits says what to do with it: scale it, fix it, or stop announcing it. Hover any bubble for its numbers.</span></div>
+        <div class="how-step"><span class="n">3</span><span class="t"><b>Challenge any rail.</b> Disagree with a score? Drag its sliders. The matrix, ranking and verdicts recalculate instantly so you can test your own view.</span></div>
+        <div class="how-step"><span class="n">4</span><span class="t"><b>Check the proof.</b> Every figure links to its source. Hit <b>Copy readout</b> to share the current scenario, or switch to dark mode.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="kpis" id="kpis">
+    <div class="kpi"><div class="kl">Portfolio reality</div><div class="kv" id="kPort">—</div><div class="ks">across all ten rails</div></div>
+    <div class="kpi good"><div class="kl">Direct-service rails</div><div class="kv" id="kServ">—</div><div class="ks" id="kServSub">care or product delivered</div></div>
+    <div class="kpi bad"><div class="kl">Digital-plumbing rails</div><div class="kv" id="kInfra">—</div><div class="ks" id="kInfraSub">data must flow between bodies</div></div>
+    <div class="kpi"><div class="kl">Widest gap</div><div class="kv" id="kGap">—</div><div class="ks" id="kGapName">—</div></div>
+  </div>
+  <p class="kpi-finding" id="kpiFinding"></p>
+
+  <section style="padding-top:28px">
+    <div class="sec-head"><span class="sec-num">01</span><span class="sec-title">Weighting console</span></div>
+    <p class="sec-note">Reality blends two things: is it being <b>used</b> (adoption) and is it <b>working</b> (outcome). Decide how much each counts. An investor weights outcome; a ministry tracking rollout weights adoption. The whole board moves with the dial.</p>
+    <div class="console">
+      <div>
+        <div class="wtop"><span>Adoption <b id="wA">50%</b></span><span><b id="wO">50%</b> Outcome</span></div>
+        <input type="range" id="weight" min="0" max="100" step="5" value="50" aria-label="Weight between adoption and outcome">
+        <div class="wlab"><span>All adoption</span><span>Balanced</span><span>All outcome</span></div>
+      </div>
+      <div class="console-actions">
+        <button class="btn" id="copyBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 012-2h10"/></svg>Copy readout</button>
+        <button class="btn primary" id="resetBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 109-9 9 9 0 00-6.4 2.6L3 8"/><path d="M3 3v5h5"/></svg>Reset</button>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:10px">
+    <div class="sec-head"><span class="sec-num">02</span><span class="sec-title">The portfolio matrix</span></div>
+    <p class="sec-note">A BCG-style read of the stack, adapted. Horizontal axis is adoption, vertical is outcome, bubble size is the population at stake. Where a programme lands tells you what to do with it: scale it, fix it, or stop announcing it. Bubbles redraw as you edit scores.</p>
+    <div class="matrix-wrap">
+      <svg class="matrix-svg" id="matrix" viewBox="0 0 620 560" role="img" aria-label="Portfolio matrix of adoption versus outcome"></svg>
+      <div class="mtip" id="mtip"></div>
+      <div class="legend" id="legend"></div>
+      <div class="matrix-finding" id="matrixFinding"></div>
+      <div class="mhint">Outline: <b>solid = direct service</b>, <b>dashed = digital infrastructure</b>. Bubble size is the population at stake. Bubbles nudge apart where they would overlap so all ten stay visible; exact positions are in each tooltip.</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">03</span><span class="sec-title">Against the Quintuple Aim</span></div>
+    <p class="sec-note">The Quintuple Aim is the field's scorecard for what good care must achieve: better outcomes, better experience, lower cost, a well workforce, and equity. Here is how many of the ten rails meaningfully serve each, and how those rails actually score.</p>
+    <div class="aims" id="aims"></div>
+    <div class="gap-callout" id="gapCallout"></div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">04</span><span class="sec-title">The rails</span></div>
+    <p class="sec-note">Each programme scored 0–5 on ambition, adoption and outcome. Green is what's real; the hatched zone is the gap to what was promised. Below each: why the gap exists, and what would close it. This is analysis, not a press release.</p>
+    <div class="rails" id="rails"></div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">05</span><span class="sec-title">Reality, ranked</span></div>
+    <p class="sec-note">Every rail's reality score, sorted. The dashed line is the portfolio average. The distance between the line and each bar is the distance between the announcement and the patient.</p>
+    <div class="chart">
+      <div class="plot"><div id="bars"></div><div class="avg-line" id="avgLine" data-l=""></div></div>
+      <div class="chart-foot" id="chartFoot"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">06</span><span class="sec-title">Method, frameworks &amp; sources</span></div>
+    <p class="sec-note">How the scores are built, the two consulting lenses applied, and every figure's origin.</p>
+    <details class="box">
+      <summary><span>Methodology &amp; the maths</span><span class="plus">+</span></summary>
+      <div class="box-body">
+        <div class="mgrid">
+          <div class="mblk"><h4>Reality score</h4><p><code>(wₐ·Adoption + wₒ·Outcome) ÷ Ambition</code>, as a percentage. How much of the promise is real. 100% means it fully delivered on its stated ambition.</p></div>
+          <div class="mblk"><h4>Gap to ambition</h4><p><code>Ambition − (wₐ·Adoption + wₒ·Outcome)</code>, in points. The wider the gap, the further the press release sits from the patient.</p></div>
+          <div class="mblk"><h4>Ambition (0–5)</h4><p>Scale and political backing of the promise. All ten are maximal national flagships, so each starts at 5. Lower it if you judge the promise more modest.</p></div>
+          <div class="mblk"><h4>Adoption (0–5)</h4><p>Real usage or onboarding vs target. 0–1 announced only · 2–3 created but thin · 4–5 live and recurring at scale.</p></div>
+          <div class="mblk"><h4>Outcome (0–5)</h4><p>Hard evidence it moved cost, access, time or quality. 0 none yet · 2–3 partial · 4–5 demonstrated impact at scale.</p></div>
+          <div class="mblk"><h4>The two cuts</h4><p><b>Layer</b> splits rails into direct service vs digital infrastructure. <b>Quintuple Aim</b> maps each to the five goals of good care. Both are analytical lenses, not official categories.</p></div>
+        </div>
+        <div class="mgrid" style="margin-top:18px">
+          <div class="mblk"><h4>Framework · Quintuple Aim</h4><p>Outcomes, experience, cost, care-team wellbeing and equity. Extends the Triple and Quadruple Aim; wellbeing and equity are the newest, and the least served here.</p></div>
+          <div class="mblk"><h4>Framework · Growth-share matrix</h4><p>BCG's 1970 portfolio tool, adapted: adoption replaces market share, outcome replaces growth, and bubble size is population at stake rather than revenue.</p></div>
+        </div>
+        <div class="disclaimer"><b>Read this before quoting a number.</b> The figures in each rail's proof are externally sourced and dated, with headline numbers from official releases (PIB, Ministry of Health, NHA). The 0–5 scores are analyst judgement calibrated to that evidence and meant to be argued with, which is what the sliders are for. "100 crore records linked" is real; it is not the same as 100 crore people using ABHA.</div>
+      </div>
+    </details>
+    <details class="box">
+      <summary><span>Sources used</span><span class="plus">+</span></summary>
+      <div class="box-body"><div class="src-list" id="srcList"></div></div>
+    </details>
+  </section>
+
+  <footer>
+    <span class="f-thesis">"India has built the most ambitious health stack on earth. It is brilliant at handing a citizen something tangible and weak at making data move between institutions. The gap between those two is the whole story."</span>
+    <span>Healthcare Pulse by Mayank Madhur · <a href="https://mayankmadhur.in/" target="_blank" rel="noopener">mayankmadhur.in</a></span>
+  </footer>
+</div>
+<div class="toast" id="toast">Readout copied</div>
+
+<script>
+const DEFAULTS = [
+  { id:"abha", code:"AB", name:"ABHA / ABDM", sub:"Digital health ID & linked records", layer:"infra", reach:5,
+    ambition:5, adoption:3, outcome:2,
+    aims:["Experience","Outcomes"],
+    why:"Creation and linking are easy to mandate and easy to count; use is neither. 80 crore IDs and 100 crore linked records are real, but linking is mostly bulk and passive, and the primary care where most Indians are actually seen still sits outside the network.",
+    fix:"Stop reporting IDs created and start reporting records a patient or doctor actually opened. Tie incentives to retrieval, not registration, and onboard the small clinics and standalone practitioners that carry the bulk of OPD volume.",
+    proof:[
+      {ind:"ABHA numbers created", fig:"79.75 crore ABHA accounts", asof:"Jul 2025", src:"MoHFW press release", url:"https://www.mohfw.gov.in/?q=en/pressrelease-284", note:"Scale of identity creation."},
+      {ind:"Records linked to ABHA", fig:"100 crore+ (doubled from 50 cr in 15 months)", asof:"Jun 2026", src:"PIB · NHA", url:"https://www.pib.gov.in/PressReleasePage.aspx?PRID=2264241&reg=3&lang=1", note:"Headline adoption proof, but counts records linked, not patients using them."},
+      {ind:"Ecosystem integrations", fig:"450+ public & private health-tech solutions", asof:"Jun 2026", src:"PIB · NHA", url:"https://www.pib.gov.in/PressReleasePage.aspx?PRID=2264241&reg=3&lang=1", note:"Supply side is real."},
+      {ind:"Coverage gap", fig:"Most tier 2-3 clinics & standalone practitioners not ABDM-enrolled", asof:"Apr 2026", src:"AyuApp analysis", url:"https://ayuapp.com/blog/abha-health-id-india", note:"Why outcome stays low: created links are not everyday use."}
+    ]},
+  { id:"nhcx", code:"NX", name:"NHCX", sub:"National Health Claims Exchange", layer:"infra", reach:5,
+    ambition:5, adoption:1, outcome:1,
+    aims:["Cost","Experience"],
+    why:"NHCX needs every insurer, TPA and hospital to rebuild claims workflow at once, for a benefit that accrues mostly to others. That collective-action problem, not technology, is why a rail live since mid-2024 still has barely a dozen insurers and a sliver of hospitals on it.",
+    fix:"Make participation worth more than sitting out: mandate timelines with teeth via IRDAI, fund hospital integration, and publish a live onboarding scoreboard so laggards are visible. Standards do not adopt themselves.",
+    proof:[
+      {ind:"Go-live", fig:"First claim processed Jun-2024", asof:"2024", src:"Wikipedia / NHA", url:"https://en.wikipedia.org/wiki/National_Health_Claims_Exchange", note:"Live over a year; onboarding still thin."},
+      {ind:"Insurer / TPA integration", fig:"12 insurance companies + 1 TPA integrated", asof:"2025", src:"Vajiram & Ravi", url:"https://vajiramandravi.com/current-affairs/national-health-claim-exchange/", note:"Thin participation = low adoption."},
+      {ind:"Governance shift", fig:"Moving to joint supervision of Finance Ministry + IRDAI", asof:"Jan 2026", src:"IASGyan", url:"https://www.iasgyan.in/daily-current-affairs/national-health-claims-exchange", note:"Still being re-wired, not steady-state."},
+      {ind:"Service target", fig:"Cashless claims to clear within 3 hours of discharge", asof:"2025", src:"Vajiram & Ravi", url:"https://vajiramandravi.com/current-affairs/national-health-claim-exchange/", note:"A promised outcome, not yet realised at scale."}
+    ]},
+  { id:"esanjeevani", code:"eS", name:"eSanjeevani", sub:"National teleconsultation", layer:"service", reach:5,
+    ambition:5, adoption:5, outcome:4,
+    aims:["Equity","Outcomes"],
+    why:"This is the rail that works, and the reason is structural: it is pushed through a human channel. Frontline workers at Arogya Mandirs initiate consultations, so adoption does not depend on a citizen or institution choosing to change behaviour. The service reaches the patient where they already are.",
+    fix:"Protect the win. The open question is single-visit quality and continuity, so the next step is outcome audits and follow-up loops, not more raw consultation counts.",
+    proof:[
+      {ind:"Total teleconsultations", fig:"43 crore+ (stated in Parliament)", asof:"2026", src:"Digital Health News / Union Health Minister", url:"https://www.digitalhealthnews.com/esanjeevani-crosses-43-crore-consultations-as-india-strengthens-digital-health-network", note:"Genuine demand-side adoption at scale."},
+      {ind:"AI-assisted scale", fig:"282 million+ consultations with AI differential-diagnosis prompts", asof:"Feb 2026", src:"ICTworks", url:"https://www.ictworks.org/sahi-radical-artificial-intelligence-for-health-framework-from-india/", note:"Operational infrastructure, not a pilot."}
+    ]},
+  { id:"telemanas", code:"TM", name:"Tele-MANAS", sub:"National tele-mental-health", layer:"service", reach:4,
+    ambition:5, adoption:3, outcome:2,
+    aims:["Equity","Outcomes"],
+    why:"The helpline is well-designed and genuinely used, but it is a front door bolted onto a system that barely exists. With mental health at roughly 1% of the health budget and under one psychiatrist per lakh, calls answered cannot convert into care delivered.",
+    fix:"Fund the room behind the door. A helpline without psychiatrists, beds and district programmes to refer into is triage, not treatment. The constraint is workforce and budget, not the platform.",
+    proof:[
+      {ind:"Calls handled", fig:"34.34 lakh+ since inception", asof:"Mar 2026", src:"Organiser (programme data)", url:"https://organiser.org/2026/03/31/346415/bharat/national-tele-mental-health-programme-transforming-lives-via-multiple-languages/", note:"Real usage, small vs 11 cr+ Indians with conditions."},
+      {ind:"Network", fig:"53 cells across 30 states/UTs; 20 languages", asof:"Mar 2026", src:"Organiser", url:"https://organiser.org/2026/03/31/346415/bharat/national-tele-mental-health-programme-transforming-lives-via-multiple-languages/", note:"National footprint exists."},
+      {ind:"System context", fig:"Treatment gap 70-92%; ~1% of health budget; ~0.75 psychiatrists/lakh vs WHO norm 3", asof:"Jun 2026", src:"Anantam IAS (citing WHO, Sep-2025)", url:"https://anantamias.com/mental-health-treatment-gap/", note:"A front door, not a full care system."}
+    ]},
+  { id:"sahi", code:"AI", name:"SAHI + BODH", sub:"Health-AI strategy & benchmarking", layer:"infra", reach:4,
+    ambition:5, adoption:1, outcome:0,
+    aims:["Outcomes","Care team"],
+    why:"Four months old. SAHI is a governance document and BODH a test-bed; neither is a deployed system, so there is nothing yet to adopt or measure. Sound sequencing, but currently a promise.",
+    fix:"The honest next milestone is the first AI tool that clears BODH and runs in a real clinic with measured outcomes. Until then, treat it as intent, and resist counting strategy launches as progress.",
+    proof:[
+      {ind:"Launch", fig:"SAHI + BODH launched at India AI Impact Summit 2026, 17-Feb", asof:"Feb 2026", src:"PIB · MoHFW", url:"https://www.pib.gov.in/PressReleasePage.aspx?PRID=2229226&reg=3&lang=1", note:"Brand-new policy; clock starts here."},
+      {ind:"Nature", fig:"SAHI = strategy framework; BODH = IIT-Kanpur + NHA benchmarking platform", asof:"Feb 2026", src:"Medianama", url:"https://www.medianama.com/2026/02/223-explained-sahi-bodh-ai-use-india-healthcare/", note:"Framework + test-bed, no deployment yet."}
+    ]},
+  { id:"pmjay", code:"PJ", name:"PM-JAY", sub:"Ayushman Bharat health assurance", layer:"service", reach:5,
+    ambition:5, adoption:4, outcome:3,
+    aims:["Cost","Equity"],
+    why:"As inpatient financial protection it genuinely works: 10 crore admissions and ₹1.3 lakh crore of care delivered. But it covers hospitalisation, not the outpatient and medicine spend that is most of out-of-pocket cost, and empanelled does not always mean a hospital is currently accepting the card.",
+    fix:"Extend toward OPD and diagnostics where the real out-of-pocket pain sits, and fix payment delays that quietly suspend hospitals. Coverage on paper is not protection at the counter.",
+    proof:[
+      {ind:"Cards issued", fig:"43.52 crore Ayushman cards", asof:"Mar 2026", src:"Omnicuris (citing PM-JAY dashboard)", url:"https://www.omnicuris.com/medshots/daily_updates/ayushman-bharat-health-coverage-milestones-2026", note:"Massive beneficiary base."},
+      {ind:"Empanelled hospitals", fig:"36,229 (19,483 public + 16,746 private)", asof:"May 2026", src:"SMC Insurance / NHA", url:"https://smcinsurance.com/health-insurance/articles/ayushman-bharat-hospital-list", note:"Wide network; activity varies by week."},
+      {ind:"Hospital treatments", fig:"10 crore+ treatments worth ₹1.3 lakh crore", asof:"Apr 2026", src:"Sarkari Sahayta (scheme data)", url:"https://sarkarisahayta.com/services/ayushman-bharat-yojana-2026", note:"Real financial protection for inpatient care."}
+    ]},
+  { id:"aam", code:"AAM", name:"Ayushman Arogya Mandir", sub:"Comprehensive primary care", layer:"service", reach:5,
+    ambition:5, adoption:5, outcome:3,
+    aims:["Outcomes","Equity","Experience"],
+    why:"1.8 lakh centres and a 494 crore footfall make this India's quiet primary-care engine, with NCD screening at a scale no other country runs. Adoption is unquestionable; outcome is capped because screening is not treatment, and NITI Aayog's own review flags gaps in staff, training and medicine availability.",
+    fix:"Close the loop from screening to managed care: a positive diabetes screen must become a treatment pathway, not just a number. The bottleneck now is human resources and consistent drug supply, not footfall.",
+    proof:[
+      {ind:"Centres operational", fig:"1,81,873 Ayushman Arogya Mandirs", asof:"Nov 2025", src:"MoHFW press release", url:"https://www.mohfw.gov.in/?q=en/press-info/9838", note:"Vast primary-care footprint."},
+      {ind:"Footfall & screening", fig:"494.71 cr footfall; 39.5 cr hypertension + 36.7 cr diabetes screenings", asof:"Nov 2025", src:"MoHFW", url:"https://www.mohfw.gov.in/?q=en/press-info/9838", note:"Adoption at scale; outcome depends on follow-through."},
+      {ind:"Evaluation flag", fig:"NITI Aayog DMEO: gaps in HR, training, consistent medicines & diagnostics", asof:"Dec 2025", src:"MoHFW (citing NITI DMEO)", url:"https://mohfw.gov.in/?q=en/pressrelease/update-ayushman-arogya-mandir-aams", note:"Why outcome is held at 3."}
+    ]},
+  { id:"janaushadhi", code:"JA", name:"Jan Aushadhi", sub:"Affordable generic medicines", layer:"service", reach:4,
+    ambition:5, adoption:4, outcome:4,
+    aims:["Cost","Equity"],
+    why:"A rare rail where adoption and outcome rise together: 18,000 stores, 15 lakh daily customers, and ₹40,000 crore of household savings that are real money back in pockets. Medicines are the largest share of family health spend, so cutting their price hits out-of-pocket cost directly.",
+    fix:"The ceiling is the prescription pad. Generic prescribing is mandated but weakly enforced, and digital ordering is live in only a handful of cities. Enforce generic prescribing and scale the Sugam app nationwide.",
+    proof:[
+      {ind:"Stores", fig:"~18,000 Kendras (from 80 in 2014)", asof:"Mar 2026", src:"PM, Jan Aushadhi Diwas 2026", url:"https://www.newkerala.com/news/a/pm-modi-extends-wishes-jan-aushadhi-diwas-2026-525.htm", note:"Dense national reach."},
+      {ind:"Citizen savings", fig:"₹40,000 crore+; medicines 50-80% cheaper; 15 lakh daily customers", asof:"Mar 2026", src:"PM / MyGovIndia", url:"https://www.newkerala.com/news/a/pm-modi-extends-wishes-jan-aushadhi-diwas-2026-525.htm", note:"Direct, measurable cost relief = real outcome."},
+      {ind:"Adoption ceiling", fig:"Sugam app ordering live in only ~18 cities; generic prescribing weakly enforced", asof:"May 2026", src:"RTI Wiki guide", url:"https://righttoinformation.wiki/find-jan-aushadhi-store-2026", note:"Why outcome is strong but not maxed."}
+    ]},
+  { id:"uwin", code:"UW", name:"U-WIN", sub:"Routine immunisation registry", layer:"infra", reach:4,
+    ambition:5, adoption:4, outcome:3,
+    aims:["Outcomes","Equity","Experience"],
+    why:"The exception that proves the rule. U-WIN is digital infrastructure, yet it works because it rides a functioning service and is operated by ASHAs and ANMs, not left to institutions to self-onboard. It shows data rails succeed when pushed through an existing human delivery channel.",
+    fix:"Its marginal outcome is the hard last mile: coverage was already ~93%, so the prize is the zero-dose and migrant children the paper system missed. Target the unreached, and finish the move from pilot to true pan-India.",
+    proof:[
+      {ind:"Registrations", fig:"11.87 crore children + 3.96 crore pregnant women", asof:"Mar 2026", src:"egovtschemes (programme data)", url:"https://www.egovtschemes.com/u-win-vaccinator-registration/", note:"Strong adoption via frontline workers."},
+      {ind:"Doses tracked", fig:"268 million+ vaccine doses tracked in real time", asof:"2024-25", src:"UNDP India", url:"https://www.undp.org/india/blog/giving-digital-boost-universal-immunisation", note:"Real operational use."},
+      {ind:"Outcome context", fig:"Childhood immunisation ~93% pre-U-WIN; prize is the unreached 7% and migrants", asof:"2025", src:"UNDP India", url:"https://www.undp.org/india/blog/giving-digital-boost-universal-immunisation", note:"Why marginal outcome is capped at 3."}
+    ]},
+  { id:"scanshare", code:"S&S", name:"Scan & Share", sub:"ABHA-based paperless OPD", layer:"infra", reach:3,
+    ambition:5, adoption:2, outcome:2,
+    aims:["Experience","Equity"],
+    why:"This is ABHA meeting real life, and it is small. Against 80 crore IDs created, only a few crore OPD tokens have been generated, across a few thousand facilities. Where it runs it genuinely cuts queues, but it has not become how most Indians actually register.",
+    fix:"This is the truest gauge of ABHA's everyday value, so it deserves to be the headline metric instead of IDs created. Scale it to high-footfall public hospitals first, where queue pain and impact are largest.",
+    proof:[
+      {ind:"OPD tokens generated", fig:"3 crore+ tokens via Scan & Share", asof:"Jun 2024", src:"PIB · MoHFW", url:"https://www.pib.gov.in/PressReleasePage.aspx?PRID=2023289", note:"Tiny vs 80 cr ABHA created: the real usage gap."},
+      {ind:"Facilities live", fig:"~5,435 facilities across 35 states/UTs", asof:"Jun 2024", src:"MoHFW", url:"https://www.newsonair.gov.in/national-health-authority-achieves-milestone-with-over-3-crore-opd-tokens-generated-through-abha-based-scan-and-share-service", note:"Limited footprint vs national hospital base."},
+      {ind:"Where it works", fig:"~1 lakh patients/day save queue time; top at AIIMS Delhi, UP, AP", asof:"2024", src:"PIB · NHA", url:"https://www.pib.gov.in/PressReleasePage.aspx?PRID=1966187", note:"Genuine experience gain where deployed."}
+    ]}
+];
+
+const FRAMEWORKS = [
+  {k:"Framework", v:"Quintuple Aim for Health Care Improvement — Nundy, Cooper & Mate, JAMA, 2022 (extends the IHI Triple/Quadruple Aim).", u:"https://jamanetwork.com/journals/jama/fullarticle/2788483"},
+  {k:"Framework", v:"Growth-Share Matrix — Boston Consulting Group (Bruce Henderson), 1970; adapted here for adoption, outcome and population at stake.", u:"https://www.bcg.com/about/overview/our-history/growth-share-matrix"}
+];
+
+const BANDS = [
+  {min:.80, label:"Real and working",        c:"var(--good)"},
+  {min:.60, label:"Working, with gaps",      c:"var(--realized)"},
+  {min:.40, label:"Built, lightly used",     c:"var(--warn)"},
+  {min:.20, label:"Announced, barely adopted",c:"var(--gap)"},
+  {min:0,   label:"Announcement only",       c:"var(--bad)"}
+];
+const band = r => BANDS.find(b => r >= b.min);
+const AIM_META = {
+  "Outcomes":  {c:"var(--realized)", d:"Better population health"},
+  "Experience":{c:"var(--teal)",     d:"Better patient experience"},
+  "Cost":      {c:"var(--warn)",      d:"Lower out-of-pocket cost"},
+  "Care team": {c:"var(--gap)",       d:"A well, supported workforce"},
+  "Equity":    {c:"var(--bad)",       d:"Care that reaches everyone"}
+};
+const AIM_ORDER = ["Outcomes","Experience","Cost","Care team","Equity"];
+
+let state = structuredClone(DEFAULTS);
+let weight = 0.5;
+const $ = s => document.querySelector(s);
+const realized = r => (1-weight)*r.adoption + weight*r.outcome;
+const reality  = r => r.ambition>0 ? realized(r)/r.ambition : 0;
+const gapPts   = r => r.ambition - realized(r);
+const pct = v => Math.round(v*100) + "%";
+const avg = a => a.length ? a.reduce((x,y)=>x+y,0)/a.length : 0;
+
+/* ---------- rails ---------- */
+function buildRails(){
+  const host=$("#rails"); host.innerHTML="";
+  state.forEach(r=>{
+    const el=document.createElement("div"); el.className="rail"; el.id="rail-"+r.id;
+    el.innerHTML=`
+      <div class="rail-top">
+        <div class="rail-id"><span class="rail-code" id="rc-${r.id}">${r.code}</span>
+          <div class="rail-name">${r.name}<span>${r.sub}</span></div></div>
+        <div class="rail-right"><span class="pill" id="pill-${r.id}"><span class="dot"></span><span class="pill-t"></span></span>
+          <span class="rail-score" id="score-${r.id}">—</span></div>
+      </div>
+      <div class="tags">
+        <span class="tag layer">${r.layer==="service"?"Direct service":"Digital infrastructure"}</span>
+        ${r.aims.map(a=>`<span class="tag">${a}</span>`).join("")}
+        <span class="tag">Reach ${r.reach}/5</span>
+      </div>
+      <div class="meter-wrap">
+        <div class="meter"><div class="m-real" id="real-${r.id}"></div><div class="m-gap" id="mgap-${r.id}"></div><div class="m-amb" id="amb-${r.id}" data-l="ambition"></div></div>
+        <div class="m-scale"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div>
+        <div class="m-legend"><span><i class="sw real"></i> Realized (used + working)</span><span><i class="sw gap"></i> Gap to what was promised</span></div>
+      </div>
+      <div class="controls">
+        ${ctl(r,"ambition","Ambition","Scale & backing of the promise")}
+        ${ctl(r,"adoption","Adoption","Real usage vs target")}
+        ${ctl(r,"outcome","Outcome","Evidence of real impact")}
+      </div>
+      <div class="analysis">
+        <div class="ablk why"><h5>Why the gap</h5><p>${r.why}</p></div>
+        <div class="ablk fix"><h5>What would close it</h5><p>${r.fix}</p></div>
+      </div>
+      <button class="proof-toggle" aria-expanded="false" data-id="${r.id}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>
+        Show proof · ${r.proof.length} sourced figures</button>
+      <div class="proof" id="proof-${r.id}">${r.proof.map(proofRow).join("")}</div>`;
+    host.appendChild(el);
+  });
+  host.querySelectorAll('input[type=range].score').forEach(inp=>inp.addEventListener("input",e=>{
+    const {id,field}=e.target.dataset; state.find(r=>r.id===id)[field]=parseFloat(e.target.value); render();
+  }));
+  host.querySelectorAll(".proof-toggle").forEach(btn=>btn.addEventListener("click",()=>{
+    const open=btn.getAttribute("aria-expanded")==="true"; btn.setAttribute("aria-expanded",String(!open));
+    $("#proof-"+btn.dataset.id).classList.toggle("open",!open);
+    const n=state.find(r=>r.id===btn.dataset.id).proof.length;
+    btn.lastChild.textContent=(open?" Show proof · ":" Hide proof · ")+n+" sourced figures";
+  }));
+}
+function ctl(r,field,name,hint){
+  return `<div class="ctl"><div class="ctl-top"><span class="ctl-name">${name}</span><span class="ctl-val" id="cv-${r.id}-${field}">${r[field].toFixed(1)}</span></div>
+  <input type="range" class="score" min="0" max="5" step="0.5" value="${r[field]}" data-id="${r.id}" data-field="${field}" aria-label="${r.name} ${name}">
+  <div class="ctl-hint">${hint}</div></div>`;
+}
+function proofRow(p){
+  return `<div class="proof-row"><div><div class="pr-ind">${p.ind}</div><div class="pr-asof">As of ${p.asof}</div></div>
+  <div><div class="pr-fig">${p.fig}</div><div class="pr-meta"><span class="src-tag">SOURCE</span> ${p.src} · <a href="${p.url}" target="_blank" rel="noopener">link ↗</a></div></div></div>`;
+}
+
+/* ---------- matrix ---------- */
+const M={x0:66,x1:596,y0:42,y1:494};
+const mx=a=>M.x0+(a/5)*(M.x1-M.x0);
+const my=o=>M.y1-(o/5)*(M.y1-M.y0);
+const QUADS=[
+  {key:"gems", t:"Hidden gems",  s:"high impact, not scaled", c:"var(--teal)",    corner:"tl"},
+  {key:"eng",  t:"Engines",      s:"used & working — scale",  c:"var(--realized)",corner:"tr"},
+  {key:"ann",  t:"Announcements",s:"launched, not landed",    c:"var(--bad)",     corner:"bl"},
+  {key:"tread",t:"Treadmills",   s:"busy, low yield — fix",   c:"var(--warn)",    corner:"br"}
+];
+const quadrantOf=r=>{const hiA=r.adoption>=2.5,hiO=r.outcome>=2.5;return hiA&&hiO?"eng":!hiA&&hiO?"gems":hiA&&!hiO?"tread":"ann";};
+function buildMatrixStatic(){
+  const midX=mx(2.5), midY=my(2.5);
+  let s="";
+  const rectOf={tl:[M.x0,M.y0,midX-M.x0,midY-M.y0],tr:[midX,M.y0,M.x1-midX,midY-M.y0],bl:[M.x0,midY,midX-M.x0,M.y1-midY],br:[midX,midY,M.x1-midX,M.y1-midY]};
+  QUADS.forEach(q=>{const a=rectOf[q.corner];
+    s+=`<rect class="q-rect" x="${a[0]}" y="${a[1]}" width="${a[2]}" height="${a[3]}" rx="4" fill="color-mix(in srgb,${q.c} 7%,transparent)"/>`;});
+  for(let i=1;i<5;i++){s+=`<line class="gridline" x1="${mx(i)}" y1="${M.y0}" x2="${mx(i)}" y2="${M.y1}"/>`;
+    s+=`<line class="gridline" x1="${M.x0}" y1="${my(i)}" x2="${M.x1}" y2="${my(i)}"/>`;}
+  s+=`<line x1="${midX}" y1="${M.y0}" x2="${midX}" y2="${M.y1}" stroke="var(--line-strong)" stroke-dasharray="5 5"/>`;
+  s+=`<line x1="${M.x0}" y1="${midY}" x2="${M.x1}" y2="${midY}" stroke="var(--line-strong)" stroke-dasharray="5 5"/>`;
+  s+=`<rect x="${M.x0}" y="${M.y0}" width="${M.x1-M.x0}" height="${M.y1-M.y0}" fill="none" stroke="var(--line-strong)" stroke-width="1.5"/>`;
+  for(let i=0;i<=5;i++){s+=`<text class="axis-t" x="${mx(i)}" y="${M.y1+18}" text-anchor="middle">${i}</text>`;
+    s+=`<text class="axis-t" x="${M.x0-11}" y="${my(i)+4}" text-anchor="end">${i}</text>`;}
+  s+=`<text class="axis-title" x="${(M.x0+M.x1)/2}" y="${M.y1+42}" text-anchor="middle">Adoption · how widely used →</text>`;
+  s+=`<text class="axis-title" transform="rotate(-90 ${M.x0-46} ${(M.y0+M.y1)/2})" x="${M.x0-46}" y="${(M.y0+M.y1)/2}" text-anchor="middle">Outcome · real impact →</text>`;
+  s+=`<g id="quadlabels"></g><g id="bubbles"></g>`;
+  $("#matrix").innerHTML=s;
+}
+function layoutBubbles(){
+  const nodes=state.map((r,i)=>({id:r.id,rad:11+r.reach*3,tx:mx(r.adoption),ty:my(r.outcome),
+    x:mx(r.adoption)+Math.cos(i*2.399963)*0.8, y:my(r.outcome)+Math.sin(i*2.399963)*0.8}));
+  const pad=3.5;
+  for(let it=0;it<160;it++){
+    for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){
+      const a=nodes[i],b=nodes[j];let dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy),min=a.rad+b.rad+pad;
+      if(d<min){ if(d<0.01){const ang=i*2.399963+it;dx=Math.cos(ang);dy=Math.sin(ang);d=1;} const p=(min-d)/2,ux=dx/d,uy=dy/d;a.x-=ux*p;a.y-=uy*p;b.x+=ux*p;b.y+=uy*p;}
+    }
+    for(const n of nodes){n.x+=(n.tx-n.x)*0.05;n.y+=(n.ty-n.y)*0.05;
+      n.x=Math.max(M.x0+n.rad,Math.min(M.x1-n.rad,n.x));n.y=Math.max(M.y0+n.rad,Math.min(M.y1-n.rad,n.y));}
+  }
+  const byId={};nodes.forEach(n=>byId[n.id]=n);return byId;
+}
+function renderMatrix(){
+  if(!$("#bubbles")) return;
+  const midY=my(2.5);
+  const counts={eng:0,gems:0,ann:0,tread:0}; state.forEach(r=>counts[quadrantOf(r)]++);
+  const lab={tl:[M.x0+12,M.y0+20,"start"],tr:[M.x1-12,M.y0+20,"end"],bl:[M.x0+12,midY+18,"start"],br:[M.x1-12,midY+18,"end"]};
+  let ql="";
+  QUADS.forEach(q=>{const L=lab[q.corner];
+    ql+=`<text class="q-label" x="${L[0]}" y="${L[1]}" fill="${q.c}" text-anchor="${L[2]}">${q.t} · ${counts[q.key]}</text>`;
+    ql+=`<text class="q-sub" x="${L[0]}" y="${L[1]+13}" fill="var(--muted)" text-anchor="${L[2]}">${q.s}</text>`;});
+  $("#quadlabels").innerHTML=ql;
+  const pos=layoutBubbles();
+  const ordered=[...state].sort((a,b)=>b.reach-a.reach);
+  let s="";
+  ordered.forEach(r=>{const n=pos[r.id],c=band(reality(r)).c,dash=r.layer==="infra"?'stroke-dasharray="3.5 3"':"";
+    s+=`<g class="bub" data-id="${r.id}"><circle cx="${n.x.toFixed(1)}" cy="${n.y.toFixed(1)}" r="${n.rad}" fill="color-mix(in srgb,${c} 80%,transparent)" stroke="${c}" stroke-width="2" ${dash}/><text class="bub-code" x="${n.x.toFixed(1)}" y="${n.y.toFixed(1)}" fill="#fff">${r.code}</text></g>`;});
+  $("#bubbles").innerHTML=s;
+  $("#bubbles").querySelectorAll(".bub").forEach(b=>{const r=state.find(x=>x.id===b.dataset.id);
+    b.addEventListener("mousemove",e=>showTip(e,r));b.addEventListener("mouseenter",e=>showTip(e,r));
+    b.addEventListener("mouseleave",hideTip);
+    b.addEventListener("click",()=>document.getElementById("rail-"+r.id).scrollIntoView({behavior:"smooth",block:"center"}));});
+  const f=$("#matrixFinding");
+  if(f){f.innerHTML=`<span class="ft">What the matrix shows</span><b>${counts.eng} of 10 are Engines</b> (used and working), and <b>${counts.ann} are Announcements</b> (launched, not landed). ${counts.gems===0?"Nothing sits in <b>Hidden gems</b> — India has no high-impact programme merely waiting to be scaled; its low-adoption rails are also its low-outcome ones.":counts.gems+" sit in <b>Hidden gems</b> (high impact, not yet scaled)."} ${counts.tread?counts.tread+" are <b>Treadmills</b>, heavily used but not yet moving outcomes. ":""}The lowest scorers are the rails that need institutions to exchange data; the engines hand a citizen something directly.`;}
+}
+function showTip(e,r){
+  const t=$("#mtip"), wrap=$(".matrix-wrap").getBoundingClientRect();
+  t.innerHTML=`<b>${r.name}</b>
+    <div class="row"><span>Reality</span><span style="color:${band(reality(r)).c}">${pct(reality(r))}</span></div>
+    <div class="row"><span>Adoption</span><span>${r.adoption.toFixed(1)}/5</span></div>
+    <div class="row"><span>Outcome</span><span>${r.outcome.toFixed(1)}/5</span></div>
+    <div class="row"><span>Reach</span><span>${r.reach}/5</span></div>
+    <div class="row"><span>Layer</span><span>${r.layer==="service"?"Service":"Infra"}</span></div>`;
+  let x=e.clientX-wrap.left+14, y=e.clientY-wrap.top+14;
+  if(x>wrap.width-240) x=e.clientX-wrap.left-228;
+  t.style.left=x+"px"; t.style.top=y+"px"; t.classList.add("show");
+}
+function hideTip(){$("#mtip").classList.remove("show");}
+function buildLegend(){
+  $("#legend").innerHTML=state.map(r=>`<div class="leg"><span class="lc" id="lc-${r.id}">${r.code}</span><span class="ln">${r.name}</span><span class="lv" id="lv-${r.id}"></span></div>`).join("");
+}
+function buildBandLegend(){
+  $("#bandLegend").innerHTML=BANDS.map(b=>`<span class="band-chip"><span class="bd" style="background:${b.c}"></span>${b.label}</span>`).join("");
+}
+
+/* ---------- quintuple aim ---------- */
+function buildAims(){
+  $("#aims").innerHTML=AIM_ORDER.map(a=>{
+    const m=AIM_META[a];
+    return `<div class="aim"><div class="acap" style="background:${m.c}"></div>
+      <div class="an">${a}</div><div class="acount" id="ac-${a.replace(' ','')}">—<small>/10</small></div>
+      <div class="ad">${m.d}</div><div class="aavg" id="aa-${a.replace(' ','')}" style="color:${m.c}"></div></div>`;
+  }).join("");
+}
+
+/* ---------- sources ---------- */
+function buildSources(){
+  const seen=new Map();
+  state.forEach(r=>r.proof.forEach(p=>{ if(!seen.has(p.url)) seen.set(p.url,{src:p.src,rails:new Set()}); seen.get(p.url).rails.add(r.code); }));
+  let rows=FRAMEWORKS.map(f=>`<div class="src-item"><div class="sk">${f.k}</div><div class="sv">${f.v}<br><a href="${f.u}" target="_blank" rel="noopener">${f.u.replace('https://','')}</a></div></div>`).join("");
+  let i=1;
+  seen.forEach((v,url)=>{
+    rows+=`<div class="src-item"><div class="sk">Src ${i}</div><div class="sv">${v.src} <span class="sm">· supports ${[...v.rails].join(", ")}</span><br><a href="${url}" target="_blank" rel="noopener">${url.replace('https://','').slice(0,72)}${url.length>79?'…':''}</a></div></div>`;
+    i++;
+  });
+  $("#srcList").innerHTML=rows;
+}
+
+/* ---------- render ---------- */
+function render(){
+  state.forEach(r=>{
+    const rl=reality(r), b=band(rl);
+    const realPct=Math.max(0,Math.min(5,realized(r)))/5*100, ambPct=Math.max(0,Math.min(5,r.ambition))/5*100;
+    const sc=$("#score-"+r.id); sc.textContent=pct(rl); sc.style.color=b.c;
+    const pl=$("#pill-"+r.id); pl.style.color=b.c; pl.style.background="color-mix(in srgb,"+b.c+" 12%,transparent)"; pl.querySelector(".pill-t").textContent=b.label;
+    $("#rc-"+r.id).style.background=b.c;
+    $("#real-"+r.id).style.width=realPct+"%";
+    const gEl=$("#mgap-"+r.id); gEl.style.left=realPct+"%"; gEl.style.width=Math.max(0,ambPct-realPct)+"%";
+    $("#amb-"+r.id).style.left=ambPct+"%";
+    ["ambition","adoption","outcome"].forEach(f=>$("#cv-"+r.id+"-"+f).textContent=r[f].toFixed(1));
+    const lc=$("#lc-"+r.id); if(lc) lc.style.background=b.c;
+    const lv=$("#lv-"+r.id); if(lv){lv.textContent=pct(rl); lv.style.color=b.c;}
+  });
+  // KPIs + layers
+  const all=state.map(reality);
+  const serv=state.filter(r=>r.layer==="service").map(reality);
+  const infra=state.filter(r=>r.layer==="infra").map(reality);
+  $("#kPort").textContent=pct(avg(all));
+  $("#kServ").textContent=pct(avg(serv)); $("#kServSub").textContent=serv.length+" rails · care or product delivered";
+  $("#kInfra").textContent=pct(avg(infra)); $("#kInfraSub").textContent=infra.length+" rails · data must flow between bodies";
+  let mg=-Infinity,mgn=""; state.forEach(r=>{const g=gapPts(r); if(g>mg){mg=g;mgn=r.name;}});
+  $("#kGap").textContent=mg.toFixed(1)+" pts"; $("#kGapName").textContent=mgn;
+  const diff=Math.round((avg(serv)-avg(infra))*100);
+  $("#kpiFinding").innerHTML=`<b>Reading:</b> direct-service rails outscore digital-infrastructure rails by <b>${diff} points</b> (${pct(avg(serv))} vs ${pct(avg(infra))}). India is strong at delivering a service to a citizen and weak at making data flow between institutions — the single biggest pattern in the stack.`;
+  // aims
+  AIM_ORDER.forEach(a=>{
+    const rails=state.filter(r=>r.aims.includes(a));
+    $("#ac-"+a.replace(' ','')).innerHTML=rails.length+'<small>/10</small>';
+    const el=$("#aa-"+a.replace(' ','')); el.textContent=rails.length?("rails avg "+pct(avg(rails.map(reality)))):"not served";
+  });
+  // gap callout
+  const ct=state.filter(r=>r.aims.includes("Care team")).length;
+  $("#gapCallout").innerHTML=`<h4>The blind spot: care-team wellbeing</h4><p>Only <b>${ct} of 10</b> rails even gesture at the workforce, and none is built for it. India is engineering hard for patients, populations and equity, and almost not at all for the doctors, nurses and ASHAs delivering the care. The Quintuple Aim added this dimension precisely because a burnt-out workforce quietly breaks everything above it — and it is the emptiest column on this board.</p>`;
+  // matrix + ranked + chart foot
+  renderMatrix();
+  const order=[...state].map(r=>({r,rl:reality(r)})).sort((a,b)=>b.rl-a.rl);
+  const bars=$("#bars"); bars.innerHTML="";
+  order.forEach(({r,rl})=>{const b=band(rl);const row=document.createElement("div");row.className="bar-row";
+    row.innerHTML=`<div class="bar-label">${r.name}</div><div class="bar-track"><div class="bar-fill" style="width:${rl*100}%;background:${b.c}"></div></div><div class="bar-val" style="color:${b.c}">${pct(rl)}</div>`;bars.appendChild(row);});
+  const port=avg(all), al=$("#avgLine");
+  al.style.left=`calc(196px + (100% - 268px) * ${port})`; al.dataset.l="avg "+pct(port);
+  $("#chartFoot").innerHTML=`Portfolio average <b>${pct(port)}</b> · direct service <b>${pct(avg(serv))}</b> vs digital infrastructure <b>${pct(avg(infra))}</b> · weights: adoption <b>${Math.round((1-weight)*100)}%</b>, outcome <b>${Math.round(weight*100)}%</b>.`;
+}
+
+function setWeight(v){weight=v/100;$("#wO").textContent=Math.round(weight*100)+"%";$("#wA").textContent=Math.round((1-weight)*100)+"%";render();}
+
+$("#weight").addEventListener("input",e=>setWeight(+e.target.value));
+$("#resetBtn").addEventListener("click",()=>{state=structuredClone(DEFAULTS);weight=0.5;$("#weight").value=50;buildRails();setWeight(50);toast("Reset to defaults");});
+$("#copyBtn").addEventListener("click",()=>{
+  const all=state.map(reality),serv=state.filter(r=>r.layer==="service").map(reality),infra=state.filter(r=>r.layer==="infra").map(reality);
+  let t=`India Digital Health Adoption Index — v2, June 2026\n`;
+  t+=`Weights: adoption ${Math.round((1-weight)*100)}%, outcome ${Math.round(weight*100)}%\n`;
+  t+=`Portfolio reality: ${pct(avg(all))}  |  direct service: ${pct(avg(serv))}  |  digital infrastructure: ${pct(avg(infra))}\n\n`;
+  [...state].sort((a,b)=>reality(b)-reality(a)).forEach(r=>{t+=`• ${r.name}: ${pct(reality(r))} — ${band(reality(r)).label}  [A ${r.adoption} / O ${r.outcome} / Amb ${r.ambition} · ${r.layer==="service"?"service":"infra"}]\n`;});
+  t+=`\nSource: Healthcare Pulse by Mayank Madhur · mayankmadhur.in`;
+  navigator.clipboard.writeText(t).then(()=>toast("Readout copied"),()=>toast("Copy failed — select manually"));
+});
+var _tb=$("#themeBtn"); if(_tb){_tb.addEventListener("click",()=>{const d=document.documentElement.getAttribute("data-theme")==="dark";document.documentElement.setAttribute("data-theme",d?"light":"dark");var _tl=$("#themeLbl"); if(_tl)_tl.textContent=d?"Dark":"Light";render();});}
+
+let toastT; function toast(m){const el=$("#toast");el.textContent=m;el.classList.add("show");clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove("show"),1900);}
+
+buildRails(); buildMatrixStatic(); buildLegend(); buildBandLegend(); buildAims(); buildSources(); setWeight(50);
+</script>
+<script>
+(function(){
+  var saved = localStorage.getItem('hp-theme');
+  if(saved === 'dark'){ document.documentElement.setAttribute('data-theme','dark'); }
+  var tt = document.getElementById('themeToggle');
+  if(tt){
+    tt.addEventListener('click', function(){
+      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      if(isDark){ document.documentElement.removeAttribute('data-theme'); localStorage.setItem('hp-theme','light'); }
+      else { document.documentElement.setAttribute('data-theme','dark'); localStorage.setItem('hp-theme','dark'); }
+    });
+  }
+})();
+</script>
+<script data-goatcounter="https://mayankmadhur.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

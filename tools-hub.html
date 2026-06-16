@@ -1,0 +1,51 @@
+---
+layout: default
+title: Tools
+permalink: /index-tool/
+---
+<section class="tools-head">
+  <p class="eyebrow">INTERACTIVE TOOLS</p>
+  <h1>Tools</h1>
+  <p class="tools-sub">Interactive models and trackers that turn India's healthcare numbers into something you can poke at, re-weight, and pressure-test yourself. More on the way.</p>
+</section>
+
+<section class="tools-grid">
+
+  <a class="tool-card tc-health-stack" href="/tools/health-stack/">
+    <div class="tool-card-top">
+      <span class="tool-badge">Interactive</span>
+      <span class="tool-meta">10 flagship programmes</span>
+    </div>
+    <h2>India Digital Health Adoption Index</h2>
+    <p>Of everything India announced in digital health, how much is actually adopted and working? Re-weight adoption vs outcome, edit the scores, and watch the gap between promise and reality recalculate live.</p>
+    <span class="tool-go">Open the tool &rarr;</span>
+  </a>
+
+</section>
+
+<style>
+  .tools-head { max-width: 1340px; margin: 0 auto; padding: 48px clamp(20px,4vw,48px) 8px; }
+  .tools-head .eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .18em; color: var(--teal); }
+  .tools-head h1 { font-size: clamp(28px,4vw,40px); font-weight: 800; color: var(--navy); margin: 8px 0 6px; line-height: 1.1; }
+  .tools-sub { font-size: 15.5px; color: var(--muted); max-width: 62ch; line-height: 1.6; }
+  [data-theme="dark"] .tools-head h1 { color: #E8F4F4; }
+
+  .tools-grid {
+    max-width: 1340px; margin: 0 auto; padding: 24px clamp(20px,4vw,48px) 70px;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 20px;
+  }
+  .tool-card {
+    display: flex; flex-direction: column; gap: 10px;
+    border-radius: 18px; padding: 28px 26px; text-decoration: none;
+    color: #fff; position: relative; overflow: hidden; min-height: 220px;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .tool-card:hover { transform: translateY(-3px); box-shadow: 0 16px 40px -18px rgba(15,163,163,.45); }
+  .tc-health-stack { background: linear-gradient(135deg, #0FA3A3, #2E7CB8); }
+  .tool-card-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+  .tool-badge { font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; background: rgba(255,255,255,.2); padding: 4px 12px; border-radius: 999px; }
+  .tool-meta { font-family: var(--mono); font-size: 12px; opacity: .9; }
+  .tool-card h2 { font-size: 23px; font-weight: 800; line-height: 1.15; margin-top: 6px; }
+  .tool-card p { font-size: 14.5px; line-height: 1.55; opacity: .96; flex: 1; }
+  .tool-go { font-weight: 800; font-size: 14.5px; margin-top: auto; }
+</style>
