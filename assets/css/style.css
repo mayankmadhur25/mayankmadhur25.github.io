@@ -890,3 +890,9 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .load-more-btn:hover { background: var(--teal); color: #fff; border-color: var(--teal); }
 [data-theme="dark"] .load-more-btn { color: #E8F4F4; background: #16252C; border-color: #25373F; }
 [data-theme="dark"] .load-more-btn:hover { background: var(--teal); color: #0A1418; }
+
+/* ---------- Ask AI answer box ---------- */
+.ama-ai { background: var(--tintT); border: 1px solid var(--line); border-left: 3px solid var(--teal); border-radius: 12px; padding: 18px 20px; margin-bottom: 20px; }
+.ama-ai-label { font-family: var(--mono); font-size: 12px; font-weight: 700; letter-spacing: .04em; color: var(--teal); margin-bottom: 8px; text-transform: uppercase; }
+.ama-ai-text { font-size: 15px; line-height: 1.6; color: var(--ink); }
+[data-theme="dark"] .ama-ai { background: #16252C; border-color: #25373F; border-left-color: var(--teal); }
