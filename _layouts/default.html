@@ -46,7 +46,10 @@
       <span class="logo-tag">Digital health, decoded · by {{ site.author }}</span>
     </span>
   </a>
-  <nav>
+  <button id="navToggle" class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+    <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+  </button>
+  <nav id="siteNav">
     <a href="/perspectives/">Perspectives</a>
     <a href="/about.html">About</a>
     <a href="/podcast.html">Podcast</a>
@@ -104,6 +107,16 @@
       else toTop.classList.remove('show');
     }, {passive:true});
     toTop.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+  }
+  // hamburger menu toggle
+  var navToggle = document.getElementById('navToggle');
+  var siteNav = document.getElementById('siteNav');
+  if(navToggle && siteNav){
+    navToggle.addEventListener('click', function(){
+      var open = siteNav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
   }
 })();
 </script>
