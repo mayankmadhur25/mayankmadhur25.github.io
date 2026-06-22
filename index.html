@@ -152,6 +152,10 @@ layout: default
   {% endfor %}
 </section>
 
+<div class="load-more-wrap">
+  <button id="loadMore" class="load-more-btn" type="button">Load more</button>
+</div>
+
 <section class="stats-section" id="coverage">
   <div class="stats-inner">
     <p class="eyebrow">WHAT I COVER</p>
@@ -204,11 +208,36 @@ layout: default
   var clear = document.getElementById('fClear');
   var count = document.getElementById('fCount');
   var cards = Array.prototype.slice.call(document.querySelectorAll('#postGrid .card'));
+  var PAGE = 12;            // how many to show initially / per "load more"
+  var visibleLimit = PAGE;  // current cap when NOT searching/filtering
+  var loadMoreBtn = document.getElementById('loadMore');
+
+  function applyLimit(){
+    // Only used when there's no active search/filter: show first N, hide rest
+    cards.forEach(function(card, i){
+      card.style.display = (i < visibleLimit) ? '' : 'none';
+    });
+    if(loadMoreBtn){
+      loadMoreBtn.style.display = (visibleLimit < cards.length) ? '' : 'none';
+      loadMoreBtn.textContent = 'Load more (' + (cards.length - visibleLimit) + ' more)';
+    }
+  }
 
   function runFilter(){
     var q = (search.value || '').trim().toLowerCase();
     var y = year.value;
     var t = topic.value;
+    var filtering = !!(q || y || t);
+
+    if(!filtering){
+      // No search/filter active → show first N with Load more
+      applyLimit();
+      count.textContent = '';
+      return;
+    }
+
+    // Search/filter active → show ALL matches, hide the Load more button
+    if(loadMoreBtn) loadMoreBtn.style.display = 'none';
     var shown = 0;
     cards.forEach(function(card){
       var title = card.getAttribute('data-title') || '';
@@ -225,18 +254,33 @@ layout: default
         card.style.display = 'none';
       }
     });
-    if(q || y || t){
-      count.textContent = shown + (shown === 1 ? ' perspective found' : ' perspectives found');
-    } else {
-      count.textContent = '';
-    }
+    count.textContent = shown + (shown === 1 ? ' perspective found' : ' perspectives found');
+    revealVisible();
   }
 
   function clearFilter(){
     search.value = ''; year.value = ''; topic.value = '';
-    cards.forEach(function(c){ c.style.display = ''; });
+    visibleLimit = PAGE;
+    applyLimit();
     count.textContent = '';
   }
+
+  if(loadMoreBtn){
+    loadMoreBtn.addEventListener('click', function(){
+      visibleLimit += PAGE;
+      applyLimit();
+      revealVisible();
+    });
+  }
+
+  // reveal cards as they appear (fade-in); also handles load-more cards
+  function revealVisible(){
+    cards.forEach(function(card){
+      if(card.style.display !== 'none') card.classList.add('in');
+    });
+  }
+  applyLimit();  // set initial state on page load
+  revealVisible();
 
   // real-time filtering as the user types or changes dropdowns
   if(search) search.addEventListener('input', runFilter);
