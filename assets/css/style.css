@@ -878,3 +878,15 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .to-top.show { opacity: 1; pointer-events: auto; transform: none; }
 .to-top:hover { background: var(--teal); }
 [data-theme="dark"] .to-top { background: var(--teal); }
+
+/* ---------- load more ---------- */
+.load-more-wrap { display: flex; justify-content: center; margin: 8px 0 48px; }
+.load-more-btn {
+  font-family: var(--mono); font-weight: 700; font-size: 14px; letter-spacing: .03em;
+  color: var(--navy); background: var(--tintT);
+  border: 1px solid var(--line); border-radius: 999px;
+  padding: 13px 28px; cursor: pointer; transition: all .15s ease;
+}
+.load-more-btn:hover { background: var(--teal); color: #fff; border-color: var(--teal); }
+[data-theme="dark"] .load-more-btn { color: #E8F4F4; background: #16252C; border-color: #25373F; }
+[data-theme="dark"] .load-more-btn:hover { background: var(--teal); color: #0A1418; }
