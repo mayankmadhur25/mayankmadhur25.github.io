@@ -8,8 +8,12 @@ permalink: /sitemap.xml
   <url><loc>{{ site.url }}/about.html</loc></url>
   <url><loc>{{ site.url }}/podcast.html</loc></url>
   <url><loc>{{ site.url }}/archive/</loc></url>
+  <url><loc>{{ site.url }}/perspectives/</loc></url>
   <url><loc>{{ site.url }}/ask/</loc></url>
-  {% assign cats = "policy,strategy,digital-health,pharma,biotech,general" | split: "," %}
+  <url><loc>{{ site.url }}/research/</loc></url>
+  <url><loc>{{ site.url }}/index-tool/</loc></url>
+  <url><loc>{{ site.url }}/tools/health-stack/</loc></url>
+  {% assign cats = "policy,strategy,digital-health,pharma,biotech,geopolitics,governance" | split: "," %}
   {% for c in cats %}<url><loc>{{ site.url }}/topics/{{ c }}/</loc></url>
   {% endfor %}
   {% for post in site.posts %}
