@@ -900,6 +900,15 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .ed-callout { background: var(--navy); color: #fff; border-radius: 16px; padding: 28px 30px; margin: 34px 0; }
 .ed-callout p { font-size: 19px; line-height: 1.5; margin: 0; color: #fff; }
 .ed-callout b { color: #FFC987; }
+[data-theme="dark"] .ed-callout { background: #16252C; color: #EAF4F4; border: 1px solid #25373F; }
+[data-theme="dark"] .ed-callout p { color: #EAF4F4; }
+[data-theme="dark"] .ed-callout b { color: #FFC987; }
+.ed-takeaways { background: var(--tintT); border: 1px solid var(--line); border-radius: 16px; padding: 24px 28px; margin: 30px 0; }
+.ed-takeaways .tk-label { font-family: var(--mono); font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--teal); margin: 0 0 14px; }
+.ed-takeaways ul { margin: 0; padding: 0; list-style: none; }
+.ed-takeaways li { position: relative; padding-left: 22px; margin: 11px 0; font-size: 15.5px; line-height: 1.55; color: var(--body-c); }
+.ed-takeaways li::before { content: ""; position: absolute; left: 2px; top: 9px; width: 8px; height: 8px; border-radius: 50%; background: var(--teal); }
+.ed-takeaways li b { color: var(--navy); font-weight: 800; }
 .num-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 14px; margin: 26px 0; }
 .ed-chart { margin: 28px 0; padding: 22px 24px; background: var(--tintT); border: 1px solid var(--line); border-radius: 14px; }
 .ed-chart svg { width: 100%; height: auto; display: block; }
@@ -1015,6 +1024,17 @@ a:focus-visible, button:focus-visible, input:focus-visible {
     <p class="lede">Cancer will strike about 1.6 million Indians this year. Hypertension already affects 207 million. Yet walk into the boardroom of almost any listed hospital chain and the build plan reads the same way: oncology first. Not diabetes, not hypertension, not primary care. The reason has very little to do with medicine.</p>
     <p>Private hospitals do not allocate capacity by where the patients are. They allocate it by where the rupee is densest. Oncology is now the single most profitable specialty in Indian hospitals, and capital is flooding toward it even though cancer affects a sliver of the population next to the chronic diseases of hundreds of millions. That is not a scandal. It is a system doing exactly what it was designed to do, and once you see the design, the whole sector becomes legible.</p>
     <div class="ed-callout"><p>Hospitals build for the disease that fills a profitable bed, <b>not the disease that fills a waiting room.</b></p></div>
+
+    <div class="ed-takeaways">
+      <p class="tk-label">The takeaway in one breath</p>
+      <ul>
+        <li><b>Hospitals build for the most profitable disease, not the biggest one.</b> Capacity follows revenue density (ARPOB, revenue per occupied bed), not patient need.</li>
+        <li><b>Supply runs opposite to demand.</b> The burden is chronic (NCDs drive 40%+ of hospitalisations and 63–65% of deaths); the build is procedural (oncology, cardiac, transplants, robotics).</li>
+        <li><b>The proof:</b> cancer is ~1.6M new cases a year against ~207M hypertensive Indians (~130x), yet oncology is the No.1 build theme and the most profitable specialty.</li>
+        <li><b>The smoking gun:</b> at Max Healthcare, cardiac is 43% of surgeries but 12% of revenue; oncology is 9% of surgeries but 26% of revenue, its single largest line.</li>
+        <li><b>The catch:</b> 94–97% can't afford targeted therapy, so the people funding the boom can least afford it. The chronic-care gap is a public-financing problem the market will never solve on its own.</li>
+      </ul>
+    </div>
 
     <h2>Everyone is asking the wrong question</h2>
     <p>The popular debate is whether oncology is overheating. Wrong question. The useful one is simpler: what single number actually decides what a hospital builds? It is not disease burden. It is ARPOB, average revenue per occupied bed. Once you accept that hospitals optimise for revenue density rather than patient count, oncology stops looking like a clinical choice and starts looking like an arithmetic one. Everything that follows is just the math made visible.</p>
@@ -1143,7 +1163,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
     <div class="row-item"><div class="ri-num">1</div><div><h4>For investors</h4><p>Oncology is the cleanest ARPOB-accretive bet in the sector. Watch radiation-bunker commissioning and oncology revenue share as the leading indicators of margin expansion, ahead of headline bed counts.</p></div></div>
     <div class="row-item"><div class="ri-num">2</div><div><h4>For operators</h4><p>Build the referral engine before the bunker. Tumour boards, pathology, imaging and day-care chemo come first; LINAC and transplant come last. Lead with the system, not the machine.</p></div></div>
     <div class="row-item"><div class="ri-num">3</div><div><h4>For policy</h4><p>The market will not build for diabetes, hypertension or primary care on its own, because there is no bed-based margin in it. That gap is a public-financing problem, not a market one, and no amount of private capex will close it.</p></div></div>
-    <div class="ed-callout"><p>Capacity follows revenue density. Oncology is the proof. <b>The under-built chronic burden is the cost.</b></p></div>
+    <div class="ed-callout"><p>Capacity follows revenue density. Oncology is the proof. <b>The chronic burden is the cost, and right now nobody owns it.</b></p></div>
   </div>
   <div class="share-bar">
     <span class="share-label">Share this perspective:</span>
