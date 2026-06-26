@@ -23,6 +23,35 @@
   <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}Healthcare Pulse{% endif %}">
   <meta name="twitter:description" content="{{ page.excerpt | default: site.description | strip_html | truncate: 160 }}">
   <meta name="twitter:image" content="{{ site.url }}/logo.png">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+
+  <!-- Site-wide structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Healthcare Pulse",
+    "alternateName": "Healthcare Pulse by Mayank Madhur",
+    "url": "{{ site.url }}/",
+    "description": "Sharp, contrarian reads on India's digital health story and global healthcare, every Friday.",
+    "inLanguage": "en",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Healthcare Pulse",
+      "url": "{{ site.url }}/",
+      "logo": { "@type": "ImageObject", "url": "{{ site.url }}/logo.png" }
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Mayank Madhur",
+      "url": "https://www.linkedin.com/in/mayank-madhur/",
+      "jobTitle": "Practice Leader, Healthcare & Life Sciences, HFS Research"
+    }
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">

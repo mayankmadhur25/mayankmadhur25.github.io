@@ -1,6 +1,31 @@
 ---
 layout: default
 ---
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": {{ page.title | jsonify }},
+  "description": {{ page.excerpt | default: page.content | strip_html | truncate: 200 | jsonify }},
+  "datePublished": "{{ page.date | date_to_xmlschema }}",
+  "dateModified": "{{ page.date | date_to_xmlschema }}",
+  "url": "{{ site.url }}{{ page.url }}",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "{{ site.url }}{{ page.url }}" },
+  "image": "{{ site.url }}/logo.png",
+  "inLanguage": "en",
+  "author": {
+    "@type": "Person",
+    "name": "Mayank Madhur",
+    "url": "https://www.linkedin.com/in/mayank-madhur/",
+    "jobTitle": "Practice Leader, Healthcare & Life Sciences, HFS Research"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Healthcare Pulse",
+    "logo": { "@type": "ImageObject", "url": "{{ site.url }}/logo.png" }
+  }
+}
+</script>
 <article class="post">
   <div class="post-banner cat-{{ page.category | default: 'general' | slugify }}">
     <svg class="banner-ecg" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
