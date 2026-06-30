@@ -208,7 +208,7 @@ h1{font-size:clamp(28px,4vw,42px);font-weight:800;color:var(--ink);margin:10px 0
     </div>
 
     <div class="panel" id="panel">
-      <div class="empty" id="empty">Select a state on the map to see its full C-section picture.</div>
+      <div class="empty" id="empty">Select a state to see its full C-section picture.</div>
       <div id="detail" style="display:none">
         <div class="pstate" id="dState">—</div>
         <div class="pbadge" id="dBadge">—</div>
@@ -228,16 +228,20 @@ h1{font-size:clamp(28px,4vw,42px);font-weight:800;color:var(--ink);margin:10px 0
 
         <div class="metarow">
           <div class="metabox">
+            <div class="metaval" id="dWho">—</div>
+            <div class="metalab" id="dWhoLab">vs WHO ceiling</div>
+          </div>
+          <div class="metabox">
             <div class="metaval" id="dTrend">—</div>
             <div class="metalab">Change since NFHS-5</div>
           </div>
           <div class="metabox">
-            <div class="metaval" id="dRank">—</div>
-            <div class="metalab">Rank (highest = 1)</div>
+            <div class="metaval" id="dRatio">—</div>
+            <div class="metalab">Private ÷ public rate</div>
           </div>
           <div class="metabox">
-            <div class="metaval" id="dGap">—</div>
-            <div class="metalab">Private − Public gap</div>
+            <div class="metaval" id="dRank">—</div>
+            <div class="metalab" id="dRankLab">Standing by rate</div>
           </div>
         </div>
 
@@ -352,29 +356,53 @@ function selectState(name, el){
   document.getElementById('dPubV').textContent = d.pb==null?'—':d.pb+'%';
   document.getElementById('dPub').style.width = (d.pb==null?0:d.pb)+'%';
 
+  // severity label
+  function classify(t){ return t>=50?'Extreme over-use':t>=40?'Very high':t>=27?'High · above national':t>=15?'Elevated':'Within WHO band'; }
+  badge.textContent=classify(d.t);
+
   // trend
   var diff=(d.t-d.p5);
-  var tEl=document.getElementById('dTrend');
   var sign=diff>=0?'+':'';
+  var tEl=document.getElementById('dTrend');
   tEl.textContent=sign+diff.toFixed(1)+' pts';
   tEl.className='metaval '+(diff>=0?'trend-up':'trend-down');
 
-  document.getElementById('dRank').textContent='#'+d.rank+' of '+TOTAL_STATES;
+  // WHO multiple
+  var whoEl=document.getElementById('dWho'), whoLab=document.getElementById('dWhoLab');
+  if(d.t<15){ whoEl.textContent='Within'; whoLab.textContent='WHO 10–15% band'; }
+  else { whoEl.textContent=(d.t/15).toFixed(1)+'×'; whoLab.textContent='the WHO 15% ceiling'; }
 
-  var gapEl=document.getElementById('dGap');
-  if(d.pv==null||d.pb==null){ gapEl.textContent='—'; }
-  else { gapEl.textContent=(d.pv-d.pb).toFixed(1)+' pts'; }
+  // private vs public multiple
+  var ratioEl=document.getElementById('dRatio');
+  if(d.pv==null||d.pb==null||d.pb===0){ ratioEl.textContent='—'; }
+  else { ratioEl.textContent=(d.pv/d.pb).toFixed(1)+'×'; }
 
-  // note
+  // standing (plain language, no medal)
+  function ord(n){ var s=['th','st','nd','rd'],v=n%100; return n+(s[(v-20)%10]||s[v]||s[0]); }
+  var rankEl=document.getElementById('dRank'), rankLab=document.getElementById('dRankLab');
+  rankLab.textContent='of '+TOTAL_STATES+' states & UTs';
+  if(d.rank===1){ rankEl.textContent='Highest'; }
+  else if(d.rank===TOTAL_STATES){ rankEl.textContent='Lowest'; }
+  else { rankEl.textContent=ord(d.rank)+' highest'; }
+
+  // analytical note (all derived from the figures)
   var note='';
-  var vsNat = d.t>NATIONAL.t ? 'above' : (d.t<NATIONAL.t?'below':'at');
-  note += name+'\u2019s total rate is '+vsNat+' the national '+NATIONAL.t+'%. ';
-  if(d.pv!=null && d.pb!=null){
-    note += 'Private facilities sit at '+d.pv+'% versus '+d.pb+'% in public \u2014 a '+(d.pv-d.pb).toFixed(1)+'-point gap that clinical need alone can\u2019t explain. ';
+  var natRise=(NATIONAL.t-NATIONAL.p5);
+  var whoTxt = d.t<15 ? 'sits within the WHO’s recommended 10–15% band' : 'is '+(d.t/15).toFixed(1)+'× the WHO’s 15% ceiling';
+  var vsNat = d.t>NATIONAL.t ? (d.t-NATIONAL.t).toFixed(1)+' pts above' : (d.t<NATIONAL.t ? (NATIONAL.t-d.t).toFixed(1)+' pts below' : 'level with');
+  note += name+'’s '+d.t+'% rate '+whoTxt+', and '+vsNat+' the national average of '+NATIONAL.t+'%. ';
+  if(d.pv!=null && d.pb!=null && d.pb>0){
+    note += 'A birth in a private facility ('+d.pv+'%) is '+(d.pv/d.pb).toFixed(1)+'× as likely to be surgical as in a public one ('+d.pb+'%), a '+(d.pv-d.pb).toFixed(1)+'-point gap clinical need alone can’t explain. ';
   }
-  if(diff<0){ note += 'Notably, it has fallen since NFHS-5, one of very few to do so.'; }
-  else if(diff>=12){ note += 'It has risen sharply since NFHS-5 ('+sign+diff.toFixed(1)+' pts).'; }
-  else { note += 'It has risen '+sign+diff.toFixed(1)+' pts since NFHS-5.'; }
+  if(diff<0){ note += 'Unusually, it has fallen '+Math.abs(diff).toFixed(1)+' pts since NFHS-5, one of only two states to decline. '; }
+  else {
+    var pace=diff/natRise;
+    var paceTxt = pace>=1.5 ? 'about '+pace.toFixed(1)+'× the national pace' : (pace>=0.7 ? 'roughly the national pace' : 'slower than the national pace');
+    note += 'It has risen +'+diff.toFixed(1)+' pts since NFHS-5, '+paceTxt+' of +'+natRise.toFixed(1)+' pts. ';
+  }
+  if(d.rank===1){ note += 'It is the highest of '+TOTAL_STATES+' states and UTs measured.'; }
+  else if(d.rank===TOTAL_STATES){ note += 'It is the lowest of '+TOTAL_STATES+' states and UTs measured.'; }
+  else { note += 'That makes it the '+ord(d.rank)+' highest of '+TOTAL_STATES+' states and UTs measured.'; }
   document.getElementById('dNote').textContent=note;
 }
 
