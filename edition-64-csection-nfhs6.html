@@ -989,6 +989,20 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   .site-header nav.open{display:flex}
   .site-header nav a{font-size:16px;padding:9px 4px;width:100%}
 }
+
+/* ---- related carousel (swipeable) ---- */
+.related-head { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:14px; flex-wrap:wrap; }
+.related-head .related-label { margin-bottom:0; }
+.related-nav { display:flex; align-items:center; gap:8px; }
+.related-seeall { font-family:var(--mono); font-size:12px; font-weight:700; color:var(--teal); text-decoration:none; letter-spacing:.5px; }
+.related-seeall:hover { text-decoration:underline; }
+.rel-arrow { width:34px; height:34px; border-radius:50%; border:1px solid var(--line); background:var(--tintT); color:var(--navy); font-size:16px; cursor:pointer; line-height:1; transition:all .15s ease; display:inline-flex; align-items:center; justify-content:center; }
+.rel-arrow:hover { background:var(--teal); color:#fff; border-color:var(--teal); }
+.related-grid { display:flex !important; grid-template-columns:none !important; gap:14px; overflow-x:auto; scroll-behavior:smooth; scroll-snap-type:x mandatory; padding-bottom:6px; scrollbar-width:thin; }
+.related-grid::-webkit-scrollbar { height:6px; }
+.related-grid::-webkit-scrollbar-thumb { background:var(--line); border-radius:999px; }
+.related-grid .related-card { flex:0 0 clamp(220px,30%,280px); scroll-snap-align:start; min-height:120px; }
+@media(max-width:700px){ .related-grid { grid-template-columns:none !important; } .related-grid .related-card { flex:0 0 78%; } }
 </style>
 </head>
 <body>
@@ -1176,12 +1190,34 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   })();
   </script>
   <section class="related">
-    <p class="related-label">More on Policy</p>
-    <div class="related-grid">
-      <a class="related-card cat-policy" href="/edition-28-csection-economy.html"><span class="rc-ed">ED. 28</span><span class="rc-title">Rewiring India's C-section economy</span><span class="rc-go">Read this perspective &rarr;</span></a>
-      <a class="related-card cat-policy" href="/edition-47-obesity.html"><span class="rc-ed">ED. 47</span><span class="rc-title">India's obesity tipping point</span><span class="rc-go">Read this perspective &rarr;</span></a>
-      <a class="related-card cat-policy" href="/edition-59-dpdpa.html"><span class="rc-ed">ED. 59</span><span class="rc-title">What DPDPA changes for healthcare</span><span class="rc-go">Read this perspective &rarr;</span></a>
+    <div class="related-head">
+      <p class="related-label">More on Policy</p>
+      <div class="related-nav">
+        <a class="related-seeall" href="/topics/policy/">See all &rarr;</a>
+        <button class="rel-arrow" data-dir="-1" aria-label="Scroll left" type="button">&larr;</button>
+        <button class="rel-arrow" data-dir="1" aria-label="Scroll right" type="button">&rarr;</button>
       </div>
+    </div>
+    <div class="related-grid">
+      <a class="related-card cat-policy" href="/the-100-crore-illusion.html"><span class="rc-ed">ED. 61</span><span class="rc-title">The 100 Crore Illusion</span><span class="rc-go">Read this perspective &rarr;</span></a>
+      <a class="related-card cat-policy" href="/posts/edition-60-nfhs6/"><span class="rc-ed">ED. 60</span><span class="rc-title">What India's newest National Family Health Survey really…</span><span class="rc-go">Read this perspective &rarr;</span></a>
+      <a class="related-card cat-policy" href="/edition-59-dpdpa.html"><span class="rc-ed">ED. 59</span><span class="rc-title">What India's DPDPA actually changes for healthcare</span><span class="rc-go">Read this perspective &rarr;</span></a>
+      <a class="related-card cat-policy" href="/edition-58-ebola.html"><span class="rc-ed">ED. 58</span><span class="rc-title">Ebola is back — why India should pay attention</span><span class="rc-go">Read this perspective &rarr;</span></a>
+      <a class="related-card cat-policy" href="/edition-55-pyramid.html"><span class="rc-ed">ED. 55</span><span class="rc-title">India's biggest healthcare bet isn't a hospital</span><span class="rc-go">Read this perspective &rarr;</span></a>
+      <a class="related-card cat-policy" href="/edition-52-preventive.html"><span class="rc-ed">ED. 52</span><span class="rc-title">India has built the world's largest preventive health sy…</span><span class="rc-go">Read this perspective &rarr;</span></a>
+      <a class="related-card cat-policy" href="/edition-51-autism.html"><span class="rc-ed">ED. 51</span><span class="rc-title">Autism is a system design failure India can no longer ig…</span><span class="rc-go">Read this perspective &rarr;</span></a>
+      <a class="related-card cat-policy" href="/edition-48-middle-east.html"><span class="rc-ed">ED. 48</span><span class="rc-title">The Middle East conflict and Indian healthcare</span><span class="rc-go">Read this perspective &rarr;</span></a>
+      <a class="related-card cat-policy" href="/edition-47-obesity.html"><span class="rc-ed">ED. 47</span><span class="rc-title">India's Obesity Crisis</span><span class="rc-go">Read this perspective &rarr;</span></a>
+      <a class="related-card cat-policy" href="/edition-46-ai-readiness.html"><span class="rc-ed">ED. 46</span><span class="rc-title">India Is Ready for AI in Healthcare. But Only in Parts.</span><span class="rc-go">Read this perspective &rarr;</span></a>
+      <a class="related-card cat-policy" href="/edition-45-sahi-bodh.html"><span class="rc-ed">ED. 45</span><span class="rc-title">India just institutionalized Healthcare AI</span><span class="rc-go">Read this perspective &rarr;</span></a>
+      <a class="related-card cat-policy" href="/edition-44-budget-2026.html"><span class="rc-ed">ED. 44</span><span class="rc-title">India Budget 2026: Healthcare Bets on Innovation, But Ex…</span><span class="rc-go">Read this perspective &rarr;</span></a>
+      <a class="related-card cat-policy" href="/edition-43-eu-india-fta.html"><span class="rc-ed">ED. 43</span><span class="rc-title">EU–India FTA &amp; Healthcare: What It Means</span><span class="rc-go">Read this perspective &rarr;</span></a>
+      <a class="related-card cat-policy" href="/edition-41-hospital-readiness.html"><span class="rc-ed">ED. 41</span><span class="rc-title">India's Hospitals Are Not Ready for NHCX and DPDP</span><span class="rc-go">Read this perspective &rarr;</span></a>
+      <a class="related-card cat-policy" href="/edition-40-ai-clinic.html"><span class="rc-ed">ED. 40</span><span class="rc-title">India's First Government AI Clinic Is Live</span><span class="rc-go">Read this perspective &rarr;</span></a>
+      <a class="related-card cat-policy" href="/edition-38-abha-awareness.html"><span class="rc-ed">ED. 38</span><span class="rc-title">800 Million Health IDs; And People Still Ask 'What Is AB…</span><span class="rc-go">Read this perspective &rarr;</span></a>
+      <a class="related-card cat-policy" href="/edition-37-nhcx.html"><span class="rc-ed">ED. 37</span><span class="rc-title">India's National Health Claims Exchange (NHCX)</span><span class="rc-go">Read this perspective &rarr;</span></a>
+      <a class="related-card cat-policy" href="/edition-36-antibiotic-resistance.html"><span class="rc-ed">ED. 36</span><span class="rc-title">India's antibiotic resistance crisis is a ticking time b…</span><span class="rc-go">Read this perspective &rarr;</span></a>
+    </div>
   </section>
   <aside class="author-box">
     <img src="/logo.png" alt="Healthcare Pulse" style="width:52px;height:52px;border-radius:10px;object-fit:contain;flex:none;">
@@ -1224,5 +1260,18 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 
 <script>
 (function(){var t=document.getElementById('navToggle'),n=document.getElementById('siteNav');if(t&&n){t.addEventListener('click',function(){var o=n.classList.toggle('open');t.setAttribute('aria-expanded',o?'true':'false');});}})();
+</script>
+<script>
+document.querySelectorAll('.related').forEach(function(sec){
+  var track=sec.querySelector('.related-grid'); if(!track) return;
+  sec.querySelectorAll('.rel-arrow').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var dir=parseInt(btn.getAttribute('data-dir'),10)||1;
+      var card=track.querySelector('.related-card');
+      var step=card?(card.offsetWidth+14)*2:300;
+      track.scrollBy({left:dir*step,behavior:'smooth'});
+    });
+  });
+});
 </script>
 </body></html>
