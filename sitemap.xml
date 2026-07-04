@@ -18,6 +18,17 @@ sitemap: false
     <priority>0.7</priority>
   </url>
   {% endunless %}{% endfor %}
+  {% comment %} static pages with no front matter (invisible to the loop above) — remove a line here if you ever give that page front matter {% endcomment %}
+  <url>
+    <loc>{{ "/about.html" | absolute_url }}</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>{{ "/podcast.html" | absolute_url }}</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
   {% comment %} Every edition, via its card. Uses external_link (the real /edition-N.html) when present, else the post URL. {% endcomment %}
   {% for post in site.posts %}
   <url>
