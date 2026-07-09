@@ -1,0 +1,614 @@
+---
+layout: null
+permalink: /tools/fertility/
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>India's Fertility Transition — NFHS-6</title>
+<meta name="description" content="Interactive tracker for India's fertility transition from NFHS-6: sort all 31 states by fertility rate, population 60+, unmet contraception need and education, with the correlations behind the decline.">
+<link rel="canonical" href="https://mayankmadhur.in/tools/fertility/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"India Fertility Transition Tracker","url":"https://mayankmadhur.in/tools/fertility/","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"author":{"@type":"Person","name":"Mayank Madhur"},"publisher":{"@type":"Organization","name":"Healthcare Pulse"}}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<style>
+  :root{
+    --bg:#F5F9F9; --card:#FFFFFF; --ink:#1B3A4B; --ink-soft:#5A6B72; --line:#E2E8EC;
+    --accent:#0FA3A3; --accent-soft:#0FA3A318; --teal:#2E7CB8; --teal-soft:#2E7CB818;
+    --gold:#B8892B; --plum:#7A5378; --blue:#2E7CB8; --shadow:0 1px 3px #2a262010,0 8px 24px #2a262008;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.5;}
+  .serif{font-family:'Fraunces',Georgia,serif;}
+  .mono{font-family:'Roboto Mono',monospace;}
+  .wrap{max-width:1120px;margin:0 auto;padding:44px 26px 90px;}
+
+  header.hero{margin-bottom:40px;}
+  .kicker{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:14px;}
+  h1{font-family:'Fraunces',serif;font-size:clamp(30px,5vw,46px);font-weight:500;line-height:1.05;margin:0 0 18px;letter-spacing:-.01em;}
+  h1 em{font-style:italic;color:var(--accent);}
+  .standfirst{font-size:17px;line-height:1.6;color:var(--ink-soft);max-width:660px;}
+  .standfirst b{color:var(--ink);font-weight:600;}
+
+  .tabs{display:flex;gap:4px;margin:34px 0 32px;border-bottom:1px solid var(--line);flex-wrap:wrap;}
+  .tab{background:none;border:none;color:var(--ink-soft);padding:12px 18px;font-size:14px;cursor:pointer;
+    border-bottom:2px solid transparent;font-family:inherit;font-weight:500;transition:.15s;}
+  .tab:hover{color:var(--ink);}
+  .tab.active{color:var(--accent);border-bottom-color:var(--accent);}
+  .panel{display:none;animation:fade .3s ease;}
+  .panel.active{display:block;}
+  @keyframes fade{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:none;}}
+
+  section{margin-bottom:46px;}
+  .lede{font-family:'Fraunces',serif;font-size:22px;font-weight:500;line-height:1.35;margin:0 0 8px;letter-spacing:-.01em;}
+  .lede .num{color:var(--accent);}
+  .say{font-size:14.5px;color:var(--ink-soft);margin:0 0 20px;max-width:720px;line-height:1.65;}
+  .say b{color:var(--ink);font-weight:600;}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:26px 28px;box-shadow:var(--shadow);}
+  .card canvas{max-height:440px;}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+  @media(max-width:820px){.grid-2{grid-template-columns:1fr;}}
+
+  .legend{display:flex;gap:16px;margin-bottom:16px;font-size:12px;color:var(--ink-soft);flex-wrap:wrap;}
+  .legend span{display:inline-flex;align-items:center;gap:6px;}
+  .dot{width:9px;height:9px;border-radius:50%;}
+
+  /* pull quote / big stat band */
+  .band{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:8px 0 34px;}
+  @media(max-width:820px){.band{grid-template-columns:1fr;}}
+  .bigstat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px 24px;box-shadow:var(--shadow);}
+  .bigstat .n{font-family:'Fraunces',serif;font-size:42px;font-weight:500;line-height:1;color:var(--accent);}
+  .bigstat .n small{font-size:18px;color:var(--ink-soft);}
+  .bigstat .l{font-size:13px;color:var(--ink-soft);margin-top:8px;line-height:1.45;}
+
+  .story{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0 12px 12px 0;
+    padding:22px 26px;margin-bottom:20px;box-shadow:var(--shadow);}
+  .story h3{font-family:'Fraunces',serif;font-size:19px;font-weight:600;margin:0 0 10px;}
+  .story p{font-size:14.5px;line-height:1.68;color:var(--ink-soft);margin:0 0 11px;}
+  .story p:last-child{margin-bottom:0;}
+  .story p b{color:var(--ink);font-weight:600;}
+  .story .stat{font-family:'Roboto Mono',monospace;color:var(--accent);font-weight:500;}
+
+  /* correlation bars */
+  .corr-row{display:grid;grid-template-columns:190px 1fr 54px;align-items:center;gap:14px;padding:7px 0;font-size:13.5px;}
+  .corr-label{text-align:right;color:var(--ink);}
+  .corr-track{position:relative;height:22px;background:linear-gradient(90deg,var(--teal-soft),transparent 50%,var(--accent-soft));border-radius:4px;}
+  .corr-track .zero{position:absolute;left:50%;top:-3px;bottom:-3px;width:1px;background:var(--line);}
+  .corr-fill{position:absolute;top:3px;height:16px;border-radius:3px;}
+  .corr-val{font-family:'Roboto Mono',monospace;font-size:13px;font-weight:500;}
+  .corr-scale{display:grid;grid-template-columns:190px 1fr 54px;gap:14px;font-size:11px;color:var(--ink-soft);margin-top:6px;}
+  .corr-scale .ends{display:flex;justify-content:space-between;}
+
+  table{width:100%;border-collapse:collapse;font-size:13.5px;}
+  thead th{text-align:left;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-soft);
+    border-bottom:1.5px solid var(--line);padding:10px 10px;cursor:pointer;user-select:none;white-space:nowrap;font-weight:600;}
+  thead th:hover{color:var(--accent);}
+  thead th.sorted::after{content:' ↓';color:var(--accent);}
+  tbody td{padding:9px 10px;border-bottom:1px solid var(--line);white-space:nowrap;}
+  tbody tr:hover{background:var(--bg);}
+  td.state{font-weight:600;}
+  td.num{font-family:'Roboto Mono',monospace;text-align:right;}
+  .pill{font-size:10px;padding:2px 8px;border-radius:20px;margin-left:6px;font-weight:600;}
+  .pill.below{background:var(--accent-soft);color:var(--accent);}
+  .pill.above{background:var(--teal-soft);color:var(--teal);}
+
+  .controls{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;}
+  .chip{font-size:12.5px;padding:7px 14px;border-radius:20px;border:1px solid var(--line);background:var(--card);
+    color:var(--ink-soft);cursor:pointer;transition:.15s;font-family:inherit;font-weight:500;}
+  .chip:hover{border-color:var(--accent);color:var(--accent);}
+  .chip.active{background:var(--accent);border-color:var(--accent);color:#fff;}
+
+  select{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:10px 14px;
+    font-size:14px;font-family:inherit;cursor:pointer;min-width:200px;font-weight:500;}
+  select:focus{outline:2px solid var(--accent);outline-offset:1px;}
+  label.fl{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);display:block;margin-bottom:7px;font-weight:600;}
+
+  .profile-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:14px;margin:22px 0 22px;}
+  .profile-head h2{font-family:'Fraunces',serif;font-size:34px;font-weight:500;margin:0;letter-spacing:-.01em;}
+  .profile-head .badge{font-size:12px;color:var(--ink-soft);}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:26px;}
+  @media(max-width:820px){.kpis{grid-template-columns:repeat(2,1fr);}}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;box-shadow:var(--shadow);}
+  .kpi .kl{font-size:11px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;font-weight:600;}
+  .kpi .kv{font-family:'Fraunces',serif;font-size:29px;font-weight:600;line-height:1;}
+  .kpi .ks{font-size:11.5px;margin-top:8px;display:flex;gap:7px;align-items:center;}
+  .trend{font-family:'Roboto Mono',monospace;font-size:11px;padding:1px 6px;border-radius:6px;font-weight:500;}
+  .trend.good{background:var(--teal-soft);color:var(--teal);}
+  .trend.bad{background:var(--accent-soft);color:var(--accent);}
+  .trend.flat{background:#00000008;color:var(--ink-soft);}
+
+  footer{border-top:1px solid var(--line);padding-top:22px;margin-top:30px;font-size:11.5px;color:var(--ink-soft);line-height:1.7;}
+
+  /* compare */
+  .cmp-table td,.cmp-table th{padding:11px 10px;border-bottom:1px solid var(--line);}
+  .cmp-table th{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);font-weight:600;}
+  .cmp-table td.win{color:var(--teal);font-weight:600;}
+  .cmp-table td.winA{color:var(--accent);font-weight:600;}
+  .cmp-num{font-family:'Roboto Mono',monospace;}
+  .cmp-bar{height:22px;background:var(--bg);border-radius:5px;position:relative;overflow:hidden;border:1px solid var(--line);}
+  .cmp-bar .mid{position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--line);}
+  .cmp-bar .fa{position:absolute;top:2px;bottom:2px;background:var(--accent);border-radius:3px;right:50%;}
+  .cmp-bar .fb{position:absolute;top:2px;bottom:2px;background:var(--teal);border-radius:3px;left:50%;}
+  .verdict-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  @media(max-width:820px){.verdict-grid{grid-template-columns:1fr;}}
+  .verdict-col h4{font-family:'Fraunces',serif;font-size:17px;margin:0 0 8px;}
+  .verdict-col p{font-size:13.5px;line-height:1.6;color:var(--ink-soft);margin:0;}
+  .verdict-col.a h4{color:var(--accent);}
+  .verdict-col.b h4{color:var(--teal);}
+
+  /* rationale */
+  .rat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:0;margin-bottom:14px;
+    box-shadow:var(--shadow);overflow:hidden;}
+  .rat-head{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;cursor:pointer;gap:16px;}
+  .rat-head:hover{background:var(--bg);}
+  .rat-title{font-family:'Fraunces',serif;font-size:18px;font-weight:600;}
+  .rat-meta{display:flex;gap:22px;align-items:center;flex-shrink:0;}
+  .rat-natl{text-align:right;}
+  .rat-natl .v{font-family:'Roboto Mono',monospace;font-size:20px;font-weight:500;color:var(--accent);}
+  .rat-natl .k{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);}
+  .rat-caret{font-size:13px;color:var(--ink-soft);transition:transform .2s;}
+  .rat.open .rat-caret{transform:rotate(180deg);}
+  .rat-body{display:none;padding:0 24px 22px;border-top:1px solid var(--line);}
+  .rat.open .rat-body{display:block;}
+  .rat-body dl{display:grid;grid-template-columns:130px 1fr;gap:10px 18px;margin:18px 0 0;font-size:13.5px;line-height:1.6;}
+  .rat-body dt{color:var(--ink-soft);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.03em;padding-top:1px;}
+  .rat-body dd{margin:0;color:var(--ink);}
+  .rat-body dd b{color:var(--accent);}
+  .rat-range{display:flex;gap:20px;margin-top:16px;flex-wrap:wrap;}
+  .rat-range .rr{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:12px;}
+  .rat-range .rr .rv{font-family:'Roboto Mono',monospace;font-size:16px;font-weight:500;color:var(--ink);}
+  .rat-range .rr .rl{color:var(--ink-soft);font-size:11px;}
+</style>
+</head>
+<body>
+<div style="max-width:1080px;margin:0 auto;padding:14px 26px 0;font-family:'Inter',system-ui,sans-serif;font-size:13px">
+  <a href="/edition-65-fertility-nfhs6.html" style="color:#0FA3A3;text-decoration:none;font-weight:600">&larr; Read Edition 65: India already stopped growing</a>
+</div>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="kicker">NFHS-6 (2023–24) · A data story</div>
+    <h1 class="serif">India already stopped growing. <em>Most people just haven't noticed.</em></h1>
+    <p class="standfirst">India's total fertility rate has fallen to <b>2.0</b> children per woman, below the 2.1 replacement line. In cities it is <b>1.6</b> — European territory. But the national average hides two different countries: one already ageing, one still filling up. This dashboard maps the transition across 31 states, and asks what is actually driving it.</p>
+  </header>
+
+  <div class="tabs">
+    <button class="tab active" data-panel="story">The Story</button>
+    <button class="tab" data-panel="drivers">What Drives It</button>
+    <button class="tab" data-panel="profile">State Profile</button>
+    <button class="tab" data-panel="compare">Compare</button>
+    <button class="tab" data-panel="rationale">Every Number Explained</button>
+    <button class="tab" data-panel="ledger">Full Data</button>
+  </div>
+
+  <!-- ============ THE STORY ============ -->
+  <div class="panel active" id="story">
+    <div class="band" id="bigstats"></div>
+
+    <section>
+      <p class="lede">Sixteen of 31 states are already below replacement.</p>
+      <p class="say">The <b>South and the Northeast crossed the line years ago</b>; the North and East are following. Fertility is no longer an "India problem." It is a Bihar, UP, Jharkhand problem, shrinking to a handful of states while the rest of the country quietly begins to age.</p>
+      <div class="legend" id="regionLegend"></div>
+      <div class="card"><canvas id="tfrChart" height="130"></canvas></div>
+    </section>
+
+    <div class="story">
+      <h3>Story 1 — The two Indias, drifting apart</h3>
+      <p>Group the states by region and a fault line appears. The <b>South averages a TFR of 1.77 and the Northeast 1.66</b>, both deep below replacement. The <b>East sits at 2.05 and Central India at 2.00</b>, still growing. This is not a rich-poor gap so much as a demographic time gap: the South is roughly one generation ahead of the East on the same curve.</p>
+      <p>The consequence is political, not just demographic. India's parliamentary seats are still frozen on 1971 population. When that freeze lifts, states that controlled their fertility earliest — the South — face losing relative representation to states that did not. <b>The fertility map is quietly redrawing the federal map.</b></p>
+    </div>
+
+    <div class="story">
+      <h3>Story 2 — The states that got old before they got rich</h3>
+      <p>Kerala's TFR is 1.8, but <span class="stat">20.7%</span> of its people are already 60 or older — a share comparable to Japan a couple of decades ago. Tamil Nadu, Goa, Himachal, Puducherry all now carry <b>15–17% elderly populations while their working-age base is shrinking behind them</b>.</p>
+      <p>This is the uncomfortable half of the "demographic dividend" story. The dividend is a window, not a gift. In the South that window is closing, and the healthcare system built around maternity and paediatrics is now facing a population that needs geriatric, chronic, and palliative care instead. <b>The capital is still being deployed for the India of 2005.</b></p>
+    </div>
+
+    <div class="story">
+      <h3>Story 3 — Where fertility stays high, it is often not by choice</h3>
+      <p>The single strongest correlate of high state fertility is not low education or poverty. It is <b>unmet need for contraception</b> — women who want to stop or delay childbearing but are not using any method. That relationship runs at <span class="stat">r = +0.58</span>, stronger than any other factor measured.</p>
+      <p>That reframes the whole debate. High-fertility states are not full of families who want more children. They are full of <b>women whose demand for contraception the system is failing to meet</b>. Fertility decline, on this reading, is less about persuading people to want fewer children and more about delivering a service they already want. That is a supply problem, and supply problems are fixable.</p>
+    </div>
+  </div>
+
+  <!-- ============ WHAT DRIVES IT ============ -->
+  <div class="panel" id="drivers">
+    <section>
+      <p class="lede">What actually moves with fertility?</p>
+      <p class="say">Each bar is the correlation between a state-level factor and that state's TFR, across all 31 states. Bars to the <b style="color:var(--teal)">left (teal)</b> fall as fertility falls — they travel <i>with</i> smaller families. Bars to the <b style="color:var(--accent)">right (orange)</b> rise as fertility rises — they mark where fertility stays high. <b>Correlation is not causation</b>, and these are cross-sectional, but the pattern is coherent and it points somewhere specific.</p>
+      <div class="card">
+        <div id="corrBars"></div>
+        <div class="corr-scale"><div></div><div class="ends"><span>← moves with lower fertility</span><span>moves with higher fertility →</span></div><div></div></div>
+      </div>
+    </section>
+
+    <section>
+      <p class="lede">The two clearest signals, drawn out</p>
+      <p class="say">Unmet contraception need (the strongest positive correlate) and women's education (the strongest "development" correlate), each plotted against TFR. Every dot is a state.</p>
+      <div class="grid-2">
+        <div class="card"><canvas id="scatterUnmet" height="270"></canvas></div>
+        <div class="card"><canvas id="scatterEdu" height="270"></canvas></div>
+      </div>
+    </section>
+
+    <div class="story">
+      <h3>Reading the correlations honestly</h3>
+      <p><b>The "modernization bundle" travels together.</b> Mobile ownership (<span class="stat">r = −0.54</span>), institutional births (<span class="stat">−0.51</span>), women's schooling (<span class="stat">−0.49</span>) and internet use (<span class="stat">−0.38</span>) all move with lower fertility. None of these individually <i>causes</i> smaller families; they are all markers of the same underlying shift — women with more autonomy, information, and connection to the formal economy have fewer children. The phone is a proxy, not a cause.</p>
+      <p><b>Insurance is a non-signal</b> (<span class="stat">r = +0.06</span>). Whatever is driving fertility down, it is not who pays for healthcare. This directly contradicts the intuitive "insured, urban states have fewer kids" story — the correlation simply isn't there once you plot it.</p>
+      <p><b>The causal reading, stated carefully.</b> When you combine women's education and unmet contraception need in a single model, together they explain about <span class="stat">44%</span> of the variation in state fertility, and unmet need carries the larger weight. The plausible causal chain: education raises the <i>desire</i> for smaller families; contraceptive access determines whether that desire is <i>realised</i>. Where both are present, fertility collapses. Where education has raised aspirations but supply hasn't caught up, you get the frustrated middle — high unmet need and stubbornly high fertility.</p>
+    </div>
+  </div>
+
+  <!-- ============ STATE PROFILE ============ -->
+  <div class="panel" id="profile">
+    <div style="max-width:260px;">
+      <label class="fl" for="stateSelect">Choose a state</label>
+      <select id="stateSelect"></select>
+    </div>
+    <div id="profileBody"></div>
+  </div>
+
+  <!-- ============ COMPARE ============ -->
+  <div class="panel" id="compare">
+    <p class="say" style="margin-top:8px;">Put two states side by side across the full fertility-transition indicator set. The value in the <b style="color:var(--teal)">healthier / more-advanced-transition</b> direction is highlighted. Bars diverge from the centre: <b style="color:var(--accent)">left = State A</b>, <b style="color:var(--teal)">right = State B</b>.</p>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-end;margin-bottom:22px;">
+      <div><label class="fl" for="cmpA">State A</label><select id="cmpA"></select></div>
+      <div class="serif" style="font-size:22px;color:var(--ink-soft);padding-bottom:8px;">vs</div>
+      <div><label class="fl" for="cmpB">State B</label><select id="cmpB"></select></div>
+    </div>
+    <div class="card" id="cmpVerdict" style="margin-bottom:20px;"></div>
+    <div class="card" style="overflow-x:auto;"><table class="cmp-table" id="cmpTable"></table></div>
+  </div>
+
+  <!-- ============ RATIONALE ============ -->
+  <div class="panel" id="rationale">
+    <p class="say" style="margin-top:8px;">The end-to-end logic. For every indicator on this dashboard: what it measures, the national benchmark, how to read a high versus low value, and the rationale for why it belongs in a fertility story. Live ranges are pulled from the 31-state data.</p>
+    <div id="rationaleBody"></div>
+  </div>
+
+  <!-- ============ LEDGER ============ -->
+  <div class="panel" id="ledger">
+    <p class="say" style="margin-top:8px;">Every state, sortable. Click a column header. Filter by region. TFR below 2.1 flagged.</p>
+    <div class="controls" id="regionFilters"></div>
+    <div class="card" style="overflow-x:auto;">
+      <table id="ledgerTable">
+        <thead><tr>
+          <th data-key="state">State</th><th data-key="region">Region</th>
+          <th data-key="tfr">TFR</th><th data-key="tfr_urban">TFR urban</th>
+          <th data-key="unmet">Unmet need %</th><th data-key="edu">W. edu %</th>
+          <th data-key="mobile">W. mobile %</th><th data-key="child_m">Child marr. %</th>
+          <th data-key="pop60">60+ %</th>
+        </tr></thead><tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer id="footer"></footer>
+</div>
+
+<script id="raw-data" type="application/json">{"regions": {"Andhra Pradesh": "South", "Karnataka": "South", "Kerala": "South", "Tamil Nadu": "South", "Telangana": "South", "Puducherry": "South", "Punjab": "North", "Haryana": "North", "Himachal Pradesh": "North", "Uttarakhand": "North", "Uttar Pradesh": "North", "Rajasthan": "North", "NCT of Delhi": "North", "Chandigarh": "North", "Jammu and Kashmir": "North", "Gujarat": "West", "Maharashtra": "West", "Goa": "West", "Bihar": "East", "Jharkhand": "East", "Odisha": "East", "West Bengal": "East", "Madhya Pradesh": "Central", "Chhattisgarh": "Central", "Arunachal Pradesh": "Northeast", "Assam": "Northeast", "Meghalaya": "Northeast", "Mizoram": "Northeast", "Nagaland": "Northeast", "Sikkim": "Northeast", "Tripura": "Northeast"}, "data": {"Andhra Pradesh": {"pop60": [12.3, 14.7, 13.9, 13.2], "insurance": [85.2, 95.1, 91.9, 80.2], "women_school10": [60.0, 42.5, 48.4, 39.6], "women_internet": [73.7, 58.6, 63.6, 21.0], "child_marriage_women": [17.1, 28.9, 25.1, 29.3], "tfr": [1.6, 2.0, 1.8, 1.7], "teen_pregnancy": [5.4, 11.1, 9.2, 12.6], "female_sterilization": [66.4, 71.1, 69.5, 69.6], "male_sterilization": [1.1, 0.6, 0.8, 0.4], "unmet_need": [5.1, 4.1, 4.4, 4.7], "institutional_births": [98.4, 98.4, 98.4, 96.5], "csection": [57.3, 50.0, 52.2, 42.4], "women_bmi_low": [7.8, 12.3, 10.8, 14.8], "men_bmi_low": [9.7, 14.5, 12.9, 16.5], "diabetes_women": [25.1, 20.2, 21.8, 19.5], "diabetes_men": [26.8, 22.9, 24.1, 21.8], "spousal_violence": [25.0, 21.4, 22.7, 29.9], "tobacco_women": [1.4, 4.9, 3.8, 3.9], "tobacco_men": [13.7, 21.3, 18.8, 22.6], "alcohol_women": [0.2, 0.7, 0.6, 0.5], "alcohol_men": [18.8, 25.4, 23.3, 23.1], "mobile_women": [76.7, 57.5, 64.1, 48.9], "women_overweight": [57.3, 43.2, 47.9, 36.3], "men_overweight": [48.4, 38.1, 41.5, 31.1], "htn_women": [25.8, 23.3, 24.1, 25.3], "htn_men": [27.4, 25.4, 26.0, 29.0]}, "Arunachal Pradesh": {"pop60": [5.6, 12.3, 10.2, 8.1], "insurance": [50.2, 52.6, 51.8, 29.3], "women_school10": [62.1, 44.2, 50.4, 39.4], "women_internet": [82.3, 68.7, 73.4, 52.9], "child_marriage_women": [15.3, 18.6, 17.3, 18.9], "tfr": [1.4, 1.5, 1.5, 1.8], "teen_pregnancy": [4.2, 6.6, 5.6, 6.0], "female_sterilization": [18.2, 22.4, 21.1, 18.2], "male_sterilization": [0.1, 0.0, 0.1, 0.0], "unmet_need": [9.1, 8.8, 8.9, 12.4], "institutional_births": [96.1, 84.8, 88.7, 79.2], "csection": [23.4, 14.2, 17.4, 14.8], "women_bmi_low": [6.8, 6.8, 6.8, 5.7], "men_bmi_low": [6.3, 5.6, 5.8, 4.9], "diabetes_women": [11.9, 10.9, 11.2, 8.4], "diabetes_men": [13.8, 12.3, 12.7, 11.9], "spousal_violence": [15.6, 18.7, 17.8, 24.9], "tobacco_women": [15.2, 20.8, 19.1, 18.8], "tobacco_men": [46.5, 53.6, 51.4, 50.3], "alcohol_women": [18.9, 25.1, 23.2, 24.2], "alcohol_men": [44.1, 53.4, 50.5, 52.6], "mobile_women": [92.7, 89.1, 90.3, 76.4]}, "Assam": {"pop60": [13.3, 9.8, 10.3, 8.6], "insurance": [55.5, 72.5, 70.3, 66.7], "women_school10": [57.8, 34.1, 37.1, 29.6], "women_internet": [70.2, 51.1, 53.5, 28.2], "child_marriage_women": [9.2, 27.0, 25.3, 31.8], "tfr": [1.2, 1.7, 1.6, 1.9], "teen_pregnancy": [1.0, 8.0, 7.3, 11.7], "female_sterilization": [8.6, 7.6, 7.7, 9.0], "male_sterilization": [0.2, 0.3, 0.3, 0.1], "unmet_need": [5.4, 7.7, 7.4, 11.0], "institutional_births": [95.4, 86.9, 87.6, 84.1], "csection": [46.7, 20.7, 22.9, 18.1], "women_bmi_low": [11.3, 16.2, 15.6, 17.7], "men_bmi_low": [10.0, 16.5, 15.7, 13.4], "diabetes_women": [17.6, 11.8, 12.5, 12.8], "diabetes_men": [20.1, 15.1, 15.6, 16.0], "spousal_violence": [12.3, 16.8, 16.2, 32.2], "tobacco_women": [12.9, 17.1, 16.5, 22.2], "tobacco_men": [38.3, 46.3, 45.2, 51.9], "alcohol_women": [2.1, 6.4, 5.8, 7.3], "alcohol_men": [19.7, 24.5, 23.8, 25.2], "mobile_women": [82.8, 64.5, 66.8, 57.2]}, "Bihar": {"pop60": [10.5, 11.6, 11.5, 11.1], "insurance": [21.5, 21.1, 21.1, 17.4], "women_school10": [51.9, 30.6, 33.1, 28.8], "women_internet": [70.3, 56.8, 58.4, 20.6], "child_marriage_women": [20.0, 36.3, 34.6, 40.8], "tfr": [2.1, 2.8, 2.7, 3.0], "teen_pregnancy": [8.9, 11.7, 11.4, 11.0], "female_sterilization": [35.4, 37.9, 37.6, 34.8], "male_sterilization": [0.2, 0.2, 0.2, 0.1], "unmet_need": [11.4, 14.8, 14.4, 13.6], "institutional_births": [89.9, 80.2, 81.1, 76.2], "csection": [23.2, 12.2, 13.2, 9.7], "women_bmi_low": [20.1, 27.2, 26.3, 25.6], "men_bmi_low": [21.3, 25.3, 24.5, 21.6], "diabetes_women": [17.0, 12.6, 13.1, 12.7], "diabetes_men": [18.5, 17.1, 17.3, 16.2], "spousal_violence": [31.2, 37.0, 36.1, 40.1], "tobacco_women": [2.1, 4.3, 4.0, 5.0], "tobacco_men": [36.6, 47.4, 45.8, 48.9], "alcohol_women": [0.2, 0.4, 0.4, 0.4], "alcohol_men": [12.8, 17.1, 16.5, 15.4], "mobile_women": [70.9, 61.7, 62.8, 51.4]}, "Chhattisgarh": {"pop60": [11.7, 11.3, 11.4, 10.5], "insurance": [85.4, 91.8, 90.5, 71.4], "women_school10": [59.1, 37.3, 41.9, 36.9], "women_internet": [74.4, 49.0, 54.4, 26.7], "child_marriage_women": [6.5, 11.0, 10.1, 12.1], "tfr": [1.5, 2.0, 1.9, 1.8], "teen_pregnancy": [2.9, 4.6, 4.2, 3.1], "female_sterilization": [39.1, 43.2, 42.4, 47.5], "male_sterilization": [1.0, 1.4, 1.4, 0.8], "unmet_need": [8.5, 11.3, 10.8, 8.3], "institutional_births": [94.6, 85.4, 86.9, 85.7], "csection": [41.8, 15.7, 20.0, 15.2], "women_bmi_low": [16.2, 27.6, 25.2, 23.1], "men_bmi_low": [24.8, 26.8, 26.4, 17.4], "diabetes_women": [21.3, 15.0, 16.2, 9.0], "diabetes_men": [26.5, 19.7, 20.9, 10.8], "spousal_violence": [11.5, 17.2, 16.1, 20.1], "tobacco_women": [10.4, 20.9, 18.7, 17.3], "tobacco_men": [34.1, 48.3, 45.3, 43.1], "alcohol_women": [1.6, 6.8, 5.7, 4.9], "alcohol_men": [27.8, 41.1, 38.3, 34.7], "mobile_women": [71.0, 41.5, 47.8, 40.7]}, "Goa": {"pop60": [17.1, 17.4, 17.2, 14.2], "insurance": [70.2, 73.7, 71.7, 73.1], "women_school10": [69.5, 62.6, 66.5, 71.5], "women_internet": [95.2, 92.4, 94.0, 73.7], "child_marriage_women": [9.9, 3.6, 6.8, 5.8], "tfr": [1.4, 1.8, 1.6, 1.3], "teen_pregnancy": [2.0, 0.0, 1.1, 2.7], "female_sterilization": [25.8, 19.8, 23.4, 29.9], "male_sterilization": [0.2, 0.0, 0.1, 0.0], "unmet_need": [4.1, 6.5, 5.1, 8.4], "institutional_births": [100.0, 99.1, 99.6, 99.7], "csection": [53.3, 36.7, 46.2, 39.5], "women_bmi_low": [12.3, 18.3, 15.0, 13.8], "men_bmi_low": [0.0, 16.0, 6.9, 12.5], "diabetes_women": [27.4, 27.7, 27.5, 20.8], "diabetes_men": [36.3, 27.4, 32.1, 24.1], "spousal_violence": [16.2, 4.5, 11.3, 8.3], "tobacco_women": [2.5, 4.0, 3.1, 2.6], "tobacco_men": [17.1, 17.3, 17.1, 18.1], "alcohol_women": [2.4, 1.6, 2.1, 5.5], "alcohol_men": [24.5, 19.5, 22.4, 36.8], "mobile_women": [92.0, 87.1, 89.9, 91.2]}, "Gujarat": {"pop60": [12.9, 13.2, 13.1, 12.0], "insurance": [54.6, 60.5, 57.9, 44.4], "women_school10": [51.9, 28.8, 38.6, 33.8], "women_internet": [81.3, 54.3, 65.7, 30.8], "child_marriage_women": [12.8, 21.4, 18.0, 21.8], "tfr": [1.7, 2.0, 1.9, 1.9], "teen_pregnancy": [3.4, 7.0, 5.6, 5.2], "female_sterilization": [24.0, 41.3, 33.9, 35.9], "male_sterilization": [0.0, 0.4, 0.2, 0.2], "unmet_need": [6.1, 5.9, 6.0, 10.3], "institutional_births": [98.2, 96.3, 97.1, 94.3], "csection": [40.6, 21.7, 29.0, 21.0], "women_bmi_low": [14.5, 30.1, 23.6, 25.2], "men_bmi_low": [15.6, 26.6, 21.8, 20.9], "diabetes_women": [18.2, 15.2, 16.4, 15.8], "diabetes_men": [20.2, 17.6, 18.6, 16.9], "spousal_violence": [12.9, 14.1, 13.6, 13.9], "tobacco_women": [3.9, 9.2, 7.0, 8.7], "tobacco_men": [30.3, 44.7, 38.4, 41.2], "alcohol_women": [0.3, 0.3, 0.3, 0.6], "alcohol_men": [4.1, 6.0, 5.2, 5.8], "mobile_women": [76.0, 46.2, 58.8, 48.8]}, "Haryana": {"pop60": [12.1, 12.4, 12.3, 11.8], "insurance": [63.8, 71.4, 68.3, 25.7], "women_school10": [63.9, 49.9, 55.2, 49.5], "women_internet": [84.9, 67.3, 74.0, 48.4], "child_marriage_women": [9.7, 13.0, 11.9, 12.5], "tfr": [1.8, 2.1, 2.0, 1.9], "teen_pregnancy": [4.4, 4.9, 4.7, 3.9], "female_sterilization": [20.4, 33.4, 28.5, 32.3], "male_sterilization": [0.6, 1.1, 0.9, 0.9], "unmet_need": [5.7, 6.2, 6.0, 7.6], "institutional_births": [96.3, 96.3, 96.3, 94.9], "csection": [32.0, 22.3, 25.6, 19.4], "women_bmi_low": [13.6, 19.4, 17.2, 15.1], "men_bmi_low": [14.5, 18.1, 16.7, 14.5], "diabetes_women": [18.2, 15.9, 16.7, 11.9], "diabetes_men": [19.8, 17.7, 18.5, 13.5], "spousal_violence": [16.1, 12.1, 13.6, 17.9], "tobacco_women": [1.3, 2.8, 2.2, 2.6], "tobacco_men": [21.6, 31.4, 27.5, 29.1], "alcohol_women": [0.3, 0.1, 0.2, 0.3], "alcohol_men": [17.2, 17.7, 17.5, 16.0], "mobile_women": [76.6, 57.8, 64.9, 50.4]}, "Himachal Pradesh": {"pop60": [12.5, 16.9, 16.4, 14.7], "insurance": [53.3, 62.6, 61.4, 38.9], "women_school10": [78.0, 71.4, 72.1, 65.9], "women_internet": [82.1, 74.6, 75.4, 49.7], "child_marriage_women": [8.0, 7.9, 7.9, 5.4], "tfr": [1.4, 1.9, 1.8, 1.7], "teen_pregnancy": [1.0, 3.1, 2.9, 3.4], "female_sterilization": [23.9, 33.0, 32.2, 37.7], "male_sterilization": [1.7, 2.3, 2.3, 3.3], "unmet_need": [6.7, 6.3, 6.3, 7.9], "institutional_births": [95.5, 91.4, 91.7, 88.2], "csection": [31.6, 29.8, 29.9, 21.0], "women_bmi_low": [13.1, 15.3, 15.1, 13.9], "men_bmi_low": [8.0, 15.9, 15.0, 11.8], "diabetes_women": [19.2, 20.7, 20.6, 13.9], "diabetes_men": [18.0, 20.3, 20.0, 14.7], "spousal_violence": [3.1, 4.4, 4.3, 8.6], "tobacco_women": [1.0, 2.0, 1.9, 1.7], "tobacco_men": [24.6, 29.5, 28.9, 32.2], "alcohol_women": [0.1, 0.6, 0.6, 0.6], "alcohol_men": [27.6, 30.6, 30.2, 31.9], "mobile_women": [86.2, 84.0, 84.3, 79.5]}, "Jharkhand": {"pop60": [11.1, 11.6, 11.5, 10.0], "insurance": [56.4, 58.9, 58.4, 50.3], "women_school10": [62.3, 33.1, 39.5, 33.2], "women_internet": [84.5, 64.2, 68.6, 31.4], "child_marriage_women": [11.1, 32.2, 28.1, 32.2], "tfr": [1.5, 2.4, 2.2, 2.3], "teen_pregnancy": [4.7, 13.3, 11.7, 9.8], "female_sterilization": [32.0, 33.1, 32.9, 37.4], "male_sterilization": [0.5, 0.4, 0.4, 0.3], "unmet_need": [8.9, 13.5, 12.6, 11.5], "institutional_births": [91.7, 75.0, 77.4, 75.8], "csection": [32.9, 12.7, 15.7, 12.8], "women_bmi_low": [18.9, 32.1, 29.2, 26.2], "men_bmi_low": [20.0, 26.9, 25.3, 17.1], "diabetes_women": [19.2, 14.0, 15.0, 10.2], "diabetes_men": [26.6, 20.4, 21.8, 14.1], "spousal_violence": [18.2, 29.2, 27.0, 31.4], "tobacco_women": [4.0, 8.5, 7.5, 8.4], "tobacco_men": [34.5, 48.7, 45.2, 47.4], "alcohol_women": [1.1, 6.7, 5.5, 6.1], "alcohol_men": [22.0, 37.3, 33.6, 34.9], "mobile_women": [72.2, 54.6, 58.4, 49.0]}, "Karnataka": {"pop60": [13.1, 15.8, 14.6, 13.3], "insurance": [57.1, 68.1, 63.3, 31.8], "women_school10": [69.4, 48.3, 57.6, 50.2], "women_internet": [74.1, 45.1, 57.9, 35.0], "child_marriage_women": [10.0, 19.1, 15.3, 21.3], "tfr": [1.7, 1.8, 1.8, 1.7], "teen_pregnancy": [2.2, 6.8, 4.9, 5.4], "female_sterilization": [49.1, 62.8, 56.9, 57.4], "male_sterilization": [0.0, 0.1, 0.0, 0.0], "unmet_need": [10.6, 7.4, 8.8, 6.4], "institutional_births": [99.1, 98.3, 98.7, 97.0], "csection": [52.6, 40.2, 45.7, 31.5], "women_bmi_low": [10.5, 18.6, 15.1, 17.2], "men_bmi_low": [8.5, 18.4, 14.0, 14.3], "diabetes_women": [25.8, 20.0, 22.3, 14.0], "diabetes_men": [29.7, 23.9, 26.1, 15.6], "spousal_violence": [6.9, 19.9, 14.1, 44.4], "tobacco_women": [2.3, 9.4, 6.4, 8.6], "tobacco_men": [18.1, 28.6, 24.2, 27.3], "alcohol_women": [0.2, 0.8, 0.5, 0.9], "alcohol_men": [13.3, 17.3, 15.6, 16.6], "mobile_women": [85.9, 61.7, 72.4, 61.8]}, "Kerala": {"pop60": [20.9, 20.5, 20.7, 18.6], "insurance": [56.2, 57.9, 57.1, 57.8], "women_school10": [88.7, 84.6, 86.6, 77.0], "women_internet": [89.4, 85.2, 87.3, 61.1], "child_marriage_women": [2.2, 3.6, 2.9, 6.3], "tfr": [1.8, 1.9, 1.8, 1.8], "teen_pregnancy": [0.4, 2.6, 1.5, 2.4], "female_sterilization": [41.0, 43.5, 42.3, 46.6], "male_sterilization": [0.2, 0.2, 0.2, 0.1], "unmet_need": [10.3, 10.1, 10.2, 12.5], "institutional_births": [99.6, 99.8, 99.7, 99.8], "csection": [41.6, 41.0, 41.3, 38.9], "women_bmi_low": [11.0, 12.9, 12.0, 10.1], "men_bmi_low": [14.3, 16.7, 15.5, 10.0], "diabetes_women": [29.5, 28.2, 28.9, 24.8], "diabetes_men": [33.5, 30.4, 31.9, 27.0], "spousal_violence": [15.6, 19.7, 17.7, 9.8], "tobacco_women": [1.3, 3.1, 2.2, 2.2], "tobacco_men": [13.1, 18.4, 15.9, 16.9], "alcohol_women": [0.3, 0.3, 0.3, 0.2], "alcohol_men": [21.5, 23.7, 22.7, 19.9], "mobile_women": [89.9, 88.3, 89.1, 86.6]}, "Madhya Pradesh": {"pop60": [11.7, 11.5, 11.6, 10.9], "insurance": [67.2, 76.0, 73.6, 38.1], "women_school10": [54.0, 26.0, 33.7, 29.3], "women_internet": [78.1, 55.9, 62.0, 26.9], "child_marriage_women": [9.0, 23.4, 20.0, 23.1], "tfr": [1.7, 2.3, 2.1, 2.0], "teen_pregnancy": [2.1, 6.7, 5.6, 5.1], "female_sterilization": [34.5, 52.6, 47.8, 51.9], "male_sterilization": [0.7, 1.0, 0.9, 0.7], "unmet_need": [4.9, 6.7, 6.2, 7.7], "institutional_births": [96.6, 87.9, 89.8, 90.7], "csection": [33.9, 11.0, 16.0, 12.1], "women_bmi_low": [17.4, 29.9, 26.5, 23.0], "men_bmi_low": [21.9, 30.7, 28.3, 20.8], "diabetes_women": [18.6, 13.1, 14.5, 9.8], "diabetes_men": [21.6, 17.2, 18.3, 12.2], "spousal_violence": [17.7, 22.6, 21.4, 28.0], "tobacco_women": [7.4, 13.2, 11.6, 10.3], "tobacco_men": [35.2, 52.6, 47.7, 46.4], "alcohol_women": [0.3, 1.5, 1.2, 1.0], "alcohol_men": [13.7, 20.4, 18.5, 17.0], "mobile_women": [69.2, 40.6, 48.5, 38.5]}, "Maharashtra": {"pop60": [12.0, 16.1, 14.4, 13.7], "insurance": [38.3, 38.3, 38.3, 22.4], "women_school10": [67.1, 46.5, 55.4, 50.4], "women_internet": [78.1, 50.8, 62.6, 38.0], "child_marriage_women": [11.8, 25.2, 19.7, 21.9], "tfr": [1.6, 1.9, 1.8, 1.7], "teen_pregnancy": [4.4, 9.1, 7.1, 7.6], "female_sterilization": [38.4, 56.4, 49.0, 49.1], "male_sterilization": [0.3, 1.7, 1.1, 0.4], "unmet_need": [7.6, 6.4, 6.9, 9.6], "institutional_births": [98.5, 95.0, 96.4, 94.7], "csection": [38.7, 30.1, 33.6, 25.4], "women_bmi_low": [12.5, 22.5, 18.4, 20.8], "men_bmi_low": [12.2, 20.3, 17.1, 16.2], "diabetes_women": [19.3, 14.1, 16.0, 12.4], "diabetes_men": [20.4, 16.4, 17.7, 13.6], "spousal_violence": [14.9, 22.0, 19.2, 25.2], "tobacco_women": [4.5, 11.8, 8.8, 11.0], "tobacco_men": [21.9, 38.1, 31.3, 33.8], "alcohol_women": [0.4, 0.3, 0.3, 0.4], "alcohol_men": [11.0, 13.1, 12.2, 13.9], "mobile_women": [80.0, 50.8, 63.5, 54.8]}, "Meghalaya": {"pop60": [8.0, 6.5, 6.8, 4.9], "insurance": [64.6, 77.5, 74.9, 69.0], "women_school10": [65.5, 30.6, 37.5, 35.1], "women_internet": [76.7, 54.6, 59.0, 34.7], "child_marriage_women": [9.9, 14.7, 13.8, 16.9], "tfr": [1.3, 2.4, 2.2, 2.9], "teen_pregnancy": [1.6, 5.1, 4.6, 7.2], "female_sterilization": [6.5, 7.2, 7.1, 5.6], "male_sterilization": [0.3, 0.0, 0.1, 0.0], "unmet_need": [17.8, 21.7, 21.0, 26.9], "institutional_births": [84.0, 63.3, 65.6, 58.1], "csection": [17.7, 4.9, 6.4, 8.2], "women_bmi_low": [5.4, 10.1, 9.1, 10.8], "men_bmi_low": [6.4, 7.3, 7.1, 9.0], "diabetes_women": [10.4, 6.3, 7.1, 9.5], "diabetes_men": [9.6, 6.1, 6.8, 13.9], "spousal_violence": [2.9, 6.5, 5.9, 15.0], "tobacco_women": [27.4, 36.5, 34.6, 28.3], "tobacco_men": [42.2, 61.9, 57.8, 57.8], "alcohol_women": [1.4, 1.2, 1.2, 1.5], "alcohol_men": [21.9, 30.0, 28.3, 32.4], "mobile_women": [90.3, 78.2, 80.6, 67.5]}, "Mizoram": {"pop60": [12.0, 10.9, 11.4, 10.1], "insurance": [51.9, 67.4, 60.1, 50.3], "women_school10": [70.6, 38.7, 54.7, 50.0], "women_internet": [92.8, 72.1, 82.5, 67.6], "child_marriage_women": [3.6, 8.4, 6.0, 8.0], "tfr": [1.5, 1.7, 1.6, 1.9], "teen_pregnancy": [1.9, 7.5, 4.8, 4.1], "female_sterilization": [28.4, 29.5, 29.1, 13.0], "male_sterilization": [0.0, 0.0, 0.0, 0.0], "unmet_need": [9.2, 7.1, 8.0, 18.9], "institutional_births": [98.9, 84.8, 91.2, 85.8], "csection": [21.7, 6.6, 13.5, 10.8], "women_bmi_low": [5.3, 6.5, 5.9, 5.3], "men_bmi_low": [2.7, 4.6, 3.7, 5.1], "diabetes_women": [5.9, 6.9, 6.5, 7.8], "diabetes_men": [9.1, 10.9, 10.0, 10.7], "spousal_violence": [12.0, 11.0, 11.4, 10.3], "tobacco_women": [55.0, 67.2, 61.0, 61.7], "tobacco_men": [67.5, 79.0, 73.6, 73.1], "alcohol_women": [0.8, 1.0, 0.9, 0.9], "alcohol_men": [20.3, 25.4, 23.0, 23.7], "mobile_women": [96.2, 85.5, 90.9, 82.3]}, "Nagaland": {"pop60": [9.3, 14.1, 12.4, 10.7], "insurance": [67.7, 65.1, 66.1, 22.0], "women_school10": [62.8, 35.8, 46.3, 44.4], "women_internet": [81.6, 73.5, 76.6, 49.9], "child_marriage_women": [9.3, 10.8, 10.2, 5.6], "tfr": [1.4, 2.4, 2.0, 1.7], "teen_pregnancy": [1.8, 4.2, 3.2, 3.8], "female_sterilization": [12.6, 10.1, 11.0, 14.4], "male_sterilization": [0.0, 0.1, 0.1, 0.0], "unmet_need": [5.0, 6.0, 5.7, 9.1], "institutional_births": [79.2, 56.3, 62.2, 45.7], "csection": [15.1, 8.1, 9.9, 5.2], "women_bmi_low": [7.1, 9.9, 8.8, 11.1], "men_bmi_low": [7.6, 8.4, 8.2, 7.5], "diabetes_women": [10.8, 9.9, 10.2, 9.3], "diabetes_men": [12.9, 9.8, 10.9, 12.4], "spousal_violence": [3.8, 4.1, 4.0, 6.5], "tobacco_women": [22.8, 14.2, 17.4, 13.7], "tobacco_men": [52.8, 50.3, 51.2, 48.4], "alcohol_women": [2.0, 1.4, 1.6, 0.9], "alcohol_men": [28.0, 26.3, 26.9, 23.9], "mobile_women": [92.7, 85.9, 88.5, 82.5]}, "Odisha": {"pop60": [13.9, 15.9, 15.6, 13.4], "insurance": [65.2, 86.0, 82.7, 47.9], "women_school10": [58.1, 41.1, 43.9, 33.0], "women_internet": [66.7, 49.0, 51.8, 24.9], "child_marriage_women": [14.7, 19.3, 18.6, 20.5], "tfr": [1.5, 1.8, 1.7, 1.8], "teen_pregnancy": [2.8, 7.2, 6.5, 7.5], "female_sterilization": [22.7, 26.7, 26.1, 28.0], "male_sterilization": [0.2, 0.3, 0.3, 0.3], "unmet_need": [9.1, 10.1, 7.2], "institutional_births": [97.1, 93.4, 93.9, 92.2], "csection": [46.4, 26.9, 29.4, 21.6], "women_bmi_low": [10.7, 20.5, 18.9, 20.8], "men_bmi_low": [10.4, 18.7, 17.5, 15.3], "diabetes_women": [26.2, 21.0, 21.7, 14.0], "diabetes_men": [30.0, 26.1, 26.6, 17.0], "spousal_violence": [15.2, 19.6, 18.9, 30.3], "tobacco_women": [14.2, 24.4, 22.8, 26.1], "tobacco_men": [36.7, 50.6, 48.3, 51.7], "alcohol_women": [1.4, 3.5, 3.1, 4.3], "alcohol_men": [21.2, 28.0, 26.8, 28.7], "mobile_women": [79.0, 60.7, 63.6, 50.1]}, "Punjab": {"pop60": [13.0, 15.3, 14.4, 13.7], "insurance": [43.0, 53.3, 49.2, 25.2], "women_school10": [65.2, 57.6, 60.6, 56.0], "women_internet": [78.2, 72.0, 74.5, 54.8], "child_marriage_women": [10.0, 10.3, 10.2, 8.7], "tfr": [1.6, 1.7, 1.6, 1.6], "teen_pregnancy": [2.5, 3.0, 2.8, 3.1], "female_sterilization": [16.6, 24.9, 21.7, 22.8], "male_sterilization": [0.3, 0.7, 0.6, 0.5], "unmet_need": [7.0, 6.5, 6.7, 9.9], "institutional_births": [93.8, 97.6, 96.1, 94.3], "csection": [45.8, 47.1, 46.6, 38.5], "women_bmi_low": [12.1, 15.4, 14.2, 12.7], "men_bmi_low": [12.1, 14.1, 13.3, 12.5], "diabetes_women": [21.9, 20.9, 21.3, 14.7], "diabetes_men": [23.8, 21.4, 22.3, 14.1], "spousal_violence": [7.2, 9.7, 8.7, 11.6], "tobacco_women": [0.5, 0.5, 0.5, 0.4], "tobacco_men": [14.2, 13.7, 13.9, 12.8], "alcohol_women": [0.3, 0.2, 0.3, 0.3], "alcohol_men": [21.1, 24.0, 22.9, 22.8], "mobile_women": [80.0, 67.9, 72.6, 61.2]}, "Rajasthan": {"pop60": [11.2, 12.4, 12.1, 10.5], "insurance": [86.0, 89.7, 88.7, 87.8], "women_school10": [52.9, 33.9, 38.7, 33.4], "women_internet": [83.2, 60.7, 66.3, 36.9], "child_marriage_women": [10.8, 28.8, 24.6, 25.4], "tfr": [1.7, 2.2, 2.1, 2.0], "teen_pregnancy": [2.7, 5.2, 4.7, 3.7], "female_sterilization": [27.6, 40.2, 37.2, 42.4], "male_sterilization": [0.5, 0.4, 0.4, 0.2], "unmet_need": [5.8, 8.6, 7.9, 7.6], "institutional_births": [98.1, 93.1, 94.1, 94.9], "csection": [32.8, 11.6, 15.6, 10.4], "women_bmi_low": [18.2, 30.3, 27.3, 19.6], "men_bmi_low": [19.9, 26.4, 24.7, 14.0], "diabetes_women": [13.0, 9.6, 10.4, 7.2], "diabetes_men": [14.9, 12.0, 12.7, 8.9], "spousal_violence": [17.3, 21.9, 20.8, 24.1], "tobacco_women": [5.9, 7.3, 6.9, 6.9], "tobacco_men": [27.4, 41.3, 37.6, 41.9], "alcohol_women": [0.1, 0.3, 0.3, 0.3], "alcohol_men": [9.8, 11.0, 10.7, 11.0], "mobile_women": [75.1, 56.4, 61.1, 50.2], "women_overweight": [34.3, 15.7, 20.3, 12.9], "men_overweight": [28.9, 15.8, 19.3, 15.0], "htn_women": [18.7, 13.1, 14.4, 15.3], "htn_men": [21.0, 15.1, 16.5, 17.9]}, "Sikkim": {"pop60": [9.3, 14.7, 13.2, 10.0], "insurance": [35.6, 36.5, 36.2, 28.0], "women_school10": [73.0, 52.3, 58.4, 49.0], "women_internet": [94.6, 88.5, 90.3, 76.7], "child_marriage_women": [3.6, 11.8, 9.1, 10.8], "tfr": [0.7, 1.1, 1.0, 1.1], "teen_pregnancy": [6.4, 3.2, 4.2, 3.1], "female_sterilization": [12.0, 11.7, 11.7, 14.5], "male_sterilization": [1.0, 2.1, 1.8, 1.7], "unmet_need": [2.4, 5.2, 4.5, 11.9], "institutional_births": [92.9, 99.0, 97.7, 94.7], "csection": [43.1, 53.3, 51.1, 32.8], "women_bmi_low": [4.3, 5.5, 5.1, 5.8], "men_bmi_low": [10.0, 6.5, 7.3, 4.9], "diabetes_women": [16.2, 14.7, 15.1, 12.2], "diabetes_men": [15.2, 15.7, 15.6, 15.7], "spousal_violence": [4.0, 4.8, 4.6, 12.4], "tobacco_women": [8.7, 14.8, 13.1, 11.6], "tobacco_men": [37.6, 39.9, 39.3, 41.5], "alcohol_women": [17.5, 20.8, 19.9, 16.2], "alcohol_men": [41.0, 42.7, 42.2, 39.9], "mobile_women": [93.9, 90.7, 91.6, 88.6], "women_overweight": [55.6, 44.0, 47.5, 34.8], "men_overweight": [51.7, 40.0, 42.6, 36.3], "htn_women": [26.5, 34.0, 32.0, 34.5], "htn_men": [30.7, 39.1, 36.6, 41.6]}, "Tamil Nadu": {"pop60": [16.6, 16.1, 16.3, 14.9], "insurance": [56.7, 64.7, 61.1, 67.3], "women_school10": [70.7, 59.2, 64.2, 56.6], "women_internet": [67.9, 52.8, 59.5, 46.9], "child_marriage_women": [9.2, 11.5, 10.5, 12.8], "tfr": [1.6, 1.8, 1.7, 1.8], "teen_pregnancy": [2.4, 5.4, 4.1, 6.3], "female_sterilization": [54.5, 58.2, 56.6, 57.8], "male_sterilization": [0.1, 0.1, 0.1, 0.1], "unmet_need": [6.4, 6.4, 6.4, 7.5], "institutional_births": [99.8, 99.6, 99.7, 99.6], "csection": [47.8, 46.3, 46.9, 44.9], "women_bmi_low": [9.7, 14.0, 12.1, 12.6], "men_bmi_low": [10.3, 16.0, 13.4, 12.1], "diabetes_women": [27.9, 23.0, 25.2, 20.7], "diabetes_men": [28.4, 25.3, 26.7, 22.1], "spousal_violence": [23.9, 32.4, 28.5, 38.1], "tobacco_women": [2.8, 6.5, 4.8, 4.9], "tobacco_men": [15.0, 20.0, 17.7, 20.0], "alcohol_women": [0.3, 0.4, 0.3, 0.3], "alcohol_men": [19.7, 26.7, 23.5, 25.3], "mobile_women": [83.4, 71.6, 76.8, 74.6], "women_overweight": [49.1, 40.4, 44.2, 40.5], "men_overweight": [42.6, 35.7, 38.8, 37.1], "htn_women": [27.1, 22.0, 24.2, 24.8], "htn_men": [29.6, 27.0, 28.2, 30.2]}, "Telangana": {"pop60": [11.9, 14.9, 14.1, 12.7], "insurance": [75.0, 84.7, 82.2, 69.2], "women_school10": [66.5, 45.2, 51.1, 45.5], "women_internet": [80.3, 58.9, 64.8, 26.5], "child_marriage_women": [12.9, 19.6, 17.9, 23.5], "tfr": [1.7, 1.9, 1.9, 1.8], "teen_pregnancy": [2.7, 7.2, 6.0, 5.8], "female_sterilization": [58.8, 63.8, 62.5, 61.9], "male_sterilization": [3.4, 3.7, 3.6, 2.0], "unmet_need": [6.7, 7.1, 7.0, 6.4], "institutional_births": [99.1, 98.6, 98.8, 97.0], "csection": [70.1, 59.5, 62.2, 60.7], "women_bmi_low": [12.7, 19.5, 17.7, 18.8], "men_bmi_low": [13.5, 15.4, 14.9, 16.3], "diabetes_women": [22.6, 18.6, 19.6, 14.7], "diabetes_men": [28.9, 23.1, 24.5, 18.1], "spousal_violence": [24.8, 33.0, 30.8, 37.2], "tobacco_women": [2.5, 7.1, 5.9, 5.6], "tobacco_men": [14.7, 23.4, 21.1, 22.3], "alcohol_women": [2.8, 8.6, 7.1, 6.7], "alcohol_men": [36.3, 46.6, 43.9, 43.4], "mobile_women": [80.5, 60.2, 65.8, 60.0], "women_overweight": [48.7, 31.7, 36.3, 30.1], "men_overweight": [45.7, 31.8, 35.5, 32.4], "htn_women": [26.7, 23.4, 24.2, 26.1], "htn_men": [32.3, 26.9, 28.2, 31.4]}, "Tripura": {"pop60": [16.6, 13.4, 14.1, 11.2], "insurance": [55.2, 56.8, 56.5, 36.4], "women_school10": [53.9, 27.3, 32.9, 23.2], "women_internet": [68.1, 43.7, 48.8, 22.9], "child_marriage_women": [18.6, 37.5, 34.0, 40.1], "tfr": [1.1, 1.8, 1.7, 1.7], "teen_pregnancy": [7.4, 20.7, 18.0, 21.9], "female_sterilization": [15.6, 10.6, 11.6, 10.5], "male_sterilization": [0.1, 0.1, 0.1, 0.0], "unmet_need": [5.3, 9.3, 8.5, 8.2], "institutional_births": [95.1, 88.1, 89.1, 89.2], "csection": [58.6, 25.5, 30.1, 25.1], "women_bmi_low": [13.0, 19.2, 17.9, 16.2], "men_bmi_low": [14.1, 19.8, 18.5, 12.4], "diabetes_women": [25.8, 17.9, 19.6, 17.7], "diabetes_men": [30.6, 23.5, 25.1, 19.3], "spousal_violence": [11.7, 21.2, 19.1, 20.7], "tobacco_women": [35.7, 51.2, 47.7, 50.5], "tobacco_men": [39.5, 55.8, 52.1, 57.2], "alcohol_women": [0.7, 7.5, 6.0, 6.3], "alcohol_men": [19.3, 32.6, 29.5, 33.2], "mobile_women": [79.5, 61.7, 65.5, 53.1], "women_overweight": [37.9, 23.2, 26.2, 21.6], "men_overweight": [33.2, 20.1, 23.0, 23.5], "htn_women": [26.8, 18.1, 20.0, 20.8], "htn_men": [31.6, 22.4, 24.5, 22.7]}, "Uttar Pradesh": {"pop60": [9.7, 10.4, 10.3, 10.0], "insurance": [37.7, 37.0, 37.2, 15.9], "women_school10": [55.2, 38.6, 42.5, 39.3], "women_internet": [79.0, 67.3, 70.0, 30.6], "child_marriage_women": [8.7, 15.1, 13.7, 15.8], "tfr": [1.8, 2.3, 2.2, 2.4], "teen_pregnancy": [2.1, 3.8, 3.5, 2.9], "female_sterilization": [12.3, 18.3, 17.0, 16.9], "male_sterilization": [0.2, 0.1, 0.1, 0.1], "unmet_need": [7.3, 11.8, 10.8, 12.8], "institutional_births": [86.5, 85.8, 85.9, 83.4], "csection": [33.6, 16.2, 19.5, 13.7], "women_bmi_low": [16.5, 23.9, 22.2, 19.0], "men_bmi_low": [19.0, 25.1, 23.5, 18.0], "diabetes_women": [18.7, 14.7, 15.5, 10.0], "diabetes_men": [21.3, 18.9, 19.5, 11.6], "spousal_violence": [20.7, 30.7, 28.5, 34.9], "tobacco_women": [6.7, 10.5, 9.6, 8.5], "tobacco_men": [34.7, 48.9, 45.2, 44.0], "alcohol_women": [0.3, 0.3, 0.3, 0.3], "alcohol_men": [15.2, 19.9, 18.7, 14.5], "mobile_women": [67.1, 53.1, 56.4, 46.5], "women_overweight": [36.7, 23.7, 26.7, 21.4], "men_overweight": [29.4, 19.1, 21.8, 18.5], "htn_women": [14.6, 11.4, 12.1, 18.3], "htn_men": [16.3, 13.4, 14.1, 21.7]}, "Uttarakhand": {"pop60": [11.0, 13.6, 12.8, 12.0], "insurance": [80.5, 79.1, 79.5, 62.5], "women_school10": [63.0, 53.0, 56.1, 50.4], "women_internet": [85.3, 73.1, 76.9, 45.1], "child_marriage_women": [6.6, 8.9, 8.2, 9.8], "tfr": [1.5, 2.0, 1.9, 1.9], "teen_pregnancy": [1.7, 1.5, 1.6, 2.4], "female_sterilization": [14.7, 27.3, 23.6, 26.0], "male_sterilization": [0.4, 1.0, 0.8, 0.7], "unmet_need": [7.0, 9.8, 8.9, 8.8], "institutional_births": [93.6, 87.2, 88.9, 83.2], "csection": [35.4, 22.5, 25.9, 20.4], "women_bmi_low": [13.7, 16.3, 15.5, 13.9], "men_bmi_low": [17.8, 17.8, 17.8, 16.2], "diabetes_women": [19.1, 17.7, 18.1, 10.8], "diabetes_men": [24.8, 20.0, 21.4, 14.2], "spousal_violence": [16.5, 12.4, 13.7, 15.3], "tobacco_women": [2.7, 4.9, 4.3, 4.6], "tobacco_men": [27.5, 36.7, 33.8, 33.7], "alcohol_women": [0.3, 0.3, 0.3, 0.3], "alcohol_men": [23.3, 29.1, 27.2, 25.5], "mobile_women": [77.3, 70.4, 72.5, 60.9], "women_overweight": [42.8, 30.6, 34.3, 29.8], "men_overweight": [28.7, 25.3, 26.5, 27.1], "htn_women": [16.5, 13.7, 14.5, 22.9], "htn_men": [19.4, 17.9, 18.3, 31.8]}, "West Bengal": {"pop60": [15.8, 13.4, 14.1, 10.9], "insurance": [84.0, 90.1, 88.2, 33.7], "women_school10": [52.1, 34.8, 40.0, 32.9], "women_internet": [71.6, 54.1, 59.3, 25.5], "child_marriage_women": [21.7, 41.5, 36.4, 41.6], "tfr": [1.3, 1.7, 1.6, 1.6], "teen_pregnancy": [6.5, 20.3, 16.6, 16.4], "female_sterilization": [20.7, 30.1, 27.5, 29.4], "male_sterilization": [0.1, 0.2, 0.2, 0.1], "unmet_need": [3.7, 5.5, 5.0, 7.0], "institutional_births": [94.9, 94.9, 94.9, 91.7], "csection": [55.7, 41.1, 44.5, 32.6], "women_bmi_low": [10.6, 17.0, 15.1, 14.8], "men_bmi_low": [16.7, 19.0, 18.3, 15.1], "diabetes_women": [28.0, 20.8, 22.7, 17.5], "diabetes_men": [29.1, 26.1, 26.8, 21.3], "spousal_violence": [19.1, 19.0, 19.0, 26.9], "tobacco_women": [7.7, 12.7, 11.2, 10.8], "tobacco_men": [40.0, 49.1, 46.2, 48.1], "alcohol_women": [0.6, 0.9, 0.8, 1.1], "alcohol_men": [16.1, 15.9, 16.0, 18.0], "mobile_women": [78.4, 59.5, 65.1, 50.1], "women_overweight": [45.8, 30.0, 34.6, 22.7], "men_overweight": [29.3, 22.4, 24.5, 16.2], "htn_women": [30.3, 22.0, 24.3, 20.5], "htn_men": [30.9, 22.9, 24.9, 20.1]}, "Chandigarh": {"pop60": [11.0, 8.6, 10.9, 10.9], "insurance": [43.0, 38.5, 42.8, 32.2], "women_school10": [70.5, 61.5, 70.1, 59.6], "women_internet": [83.6, 90.6, 83.9, 75.2], "child_marriage_women": [4.6, 5.2, 9.7], "tfr": [1.8, 1.8, 1.4], "teen_pregnancy": [0.0, 0.0, 0.8], "female_sterilization": [16.0, 30.3, 16.7, 19.0], "male_sterilization": [0.3, 0.0, 0.3, 0.3], "unmet_need": [8.0, 0.0, 7.6, 6.9], "institutional_births": [95.7, 95.8, 96.9], "csection": [36.8, 36.1, 31.3], "women_bmi_low": [9.9, 18.0, 10.2, 13.0], "men_bmi_low": [7.0, 7.0, 15.1], "diabetes_women": [17.7, 20.0, 17.8, 19.0], "diabetes_men": [17.1, 14.9, 17.1, 16.6], "spousal_violence": [8.5, 8.5, 9.7], "tobacco_women": [0.5, 1.5, 0.5, 0.6], "tobacco_men": [14.7, 24.7, 15.1, 11.9], "alcohol_women": [1.1, 0.0, 1.1, 0.3], "alcohol_men": [21.3, 27.9, 21.6, 18.6], "mobile_women": [84.2, 87.9, 84.4, 70.0]}, "Jammu and Kashmir": {"pop60": [14.4, 11.1, 11.9, 9.5], "insurance": [94.7, 96.7, 96.3, 13.8], "women_school10": [65.6, 45.7, 50.1, 51.3], "women_internet": [77.7, 59.6, 63.6, 43.3], "child_marriage_women": [5.2, 5.1, 5.1, 4.5], "tfr": [1.5, 1.9, 1.8, 1.4], "teen_pregnancy": [2.1, 1.7, 1.8, 1.0], "female_sterilization": [18.2, 17.9, 17.9, 21.1], "male_sterilization": [0.1, 0.3, 0.3, 0.3], "unmet_need": [6.2, 8.8, 8.2, 7.8], "institutional_births": [97.3, 92.8, 93.6, 92.4], "csection": [68.9, 47.1, 51.0, 41.7], "women_bmi_low": [6.6, 10.3, 9.5, 5.2], "men_bmi_low": [7.4, 10.1, 9.5, 4.3], "diabetes_women": [17.0, 11.9, 13.0, 8.7], "diabetes_men": [14.6, 10.3, 11.3, 8.0], "spousal_violence": [2.4, 3.7, 3.4, 9.7], "tobacco_women": [1.8, 3.4, 3.1, 3.6], "tobacco_men": [24.8, 31.7, 30.1, 38.5], "alcohol_women": [0.2, 0.3, 0.2, 0.2], "alcohol_men": [7.6, 7.2, 7.3, 8.7], "mobile_women": [86.3, 74.3, 76.9, 75.2]}, "NCT of Delhi": {"pop60": [9.4, 10.1, 9.4, 8.5], "insurance": [29.4, 23.5, 29.3, 25.0], "women_school10": [63.9, 64.6, 64.0, 59.7], "women_internet": [82.0, 83.6, 82.0, 63.8], "child_marriage_women": [11.4, 11.3, 11.4, 9.9], "tfr": [1.6, 1.7, 1.6, 1.6], "teen_pregnancy": [2.4, 2.5, 2.4, 3.3], "female_sterilization": [14.6, 19.7, 14.7, 18.0], "male_sterilization": [0.4, 0.0, 0.4, 0.2], "unmet_need": [7.3, 6.4, 7.3, 6.1], "institutional_births": [93.0, 95.3, 93.1, 91.8], "csection": [27.3, 32.0, 27.4, 23.6], "women_bmi_low": [12.3, 15.0, 12.4, 10.0], "men_bmi_low": [14.6, 14.9, 9.1], "diabetes_women": [19.0, 21.0, 19.0, 12.2], "diabetes_men": [22.3, 18.7, 22.2, 14.1], "spousal_violence": [12.2, 12.3, 22.5], "tobacco_women": [1.6, 3.5, 1.7, 2.2], "tobacco_men": [21.2, 26.5, 21.3, 26.2], "alcohol_women": [0.4, 0.0, 0.4, 0.5], "alcohol_men": [16.1, 19.0, 16.1, 21.6], "mobile_women": [83.3, 81.5, 83.3, 73.8]}, "Puducherry": {"pop60": [16.6, 12.9, 15.2, 13.5], "insurance": [39.2, 51.8, 43.7, 30.1], "women_school10": [77.6, 70.8, 75.1, 65.4], "women_internet": [71.3, 57.5, 66.1, 61.9], "child_marriage_women": [4.6, 7.8, 5.6, 6.5], "tfr": [1.5, 1.8, 1.6, 1.5], "teen_pregnancy": [1.3, 5.8, 2.9, 4.1], "female_sterilization": [50.9, 56.0, 53.0, 53.8], "male_sterilization": [1.1, 0.7, 0.9, 0.3], "unmet_need": [6.3, 5.9, 6.2, 10.5], "institutional_births": [100.0, 99.6, 99.8, 99.6], "csection": [39.5, 48.2, 43.2, 36.3], "women_bmi_low": [8.4, 9.3, 8.7, 9.0], "men_bmi_low": [11.2, 11.1, 11.2, 11.1], "diabetes_women": [27.8, 24.7, 26.7, 20.1], "diabetes_men": [30.9, 25.1, 28.8, 21.7], "spousal_violence": [26.4, 24.4, 25.7, 30.0], "tobacco_women": [1.8, 8.0, 4.1, 2.6], "tobacco_men": [10.4, 13.3, 11.4, 14.8], "alcohol_women": [0.2, 0.2, 0.2, 0.3], "alcohol_men": [20.8, 26.1, 22.8, 27.9], "mobile_women": [86.0, 76.6, 82.4, 82.8]}}, "corr": [{"key": "mobile_women", "label": "Women own mobile", "r": -0.54}, {"key": "institutional_births", "label": "Institutional births", "r": -0.51}, {"key": "csection", "label": "C-section rate", "r": -0.51}, {"key": "women_school10", "label": "Women 10+ yrs school", "r": -0.49}, {"key": "women_internet", "label": "Women internet use", "r": -0.38}, {"key": "pop60", "label": "Population 60+", "r": -0.24}, {"key": "insurance", "label": "Insurance coverage", "r": 0.06}, {"key": "teen_pregnancy", "label": "Teen pregnancy", "r": 0.19}, {"key": "female_sterilization", "label": "Female sterilization", "r": 0.19}, {"key": "child_marriage_women", "label": "Child marriage", "r": 0.35}, {"key": "unmet_need", "label": "Unmet contraception need", "r": 0.58}]}</script>
+<script>
+const raw=JSON.parse(document.getElementById('raw-data').textContent);
+const regionColor={South:'#0FA3A3',North:'#E08A3C',West:'#B8892B',East:'#2E7CB8',Central:'#7A5378',Northeast:'#37B68A'};
+const regionColor2={South:'#0FA3A3',North:'#E08A3C',West:'#B8892B',East:'#2E7CB8',Central:'#7A5378',Northeast:'#37B68A'};
+const states=Object.keys(raw.data).filter(s=>raw.data[s].tfr).sort();
+const val=(s,k,i)=>{const v=raw.data[s][k];return v?v[i]:null;};
+const NAT={tfr:2.0,unmet_need:8.5,women_school10:46.4,mobile_women:63.6,child_marriage_women:20.1,pop60:12.9,
+  women_internet:64.3,insurance:60.2,csection:27.2,institutional_births:90.6,female_sterilization:36.5,diabetes_women:17.8,teen_pregnancy:6.8};
+
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active');document.getElementById(t.dataset.panel).classList.add('active');}));
+
+Chart.defaults.font.family="'Inter',sans-serif";
+Chart.defaults.color='#5A6B72';
+
+// big stats
+const below=states.filter(s=>val(s,'tfr',2)<2.1).length;
+const urbanAvg=1.6;
+document.getElementById('bigstats').innerHTML=`
+  <div class="bigstat"><div class="n">2.0</div><div class="l">National TFR — below the 2.1 replacement threshold for the first time</div></div>
+  <div class="bigstat"><div class="n">1.6</div><div class="l">Urban TFR — on par with much of Western Europe</div></div>
+  <div class="bigstat"><div class="n">${below}<small> / ${states.length}</small></div><div class="l">States already below replacement fertility</div></div>`;
+
+// TFR ranked chart
+const tfrRows=states.map(s=>({state:s,region:raw.regions[s],total:val(s,'tfr',2)})).sort((a,b)=>b.total-a.total);
+new Chart(document.getElementById('tfrChart'),{type:'bar',
+  data:{labels:tfrRows.map(r=>r.state),datasets:[{data:tfrRows.map(r=>r.total),
+    backgroundColor:tfrRows.map(r=>regionColor2[r.region]),borderRadius:3,barThickness:11}]},
+  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`TFR ${c.raw} · ${tfrRows[c.dataIndex].region}`}}},
+    scales:{x:{min:0,max:3,grid:{color:'#E2E8EC'},ticks:{color:'#5A6B72'}},
+      y:{grid:{display:false},ticks:{color:'#1B3A4B',font:{size:10.5}}}}},
+  plugins:[{id:'r',afterDraw(ch){const{ctx,chartArea,scales}=ch;const x=scales.x.getPixelForValue(2.1);
+    ctx.save();ctx.setLineDash([4,4]);ctx.strokeStyle='#0FA3A3';ctx.lineWidth=1.3;ctx.beginPath();
+    ctx.moveTo(x,chartArea.top);ctx.lineTo(x,chartArea.bottom);ctx.stroke();ctx.setLineDash([]);
+    ctx.fillStyle='#0FA3A3';ctx.font='600 10px Inter';ctx.fillText('replacement 2.1',x+5,chartArea.top+11);ctx.restore();}}]});
+document.getElementById('regionLegend').innerHTML=Object.entries(regionColor2)
+  .map(([r,c])=>`<span><span class="dot" style="background:${c}"></span>${r}</span>`).join('');
+
+// correlation bars
+const corr=raw.corr;const maxAbs=Math.max(...corr.map(c=>Math.abs(c.r)));
+document.getElementById('corrBars').innerHTML=corr.map(c=>{
+  const pct=Math.abs(c.r)/1*50; // scale to half-width, r=1 -> 50%
+  const pos=c.r>=0;
+  const color=pos?'#0FA3A3':'#2E7CB8';
+  return `<div class="corr-row">
+    <div class="corr-label">${c.label}</div>
+    <div class="corr-track"><div class="zero"></div>
+      <div class="corr-fill" style="background:${color};${pos?`left:50%;width:${pct}%`:`right:50%;width:${pct}%`}"></div></div>
+    <div class="corr-val" style="color:${color}">${c.r>0?'+':''}${c.r.toFixed(2)}</div>
+  </div>`;}).join('');
+
+// scatters
+function scatterChart(id,field,xlabel,invert){
+  const pts=states.filter(s=>val(s,field,2)!=null).map(s=>({x:val(s,field,2),y:val(s,'tfr',2),state:s,region:raw.regions[s]}));
+  new Chart(document.getElementById(id),{type:'scatter',
+    data:{datasets:[{data:pts,backgroundColor:pts.map(p=>regionColor2[p.region]),pointRadius:5,pointHoverRadius:8,
+      pointBorderColor:'#fff',pointBorderWidth:1}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.raw.state}: TFR ${c.raw.y}, ${xlabel.toLowerCase()} ${c.raw.x}%`}}},
+      scales:{x:{title:{display:true,text:xlabel,color:'#5A6B72',font:{weight:600}},grid:{color:'#E2E8EC'},ticks:{color:'#5A6B72'}},
+        y:{title:{display:true,text:'TFR',color:'#5A6B72',font:{weight:600}},grid:{color:'#E2E8EC'},ticks:{color:'#5A6B72'}}}}});}
+scatterChart('scatterUnmet','unmet_need','Unmet contraception need');
+scatterChart('scatterEdu','women_school10','Women with 10+ yrs schooling');
+
+// STATE PROFILE
+const sortedStates=[...states].sort();
+const sel=document.getElementById('stateSelect');
+sel.innerHTML=sortedStates.map(s=>`<option>${s}</option>`).join('');
+function ord(n){const s=['th','st','nd','rd'],v=n%100;return s[(v-20)%10]||s[v]||s[0];}
+function rankOf(state,field,hi){const arr=states.filter(s=>val(s,field,2)!=null).map(s=>({s,v:val(s,field,2)}))
+  .sort((a,b)=>hi?b.v-a.v:a.v-b.v);return{rank:arr.findIndex(x=>x.s===state)+1,total:arr.length};}
+function trend(cur,prev,goodDown){if(cur==null||prev==null)return '';const d=cur-prev;
+  const cls=Math.abs(d)<0.15?'flat':(d<0?(goodDown?'good':'bad'):(goodDown?'bad':'good'));
+  const a=Math.abs(d)<0.15?'≈':(d>0?'▲':'▼');return `<span class="trend ${cls}">${a} ${d>0?'+':''}${d.toFixed(1)}</span>`;}
+
+function renderProfile(state){
+  const region=raw.regions[state];
+  const kpi=(l,f,u,gd)=>{const c=val(state,f,2),p=val(state,f,3);if(c==null)return '';
+    return `<div class="kpi"><div class="kl">${l}</div><div class="kv">${c.toFixed(1)}<span style="font-size:14px;color:var(--ink-soft)">${u}</span></div>
+      <div class="ks">${trend(c,p,gd)}<span style="color:var(--ink-soft)">vs NFHS-5</span></div></div>`;};
+  const urbanKpi=()=>{const u=val(state,'tfr',0);if(u==null)return '';
+    return `<div class="kpi"><div class="kl">Urban TFR</div><div class="kv">${u.toFixed(1)}</div>
+      <div class="ks"><span class="trend ${u<2.1?'good':'flat'}">${u<2.1?'below repl.':'above repl.'}</span></div></div>`;};
+  const p60Kpi=()=>{const c=val(state,'pop60',2);if(c==null)return '';
+    return `<div class="kpi"><div class="kl">Population 60+</div><div class="kv">${c.toFixed(1)}<span style="font-size:14px;color:var(--ink-soft)">%</span></div>
+      <div class="ks"><span class="trend flat">● ageing</span></div></div>`;};
+  const fsKpi=()=>{const c=val(state,'female_sterilization',2);if(c==null)return '';
+    return `<div class="kpi"><div class="kl">Female sterilization</div><div class="kv">${c.toFixed(1)}<span style="font-size:14px;color:var(--ink-soft)">%</span></div>
+      <div class="ks"><span style="color:var(--ink-soft);font-size:11px">of married women 15–49</span></div></div>`;};
+  const kpis=[kpi('Total fertility rate','tfr','',true),urbanKpi(),
+    kpi('Unmet contraception','unmet_need','%',true),kpi('Women 10+ yrs school','women_school10','%',false),
+    kpi('Women own mobile','mobile_women','%',false),kpi('Child marriage','child_marriage_women','%',true),
+    p60Kpi(),fsKpi()].join('');
+
+  const tfr=val(state,'tfr',2),tfrU=val(state,'tfr',0),unmet=val(state,'unmet_need',2),
+    edu=val(state,'women_school10',2),p60=val(state,'pop60',2);
+  const tfrRank=rankOf(state,'tfr',false),unmetRank=rankOf(state,'unmet_need',true),p60Rank=rankOf(state,'pop60',true);
+
+  // narrative logic
+  let arc;
+  if(tfr<1.8&&p60>15) arc=`<b>${state} is in the "old before rich" quadrant.</b> Fertility has fallen to ${tfr.toFixed(1)} and the 60+ share is already ${p60.toFixed(1)}% — ${p60Rank.rank}${ord(p60Rank.rank)} highest in India. The demographic dividend here is essentially spent; the pressing question is geriatric and chronic-care capacity, not maternity beds.`;
+  else if(tfr<2.1&&unmet>NAT.unmet_need) arc=`<b>${state} has crossed below replacement but still carries high unmet contraceptive need</b> (${unmet.toFixed(1)}%, ${unmetRank.rank}${ord(unmetRank.rank)} highest). Fertility is falling despite a service gap, not because it's been solved — closing that gap would push it lower still.`;
+  else if(tfr>=2.1&&unmet>NAT.unmet_need) arc=`<b>${state} sits in the frustrated middle.</b> Fertility remains above replacement at ${tfr.toFixed(1)}, and unmet contraceptive need is ${unmet.toFixed(1)}% — ${unmetRank.rank}${ord(unmetRank.rank)} highest in India. This is the clearest "supply problem" profile: demand for smaller families exists but the delivery system isn't meeting it.`;
+  else if(tfr>=2.1) arc=`<b>${state} is still growing</b> at a TFR of ${tfr.toFixed(1)}, ${tfrRank.rank}${ord(tfrRank.rank)} lowest of ${tfrRank.total}. Its working-age base is still expanding — the dividend window is open, if the jobs and schooling keep pace.`;
+  else arc=`<b>${state} has completed most of its fertility transition</b> at ${tfr.toFixed(1)}, with urban women down at ${tfrU.toFixed(1)}. It now faces the post-transition agenda: ageing, chronic disease, and a shrinking pipeline of young workers.`;
+
+  const analysis=`<div class="story"><h3>The story of ${state}</h3>
+    <p>${arc}</p>
+    <p><b>Urban–rural split.</b> Urban women here average ${tfrU.toFixed(1)} children against a state total of ${tfr.toFixed(1)}. ${tfrU<1.5?'That urban figure is strikingly low — lowest-tier globally.':tfrU<1.8?'The cities are already well below replacement even where the state as a whole isn\'t.':'The urban–rural gap is relatively narrow here.'}</p>
+    <p><b>What\'s carrying it.</b> Women\'s schooling ${edu>NAT.women_school10?'is above':'lags'} the national average (${edu.toFixed(1)}% vs ${NAT.women_school10}%), and mobile ownership among women is ${val(state,'mobile_women',2).toFixed(1)}%. These are the autonomy markers that travel with the transition — ${state} ${edu>NAT.women_school10?'has the ingredients in place':'still has room on the development side to push fertility further'}.</p></div>`;
+
+  document.getElementById('profileBody').innerHTML=`
+    <div class="profile-head"><div><h2 class="serif">${state}</h2><div class="badge">${region} region · NFHS-6 (2023–24)</div></div></div>
+    <div class="kpis">${kpis}</div>${analysis}
+    <div class="card"><canvas id="radar" height="240"></canvas></div>
+    <p class="say" style="margin-top:10px;">Radar shows ${state} (orange) vs national average (grey), each indicator normalized 0–100 across states. Card arrows compare NFHS-6 to NFHS-5; teal ▼ = moved toward the post-transition pattern.</p>`;
+
+  const rf=[['tfr','Fertility'],['unmet_need','Unmet need'],['women_school10','W. education'],['mobile_women','W. mobile'],
+    ['child_marriage_women','Child marriage'],['pop60','Ageing (60+)'],['institutional_births','Inst. births'],['women_internet','W. internet']];
+  const norm=(f,useNat)=>{const arr=states.map(s=>val(s,f,2)).filter(x=>x!=null);const mn=Math.min(...arr),mx=Math.max(...arr);
+    const x=useNat?NAT[f]:val(state,f,2);return x==null?0:((x-mn)/(mx-mn))*100;};
+  if(window._radar)window._radar.destroy();
+  window._radar=new Chart(document.getElementById('radar'),{type:'radar',
+    data:{labels:rf.map(f=>f[1]),datasets:[
+      {label:state,data:rf.map(f=>norm(f[0],false)),borderColor:'#0FA3A3',backgroundColor:'#0FA3A322',pointBackgroundColor:'#0FA3A3',borderWidth:2},
+      {label:'National avg',data:rf.map(f=>norm(f[0],true)),borderColor:'#9A9384',backgroundColor:'#9A938411',pointBackgroundColor:'#9A9384',borderWidth:1.5}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{labels:{color:'#1B3A4B',font:{size:12}}},tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${c.raw.toFixed(0)}/100`}}},
+      scales:{r:{angleLines:{color:'#E2E8EC'},grid:{color:'#E2E8EC'},pointLabels:{color:'#5A6B72',font:{size:11}},
+        ticks:{display:false},suggestedMin:0,suggestedMax:100}}}});
+}
+sel.addEventListener('change',()=>renderProfile(sel.value));
+renderProfile(sortedStates[0]);
+
+// COMPARE
+const cmpA=document.getElementById('cmpA'),cmpB=document.getElementById('cmpB');
+cmpA.innerHTML=sortedStates.map(s=>`<option>${s}</option>`).join('');
+cmpB.innerHTML=sortedStates.map(s=>`<option>${s}</option>`).join('');
+cmpA.value=sortedStates[0];cmpB.value=sortedStates.length>1?sortedStates[1]:sortedStates[0];
+// [field, label, unit, transitionDir]  transitionDir: 'low'=lower is further into transition, 'high'=higher is, null=neutral
+const cmpFields=[
+  ['tfr','Total fertility rate','','low'],
+  ['tfr','Urban TFR','','low',0],
+  ['unmet_need','Unmet contraception need','%','low'],
+  ['women_school10','Women 10+ yrs schooling','%','high'],
+  ['women_internet','Women ever used internet','%','high'],
+  ['mobile_women','Women own mobile','%','high'],
+  ['child_marriage_women','Child marriage (women)','%','low'],
+  ['teen_pregnancy','Teen pregnancy','%','low'],
+  ['female_sterilization','Female sterilization','%',null],
+  ['institutional_births','Institutional births','%','high'],
+  ['csection','C-section rate','%',null],
+  ['insurance','Insurance coverage','%','high'],
+  ['pop60','Population 60+','%',null],
+  ['diabetes_women','Diabetes (women)','%','low'],
+];
+function renderCompare(){
+  const a=cmpA.value,b=cmpB.value;
+  let scoreA=0,scoreB=0;
+  let rows=`<thead><tr><th class="cmp-num" style="text-align:right">${a}</th><th style="text-align:center">Indicator</th><th class="cmp-num" style="text-align:left">${b}</th></tr></thead><tbody>`;
+  cmpFields.forEach(([f,label,unit,dir,idx])=>{
+    const i=idx??2;const va=val(a,f,i),vb=val(b,f,i);if(va==null&&vb==null)return;
+    const mx=Math.max(va||0,vb||0)||1;let wa='',wb='';
+    if(dir&&va!=null&&vb!=null&&va!==vb){const aBetter=dir==='low'?va<vb:va>vb;
+      if(aBetter){wa='winA';scoreA++;}else{wb='win';scoreB++;}}
+    rows+=`<tr><td class="cmp-num ${wa}" style="text-align:right">${va!=null?va.toFixed(1)+unit:'—'}</td>
+      <td style="text-align:center"><div style="font-size:12.5px;margin-bottom:5px;color:var(--ink)">${label}</div>
+        <div class="cmp-bar"><div class="mid"></div>
+          <div class="fa" style="width:${va!=null?(va/mx*48):0}%"></div>
+          <div class="fb" style="width:${vb!=null?(vb/mx*48):0}%"></div></div></td>
+      <td class="cmp-num ${wb}" style="text-align:left">${vb!=null?vb.toFixed(1)+unit:'—'}</td></tr>`;});
+  rows+='</tbody>';document.getElementById('cmpTable').innerHTML=rows;
+
+  // verdict
+  const ta=val(a,'tfr',2),tb=val(b,'tfr',2),ua=val(a,'unmet_need',2),ub=val(b,'unmet_need',2),
+    ea=val(a,'women_school10',2),eb=val(b,'women_school10',2),pa=val(a,'pop60',2),pb=val(b,'pop60',2);
+  const phase=(t,p)=>t<1.8&&p>15?'post-transition / ageing':t<2.1?'below replacement':t<2.5?'late transition':'still growing';
+  document.getElementById('cmpVerdict').innerHTML=`<div class="verdict-grid">
+    <div class="verdict-col a"><h4>${a}</h4><p>TFR <b>${ta.toFixed(1)}</b> · ${phase(ta,pa)}. Unmet contraceptive need ${ua.toFixed(1)}%, women's schooling ${ea.toFixed(1)}%, 60+ population ${pa.toFixed(1)}%. ${ta<tb?'Further along the transition of the two.':ta>tb?'The younger, higher-fertility of the two.':'Same fertility level as '+b+'.'}</p></div>
+    <div class="verdict-col b"><h4>${b}</h4><p>TFR <b>${tb.toFixed(1)}</b> · ${phase(tb,pb)}. Unmet contraceptive need ${ub.toFixed(1)}%, women's schooling ${eb.toFixed(1)}%, 60+ population ${pb.toFixed(1)}%. ${tb<ta?'Further along the transition of the two.':tb>ta?'The younger, higher-fertility of the two.':'Same fertility level as '+a+'.'}</p></div>
+  </div>`;
+}
+cmpA.addEventListener('change',renderCompare);cmpB.addEventListener('change',renderCompare);
+renderCompare();
+
+// RATIONALE
+const ratDefs=[
+  {f:'tfr',t:'Total Fertility Rate (TFR)',unit:'',dir:'low',
+   measures:'Average number of children a woman would have over her lifetime at current age-specific birth rates.',
+   matters:'The master variable of this entire dashboard. Below <b>2.1</b> a population eventually shrinks without migration. It is the cleanest single signal of where a society sits on the demographic transition.',
+   high:'A younger, still-growing population; expanding school-age and working-age cohorts; pressure on jobs, housing, maternal services.',
+   low:'A stabilising or shrinking base; ageing ahead; the policy conversation shifts from "manage growth" to "manage decline and dependency".',
+   why:'Everything else here is either a cause of TFR movement or a consequence of it. Read this number first, then ask why it sits where it does.'},
+  {f:'unmet_need',t:'Unmet Need for Contraception',unit:'%',dir:'low',
+   measures:'Share of married women who want to stop or delay childbearing but are not using any contraceptive method.',
+   matters:'This is the gap between what women want and what the system delivers. On this data it is the <b>single strongest correlate of high fertility (r = +0.58)</b>.',
+   high:'A supply-and-access failure: demand for smaller families exists but methods, counselling, or delivery are missing. Fertility here is high partly against women\'s own wishes.',
+   low:'Family-planning demand is largely being met; remaining fertility reflects genuine preference more than unmet demand.',
+   why:'It reframes fertility from a "convince people" problem to a "deliver a service" problem. That is the most actionable insight in the dataset.'},
+  {f:'women_school10',t:'Women with 10+ Years of Schooling',unit:'%',dir:'high',
+   measures:'Share of women who completed at least ten years of formal education.',
+   matters:'The classic engine of fertility decline. Correlates with TFR at <b>r = −0.49</b>. Education raises the opportunity cost of early childbearing and the desire for smaller families.',
+   high:'Later marriage, later first birth, stronger bargaining power over reproduction, higher contraceptive uptake.',
+   low:'Earlier marriage and childbearing, weaker reproductive autonomy, higher fertility.',
+   why:'It shapes the <i>desire</i> for fewer children; unmet need determines whether that desire is realised. The two together explain ~44% of state fertility variation.'},
+  {f:'mobile_women',t:'Women Who Own a Mobile Phone',unit:'%',dir:'high',
+   measures:'Share of women who have a mobile phone they themselves use.',
+   matters:'The strongest raw correlate with lower fertility here (<b>r = −0.54</b>) — but as a <i>proxy</i>, not a cause. It stands in for autonomy, information access, and connection to the formal economy.',
+   high:'Women with independent information channels, financial tools, and social reach — all of which travel with reproductive control.',
+   low:'Lower female autonomy and information access, typically alongside higher fertility.',
+   why:'Included precisely to make the causation caveat visible: a phone does not lower fertility. It marks the kind of woman whose life circumstances already do.'},
+  {f:'child_marriage_women',t:'Child Marriage (women 20–24 married before 18)',unit:'%',dir:'low',
+   measures:'Share of women aged 20–24 who were married before age 18.',
+   matters:'A direct driver of early and extended childbearing. Correlates with TFR at <b>r = +0.35</b>.',
+   high:'Longer reproductive exposure, earlier first birth, and a strong marker of constrained female agency.',
+   low:'Delayed family formation, shorter childbearing window, generally lower fertility.',
+   why:'One of the few levers that is simultaneously a health, rights, and fertility issue — which is why it draws policy attention across all three.'},
+  {f:'teen_pregnancy',t:'Teen Pregnancy (women 15–19 already mother/pregnant)',unit:'%',dir:'low',
+   measures:'Share of women aged 15–19 who were already mothers or pregnant at the time of survey.',
+   matters:'The leading edge of the fertility curve and a marker of early reproductive onset.',
+   high:'Childbearing starting young, compounding lifetime fertility and interrupting education.',
+   low:'Delayed onset of childbearing, typically a late-transition signature.',
+   why:'Where teen pregnancy is falling, the whole fertility curve is usually shifting right (later) — an early-warning indicator of decline.'},
+  {f:'female_sterilization',t:'Female Sterilization',unit:'%',dir:null,
+   measures:'Share of currently married women 15–49 relying on female sterilization.',
+   matters:'India\'s dominant contraceptive method by far. Neutral for fertility direction, but it reveals <i>how</i> fertility is being controlled.',
+   high:'Family planning is heavily terminal and female-borne — women absorb the surgical burden, often after completing their families early.',
+   low:'Either low contraceptive uptake overall, or a healthier mix of reversible and male methods.',
+   why:'Not scored as good/bad here because it is a method-mix story, not a transition-stage story. But it exposes the gender asymmetry of Indian contraception.'},
+  {f:'institutional_births',t:'Institutional Births',unit:'%',dir:'high',
+   measures:'Share of births delivered in a health facility rather than at home.',
+   matters:'A marker of health-system reach. Correlates with lower TFR at <b>r = −0.51</b> — where the system reaches births, it also reaches family planning.',
+   high:'Strong system penetration, better maternal safety, and a channel for post-natal contraceptive counselling.',
+   low:'Weaker reach, higher maternal risk, and missed family-planning touchpoints.',
+   why:'Institutional contact is the moment the system can influence future fertility. High coverage is both an outcome and an enabler.'},
+  {f:'insurance',t:'Health Insurance Coverage',unit:'%',dir:'high',
+   measures:'Share of households with any member covered by a health insurance or financing scheme.',
+   matters:'Included deliberately as the <b>null result</b>: correlation with TFR is just <b>r = +0.06</b>.',
+   high:'More financial protection — but on this data, no relationship with fertility either way.',
+   low:'Less protection, again with no fertility signal.',
+   why:'It kills the intuitive "insured, urban states have fewer children" story. Sometimes the most useful number is the one that shows an expected link isn\'t there.'},
+  {f:'pop60',t:'Population Aged 60 and Above',unit:'%',dir:null,
+   measures:'Share of the population aged 60 or older.',
+   matters:'The lagging consequence of past fertility decline — the "old before rich" signal.',
+   high:'The demographic dividend has largely closed; the care burden shifts to geriatric, chronic, and palliative services.',
+   low:'A still-young population; the dividend window is open if jobs and schooling keep pace.',
+   why:'Paired with a low TFR, a high 60+ share is the whole "aged before wealthy" thesis in two numbers. This is where healthcare capital should be looking next.'},
+  {f:'diabetes_women',t:'Diabetes (women)',unit:'%',dir:'low',
+   measures:'Share of women 15+ with high/very-high blood sugar or on medication.',
+   matters:'A non-fertility indicator included because it tracks the epidemiological transition that <i>follows</i> the demographic one.',
+   high:'A population shifting from infectious/maternal disease burden toward chronic non-communicable disease — the profile of an ageing, urbanising society.',
+   low:'An earlier-stage epidemiological profile.',
+   why:'As states finish the fertility transition, this is the burden that replaces maternity as the system\'s main workload. It shows the demographic and disease transitions are two faces of one shift.'},
+];
+function renderRationale(){
+  const el=document.getElementById('rationaleBody');
+  el.innerHTML=ratDefs.map(d=>{
+    const arr=states.map(s=>val(s,d.f,2)).filter(x=>x!=null);
+    const mn=Math.min(...arr),mx=Math.max(...arr);
+    const mnS=states.find(s=>val(s,d.f,2)===mn),mxS=states.find(s=>val(s,d.f,2)===mx);
+    const natl=NAT[d.f];
+    return `<div class="rat"><div class="rat-head">
+        <div class="rat-title">${d.t}</div>
+        <div class="rat-meta"><div class="rat-natl"><div class="v">${natl!=null?natl.toFixed(1)+d.unit:'—'}</div><div class="k">National</div></div>
+        <div class="rat-caret">▼</div></div></div>
+      <div class="rat-body">
+        <dl>
+          <dt>Measures</dt><dd>${d.measures}</dd>
+          <dt>Why it matters</dt><dd>${d.matters}</dd>
+          <dt>Reading it high</dt><dd>${d.high}</dd>
+          <dt>Reading it low</dt><dd>${d.low}</dd>
+          <dt>Role in the story</dt><dd>${d.why}</dd>
+        </dl>
+        <div class="rat-range">
+          <div class="rr"><div class="rv">${mn.toFixed(1)}${d.unit}</div><div class="rl">lowest · ${mnS}</div></div>
+          <div class="rr"><div class="rv">${mx.toFixed(1)}${d.unit}</div><div class="rl">highest · ${mxS}</div></div>
+          <div class="rr"><div class="rv">${(mx-mn).toFixed(1)}${d.unit}</div><div class="rl">state spread</div></div>
+        </div>
+      </div></div>`;}).join('');
+  el.querySelectorAll('.rat-head').forEach(h=>h.addEventListener('click',()=>h.parentElement.classList.toggle('open')));
+}
+renderRationale();
+
+// LEDGER
+const tbody=document.querySelector('#ledgerTable tbody');let sk='tfr',sd=-1;
+const activeR=new Set(Object.keys(regionColor2));
+function rows(){return states.map(s=>({state:s,region:raw.regions[s],tfr:val(s,'tfr',2),tfr_urban:val(s,'tfr',0),
+  unmet:val(s,'unmet_need',2),edu:val(s,'women_school10',2),mobile:val(s,'mobile_women',2),
+  child_m:val(s,'child_marriage_women',2),pop60:val(s,'pop60',2)}));}
+function renderT(){let r=rows().filter(x=>activeR.has(x.region));
+  r.sort((a,b)=>{if(sk==='state'||sk==='region')return sd*a[sk].localeCompare(b[sk]);return sd*((a[sk]??-999)-(b[sk]??-999));});
+  tbody.innerHTML=r.map(x=>{const bl=x.tfr<2.1;
+    return `<tr><td class="state">${x.state}</td><td>${x.region}</td>
+      <td class="num">${x.tfr?.toFixed(1)??'—'} <span class="pill ${bl?'below':'above'}">${bl?'below':'above'}</span></td>
+      <td class="num">${x.tfr_urban?.toFixed(1)??'—'}</td><td class="num">${x.unmet?.toFixed(1)??'—'}</td>
+      <td class="num">${x.edu?.toFixed(1)??'—'}</td><td class="num">${x.mobile?.toFixed(1)??'—'}</td>
+      <td class="num">${x.child_m?.toFixed(1)??'—'}</td><td class="num">${x.pop60?.toFixed(1)??'—'}</td></tr>`;}).join('');}
+document.querySelectorAll('#ledgerTable thead th').forEach(th=>th.addEventListener('click',()=>{
+  const k=th.dataset.key;if(sk===k)sd*=-1;else{sk=k;sd=-1;}
+  document.querySelectorAll('#ledgerTable thead th').forEach(t=>t.classList.remove('sorted'));th.classList.add('sorted');renderT();}));
+const rf=document.getElementById('regionFilters');
+rf.innerHTML=['All',...Object.keys(regionColor2)].map(r=>`<button class="chip ${r==='All'?'active':''}" data-r="${r}">${r}</button>`).join('');
+rf.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>{const r=c.dataset.r;
+  if(r==='All'){activeR.clear();Object.keys(regionColor2).forEach(x=>activeR.add(x));
+    rf.querySelectorAll('.chip').forEach(z=>z.classList.remove('active'));c.classList.add('active');}
+  else{rf.querySelector('[data-r="All"]').classList.remove('active');c.classList.toggle('active');
+    if(activeR.has(r))activeR.delete(r);else activeR.add(r);if(activeR.size===0){activeR.add(r);c.classList.add('active');}}
+  renderT();}));
+renderT();
+
+document.getElementById('footer').innerHTML=`Source: National Family Health Survey-6 (2023–24) India Fact Sheets, IIPS / Ministry of Health &amp; Family Welfare. Figures are the state Total column unless labelled Urban; trend arrows compare with NFHS-5 (2019–21). Correlations are Pearson's r computed across the 31 covered states and are cross-sectional associations, not causal estimates. The combined education + unmet-need model is a simple two-variable OLS on standardized state values (R²≈0.44) offered as illustration, not a formal demographic model. Coverage excludes four small UTs (non-extractable pages, jointly under 0.5% of population) and Manipur (absent from the NFHS-6 compendium). Replacement-level fertility is conventionally 2.1. Verify any figure against the official fact sheet before publication.`;
+</script>
+</body>
+</html>
