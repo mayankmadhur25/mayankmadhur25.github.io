@@ -583,11 +583,11 @@ renderRationale();
 
 // LEDGER
 const tbody=document.querySelector('#ledgerTable tbody');let sk='tfr',sd=-1;
-const activeR=new Set(Object.keys(regionColor2));
+let activeRegion='All';
 function rows(){return states.map(s=>({state:s,region:raw.regions[s],tfr:val(s,'tfr',2),tfr_urban:val(s,'tfr',0),
   unmet:val(s,'unmet_need',2),edu:val(s,'women_school10',2),mobile:val(s,'mobile_women',2),
   child_m:val(s,'child_marriage_women',2),pop60:val(s,'pop60',2)}));}
-function renderT(){let r=rows().filter(x=>activeR.has(x.region));
+function renderT(){let r=rows();if(activeRegion!=='All')r=r.filter(x=>x.region===activeRegion);
   r.sort((a,b)=>{if(sk==='state'||sk==='region')return sd*a[sk].localeCompare(b[sk]);return sd*((a[sk]??-999)-(b[sk]??-999));});
   tbody.innerHTML=r.map(x=>{const bl=x.tfr<2.1;
     return `<tr><td class="state">${x.state}</td><td>${x.region}</td>
@@ -600,11 +600,10 @@ document.querySelectorAll('#ledgerTable thead th').forEach(th=>th.addEventListen
   document.querySelectorAll('#ledgerTable thead th').forEach(t=>t.classList.remove('sorted'));th.classList.add('sorted');renderT();}));
 const rf=document.getElementById('regionFilters');
 rf.innerHTML=['All',...Object.keys(regionColor2)].map(r=>`<button class="chip ${r==='All'?'active':''}" data-r="${r}">${r}</button>`).join('');
-rf.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>{const r=c.dataset.r;
-  if(r==='All'){activeR.clear();Object.keys(regionColor2).forEach(x=>activeR.add(x));
-    rf.querySelectorAll('.chip').forEach(z=>z.classList.remove('active'));c.classList.add('active');}
-  else{rf.querySelector('[data-r="All"]').classList.remove('active');c.classList.toggle('active');
-    if(activeR.has(r))activeR.delete(r);else activeR.add(r);if(activeR.size===0){activeR.add(r);c.classList.add('active');}}
+rf.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>{
+  activeRegion=c.dataset.r;
+  rf.querySelectorAll('.chip').forEach(z=>z.classList.remove('active'));
+  c.classList.add('active');
   renderT();}));
 renderT();
 
