@@ -103,8 +103,9 @@ sitemap: false
 
 
   /* ---- tabs ---- */
-  .tool-tabs{display:flex;gap:0;border-bottom:2px solid var(--line-strong);margin:6px 0 30px;overflow-x:auto}
-  .tool-tabs button{font-family:var(--body);font-size:14px;font-weight:700;color:var(--ink-soft);background:none;border:0;border-bottom:3px solid transparent;padding:12px 18px;cursor:pointer;white-space:nowrap;margin-bottom:-2px}
+  .tool-tabs{display:flex;gap:4px;border-bottom:2px solid var(--line-strong);margin:22px 0 30px;overflow-x:auto}
+  .tool-tabs button{font-family:var(--body);font-size:14.5px;font-weight:700;color:var(--ink-soft);background:none;border:0;border-bottom:3px solid transparent;padding:13px 20px;cursor:pointer;white-space:nowrap;margin-bottom:-2px;border-radius:6px 6px 0 0;transition:color .15s,background .15s}
+  .tool-tabs button:hover{color:var(--ink);background:rgba(15,163,163,.06)}
   .tool-tabs button[aria-selected="true"]{color:var(--ok);border-bottom-color:var(--ok)}
   .tpanel{display:none}
   .tpanel.active{display:block}
@@ -369,7 +370,7 @@ html[data-theme="dark"] .tool-backlink a{background:rgba(15,163,163,.12)}
       Healthcare Pulse · Ed. 66 · Supporting data
     </div>
     <h1>The evidence behind the hollow pyramid</h1>
-    <p class="dek">Four exhibits from India's rural health capacity data, each backing one claim in the edition: the shortfall inverts, the shortage is a myth, the gap is 20 years old, and it is worst exactly where insured patients now live.</p>
+    <p class="dek">The data behind Edition 66, in four views: <b>The Evidence</b> walks the argument chart by chart. <b>State Profile</b> explains any state's numbers in plain language. <b>Compare States</b> puts up to five side by side. <b>Leaderboard</b> ranks every state on specialists, doctors and nurses.</p>
     <p class="src">Health Dynamics of India 2023-24, MoHFW · rural · position as on 31 March 2024</p>
   </header>
 
@@ -383,7 +384,7 @@ html[data-theme="dark"] .tool-backlink a{background:rgba(15,163,163,.12)}
   <div class="tpanel active" id="tab-evidence">
   <!-- EXHIBIT 1: pyramid + reframe -->
   <section>
-    <div class="shead"><span class="snum">EXHIBIT 1 &amp; 2</span><h2>The shortfall inverts — and it isn't a doctor shortage</h2></div>
+    <div class="shead"><span class="snum">PART 1</span><h2>The shortfall inverts — and it isn't a doctor shortage</h2></div>
     <p class="sdesc">Two different rulers, side by side. <b>Left counts buildings:</b> facilities missing against the population norm, tier by tier. <b>Right counts people:</b> staffing inside the facilities that exist, generalist doctors at PHCs are above requirement (one per existing PHC), while the specialist posts at CHCs are two-thirds empty. The gap widens toward the top on both rulers.</p>
     <div class="grid2">
       <div class="card">
@@ -435,7 +436,7 @@ html[data-theme="dark"] .tool-backlink a{background:rgba(15,163,163,.12)}
 
   <!-- EXHIBIT 3: trajectory -->
   <section>
-    <div class="shead"><span class="snum">EXHIBIT 3</span><h2>Twenty years of sanctioning posts nobody fills</h2></div>
+    <div class="shead"><span class="snum">PART 2</span><h2>Twenty years of sanctioning posts nobody fills</h2></div>
     <p class="sdesc">Rural CHC specialist posts, 2005 vs 2024. Sanctioned posts nearly doubled. The filled count barely moved, so the vacancy gap grew from ~3,500 to ~8,900.</p>
     <div class="card traj">
       <div class="traj-col">
@@ -479,7 +480,7 @@ html[data-theme="dark"] .tool-backlink a{background:rgba(15,163,163,.12)}
   <div class="tpanel" id="tab-board">
   <!-- EXHIBIT 4: state leaderboard -->
   <section>
-    <div class="shead"><span class="snum">EXHIBIT 4</span><h2>Worst exactly where the insured now live</h2></div>
+    <div class="shead"><span class="snum">LEADERBOARD</span><h2>Every state, ranked: worst exactly where the insured now live</h2></div>
     <p class="sdesc">State-wise specialist vacancy at rural CHCs. The emptiest benches map the private-demand and tele-specialty opportunity. Toggle to nursing shortfall or PHC doctor shortfall (the generalist surplus is national, not universal); sort by rate or count.</p>
     <div class="controls">
       <span class="ctl-label">Metric</span>
