@@ -1,0 +1,502 @@
+---
+layout: null
+permalink: /tools/rural-pyramid/
+sitemap: false
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rural Health Capacity Tracker &middot; Healthcare Pulse</title>
+<meta name="description" content="Interactive data behind Healthcare Pulse Edition 66: rural CHC specialist vacancy (63% nationally), the 2005-2024 trajectory, and a state-by-state leaderboard for specialist vacancy and nursing shortfall.">
+<link rel="canonical" href="https://mayankmadhur.in/tools/rural-pyramid/">
+<link rel="icon" type="image/png" href="/logo.png">
+<meta name="author" content="Mayank Madhur">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Rural Health Capacity Tracker","applicationCategory":"HealthApplication","operatingSystem":"Web","url":"https://mayankmadhur.in/tools/rural-pyramid/","description":"Interactive rural health capacity data: CHC specialist vacancy, 2005-2024 trajectory, and a state leaderboard for specialist vacancy and nursing shortfall.","author":{"@type":"Person","name":"Mayank Madhur"},"isPartOf":{"@type":"WebSite","name":"Healthcare Pulse","url":"https://mayankmadhur.in/"}}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F5F9F9; --card:#FFFFFF; --ink:#1B3A4B; --ink-soft:#5A6B72; --ink-faint:#8A9BA0;
+    --signal:#C2563F; --signal-soft:#EBC7BF; --ok:#0FA3A3; --ok-soft:#B6E1DC; --amber:#E08A3C;
+    --line:rgba(27,58,75,.13); --line-strong:rgba(27,58,75,.26);
+    --disp:'Manrope',system-ui,sans-serif; --body:'Manrope',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:30px 22px 60px}
+
+  header{border-bottom:2px solid var(--ink);padding-bottom:20px;margin-bottom:28px}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--signal);display:flex;align-items:center;gap:10px;margin-bottom:12px}
+  h1{font-family:var(--disp);font-weight:800;letter-spacing:-.02em;line-height:1;font-size:clamp(30px,5.5vw,50px);margin:0 0 10px}
+  .dek{font-size:clamp(14px,2vw,17px);color:var(--ink-soft);max-width:64ch;margin:0}
+  .src{font-family:var(--mono);font-size:11px;color:var(--ink-faint);margin-top:12px}
+
+  section{margin-bottom:38px}
+  .shead{display:flex;align-items:baseline;gap:13px;margin-bottom:4px}
+  .snum{font-family:var(--mono);font-size:12px;color:var(--signal);font-weight:600}
+  h2{font-family:var(--disp);font-weight:700;font-size:clamp(19px,2.8vw,25px);letter-spacing:-.01em;margin:0}
+  .sdesc{color:var(--ink-soft);font-size:14px;max-width:72ch;margin:4px 0 18px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:22px}
+
+  /* pyramid + reframe two-col */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+  /* pyramid */
+  .pyr-svg{width:100%;height:auto;display:block}
+  .pyr-tier-label{font-family:var(--mono);font-size:11.5px;fill:var(--ink)}
+  .pyr-tier-sub{font-family:var(--mono);font-size:10px;fill:var(--ink-faint)}
+  .pyr-pct{font-family:var(--disp);font-weight:800;fill:var(--signal)}
+  .legend{display:flex;gap:16px;font-family:var(--mono);font-size:10.5px;color:var(--ink-soft);margin-top:6px;flex-wrap:wrap}
+  .legend i{width:10px;height:10px;display:inline-block;margin-right:6px;vertical-align:-1px;border-radius:1px}
+
+  /* reframe contrast */
+  .cx{display:flex;flex-direction:column;gap:16px}
+  .cxrow{padding:16px 0;border-bottom:1px solid var(--line)}
+  .cxrow:last-child{border-bottom:0}
+  .cxrow .lab{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:8px}
+  .cxrow .big{font-family:var(--disp);font-weight:800;font-size:clamp(34px,6vw,50px);line-height:.9}
+  .cxrow.good .big{color:var(--ok)} .cxrow.bad .big{color:var(--signal)}
+  .cxrow .desc{font-size:13px;color:var(--ink-soft);margin-top:8px}
+
+  /* trajectory */
+  .traj{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+  .traj-col .yr{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--ink-faint);margin-bottom:12px;text-transform:uppercase}
+  .stackbar{position:relative;height:220px;display:flex;align-items:flex-end;gap:20px;border-bottom:1px solid var(--line-strong);padding-bottom:0}
+  .col{flex:1;display:flex;flex-direction:column;justify-content:flex-end;height:100%}
+  .col .seg-pos{background:var(--ok);border-radius:2px 2px 0 0}
+  .col .seg-vac{background:var(--signal);border-radius:2px 2px 0 0}
+  .col .clab{font-family:var(--mono);font-size:11px;text-align:center;margin-top:8px;color:var(--ink-soft)}
+  .col .cnum{font-family:var(--mono);font-size:11px;text-align:center;color:#fff;padding-top:4px;font-weight:500}
+  .traj-note{grid-column:1/-1;font-family:var(--mono);font-size:11.5px;color:var(--ink-soft);margin-top:6px;border-top:1px dashed var(--line-strong);padding-top:12px}
+  .traj-note b{color:var(--signal)}
+
+  /* leaderboard */
+  .controls{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin-bottom:16px}
+  .ctl-label{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint)}
+  .seg{display:inline-flex;border:1px solid var(--line-strong);border-radius:3px;overflow:hidden}
+  .seg button{font-family:var(--mono);font-size:11px;letter-spacing:.03em;text-transform:uppercase;background:transparent;color:var(--ink-soft);border:0;border-right:1px solid var(--line);padding:8px 13px;cursor:pointer}
+  .seg button:last-child{border-right:0}
+  .seg button[aria-pressed="true"]{background:var(--ok);color:#fff}
+  .bar-row{display:grid;grid-template-columns:150px 1fr auto;align-items:center;gap:12px;padding:5px 0}
+  .bar-name{font-size:13px;font-weight:500}
+  .bar-name.hot{color:var(--signal);font-weight:600}
+  .bar-track{position:relative;height:19px;background:rgba(90,107,114,.14);border-radius:2px;overflow:hidden}
+  .bar-fill{position:absolute;left:0;top:0;height:100%;background:var(--signal);border-radius:2px;transition:width .5s cubic-bezier(.4,0,.2,1)}
+  .bar-val{font-family:var(--mono);font-size:12px;min-width:170px;text-align:right}
+  .bar-val .abs{color:var(--ink-faint);font-size:10.5px}
+  .natmark{font-family:var(--mono);font-size:11px;color:var(--ink-soft);margin-bottom:12px}
+  .natmark b{color:var(--signal)}
+  .oklist{font-family:var(--mono);font-size:11px;color:var(--ink-soft);line-height:1.8;margin-top:14px;padding:13px 16px;background:rgba(15,163,163,.07);border:1px solid rgba(15,163,163,.3);border-radius:4px}
+  .oklist b{color:var(--ok);font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:10px}
+  html[data-theme="dark"] .oklist{background:rgba(15,163,163,.12)}
+
+  footer{border-top:1px solid var(--line);margin-top:6px;padding-top:16px;font-family:var(--mono);font-size:10.5px;color:var(--ink-faint);line-height:1.7}
+  footer b{color:var(--ink-soft);font-weight:500}
+
+  @media (max-width:800px){.grid2{grid-template-columns:1fr}.bar-row{grid-template-columns:120px 1fr}.bar-val{grid-column:2;text-align:left}}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ---- site header + dark mode (match the site) ---- */
+html[data-theme="dark"]{--bg:#0F1B22;--card:#16252C;--ink:#EAF6F6;--ink-soft:#AFC2C8;--ink-faint:#8CA0A6;--line:rgba(175,194,200,.16);--line-strong:rgba(175,194,200,.30);}
+.site-header{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px clamp(16px,4vw,40px);background:var(--bg);border-bottom:1px solid var(--line-strong)}
+.site-header .logo{display:flex;align-items:center;gap:11px;text-decoration:none}
+.site-header .logo-img{width:32px;height:32px;border-radius:8px;object-fit:contain}
+.site-header .logo-name{font-family:var(--disp);font-weight:800;font-size:16px;color:var(--ink);letter-spacing:-.01em;display:block;line-height:1.1}
+.site-header .logo-tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);display:block;margin-top:2px}
+.site-nav{display:flex;align-items:center;gap:20px}
+.site-nav a{font-family:var(--body);font-size:14px;font-weight:600;color:var(--ink-soft);text-decoration:none;transition:color .15s}
+.site-nav a:hover{color:var(--ok)}
+.site-nav .nav-subscribe{background:var(--ok);color:#fff;padding:8px 16px;border-radius:8px;font-size:13px}
+.site-nav .nav-subscribe:hover{color:#fff;filter:brightness(.94)}
+.hp-theme{background:none;border:1px solid var(--line-strong);border-radius:8px;width:36px;height:36px;cursor:pointer;color:var(--ink);display:inline-flex;align-items:center;justify-content:center}
+.hp-navtoggle{display:none;background:none;border:none;color:var(--ink);cursor:pointer;padding:4px}
+.hp-sun{display:none}
+html[data-theme="dark"] .hp-sun{display:block}
+html[data-theme="dark"] .hp-moon{display:none}
+.tool-backlink{max-width:1080px;margin:0 auto;padding:14px 22px 0}
+.tool-backlink a{font-family:var(--body);font-size:13px;font-weight:600;color:var(--ok);text-decoration:none}
+@media(max-width:860px){
+  .hp-navtoggle{display:inline-flex}
+  .site-header{position:relative}
+  .site-nav{position:absolute;top:100%;right:0;left:0;flex-direction:column;align-items:stretch;gap:0;background:var(--card);border-bottom:1px solid var(--line-strong);padding:6px 0;display:none;z-index:60}
+  .site-nav.open{display:flex}
+  .site-nav a{padding:12px clamp(16px,4vw,40px)}
+  .site-nav .nav-subscribe{margin:8px clamp(16px,4vw,40px);text-align:center}
+  .hp-theme{margin:6px clamp(16px,4vw,40px)}
+}
+
+  /* ---- tabs ---- */
+  .tool-tabs{display:flex;gap:0;border-bottom:2px solid var(--line-strong);margin:6px 0 30px;overflow-x:auto}
+  .tool-tabs button{font-family:var(--body);font-size:14px;font-weight:700;color:var(--ink-soft);background:none;border:0;border-bottom:3px solid transparent;padding:12px 18px;cursor:pointer;white-space:nowrap;margin-bottom:-2px}
+  .tool-tabs button[aria-selected="true"]{color:var(--ok);border-bottom-color:var(--ok)}
+  .tpanel{display:none}
+  .tpanel.active{display:block}
+  /* ---- analysis box under charts ---- */
+  .anx{margin-top:16px;padding:14px 16px;border-left:3px solid var(--ok);background:rgba(15,163,163,.06);border-radius:0 4px 4px 0;font-size:13.5px;line-height:1.65;color:var(--ink-soft)}
+  .anx b{color:var(--ink)}
+  html[data-theme="dark"] .anx{background:rgba(15,163,163,.1)}
+  /* ---- state profile ---- */
+  .stpick{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+  .stpick label{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint)}
+  .stpick select{font-family:var(--body);font-size:15px;font-weight:600;color:var(--ink);background:var(--card);border:1px solid var(--line-strong);border-radius:4px;padding:10px 14px;min-width:240px;cursor:pointer}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:18px}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:16px 18px}
+  .kpi .kl{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:8px;line-height:1.5}
+  .kpi .kv{font-family:var(--disp);font-weight:800;font-size:32px;line-height:1}
+  .kpi .kv.bad{color:var(--signal)} .kpi .kv.good{color:var(--ok)} .kpi .kv.mid{color:var(--amber)} .kpi .kv.na{color:var(--ink-faint);font-size:22px}
+  .kpi .ks{font-family:var(--mono);font-size:11px;color:var(--ink-soft);margin-top:8px;line-height:1.5}
+  .verdicts{display:flex;flex-direction:column;gap:12px}
+  .verdict{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:16px 18px;font-size:14px;line-height:1.65;color:var(--ink-soft)}
+  .verdict .vh{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;margin-bottom:7px}
+  .verdict.v-bad .vh{color:var(--signal)} .verdict.v-good .vh{color:var(--ok)} .verdict.v-mid .vh{color:var(--amber)}
+  .verdict b{color:var(--ink)}
+  .vsnat{position:relative;height:10px;background:rgba(90,107,114,.14);border-radius:99px;margin-top:10px}
+  .vsnat .me{position:absolute;top:0;left:0;height:100%;border-radius:99px;background:var(--signal)}
+  .vsnat .nat{position:absolute;top:-3px;width:2px;height:16px;background:var(--ink)}
+  .vsnat-lab{font-family:var(--mono);font-size:10px;color:var(--ink-faint);margin-top:6px}
+  /* ---- compare ---- */
+  .cmp-pick{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px}
+  .cmp-pick .cp-h{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:12px}
+  .cmp-pick .cp-h b{color:var(--ok)}
+  .cmp-chips{display:flex;flex-wrap:wrap;gap:8px}
+  .cmp-chips button{font-family:var(--body);font-size:12.5px;font-weight:600;color:var(--ink-soft);background:transparent;border:1px solid var(--line-strong);border-radius:999px;padding:6px 13px;cursor:pointer}
+  .cmp-chips button.on{background:var(--ok);border-color:var(--ok);color:#fff}
+  .cmp-chips button:disabled{opacity:.35;cursor:not-allowed}
+  .cmp-tblwrap{overflow-x:auto}
+  table.cmp{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:4px;font-size:13px}
+  table.cmp th,table.cmp td{padding:11px 13px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  table.cmp th{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);font-weight:600}
+  table.cmp td:first-child{font-weight:700;color:var(--ink);white-space:nowrap}
+  table.cmp .c-bad{color:var(--signal);font-weight:700} table.cmp .c-good{color:var(--ok);font-weight:700} table.cmp .c-mid{color:var(--amber);font-weight:700}
+  table.cmp .sub{display:block;font-family:var(--mono);font-size:10.5px;color:var(--ink-faint);font-weight:400;margin-top:3px}
+  table.cmp tr.nat td{background:rgba(27,58,75,.05);font-style:normal}
+  html[data-theme="dark"] table.cmp tr.nat td{background:rgba(234,246,246,.05)}
+
+</style>
+</head>
+<body>
+<script>(function(){try{if(localStorage.getItem('hp-theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+<header class="site-header">
+  <a class="logo" href="/index.html"><img class="logo-img" src="/logo.png" alt="Healthcare Pulse"><span><span class="logo-name">Healthcare Pulse</span><span class="logo-tag">Digital health, decoded</span></span></a>
+  <button class="hp-navtoggle" id="hpNavToggle" aria-label="Menu" type="button"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  <nav class="site-nav" id="hpNav">
+    <a href="/perspectives/">Perspectives</a><a href="/about.html">About</a><a href="/podcast.html">Podcast</a><a href="/archive/">Archive</a><a href="/ask/">Ask</a><a href="/research/">Research</a><a href="/index-tool/">Tool</a>
+    <a class="nav-subscribe" href="https://www.linkedin.com/newsletters/7311231782241083393/" target="_blank" rel="noopener">Subscribe</a>
+    <button class="hp-theme" id="hpTheme" aria-label="Toggle dark mode" type="button"><svg class="hp-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="hp-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+  </nav>
+</header>
+<div class="tool-backlink"><a href="/edition-66-hollow-pyramid.html">&larr; Read Edition 66: The Hollow Pyramid</a></div>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">
+      <svg width="42" height="12" viewBox="0 0 42 12" aria-hidden="true"><path d="M0 6h9l2-5 3 10 2-7 2 4h20" stroke="#B5342B" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round"/></svg>
+      Healthcare Pulse · Ed. 66 · Supporting data
+    </div>
+    <h1>The evidence behind the hollow pyramid</h1>
+    <p class="dek">Four exhibits from India's rural health capacity data, each backing one claim in the edition: the shortfall inverts, the shortage is a myth, the gap is 20 years old, and it is worst exactly where insured patients now live.</p>
+    <p class="src">Health Dynamics of India 2023-24, MoHFW · rural · position as on 31 March 2024</p>
+  </header>
+
+  <nav class="tool-tabs" id="toolTabs" role="tablist">
+    <button data-tab="evidence" aria-selected="true">The Evidence</button>
+    <button data-tab="profile" aria-selected="false">State Profile</button>
+    <button data-tab="compare" aria-selected="false">Compare States</button>
+    <button data-tab="board" aria-selected="false">Leaderboard</button>
+  </nav>
+
+  <div class="tpanel active" id="tab-evidence">
+  <!-- EXHIBIT 1: pyramid + reframe -->
+  <section>
+    <div class="shead"><span class="snum">EXHIBIT 1 &amp; 2</span><h2>The shortfall inverts — and it isn't a doctor shortage</h2></div>
+    <p class="sdesc">Two different rulers, side by side. <b>Left counts buildings:</b> facilities missing against the population norm, tier by tier. <b>Right counts people:</b> staffing inside the facilities that exist, generalist doctors at PHCs are above requirement (one per existing PHC), while the specialist posts at CHCs are two-thirds empty. The gap widens toward the top on both rulers.</p>
+    <div class="grid2">
+      <div class="card">
+        <svg class="pyr-svg" viewBox="0 0 480 270" role="img" aria-label="Shortfall 34% CHC, 28% PHC, 18% Sub-Centre">
+          <g>
+            <polygon points="195,8 285,8 308,80 172,80" fill="var(--ok-soft)"/>
+            <polygon points="195,8 285,8 308,80 172,80" fill="var(--signal)" opacity="0.92"/>
+            <text x="330" y="38" class="pyr-tier-label">CHC · referral tier</text>
+            <text x="330" y="54" class="pyr-tier-sub">2,544 facilities short</text>
+            <text x="96" y="52" text-anchor="end" class="pyr-pct" font-size="24">34%</text>
+          </g>
+          <g>
+            <polygon points="170,88 310,88 333,160 147,160" fill="var(--ok-soft)"/>
+            <polygon points="170,88 310,88 333,160 147,160" fill="var(--signal)" opacity="0.92"/>
+            <text x="352" y="118" class="pyr-tier-label">PHC · first doctor tier</text>
+            <text x="352" y="134" class="pyr-tier-sub">8,343 facilities short</text>
+            <text x="122" y="132" text-anchor="end" class="pyr-pct" font-size="22">28%</text>
+          </g>
+          <g>
+            <polygon points="145,168 335,168 358,256 122,256" fill="var(--ok-soft)"/>
+            <polygon points="145,168 335,168 358,256 122,256" fill="var(--signal)" opacity="0.92"/>
+            <text x="378" y="206" class="pyr-tier-label">Sub-Centre</text>
+            <text x="378" y="222" class="pyr-tier-sub">33,021 facilities short</text>
+            <text x="104" y="216" text-anchor="end" class="pyr-pct" font-size="19">18%</text>
+          </g>
+        </svg>
+        <div class="legend"><span><i style="background:var(--ok)"></i>Facilities in place</span><span><i style="background:var(--signal)"></i>Facilities missing vs population norm</span></div>
+      </div>
+      <div class="card cx">
+        <div class="cxrow good">
+          <div class="lab">PHC doctors vs requirement (people)</div>
+          <div class="big">+16%</div>
+          <div class="desc">29,949 medical officers in position vs 25,785 required (one per existing PHC). The generalist bench is above requirement.</div>
+        </div>
+        <div class="cxrow good">
+          <div class="lab">CHC generalist doctors (GDMOs) vs requirement (people)</div>
+          <div class="big">+46%</div>
+          <div class="desc">16,483 GDMOs in position vs 11,278 required (two per CHC, IPHS norm). Generalists overfill the very buildings where the specialist posts sit empty.</div>
+        </div>
+        <div class="cxrow bad">
+          <div class="lab">CHC specialist posts vacant (people)</div>
+          <div class="big">63%</div>
+          <div class="desc">Only 5,223 of 14,137 sanctioned specialist posts filled. Same system, same year.</div>
+        </div>
+      </div>
+    </div>
+    <div class="anx"><b>What this shows:</b> two rulers, one pattern. India is short of buildings toward the top of the pyramid (left), and inside the buildings that exist, staffing collapses only at the specialist level (right). Generalists overfill both tiers, <b>+16% at PHCs, +46% at the CHCs themselves</b>, so the problem is not doctors, and not rural postings. It is the specialist, specifically. And it compounds: India's 5,639 rural CHCs share just <b>719 anaesthetists</b> (Table 70), so even a posted surgeon often cannot operate, each vacancy makes the next posting less viable.</div>
+  </section>
+
+  <!-- EXHIBIT 3: trajectory -->
+  <section>
+    <div class="shead"><span class="snum">EXHIBIT 3</span><h2>Twenty years of sanctioning posts nobody fills</h2></div>
+    <p class="sdesc">Rural CHC specialist posts, 2005 vs 2024. Sanctioned posts nearly doubled. The filled count barely moved, so the vacancy gap grew from ~3,500 to ~8,900.</p>
+    <div class="card traj">
+      <div class="traj-col">
+        <div class="yr">2005</div>
+        <div class="stackbar">
+          <div class="col" title="Filled 3,550"><div class="seg-pos" style="height:47%"><div class="cnum">3,550</div></div><div class="clab">Filled</div></div>
+          <div class="col" title="Vacant 3,538"><div class="seg-vac" style="height:47%"><div class="cnum">3,538</div></div><div class="clab">Vacant</div></div>
+        </div>
+        <div class="clab" style="margin-top:10px;color:var(--ink-faint)">7,582 sanctioned · 47% vacant</div>
+      </div>
+      <div class="traj-col">
+        <div class="yr">2024</div>
+        <div class="stackbar">
+          <div class="col" title="Filled 5,223"><div class="seg-pos" style="height:69%"><div class="cnum">5,223</div></div><div class="clab">Filled</div></div>
+          <div class="col" title="Vacant 8,923"><div class="seg-vac" style="height:100%"><div class="cnum">8,923</div></div><div class="clab">Vacant</div></div>
+        </div>
+        <div class="clab" style="margin-top:10px;color:var(--ink-faint)">14,137 sanctioned · 63% vacant</div>
+      </div>
+      <div class="traj-note">India got good at <b>authorising</b> capacity and no better at <b>realising</b> it. Bars scaled to 2024 sanctioned total; heights are comparable across both years.</div>
+    </div>
+  </section>
+
+  </div><!-- /evidence -->
+
+  <div class="tpanel" id="tab-profile">
+    <div class="shead"><span class="snum">STATE PROFILE</span><h2>One state, all its numbers, in plain language</h2></div>
+    <p class="sdesc">Pick a state. You get its specialist bench, its generalist doctors and its nurses, each explained against the national picture, no jargon.</p>
+    <div class="stpick"><label for="stSel">State / UT</label><select id="stSel"></select></div>
+    <div class="kpis" id="stKpis"></div>
+    <div class="verdicts" id="stVerdicts"></div>
+  </div>
+
+  <div class="tpanel" id="tab-compare">
+    <div class="shead"><span class="snum">COMPARE</span><h2>Put up to five states side by side</h2></div>
+    <p class="sdesc">Tap states to add or remove them (max 5). The India row is always shown for reference.</p>
+    <div class="cmp-pick"><div class="cp-h">Selected: <b id="cmpCount">0</b> of 5</div><div class="cmp-chips" id="cmpChips"></div></div>
+    <div class="cmp-tblwrap" id="cmpOut"></div>
+  </div>
+
+  <div class="tpanel" id="tab-board">
+  <!-- EXHIBIT 4: state leaderboard -->
+  <section>
+    <div class="shead"><span class="snum">EXHIBIT 4</span><h2>Worst exactly where the insured now live</h2></div>
+    <p class="sdesc">State-wise specialist vacancy at rural CHCs. The emptiest benches map the private-demand and tele-specialty opportunity. Toggle to nursing shortfall or PHC doctor shortfall (the generalist surplus is national, not universal); sort by rate or count.</p>
+    <div class="controls">
+      <span class="ctl-label">Metric</span>
+      <div class="seg" id="metric">
+        <button data-m="spec" aria-pressed="true">Specialist vacancy</button>
+        <button data-m="nurse" aria-pressed="false">Nursing shortfall</button>
+        <button data-m="doc" aria-pressed="false">PHC doctor shortfall</button>
+      </div>
+      <span class="ctl-label" style="margin-left:6px">Sort</span>
+      <div class="seg" id="sortby">
+        <button data-s="rate" aria-pressed="true">Rate</button>
+        <button data-s="abs" aria-pressed="false">Count</button>
+      </div>
+    </div>
+    <div class="natmark" id="natmark"></div>
+    <div class="card" id="bars"></div>
+    <div class="oklist" id="oklist"></div>
+  </section>
+  </div><!-- /board -->
+
+  <footer>
+    <b>Data</b> · Health Dynamics of India 2023-24 (formerly Rural Health Statistics), MoHFW, GoI. Rural, as on 31 March 2024. Specialists = surgeons, OB-GYN, physicians, paediatricians at CHCs; vacancy = vacant of sanctioned. Insurance reference: NFHS-6.<br>
+    <b>Note</b> · Figures verified against the source publication: Table 68 &amp; Comparative Statement 6 (specialists, pp. 189, 90), Comparative Statement 5 (PHC doctors, p. 89), Table 72 (GDMOs at CHCs, p. 193), Table 70 (anaesthetists, p. 191), Comparative Statement 10 (nursing, p. 94), Table 4 (shortfall, p. 118). All states/UTs included; a state appears in a view only where the source reports applicable posts for that metric (N App and zero-sanctioned entries are excluded per view).
+  </footer>
+
+</div>
+
+<script>
+const DATA=[
+ {s:"Uttar Pradesh",spec:[3018,976,2042],nurse:[15350,7020,8330],doc:[3015,2827,188]},
+ {s:"Madhya Pradesh",spec:[1308,71,1237],nurse:[6154,4791,1363],doc:[1442,1547,0]},
+ {s:"Bihar",spec:[1401,353,1048],nurse:[6468,2170,4298],doc:[1684,1379,305]},
+ {s:"Rajasthan",spec:[1844,746,1098],nurse:[12280,8723,3557],doc:[2455,2129,326]},
+ {s:"Odisha",spec:[1259,327,932],nurse:[5856,2272,3584],doc:[1278,1165,113]},
+ {s:"Jharkhand",spec:[760,187,573],nurse:[2520,798,1722],doc:[310,234,76]},
+ {s:"Chhattisgarh",spec:[580,174,406],nurse:[3250,3135,115],doc:[770,477,293]},
+ {s:"Gujarat",spec:[481,200,281],nurse:[6520,4402,2118],doc:[1490,1402,88]},
+ {s:"Maharashtra",spec:[566,347,219],nurse:[6432,3614,2818],doc:[1916,3610,0]},
+ {s:"Uttarakhand",spec:[198,27,171],nurse:[1598,567,1031],doc:[544,538,6]},
+ {s:"Punjab",spec:[259,51,208],nurse:[1634,1013,621],doc:[397,408,0]},
+ {s:"Karnataka",spec:[439,295,144],nurse:[6152,3692,2460],doc:[2131,1732,399]},
+ {s:"Tamil Nadu",spec:[509,398,111],nurse:[6710,6431,279],doc:[1415,2311,0]},
+ {s:"Andhra Pradesh",spec:[551,460,91],nurse:[3678,4526,0],doc:[1144,2217,0]},
+ {s:"Jammu & Kashmir",spec:[181,100,81],nurse:[2228,658,1570],doc:[884,935,0]},
+ {s:"West Bengal",spec:[202,127,75],nurse:[5274,5744,0],doc:[907,1141,0]},
+ {s:"Assam",spec:[293,218,75],nurse:[3764,2931,833],doc:[927,1100,0]},
+ {s:"Telangana",spec:[79,42,37],nurse:[1480,1299,181],doc:[595,790,0]},
+ {s:"Ladakh",spec:[43,13,30],nurse:[134,71,63],doc:[32,59,0]},
+ {s:"Haryana",spec:[34,10,24],nurse:[1804,2303,0],doc:[392,505,0]},
+ {s:"Kerala",spec:[38,35,3],nurse:[3684,2860,824],doc:[782,1851,0]},
+ {s:"Himachal Pradesh",spec:[0,9,0],nurse:[2128,232,1896],doc:[554,487,67]},
+ {s:"Arunachal Pradesh",spec:[22,22,0],nurse:[816,466,350],doc:[128,110,18]},
+ {s:"Goa",spec:[6,3,3],nurse:[52,81,0],doc:[21,74,0]},
+ {s:"Manipur",spec:[14,3,11],nurse:[228,175,53],doc:[74,222,0]},
+ {s:"Meghalaya",spec:[6,6,0],nurse:[502,629,0],doc:[116,163,0]},
+ {s:"Mizoram",spec:[0,0,0],nurse:[202,222,0],doc:[56,48,8]},
+ {s:"Nagaland",spec:[3,3,0],nurse:[330,191,139],doc:[125,65,60]},
+ {s:"Sikkim",spec:[2,0,2],nurse:[68,205,0],doc:[24,34,0]},
+ {s:"Tripura",spec:[13,13,0],nurse:[402,604,0],doc:[111,265,0]},
+ {s:"Andaman & Nicobar",spec:[16,4,12],nurse:[84,151,0],doc:[22,50,0]},
+ {s:"DNH & Daman-Diu",spec:[2,0,2],nurse:[54,60,0],doc:[12,13,0]},
+ {s:"Delhi (rural)",spec:[0,0,0],nurse:[6,1,5],doc:[3,5,0]},
+ {s:"Lakshadweep",spec:[7,0,7],nurse:[38,45,0],doc:[4,11,0]},
+ {s:"Puducherry",spec:[3,3,0],nurse:[80,143,0],doc:[25,45,0]},
+];
+const fmt=n=>n.toLocaleString('en-IN');
+let metric='spec',sortby='rate';
+function val(d){
+ if(metric==='spec'){const[sa,po,va]=d.spec;const r=sa>0?Math.round(va/sa*100):0;return{r,a:va,ok:sa>0&&va>0,lab:r+'%',al:fmt(va)+' of '+fmt(sa)+' posts empty'};}
+ if(metric==='doc'){const[rq,po,sh]=d.doc||[0,0,0];const r=rq>0?Math.round(sh/rq*100):0;return{r,a:sh,ok:sh>0,lab:r+'%',al:fmt(sh)+' of '+fmt(rq)+' needed, short'};}
+ const[rq,po,sh]=d.nurse;const r=rq>0?Math.round(sh/rq*100):0;return{r,a:sh,ok:sh>0,lab:r+'%',al:fmt(sh)+' of '+fmt(rq)+' needed, short'};
+}
+function render(){
+ document.getElementById('natmark').innerHTML = metric==='spec'
+   ? 'NATIONAL &nbsp;·&nbsp; <b>63%</b> of CHC specialist posts vacant · 8,923 of 14,137'
+   : metric==='doc'
+   ? 'NATIONAL &nbsp;·&nbsp; PHC doctors are <b>+16% above requirement</b> (29,949 vs 25,785) · the deficit below is concentrated in a few states (1,947 posts)'
+   : 'NATIONAL &nbsp;·&nbsp; <b>35%</b> nursing shortfall · 38,210 posts short';
+ const rows=DATA.map(d=>({d,v:val(d)})).filter(x=>x.v.ok).sort((a,b)=>sortby==='rate'?b.v.r-a.v.r:b.v.a-a.v.a);
+ const max=Math.max(...rows.map(x=>sortby==='rate'?x.v.r:x.v.a));
+ document.getElementById('bars').innerHTML=rows.map(({d,v},i)=>{
+  const w=((sortby==='rate'?v.r:v.a)/max*100).toFixed(1);
+  const hot=i<3?' hot':'';
+  return `<div class="bar-row"><span class="bar-name${hot}">${d.s}</span><span class="bar-track"><span class="bar-fill" style="width:${w}%"></span></span><span class="bar-val">${v.lab} <span class="abs">${v.al}</span></span></div>`;
+ }).join('');
+ // states with data but NO shortfall in this metric
+ const okNames=DATA.filter(d=>{
+   if(metric==='spec'){const[sa,,va]=d.spec;return sa>0&&va===0;}
+   if(metric==='doc'){if(!d.doc)return false;const[rq,,sh]=d.doc;return rq>0&&sh===0;}
+   const[rq,,sh]=d.nurse;return rq>0&&sh===0;
+ }).map(d=>d.s).sort();
+ const okLabel=metric==='spec'?'No specialist vacancy (all sanctioned posts filled)':metric==='doc'?'No shortfall — at or above requirement':'No nursing shortfall — at or above requirement';
+ document.getElementById('oklist').innerHTML=okNames.length?`<b>${okLabel} · ${okNames.length} states/UTs</b><br>${okNames.join(' · ')}`:'';
+}
+document.getElementById('metric').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;metric=b.dataset.m;[...e.currentTarget.children].forEach(x=>x.setAttribute('aria-pressed',x===b));render();});
+document.getElementById('sortby').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;sortby=b.dataset.s;[...e.currentTarget.children].forEach(x=>x.setAttribute('aria-pressed',x===b));render();});
+render();
+
+/* ================= tabs ================= */
+const tabsEl=document.getElementById('toolTabs');
+tabsEl.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+ [...tabsEl.children].forEach(x=>x.setAttribute('aria-selected',x===b));
+ document.querySelectorAll('.tpanel').forEach(p=>p.classList.toggle('active',p.id==='tab-'+b.dataset.tab));});
+
+/* ============ shared helpers / national refs ============ */
+const NAT={specRate:63,specVac:8923,specSanc:14137,docReq:25785,docPos:29949,nurseRate:35,nurseSF:38210,nurseReq:107960};
+const sevSpec=r=>r>=85?'Near-total collapse':r>=63?'Severe (at/above national)':r>=40?'High':r>=15?'Moderate':r>0?'Low':'Fully staffed';
+const pct=(a,b)=>b>0?Math.round(a/b*100):0;
+
+function specText(d){const[sa,po,va]=d.spec;
+ if(sa===0)return{cls:'v-mid',head:'Specialists · no applicable data',html:`The source reports no sanctioned specialist posts for ${d.s} (state-run differently or not applicable), so a vacancy rate cannot be computed.`};
+ const r=pct(va,sa);
+ if(va===0)return{cls:'v-good',head:'Specialists · fully staffed',html:`Every one of its <b>${fmt(sa)}</b> sanctioned specialist posts is filled. Rare: only a handful of small states manage this.`};
+ const rel=r>=NAT.specRate+10?'far worse than':r>=NAT.specRate-5?'around':'better than';
+ return{cls:r>=NAT.specRate-5?'v-bad':'v-mid',head:'Specialists · '+sevSpec(r),html:`Of <b>${fmt(sa)}</b> sanctioned specialist posts (surgeons, OB-GYN, physicians, paediatricians) at its rural CHCs, only <b>${fmt(po)}</b> are filled. <b>${fmt(va)} posts (${r}%) sit empty</b>, ${rel} the national 63%. Every empty post means referrals travel further or land in private care.`,bar:r};}
+
+function docText(d){if(!d.doc)return{cls:'v-mid',head:'PHC doctors · no data',html:'Not reported for this state.'};
+ const[rq,po,sh]=d.doc;
+ if(rq===0)return{cls:'v-mid',head:'PHC doctors · not applicable',html:`No rural PHC requirement reported for ${d.s}.`};
+ if(sh===0){const sur=po-rq;return{cls:'v-good',head:'PHC doctors · at or above requirement',html:`It needs <b>${fmt(rq)}</b> generalist doctors (one per PHC) and has <b>${fmt(po)}</b> in position${sur>0?`, a surplus of <b>${fmt(sur)}</b>`:''}. The generalist tier is not the problem here.`};}
+ const r=pct(sh,rq);
+ return{cls:r>=25?'v-bad':'v-mid',head:`PHC doctors · ${r}% short`,html:`It needs <b>${fmt(rq)}</b> generalist doctors at PHCs and is short <b>${fmt(sh)}</b> (${r}%). One of the minority of states with a real generalist gap, though still far shallower than the specialist one.`};}
+
+function nurseText(d){const[rq,po,sh]=d.nurse;
+ if(rq===0)return{cls:'v-mid',head:'Nursing · not applicable',html:'No rural nursing requirement reported.'};
+ if(sh===0){const sur=po-rq;return{cls:'v-good',head:'Nursing · at or above requirement',html:`Needs <b>${fmt(rq)}</b> nurses across PHCs and CHCs, has <b>${fmt(po)}</b>${sur>0?` (surplus of ${fmt(sur)})`:''}.`};}
+ const r=pct(sh,rq);
+ return{cls:r>=NAT.nurseRate?'v-bad':'v-mid',head:`Nursing · ${r}% short`,html:`Needs <b>${fmt(rq)}</b> nursing staff across rural PHCs and CHCs and is short <b>${fmt(sh)}</b> (${r}%). National shortfall is 35%.`};}
+
+function overallText(d){const[sa,po,va]=d.spec;const r=sa>0?pct(va,sa):null;
+ const docOK=d.doc&&d.doc[2]===0, nurseOK=d.nurse[2]===0;
+ if(r!==null&&r>=85&&docOK)return `<b>The one-line read:</b> ${d.s} fills its generalist posts but has effectively <b>no public specialist tier in rural areas</b>. Insured patients here have an entitlement with nothing behind it, the sharpest tele-specialty and private-demand signal on the map.`;
+ if(r!==null&&r>=NAT.specRate)return `<b>The one-line read:</b> ${d.s} follows the national pattern in extreme form, ${docOK?'generalists in place':'generalist gaps too'}, specialists largely absent. Referrals upward hit an empty room.`;
+ if(r!==null&&r>0&&r<40)return `<b>The one-line read:</b> ${d.s} is one of the better-staffed specialist benches in India${docOK?' with generalists at or above requirement':''}, the pyramid holds up here better than the national story suggests.`;
+ if(r===null)return `<b>The one-line read:</b> ${d.s} runs its rural system without sanctioned CHC specialist posts in this dataset; judge it on its generalist and nursing numbers above.`;
+ return `<b>The one-line read:</b> ${d.s} sits between the extremes, real specialist gaps (${r}%), ${docOK?'generalists covered':'some generalist strain'}, ${nurseOK?'nursing covered':'nursing under strain'}.`;}
+
+/* ================= state profile ================= */
+const sel=document.getElementById('stSel');
+[...DATA].sort((a,b)=>a.s.localeCompare(b.s)).forEach(d=>{const o=document.createElement('option');o.value=d.s;o.textContent=d.s;sel.appendChild(o);});
+function kpi(l,v,cls,s){return `<div class="kpi"><div class="kl">${l}</div><div class="kv ${cls}">${v}</div><div class="ks">${s}</div></div>`;}
+function renderProfile(){const d=DATA.find(x=>x.s===sel.value);if(!d)return;
+ const[sa,po,va]=d.spec;const r=sa>0?pct(va,sa):null;
+ const doc=d.doc||[0,0,0];const docState=doc[0]===0?['N/A','na','not applicable']:doc[2]===0?['+'+fmt(doc[1]-doc[0]),'good',fmt(doc[1])+' vs '+fmt(doc[0])+' needed']:[pct(doc[2],doc[0])+'%','mid',fmt(doc[2])+' of '+fmt(doc[0])+' short'];
+ const nr=d.nurse;const nState=nr[0]===0?['N/A','na','not applicable']:nr[2]===0?['OK','good',fmt(nr[1])+' vs '+fmt(nr[0])+' needed']:[pct(nr[2],nr[0])+'%','mid',fmt(nr[2])+' of '+fmt(nr[0])+' short'];
+ document.getElementById('stKpis').innerHTML=
+  kpi('Specialist posts vacant', r===null?'N/A':r+'%', r===null?'na':(r>=NAT.specRate-5?'bad':r>0?'mid':'good'), r===null?'no sanctioned posts reported':fmt(va)+' of '+fmt(sa)+' posts empty')+
+  kpi('PHC generalist doctors', docState[0], docState[1], docState[2])+
+  kpi('Nursing shortfall', nState[0], nState[1], nState[2]);
+ const v1=specText(d),v2=docText(d),v3=nurseText(d);
+ const bar=v1.bar!==undefined?`<div class="vsnat"><div class="me" style="width:${Math.min(v1.bar,100)}%"></div><div class="nat" style="left:${NAT.specRate}%"></div></div><div class="vsnat-lab">red bar = this state's specialist vacancy · black tick = national 63%</div>`:'';
+ document.getElementById('stVerdicts').innerHTML=
+  `<div class="verdict ${v1.cls}"><div class="vh">${v1.head}</div>${v1.html}${bar}</div>`+
+  `<div class="verdict ${v2.cls}"><div class="vh">${v2.head}</div>${v2.html}</div>`+
+  `<div class="verdict ${v3.cls}"><div class="vh">${v3.head}</div>${v3.html}</div>`+
+  `<div class="verdict"><div class="vh">Overall</div>${overallText(d)}</div>`;}
+sel.addEventListener('change',renderProfile);
+sel.value='Madhya Pradesh';renderProfile();
+
+/* ================= compare (max 5) ================= */
+const picked=new Set(['Madhya Pradesh','Kerala','Uttar Pradesh']);
+const chipsEl=document.getElementById('cmpChips');
+[...DATA].sort((a,b)=>a.s.localeCompare(b.s)).forEach(d=>{const b=document.createElement('button');b.type='button';b.textContent=d.s;b.dataset.s=d.s;chipsEl.appendChild(b);});
+function cCell(txt,cls,sub){return `<td class="${cls||''}">${txt}${sub?`<span class="sub">${sub}</span>`:''}</td>`;}
+function rowFor(name,spec,doc,nurse,isNat){
+ const[sa,po,va]=spec;const r=sa>0?pct(va,sa):null;
+ const sCell=r===null?cCell('N/A','', 'no sanctioned posts'):cCell(r+'%', r>=NAT.specRate-5?'c-bad':r>0?'c-mid':'c-good', fmt(va)+' of '+fmt(sa)+' empty');
+ const dCell=!doc||doc[0]===0?cCell('N/A','',''):doc[2]===0?cCell('At/above need','c-good',fmt(doc[1])+' vs '+fmt(doc[0])+' needed'):cCell(pct(doc[2],doc[0])+'% short','c-mid',fmt(doc[2])+' of '+fmt(doc[0]));
+ const nCell=nurse[0]===0?cCell('N/A','',''):nurse[2]===0?cCell('At/above need','c-good',fmt(nurse[1])+' vs '+fmt(nurse[0])+' needed'):cCell(pct(nurse[2],nurse[0])+'% short', pct(nurse[2],nurse[0])>=NAT.nurseRate?'c-bad':'c-mid', fmt(nurse[2])+' of '+fmt(nurse[0]));
+ return `<tr${isNat?' class="nat"':''}><td>${name}</td>${sCell}${dCell}${nCell}</tr>`;}
+function renderCompare(){
+ document.getElementById('cmpCount').textContent=picked.size;
+ [...chipsEl.children].forEach(b=>{b.classList.toggle('on',picked.has(b.dataset.s));b.disabled=!picked.has(b.dataset.s)&&picked.size>=5;});
+ let rows=rowFor('India (national)',[NAT.specSanc,NAT.specSanc-NAT.specVac,NAT.specVac],[NAT.docReq,NAT.docPos,0],[NAT.nurseReq,NAT.nurseReq-NAT.nurseSF,NAT.nurseSF],true);
+ [...picked].map(s=>DATA.find(d=>d.s===s)).filter(Boolean).forEach(d=>{rows+=rowFor(d.s,d.spec,d.doc,d.nurse,false);});
+ document.getElementById('cmpOut').innerHTML=`<table class="cmp"><thead><tr><th>State</th><th>CHC specialist vacancy</th><th>PHC generalist doctors</th><th>Nursing (PHC+CHC)</th></tr></thead><tbody>${rows}</tbody></table>`;}
+chipsEl.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const s=b.dataset.s;
+ if(picked.has(s))picked.delete(s);else if(picked.size<5)picked.add(s);renderCompare();});
+renderCompare();
+
+</script>
+<script>
+(function(){
+  var t=document.getElementById('hpTheme');
+  if(t)t.addEventListener('click',function(){var r=document.documentElement,d=r.getAttribute('data-theme')==='dark';if(d)r.removeAttribute('data-theme');else r.setAttribute('data-theme','dark');try{localStorage.setItem('hp-theme',d?'light':'dark');}catch(e){}});
+  var n=document.getElementById('hpNavToggle'),m=document.getElementById('hpNav');
+  if(n&&m)n.addEventListener('click',function(){m.classList.toggle('open');});
+})();
+</script>
+</body>
+</html>
