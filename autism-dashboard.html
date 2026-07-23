@@ -1,0 +1,2123 @@
+---
+layout: null
+permalink: /tools/autism/
+sitemap: false
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Autism in India, Data Dashboard &middot; Healthcare Pulse</title>
+<meta name="description" content="Autism in India data dossier: prevalence by method, the diagnosis gap, state early-intervention capacity, financing, workforce, the global comparison and full sources. Companion to Healthcare Pulse Edition 67.">
+<link rel="canonical" href="https://mayankmadhur.in/tools/autism/">
+<meta name="author" content="Mayank Madhur">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Autism in India Data Dashboard","applicationCategory":"HealthApplication","operatingSystem":"Web","url":"https://mayankmadhur.in/tools/autism/","description":"Interactive autism data dossier for India: prevalence, diagnosis gap, early-intervention capacity, financing, workforce, global comparison and sources.","author":{"@type":"Person","name":"Mayank Madhur"},"isPartOf":{"@type":"WebSite","name":"Healthcare Pulse","url":"https://mayankmadhur.in/"}}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="/logo.png">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root{
+    --dark:#1B3A4B; --teal:#0FA3A3; --teal2:#37B68A; --accent:#E08A3C;
+    --bg:#F5F9F9; --card:#FFFFFF; --ink:#1B3A4B; --muted:#5A6B72; --line:#E2E8EC;
+    --good:#0FA3A3; --warn:#C2563F;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Manrope',system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg); color:var(--ink); line-height:1.5; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:'Manrope',system-ui,sans-serif;font-weight:800;letter-spacing:-.01em;}
+  a{color:var(--teal);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  /* Layout */
+  .wrap{max-width:1200px;margin:0 auto;padding:0 22px;}
+  header:not(.site-header){background:linear-gradient(150deg,#1B3A4B 0%, #14303D 55%, #0E5B5B 100%);color:#fff;padding:40px 0 34px;}
+  .kicker{font-size:12px;letter-spacing:3px;font-weight:700;color:var(--teal2);text-transform:uppercase;margin-bottom:10px;}
+  header h1{font-size:40px;line-height:1.1;font-weight:700;margin-bottom:12px;}
+  header p{color:#CFE0E4;max-width:760px;font-size:16px;}
+  .dots{display:inline-flex;gap:9px;margin-bottom:18px;}
+  .dots i{width:13px;height:13px;border-radius:50%;background:var(--teal);display:block}
+  .dots i:first-child{background:var(--accent)}
+
+  /* Main tab bar */
+  .tabbar{position:sticky;top:0;z-index:30;background:var(--dark);box-shadow:0 2px 10px rgba(27,58,75,.22)}
+  .tabbar-inner{display:flex;gap:6px;padding:0 22px}
+  .tab{background:none;border:none;cursor:pointer;color:#9FB6BC;font-size:15px;font-weight:700;font-family:inherit;padding:15px 20px;border-bottom:3px solid transparent;display:flex;align-items:center;gap:8px}
+  .tab .flag{font-size:17px}
+  .tab:hover{color:#fff}
+  .tab.active{color:#fff;border-bottom-color:var(--accent)}
+
+  .tabpanel{display:none}
+  .tabpanel.active{display:block}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  .tab:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
+  .subnav a:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+
+  /* India sub-nav */
+  .subnav{display:flex;gap:2px;overflow-x:auto;margin-bottom:6px;border-bottom:1px solid var(--line);padding-top:6px}
+  .subnav a{color:var(--muted);font-size:12.5px;font-weight:600;padding:9px 11px;white-space:nowrap;border-bottom:2px solid transparent}
+  .subnav a:hover{color:var(--teal);text-decoration:none}
+  .subnav a.active{color:var(--teal);border-bottom-color:var(--teal)}
+
+  section{padding:38px 0 8px;}
+  .sec-head{margin-bottom:18px}
+  .sec-head .tag{font-size:11px;letter-spacing:2.5px;font-weight:700;color:var(--teal);text-transform:uppercase}
+  .sec-head h2{font-size:26px;margin:4px 0 6px}
+  .sec-head p{color:var(--muted);max-width:820px;font-size:14.5px}
+
+  /* KPI cards */
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:12px;position:relative;z-index:5}
+  .kpis2{margin-top:0}
+  .kpi{background:var(--card);border-radius:12px;padding:20px 18px;box-shadow:0 8px 22px rgba(15,42,56,.10);border:1px solid var(--line)}
+  .kpi .n{font-family:'Manrope',system-ui,sans-serif;font-size:34px;font-weight:700;color:var(--teal);line-height:1}
+  .kpi .n.acc{color:var(--accent)}
+  .kpi .l{font-size:13px;color:var(--ink);margin-top:8px;font-weight:600}
+  .kpi .s{font-size:11.5px;color:var(--muted);margin-top:3px}
+
+  /* Grid + cards */
+  .grid{display:grid;gap:18px}
+  .g2{grid-template-columns:1fr 1fr}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g23{grid-template-columns:1.4fr 1fr}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+  .card h3{font-size:17px;margin-bottom:3px}
+  .card .cap{font-size:12px;color:var(--muted);margin-bottom:14px}
+  .chart-box{position:relative;height:300px}
+  .chart-box.tall{height:360px}
+
+  .dark-card{background:var(--dark);color:#fff;border:none}
+  .dark-card h3{color:#fff}
+  .dark-card p{color:#CFE0E4;font-size:14px;margin-top:8px}
+  .dark-card .big{font-family:'Manrope',system-ui,sans-serif;font-size:56px;font-weight:700;color:var(--accent);line-height:1}
+
+  .pill{display:inline-block;background:#E8F1F2;color:var(--teal);font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;margin:0 4px 4px 0}
+
+  /* Act explainer cards */
+  .act{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px;position:relative;overflow:hidden}
+  .act .yr{font-family:'Manrope',system-ui,sans-serif;font-size:44px;font-weight:700;color:#EAF1F2;position:absolute;top:12px;right:20px;line-height:1}
+  .act .badge{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#fff;background:var(--teal);padding:3px 9px;border-radius:5px;margin-bottom:9px}
+  .act .badge.flag{background:var(--accent)}
+  .act h3{font-size:19px;margin-bottom:2px;max-width:78%}
+  .act .sub{font-size:12.5px;color:var(--muted);margin-bottom:14px}
+  .act dl{margin:0}
+  .act dt{font-size:10.5px;letter-spacing:1px;text-transform:uppercase;font-weight:700;color:var(--teal);margin-top:11px}
+  .act dd{font-size:13.5px;color:var(--ink);margin:2px 0 0;line-height:1.5}
+  .act .limit dt{color:var(--warn)}
+
+  .types{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
+  .type{border-radius:10px;padding:14px 16px;border:1px solid var(--line);background:var(--card)}
+  .type h4{font-family:'Manrope',system-ui,sans-serif;font-size:15px;margin-bottom:3px}
+  .type p{font-size:12.5px;color:var(--muted);line-height:1.45}
+  .type.a{border-top:none;box-shadow:inset 0 3px 0 var(--teal)}
+  .type.p{box-shadow:inset 0 3px 0 var(--teal2)}
+  .type.s{box-shadow:inset 0 3px 0 var(--accent)}
+
+  /* Help-seeking pathway flow */
+  .flow{display:flex;gap:8px;flex-wrap:wrap;align-items:stretch}
+  .flow .step{flex:1;min-width:130px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 13px;position:relative}
+  .flow .step .sn{font-family:'Manrope',system-ui,sans-serif;font-weight:700;color:var(--teal2);font-size:13px}
+  .flow .step h4{font-family:'Manrope',system-ui,sans-serif;font-size:13px;margin:2px 0 5px;color:var(--dark)}
+  .flow .step .bn{font-size:11px;color:var(--warn);line-height:1.35}
+  .flow .step.end{background:var(--teal);border-color:var(--teal)}
+  .flow .step.end .sn,.flow .step.end h4{color:#fff}
+  .flow .arrow{align-self:center;color:var(--teal2);font-weight:700;font-size:16px}
+
+  /* Measurement gap checklist */
+  .gaplist{list-style:none;margin:0;padding:0}
+  .gaplist li{padding:9px 0 9px 30px;border-bottom:1px solid var(--line);font-size:13.5px;position:relative}
+  .gaplist li:last-child{border-bottom:none}
+  .gaplist li::before{content:'\2717';position:absolute;left:4px;top:9px;color:var(--warn);font-weight:700}
+  .datapack{list-style:none;margin:0;padding:0}
+  .datapack li{padding:8px 0 8px 30px;border-bottom:1px solid rgba(255,255,255,.12);font-size:13.5px;position:relative;color:#DDEAEC}
+  .datapack li:last-child{border-bottom:none}
+  .datapack li::before{content:'\2713';position:absolute;left:4px;top:8px;color:var(--accent);font-weight:700}
+  .tlist{list-style:none;margin:0;padding:0}
+  .tlist li{padding:7px 0 7px 20px;border-bottom:1px solid var(--line);font-size:13px;position:relative;line-height:1.4}
+  .tlist li:last-child{border-bottom:none}
+  .tlist li::before{content:'\25AA';position:absolute;left:2px;top:7px;color:var(--teal)}
+
+  /* Stat rows */
+  .rowstat{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid var(--line);font-size:14px}
+  .rowstat:last-child{border-bottom:none}
+  .rowstat b{font-family:'Manrope',system-ui,sans-serif;color:var(--teal);font-size:17px}
+
+  /* Timeline */
+  .tl{position:relative;padding-left:8px}
+  .tl-item{position:relative;padding:0 0 20px 34px;border-left:2px solid var(--teal2);}
+  .tl-item:last-child{border-left:2px solid transparent}
+  .tl-item::before{content:'';position:absolute;left:-9px;top:2px;width:16px;height:16px;border-radius:50%;background:var(--teal);border:3px solid #fff;box-shadow:0 0 0 1px var(--line)}
+  .tl-item.hl::before{background:var(--accent)}
+  .tl-year{font-family:'Manrope',system-ui,sans-serif;font-weight:700;color:var(--dark);font-size:16px}
+  .tl-item p{font-size:13.5px;color:var(--muted);margin-top:2px}
+  .tl-item b{color:var(--ink)}
+
+  /* insight banner */
+  .banner{background:var(--dark);color:#fff;border-radius:12px;padding:20px 24px;display:flex;gap:16px;align-items:flex-start}
+  .banner .icn{font-size:26px;line-height:1;color:var(--accent);flex-shrink:0}
+  .banner p{font-size:14.5px;color:#DDEAEC}
+  .banner b{color:#fff}
+
+  /* footer / sources */
+  footer{background:var(--dark);color:#B9CCD1;padding:34px 0 40px;margin-top:40px;font-size:13px}
+  footer h3{color:#fff;font-size:16px;margin-bottom:12px}
+  .srclist{columns:2;column-gap:36px}
+  .srclist div{break-inside:avoid;margin-bottom:9px;font-size:12.5px;line-height:1.45}
+  .caveat{background:rgba(224,166,60,.12);border:1px solid rgba(224,166,60,.35);border-radius:10px;padding:14px 18px;margin-bottom:24px;font-size:13px;color:#EBD7AE}
+  .caveat b{color:var(--accent)}
+
+  /* Glossary */
+  .glosswrap{display:grid;grid-template-columns:repeat(3,1fr);gap:22px 38px;margin:6px 0 28px}
+  .glosscat h4{color:var(--accent);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;margin:0 0 10px;padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,.14)}
+  .gitem{margin-bottom:9px;font-size:12.5px;line-height:1.45;color:#B9CCD1}
+  .gitem b{color:#fff;font-weight:700}
+
+  /* Types hierarchy tree */
+  .tree{max-width:980px;margin:0 auto}
+  .node{background:#fff;border:1px solid var(--line);border-radius:12px;padding:13px 16px}
+  .node b{display:block;color:var(--dark);font-size:14px}
+  .node span{display:block;font-size:12.5px;color:var(--ink);line-height:1.45;margin-top:4px}
+  .node.umbrella{background:var(--dark);border:none;text-align:center;padding:20px 22px}
+  .node.umbrella b{color:#fff;font-size:20px;font-family:'Manrope',system-ui,sans-serif}
+  .node.umbrella span{color:#CFE0E4;font-size:13.5px;max-width:640px;margin:6px auto 0}
+  .down{text-align:center;margin:12px 0}
+  .down .bar{display:block;width:2px;height:22px;background:var(--teal2);margin:0 auto}
+  .down .lbl{display:inline-block;background:#EAF1F2;color:var(--teal);font-size:11.5px;font-weight:700;padding:4px 12px;border-radius:20px;margin-top:8px}
+  .branch2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .col{display:flex;flex-direction:column;gap:10px}
+  .node.head{background:#EAF1F2;text-align:center;border:none}
+  .node.head b{color:var(--dark);font-size:15px}
+  .lvl{border-left:6px solid var(--teal2)}
+  .lvl.l2{border-left-color:var(--teal)}
+  .lvl.l3{border-left-color:var(--accent)}
+  .spec b{display:inline;color:var(--teal)}
+  .spec{font-size:13px;color:var(--ink);line-height:1.4}
+  .legacy-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .node.legacy{border:1.5px dashed #BFD0D4;background:#F7FAFB;position:relative}
+  .node.legacy b{color:var(--muted)}
+  .node.legacy .now{display:inline-block;margin-top:8px;font-size:10.5px;font-weight:700;color:var(--teal);background:#E8F1F2;padding:2px 8px;border-radius:12px}
+
+  @media(max-width:900px){
+    .kpis{grid-template-columns:repeat(2,1fr)}
+    .g2,.g3,.g23{grid-template-columns:1fr}
+    header h1{font-size:30px}
+    .srclist{columns:1}
+    .glosswrap{grid-template-columns:1fr}
+    .branch2{grid-template-columns:1fr}
+    .legacy-grid{grid-template-columns:1fr 1fr}
+  }
+
+/* ---- dark mode for the dashboard ---- */
+html[data-theme="dark"]{--bg:#0F1B22;--card:#16252C;--ink:#EAF6F6;--muted:#AFC2C8;--line:#2C3F47;--dark:#0B141A;}
+html[data-theme="dark"] body{background:var(--bg);color:var(--ink);}
+html[data-theme="dark"] .tabbar{background:#0B141A;}
+
+/* ---- site header ---- */
+.site-header{--navy:#1B3A4B;--teal:#0FA3A3;--muted:#5A6B72;--ink:#22333B;--line:#E2E8EC;--grad:linear-gradient(90deg,#0FA3A3,#2E7CB8);}
+html[data-theme="dark"] .site-header{--navy:#E8F4F4;--muted:#A8BDC4;--ink:#DCE9EC;--line:#22333B;}
+
+
+/* ---------- progress bar ---------- */
+#prog {
+  position: fixed; top: 0; left: 0;
+  height: 4px; width: 0;
+  background: var(--grad);
+  z-index: 99;
+}
+
+
+/* ---------- masthead ---------- */
+.site-header {
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  padding: 16px clamp(20px, 4vw, 48px);
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+  position: sticky; top: 0; z-index: 10;
+}
+
+
+.logo { display: flex; align-items: center; gap: 13px; text-decoration: none; }
+
+
+.logo-name {
+  display: block;
+  font-weight: 800; font-size: 22px;
+  color: var(--navy); letter-spacing: -.4px; line-height: 1.1;
+}
+
+
+.logo-tag { display: block; font-size: 12.5px; color: var(--muted); }
+
+
+.site-header nav { display: flex; gap: 20px; align-items: center; }
+
+
+.site-header nav a { text-decoration: none; font-weight: 700; font-size: 15px; color: var(--ink); }
+
+
+.site-header nav a:hover { color: var(--teal); }
+
+
+.nav-subscribe {
+  background: var(--grad);
+  color: #fff !important;
+  padding: 9px 20px;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(15, 163, 163, .35);
+}
+
+
+.nav-subscribe:hover { filter: brightness(1.08); }
+
+
+/* logo image */
+.logo-img{width:48px;height:48px;object-fit:contain;border-radius:10px;}
+
+
+/* ── header thinning patch ── */
+.site-header {
+  padding: 10px clamp(16px, 3vw, 40px) !important;
+}
+
+.logo-img {
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 8px !important;
+}
+
+.logo-name {
+  font-size: 18px !important;
+}
+
+.logo-tag {
+  font-size: 11.5px !important;
+}
+
+.logo {
+  gap: 10px !important;
+}
+
+
+/* ── header compact v2 ── */
+.site-header {
+  padding: 8px clamp(16px, 3vw, 40px) !important;
+  min-height: unset !important;
+}
+
+.logo {
+  gap: 8px !important;
+  align-items: center !important;
+}
+
+.logo-img {
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 6px !important;
+  flex: none !important;
+  object-fit: contain !important;
+}
+
+.logo-name { font-size: 16px !important; }
+
+.logo-tag  { font-size: 11px !important; }
+
+.site-header nav a { font-size: 14px !important; }
+
+.nav-subscribe { padding: 7px 16px !important; font-size: 14px !important; }
+
+
+/* ── Theme toggle button ── */
+.theme-toggle {
+  background: none; border: 1px solid var(--line); border-radius: 10px;
+  width: 38px; height: 38px; cursor: pointer; color: var(--navy);
+  display: inline-flex; align-items: center; justify-content: center; padding: 0;
+}
+
+.theme-toggle:hover { border-color: var(--teal); color: var(--teal); }
+
+.theme-toggle .t-moon { display: none; }
+
+[data-theme="dark"] .theme-toggle .t-sun { display: none; }
+
+[data-theme="dark"] .theme-toggle .t-moon { display: block; }
+
+[data-theme="dark"] .site-header { background: #13212A; border-bottom-color: #25373F; }
+
+[data-theme="dark"] .logo-name { color: #E8F4F4; }
+
+[data-theme="dark"] .nav-subscribe { color: #fff !important; }
+
+
+/* ── Back to top button ── */
+.to-top { position: fixed; bottom: 24px; right: 24px; width: 46px; height: 46px; border-radius: 50%; background: var(--navy); color: #fff; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transform: translateY(10px); transition: opacity .25s ease, transform .25s ease; z-index: 60; box-shadow: 0 6px 18px rgba(27,58,75,.28); }
+
+.to-top.show { opacity: 1; pointer-events: auto; transform: none; }
+
+.to-top:hover { background: var(--teal); }
+
+[data-theme="dark"] .to-top { background: var(--teal); }
+
+.theme-toggle { background:none; border:1px solid var(--line); border-radius:10px; width:38px; height:38px; cursor:pointer; color:var(--navy); display:inline-flex; align-items:center; justify-content:center; padding:0; margin-left:4px; vertical-align:middle; }
+
+.theme-toggle:hover { border-color:var(--teal); color:var(--teal); }
+
+.theme-toggle .t-moon { display:none; }
+
+[data-theme="dark"] .theme-toggle .t-sun { display:none; }
+
+[data-theme="dark"] .theme-toggle .t-moon { display:block; }
+
+[data-theme="dark"] .site-header { background:#13212A; border-bottom-color:#25373F; }
+
+[data-theme="dark"] .logo-name { color:#E8F4F4; }
+
+[data-theme="dark"] .nav-subscribe { color:#fff !important; }
+
+.to-top { position: fixed; bottom: 24px; right: 24px; width: 46px; height: 46px; border-radius: 50%; background: var(--navy); color: #fff; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transform: translateY(10px); transition: opacity .25s ease, transform .25s ease; z-index: 60; box-shadow: 0 6px 18px rgba(27,58,75,.28); }
+
+.to-top.show { opacity: 1; pointer-events: auto; transform: none; }
+
+.to-top:hover { background: var(--teal); }
+
+
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;color:#1B3A4B;padding:4px}
+
+[data-theme="dark"] .nav-toggle{color:#E8F4F4}
+
+@media(max-width:820px){
+  .nav-toggle{display:inline-flex;align-items:center}
+
+  .site-header{position:relative;flex-wrap:wrap}
+
+  .site-header nav{display:none;flex-direction:column;align-items:flex-start;gap:4px;width:100%;margin-top:14px;padding-top:14px;border-top:1px solid #E2EDED}
+
+  .site-header nav.open{display:flex}
+
+  .site-header nav a{font-size:16px;padding:9px 4px;width:100%}}
+.tool-backlink{max-width:1200px;margin:0 auto;padding:16px 22px 0}
+.tool-backlink a{display:inline-flex;align-items:center;gap:7px;font-family:'Manrope',sans-serif;font-size:13.5px;font-weight:700;color:#0FA3A3;text-decoration:none;padding:7px 14px;border:1px solid rgba(15,163,163,.35);border-radius:999px;background:rgba(15,163,163,.06)}
+</style>
+</head>
+<body>
+<script>(function(){try{if(localStorage.getItem('hp-theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+<header class="site-header">
+  <a class="logo" href="/index.html"><img src="/logo.png" alt="Healthcare Pulse" class="logo-img"><span class="logo-text"><span class="logo-name">Healthcare Pulse</span><span class="logo-tag">Digital health, decoded &middot; by Mayank Madhur</span></span></a>
+  <button id="navToggle" class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  <nav id="siteNav">
+    <a href="/perspectives/">Perspectives</a><a href="/about.html">About</a><a href="/podcast.html">Podcast</a><a href="/archive/">Archive</a><a href="/ask/">Ask</a><a href="/research/">Research</a><a href="/index-tool/">Tool</a>
+    <a class="nav-subscribe" href="https://www.linkedin.com/newsletters/7311231782241083393/" target="_blank" rel="noopener">Subscribe</a>
+    <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle dark mode"><svg class="t-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="t-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+  </nav>
+</header>
+<div class="tool-backlink"><a href="/edition-67-autism-measurement.html">&larr; Read Edition 67: The number India doesn't have</a></div>
+
+<header>
+  <div class="wrap">
+    <div class="dots"><i></i><i></i><i></i></div>
+    <div class="kicker">Evidence dashboard · 2026</div>
+    <h1>Autism: India in Context</h1>
+    <p>A primer and data dossier on autism in India, with global context. New here? Start at Overview. Looking for data? Jump straight to India or World.</p>
+  </div>
+</header>
+
+<div class="tabbar">
+  <div class="wrap tabbar-inner" role="tablist" aria-label="Dashboard views">
+    <button class="tab active" data-tab="overview" role="tab" id="tabbtn-overview" aria-controls="tab-overview" aria-selected="true"><span class="flag">&#128196;</span> Overview</button>
+    <button class="tab" data-tab="basics" role="tab" id="tabbtn-basics" aria-controls="tab-basics" aria-selected="false"><span class="flag">&#128216;</span> Basics</button>
+    <button class="tab" data-tab="types" role="tab" id="tabbtn-types" aria-controls="tab-types" aria-selected="false"><span class="flag">&#128465;</span> Types &amp; measures</button>
+    <button class="tab" data-tab="india-num" role="tab" id="tabbtn-india-num" aria-controls="tab-india-num" aria-selected="false"><span class="flag">&#127470;&#127475;</span> India: numbers</button>
+    <button class="tab" data-tab="india-sys" role="tab" id="tabbtn-india-sys" aria-controls="tab-india-sys" aria-selected="false"><span class="flag">&#127963;</span> India: system</button>
+    <button class="tab" data-tab="world" role="tab" id="tabbtn-world" aria-controls="tab-world" aria-selected="false"><span class="flag">&#127760;</span> World</button>
+    <button class="tab" data-tab="toolkit" role="tab" id="tabbtn-toolkit" aria-controls="tab-toolkit" aria-selected="false"><span class="flag">&#129513;</span> Toolkit</button>
+    <button class="tab" data-tab="reference" role="tab" id="tabbtn-reference" aria-controls="tab-reference" aria-selected="false"><span class="flag">&#128218;</span> Reference</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- ===== overview ===== -->
+  <div class="tabpanel active" id="tab-overview" role="tabpanel" aria-labelledby="tabbtn-overview" tabindex="0">
+
+    <div class="sec-head" style="padding-top:22px">
+      <div class="tag">Overview</div>
+      <h2>Autism in India: a primer and data dossier</h2>
+      <p>One place to understand autism and to see what India's system actually delivers. It works two ways: a plain-language primer for anyone new to autism, and a data dossier for policy, research and advocacy. Pick a route below, or use the tabs above.</p>
+    </div>
+    <div class="grid g3">
+      <div class="card">
+        <h3>New to autism?</h3>
+        <p style="font-size:13px;color:var(--ink);line-height:1.5">Start with what it is and is not, how it is classified, and the everyday supports that help.</p>
+        <button onclick="showTab('basics')" style="margin-top:12px;background:var(--teal);color:#fff;border:none;border-radius:8px;padding:9px 16px;font:inherit;font-weight:600;cursor:pointer">Start with Basics &#8594;</button>
+      </div>
+      <div class="card">
+        <h3>Parent or carer?</h3>
+        <p style="font-size:13px;color:var(--ink);line-height:1.5">Jump to the practical supports, and to schools, scales and the city-by-city directory of real centres.</p>
+        <button onclick="showTab('toolkit')" style="margin-top:12px;background:var(--teal);color:#fff;border:none;border-radius:8px;padding:9px 16px;font:inherit;font-weight:600;cursor:pointer">Open the Toolkit &#8594;</button>
+      </div>
+      <div class="card">
+        <h3>Here for the data?</h3>
+        <p style="font-size:13px;color:var(--ink);line-height:1.5">Go straight to India's numbers and system, the global comparison, and full sources.</p>
+        <button onclick="showTab('india-num')" style="margin-top:12px;background:var(--dark);color:#fff;border:none;border-radius:8px;padding:9px 16px;font:inherit;font-weight:600;cursor:pointer">See India: numbers &#8594;</button>
+      </div>
+    </div>
+
+    <div style="height:14px"></div>
+    <div class="sec-head"><div class="tag">The headline findings</div><h2>Four things this dossier shows</h2></div>
+    <div class="grid g2">
+      <div class="card" style="border-left:5px solid var(--teal)">
+        <h3>1. Not lower-autism, lower-detection</h3>
+        <p style="font-size:13.5px;color:var(--ink);line-height:1.55">India's measured prevalence (about 1%) sits near the WHO reference and well below the US figure of 1 in 31. The gap is mostly measurement and awareness, not a real difference in how common autism is.</p>
+      </div>
+      <div class="card" style="border-left:5px solid var(--accent)">
+        <h3>2. Financing built for the wrong shape of care</h3>
+        <p style="font-size:13.5px;color:var(--ink);line-height:1.55">Autism needs recurring, outpatient, lifelong support, but the money is built around hospital episodes. Niramaya caps at &#8377;1 lakh, and one study put out-of-pocket cost near 16% of monthly family income.</p>
+      </div>
+      <div class="card" style="border-left:5px solid var(--teal)">
+        <h3>3. The pipeline is the bottleneck</h3>
+        <p style="font-size:13.5px;color:var(--ink);line-height:1.55">About 28,535 special teachers serve 22.5 lakh children with special needs, roughly 1.5 lakh posts sit vacant, and only a handful of institutions run autism-specific degree programmes. You cannot deploy specialists a pipeline is not producing.</p>
+      </div>
+      <div class="card" style="border-left:5px solid var(--accent)">
+        <h3>4. The real gap is measurement</h3>
+        <p style="font-size:13.5px;color:var(--ink);line-height:1.55">India has no routine autism surveillance. It cannot reliably count age at diagnosis, waiting times, adult cohorts or school outcomes. Recognition is strong; monitoring is weak.</p>
+      </div>
+    </div>
+
+    <div style="height:14px"></div>
+    <div class="dark-card card">
+      <h3>What is inside</h3>
+      <p><b style="color:#fff">Primer:</b> Basics, Types &amp; measures, Toolkit. <b style="color:#fff">Dossier:</b> India (numbers and system), World, Reference. Figures are drawn from published studies and official replies, not a single national registry. Treat comparisons as directional, and see the Reference tab for sources and limitations.</p>
+    </div>
+
+  </div><!-- /tab-overview -->
+
+  <!-- ===== basics ===== -->
+  <div class="tabpanel" id="tab-basics" role="tabpanel" aria-labelledby="tabbtn-basics" tabindex="0">
+
+    <div class="sec-head" style="padding-top:22px">
+      <div class="tag">Basics · what autism is</div>
+      <h2>A plain-language guide to autism</h2>
+      <p>This tab is general and not country-specific. It summarises how clinicians define and diagnose autism, what it looks like, what genuinely helps, and which claims to distrust. Sources are CDC, WHO, NICE, NIMH, the NHS and DSM-5-TR.</p>
+    </div>
+
+    <section style="padding-top:0">
+      <div class="grid g23">
+        <div class="card">
+          <h3>What ASD is</h3>
+          <p style="font-size:13.5px;color:var(--ink);line-height:1.6">Autism Spectrum Disorder is a lifelong neurological and developmental condition. Clinicians describe it through two core areas: differences in <b>social communication and interaction</b>, and <b>restricted, repetitive or inflexible patterns of behaviour, interests or activities</b>, including sensory differences. Signs begin in early childhood, though diagnosis can come much later, including in adulthood.</p>
+          <p style="font-size:13.5px;color:var(--ink);line-height:1.6;margin-top:10px">"Spectrum" is literal: strengths and support needs vary enormously. Some autistic people live fully independently; others need substantial lifelong support. ASD is now a single umbrella diagnosis that replaced older labels such as Asperger's disorder and PDD-NOS.</p>
+        </div>
+        <div class="dark-card card">
+          <h3>How it is diagnosed</h3>
+          <p>Diagnosis is <b style="color:#fff">clinical</b>, there is no blood test or brain scan for autism. It rests on two things: a developmental history from the person or a carer, and skilled direct observation of behaviour. Tools can assist, but no single tool should decide a diagnosis.</p>
+          <p style="margin-top:10px">DSM-5 requires persistent differences across all three social-communication areas plus at least two kinds of restricted or repetitive behaviour, present from early development and causing real day-to-day difficulty. Adult diagnosis is team-based; genetic tests and neuroimaging are not routine diagnostic tests.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <div class="tag">Common signs</div>
+        <h2>What it can look like, and why some go unnoticed</h2>
+      </div>
+      <div class="grid g3">
+        <div class="card">
+          <h3>In young children</h3>
+          <ul class="tlist" style="margin-top:4px">
+            <li>Limited or inconsistent eye contact</li>
+            <li>Not responding to their name</li>
+            <li>Fewer gestures; differences sharing interests</li>
+            <li>Differences in pretend play</li>
+            <li>Repetitive movements or speech</li>
+            <li>Distress with change; very focused interests</li>
+            <li>Unusual responses to sound, touch, light or texture</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>In adults</h3>
+          <ul class="tlist" style="margin-top:4px">
+            <li>Difficulty reading expression, gesture or tone</li>
+            <li>Taking language very literally</li>
+            <li>Strong routines; distress with change</li>
+            <li>Sensory differences; "stimming"</li>
+            <li>Intense interests</li>
+            <li>Difficulty making or keeping relationships</li>
+            <li>Exhaustion from social situations</li>
+          </ul>
+        </div>
+        <div>
+          <div class="card" style="margin-bottom:18px">
+            <h3>Screening ≠ diagnosis</h3>
+            <div class="cap" style="margin-top:2px">A brief check to see if fuller assessment is needed. The AAP recommends general developmental screening at 9, 18 and 30 months, and autism-specific screening at 18 and 24 months, or whenever there is concern.</div>
+          </div>
+          <div class="dark-card card">
+            <h3>Masking</h3>
+            <p>Some people, especially, though not only, women, consciously copy social behaviour to hide their traits. Masking delays recognition, is exhausting, and is a real reason autism is under-diagnosed in girls and adults.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <div class="tag">Two words people mix up</div>
+        <h2>Prevalence is not incidence</h2>
+      </div>
+      <div class="grid g2">
+        <div class="card">
+          <h3>Prevalence</h3>
+          <p style="font-size:13.5px;color:var(--ink);line-height:1.6">How many people in a defined group have autism at a point in time or over a period. This is what almost every "1 in N" headline reports, including CDC's 1 in 31 and WHO's 1 in 127.</p>
+        </div>
+        <div class="card">
+          <h3>Incidence</h3>
+          <p style="font-size:13.5px;color:var(--ink);line-height:1.6">The number of <b>new</b> cases identified over a period. In autism surveillance this usually means new <b>identifications or diagnoses</b>, not the biological onset of autism.</p>
+        </div>
+      </div>
+      <div class="banner" style="margin-top:18px">
+        <div class="icn">ℹ</div>
+        <p><b>Why rising numbers need care.</b> CDC found children born in 2018 had 1.7× the cumulative autism identification by 48 months compared with those born in 2014. That reflects more evaluations and earlier, wider identification, not a sudden biological surge. A single rising rate is not proof of a single cause.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <div class="tag">Co-occurring conditions</div>
+        <h2>Common alongside autism, but not part of it</h2>
+        <p>Autism frequently occurs with other conditions, and intellectual and language ability range widely from one person to the next. These are separate conditions to screen for and treat in their own right.</p>
+      </div>
+      <div>
+        <span class="pill">Anxiety</span><span class="pill">Depression</span>
+        <span class="pill">ADHD</span><span class="pill">Epilepsy</span>
+        <span class="pill">Sleep problems</span><span class="pill">Gastrointestinal issues</span>
+        <span class="pill">Feeding difficulties</span><span class="pill">Language delay</span>
+        <span class="pill">Learning difficulties</span><span class="pill">OCD</span>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <div class="tag">What helps</div>
+        <h2>Evidence-based support, by life stage</h2>
+        <p>There is no single best treatment. The shared view of NIMH, CDC, WHO and NICE: support should be individualised, start as soon as needs are recognised, and run across the settings that matter. The goal is communication, participation, wellbeing and independence, not making someone "less themselves."</p>
+      </div>
+      <div class="grid g3">
+        <div class="card">
+          <h3>Infants &amp; preschool</h3>
+          <ul class="tlist" style="margin-top:4px">
+            <li>Parent-mediated, play-based social-communication work</li>
+            <li>Speech and language therapy</li>
+            <li>Early Start Denver Model (ages 12–48 months)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>School age</h3>
+          <ul class="tlist" style="margin-top:4px">
+            <li>Structured educational supports such as TEACCH (routine + visual learning)</li>
+            <li>Speech and language therapy</li>
+            <li>Occupational therapy; physical therapy where relevant</li>
+            <li>Coping, leisure and community skills</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Adolescents &amp; adults</h3>
+          <ul class="tlist" style="margin-top:4px">
+            <li>Psychological therapy adapted for autism</li>
+            <li>Daily-living and social-learning programmes</li>
+            <li>Supported employment</li>
+            <li>CBT adapted: plain language, visuals, explicit rules, breaks</li>
+          </ul>
+        </div>
+      </div>
+      <div class="grid g2" style="margin-top:18px">
+        <div class="card">
+          <h3>Communication support (AAC)</h3>
+          <p style="font-size:13.5px;color:var(--ink);line-height:1.6">Augmentative and alternative communication helps people communicate alongside or instead of speech: picture systems, symbol boards, text supports, speech-generating devices and apps. It can be used temporarily or for life.</p>
+        </div>
+        <div class="card">
+          <h3>Behaviour that challenges</h3>
+          <p style="font-size:13.5px;color:var(--ink);line-height:1.6">NICE advises looking first for a driver, pain, gastrointestinal problems, anxiety, sensory overload, communication barriers or a life change, before anything else. Behaviour usually signals an unmet need, not defiance. Psychosocial approaches come before medication.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <div class="tag">Medication &amp; what to avoid</div>
+        <h2>Medicine treats co-occurring issues, not core autism</h2>
+      </div>
+      <div class="grid g2">
+        <div class="card">
+          <h3>What medication can and cannot do</h3>
+          <p style="font-size:13.5px;color:var(--ink);line-height:1.6">CDC is explicit: <b>no medication treats the core features of autism.</b> Medicines may help co-occurring issues such as irritability, hyperactivity, attention, anxiety, depression, seizures, sleep or gastrointestinal problems. NICE advises against antipsychotics, antidepressants and anticonvulsants for the core features themselves.</p>
+        </div>
+        <div class="dark-card card">
+          <h3>Not recommended</h3>
+          <p>NICE advises against <b style="color:#fff">chelation</b>, <b style="color:#fff">hyperbaric oxygen therapy</b> and <b style="color:#fff">exclusion diets</b> for core autism features. Be cautious of anything sold as a "cure," especially if it is expensive, secretive or promises dramatic change.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <div class="tag">Myths</div>
+        <h2>Four things that are simply not true</h2>
+      </div>
+      <div class="grid g2">
+        <div class="card" style="border-left:4px solid var(--warn)">
+          <h3>"Vaccines cause autism"</h3>
+          <p style="font-size:13.5px;color:var(--ink);line-height:1.55">False. WHO's vaccine-safety committee reaffirmed in December 2025 that there is no causal link, and extensive research shows the MMR vaccine does not cause autism.</p>
+        </div>
+        <div class="card" style="border-left:4px solid var(--warn)">
+          <h3>"Bad parenting causes it"</h3>
+          <p style="font-size:13.5px;color:var(--ink);line-height:1.55">False. Autism is not caused by parenting. It is a developmental condition with strong biological and genetic contributions.</p>
+        </div>
+        <div class="card" style="border-left:4px solid var(--warn)">
+          <h3>"It is an illness to be cured"</h3>
+          <p style="font-size:13.5px;color:var(--ink);line-height:1.55">The NHS is clear that autism is not an illness and there is no cure, but there are many ways to manage difficulties and get support.</p>
+        </div>
+        <div class="card" style="border-left:4px solid var(--warn)">
+          <h3>"Everyone with autism is the same"</h3>
+          <p style="font-size:13.5px;color:var(--ink);line-height:1.55">False. It is a spectrum. Traits, strengths and support needs vary widely; a person can have high ability in one area and real difficulty in another.</p>
+        </div>
+      </div>
+      <div class="cap" style="margin-top:14px">General information only, not medical advice. Sources: CDC, WHO, NICE, NIMH, NHS, RCSLT and DSM-5-TR.</div>
+    </section>
+  
+  </div><!-- /tab-basics -->
+
+  <!-- ===== types ===== -->
+  <div class="tabpanel" id="tab-types" role="tabpanel" aria-labelledby="tabbtn-types" tabindex="0">
+
+    <div class="sec-head" style="padding-top:22px">
+      <div class="tag">Types &amp; classification</div>
+      <h2>One spectrum, described by support needs, not separate "types"</h2>
+      <p>People often ask about "types" of autism. Since DSM-5 (2013), there are no longer separate diagnoses: older labels like Asperger's were merged into a single <b>Autism Spectrum Disorder</b>. Clinicians now describe <i>where a person sits</i> using support levels and specifiers. Here is that structure, top to bottom.</p>
+    </div>
+
+    <div class="banner" style="margin-bottom:18px">
+      <div class="icn">👋</div>
+      <p><b>Just heard the word "autistic"? Start here.</b> Autism is a lifelong difference in how a person communicates, experiences their senses, and handles change. It is not an illness and not something that was done wrong. There is no single "type". Instead, every autistic person sits somewhere on one spectrum. The chart below shows how professionals describe where someone sits, and, for each level, how it is usually supported.</p>
+    </div>
+
+    <div class="tree">
+      <div class="node umbrella">
+        <b>Autism Spectrum Disorder (ASD)</b>
+        <span>The single umbrella diagnosis in DSM-5-TR. One spectrum with very wide variation, strengths, communication, sensory needs and support requirements differ enormously from person to person.</span>
+      </div>
+
+      <div class="down"><span class="bar"></span><span class="lbl">described today by two things ▾</span></div>
+
+      <div class="branch2">
+        <div class="col">
+          <div class="node head"><b>🎚 Support level (severity)</b></div>
+          <div class="node lvl l1"><b>Level 1: Requiring support</b><span><i style="color:#0FA3A3;font-weight:700;font-style:normal">What it can look like: </i>Often speaks fluently and manages daily life, but finds back-and-forth conversation, making friends and unexpected change genuinely hard. May look "fine" and then get overwhelmed.</span><span><i style="color:#0FA3A3;font-weight:700;font-style:normal">How it's approached: </i>Light-touch and mostly about the environment, clear routines, social-skills coaching, sensory adjustments, and understanding from people around them. Usually no hands-on daily help.</span></div>
+          <div class="node lvl l2"><b>Level 2: Requiring substantial support</b><span><i style="color:#0FA3A3;font-weight:700;font-style:normal">What it can look like: </i>Differences are clear even to people who don't know autism. Speech may be simpler or limited, there's a strong need for sameness, and change can cause visible distress.</span><span><i style="color:#0FA3A3;font-weight:700;font-style:normal">How it's approached: </i>Regular, structured help, speech and communication therapy, visual schedules, a classroom aide or special educator, planned sensory breaks, and AAC tools if speech is limited.</span></div>
+          <div class="node lvl l3"><b>Level 3: Requiring very substantial support</b><span><i style="color:#A96813;font-weight:700;font-style:normal">What it can look like: </i>Very limited spoken communication, intense difficulty coping with change, help needed with everyday self-care, and strong sensory or safety needs.</span><span><i style="color:#A96813;font-weight:700;font-style:normal">How it's approached: </i>Intensive, individualised and often lifelong, AAC as a main "voice", one-to-one support, deep-pressure and sensory tools, close family or carer involvement, and coordinated therapy.</span></div>
+          <div class="cap" style="margin-top:2px">The examples above are common presentations, not fixed rules. A level is rated separately for social communication and for repetitive behaviour, can change with context and over time, and is not a proxy for language, intelligence or independence. It describes support needs right now, not a person's potential or worth.</div>
+        </div>
+        <div class="col">
+          <div class="node head"><b>🏷 Specifiers (the fuller picture)</b></div>
+          <div class="cap" style="margin:-2px 0 2px">Extra notes the clinician attaches, because two people at the same level can still be very different. They turn a label into a real description.</div>
+          <div class="node"><b>Is there also an intellectual disability?</b><span>Many autistic people have average or above-average intelligence; some also have a learning disability. Recorded either way, because it changes what support helps.</span></div>
+          <div class="node"><b>How is spoken language?</b><span>Ranges from fluent speech to few or no spoken words. When speech is limited, communication tools like AAC (e.g. Avaz) matter most.</span></div>
+          <div class="node"><b>Is there a known cause?</b><span>Sometimes autism is linked to a known genetic or medical condition (such as Fragile X) or another factor. Flagging it guides care for related health issues.</span></div>
+          <div class="node"><b>Any co-occurring conditions?</b><span>Things like ADHD, anxiety, depression or epilepsy are noted so they get treated in their own right, not missed behind the autism label.</span></div>
+          <div class="node"><b>Catatonia (rare)</b><span>A marked change in movement and responsiveness, freezing, slowing or agitation. Flagged separately because it needs specific treatment.</span></div>
+        </div>
+      </div>
+
+      <div class="down"><span class="bar"></span><span class="lbl">before 2013 these were separate diagnoses, now all ASD ▾</span></div>
+
+      <div class="legacy-grid">
+        <div class="node legacy"><b>Autistic Disorder</b><span>"Classic" autism: significant social, communication and behavioural differences from early childhood.</span><span class="now">→ now ASD</span></div>
+        <div class="node legacy"><b>Asperger's Syndrome</b><span>Autism without language or intellectual delay; often strong verbal skills, identified later.</span><span class="now">→ now ASD</span></div>
+        <div class="node legacy"><b>PDD-NOS</b><span>Pervasive Developmental Disorder, Not Otherwise Specified: some, but not all, criteria met.</span><span class="now">→ now ASD</span></div>
+        <div class="node legacy"><b>Childhood Disintegrative Disorder</b><span>Rare loss of previously acquired skills after a period of typical development.</span><span class="now">→ now ASD</span></div>
+      </div>
+      <div class="cap" style="margin-top:14px">Why the change: the old subtypes were applied inconsistently between clinics and did not predict support needs well. A single spectrum plus levels and specifiers describes an individual more accurately. General information, not a diagnostic tool; based on DSM-5-TR. Note: Rett syndrome, once grouped here, was separated out in DSM-5 because it has a known genetic cause.</div>
+    </div>
+
+    <div class="banner" style="margin-top:20px">
+      <div class="icn">🧩</div>
+      <p><b>The takeaway for a first-timer.</b> Don't get stuck on labels. What matters is the person and what helps them: understand their level, note the specifiers, then match the right supports. To see those supports laid out on a real example, open the <b>Toolkit</b> tab.</p>
+    </div>
+  
+    <div style="height:26px"></div>
+
+    <div class="sec-head" style="padding-top:22px">
+      <div class="tag">How autism is measured</div>
+      <h2>From "neurodevelopmental" to a number on a certificate</h2>
+      <p>Two things people often ask: how autism relates to "neurodevelopmental" conditions, and whether there is an autism "scale". Both matter in practice, because in India a scale score is what unlocks a disability certificate, schemes and school entitlements.</p>
+    </div>
+
+    <div class="grid g23">
+      <div class="card">
+        <h3>Autism is one part of a bigger family</h3>
+        <p style="font-size:13.5px;color:var(--ink);line-height:1.6">"Neurodevelopmental" is the umbrella. Autism sits inside it, alongside intellectual disability, communication disorders, ADHD, specific learning disorders (like dyslexia) and motor disorders. So <b>all autism is neurodevelopmental, but not all neurodevelopmental is autism</b> (like "apple" and "fruit").</p>
+        <p style="font-size:13.5px;color:var(--ink);line-height:1.6;margin-top:10px">This is why the dashboard shows two numbers: about 1 in 8 Indian children have some neurodevelopmental condition, while about 1% have autism specifically. Autism is a slice inside that larger group, and it often overlaps with the others (the ~80% comorbidity figure).</p>
+      </div>
+      <div class="dark-card card">
+        <h3>Is there an autism scale?</h3>
+        <p>Yes, a few, doing different jobs. A screen flags who needs assessment. A diagnostic scale supports the diagnosis. A severity scale describes support needs. And a certification scale sets the legal disability percentage.</p>
+        <p style="margin-top:10px">No single number captures a person: someone can be very capable in one area and need substantial help in another, and their level can shift with support, age and setting. This is why "high" and "low functioning" labels are falling out of use.</p>
+      </div>
+    </div>
+
+    <div style="height:18px"></div>
+    <div class="grid g2">
+      <div class="card">
+        <h3>Severity &amp; screening</h3>
+        <div class="rowstat"><span><b>DSM-5 support levels</b><br>Level 1 to 3, by how much support is needed (see the Types tab)</span></div>
+        <div class="rowstat"><span><b>M-CHAT-R/F</b><br>Short parent questionnaire for toddlers; flags "worth a full check", does not diagnose</span></div>
+      </div>
+      <div class="card">
+        <h3>Diagnostic rating scales</h3>
+        <div class="rowstat"><span><b>ADOS-2</b><br>Structured observation; the international reference standard</span></div>
+        <div class="rowstat"><span><b>ADI-R</b><br>Detailed parent or carer interview</span></div>
+        <div class="rowstat"><span><b>CARS</b><br>Score with mild / moderate / severe bands</span></div>
+        <div class="rowstat"><span><b>SRS-2</b><br>Measures the strength of autistic traits</span></div>
+      </div>
+    </div>
+    <div style="height:18px"></div>
+    <div class="banner">
+      <div class="icn">🧾</div>
+      <p><b>The scale that matters most in India: ISAA.</b> The Indian Scale for Assessment of Autism is the official tool for disability certification. It scores across many items and classifies the result as no autism, mild, moderate or severe, which sets the disability percentage on the certificate. That percentage, with the UDID card, is what unlocks schemes, reservations, school entitlements and benefits. INDT-ASD, the INCLEN diagnostic tool, is designed to work in non-specialist settings.</p>
+    </div>
+
+    
+  </div><!-- /tab-types -->
+
+  <!-- ===== india-num ===== -->
+  <div class="tabpanel" id="tab-india-num" role="tabpanel" aria-labelledby="tabbtn-india-num" tabindex="0">
+
+  <!-- KPI STRIP -->
+  <div class="kpis">
+    <div class="kpi"><div class="n">1 in 100</div><div class="l">Children under 10 with autism</div><div class="s">INCLEN/PLOS population study</div></div>
+    <div class="kpi"><div class="n">~1 in 8</div><div class="l">Have a neurodevelopmental condition</div><div class="s">~10× the 2011 Census figure</div></div>
+    <div class="kpi"><div class="n acc">42–60 mo</div><div class="l">Typical age at diagnosis</div><div class="s">Well past the early-intervention window</div></div>
+    <div class="kpi"><div class="n acc">1.8–2 M</div><div class="l">Estimated autistic children</div><div class="s">Cureus 2024 review, ages 2–9</div></div>
+  </div>
+
+  <!-- PREVALENCE -->
+  <section id="prevalence">
+    <div class="sec-head">
+      <div class="tag">Epidemiology</div>
+      <h2>What we know is study-based, not system-based</h2>
+      <p>The strongest evidence is the 2018 INCLEN study, which evaluated 3,964 children door-to-door across five economically and culturally distinct regions. India still runs no routine national autism count, so every national figure is an estimate, not a census.</p>
+    </div>
+    <div class="grid g23">
+      <div class="card">
+        <h3>Prevalence by source and method</h3>
+        <div class="cap">India estimates vary with how, where and whom you measure</div>
+        <div class="chart-box" style="height:340px"><canvas id="prevChart" role="img" aria-label="Bar chart: India autism prevalence estimates by source, ranging about 0.2 to 1.5 percent"></canvas></div>
+      </div>
+      <div class="card">
+        <h3>Regional spread, INCLEN sites</h3>
+        <div class="cap">Five sites, one common protocol, a 4× gap: Palwal, Kangra, Dhenkanal, Hyderabad, North Goa</div>
+        <div class="chart-box"><canvas id="regionChart" role="img" aria-label="Bar chart: INCLEN site prevalence from 0.4 percent in North Goa to 1.8 percent in Palwal"></canvas></div>
+      </div>
+    </div>
+    <div style="height:18px"></div>
+    <div class="grid g3">
+      <div class="card">
+        <h3>By age band</h3>
+        <div class="rowstat"><span>Ages 2 to &lt;6</span><b>1.0%</b></div>
+        <div class="rowstat"><span>Ages 6 to 9</span><b>1.4%</b></div>
+        <div class="rowstat"><span>Any neurodevelopmental condition</span><b>~12%</b></div>
+      </div>
+      <div class="card">
+        <h3>By sex</h3>
+        <div class="rowstat"><span>Male-to-female ratio</span><b>3–4 : 1</b></div>
+        <div class="cap" style="margin:10px 0 0">Girls are diagnosed later and less often, especially in milder presentations and rural families.</div>
+      </div>
+      <div class="dark-card card">
+        <h3>Why numbers rose</h3>
+        <p>Reported prevalence climbed mainly through better ascertainment and community sampling, not a measured rise in incidence. Census 2011 put disability at just 1.1% in ages 0–4 and 1.5% in ages 5–9, roughly ten times lower than systematic developmental assessment found. The INCLEN sample also under-represented stunting and low birth weight, so even its figures likely understate the true burden.</p>
+      </div>
+    </div>
+    <div style="height:18px"></div>
+    <div class="grid g23">
+      <div class="card">
+        <h3>Autism rarely travels alone</h3>
+        <div class="cap">Coexisting neurodevelopmental conditions among autistic children (INCLEN)</div>
+        <div class="chart-box" style="height:250px"><canvas id="comorbidChart" role="img" aria-label="Doughnut chart: about 80 percent of autistic children have a coexisting neurodevelopmental condition"></canvas></div>
+      </div>
+      <div class="card">
+        <h3>Why comorbidity matters</h3>
+        <div class="rowstat"><span>Autistic children with a coexisting NDD</span><b>79.6%</b></div>
+        <div class="rowstat"><span>All children with any NDD</span><b>12.0%</b></div>
+        <div class="rowstat"><span>Of those, with two or more NDDs</span><b>21.7%</b></div>
+        <div class="cap" style="margin-top:12px">Most autistic children need more than one kind of support at once. That is exactly why a single ₹1 lakh cap and a hospitalisation-only scheme miss the real cost shape of autism care.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIAGNOSIS -->
+  <section id="diagnosis">
+    <div class="sec-head">
+      <div class="tag">The diagnosis gap</div>
+      <h2>Concerns surface early. Diagnosis arrives years later.</h2>
+      <p>Autism can be reliably identified by 18–24 months, and parents often notice signs between 6 and 18 months. In India, diagnosis typically lands at 4–5 years, and many families consult several clinicians first.</p>
+    </div>
+    <div class="grid g23">
+      <div class="card">
+        <h3>The lost window</h3>
+        <div class="cap">Months from birth, the gap between what is possible and what happens</div>
+        <div class="chart-box"><canvas id="gapChart" role="img" aria-label="Chart: age from first concern to autism diagnosis in India"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="rowstat"><span>Early signs noticed by parents</span><b>6–18 mo</b></div>
+        <div class="rowstat"><span>Reliable diagnosis possible</span><b>18–24 mo</b></div>
+        <div class="rowstat"><span>Median diagnosis, urban tertiary</span><b>42 mo</b></div>
+        <div class="rowstat"><span>Average diagnosis, India (LMIC)</span><b>~64 mo</b></div>
+        <div class="rowstat"><span>Families consulting multiple doctors</span><b>~40%</b></div>
+      </div>
+    </div>
+    <div style="height:18px"></div>
+    <div class="banner">
+      <div class="icn">⚠</div>
+      <p><b>The bottleneck is not specialist supply alone.</b> Limited developmental awareness, reassurance to "wait and watch", fragmented referrals, affordability, stigma and specialist availability all appear to contribute to diagnosis delays. The handoff between the family, the first-contact worker and a specialist pathway is a recurring weak point. Rural families, girls, and larger low-income households tend to wait longest.</p>
+    </div>
+    <div style="height:18px"></div>
+    <div class="card">
+      <h3>The help-seeking pathway families actually travel</h3>
+      <div class="cap">From Indian qualitative and mixed-methods studies, fragmented help-seeking, not a clean one-step referral</div>
+      <div class="flow">
+        <div class="step"><div class="sn">1</div><h4>First parental concern</h4><div class="bn">Often language or social-communication differences</div></div>
+        <div class="arrow">›</div>
+        <div class="step"><div class="sn">2</div><h4>Reassurance or waiting</h4><div class="bn">Told to "wait and watch"</div></div>
+        <div class="arrow">›</div>
+        <div class="step"><div class="sn">3</div><h4>First provider contact</h4><div class="bn">Usually a general paediatrician</div></div>
+        <div class="arrow">›</div>
+        <div class="step"><div class="sn">4</div><h4>Multiple referrals</h4><div class="bn">Non-specific labels; stigma and cost stall progress</div></div>
+        <div class="arrow">›</div>
+        <div class="step"><div class="sn">5</div><h4>Autism assessment</h4><div class="bn">Clinical, multidisciplinary</div></div>
+        <div class="arrow">›</div>
+        <div class="step end"><div class="sn">6</div><h4>Certification, therapy &amp; school</h4></div>
+      </div>
+    </div>
+  </section>
+
+  
+  </div><!-- /tab-india-num -->
+
+  <!-- ===== india-sys ===== -->
+  <div class="tabpanel" id="tab-india-sys" role="tabpanel" aria-labelledby="tabbtn-india-sys" tabindex="0">
+<!-- STATES -->
+  <section id="states">
+    <div class="sec-head">
+      <div class="tag">The state divide</div>
+      <h2>Public early-intervention capacity is deeply uneven</h2>
+      <p>District Early Intervention Centres (DEICs) are the mass entry point under RBSK. Mapped against population, access differs by an order of magnitude between states.</p>
+    </div>
+    <div class="grid g23">
+      <div class="card">
+        <h3>DEIC availability per 10 million people</h3>
+        <div class="cap">FY 2022-23 counts against 2011 Census population, a directional proxy</div>
+        <div class="chart-box tall"><canvas id="stateChart" role="img" aria-label="Bar chart: District Early Intervention Centres per 10 million people by Indian state"></canvas></div>
+      </div>
+      <div>
+        <div class="dark-card card" style="margin-bottom:18px">
+          <h3>Read as direction, not precision</h3>
+          <p>DEICs cover all developmental conditions, so this is an autism-relevant proxy, not an autism count. It uses 2011 denominators against FY23 counts. The signal that survives: Uttar Pradesh, Bihar and West Bengal are thinly covered despite huge screening volumes.</p>
+        </div>
+        <div class="card">
+          <h3>Service architecture</h3>
+          <div class="rowstat"><span>DEICs operational (2023-24)</span><b>430</b></div>
+          <div class="rowstat"><span>Cross-Disability EI Centres (2026)</span><b>22</b></div>
+          <div class="rowstat"><span>National Trust registered orgs</span><b>608</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="sec-head">
+      <div class="tag">Education &amp; inclusion</div>
+      <h2>Inclusion is stronger on paper than in the classroom</h2>
+      <p>Samagra Shiksha covers children with disabilities from pre-nursery to class XII, and screening now reaches schools. But enrolment is not the same as an autism-ready classroom, where sensory regulation, communication support and behaviour planning decide whether a child can actually learn.</p>
+    </div>
+    <div class="grid g23">
+      <div>
+        <div class="grid g2" style="margin-bottom:18px">
+          <div class="card">
+            <div class="n" style="font-family:'Manrope',system-ui,sans-serif;font-size:38px;font-weight:700;color:var(--teal);line-height:1">1,12,340</div>
+            <div style="font-size:13px;font-weight:600;margin-top:8px">schools with a dedicated special educator</div>
+            <div class="cap" style="margin-top:3px">UDISE+ 2024-25, all disabilities, not autism-specific</div>
+          </div>
+          <div class="card">
+            <div class="n" style="font-family:'Manrope',system-ui,sans-serif;font-size:38px;font-weight:700;color:var(--accent);line-height:1">1 : 10</div>
+            <div style="font-size:13px;font-weight:600;margin-top:8px">special educator to CwSN norm (primary)</div>
+            <div class="cap" style="margin-top:3px">1 : 15 at upper-primary and secondary level</div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>The tools and scaffolding that now exist</h3>
+          <div style="margin:6px 0 8px">
+            <span class="pill">PRASHAST school screening</span>
+            <span class="pill">Samagra Shiksha</span>
+            <span class="pill">UDISE+ tracking</span>
+            <span class="pill">NISHTHA teacher training</span>
+            <span class="pill">NCERT 2024 inclusion framework</span>
+          </div>
+          <div class="cap">PRASHAST lets regular teachers screen for autism and 20 other conditions through observable behaviours, then route children for support. Many Indian children first come to formal attention in school, not in paediatric surveillance.</div>
+        </div>
+      </div>
+      <div class="dark-card card">
+        <h3>Where inclusion actually breaks</h3>
+        <p>The gap is not policy. It is operational capacity: teacher preparation, curriculum adaptation, sensory and communication supports, and home-school coordination are all still inconsistent. RCI itself flags the need to track state-wise special-educator availability and build inclusive-teacher pathways, an official admission that supply is misaligned with need.</p>
+        <p style="margin-top:12px"><b style="color:#fff">The measurement fix:</b> shift from counting enrolments and special educators to autism-ready indicators, school readiness, accommodation use, teacher-training completion, attendance, exclusion and post-school transition.</p>
+      </div>
+    </div>
+  </section>
+
+  <div style="height:30px"></div>
+    <div class="sec-head">
+      <div class="tag">Special educators in schools</div>
+      <h2>Who actually teaches autistic children in Indian schools</h2>
+      <p>You asked for schools that have autism-specialist teachers. The honest position: there is no public directory of individual schools by autism-specialist staff, and most mainstream schools do not have a dedicated special educator at all. Here is what the national and state data actually show.</p>
+    </div>
+
+    <div class="kpis kpis2">
+      <div class="kpi"><div class="n">28,535</div><div class="l">Special teachers for CwSN, nationally</div><div class="s">Govt affidavit to Supreme Court, 2021</div></div>
+      <div class="kpi"><div class="n">22.5 lakh</div><div class="l">Children with special needs (CwSN)</div><div class="s">Roughly 1 special teacher per 79 CwSN</div></div>
+      <div class="kpi"><div class="n acc">~1.5 lakh</div><div class="l">Special-educator posts lying vacant</div><div class="s">As of December 2024</div></div>
+      <div class="kpi"><div class="n acc">&lt;20%</div><div class="l">Educators with formal SEN training</div><div class="s">NCERT; 4.33 lakh general teachers given some training</div></div>
+    </div>
+
+    <div class="grid g23">
+      <div class="card">
+        <h3>How the system is actually staffed</h3>
+        <p style="font-size:13.5px;color:var(--ink);line-height:1.6">Rather than one special educator per school, the common model is <b>one special educator shared across a cluster of 8 to 10 schools</b>, travelling to where they are needed, plus training general teachers to support CwSN in ordinary classrooms. Special educators are also not autism-specific: they cover all disabilities. Posts are recruited state by state under Samagra Shiksha, and RCI registration is required to be appointed.</p>
+        <p style="font-size:13.5px;color:var(--ink);line-height:1.6;margin-top:10px">In 2021 the Supreme Court told the NCTE to notify pupil-to-special-educator norms; the Centre argued a fixed ratio in general schools was "not practical". Samagra Shiksha provides about ₹3,500 per CwSN per year, widely seen as too little for therapy, transport and aids.</p>
+      </div>
+      <div class="card">
+        <h3>State snapshots</h3>
+        <div class="rowstat"><span><b>Uttar Pradesh</b><br>87,817 children with 40%+ disability certificates in primary schools (Mar 2025); 5,352 special-educator posts being created after the SC order</span></div>
+        <div class="rowstat"><span><b>Himachal Pradesh</b><br>Around 50 special educators in place, appointing about 245 more, deployed across school clusters</span></div>
+        <div class="rowstat"><span><b>West Bengal</b><br>Runs its own system (PBSSM) and feeds bulk data to UDISE+ separately</span></div>
+      </div>
+    </div>
+    <div style="height:18px"></div>
+    <div class="dark-card card">
+      <h3>So how do you find a school with real autism support?</h3>
+      <p>Because there is no reliable public list, the practical route is: start from the named centres and special schools in the <b>city directory</b> (in the India tab's Ecosystem section), ask each mainstream school directly whether they have an RCI-registered special educator on site or on a shared cluster, and use the child's disability certificate and UDID to claim entitlements under the RPwD Act and Samagra Shiksha. State Samagra Shiksha offices can also tell you which nearby schools are covered by a special educator.</p>
+    </div>
+    <div class="cap" style="margin-top:12px">Sources: Supreme Court affidavits (2021) via national press; UDISE+ 2024-25; state Samagra Shiksha and education-department notices, 2024-26. Figures are national or state aggregates, not a school-level directory.</div>
+  
+<!-- FINANCING -->
+  <section id="financing">
+    <div class="sec-head">
+      <div class="tag">Financing</div>
+      <h2>The money is built for hospital episodes. Autism care is not.</h2>
+      <p>Niramaya is the dedicated cover, but it is capped and reimbursement-based. PM-JAY is larger but pays for hospitalisation, a poor fit for the recurring outpatient therapy that dominates autism care.</p>
+    </div>
+    <div class="grid g23">
+      <div class="card">
+        <h3>Niramaya spend and enrolment</h3>
+        <div class="cap">Annual allocation utilised (₹ crore) and beneficiaries enrolled</div>
+        <div class="chart-box"><canvas id="finChart" role="img" aria-label="Chart: Niramaya scheme spending and enrolment by year"></canvas></div>
+        <div class="cap" style="margin-top:6px">* 2024–25 is enrolment reported to date (partial year), not a full-year total.</div>
+      </div>
+      <div class="grid" style="gap:18px">
+        <div class="card">
+          <h3>Niramaya <span class="pill">National Trust</span></h3>
+          <div class="rowstat"><span>Cover per year</span><b>₹1 lakh</b></div>
+          <div class="rowstat"><span>Model</span><b>Reimbursement</b></div>
+          <div class="rowstat"><span>Enrolled 2024-25 (to date)</span><b>47,307</b></div>
+          <div class="cap" style="margin-top:10px">Covers OPD, diagnostics, therapies, surgeries, transport. Pay-first-recover-later gates poorer families.</div>
+        </div>
+        <div class="card">
+          <h3>PM-JAY <span class="pill">Ayushman Bharat</span></h3>
+          <div class="rowstat"><span>Cover per family/year</span><b>₹5 lakh</b></div>
+          <div class="rowstat"><span>Scope</span><b>Hospitalisation</b></div>
+          <div class="rowstat"><span>Eligible families (base)</span><b>12.37 crore</b></div>
+          <div class="cap" style="margin-top:10px">Cashless, but for secondary/tertiary care, with little relevance to outpatient speech, OT, behavioural or parent-training needs. The 12.37 crore is the original eligibility base; PM-JAY has since expanded to also cover everyone aged 70 and above.</div>
+        </div>
+      </div>
+    </div>
+    <div style="height:18px"></div>
+    <div class="banner">
+      <div class="icn">₹</div>
+      <p><b>Autism can be financially hazardous for households.</b> One Indian study found median autism-related out-of-pocket spending of about <b style="color:#fff;font-size:17px">16% of monthly family income</b>, on top of lost caregiver wages, though the exact burden varies by family and study. A 2020 IRDAI circular required insurers to disclose how they underwrite disability, HIV and mental illness, and later directions (through 2023–24) went further, including a dedicated insurance product for these groups. Even so, Niramaya's ₹1 lakh ceiling stays modest against years of therapy, schooling and transport.</p>
+    </div>
+  </section>
+
+  <section id="workforce">
+    <div class="sec-head">
+      <div class="tag">The workforce bottleneck</div>
+      <h2>A deployment shortfall sitting on a training shortfall</h2>
+      <p>India has registered hundreds of thousands of rehabilitation professionals, but almost no higher-training capacity is specific to autism.</p>
+    </div>
+    <div class="grid g23">
+      <div class="card">
+        <h3>RCI registered professionals, by category</h3>
+        <div class="cap">Cumulative registrations to March 2024: 226,600 total (92,227 professionals + 134,373 personnel)</div>
+        <div class="chart-box"><canvas id="workChart" role="img" aria-label="Bar chart: RCI-registered rehabilitation professionals by category"></canvas></div>
+      </div>
+      <div class="grid" style="gap:18px">
+        <div class="dark-card card">
+          <div class="big">8</div>
+          <p>institutions offer degree-and-above programmes <b>specific to Autism Spectrum Disorder</b>, out of 900 RCI-approved institutions running 1,915 programmes. The autism gap is upstream: you cannot deploy specialists a training pipeline is not producing.</p>
+        </div>
+        <div class="card">
+          <h3>Diagnostic tools in use</h3>
+          <div>
+            <span class="pill">INDT-ASD</span><span class="pill">ISAA</span>
+            <span class="pill">GetSET Early (eye-tracking)</span>
+          </div>
+          <div class="cap" style="margin-top:10px">Several are built for non-specialist frontline workers. GetSET Early is a recent eye-tracking tool that the developer reports as CDSCO-authorised, aiming to shift detection toward 12–24 months.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADULTHOOD -->
+  <section id="adulthood">
+    <div class="sec-head">
+      <div class="tag">Adulthood &amp; employment</div>
+      <h2>The service cliff: care thins sharply once school ends</h2>
+      <p>India's autism ecosystem is child-heavy. Early intervention and child therapy are far better developed than supported employment, assisted living and independent-living options. A national skilling infrastructure exists but is not yet autism-responsive.</p>
+    </div>
+    <div class="grid g23">
+      <div class="card">
+        <h3>PM-DAKSH cumulative activity totals</h3>
+        <div class="cap">All-disability cumulative totals, July 2026. Not a single cohort, so these are not a conversion funnel.</div>
+        <div class="chart-box"><canvas id="dakshChart" role="img" aria-label="Bar chart: PM-DAKSH cumulative beneficiaries, trained and placed totals"></canvas></div>
+        <div class="cap" style="margin-top:8px">A national disability skilling and placement infrastructure exists but is not autism-specific. Because the three totals cover different intakes and periods, they cannot be read as a beneficiary-to-placement rate.</div>
+      </div>
+      <div class="grid" style="gap:18px">
+        <div class="card">
+          <h3>Vikaas <span class="pill">National Trust</span></h3>
+          <div class="cap" style="margin-top:2px">Day care to build interpersonal and vocational skills, and give families daytime respite.</div>
+        </div>
+        <div class="card">
+          <h3>Gharaunda <span class="pill">National Trust</span></h3>
+          <div class="rowstat"><span>Model</span><b>Group home</b></div>
+          <div class="rowstat"><span>Batch size</span><b>20 PwDs</b></div>
+          <div class="cap" style="margin-top:8px">Lifelong shelter, basic medical care and vocational activity, but centre counts stay small against need.</div>
+        </div>
+        <div class="dark-card card">
+          <p><b style="color:#fff">The missing link.</b> The pieces exist separately, National Trust day care and homes, PM-DAKSH skilling, guardianship via Local Level Committees. What is missing is a connected transition-to-adulthood pathway starting in adolescence: supported internships, assisted decision-making, respite and evaluated supported-employment pilots.</p>
+        </div>
+      </div>
+    </div>
+    <div style="height:18px"></div>
+    <div class="grid g23">
+      <div class="card">
+        <h3>Caregiver burden is a core need, not an extra</h3>
+        <div class="cap">Consistent finding across recent Indian studies</div>
+        <p style="font-size:13.5px;color:var(--ink);line-height:1.55;margin-top:4px">Indian evidence consistently reports high emotional, social and financial strain on caregivers, alongside reduced quality of life, including in government-setting studies of families of autistic children and adolescents. The practical implication is direct: caregiver support, respite and counselling should be funded as part of autism care, not treated as optional.</p>
+      </div>
+      <div class="dark-card card">
+        <h3>Stigma still delays help</h3>
+        <p>Families continue to face delayed acknowledgement, blame, shame and misinterpretation of autistic behaviour. Advocacy has improved awareness and earlier identification than in the past, but stigma still shapes when families seek help, which treatments they choose, and how school and family relationships work. It is a driver of the diagnosis delay, not a side note.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ECOSYSTEM -->
+  <section id="ecosystem">
+    <div class="sec-head">
+      <div class="tag">Services &amp; ecosystem</div>
+      <h2>Specialised care exists, but it clusters in the metros</h2>
+      <p>Much of India's specialised autism work is done by NGOs, hospital units and private centres concentrated in a handful of cities. Families outside these hubs rely on general paediatricians, schools and out-of-pocket private therapy.</p>
+    </div>
+    <div class="banner" style="margin-bottom:18px">
+      <div class="icn">✓</div>
+      <p><b>What the evidence says works.</b> India's strongest intervention evidence is for <b style="color:#fff">parent-mediated early intervention</b> delivered by trained non-specialists under supervision. The PASS trial (India and Pakistan), the WHO Caregiver Skills Training adaptation in urban India, and a South India home-based feasibility trial all point the same way: the treatment gap will not close through therapist-only models. Parent coaching should be a standard public offer at DEICs and district providers.</p>
+    </div>
+    <div class="card" style="padding:0;overflow-x:auto">
+      <table style="width:100%;min-width:640px;border-collapse:collapse;font-size:13.5px">
+        <caption class="sr-only">Selected autism and developmental-disability organisations in India</caption>
+        <thead>
+          <tr style="background:var(--dark);color:#fff;text-align:left">
+            <th style="padding:12px 16px;font-family:'Manrope',system-ui,sans-serif;font-weight:700">Organisation</th>
+            <th style="padding:12px 16px;font-family:'Manrope',system-ui,sans-serif;font-weight:700">Type</th>
+            <th style="padding:12px 16px;font-family:'Manrope',system-ui,sans-serif;font-weight:700">Focus</th>
+            <th style="padding:12px 16px;font-family:'Manrope',system-ui,sans-serif;font-weight:700">Base</th>
+            <th style="padding:12px 16px;font-family:'Manrope',system-ui,sans-serif;font-weight:700">Scale / reach</th>
+          </tr>
+        </thead>
+        <tbody id="ngoBody"></tbody>
+      </table>
+    </div>
+    <div class="cap" style="margin-top:10px">Selective, not exhaustive. The geography, Delhi, Mumbai, Bengaluru, Kolkata, Hyderabad/Secunderabad, Thiruvananthapuram, is itself the access problem: specialised autism care is disproportionately visible in a few metros.</div>
+
+    <div style="height:26px"></div>
+    <div class="sec-head">
+      <div class="tag">Where to start, by city</div>
+      <h2>Established centres in the main cities</h2>
+      <p>There is no usable national list of the schools that report a special educator, so this is the practical alternative: recognised, publicly listed organisations in the largest cities, as starting points. This is not a ranking or an endorsement, and it is far from complete. Always verify current programs, age range, fees and fit directly, and note that many of these serve several disabilities, not autism alone.</p>
+    </div>
+    <div class="grid g3">
+      <div class="card">
+        <h3>Delhi NCR</h3>
+        <div class="rowstat"><span><b>Action For Autism</b><br>Pioneer NGO: assessment, school, training (Jasola)</span></div>
+        <div class="rowstat"><span><b>Tamana Special School</b><br>Since 1984; special education (Vasant Vihar)</span></div>
+        <div class="rowstat"><span><b>AADI</b><br>Long-running disability and inclusion centre</span></div>
+      </div>
+      <div class="card">
+        <h3>Mumbai &amp; Navi Mumbai</h3>
+        <div class="rowstat"><span><b>ADAPT</b> (ex-Spastics Society of India)<br>Since 1972; education and inclusion</span></div>
+        <div class="rowstat"><span><b>Ummeed Child Development Center</b><br>Clinical therapy, caregiver support, training</span></div>
+        <div class="rowstat"><span><b>SOPAN / Samarpan</b><br>Parent-founded autism school (Navi Mumbai)</span></div>
+      </div>
+      <div class="card">
+        <h3>Pune</h3>
+        <div class="rowstat"><span><b>Prasanna Autism Centre</b><br>NGO since 2000</span></div>
+        <div class="rowstat"><span><b>Prayatna</b><br>Special education, multiple disabilities</span></div>
+        <div class="rowstat"><span><b>Ishanya Autism Village</b><br>Residential and life-skills model</span></div>
+      </div>
+      <div class="card">
+        <h3>Bengaluru</h3>
+        <div class="rowstat"><span><b>Apoorva Centre for Autism</b> (SAI)<br>Parent-founded, since 1995</span></div>
+        <div class="rowstat"><span><b>Com DEALL</b><br>Multidisciplinary early intervention to age 6</span></div>
+        <div class="rowstat"><span><b>NIMHANS</b><br>Tertiary neurodevelopment services and referral</span></div>
+      </div>
+      <div class="card">
+        <h3>Chennai</h3>
+        <div class="rowstat"><span><b>Vidya Sagar</b> (ex-Spastics Society of TN)<br>Since 1985; landmark institution</span></div>
+        <div class="rowstat"><span><b>Sankalp</b><br>Award-winning, two centres, since 1999</span></div>
+        <div class="rowstat"><span><b>We CAN</b><br>ABA-based resource centre</span></div>
+      </div>
+      <div class="card">
+        <h3>Hyderabad</h3>
+        <div class="rowstat"><span><b>Nayi Disha Resource Centre</b><br>Parent guidance and resources</span></div>
+        <div class="rowstat"><span><b>NIEPID</b> (Secunderabad)<br>National institute; assessment, training</span></div>
+        <div class="rowstat"><span><b>Sadhana</b><br>Since 1996; education, day and residential care</span></div>
+      </div>
+      <div class="card">
+        <h3>Kolkata</h3>
+        <div class="rowstat"><span><b>India Autism Center</b> (Sirakol)<br>Residential campus and training</span></div>
+        <div class="rowstat"><span><b>Manovikas Kendra</b><br>Rehabilitation and special-education institute</span></div>
+        <div class="rowstat"><span><b>Autism Society West Bengal</b><br>Advocacy and services</span></div>
+      </div>
+      <div class="dark-card card">
+        <h3>How to use this</h3>
+        <p>Shortlist two or three near you, call to check they take your child's age and profile, ask what a typical week looks like, and visit before committing. A government disability certificate and UDID card also unlock schemes and school entitlements.</p>
+      </div>
+    </div>
+    <div class="cap" style="margin-top:12px">Compiled from public organisation listings and directories, July 2026. Details change; confirm before relying on any entry.</div>
+  </section>
+
+  <!-- MEASUREMENT GAP -->
+  <section id="datagap">
+    <div class="sec-head">
+      <div class="tag">The measurement gap</div>
+      <h2>India's real gap is no longer recognition. It is measurement.</h2>
+      <p>The strength of India's law and the visibility of NGO services now exceed the strength of monitoring. Autism is recognised; whether systems are actually reaching autistic people is largely uncounted. Research is growing but stays fragmented, urban and clinic-based, with India strongest in home-grown assessment tools and low-resource intervention adaptation.</p>
+    </div>
+    <div class="grid g2">
+      <div class="card">
+        <h3>What India still cannot count</h3>
+        <ul class="gaplist">
+          <li>A routine national autism surveillance system</li>
+          <li>Comparable state-level prevalence</li>
+          <li>Age at diagnosis and diagnostic wait times</li>
+          <li>Longitudinal outcomes and adult cohorts</li>
+          <li>Supported-employment and independent-living evidence</li>
+          <li>Autism-specific school outcome measures</li>
+          <li>Costing studies across rural and urban settings</li>
+        </ul>
+      </div>
+      <div class="dark-card card">
+        <h3>A feasible minimum data package</h3>
+        <p style="margin-bottom:12px">Eight fields that would let India audit whether the system reaches families:</p>
+        <ul class="datapack">
+          <li>Autism diagnosis age</li>
+          <li>Referral source</li>
+          <li>Time from first concern to diagnosis</li>
+          <li>Certification status</li>
+          <li>Therapy hours received</li>
+          <li>School placement</li>
+          <li>Caregiver-burden screening</li>
+          <li>District-level service availability</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- POLICY -->
+  <section id="policy">
+    <div class="sec-head">
+      <div class="tag">Law & policy</div>
+      <h2>Strong on paper: the gap is operational, not legal</h2>
+      <p>Autism protections have accumulated in layers over three decades. The RPwD Act already mandates non-discriminatory admission, reasonable accommodation and teacher training. Whether a child experiences real inclusion still depends on district, school and family resources.</p>
+    </div>
+    <div class="grid g2">
+      <div class="card">
+        <div class="tl">
+          <div class="tl-item"><div class="tl-year">1992</div><p><b>RCI Act</b>, regulator for rehabilitation professionals</p></div>
+          <div class="tl-item"><div class="tl-year">1999</div><p><b>National Trust Act</b>, statutory body naming autism explicitly</p></div>
+          <div class="tl-item"><div class="tl-year">2006</div><p><b>National Policy for Persons with Disabilities</b></p></div>
+          <div class="tl-item"><div class="tl-year">2013</div><p><b>RBSK</b>, mass child developmental screening begins</p></div>
+          <div class="tl-item hl"><div class="tl-year">2016</div><p><b>RPwD Act + autism certification guidelines</b>, autism becomes a specified disability</p></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="tl">
+          <div class="tl-item"><div class="tl-year">2018</div><p><b>Samagra Shiksha</b>, inclusive-education architecture for children with special needs</p><p>INCLEN prevalence evidence published</p></div>
+          <div class="tl-item"><div class="tl-year">2020</div><p><b>NEP 2020</b>, equity and inclusion placed at system centre</p></div>
+          <div class="tl-item"><div class="tl-year">2023</div><p><b>CDEIC sub-scheme</b> broadens early intervention; Niramaya linked to UDID</p></div>
+          <div class="tl-item hl"><div class="tl-year">2026</div><p><b>22 CDEICs</b> reported operational</p></div>
+        </div>
+      </div>
+    </div>
+    <div style="height:18px"></div>
+    <div class="grid g2">
+      <div class="card">
+        <h3>Diagnosis is not the same as access</h3>
+        <p style="font-size:13.5px;color:var(--ink);line-height:1.55">Most entitlements run through disability certification and, increasingly, UDID, the national disability database and ID-card system. For autism, DEPwD maintains dedicated evaluation and certification guidelines, and ISAA supports certification. In practice, certification is a second gatekeeper after diagnosis: when district capacity is weak, it becomes its own source of delay.</p>
+      </div>
+      <div class="card">
+        <h3>State variation is real</h3>
+        <p style="font-size:13.5px;color:var(--ink);line-height:1.55">The statutory core is national, but states usually place autism inside broader disability or social-security systems rather than standalone autism laws. Tamil Nadu runs an older differently-abled policy with active district disability administration; Kerala's Social Security Mission is more active, including disability census and certification drives. Implementation conditions therefore differ materially even under one national framework.</p>
+      </div>
+    </div>
+    <div style="height:18px"></div>
+    <div class="banner">
+      <div class="icn">➜</div>
+      <p><b>The next phase.</b> Stop announcing schemes; start making rights measurable, local, financed and usable. The priorities in dependency order: build surveillance and embed screening (foundations), refit financing and rebuild the training pipeline (binding constraints), then make classroom inclusion real and plan for adolescence and adulthood (payoff).</p>
+    </div>
+  </section>
+
+  <!-- LEGISLATION -->
+  <section id="legislation">
+    <div class="sec-head">
+      <div class="tag">The Acts explained</div>
+      <h2>Three laws do the heavy lifting</h2>
+      <p>The timeline above mixes instrument types. Only three items are Acts of Parliament, which carry enforceable legal force. The rest are policies and schemes, which shape delivery but can be changed administratively. The distinction matters: the Acts give autism its rights and institutions, while day-to-day help mostly arrives through schemes.</p>
+    </div>
+
+    <div class="types">
+      <div class="type a"><h4>Act</h4><p>Passed by Parliament. Creates enforceable rights and statutory bodies. Hard to change.</p></div>
+      <div class="type p"><h4>Policy</h4><p>Government statement of intent and direction. No standalone legal force on its own.</p></div>
+      <div class="type s"><h4>Scheme / programme</h4><p>The funded delivery mechanism families actually touch. Adjustable year to year.</p></div>
+    </div>
+
+    <div class="grid g3">
+
+      <div class="act">
+        <div class="yr">1992</div>
+        <div class="badge">Act</div>
+        <h3>Rehabilitation Council of India Act</h3>
+        <div class="sub">Regulates the workforce</div>
+        <dl>
+          <dt>What it does</dt>
+          <dd>Created the RCI as statutory regulator for special educators, clinical and rehabilitation psychologists, speech therapists and audiologists. It standardises training, registers qualified professionals on the Central Rehabilitation Register, and approves training institutions.</dd>
+          <dt>Why it matters for autism</dt>
+          <dd>Every therapist and special educator a family relies on sits inside this system. It decides who is legally qualified to practise.</dd>
+        </dl>
+        <div class="limit"><dl><dt>The limit</dt>
+          <dd>It governs supply and quality, not funding or delivery, and autism-specific higher training stays tiny within it.</dd></dl></div>
+      </div>
+
+      <div class="act">
+        <div class="yr">1999</div>
+        <div class="badge">Act</div>
+        <h3>National Trust Act</h3>
+        <div class="sub">First central law dedicated to autism</div>
+        <dl>
+          <dt>What it does</dt>
+          <dd>Set up the National Trust as a statutory body with two duties. Legal: enabling guardianship for adults through Local Level Committees. Welfare: running the schemes families use, including Niramaya insurance, early-intervention and day-care centres, and residential care.</dd>
+          <dt>Why it matters for autism</dt>
+          <dd>It is the operational backbone of autism welfare, and the first central Act to name autism, cerebral palsy and multiple disabilities and create a dedicated guardianship and welfare framework. The RPwD Act 2016 later also recognised autism as a specified disability.</dd>
+        </dl>
+        <div class="limit"><dl><dt>The limit</dt>
+          <dd>Scale. Scheme budgets and centre counts remain small against national need.</dd></dl></div>
+      </div>
+
+      <div class="act">
+        <div class="yr">2016</div>
+        <div class="badge flag">Flagship Act</div>
+        <h3>Rights of Persons with Disabilities Act</h3>
+        <div class="sub">Rights, not just welfare</div>
+        <dl>
+          <dt>What it does</dt>
+          <dd>Replaced the 1995 disability law. Expanded recognised disabilities from 7 to 21, with autism named a specified disability. Mandates non-discriminatory admission, reasonable accommodation and accessibility, plus 4% reservation in government jobs, 5% in higher-education seats, and free education to age 18 for benchmark disabilities.</dd>
+          <dt>Why it matters for autism</dt>
+          <dd>It is the legal basis a family can actually assert for inclusion, accommodation and certification.</dd>
+        </dl>
+        <div class="limit"><dl><dt>The limit</dt>
+          <dd>Strong on paper. Real inclusion still depends on district-level capacity, teacher training and school leadership.</dd></dl></div>
+      </div>
+
+    </div>
+
+    <div style="height:18px"></div>
+    <div class="banner">
+      <div class="icn">§</div>
+      <p><b>Also worth knowing.</b> The Persons with Disabilities Act, 1995 was India's first comprehensive disability law. It is now repealed and replaced by the 2016 RPwD Act, but still appears in older documents and court judgments. Everything else on the timeline, the 2006 National Policy, RBSK (2013), Samagra Shiksha (2018) and NEP 2020, is policy or scheme, not statute.</p>
+    </div>
+  </section>
+  
+  </div><!-- /tab-india-sys -->
+
+  <!-- ===== world ===== -->
+  <div class="tabpanel" id="tab-world" role="tabpanel" aria-labelledby="tabbtn-world" tabindex="0">
+
+    <div class="kpis kpis2">
+      <div class="kpi"><div class="n">1 in 31</div><div class="l">8-year-olds with autism (3.2%)</div><div class="s">CDC ADDM Network, 2022 data, 2025 report</div></div>
+      <div class="kpi"><div class="n acc">3.4×</div><div class="l">More common in boys than girls</div><div class="s">49.2 vs 14.3 per 1,000</div></div>
+      <div class="kpi"><div class="n">5.4 M+</div><div class="l">US adults on the spectrum</div><div class="s">Many undiagnosed</div></div>
+      <div class="kpi"><div class="n acc">$236–268 B</div><div class="l">Estimated annual US cost</div><div class="s">Direct care plus lost productivity</div></div>
+    </div>
+
+    <section>
+      <div class="sec-head">
+        <div class="tag">United States · prevalence</div>
+        <h2>The most-measured system, and detection keeps climbing</h2>
+        <p>The CDC's ADDM Network reviews medical and school records across 16 sites. Rates have risen from 1 in 150 (2000) to 1 in 31 (2025). Most experts attribute the rise to better awareness, broader criteria and wider screening, not a true surge in occurrence.</p>
+      </div>
+      <div class="grid g23">
+        <div class="card">
+          <h3>US prevalence over time</h3>
+          <div class="cap">CDC ADDM Network, 8-year-olds, by surveillance data year (latest report 2025 uses 2022 data). Lower line = more common.</div>
+          <div class="chart-box"><canvas id="usTrend" role="img" aria-label="Line chart: US autism prevalence rising from 1 in 150 in 2000 to 1 in 31 in 2022"></canvas></div>
+        </div>
+        <div class="card">
+          <h3>Key rates</h3>
+          <div class="rowstat"><span>Age 8 (2022 data)</span><b>1 in 31</b></div>
+          <div class="rowstat"><span>Age 4 (2022 data)</span><b>1 in 34</b></div>
+          <div class="rowstat"><span>2020 data</span><b>1 in 36</b></div>
+          <div class="rowstat"><span>2016 data</span><b>1 in 54</b></div>
+          <div class="rowstat"><span>2000 data</span><b>1 in 150</b></div>
+          <div class="cap" style="margin-top:10px">Site range in 2022 data: 9.7 per 1,000 in Laredo, Texas to 53.1 in California. This roughly 5× spread likely reflects large differences in identification, evaluation practices and service access.</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <div class="tag">United States · who gets identified</div>
+        <h2>A diagnosis pattern that has flipped</h2>
+        <p>Historically white children were diagnosed most. In the latest data, prevalence is now higher among Asian/Pacific Islander, Black, Hispanic and Native American children, which the CDC reads as better identification in previously underserved communities.</p>
+      </div>
+      <div class="grid g23">
+        <div class="card">
+          <h3>Prevalence by race and ethnicity</h3>
+          <div class="cap">Per 1,000 8-year-olds, CDC 2022 data</div>
+          <div class="chart-box"><canvas id="usRace" role="img" aria-label="Bar chart: US autism prevalence per 1000 by race and ethnicity"></canvas></div>
+        </div>
+        <div class="card">
+          <h3>Sex and early identification</h3>
+          <div class="rowstat"><span>Boys</span><b>49.2 / 1,000</b></div>
+          <div class="rowstat"><span>Girls</span><b>14.3 / 1,000</b></div>
+          <div class="rowstat"><span>Comprehensive evaluation by age 3</span><b>55.4%</b></div>
+          <div class="cap" style="margin-top:10px">Nearly half of autistic children still had no full evaluation by age 3, so even the best-resourced system leaves early-intervention time on the table.</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <div class="tag">United States · the cost</div>
+        <h2>High detection comes with a very high price tag</h2>
+        <p>The US spends heavily on autism across health, education and lost productivity. Insurance coverage for therapy has expanded, but out-of-pocket and time costs on families remain large.</p>
+      </div>
+      <div class="grid g23">
+        <div class="card">
+          <h3>Lifetime cost per person</h3>
+          <div class="cap">Buescher et al. 2014 (JAMA Pediatrics), US dollars</div>
+          <div class="chart-box"><canvas id="usCost" role="img" aria-label="Bar chart: US lifetime autism cost, 1.4 to 2.4 million dollars"></canvas></div>
+        </div>
+        <div class="grid" style="gap:18px">
+          <div class="card">
+            <h3>What drives the cost</h3>
+            <div style="font-size:13px;color:var(--ink);line-height:1.5">Ongoing therapy (speech, occupational, behavioural), special education, and lost caregiver income are the main drivers. Published per-family estimates vary widely by state, plan and individual need, so single dollar figures should be read with caution.</div>
+          </div>
+          <div class="dark-card card">
+            <p><b style="color:#fff">Coverage exists, gaps remain.</b> All states now require some autism-treatment coverage in state-regulated insurance plans, though what is covered and who qualifies varies. Self-funded employer plans, governed by federal ERISA rules, may fall outside those state mandates. Even where covered, lifetime costs run into the millions and access depends on local service capacity.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <div style="height:14px"></div>
+
+    <div class="kpis kpis2">
+      <div class="kpi"><div class="n">1 in 127</div><div class="l">People with autism worldwide</div><div class="s">WHO 2025 fact sheet, citing GBD 2021</div></div>
+      <div class="kpi"><div class="n">61.8 M</div><div class="l">People on the spectrum (2021)</div><div class="s">GBD 2021 estimate</div></div>
+      <div class="kpi"><div class="n acc">~1%</div><div class="l">WHO reference prevalence</div><div class="s">Reported rates vary widely by study</div></div>
+      <div class="kpi"><div class="n acc">Top 10</div><div class="l">Non-fatal burden cause, under-20s</div><div class="s">GBD 2021</div></div>
+    </div>
+
+    <section>
+      <div class="sec-head">
+        <div class="tag">Global · prevalence</div>
+        <h2>India sits near the WHO baseline; the US is the outlier</h2>
+        <p>Reported prevalence tracks diagnostic infrastructure, not true difference in occurrence. Low- and middle-income countries report lower rates largely because identification capacity is thinner, not because autism is rarer.</p>
+      </div>
+      <div class="grid g23">
+        <div class="card">
+          <h3>Reported child prevalence, by geography</h3>
+          <div class="cap">Percentage of children identified with autism</div>
+          <div class="chart-box"><canvas id="globalChart" role="img" aria-label="Bar chart: reported autism prevalence by geography, from 0.36 to 3.2 percent"></canvas></div>
+        </div>
+        <div class="card">
+          <h3>The spread and its causes</h3>
+          <div class="rowstat"><span>WHO / GBD 2021 estimate</span><b>1 in 127</b></div>
+          <div class="rowstat"><span>Meta-analysis, 37 countries</span><b>0.72%</b></div>
+          <div class="rowstat"><span>Reported regional range</span><b>0.34–2.8%</b></div>
+          <div class="cap" style="margin-top:10px">WHO's current figure is the GBD 2021 estimate (1 in 127 ≈ 0.79%); its older "1 in 100" was a rounded planning number. The 8× range between the lowest and highest reported rates is a measurement artefact as much as a real difference.</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <div class="tag">Global · burden</div>
+        <h2>GBD 2021: a major, lifelong, non-fatal health burden</h2>
+        <p>The Global Burden of Disease 2021 study is the most authoritative modelled global estimate. It counts 61.8 million autistic people worldwide and ranks autism among the top ten causes of non-fatal health burden for people under 20.</p>
+      </div>
+      <div class="grid g23">
+        <div class="card">
+          <h3>Prevalence by sex</h3>
+          <div class="cap">Age-standardised, per 100,000 people (GBD 2021)</div>
+          <div class="chart-box"><canvas id="gbdSex" role="img" aria-label="Bar chart: global autism prevalence per 100000, males versus females"></canvas></div>
+        </div>
+        <div class="grid" style="gap:18px">
+          <div class="card">
+            <h3>The headline figures</h3>
+            <div class="rowstat"><span>People on the spectrum (2021)</span><b>61.8 M</b></div>
+            <div class="rowstat"><span>Global prevalence</span><b>788 / 100k</b></div>
+            <div class="rowstat"><span>Health burden</span><b>11.5 M DALYs</b></div>
+          </div>
+          <div class="card">
+            <h3>Burden is not evenly shared</h3>
+            <div class="rowstat"><span>SE/E Asia &amp; Oceania</span><b>126 / 100k</b></div>
+            <div class="rowstat"><span>High-income super-region</span><b>204 / 100k</b></div>
+            <div class="cap" style="margin-top:8px">Recorded and modelled burden differs across regions; variation may reflect identification, data availability and model inputs rather than any single cause.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <div class="tag">Global · the measurement lens</div>
+        <h2>Where India fits the global story</h2>
+      </div>
+      <div class="banner">
+        <div class="icn">🌐</div>
+        <p><b>Lower numbers rarely mean less autism.</b> Across the world, reported prevalence rises with diagnostic capacity, awareness and broader criteria, the same forces driving India's own climbing figures. India's ~1% sits just above the WHO/GBD 2021 estimate (0.79%) and the 0.72% global meta-analysis, and well below the US 3.2%. The honest read is that India is not lower-autism; it is lower-detection, with the biggest gains available not from awareness alone but from surveillance, workforce and district-level measurement.</p>
+      </div>
+    </section>
+  
+  </div><!-- /tab-world -->
+
+  <!-- ===== toolkit ===== -->
+  <div class="tabpanel" id="tab-toolkit" role="tabpanel" aria-labelledby="tabbtn-toolkit" tabindex="0">
+
+    <div class="sec-head" style="padding-top:22px">
+      <div class="tag">Toolkit · everyday supports</div>
+      <h2>Tools and aids that help an autistic child</h2>
+      <p>A visual map of common, real-world supports. These help a child communicate, stay regulated and take part more comfortably. None is a cure, and no child needs all of them: tools should be chosen for the individual, ideally with a therapist such as a speech or occupational therapist.</p>
+    </div>
+
+    <div class="card" style="overflow:hidden">
+      <div style="max-width:1080px;margin:0 auto">
+      <svg viewBox="0 0 1080 760" role="img" aria-label="A realistic illustrated child standing comfortably, surrounded by arrows pointing to communication, sensory, movement and visual supports" style="width:100%;height:auto;font-family:'Manrope',system-ui,sans-serif">
+        <defs>
+          <linearGradient id="sceneBg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#F8FBFC"></stop>
+            <stop offset="100%" stop-color="#E8F3F4"></stop>
+          </linearGradient>
+          <radialGradient id="halo" cx="50%" cy="42%" r="55%">
+            <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.98"></stop>
+            <stop offset="68%" stop-color="#D9EEF0" stop-opacity="0.76"></stop>
+            <stop offset="100%" stop-color="#D9EEF0" stop-opacity="0"></stop>
+          </radialGradient>
+          <linearGradient id="skin" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#D89A72"></stop>
+            <stop offset="55%" stop-color="#C98560"></stop>
+            <stop offset="100%" stop-color="#AE694D"></stop>
+          </linearGradient>
+          <linearGradient id="skinLight" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#E6B08B"></stop>
+            <stop offset="100%" stop-color="#C57D59"></stop>
+          </linearGradient>
+          <linearGradient id="shirt" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#2D8790"></stop>
+            <stop offset="100%" stop-color="#135A66"></stop>
+          </linearGradient>
+          <linearGradient id="vest" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#F3C46B"></stop>
+            <stop offset="100%" stop-color="#D9952B"></stop>
+          </linearGradient>
+          <linearGradient id="pants" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#334B64"></stop>
+            <stop offset="100%" stop-color="#182B3D"></stop>
+          </linearGradient>
+          <linearGradient id="hair" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#35251F"></stop>
+            <stop offset="100%" stop-color="#15100E"></stop>
+          </linearGradient>
+          <filter id="softShadow" x="-30%" y="-30%" width="160%" height="180%">
+            <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#0F2A38" flood-opacity="0.16"></feDropShadow>
+          </filter>
+          <filter id="cardShadow" x="-20%" y="-20%" width="140%" height="160%">
+            <feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#0F2A38" flood-opacity="0.11"></feDropShadow>
+          </filter>
+          <marker id="arrowTeal" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+            <path d="M0,0 L10,5 L0,10 z" fill="#0FA3A3"></path>
+          </marker>
+          <marker id="arrowGold" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+            <path d="M0,0 L10,5 L0,10 z" fill="#E08A3C"></path>
+          </marker>
+        </defs>
+
+        <!-- soft scene -->
+        <rect x="6" y="6" width="1068" height="748" rx="28" fill="url(#sceneBg)"></rect>
+        <ellipse cx="540" cy="345" rx="230" ry="280" fill="url(#halo)"></ellipse>
+        <ellipse cx="540" cy="686" rx="145" ry="23" fill="#7B9CA2" opacity="0.18"></ellipse>
+
+        <!-- connectors are drawn in front of the figure, below -->
+
+        <!-- central realistic human illustration -->
+        <g filter="url(#softShadow)">
+          <!-- back arm -->
+          <path d="M474 322 C438 355 425 414 434 472 C437 494 452 503 468 493 C481 485 479 469 475 450 C469 414 475 377 496 351 Z" fill="url(#skin)" stroke="#9E6046" stroke-width="1.5"></path>
+          <ellipse cx="455" cy="489" rx="18" ry="15" fill="url(#skinLight)" transform="rotate(-12 455 489)"></ellipse>
+
+          <!-- legs -->
+          <path d="M492 501 L535 501 L531 632 C530 656 511 670 491 657 C480 650 479 637 481 620 Z" fill="url(#pants)"></path>
+          <path d="M546 501 L588 501 L600 625 C603 652 588 669 566 662 C553 657 549 644 548 626 Z" fill="url(#pants)"></path>
+          <path d="M477 646 C492 640 516 641 532 650 L534 669 C511 678 476 677 462 666 C460 658 465 651 477 646 Z" fill="#F3F6F7" stroke="#B9C8CC" stroke-width="1.5"></path>
+          <path d="M558 651 C574 644 600 646 616 659 L615 677 C592 683 557 680 543 670 C542 661 547 655 558 651 Z" fill="#F3F6F7" stroke="#B9C8CC" stroke-width="1.5"></path>
+          <path d="M471 661 L529 661" stroke="#7E969D" stroke-width="2" stroke-linecap="round"></path>
+          <path d="M552 668 L611 668" stroke="#7E969D" stroke-width="2" stroke-linecap="round"></path>
+
+          <!-- torso and shirt -->
+          <path d="M476 300 C489 280 510 271 539 271 C570 271 595 282 607 306 C618 333 618 392 608 430 L596 512 C560 529 510 529 474 509 L466 427 C457 386 459 335 476 300 Z" fill="url(#shirt)" stroke="#0D4E59" stroke-width="2"></path>
+          <path d="M496 288 C506 305 520 313 539 313 C558 313 573 304 582 287" fill="none" stroke="#A8D9DD" stroke-width="4" stroke-linecap="round" opacity="0.65"></path>
+
+          <!-- weighted/compression vest -->
+          <path d="M497 319 C514 310 563 310 581 320 L590 427 C566 444 513 444 487 428 Z" fill="url(#vest)" opacity="0.93" stroke="#C27C16" stroke-width="1.5"></path>
+          <path d="M505 338 L581 338 M502 377 L585 377 M497 416 L589 416" stroke="#F9DFA9" stroke-width="3" opacity="0.72"></path>
+          <rect x="532" y="320" width="13" height="112" rx="6" fill="#B87217" opacity="0.55"></rect>
+
+          <!-- front arm holding AAC tablet -->
+          <path d="M602 320 C634 350 646 393 639 445 C636 468 619 479 603 469 C590 461 593 445 597 427 C602 397 594 365 578 344 Z" fill="url(#skinLight)" stroke="#9E6046" stroke-width="1.5"></path>
+          <ellipse cx="616" cy="463" rx="19" ry="16" fill="url(#skinLight)" transform="rotate(15 616 463)"></ellipse>
+          <rect x="608" y="405" width="54" height="74" rx="8" fill="#173B50" stroke="#0F2A38" stroke-width="2" transform="rotate(8 635 442)"></rect>
+          <rect x="614" y="413" width="42" height="56" rx="5" fill="#ECF7F8" transform="rotate(8 635 442)"></rect>
+          <circle cx="626" cy="428" r="7" fill="#3AA0A6"></circle>
+          <circle cx="645" cy="431" r="7" fill="#E08A3C"></circle>
+          <rect x="620" y="444" width="31" height="5" rx="2.5" fill="#9ABBC0" transform="rotate(8 635 446)"></rect>
+          <rect x="620" y="454" width="24" height="5" rx="2.5" fill="#B7C7CB" transform="rotate(8 632 456)"></rect>
+
+          <!-- neck -->
+          <path d="M516 260 L563 260 L566 296 C548 308 529 308 512 296 Z" fill="url(#skin)" stroke="#9E6046" stroke-width="1.5"></path>
+
+          <!-- ears -->
+          <ellipse cx="478" cy="206" rx="13" ry="20" fill="url(#skinLight)" stroke="#9E6046" stroke-width="1.3"></ellipse>
+          <ellipse cx="601" cy="206" rx="13" ry="20" fill="url(#skinLight)" stroke="#9E6046" stroke-width="1.3"></ellipse>
+
+          <!-- head -->
+          <path d="M485 183 C489 134 516 110 550 112 C584 114 603 141 600 188 L594 224 C589 253 568 274 540 275 C510 275 488 254 483 224 Z" fill="url(#skinLight)" stroke="#9E6046" stroke-width="1.7"></path>
+
+          <!-- hair -->
+          <path d="M485 187 C480 145 500 112 537 105 C569 99 599 117 609 146 C615 163 610 183 601 198 C597 177 588 162 574 153 C555 166 531 171 505 168 C500 181 494 190 485 197 Z" fill="url(#hair)"></path>
+          <path d="M497 145 C515 119 552 111 581 127" fill="none" stroke="#594039" stroke-width="4" stroke-linecap="round" opacity="0.55"></path>
+
+          <!-- face -->
+          <path d="M508 205 Q519 198 530 205" fill="none" stroke="#5B382B" stroke-width="2.3" stroke-linecap="round"></path>
+          <path d="M550 205 Q561 198 572 205" fill="none" stroke="#5B382B" stroke-width="2.3" stroke-linecap="round"></path>
+          <ellipse cx="520" cy="211" rx="4.5" ry="5.4" fill="#2B211E"></ellipse>
+          <ellipse cx="560" cy="211" rx="4.5" ry="5.4" fill="#2B211E"></ellipse>
+          <circle cx="521.5" cy="209.5" r="1.3" fill="#FFFFFF"></circle>
+          <circle cx="561.5" cy="209.5" r="1.3" fill="#FFFFFF"></circle>
+          <path d="M540 214 C536 225 537 232 543 235" fill="none" stroke="#A8644B" stroke-width="1.8" stroke-linecap="round"></path>
+          <path d="M523 247 Q540 257 557 247" fill="none" stroke="#7C3F35" stroke-width="2.5" stroke-linecap="round"></path>
+          <ellipse cx="505" cy="232" rx="12" ry="6" fill="#E99584" opacity="0.24"></ellipse>
+          <ellipse cx="575" cy="232" rx="12" ry="6" fill="#E99584" opacity="0.24"></ellipse>
+
+          <!-- headphones -->
+          <path d="M489 190 C488 146 510 121 540 121 C573 121 594 147 593 191" fill="none" stroke="#173B50" stroke-width="10" stroke-linecap="round"></path>
+          <rect x="474" y="185" width="24" height="49" rx="10" fill="#0FA3A3" stroke="#0A5961" stroke-width="2"></rect>
+          <rect x="582" y="185" width="24" height="49" rx="10" fill="#0FA3A3" stroke="#0A5961" stroke-width="2"></rect>
+
+          <!-- fidget bracelet -->
+          <circle cx="455" cy="477" r="6" fill="#E08A3C"></circle>
+          <circle cx="462" cy="481" r="5" fill="#3AA0A6"></circle>
+          <circle cx="450" cy="485" r="5" fill="#6B9AB1"></circle>
+        </g>
+
+        <!-- visual schedule board (marked #5) -->
+        <g filter="url(#cardShadow)">
+          <rect x="676" y="296" width="66" height="100" rx="9" fill="#FFFFFF" stroke="#0FA3A3" stroke-width="2"></rect>
+          <rect x="687" y="308" width="44" height="20" rx="4" fill="#CDE8ED"></rect>
+          <rect x="687" y="334" width="44" height="20" rx="4" fill="#F3E0B8"></rect>
+          <rect x="687" y="360" width="44" height="20" rx="4" fill="#DAE5E8"></rect>
+        </g>
+
+        <!-- numbered connectors, in front so arrowheads stay visible -->
+        <g fill="none" stroke-linecap="round">
+          <path d="M280 132 C360 128 405 158 470 198" stroke="#0FA3A3" stroke-width="3" marker-end="url(#arrowTeal)"></path>
+          <path d="M280 347 C370 350 440 366 494 372" stroke="#E08A3C" stroke-width="3.5" marker-end="url(#arrowGold)"></path>
+          <path d="M280 558 C336 552 398 520 446 492" stroke="#0FA3A3" stroke-width="3" marker-end="url(#arrowTeal)"></path>
+          <path d="M800 130 C700 150 662 300 654 406" stroke="#E08A3C" stroke-width="3.5" marker-end="url(#arrowGold)"></path>
+          <path d="M800 345 C778 338 764 330 752 324" stroke="#0FA3A3" stroke-width="3" marker-end="url(#arrowTeal)"></path>
+          <path d="M800 562 C724 590 662 642 610 660" stroke="#0FA3A3" stroke-width="3" marker-end="url(#arrowTeal)"></path>
+        </g>
+
+        <!-- numbered badges placed on each item -->
+        <g font-family="'Manrope',system-ui,sans-serif" font-weight="700" font-size="14" text-anchor="middle">
+          <circle cx="492" cy="206" r="13" fill="#0FA3A3" stroke="#fff" stroke-width="2"></circle><text x="492" y="211" fill="#fff">1</text>
+          <circle cx="515" cy="375" r="13" fill="#E08A3C" stroke="#fff" stroke-width="2"></circle><text x="515" y="380" fill="#fff">2</text>
+          <circle cx="456" cy="481" r="13" fill="#0FA3A3" stroke="#fff" stroke-width="2"></circle><text x="456" y="486" fill="#fff">3</text>
+          <circle cx="642" cy="432" r="13" fill="#E08A3C" stroke="#fff" stroke-width="2"></circle><text x="642" y="437" fill="#fff">4</text>
+          <circle cx="742" cy="320" r="13" fill="#0FA3A3" stroke="#fff" stroke-width="2"></circle><text x="742" y="325" fill="#fff">5</text>
+          <circle cx="592" cy="664" r="13" fill="#0FA3A3" stroke="#fff" stroke-width="2"></circle><text x="592" y="669" fill="#fff">6</text>
+        </g>
+
+        <text x="540" y="715" text-anchor="middle" font-size="18" font-weight="750" fill="#0F2A38">Support the person, not the label</text>
+        <text x="540" y="738" text-anchor="middle" font-size="13" fill="#5E7079">Choose tools around communication, comfort, independence and participation</text>
+
+        <!-- callout cards (native SVG for reliable rendering) -->
+        <g font-family="'Manrope',system-ui,sans-serif">
+          <!-- 1 Sound -->
+          <rect x="24" y="78" width="252" height="96" rx="14" fill="#fff" stroke="#D9E3E6" stroke-width="1" filter="url(#cardShadow)"></rect>
+          <circle cx="48" cy="101" r="11" fill="#0FA3A3"></circle>
+          <text x="48" y="105" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">1</text>
+          <text x="66" y="106" font-size="13.5" font-weight="700" fill="#0FA3A3">🎧 Sound comfort</text>
+          <text x="40" y="128" font-size="11.2" fill="#1A2B33"><tspan x="40" dy="0">Ear defenders or noise-cancelling</tspan><tspan x="40" dy="15">headphones lower distress in loud</tspan><tspan x="40" dy="15">or unpredictable places.</tspan></text>
+
+          <!-- 2 Deep pressure -->
+          <rect x="24" y="291" width="252" height="96" rx="14" fill="#fff" stroke="#E08A3C" stroke-width="2" filter="url(#cardShadow)"></rect>
+          <circle cx="48" cy="314" r="11" fill="#E08A3C"></circle>
+          <text x="48" y="318" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">2</text>
+          <text x="66" y="319" font-size="13.5" font-weight="700" fill="#A96813">🦺 Deep pressure</text>
+          <text x="40" y="341" font-size="11.2" fill="#1A2B33"><tspan x="40" dy="0">A weighted or compression vest or</tspan><tspan x="40" dy="15">lap pad can feel calming when</tspan><tspan x="40" dy="15">chosen and monitored safely.</tspan></text>
+
+          <!-- 3 Hands & mouth -->
+          <rect x="24" y="508" width="252" height="96" rx="14" fill="#fff" stroke="#D9E3E6" stroke-width="1" filter="url(#cardShadow)"></rect>
+          <circle cx="48" cy="531" r="11" fill="#0FA3A3"></circle>
+          <text x="48" y="535" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">3</text>
+          <text x="66" y="536" font-size="13.5" font-weight="700" fill="#0FA3A3">✋ Hands &amp; mouth</text>
+          <text x="40" y="558" font-size="11.2" fill="#1A2B33"><tspan x="40" dy="0">Fidget tools, safe chewables and</tspan><tspan x="40" dy="15">textured objects give a controlled</tspan><tspan x="40" dy="15">sensory outlet.</tspan></text>
+
+          <!-- 4 Communication -->
+          <rect x="804" y="78" width="252" height="96" rx="14" fill="#fff" stroke="#E08A3C" stroke-width="2" filter="url(#cardShadow)"></rect>
+          <circle cx="828" cy="101" r="11" fill="#E08A3C"></circle>
+          <text x="828" y="105" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">4</text>
+          <text x="846" y="106" font-size="13.5" font-weight="700" fill="#A96813">💬 Communication</text>
+          <text x="820" y="128" font-size="11.2" fill="#1A2B33"><tspan x="820" dy="0">AAC apps like <tspan font-weight="700">Avaz</tspan>, picture cards</tspan><tspan x="820" dy="15">and speech devices give a reliable</tspan><tspan x="820" dy="15">way to communicate.</tspan></text>
+
+          <!-- 5 Visual structure -->
+          <rect x="804" y="291" width="252" height="96" rx="14" fill="#fff" stroke="#D9E3E6" stroke-width="1" filter="url(#cardShadow)"></rect>
+          <circle cx="828" cy="314" r="11" fill="#0FA3A3"></circle>
+          <text x="828" y="318" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">5</text>
+          <text x="846" y="319" font-size="13.5" font-weight="700" fill="#0FA3A3">📅 Visual structure</text>
+          <text x="820" y="341" font-size="11.2" fill="#1A2B33"><tspan x="820" dy="0">Visual schedules, first-then boards</tspan><tspan x="820" dy="15">and timers make routines and</tspan><tspan x="820" dy="15">change easier to follow.</tspan></text>
+
+          <!-- 6 Movement -->
+          <rect x="804" y="508" width="252" height="96" rx="14" fill="#fff" stroke="#D9E3E6" stroke-width="1" filter="url(#cardShadow)"></rect>
+          <circle cx="828" cy="531" r="11" fill="#0FA3A3"></circle>
+          <text x="828" y="535" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">6</text>
+          <text x="846" y="536" font-size="13.5" font-weight="700" fill="#0FA3A3">🤸 Movement input</text>
+          <text x="820" y="558" font-size="11.2" fill="#1A2B33"><tspan x="820" dy="0">Sensory swings, therapy balls or</tspan><tspan x="820" dy="15">wobble cushions support</tspan><tspan x="820" dy="15">regulation and attention.</tspan></text>
+        </g>
+      </svg>
+      </div>
+      <div class="cap" style="text-align:center;margin-top:10px">Illustrative, respectful visual of everyday supports. Tools should be matched to the individual with guidance from speech, occupational, educational or clinical professionals as appropriate.</div>
+    </div>
+
+    <div style="height:22px"></div>
+    <div class="sec-head"><div class="tag">The detail</div><h2>What each group of tools actually does</h2></div>
+    <div class="grid g3">
+      <div class="card" style="border-top:3px solid #E08A3C">
+        <h3><span style="color:#A96813">4 ·</span> 💬 Communication</h3>
+        <p style="font-size:12.5px;color:var(--ink);line-height:1.5">For children who are nonverbal or have limited speech. <b>AAC</b> (augmentative &amp; alternative communication) gives another way to be understood: apps such as <b>Avaz</b>, the PECS picture-exchange system, symbol boards and speech-generating devices. Can be used temporarily or lifelong.</p>
+      </div>
+      <div class="card" style="border-top:3px solid #E08A3C">
+        <h3><span style="color:#A96813">2 ·</span> 🦺 Deep pressure</h3>
+        <p style="font-size:12.5px;color:var(--ink);line-height:1.5">Gentle, even pressure can feel calming and organising. Weighted or compression vests, weighted blankets and lap pads are used for this. An OT advises on safe weight and how long to wear them.</p>
+      </div>
+      <div class="card">
+        <h3><span style="color:#0FA3A3">1 ·</span> 🎧 Sound &amp; sensory calm</h3>
+        <p style="font-size:12.5px;color:var(--ink);line-height:1.5">Noise can overwhelm. Ear defenders and noise-cancelling headphones lower the load; a quiet "calm-down corner" gives somewhere to reset before distress escalates.</p>
+      </div>
+      <div class="card">
+        <h3><span style="color:#0FA3A3">6 ·</span> 🤸 Movement input</h3>
+        <p style="font-size:12.5px;color:var(--ink);line-height:1.5">Some children seek movement to stay regulated. Sensory swings, wobble cushions, mini-trampolines and therapy balls provide vestibular and proprioceptive input in a safe way.</p>
+      </div>
+      <div class="card">
+        <h3><span style="color:#0FA3A3">3 ·</span> ✋ Hands &amp; mouth</h3>
+        <p style="font-size:12.5px;color:var(--ink);line-height:1.5">Fidget toys occupy busy hands and aid focus; chewable "chewelry" gives a safe outlet for oral-seeking; textured toys support tactile needs.</p>
+      </div>
+      <div class="card">
+        <h3><span style="color:#0FA3A3">5 ·</span> 📅 Visual &amp; routine</h3>
+        <p style="font-size:12.5px;color:var(--ink);line-height:1.5">Predictability reduces anxiety. Visual schedules, timers, first-then boards, social stories and TEACCH-style structure make the day clear and changes easier to handle.</p>
+      </div>
+    </div>
+    <div class="banner" style="margin-top:18px">
+      <div class="icn">🧩</div>
+      <p><b>Match the tool to the child, not the label.</b> What soothes one autistic child can overwhelm another, so aids work best when chosen with a speech or occupational therapist and reviewed over time. These tools support communication, comfort and participation; they are aids, not treatments for autism itself. Note too that for several sensory tools (weighted vests, swings, therapy balls) the clinical evidence is limited or mixed: the American Academy of Pediatrics says such interventions are not yet well enough supported for general use, so individual assessment and monitoring matter.</p>
+    </div>
+  
+  </div><!-- /tab-toolkit -->
+
+  <!-- ===== reference ===== -->
+  <div class="tabpanel" id="tab-reference" role="tabpanel" aria-labelledby="tabbtn-reference" tabindex="0">
+
+    <div class="sec-head" style="padding-top:22px">
+      <div class="tag">Reference</div>
+      <h2>Glossary, sources and how to read this</h2>
+      <p>Every abbreviation used across the dashboard, the sources behind the figures, and the limitations to keep in mind.</p>
+    </div>
+    <div class="dark-card card" style="padding:26px">
+<div class="caveat">
+      <b>How to read this dashboard.</b> Figures are drawn from published studies and official government replies, not from a single national registry, which does not yet exist. Prevalence figures are estimates; service and financing figures come from parliamentary answers and annual reports across different years; per-capita rates use 2011 Census denominators as an approximation. Treat comparisons as directional, not audit-grade.
+    </div>
+    <h3>Key terms &amp; abbreviations</h3>
+    <div class="glosswrap">
+      <div class="glosscat">
+        <h4>Clinical &amp; epidemiology</h4>
+        <div class="gitem"><b>ASD</b>: Autism Spectrum Disorder</div>
+        <div class="gitem"><b>NDD</b>: Neurodevelopmental Disorder</div>
+        <div class="gitem"><b>INCLEN</b>: International Clinical Epidemiology Network; ran India's 2018 five-site prevalence study</div>
+        <div class="gitem"><b>GBD</b>: Global Burden of Disease study</div>
+        <div class="gitem"><b>DALYs</b>: Disability-Adjusted Life Years; years of healthy life lost</div>
+        <div class="gitem"><b>LMIC</b>: Low- and Middle-Income Country</div>
+        <div class="gitem"><b>OPD</b>: Outpatient Department</div>
+        <div class="gitem"><b>OT</b>: Occupational Therapy</div>
+        <div class="gitem"><b>ABA</b>: Applied Behaviour Analysis (a therapy)</div>
+      </div>
+      <div class="glosscat">
+        <h4>Diagnostic &amp; screening tools</h4>
+        <div class="gitem"><b>INDT-ASD</b>: INCLEN Diagnostic Tool for ASD</div>
+        <div class="gitem"><b>ISAA</b>: Indian Scale for Assessment of Autism; used for disability certification</div>
+        <div class="gitem"><b>ADOS-2</b>: Autism Diagnostic Observation Schedule; observation-based reference standard</div>
+        <div class="gitem"><b>ADI-R</b>: Autism Diagnostic Interview, Revised; structured carer interview</div>
+        <div class="gitem"><b>CARS</b>: Childhood Autism Rating Scale</div>
+        <div class="gitem"><b>M-CHAT-R/F</b>: Modified Checklist for Autism in Toddlers; a screen, not a diagnosis</div>
+        <div class="gitem"><b>GetSET Early</b>: eye-tracking early-screening tool (developer-reported CDSCO status)</div>
+        <div class="gitem"><b>PRASHAST</b>: Pre-Assessment Holistic Screening Tool; school disability screening</div>
+        <div class="gitem"><b>UDID</b>: Unique Disability ID; national disability ID-card system</div>
+        <div class="gitem"><b>CDSCO</b>: Central Drugs Standard Control Organisation (India's device/drug regulator)</div>
+      </div>
+      <div class="glosscat">
+        <h4>Bodies &amp; law (India)</h4>
+        <div class="gitem"><b>RPwD Act</b>: Rights of Persons with Disabilities Act, 2016</div>
+        <div class="gitem"><b>RCI</b>: Rehabilitation Council of India</div>
+        <div class="gitem"><b>DEPwD</b>: Department of Empowerment of Persons with Disabilities</div>
+        <div class="gitem"><b>MoSJE</b>: Ministry of Social Justice &amp; Empowerment</div>
+        <div class="gitem"><b>IRDAI</b>: Insurance Regulatory &amp; Development Authority of India</div>
+        <div class="gitem"><b>NGO</b>: Non-Governmental Organisation</div>
+      </div>
+      <div class="glosscat">
+        <h4>Schemes &amp; services (India)</h4>
+        <div class="gitem"><b>RBSK</b>: Rashtriya Bal Swasthya Karyakram; national child-health screening programme</div>
+        <div class="gitem"><b>DEIC</b>: District Early Intervention Centre</div>
+        <div class="gitem"><b>CDEIC</b>: Cross-Disability Early Intervention Centre</div>
+        <div class="gitem"><b>Niramaya</b>: National Trust health-insurance scheme (₹1 lakh cover)</div>
+        <div class="gitem"><b>Vikaas</b>: National Trust day-care scheme</div>
+        <div class="gitem"><b>Gharaunda</b>: National Trust group-home scheme</div>
+        <div class="gitem"><b>PM-JAY</b>: Pradhan Mantri Jan Arogya Yojana; Ayushman Bharat hospital cover</div>
+        <div class="gitem"><b>PM-DAKSH</b>: national disability skilling &amp; employment portal</div>
+      </div>
+      <div class="glosscat">
+        <h4>Education</h4>
+        <div class="gitem"><b>CwSN</b>: Children with Special Needs</div>
+        <div class="gitem"><b>Samagra Shiksha</b>: integrated school-education scheme (pre-nursery to class XII)</div>
+        <div class="gitem"><b>UDISE+</b>: Unified District Information System for Education Plus</div>
+        <div class="gitem"><b>NEP</b>: National Education Policy, 2020</div>
+        <div class="gitem"><b>NCERT</b>: National Council of Educational Research &amp; Training</div>
+        <div class="gitem"><b>NCTE</b>: National Council for Teacher Education</div>
+        <div class="gitem"><b>NISHTHA</b>: national integrated teacher-training initiative</div>
+      </div>
+      <div class="glosscat">
+        <h4>US, global &amp; organisations</h4>
+        <div class="gitem"><b>CDC</b>: US Centers for Disease Control and Prevention</div>
+        <div class="gitem"><b>ADDM</b>: Autism and Developmental Disabilities Monitoring Network (CDC)</div>
+        <div class="gitem"><b>MMWR</b>: Morbidity and Mortality Weekly Report (CDC)</div>
+        <div class="gitem"><b>WHO</b>: World Health Organization</div>
+        <div class="gitem"><b>WHO-CST</b>: WHO Caregiver Skills Training</div>
+        <div class="gitem"><b>PASS</b>: parent-mediated autism intervention trial for South Asia</div>
+        <div class="gitem"><b>AI/AN</b>: American Indian or Alaska Native</div>
+        <div class="gitem"><b>A/PI</b>: Asian or Pacific Islander</div>
+        <div class="gitem"><b>LSE</b>: London School of Economics</div>
+        <div class="gitem"><b>JAMA</b>: Journal of the American Medical Association</div>
+        <div class="gitem"><b>NIMHANS</b>: National Institute of Mental Health &amp; Neurosciences, Bengaluru</div>
+        <div class="gitem"><b>NIEPID</b>: National Institute for the Empowerment of Persons with Intellectual Disabilities</div>
+        <div class="gitem"><b>Com DEALL</b>: Communication Developmental Eclectic Approach to Language Learning</div>
+        <div class="gitem"><b>DSM-5-TR</b>: Diagnostic and Statistical Manual of Mental Disorders, 5th ed. (APA)</div>
+        <div class="gitem"><b>NICE</b>: UK National Institute for Health and Care Excellence</div>
+        <div class="gitem"><b>NIMH</b>: US National Institute of Mental Health</div>
+        <div class="gitem"><b>NHS</b>: UK National Health Service</div>
+        <div class="gitem"><b>AAP</b>: American Academy of Pediatrics</div>
+        <div class="gitem"><b>ADHD</b>: Attention-Deficit/Hyperactivity Disorder</div>
+        <div class="gitem"><b>OCD</b>: Obsessive-Compulsive Disorder</div>
+        <div class="gitem"><b>AAC</b>: Augmentative &amp; Alternative Communication</div>
+        <div class="gitem"><b>TEACCH</b>: structured, visual classroom teaching approach</div>
+        <div class="gitem"><b>ESDM</b>: Early Start Denver Model (play-based early intervention)</div>
+        <div class="gitem"><b>Masking</b>: hiding autistic traits by copying social behaviour</div>
+      </div>
+    </div>
+    <h3>Sources</h3>
+    <div class="srclist">
+      <div>Arora et al., INCLEN Trust International, <i>PLOS Medicine</i> (2018), population prevalence, five sites.</div>
+      <div>Uke et al., "A Comprehensive Review of ASD in India," <i>Cureus</i> (2024), 1 in 65; 1.8–2 million estimate.</div>
+      <div>The Transmitter / Spectrum, reporting on the INCLEN study (2018/2025).</div>
+      <div>WHO, Autism fact sheet (2025), 2021 estimate ~1 in 127 (citing GBD 2021).</div>
+      <div>US CDC, ADDM Network (2025), 1 in 31 (3.2%).</div>
+      <div>Chattopadhyay, "Autism Screening in India," <i>Indian Pediatrics</i> (Apr 2024), screening tools.</div>
+      <div>Indian Journal of Public Health / JAMP, age at diagnosis and delay factors.</div>
+      <div>MoSJE (MoS reply, Dec 2024), Niramaya enrolment 47,307; spend ₹13.87 cr (2023-24), ₹18.14 cr (2022-23), ₹11.38 cr (2021-22).</div>
+      <div>The National Trust, Niramaya scheme design (₹1 lakh cover); registered organisations.</div>
+      <div>Ayushman Bharat PM-JAY, ₹5 lakh per family; eligibility base.</div>
+      <div>DEPwD / RBSK official annexures, DEIC and CDEIC counts.</div>
+      <div>Rehabilitation Council of India, Annual Report 2023-24, workforce and training programmes.</div>
+      <div>Butterfly Learnings / ETHealthworld (2025), GetSET Early screening tool.</div>
+      <div>CDC ADDM Network, <i>MMWR</i> (Apr 2025), US 1 in 31; site, sex and race/ethnicity rates.</div>
+      <div>Solmi et al., "Global epidemiology of autism," <i>GBD 2021</i> (<i>Lancet Psychiatry</i>, 2025), 61.8 M people, 788/100k, 11.5 M DALYs.</div>
+      <div>Buescher et al. (2014) / Penn–LSE, <i>JAMA Pediatrics</i>, US lifetime cost $1.4–2.4 M; annual burden $236–268 B.</div>
+      <div>Zeidan et al. (2022) meta-analysis, 37 countries, pooled 0.72% global prevalence.</div>
+      <div>CDC, Signs &amp; Symptoms, Treatment &amp; Intervention, and Screening/Milestones guidance (Basics tab).</div>
+      <div>WHO, Autism fact sheet (2025) and GACVS vaccine-safety statement (Dec 2025).</div>
+      <div>NICE, CG128, CG142, CG170 (recognition, diagnosis, child and adult support).</div>
+      <div>NIMH Autism fact sheet; NHS autism pages; RCSLT (AAC); DSM-5-TR (APA).</div>
+    </div>
+    <p style="margin-top:22px;color:#7E969D;font-size:12px">Built as an evidence overview. Not medical, legal or financial advice. Where sources conflict on a figure, the dashboard shows the range rather than a single point.</p>
+    </div>
+
+  </div><!-- /tab-reference -->
+
+</div>
+
+<footer id="sitefooter">
+  <div class="wrap">
+    <p style="color:#9FB6BC;font-size:12px;margin:0">Autism: India in Context, a primer and data dossier. General information only, not medical, legal or financial advice. Sources and limitations are in the Reference tab.</p>
+  </div>
+</footer>
+
+<script>
+Chart.defaults.font.family = "'Manrope',system-ui,sans-serif";
+Chart.defaults.font.size = 12;
+Chart.defaults.color = '#5E7079';
+const TEAL='#0FA3A3', TEAL2='#37B68A', ACCENT='#E08A3C', DARK='#1B3A4B', GREY='#B7C7CB';
+const noGrid={grid:{display:false}}, softGrid={grid:{color:'#EAF0F1',drawTicks:false},border:{display:false}};
+
+// Prevalence by source
+const prevRows=[
+  ['Kolkata school study',0.23,GREY],
+  ['GBD 2021 (modelled)',0.71,GREY],
+  ['INCLEN, ages 2–<6',1.0,TEAL],
+  ['Syst. review, ages 2–9',1.12,TEAL],
+  ['2011 Census (all NDD)',1.3,GREY],
+  ['INCLEN, ages 6–9',1.4,TEAL],
+  ['Cureus review (1 in 65)',1.54,ACCENT]
+];
+new Chart(document.getElementById('prevChart'),{
+  type:'bar',
+  data:{labels:prevRows.map(r=>r[0]),
+    datasets:[{data:prevRows.map(r=>r[1]),backgroundColor:prevRows.map(r=>r[2]),borderRadius:4}]},
+  options:{indexAxis:'y',plugins:{legend:{display:false},
+    tooltip:{callbacks:{label:c=>c.parsed.x+'%'}}},
+    scales:{x:{...softGrid,ticks:{callback:v=>v+'%'},title:{display:true,text:'Prevalence',color:'#5E7079'},suggestedMax:1.7},
+      y:{...noGrid,ticks:{font:{size:11}}}}}
+});
+
+// Regional
+new Chart(document.getElementById('regionChart'),{
+  type:'bar',
+  data:{labels:['North Goa','India\npooled','Palwal,\nHaryana'],
+    datasets:[{data:[0.4,1.0,1.8],backgroundColor:[TEAL2,TEAL,ACCENT],borderRadius:5}]},
+  options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+'%'}}},
+    scales:{x:{...noGrid,ticks:{font:{size:11}}},y:{...softGrid,ticks:{callback:v=>v+'%'}}}}
+});
+
+// Comorbidity doughnut
+new Chart(document.getElementById('comorbidChart'),{
+  type:'doughnut',
+  data:{labels:['With a coexisting NDD','Autism alone'],
+    datasets:[{data:[79.6,20.4],backgroundColor:[TEAL,'#D8E4E6'],borderWidth:0}]},
+  options:{cutout:'62%',plugins:{legend:{position:'bottom',labels:{boxWidth:12,font:{size:12},padding:14}},
+    tooltip:{callbacks:{label:c=>c.label+': '+c.parsed+'%'}}}}
+});
+new Chart(document.getElementById('globalChart'),{
+  type:'bar',
+  data:{labels:['Asia\npooled','Meta-analysis\n37 countries','WHO / GBD\n2021','India\n(INCLEN)','United States\n(CDC 2025)'],
+    datasets:[{data:[0.36,0.72,0.79,1.0,3.2],backgroundColor:[GREY,GREY,TEAL2,TEAL,ACCENT],borderRadius:5}]},
+  options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+'%'}}},
+    scales:{x:{...noGrid,ticks:{font:{size:10}}},y:{...softGrid,ticks:{callback:v=>v+'%'}}}}
+});
+
+// US trend
+new Chart(document.getElementById('usTrend'),{
+  type:'line',
+  data:{labels:['2000','2010','2016','2018','2020','2022'],
+    datasets:[{label:'US 1 in N',data:[150,68,54,44,36,31],
+      borderColor:ACCENT,backgroundColor:'rgba(224,166,60,.12)',fill:true,tension:.3,
+      pointBackgroundColor:ACCENT,pointRadius:4}]},
+  options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>'1 in '+c.parsed.y+' children'}}},
+    scales:{x:noGrid,y:{...softGrid,reverse:true,title:{display:true,text:'1 in N (lower = more common)'},ticks:{callback:v=>'1:'+v}}}}
+});
+
+// US race/ethnicity
+new Chart(document.getElementById('usRace'),{
+  type:'bar',
+  data:{labels:['White','Hispanic','Multiracial','Black','AI/AN','Asian/PI'],
+    datasets:[{data:[27.7,33.0,31.9,36.6,37.5,38.2],
+      backgroundColor:['#B7C7CB',TEAL2,TEAL2,TEAL,TEAL,TEAL],borderRadius:5}]},
+  options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+' per 1,000'}}},
+    scales:{x:{...noGrid,ticks:{font:{size:11}}},y:{...softGrid,title:{display:true,text:'per 1,000 children'}}}}
+});
+
+// US lifetime cost
+new Chart(document.getElementById('usCost'),{
+  type:'bar',
+  data:{labels:['Autism without\nintellectual disability','Autism with\nintellectual disability'],
+    datasets:[{data:[1.4,2.4],backgroundColor:[TEAL,ACCENT],borderRadius:6}]},
+  options:{indexAxis:'y',plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>'$'+c.parsed.x+' million'}}},
+    scales:{x:{...softGrid,title:{display:true,text:'US$ millions, lifetime'},ticks:{callback:v=>'$'+v+'M'}},
+      y:{...noGrid,ticks:{font:{size:11}}}}}
+});
+
+// GBD prevalence by sex
+new Chart(document.getElementById('gbdSex'),{
+  type:'bar',
+  data:{labels:['Males','Females'],
+    datasets:[{data:[1064.7,508.1],backgroundColor:[TEAL,TEAL2],borderRadius:6}]},
+  options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y.toLocaleString()+' per 100,000'}}},
+    scales:{x:{...noGrid,ticks:{font:{size:12}}},y:{...softGrid,title:{display:true,text:'per 100,000'}}}}
+});
+
+// Diagnosis gap (horizontal ranges)
+new Chart(document.getElementById('gapChart'),{
+  type:'bar',
+  data:{labels:['Parents notice signs','Diagnosis possible','Median diagnosis (urban)','Average diagnosis (India)'],
+    datasets:[
+      {label:'offset',data:[6,18,42,64],backgroundColor:'rgba(0,0,0,0)',stack:'s'},
+      {label:'range',data:[12,6,2,4],backgroundColor:[TEAL2,TEAL,ACCENT,ACCENT],borderRadius:4,stack:'s'}
+    ]},
+  options:{indexAxis:'y',plugins:{legend:{display:false},
+    tooltip:{callbacks:{label:c=>{const s=[6,18,42,64][c.dataIndex];const e=s+[12,6,2,4][c.dataIndex];return e>s?s+'–'+e+' months':s+' months';}}}},
+    scales:{x:{...softGrid,min:0,max:80,title:{display:true,text:'Age in months'},ticks:{callback:v=>v+'mo'}},
+      y:{...noGrid,ticks:{font:{size:11}}}}}
+});
+
+// Financing dual axis
+new Chart(document.getElementById('finChart'),{
+  data:{labels:['2021-22','2022-23','2023-24','2024-25*'],
+    datasets:[
+      {type:'bar',label:'₹ crore utilised',data:[11.38,18.14,13.87,null],
+        backgroundColor:TEAL,borderRadius:5,yAxisID:'y'},
+      {type:'line',label:'Beneficiaries enrolled',data:[null,null,null,47307],
+        borderColor:ACCENT,backgroundColor:ACCENT,pointRadius:6,yAxisID:'y1',showLine:false}
+    ]},
+  options:{plugins:{legend:{position:'bottom',labels:{boxWidth:12,font:{size:11}}},
+    tooltip:{callbacks:{label:c=>c.dataset.type==='bar'?'₹'+c.parsed.y+' cr':c.parsed.y.toLocaleString()+' enrolled'}}},
+    scales:{x:noGrid,
+      y:{...softGrid,position:'left',title:{display:true,text:'₹ crore'}},
+      y1:{position:'right',grid:{display:false},title:{display:true,text:'Beneficiaries'},ticks:{callback:v=>(v/1000)+'k'}}}}
+});
+
+// Workforce
+new Chart(document.getElementById('workChart'),{
+  type:'bar',
+  data:{labels:['Special teachers','Audiologists &\nspeech therapists','Clinical\npsychologists','Rehabilitation\npsychologists'],
+    datasets:[{data:[179620,15311,3795,2817],backgroundColor:[TEAL,TEAL2,TEAL2,TEAL2],borderRadius:5}]},
+  options:{indexAxis:'y',plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.x.toLocaleString()+' registered'}}},
+    scales:{x:{...softGrid,type:'logarithmic',title:{display:true,text:'Registered (log scale)'}},
+      y:{...noGrid,ticks:{font:{size:10.5}}}}}
+});
+
+// State divide
+const st=[['Odisha',7.64],['Tamil Nadu',4.72],['Kerala',4.19],['Assam',4.17],['Maharashtra',2.76],['Karnataka',2.29],['Bihar',0.86],['West Bengal',0.77],['Uttar Pradesh',0.30]];
+new Chart(document.getElementById('stateChart'),{
+  type:'bar',
+  data:{labels:st.map(s=>s[0]),
+    datasets:[{data:st.map(s=>s[1]),
+      backgroundColor:st.map(s=>s[1]>=4?TEAL:s[1]>=2?TEAL2:ACCENT),borderRadius:4}]},
+  options:{indexAxis:'y',plugins:{legend:{display:false},
+    tooltip:{callbacks:{label:c=>c.parsed.x.toFixed(2)+' DEICs per 10M'}}},
+    scales:{x:{...softGrid,title:{display:true,text:'DEICs per 10 million people'}},
+      y:{...noGrid,ticks:{font:{size:12}}}}}
+});
+
+// PM-DAKSH funnel
+new Chart(document.getElementById('dakshChart'),{
+  type:'bar',
+  data:{labels:['Beneficiaries','Trained','Placed'],
+    datasets:[{data:[144000,94172,28000],backgroundColor:[TEAL,TEAL2,ACCENT],borderRadius:5}]},
+  options:{indexAxis:'y',plugins:{legend:{display:false},
+    tooltip:{callbacks:{label:c=>c.parsed.x.toLocaleString()+' persons with disabilities'}}},
+    scales:{x:{...softGrid,title:{display:true,text:'Persons with disabilities (all-disability)'},
+      ticks:{callback:v=>v>=1000?(v/1000)+'k':v}},
+      y:{...noGrid,ticks:{font:{size:12}}}}}
+});
+
+// NGO ecosystem table
+const ngos=[
+  ['Action For Autism','NGO / advocacy','Assessment, education, employment, family support, training','New Delhi','3,000+ parent members; national centre in Jasola'],
+  ['Ummeed','Child development centre','Clinical therapy, caregiver support, professional training','Mumbai','Founded 2001; wide training influence'],
+  ['Com DEALL','Early-intervention trust','Multidisciplinary early intervention to age 6, replicable model','Bengaluru','Model built for affiliate replication'],
+  ['CADRRE','NGO','Free assessment, autism school, family-centred therapy','Thiruvananthapuram','Multiple city facilities; autism school'],
+  ['India Autism Center','Not-for-profit','Residential care, vocational and independent-living, research','Near Kolkata','Lifelong residential ecosystem in development'],
+  ['NIEPID','National institute','Assessment, capacity building, respite, family services','Secunderabad','3 regional centres + model special-ed centre'],
+  ['NIMHANS','Tertiary institute','Specialist neurodevelopment services, training, referral','Bengaluru','Institute of national importance; referral role']
+];
+const nb=document.getElementById('ngoBody');
+if(nb){ngos.forEach((r,i)=>{const tr=document.createElement('tr');
+  tr.style.borderTop='1px solid var(--line)';
+  if(i%2)tr.style.background='#F7FAFB';
+  tr.innerHTML='<td style="padding:11px 16px;font-weight:600;color:var(--dark)">'+r[0]+
+    '</td><td style="padding:11px 16px;color:var(--muted)">'+r[1]+
+    '</td><td style="padding:11px 16px">'+r[2]+
+    '</td><td style="padding:11px 16px;color:var(--muted)">'+r[3]+
+    '</td><td style="padding:11px 16px;color:var(--muted)">'+r[4]+'</td>';
+  nb.appendChild(tr);});}
+
+// Nav scroll-spy
+const links=[...document.querySelectorAll('#navbar a')];
+const pairs=links.map(l=>({link:l,sec:document.querySelector(l.getAttribute('href'))})).filter(p=>p.sec);
+window.addEventListener('scroll',()=>{
+  let active=null;
+  pairs.forEach(p=>{if(p.sec.getBoundingClientRect().top<120)active=p.link;});
+  links.forEach(l=>l.classList.remove('active'));
+  if(active)active.classList.add('active');
+});
+pairs.forEach(p=>p.link.addEventListener('click',e=>{e.preventDefault();
+  p.sec.scrollIntoView({behavior:'smooth'});}));
+
+// Main tab switching
+function showTab(name){
+  document.querySelectorAll('.tabpanel').forEach(p=>p.classList.toggle('active',p.id==='tab-'+name));
+  document.querySelectorAll('.tab').forEach(t=>{
+    const on=t.dataset.tab===name;
+    t.classList.toggle('active',on);
+    t.setAttribute('aria-selected',on?'true':'false');
+  });
+  document.querySelectorAll('#tab-'+name+' canvas').forEach(cv=>{
+    const ch=(window.Chart&&Chart.getChart)?Chart.getChart(cv):null; if(ch)ch.resize();
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+const tabBtns=[...document.querySelectorAll('.tab')];
+tabBtns.forEach((t,i)=>{
+  t.addEventListener('click',()=>showTab(t.dataset.tab));
+  t.addEventListener('keydown',e=>{
+    if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft')return;
+    e.preventDefault();
+    const dir=e.key==='ArrowRight'?1:-1;
+    const next=tabBtns[(i+dir+tabBtns.length)%tabBtns.length];
+    next.focus(); showTab(next.dataset.tab);
+  });
+});
+</script>
+<script>
+(function(){
+  var tt=document.getElementById('themeToggle');
+  if(tt)tt.addEventListener('click',function(){var r=document.documentElement;if(r.getAttribute('data-theme')==='dark'){r.removeAttribute('data-theme');try{localStorage.setItem('hp-theme','light');}catch(e){}}else{r.setAttribute('data-theme','dark');try{localStorage.setItem('hp-theme','dark');}catch(e){}}});
+  var t=document.getElementById('navToggle'),n=document.getElementById('siteNav');
+  if(t&&n)t.addEventListener('click',function(){var o=n.classList.toggle('open');t.setAttribute('aria-expanded',o?'true':'false');});
+})();
+</script>
+</body>
+</html>
