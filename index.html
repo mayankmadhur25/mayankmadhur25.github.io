@@ -25,7 +25,7 @@ layout: default
     <p class="hero-sub">The real story behind India's healthcare numbers, for operators, investors, and policy people who want signal, not press releases. One deep dive every Friday, by Mayank Madhur.</p>
     <div class="hero-actions">
       <a class="hero-cta" href="https://www.linkedin.com/newsletters/7311231782241083393/" target="_blank" rel="noopener">Subscribe free →</a>
-      <a class="hero-ghost" href="{{ site.linkedin_profile }}" target="_blank">LinkedIn ↗</a>
+      <a class="hero-ghost" href="/index-tool/">Explore the trackers &rarr;</a>
     </div>
   </div>
 
@@ -34,16 +34,15 @@ layout: default
       <img src="/profile.png" alt="Mayank Madhur" class="pc-photo">
       <div>
         <div class="pc-name">Mayank Madhur</div>
-        <div class="pc-role">Analyst &amp; Advisor — Healthcare</div>
+        <div class="pc-role">Practice Leader, Healthcare &amp; Life Sciences · HFS Research</div>
       </div>
     </div>
-    <p class="pc-bio">PMP®, SCR® · MBA &amp; PGPM Healthcare. Healthcare domain analyst at HFS Research with 11+ years across payer, provider, and digital health.</p>
+    <p class="pc-bio">Eleven years across payer, provider, PBM and digital health, advising CXOs in the US and India. I started out building medical device software, which is why I test market claims against how care is actually delivered.</p>
     <ul class="pc-list">
-      <li>Practice Leader, Healthcare &amp; Life Sciences — HFS Research</li>
-      <li>UGC NET qualified (97.7 percentile) — eligible for Assistant Professor</li>
-      <li>Advisor to CXOs across US payers, providers &amp; health IT</li>
-      <li>Ex HCL (Medical Devices) &amp; Altimetrik</li>
-      <li>Passionate about making healthcare better</li>
+      <li>{{ site.posts | size }} editions, every Friday since April 2025</li>
+      <li>7 interactive trackers built on NFHS, HDI and NHA data</li>
+      <li>Advises CXOs across US and India payers, providers and health IT</li>
+      <li>Building toward independent director and board advisory work · IICA databank</li>
     </ul>
     <div class="pc-links">
       <a href="{{ site.linkedin_profile }}" target="_blank" aria-label="LinkedIn">
@@ -60,11 +59,35 @@ layout: default
 
 <section class="proof">
   <div class="proof-in">
-    <span><b>68</b> editions</span>
+    <span><b>{{ site.posts | size }}</b> editions</span>
     <span class="proof-dot">·</span>
     <span>every Friday since <b>April 2025</b></span>
     <span class="proof-dot">·</span>
     <span><b>7</b> interactive trackers</span>
+  </div>
+</section>
+
+
+<section class="latest">
+  {% assign p = site.posts.first %}
+  {% assign clean = p.title | remove_first: 'Edition ' | split: ': ' %}
+  <div class="latest-grid">
+    <a class="latest-card" href="{% if p.external_link %}{{ p.external_link }}{% else %}{{ p.url }}{% endif %}">
+      <div class="lc-meta">
+        {% if p.edition %}<span class="lc-ed">ED. {{ p.edition }}</span>{% endif %}
+        <span class="lc-when">LATEST &middot; {{ p.date | date: "%a %-d %b %Y" | upcase }}</span>
+        <span class="lc-cat">{{ p.category | default: "Policy" }}</span>
+      </div>
+      <h2 class="lc-title">{% if clean.size > 1 %}{{ clean | last }}{% else %}{{ p.title }}{% endif %}</h2>
+      <p class="lc-dek">{{ p.excerpt | strip_html | truncate: 165 }}</p>
+      <span class="lc-go">Read this edition &rarr;</span>
+    </a>
+    <a class="latest-tool" href="/tools/health-value-chain/">
+      <span class="lt-tag">NEW TRACKER</span>
+      <span class="lt-title">The Value Chain, Tier by Tier</span>
+      <span class="lt-sub">Where the patient, the money and the record break, tier by tier.</span>
+      <span class="lt-go">Open the tool &rarr;</span>
+    </a>
   </div>
 </section>
 
@@ -473,5 +496,32 @@ html[data-theme="dark"] .cc-row span{color:#DCEAEA}
 html[data-theme="dark"] .proof-in{background:#16252C;border-color:#25373F}
 html[data-theme="dark"] .ht-card{box-shadow:none}
 
+
+/* latest edition band */
+.latest{max-width:1340px;margin:0 auto;padding:0 clamp(18px,4vw,44px) 30px}
+.latest-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:16px;align-items:stretch}
+.latest-card{display:flex;flex-direction:column;background:var(--card,#fff);border:1px solid var(--line,#E2E8EC);
+  border-left:4px solid var(--teal,#0FA3A3);border-radius:16px;padding:22px 24px;text-decoration:none;
+  transition:transform .2s ease,box-shadow .2s ease}
+.latest-card:hover{transform:translateY(-3px);box-shadow:0 16px 40px -20px rgba(15,163,163,.45)}
+.lc-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.lc-ed{font-family:var(--mono,'IBM Plex Mono',monospace);font-size:10.5px;letter-spacing:.1em;color:#fff;
+  background:var(--navy,#1B3A4B);padding:4px 9px;border-radius:5px}
+.lc-when{font-family:var(--mono,'IBM Plex Mono',monospace);font-size:10.5px;letter-spacing:.1em;color:var(--teal,#0FA3A3)}
+.lc-cat{font-size:11px;color:var(--muted,#5A6B72);border:1px solid var(--line,#E2E8EC);padding:3px 9px;border-radius:999px}
+.lc-title{font-size:clamp(20px,2.6vw,25px);font-weight:800;color:var(--navy,#1B3A4B);line-height:1.2;
+  letter-spacing:-.02em;margin:0 0 8px}
+.lc-dek{font-size:14.5px;color:var(--muted,#5A6B72);line-height:1.6;margin:0 0 14px;flex:1}
+.lc-go{font-size:14px;font-weight:700;color:var(--teal,#0FA3A3)}
+.latest-tool{display:flex;flex-direction:column;gap:7px;background:linear-gradient(135deg,#0FA3A3,#E08A3C);
+  border-radius:16px;padding:22px 20px;color:#fff;text-decoration:none;transition:transform .2s ease}
+.latest-tool:hover{transform:translateY(-3px)}
+.lt-tag{font-family:var(--mono,'IBM Plex Mono',monospace);font-size:10.5px;letter-spacing:.1em;opacity:.92}
+.lt-title{font-size:18.5px;font-weight:800;line-height:1.25;letter-spacing:-.01em}
+.lt-sub{font-size:13px;line-height:1.55;opacity:.94;flex:1}
+.lt-go{font-size:13.5px;font-weight:700}
+@media(max-width:820px){.latest-grid{grid-template-columns:1fr}}
+html[data-theme="dark"] .latest-card{background:#16252C;border-color:#25373F;border-left-color:#0FA3A3}
+html[data-theme="dark"] .lc-cat{border-color:#25373F}
 </style>
 
