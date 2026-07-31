@@ -69,11 +69,11 @@ figure{margin:1.9rem 0;background:var(--card);border:1px solid var(--rule2)}figu
 html[data-theme="dark"] .site-header{--nv:#E8F4F4;--mut:#A8BDC4;--ln:#25373F;--ink2:#DCE9EC}
 .site-header{position:relative;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px clamp(20px,4vw,48px);background:#fff;border-bottom:1px solid var(--ln);font-family:'Manrope',system-ui,sans-serif}
 html[data-theme="dark"] .site-header{background:#13212A;border-bottom-color:#25373F}
-.site-header .logo{display:flex;align-items:center;gap:11px;text-decoration:none}
-.site-header .logo-img{width:34px;height:34px;border-radius:8px;object-fit:contain}
+.site-header .logo{display:flex;align-items:center;gap:8px;text-decoration:none}
+.site-header .logo-img{width:32px;height:32px;border-radius:6px;object-fit:contain;flex:none}
 .site-header .logo-text{display:flex;flex-direction:column;line-height:1.15}
-.site-header .logo-name{font-weight:800;font-size:16px;color:var(--nv);letter-spacing:-.01em}
-.site-header .logo-tag{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--mut);margin-top:2px}
+.site-header .logo-name{display:block;font-weight:800;font-size:16px;color:var(--nv);letter-spacing:-.4px;line-height:1.1}
+.site-header .logo-tag{display:block;font-size:11px;color:var(--mut);letter-spacing:normal;text-transform:none}
 .site-header #siteNav{display:flex;align-items:center;gap:20px}
 .site-header #siteNav a{font-size:14px;font-weight:600;color:var(--ink2);text-decoration:none;transition:color .15s}
 .site-header #siteNav a:hover{color:var(--tl)}
@@ -131,6 +131,14 @@ html[data-theme="dark"] body{background:var(--paper);color:var(--text)}
 .fp-row:last-child{border-bottom:0}
 .fp-badge{font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:700;color:#fff;padding:5px 10px;border-radius:6px;white-space:nowrap;margin-top:2px;min-width:74px;text-align:center}
 .fp-row p{margin:0;font-size:14px;line-height:1.55;color:var(--text)}.fp-row p b{color:var(--ink)}
+
+html[data-theme="dark"] .how{background:#16252C;border-color:#2C3F47}
+html[data-theme="dark"] .close{background:#132029;color:#EAF6F6}
+html[data-theme="dark"] .fcard{background:#16252C;border-color:#2C3F47}
+html[data-theme="dark"] .findia-key,html[data-theme="dark"] .fp-key{border-color:#2C3F47}
+html[data-theme="dark"] .tier{background:#16252C}
+html[data-theme="dark"] .vtabs{background:#16252C;border-color:#2C3F47}
+html[data-theme="dark"] .anx{background:rgba(15,163,163,.12)}
 </style></head><body>
 <script>(function(){try{if(localStorage.getItem('hp-theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
 <header class="site-header">
@@ -208,7 +216,7 @@ html[data-theme="dark"] body{background:var(--paper);color:var(--text)}
 <h2>Every tier is exposed on medicines. One fix comes closer than any other.</h2>
 <p>Medicines are <b>60.3%</b> of outpatient out-of-pocket spending. That holds for the affluent household paying cash for a monthly refill and for the scheme-covered household whose health centre has run out. It does not depend on income, employer or state.</p>
 <p style="margin-top:.9rem">India already built the fix. Jan Aushadhi sells at <b>50 to 80% below</b> branded equivalents and sits in <b>776 of 784 districts</b>. It captures about <b>one percent</b> of a roughly &#8377;1.5 lakh crore medicine market.</p>
-<p style="margin-top:.9rem">The shops are there. The prescriptions are not. Put the molecule name on every prescription, on a digital rail, with the price difference shown at the point of writing. No new pool, no actuary, no premium. It needs less new money than anything else on the table, though it still needs stock on the shelf, pharmacists allowed to swap, and states willing to enforce it. <b>It is the only line on this page that helps India A and India C on the same day.</b></p>
+<p style="margin-top:.9rem">The shops are there. The prescriptions are not. Put the molecule name on every prescription, on a digital rail, with the price difference shown at the point of writing. No new pool, no actuary, no premium. It needs less new money than anything else on the table, though it still needs stock on the shelf, pharmacists allowed to swap, and states willing to enforce it. <b>Nothing else on this page reaches an affluent household and a scheme-covered one on the same day.</b></p>
 </div>
 
 <div class="srcs">

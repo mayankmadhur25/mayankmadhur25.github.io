@@ -109,11 +109,11 @@ footer .mono{font-family:var(--m);font-size:.74rem}
 html[data-theme="dark"] .site-header{--nv:#E8F4F4;--mut:#A8BDC4;--ln:#25373F;--ink2:#DCE9EC}
 .site-header{position:relative;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px clamp(20px,4vw,48px);background:#fff;border-bottom:1px solid var(--ln);font-family:'Manrope',system-ui,sans-serif}
 html[data-theme="dark"] .site-header{background:#13212A;border-bottom-color:#25373F}
-.site-header .logo{display:flex;align-items:center;gap:11px;text-decoration:none}
-.site-header .logo-img{width:34px;height:34px;border-radius:8px;object-fit:contain}
+.site-header .logo{display:flex;align-items:center;gap:8px;text-decoration:none}
+.site-header .logo-img{width:32px;height:32px;border-radius:6px;object-fit:contain;flex:none}
 .site-header .logo-text{display:flex;flex-direction:column;line-height:1.15}
-.site-header .logo-name{font-weight:800;font-size:16px;color:var(--nv);letter-spacing:-.01em}
-.site-header .logo-tag{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--mut);margin-top:2px}
+.site-header .logo-name{display:block;font-weight:800;font-size:16px;color:var(--nv);letter-spacing:-.4px;line-height:1.1}
+.site-header .logo-tag{display:block;font-size:11px;color:var(--mut);letter-spacing:normal;text-transform:none}
 .site-header #siteNav{display:flex;align-items:center;gap:20px}
 .site-header #siteNav a{font-size:14px;font-weight:600;color:var(--ink2);text-decoration:none;transition:color .15s}
 .site-header #siteNav a:hover{color:var(--tl)}
@@ -138,6 +138,10 @@ html[data-theme="dark"] .site-header .t-moon{display:none}
 html[data-theme="dark"]{--paper:#0F1B22;--card:#16252C;--ink:#EAF6F6;--text:#EAF6F6;--t2:#AFC2C8;--t3:#8CA0A6;--rule:#22333B;--rule2:#2C3F47}
 html[data-theme="dark"] body{background:var(--paper);color:var(--text)}
 
+
+html[data-theme="dark"] .flag{background:rgba(224,138,60,.14);border-color:#4A3A28}
+html[data-theme="dark"] .go{background:#0FA3A3;color:#fff}
+html[data-theme="dark"] .card,html[data-theme="dark"] .qbox{background:#16252C;border-color:#2C3F47}
 </style>
 </head>
 <body>

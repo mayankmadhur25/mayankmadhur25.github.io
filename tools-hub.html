@@ -45,7 +45,7 @@ description: "Seven free interactive trackers on Indian healthcare data: C-secti
   <a class="tool-card tc-valuechain" data-cat="financing digital" href="/tools/health-value-chain/">
     <div class="tool-card-top"><span class="tool-badge">Interactive</span><span class="tool-meta">4 tiers &middot; tabbed</span></div>
     <h2>The Value Chain, Tier by Tier</h2>
-    <p>The four Indias as a pyramid, then a tab per tier showing where the patient, the money and the record each break across six steps, and the one fix that reaches all four.</p>
+    <p>The four Indias as a pyramid, then a tab per tier showing where the patient, the money and the record each break across six steps, and the one bill all four share.</p>
     <span class="tool-go">Open the tool &rarr;</span>
   </a>
 
@@ -146,6 +146,10 @@ description: "Seven free interactive trackers on Indian healthcare data: C-secti
 .tool-chips button[aria-pressed="true"]{background:linear-gradient(135deg,#0FA3A3,#2E7CB8);color:#fff;border-color:transparent}
 .tool-search{margin-left:auto}
 .tool-search input{font-family:inherit;font-size:14px;padding:9px 15px;border:1px solid var(--line,#E2E8EC);border-radius:999px;min-width:210px;background:var(--card,#fff);color:var(--ink,#1B3A4B)}
+html[data-theme="dark"] .tool-search input{background:#16252C;border-color:#25373F;color:#DCEAEA}
+html[data-theme="dark"] .tool-search input::placeholder{color:#7E939B}
+html[data-theme="dark"] .tool-chips button{border-color:#25373F}
+html[data-theme="dark"] .tool-chips button:hover{color:#E8F4F4}
 .tool-count{font-family:var(--mono);font-size:12px;color:var(--muted);width:100%;padding-top:4px}
 .tool-card.hide{display:none!important}
 @media(max-width:640px){.tool-search{margin-left:0;width:100%}.tool-search input{width:100%}}
