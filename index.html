@@ -57,6 +57,17 @@ layout: default
   </aside>
 </section>
 
+
+<section class="proof">
+  <div class="proof-in">
+    <span><b>68</b> editions</span>
+    <span class="proof-dot">·</span>
+    <span>every Friday since <b>April 2025</b></span>
+    <span class="proof-dot">·</span>
+    <span><b>7</b> interactive trackers</span>
+  </div>
+</section>
+
 <section class="picks">
   <div class="picks-head">
     <p class="eyebrow">EDITOR'S PICKS</p>
@@ -83,6 +94,35 @@ layout: default
     </a>
   </div>
 </section>
+
+<section class="home-tools">
+  <div class="ht-head">
+    <h2 class="ht-title">Interactive trackers</h2>
+    <a class="ht-all" href="/index-tool/">All 7 tools &rarr;</a>
+  </div>
+  <p class="ht-sub">Live data you can poke at, state by state. Built from NFHS-6, MoHFW and National Health Accounts.</p>
+  <div class="ht-grid">
+    <a class="ht-card ht-1" href="/tools/csection/">
+      <span class="ht-tag">33 states &middot; NFHS-6</span>
+      <h3>C-Section Tracker</h3>
+      <p>Every state ranked by caesarean rate, with the private-versus-public split.</p>
+      <span class="ht-go">Open &rarr;</span>
+    </a>
+    <a class="ht-card ht-2" href="/tools/rural-pyramid/">
+      <span class="ht-tag">35 states &middot; MoHFW</span>
+      <h3>Rural Health Capacity</h3>
+      <p>Specialist vacancy, doctor and nursing gaps across India's rural health pyramid.</p>
+      <span class="ht-go">Open &rarr;</span>
+    </a>
+    <a class="ht-card ht-3" href="/tools/fertility/">
+      <span class="ht-tag">31 states &middot; NFHS-6</span>
+      <h3>Fertility Transition</h3>
+      <p>India below replacement, and the four-times spread hiding inside the average.</p>
+      <span class="ht-go">Open &rarr;</span>
+    </a>
+  </div>
+</section>
+
 
 <section class="filter-bar">
   <div class="filter-inner">
@@ -322,4 +362,35 @@ layout: default
 
 })();
 </script>
+
+<style>
+/* proof strip */
+.proof{max-width:1200px;margin:0 auto;padding:0 clamp(18px,4vw,44px)}
+.proof-in{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;
+  font-family:var(--mono,'IBM Plex Mono',monospace);font-size:12.5px;letter-spacing:.04em;
+  color:var(--muted,#5A6B72);background:var(--card,#fff);border:1px solid var(--line,#E2E8EC);
+  border-radius:999px;padding:11px 22px;margin:6px 0 34px}
+.proof-in b{color:var(--teal,#0FA3A3);font-weight:700}
+.proof-dot{opacity:.45}
+@media(max-width:520px){.proof-in{font-size:11px;gap:6px;padding:10px 14px}}
+
+/* homepage tools module */
+.home-tools{max-width:1200px;margin:0 auto;padding:8px clamp(18px,4vw,44px) 46px}
+.ht-head{display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.ht-title{font-size:clamp(21px,3vw,27px);font-weight:800;letter-spacing:-.015em;color:var(--navy,#1B3A4B);margin:0}
+.ht-all{font-size:13.5px;font-weight:700;color:var(--teal,#0FA3A3);text-decoration:none}
+.ht-sub{font-size:14.5px;color:var(--muted,#5A6B72);margin:6px 0 20px;max-width:64ch}
+.ht-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.ht-card{display:flex;flex-direction:column;gap:8px;border-radius:16px;padding:22px 20px;
+  text-decoration:none;color:#fff;min-height:172px;transition:transform .2s ease,box-shadow .2s ease}
+.ht-card:hover{transform:translateY(-3px);box-shadow:0 16px 38px -18px rgba(15,163,163,.5)}
+.ht-1{background:linear-gradient(135deg,#1B3A4B,#2E7CB8)}
+.ht-2{background:linear-gradient(135deg,#0FA3A3,#37B68A)}
+.ht-3{background:linear-gradient(135deg,#E08A3C,#C2563F)}
+.ht-tag{font-family:var(--mono,'IBM Plex Mono',monospace);font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;opacity:.92}
+.ht-card h3{font-size:20px;font-weight:800;letter-spacing:-.01em;margin:2px 0 0;line-height:1.2}
+.ht-card p{font-size:13.5px;line-height:1.5;opacity:.94;margin:0;flex:1}
+.ht-go{font-size:13px;font-weight:700}
+</style>
 
