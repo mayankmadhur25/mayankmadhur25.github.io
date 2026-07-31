@@ -371,6 +371,23 @@ layout: default
     });
   });
 
+  // sort coverage bars largest to smallest (keeps itself right as counts change)
+  (function(){
+    var bars = document.getElementById('statsBars');
+    if(!bars) return;
+    var rows = Array.prototype.slice.call(bars.querySelectorAll('.stat-row'));
+    if(rows.length < 2) return;
+    function val(row){
+      var f = row.querySelector('.stat-fill');
+      var pct = f ? parseFloat(f.getAttribute('data-pct')) || 0 : 0;
+      var cEl = row.querySelector('.stat-count');
+      var cnt = cEl ? parseFloat((cEl.textContent||'').replace(/[^0-9.]/g,'')) || 0 : 0;
+      return pct * 1000 + cnt;   // pct first, edition count breaks ties
+    }
+    rows.sort(function(a,b){ return val(b) - val(a); })
+        .forEach(function(r){ bars.appendChild(r); });
+  })();
+
   // animate coverage bars when scrolled into view
   var statsBars = document.getElementById('statsBars');
   if(statsBars && 'IntersectionObserver' in window){
@@ -425,7 +442,9 @@ layout: default
 .ht-go{font-size:13px;font-weight:700}
 
 /* contact card */
-#contact .contact-inner{max-width:900px}
+/* consistent width rhythm: cards 1340 / data 980 / CTA 660 */
+#coverage .stats-inner{max-width:980px}
+#contact .contact-inner{max-width:980px}
 .contact-split{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:stretch;margin-top:22px;text-align:left}
 .contact-split .cform{display:flex;flex-direction:column;height:100%}
 .contact-split .cform textarea{flex:1;min-height:150px}
