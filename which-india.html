@@ -1,0 +1,394 @@
+---
+layout: null
+permalink: /tools/which-india/
+sitemap: false
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Which of the Four Indias Are You In? &middot; Healthcare Pulse</title>
+<meta name="description" content="India's health system is four systems under one name. Six questions to find which one you are inside, what it covers, and what it leaves you paying for. Companion to Healthcare Pulse Edition 68.">
+<link rel="canonical" href="https://mayankmadhur.in/tools/which-india/">
+<meta name="author" content="Mayank Madhur">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Which of the Four Indias Are You In?","applicationCategory":"HealthApplication","operatingSystem":"Web","url":"https://mayankmadhur.in/tools/which-india/","description":"India's health system is four systems under one name. Six questions to find which one you are inside, what it covers, and what it leaves you paying for. Companion to Healthcare Pulse Edition 68.","author":{"@type":"Person","name":"Mayank Madhur"},"isPartOf":{"@type":"WebSite","name":"Healthcare Pulse","url":"https://mayankmadhur.in/"}}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="/logo.png">
+<style>
+:root{
+  --paper:#F5F9F9; --card:#FFFFFF; --rule:#E2E8EC; --rule2:#CBD5DA;
+  --ink:#1B3A4B; --text:#22333B; --t2:#5A6B72; --t3:#8A9BA0;
+  --A:#1B3A4B; --B1:#0FA3A3; --B2:#E08A3C; --C:#37B68A;
+  --mon:#B8892B; --brk:#C2563F; --syn:#0FA3A3;
+  --d:'Manrope',system-ui,sans-serif;
+  --v:'Manrope',system-ui,sans-serif;
+  --b:'Manrope',system-ui,sans-serif;
+  --m:'IBM Plex Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--text);font-family:var(--b);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--d);font-weight:600;line-height:1.12;margin:0;letter-spacing:-.02em}
+p{margin:0 0 1rem} p:last-child{margin-bottom:0}
+.wrap{max-width:820px;margin:0 auto;padding:0 clamp(1.15rem,4vw,2.5rem)}
+.eyebrow{font-family:var(--m);font-size:.72rem;letter-spacing:.17em;text-transform:uppercase;color:var(--t3);margin:0 0 1.1rem}
+
+header:not(.site-header){padding:clamp(2.5rem,7vw,4.5rem) 0 2rem;border-bottom:1px solid var(--rule2)}
+h1{font-size:clamp(2rem,5.5vw,3.4rem);max-width:20ch}
+.sub{font-size:1.1rem;color:var(--t2);max-width:50ch;margin-top:1.3rem}
+
+.tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule2);border:1px solid var(--rule2);margin-top:2rem}
+.tp{background:var(--card);padding:.8rem .9rem;border-top:4px solid}
+.tp:nth-child(1){border-top-color:var(--A)} .tp:nth-child(2){border-top-color:var(--B1)}
+.tp:nth-child(3){border-top-color:var(--B2)} .tp:nth-child(4){border-top-color:var(--C)}
+.tp b{font-family:var(--d);font-size:1rem;display:block}
+.tp span{font-family:var(--m);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--t3)}
+
+main{padding:2.5rem 0 1rem}
+.q{background:var(--card);border:1px solid var(--rule2);padding:1.5rem;margin-bottom:1rem}
+.q .qn{font-family:var(--m);font-size:.68rem;letter-spacing:.14em;color:var(--t3);margin-bottom:.5rem}
+.q h3{font-size:1.14rem;margin-bottom:1rem;max-width:38ch}
+.opts{display:flex;flex-wrap:wrap;gap:.5rem}
+.opt{font-family:var(--b);font-size:.95rem;background:transparent;border:1px solid var(--rule2);color:var(--t2);padding:.6rem .9rem;border-radius:3px;cursor:pointer;transition:.14s;text-align:left}
+.opt:hover{border-color:var(--t3);color:var(--text)}
+.opt[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#F5F9F9}
+.opt:focus-visible{outline:2px solid var(--A);outline-offset:2px}
+
+.actions{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;margin:1.5rem 0}
+.go{font-family:var(--d);font-size:1.05rem;font-weight:600;background:var(--ink);color:#F5F9F9;border:none;padding:.85rem 1.5rem;border-radius:3px;cursor:pointer;transition:.15s}
+.go:disabled{background:var(--rule2);color:var(--t3);cursor:not-allowed}
+.reset{font-family:var(--m);font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;background:transparent;border:1px solid var(--rule2);color:var(--t2);padding:.6rem .9rem;border-radius:3px;cursor:pointer}
+.count{font-family:var(--m);font-size:.74rem;color:var(--t3)}
+
+#out{display:none;margin-top:1rem}
+#out.on{display:block}
+.res{background:var(--card);border:1px solid var(--rule2);border-left-width:6px;border-left-style:solid;padding:1.9rem}
+.res .lbl{font-family:var(--m);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);margin-bottom:.45rem}
+.res h2{font-size:clamp(1.7rem,4vw,2.4rem);margin-bottom:.75rem}
+.res .quote{font-family:var(--v);font-style:italic;font-size:clamp(1.2rem,2.4vw,1.55rem);line-height:1.3;max-width:36ch;color:var(--text)}
+.bar{display:flex;height:10px;margin-top:1.6rem;border:1px solid var(--rule2);overflow:hidden}
+.bar div{flex:1;background:var(--rule);transition:.3s}
+.bar div.hit{background:currentColor}
+.barlab{display:flex;margin-top:.4rem}
+.barlab span{flex:1;font-family:var(--m);font-size:.62rem;letter-spacing:.07em;color:var(--t3);text-align:center}
+.barlab span.hit{color:var(--text)}
+
+.flag{background:#FDF3E7;border:1px solid #F0DFC0;border-left:5px solid var(--mon);padding:1.1rem 1.3rem;margin-top:1rem}
+.flag b{display:block;font-family:var(--d);font-size:1rem;margin-bottom:.3rem}
+.flag span{font-size:.95rem;color:#5C4406}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule2);border:1px solid var(--rule2);border-top:none}
+.grid > div{background:var(--card);padding:1.45rem}
+.grid h3{font-size:1.02rem;margin-bottom:.75rem}
+.grid ul{margin:0;padding-left:1.05rem}
+.grid li{font-size:.94rem;color:var(--t2);margin-bottom:.5rem}
+.grid .no h3{color:var(--brk)} .grid .yes h3{color:var(--syn)}
+.doit{background:var(--card);border:1px solid var(--rule2);border-top:none;border-left:6px solid var(--syn);padding:1.5rem}
+.doit h3{font-size:1.08rem;margin-bottom:.9rem}
+.doit ol{margin:0;padding-left:1.3rem}
+.doit li{font-size:.97rem;color:var(--t2);margin-bottom:.65rem}
+.doit li b{color:var(--text);font-weight:500}
+.ctx{background:var(--card);border:1px solid var(--rule2);border-top:none;padding:1.3rem 1.5rem;font-size:.94rem;color:var(--t2)}
+.ctx b{font-family:var(--m);font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;color:var(--t3);display:block;margin-bottom:.35rem}
+
+footer{padding:2.5rem 0 3.5rem;margin-top:2.5rem;border-top:1px solid var(--rule2);font-size:.9rem;color:var(--t3)}
+footer p{max-width:62ch}
+footer .mono{font-family:var(--m);font-size:.74rem}
+
+@media(max-width:720px){
+  .tiers{grid-template-columns:1fr 1fr}
+  .grid{grid-template-columns:1fr}
+  .opt{width:100%}
+}
+
+/* ===== site header (exact site chrome) ===== */
+.site-header{--nv:#1B3A4B;--tl:#0FA3A3;--mut:#5A6B72;--ln:#E2E8EC;--ink2:#22333B}
+html[data-theme="dark"] .site-header{--nv:#E8F4F4;--mut:#A8BDC4;--ln:#25373F;--ink2:#DCE9EC}
+.site-header{position:relative;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px clamp(20px,4vw,48px);background:#fff;border-bottom:1px solid var(--ln);font-family:'Manrope',system-ui,sans-serif}
+html[data-theme="dark"] .site-header{background:#13212A;border-bottom-color:#25373F}
+.site-header .logo{display:flex;align-items:center;gap:11px;text-decoration:none}
+.site-header .logo-img{width:34px;height:34px;border-radius:8px;object-fit:contain}
+.site-header .logo-text{display:flex;flex-direction:column;line-height:1.15}
+.site-header .logo-name{font-weight:800;font-size:16px;color:var(--nv);letter-spacing:-.01em}
+.site-header .logo-tag{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--mut);margin-top:2px}
+.site-header #siteNav{display:flex;align-items:center;gap:20px}
+.site-header #siteNav a{font-size:14px;font-weight:600;color:var(--ink2);text-decoration:none;transition:color .15s}
+.site-header #siteNav a:hover{color:var(--tl)}
+.site-header .nav-subscribe{background:linear-gradient(90deg,#0FA3A3,#2E7CB8);color:#fff!important;padding:9px 17px;border-radius:8px;font-size:13.5px}
+.site-header .nav-subscribe:hover{filter:brightness(1.06)}
+.site-header .theme-toggle{background:none;border:1px solid var(--ln);border-radius:8px;width:38px;height:38px;cursor:pointer;color:var(--nv);display:inline-flex;align-items:center;justify-content:center}
+.site-header .t-sun{display:none}
+html[data-theme="dark"] .site-header .t-sun{display:block}
+html[data-theme="dark"] .site-header .t-moon{display:none}
+.site-header .nav-toggle{display:none;background:none;border:none;color:var(--nv);cursor:pointer;padding:4px}
+@media(max-width:820px){
+  .site-header{flex-wrap:wrap}
+  .site-header .nav-toggle{display:inline-flex}
+  .site-header #siteNav{display:none;flex-direction:column;align-items:flex-start;gap:2px;width:100%;margin-top:14px;padding-top:12px;border-top:1px solid var(--ln)}
+  .site-header #siteNav.open{display:flex}
+  .site-header #siteNav a{padding:10px 2px;width:100%}
+  .site-header .nav-subscribe{margin-top:6px}
+}
+.tool-backlink{max-width:920px;margin:0 auto;padding:16px clamp(1.15rem,4vw,2rem) 0}
+.tool-backlink a{display:inline-flex;align-items:center;gap:7px;font-family:'Manrope',system-ui,sans-serif;font-size:13.5px;font-weight:700;color:#0FA3A3;text-decoration:none;padding:7px 14px;border:1px solid rgba(15,163,163,.35);border-radius:999px;background:rgba(15,163,163,.06)}
+
+html[data-theme="dark"]{--paper:#0F1B22;--card:#16252C;--ink:#EAF6F6;--text:#EAF6F6;--t2:#AFC2C8;--t3:#8CA0A6;--rule:#22333B;--rule2:#2C3F47}
+html[data-theme="dark"] body{background:var(--paper);color:var(--text)}
+
+</style>
+</head>
+<body>
+<script>(function(){try{if(localStorage.getItem('hp-theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+<header class="site-header">
+  <a class="logo" href="/"><img src="/logo.png" alt="Healthcare Pulse" class="logo-img"><span class="logo-text"><span class="logo-name">Healthcare Pulse</span><span class="logo-tag">Digital health, decoded &middot; by Mayank Madhur</span></span></a>
+  <button id="navToggle" class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  <nav id="siteNav">
+    <a href="/perspectives/">Perspectives</a><a href="/about.html">About</a><a href="/podcast.html">Podcast</a><a href="/archive/">Archive</a><a href="/ask/">Ask</a><a href="/research/">Research</a><a href="/index-tool/">Tool</a>
+    <a class="nav-subscribe" href="https://www.linkedin.com/newsletters/7311231782241083393/" target="_blank" rel="noopener">Subscribe</a>
+    <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle dark mode"><svg class="t-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="t-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+  </nav>
+</header>
+<div class="tool-backlink"><a href="/edition-68-one-fix-four-indias.html">&larr; Read Edition 68: One fix for four Indias</a></div>
+
+<header>
+  <div class="wrap">
+    <p class="eyebrow">Healthcare Pulse · interactive</p>
+    <h1>Which of the four Indias are you in?</h1>
+    <p class="sub">India's health system is four systems wearing one name. Six questions will tell you which one you are actually inside, what it covers, and what it leaves you holding.</p>
+    <div class="tiers">
+      <div class="tp"><b>India A</b><span>Affluent</span></div>
+      <div class="tp"><b>India B1</b><span>Formally covered</span></div>
+      <div class="tp"><b>India B2</b><span>Missing middle</span></div>
+      <div class="tp"><b>India C</b><span>Scheme covered</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div id="qs"></div>
+    <div class="actions">
+      <button class="go" id="go" disabled>Show my tier</button>
+      <button class="reset" id="reset">Start again</button>
+      <span class="count" id="count">0 of 6 answered</span>
+    </div>
+    <div id="out"></div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="mono">Nothing you enter leaves your browser. There is no server behind this page.</p>
+    <p style="margin-top:.8rem">The four-tier frame is an analytical heuristic, not an official government classification, and the tool reads your answers rather than your income tax return. Treat the result as a description of your exposure, not a verdict. Coverage figures cited are from NFHS-6 (2023-24) and National Health Accounts 2022-23. This is not financial or medical advice.</p>
+  </div>
+</footer>
+
+<script>
+var Q=[
+ {k:"cover",t:"What health cover does your household actually have?",o:[
+   ["none","None that I know of"],
+   ["scheme","PM-JAY (Ayushman) or a state scheme"],
+   ["employer","Employer group cover, ESIC or CGHS"],
+   ["private","A policy I bought myself"]]},
+ {k:"work",t:"How does the main earner work?",o:[
+   ["formal","Salaried, with a payslip"],
+   ["govt","Government or public sector"],
+   ["self","Self-employed, shop or business"],
+   ["informal","Daily wage, farm or contract work"]]},
+ {k:"income",t:"Roughly, what does the household bring in each month?",o:[
+   ["low","Under ₹25,000"],
+   ["mid","₹25,000 to ₹75,000"],
+   ["high","₹75,000 to ₹2 lakh"],
+   ["vhigh","Over ₹2 lakh"]]},
+ {k:"first",t:"When someone falls ill, where do you go first?",o:[
+   ["private","Private hospital or a health app"],
+   ["clinic","Company clinic, ESIC or CGHS centre"],
+   ["chemist","Local chemist or a small private clinic"],
+   ["govt","Government health centre, or the ASHA"]]},
+ {k:"place",t:"Where do you live?",o:[
+   ["metro","A metro"],
+   ["city","A smaller city"],
+   ["town","A town"],
+   ["village","A village"]]},
+ {k:"bill",t:"If a ₹50,000 hospital bill arrived tomorrow, how would it get paid?",o:[
+   ["cashless","Cashless, the insurer handles it"],
+   ["savings","Out of savings"],
+   ["borrow","We would borrow"],
+   ["sell","We would sell or pawn something"],
+   ["unsure","I honestly don't know"]]}
+];
+
+var W={
+ cover:{none:{B2:4,C:1},scheme:{C:4},employer:{B1:4,A:1},private:{A:3,B2:1}},
+ work:{formal:{B1:2,A:1},govt:{B1:2},self:{B2:2,A:1},informal:{C:2,B2:1}},
+ income:{low:{C:3,B2:1},mid:{B2:2,C:1},high:{B1:1,A:1},vhigh:{A:3}},
+ first:{private:{A:2,B1:1},clinic:{B1:3},chemist:{B2:2},govt:{C:3}},
+ place:{metro:{A:1,B1:1},city:{B1:1,B2:1},town:{B2:1},village:{C:2}},
+ bill:{cashless:{A:2,B1:1},savings:{A:1,B2:1},borrow:{B2:2,C:1},sell:{C:2,B2:1},unsure:{C:1,B2:1}}
+};
+
+var R={
+A:{name:"India A",colour:"var(--A)",idx:0,
+ quote:"Access is not your problem. Coordination and price are.",
+ no:["Records that follow you when you switch hospital groups. Every switch means starting the workup over.",
+     "Published prices. You are quoted after the decision, not before it.",
+     "Outpatient consults and medicines in most retail policies, so routine care is still cash.",
+     "Anyone owning your follow-up once you are discharged."],
+ yes:["Fast access to specialists and diagnostics.",
+      "Cashless settlement for admissions.",
+      "Choice of provider, which is real leverage if you use it."],
+ do:[["Ask for the molecule name, not the brand, on every prescription. On the outpatient rupee this is the single biggest saving available to you and it costs nothing."],
+     ["Get your records into your own ABHA-linked account rather than leaving them with each hospital."],
+     ["Before an elective procedure, ask for the package price in writing, including what is excluded. Non-medical and excluded items are where the surprise sits."],
+     ["Check whether your policy has an outpatient or day-care rider. Most retail cover does not."]],
+ ctx:"You are in the roughly 60% of households NFHS-6 counts as covered. Coverage in that survey rose from 41% to 60.2% in four years, while the share of national health spending paid out of pocket rose from 39.4% to 43.4%. Coverage and protection are not the same thing."},
+
+B1:{name:"India B1",colour:"var(--B1)",idx:1,
+ quote:"You are covered for the hospital and exposed everywhere else.",
+ no:["Outpatient consults and medicines, which most group cover excludes and which is where most spending happens.",
+     "Continuity. Employers change insurer often, so nobody owns you as a long-term patient.",
+     "Your history when you change jobs. It sits with the old administrator.",
+     "Chronic disease management, which needs a named doctor rather than an annual reimbursement."],
+ yes:["Pooled cover you did not have to underwrite yourself.",
+      "Cashless admission inside the network.",
+      "Some preventive check-up entitlement, usually underused."],
+ do:[["Ask for the molecule name on every prescription. Group cover almost never pays for your medicines, so this is your own money."],
+     ["Download and keep your claims and medical history yourself, before you change jobs. It will not travel for you."],
+     ["Use the preventive health check-up benefit if your policy has one. Most members never claim it."],
+     ["If you or a family member has a chronic condition, price a personal top-up with outpatient cover. Do it while you are healthy, not after."]],
+ ctx:"ESIC alone reports beneficiaries in the region of 13 crore, against roughly 42 lakh under CGHS. Both are built around admission. NFHS-6 puts household coverage at 60.2%, up from 41%, while the out-of-pocket share of national health spending rose to 43.4%."},
+
+B2:{name:"India B2",colour:"var(--B2)",idx:2,
+ quote:"Too well off for the scheme, too stretched for the premium. This is the exposed tier.",
+ no:["Any pool at all, in most cases. Every rupee is cash, savings or a loan.",
+     "Prevention and early visits, because both cost money up front and get postponed.",
+     "Diagnostics, which get rationed by what is in the wallet that week.",
+     "Medicines, which are the largest part of what you spend and are almost never covered."],
+ yes:["Choice, in theory.",
+      "Access to private clinics that are open when you need them.",
+      "Nothing else, financially. That is the point of this tier."],
+ do:[["Ask for the molecule name on every prescription and buy at a Jan Aushadhi Kendra where you can. Prices there run 50 to 80% below branded equivalents and there are outlets in 776 of India's 784 districts. This is the fastest money you will save."],
+     ["Check whether you are actually PM-JAY eligible. Many households assume they are not. Eligibility is worth checking rather than guessing."],
+     ["Buy the cheapest real hospital cover you can hold continuously, even a small sum insured. Continuity matters more than the amount, because waiting periods reset when you lapse."],
+     ["If you have a chronic condition, price an outpatient subscription clinic. Paying monthly beats postponing a visit until it becomes an admission."]],
+ ctx:"NITI Aayog estimated around 40 crore people in this missing middle. NFHS-6 finds 60.2% of households covered, which leaves roughly 40% with nothing, and the out-of-pocket share of national health spending rose to 43.4% in 2022-23 even as coverage expanded."},
+
+C:{name:"India C",colour:"var(--C)",idx:3,
+ quote:"Free once you are admitted. Paying at every step on the way there.",
+ no:["Outpatient care and medicines, which the scheme does not cover and which is most of what a household spends.",
+     "Travel, food and lost wages around a hospital stay, which run to about a quarter of the inpatient cost.",
+     "Tests taken before admission, often paid in cash at a private lab.",
+     "Follow-up after discharge. No one is funded to receive you."],
+ yes:["Cashless hospital treatment at empanelled hospitals, which is real and worth using.",
+      "Free consultation, and free medicines and diagnostics where the health centre has stock.",
+      "ASHA and health centre outreach, including screening."],
+ do:[["Use the health centre first, not the chemist. Consultation, listed medicines and listed tests are meant to be free there, and going there first is what triggers the referral you are entitled to."],
+     ["Carry your scheme card and ABHA details to every visit, including outpatient visits. If it is not recorded, it did not happen as far as the system is concerned."],
+     ["Ask for the molecule name and use a Jan Aushadhi Kendra when the centre is out of stock. Prices are 50 to 80% lower than branded."],
+     ["Ask for the discharge summary in writing and take it back to your health centre. Nothing sends it there for you, and follow-up is where chronic treatment succeeds or fails."]],
+ ctx:"Rural household coverage in NFHS-6 is 62.0%, now higher than urban at 56.4%, up from a national 41% in NFHS-5. That expansion is real. National out-of-pocket spending still rose to 43.4% of health spending, because the cover is for admission and the spending is not."}
+};
+
+var A={}, qs=document.getElementById("qs");
+
+Q.forEach(function(q,i){
+  var d=document.createElement("div"); d.className="q";
+  var h='<p class="qn">QUESTION '+(i+1)+' OF 6</p><h3>'+q.t+'</h3><div class="opts">';
+  q.o.forEach(function(o){ h+='<button class="opt" data-k="'+q.k+'" data-v="'+o[0]+'" aria-pressed="false">'+o[1]+'</button>'; });
+  d.innerHTML=h+'</div>'; qs.appendChild(d);
+});
+
+qs.addEventListener("click",function(e){
+  var b=e.target.closest(".opt"); if(!b) return;
+  var k=b.getAttribute("data-k");
+  b.parentNode.querySelectorAll(".opt").forEach(function(x){ x.setAttribute("aria-pressed","false"); });
+  b.setAttribute("aria-pressed","true");
+  A[k]=b.getAttribute("data-v");
+  var n=Object.keys(A).length;
+  document.getElementById("count").textContent=n+" of 6 answered";
+  document.getElementById("go").disabled = n<6;
+});
+
+document.getElementById("reset").addEventListener("click",function(){
+  A={}; qs.querySelectorAll(".opt").forEach(function(x){ x.setAttribute("aria-pressed","false"); });
+  document.getElementById("count").textContent="0 of 6 answered";
+  document.getElementById("go").disabled=true;
+  var o=document.getElementById("out"); o.className=""; o.innerHTML="";
+  window.scrollTo({top:0,behavior:"smooth"});
+});
+
+function flags(){
+  var f=[];
+  if(A.cover==="none" && A.income==="low" && (A.place==="village"||A.place==="town")){
+    f.push(["You may be eligible and not enrolled","Your answers look like a household PM-JAY or a state scheme is meant to cover. Enrolment is not automatic for everyone. Checking eligibility is worth an afternoon."]);
+  }
+  if(A.cover==="scheme" && (A.income==="high"||A.income==="vhigh")){
+    f.push(["You sit on a boundary","You hold scheme cover but your income looks above the tier it was designed for. Your hospital exposure is low and your outpatient exposure is the same as anyone else's."]);
+  }
+  if(A.cover==="private" && (A.income==="low"||A.income==="mid")){
+    f.push(["A policy is not the same as protection","You have bought cover on a modest income, which is prudent. Check the sum insured, the room rent cap and the outpatient exclusions, because a basic indemnity policy leaves most of your real spending uncovered."]);
+  }
+  if(A.cover==="employer" && A.work==="informal"){
+    f.push(["Worth confirming what you actually hold","Employer cover with informal work usually means a contractor-arranged group policy. These often lapse when the contract does. Ask to see the policy document and the renewal date."]);
+  }
+  if(A.bill==="sell" || A.bill==="unsure"){
+    f.push(["This is the answer that matters most","How a bill gets paid tells you more about your exposure than which tier you land in. Selling an asset or not knowing both indicate that a single admission could set the household back years."]);
+  }
+  return f;
+}
+
+document.getElementById("go").addEventListener("click",function(){
+  var s={A:0,B1:0,B2:0,C:0};
+  Object.keys(A).forEach(function(k){
+    var w=W[k][A[k]]||{};
+    Object.keys(w).forEach(function(t){ s[t]+=w[t]; });
+  });
+  var best="B2", bv=-1;
+  ["C","B2","B1","A"].forEach(function(t){ if(s[t]>bv){ bv=s[t]; best=t; } });
+  var sorted=Object.keys(s).sort(function(a,b){ return s[b]-s[a]; });
+  var close = (s[sorted[0]]-s[sorted[1]])<=1;
+
+  var r=R[best], order=["A","B1","B2","C"], names=["India A","India B1","India B2","India C"];
+  var h='<div class="res" style="border-left-color:'+r.colour+';color:'+r.colour+'">';
+  h+='<p class="lbl">Your tier</p><h2 style="color:var(--text)">'+r.name+'</h2>';
+  h+='<p class="quote">'+r.quote+'</p><div class="bar">';
+  order.forEach(function(t){ h+='<div class="'+(t===best?"hit":"")+'"></div>'; });
+  h+='</div><div class="barlab">';
+  order.forEach(function(t,i){ h+='<span class="'+(t===best?"hit":"")+'">'+names[i]+'</span>'; });
+  h+='</div></div>';
+
+  if(close){
+    h+='<div class="flag"><b>You are close to the boundary</b><span>Your answers score almost as highly for '+R[sorted[1]].name+'. Read both. Households near a boundary usually get the worst of each side.</span></div>';
+  }
+  flags().forEach(function(f){ h+='<div class="flag"><b>'+f[0]+'</b><span>'+f[1]+'</span></div>'; });
+
+  h+='<div class="grid"><div class="no"><h3>What you are holding yourself</h3><ul>';
+  r.no.forEach(function(x){ h+="<li>"+x+"</li>"; });
+  h+='</ul></div><div class="yes"><h3>What is actually covered</h3><ul>';
+  r.yes.forEach(function(x){ h+="<li>"+x+"</li>"; });
+  h+='</ul></div></div>';
+
+  h+='<div class="doit"><h3>Four things worth doing</h3><ol>';
+  r.do.forEach(function(x){ h+="<li>"+x[0]+"</li>"; });
+  h+='</ol></div>';
+
+  h+='<div class="ctx"><b>Where you sit nationally</b>'+r.ctx+'</div>';
+
+  var o=document.getElementById("out");
+  o.innerHTML=h; o.className="on";
+  o.scrollIntoView({behavior:"smooth",block:"start"});
+});
+</script>
+<script>
+(function(){
+  var tt=document.getElementById('themeToggle');
+  if(tt)tt.addEventListener('click',function(){var r=document.documentElement;if(r.getAttribute('data-theme')==='dark'){r.removeAttribute('data-theme');try{localStorage.setItem('hp-theme','light');}catch(e){}}else{r.setAttribute('data-theme','dark');try{localStorage.setItem('hp-theme','dark');}catch(e){}}});
+  var t=document.getElementById('navToggle'),n=document.getElementById('siteNav');
+  if(t&&n)t.addEventListener('click',function(){var o=n.classList.toggle('open');t.setAttribute('aria-expanded',o?'true':'false');});
+})();
+</script>
+</body>
+</html>

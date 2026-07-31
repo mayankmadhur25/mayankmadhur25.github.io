@@ -7,7 +7,55 @@ permalink: /index-tool/
   <p class="eyebrow">INTERACTIVE TOOLS</p>
   <h1>Tools</h1>
   <p class="tools-sub">Interactive models and trackers that turn India's healthcare numbers into something you can poke at, re-weight, and pressure-test yourself. More on the way.</p>
-  <a class="tool-card tc-autism" href="/tools/autism/">
+
+</section>
+
+  <div class="tools-controls">
+    <div class="tool-chips" id="toolChips" role="tablist" aria-label="Filter tools by focus">
+      <button data-c="all" aria-pressed="true" type="button">All</button>
+      <button data-c="financing" aria-pressed="false" type="button">Financing</button>
+      <button data-c="workforce" aria-pressed="false" type="button">Workforce</button>
+      <button data-c="access" aria-pressed="false" type="button">Access</button>
+      <button data-c="measurement" aria-pressed="false" type="button">Measurement</button>
+      <button data-c="digital" aria-pressed="false" type="button">Digital health</button>
+    </div>
+    <div class="tool-search"><input id="toolSearch" type="search" placeholder="Search tools…" aria-label="Search tools"></div>
+    <div class="tool-count" id="toolCount"></div>
+  </div>
+<section class="tools-grid">
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+  <a class="tool-card tc-valuechain" data-cat="financing digital" href="/tools/health-value-chain/">
+    <div class="tool-card-top"><span class="tool-badge">Interactive</span><span class="tool-meta">4 tiers &middot; tabbed</span></div>
+    <h2>The Value Chain, Tier by Tier</h2>
+    <p>The four Indias as a pyramid, then a tab per tier showing where the patient, the money and the record each break across six steps, and the one fix that reaches all four.</p>
+    <span class="tool-go">Open the tool &rarr;</span>
+  </a>
+
+  <a class="tool-card tc-fourindia" data-cat="financing" href="/tools/which-india/">
+    <div class="tool-card-top"><span class="tool-badge">Interactive</span><span class="tool-meta">6 questions</span></div>
+    <h2>Which of the Four Indias Are You In?</h2>
+    <p>Six questions place you in one of India's four health systems, what it covers, what it leaves you paying for, and where it breaks. Companion to Edition 68.</p>
+    <span class="tool-go">Open the tool &rarr;</span>
+  </a>
+
+  <a class="tool-card tc-autism" data-cat="measurement" href="/tools/autism/">
     <div class="tool-card-top">
       <span class="tool-badge">Interactive</span>
       <span class="tool-meta">8 tabs &middot; primer + dossier</span>
@@ -17,41 +65,7 @@ permalink: /index-tool/
     <span class="tool-go">Open the tool &rarr;</span>
   </a>
 
-</section>
-
-<section class="tools-grid">
-
-  <a class="tool-card tc-health-stack" href="/tools/health-stack/">
-    <div class="tool-card-top">
-      <span class="tool-badge">Interactive</span>
-      <span class="tool-meta">10 flagship programmes</span>
-    </div>
-    <h2>India Digital Health Adoption Index</h2>
-    <p>Of everything India announced in digital health, how much is actually adopted and working? Re-weight adoption vs outcome, edit the scores, and watch the gap between promise and reality recalculate live.</p>
-    <span class="tool-go">Open the tool &rarr;</span>
-  </a>
-
-  <a class="tool-card tc-csection" href="/tools/csection/">
-    <div class="tool-card-top">
-      <span class="tool-badge">Interactive</span>
-      <span class="tool-meta">33 states &amp; UTs</span>
-    </div>
-    <h2>India C-Section Tracker</h2>
-    <p>Click any state to see its caesarean rate, the private-versus-public split, the trend since NFHS-5, and how it ranks. Live NFHS-6 (2023-24) data in a searchable ranked list.</p>
-    <span class="tool-go">Open the tool &rarr;</span>
-  </a>
-
-  <a class="tool-card tc-fertility" href="/tools/fertility/">
-    <div class="tool-card-top">
-      <span class="tool-badge">Interactive</span>
-      <span class="tool-meta">31 states &amp; UTs</span>
-    </div>
-    <h2>India Fertility Transition Tracker</h2>
-    <p>Sort every state by fertility rate, ageing, unmet contraception need and education, and see the correlations behind India's fall below replacement. Live NFHS-6 (2023-24) data.</p>
-    <span class="tool-go">Open the tool &rarr;</span>
-  </a>
-
-  <a class="tool-card tc-rural" href="/tools/rural-pyramid/">
+  <a class="tool-card tc-rural" data-cat="workforce access" href="/tools/rural-pyramid/">
     <div class="tool-card-top">
       <span class="tool-badge">Interactive</span>
       <span class="tool-meta">35 states &amp; UTs &middot; rural</span>
@@ -61,6 +75,35 @@ permalink: /index-tool/
     <span class="tool-go">Open the tool &rarr;</span>
   </a>
 
+  <a class="tool-card tc-fertility" data-cat="measurement access" href="/tools/fertility/">
+    <div class="tool-card-top">
+      <span class="tool-badge">Interactive</span>
+      <span class="tool-meta">31 states &amp; UTs</span>
+    </div>
+    <h2>India Fertility Transition Tracker</h2>
+    <p>Sort every state by fertility rate, ageing, unmet contraception need and education, and see the correlations behind India's fall below replacement. Live NFHS-6 (2023-24) data.</p>
+    <span class="tool-go">Open the tool &rarr;</span>
+  </a>
+
+  <a class="tool-card tc-csection" data-cat="measurement access" href="/tools/csection/">
+    <div class="tool-card-top">
+      <span class="tool-badge">Interactive</span>
+      <span class="tool-meta">33 states &amp; UTs</span>
+    </div>
+    <h2>India C-Section Tracker</h2>
+    <p>Click any state to see its caesarean rate, the private-versus-public split, the trend since NFHS-5, and how it ranks. Live NFHS-6 (2023-24) data in a searchable ranked list.</p>
+    <span class="tool-go">Open the tool &rarr;</span>
+  </a>
+
+  <a class="tool-card tc-health-stack" data-cat="digital measurement" href="/tools/health-stack/">
+    <div class="tool-card-top">
+      <span class="tool-badge">Interactive</span>
+      <span class="tool-meta">10 flagship programmes</span>
+    </div>
+    <h2>India Digital Health Adoption Index</h2>
+    <p>Of everything India announced in digital health, how much is actually adopted and working? Re-weight adoption vs outcome, edit the scores, and watch the gap between promise and reality recalculate live.</p>
+    <span class="tool-go">Open the tool &rarr;</span>
+  </a>
 </section>
 
 <style>
@@ -86,10 +129,46 @@ permalink: /index-tool/
   .tc-fertility { background: linear-gradient(135deg, #C25A32, #7A5378); }
   .tc-rural { background: linear-gradient(135deg, #2E4A57, #C2563F); }
   .tc-autism { background: linear-gradient(135deg, #0FA3A3, #7A5378); }
+  .tc-fourindia { background: linear-gradient(135deg, #1B3A4B, #37B68A); }
+  .tc-valuechain { background: linear-gradient(135deg, #0FA3A3, #E08A3C); }
   .tool-card-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
   .tool-badge { font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; background: rgba(255,255,255,.2); padding: 4px 12px; border-radius: 999px; }
   .tool-meta { font-family: var(--mono); font-size: 12px; opacity: .9; }
   .tool-card h2 { font-size: 23px; font-weight: 800; line-height: 1.15; margin-top: 6px; }
   .tool-card p { font-size: 14.5px; line-height: 1.55; opacity: .96; flex: 1; }
   .tool-go { font-weight: 800; font-size: 14.5px; margin-top: auto; }
+
+.tools-controls{max-width:1340px;margin:0 auto;padding:6px clamp(20px,4vw,48px) 0;display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.tool-chips{display:flex;flex-wrap:wrap;gap:6px}
+.tool-chips button{font-family:inherit;font-size:13.5px;font-weight:700;color:var(--muted);background:transparent;border:1px solid var(--line,#E2E8EC);border-radius:999px;padding:8px 15px;cursor:pointer;transition:background .15s,color .15s,border-color .15s}
+.tool-chips button:hover{color:var(--ink,#1B3A4B)}
+.tool-chips button[aria-pressed="true"]{background:linear-gradient(135deg,#0FA3A3,#2E7CB8);color:#fff;border-color:transparent}
+.tool-search{margin-left:auto}
+.tool-search input{font-family:inherit;font-size:14px;padding:9px 15px;border:1px solid var(--line,#E2E8EC);border-radius:999px;min-width:210px;background:var(--card,#fff);color:var(--ink,#1B3A4B)}
+.tool-count{font-family:var(--mono);font-size:12px;color:var(--muted);width:100%;padding-top:4px}
+.tool-card.hide{display:none!important}
+@media(max-width:640px){.tool-search{margin-left:0;width:100%}.tool-search input{width:100%}}
 </style>
+
+<script>
+(function(){
+  var chips=document.getElementById('toolChips'),search=document.getElementById('toolSearch'),count=document.getElementById('toolCount');
+  if(!chips)return;
+  var cards=[].slice.call(document.querySelectorAll('.tools-grid .tool-card'));
+  var active='all';
+  function apply(){
+    var q=(search.value||'').trim().toLowerCase(),shown=0;
+    cards.forEach(function(c){
+      var cats=(c.getAttribute('data-cat')||'').split(' ');
+      var okC=active==='all'||cats.indexOf(active)>=0;
+      var okQ=!q||c.textContent.toLowerCase().indexOf(q)>=0;
+      var show=okC&&okQ; c.classList.toggle('hide',!show); if(show)shown++;
+    });
+    count.textContent=shown+' of '+cards.length+' tools';
+  }
+  chips.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;active=b.getAttribute('data-c');
+    [].slice.call(chips.children).forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});apply();});
+  search.addEventListener('input',apply);
+  apply();
+})();
+</script>
