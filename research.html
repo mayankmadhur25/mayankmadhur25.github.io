@@ -1,0 +1,74 @@
+---
+layout: default
+title: Research
+permalink: /research/
+description: "Original research by Mayank Madhur: the THRIVE-SDOH strategic framework for tech-enabled holistic healthcare in India, and an equity-oriented two-group epidemic model incorporating social determinants of health."
+---
+<section class="research-head">
+  <p class="eyebrow">ORIGINAL RESEARCH</p>
+  <h1>Research</h1>
+  <p class="research-sub">Longer-form work that sits behind the Friday editions. Frameworks and models, written up in full.</p>
+</section>
+
+<section class="research-grid">
+
+  <a class="rs-card rs-thrive" href="/research/thrive-sdoh/">
+    <div class="rs-top">
+      <span class="rs-badge">Master's thesis</span>
+      <span class="rs-meta">Visual summary</span>
+    </div>
+    <h2>THRIVE&ndash;SDOH</h2>
+    <p class="rs-lead">A Strategic Framework for Tech-Enabled Holistic Healthcare in India</p>
+    <p>Integrates the Social Determinants of Health with India's Digital Public Infrastructure across six pillars where technology and people reinforce each other.</p>
+    <span class="rs-field">Health Systems &middot; Digital Public Infrastructure &middot; SDOH</span>
+    <span class="rs-go">Read the visual summary &rarr;</span>
+  </a>
+
+  <div class="rs-card rs-epi rs-soon">
+    <div class="rs-top">
+      <span class="rs-badge">In progress</span>
+      <span class="rs-meta">Coming soon</span>
+    </div>
+    <h2>An Equity-Oriented Analysis of a Two-Group Epidemic Model Incorporating Social Determinants of Health</h2>
+    <p>Field: Mathematical Modelling &middot; Dynamical Systems &middot; Mathematical Epidemiology</p>
+    <p class="rs-methods">Methods drawn from Differential Equations, Linear Algebra, Numerical Methods, and Python/MATLAB.</p>
+    <span class="rs-go rs-go-soon">Coming soon</span>
+  </div>
+
+</section>
+
+<style>
+  .research-head { max-width: 1340px; margin: 0 auto; padding: 48px clamp(20px,4vw,48px) 8px; }
+  .research-head h1 { font-size: clamp(30px,5vw,44px); font-weight: 800; letter-spacing: -.025em; color: var(--navy); margin: 6px 0 10px; }
+  .research-sub { font-size: 16px; color: var(--muted); max-width: 60ch; line-height: 1.6; }
+
+  .research-grid {
+    max-width: 1340px; margin: 0 auto;
+    padding: 24px clamp(20px,4vw,48px) 70px;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 20px;
+  }
+  .rs-card {
+    display: flex; flex-direction: column; gap: 10px;
+    border-radius: 18px; padding: 28px 26px; text-decoration: none;
+    color: #fff; position: relative; overflow: hidden; min-height: 260px;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  a.rs-card:hover { transform: translateY(-3px); box-shadow: 0 16px 40px -18px rgba(15,163,163,.45); }
+  .rs-thrive { background: linear-gradient(135deg, #1B3A4B, #0FA3A3); }
+  .rs-epi { background: linear-gradient(135deg, #2E7CB8, #7A5378); }
+  .rs-soon { cursor: default; opacity: .96; }
+
+  .rs-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+  .rs-badge { font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase;
+    background: rgba(255,255,255,.18); padding: 5px 11px; border-radius: 999px; }
+  .rs-meta { font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em; opacity: .85; }
+  .rs-card h2 { font-size: 23px; font-weight: 800; line-height: 1.2; letter-spacing: -.015em; margin-top: 6px; color: #fff; }
+  .rs-epi h2 { font-size: 19px; line-height: 1.3; }
+  .rs-lead { font-size: 15px; font-weight: 700; opacity: .96; margin: 0; }
+  .rs-card p { font-size: 14px; line-height: 1.6; opacity: .93; margin: 0; }
+  .rs-methods { font-size: 13px; opacity: .86; }
+  .rs-field { font-family: var(--mono); font-size: 11px; letter-spacing: .05em; opacity: .82; margin-top: auto; }
+  .rs-go { font-size: 14px; font-weight: 700; margin-top: 10px; }
+  .rs-go-soon { margin-top: auto; opacity: .8; }
+  .rs-epi .rs-methods { margin-bottom: 4px; }
+</style>
