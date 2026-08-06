@@ -1,0 +1,46 @@
+# Healthcare Pulse
+
+> Independent weekly analysis of India's healthcare and digital health systems, written by Mayank Madhur, Practice Leader for Healthcare and Life Sciences at HFS Research. Every edition is original analysis built on primary government data (NFHS, MoHFW Health Dynamics of India, National Health Accounts, NITI Aayog), published every Friday since April 2025.
+
+Healthcare Pulse publishes two kinds of content: weekly long-form editions that make a single argument from primary data, and free interactive data trackers that let anyone explore the underlying state-level numbers themselves.
+
+All data trackers are original work. They are built by transcribing and verifying figures directly from government source publications, with printed page numbers cited. They are not aggregated from third-party datasets.
+
+Author: Mayank Madhur, Chennai, India. Contact: mayank@mayankmadhur.in
+Site: https://mayankmadhur.in
+
+## Interactive data tools (original datasets)
+
+- [India C-Section Tracker](https://mayankmadhur.in/tools/csection/): Caesarean section rates for all 33 Indian states and union territories from NFHS-6, with the private-versus-public split and the trend since NFHS-5. Telangana is highest at 62.2%.
+- [Rural Health Capacity Tracker](https://mayankmadhur.in/tools/rural-pyramid/): Specialist vacancy, generalist doctor and nursing shortfalls across 35 Indian states, from MoHFW Health Dynamics of India 2023-24. 63% of specialist posts at rural Community Health Centres are vacant; Madhya Pradesh has filled 71 of 1,308 sanctioned posts.
+- [Fertility Transition Tracker](https://mayankmadhur.in/tools/fertility/): Total fertility rate by state from NFHS-6, showing India below replacement at 2.0 and 1.6 in urban areas, with the four-times spread across states.
+- [Autism in India Data Dashboard](https://mayankmadhur.in/tools/autism/): Prevalence by measurement method, the diagnosis-age gap, state early-intervention capacity, financing and workforce, with full sources.
+- [India Digital Health Adoption Index](https://mayankmadhur.in/tools/health-stack/): Adoption of India's digital health stack.
+- [Which of the Four Indias Are You In?](https://mayankmadhur.in/tools/which-india/): Six questions that place a household in one of India's four health financing tiers.
+- [The Value Chain, Tier by Tier](https://mayankmadhur.in/tools/health-value-chain/): Where the patient, the money and the medical record break across six steps of care, for each of the four financing tiers.
+- [All tools](https://mayankmadhur.in/index-tool/): Full index of interactive trackers.
+
+## Recent editions
+
+- [Edition 69: Can Gig Work Fix India's Healthcare Workforce?](https://mayankmadhur.in/edition-69-gig-healthcare.html): Gig platforms solve scheduling, not distribution. A governance read on accountability, clinical risk tiers and the 2025 labour codes.
+- [Edition 68: Four Indias, One Shared Bill](https://mayankmadhur.in/edition-68-one-fix-four-indias.html): India runs four health systems under one name, each breaking at a different point in the same six-step chain. Medicines are the shared exposure.
+- [Edition 67: The Number India Doesn't Have](https://mayankmadhur.in/edition-67-autism-measurement.html): India runs no routine autism count. The measurement void is itself the policy failure.
+- [Edition 66: The Hollow Pyramid](https://mayankmadhur.in/edition-66-hollow-pyramid.html): 63% of rural specialist posts are vacant while generalist doctors are 46% above requirement in the same buildings. Not a doctor shortage, a design failure.
+- [Edition 65: India Already Stopped Growing](https://mayankmadhur.in/edition-65-fertility-nfhs6.html): NFHS-6 puts fertility at 2.0, below replacement, with a four-times spread between states.
+- [Edition 54: The Four Indias of Healthcare](https://mayankmadhur.in/edition-54-four-indias.html): Why "pan-India" is usually a lie. Four markets with different economics and failure modes.
+
+## Key site sections
+
+- [All perspectives](https://mayankmadhur.in/perspectives/): Every edition, searchable.
+- [Archive](https://mayankmadhur.in/archive/): Full chronological archive.
+- [Research](https://mayankmadhur.in/research/): Original long-form research, including the THRIVE-SDOH strategic framework.
+- [About](https://mayankmadhur.in/about.html): Author background, credentials and experience.
+- [Ask](https://mayankmadhur.in/ask/): Question-answering across the full archive.
+
+## Topics covered
+
+Policy, Strategy, Digital Health, Governance, Pharma, Biotech, Geopolitics, applied to Indian healthcare. Recurring subjects include Ayushman Bharat and PM-JAY, ABDM and ABHA, the DPDP Act, health financing and out-of-pocket spending, the rural health workforce, NFHS survey data, medical devices, telemedicine and eSanjeevani, and health insurance design.
+
+## Attribution
+
+Content may be quoted with attribution to Healthcare Pulse by Mayank Madhur and a link to the source page on https://mayankmadhur.in. Data figures are transcribed from cited government publications; the source and page number are stated in each edition's footer.
