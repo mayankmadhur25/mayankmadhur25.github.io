@@ -1033,11 +1033,12 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 html[data-theme="dark"] .jump{background:#0F1B22;box-shadow:0 0 0 100vmax #0F1B22}
 .site-header{z-index:60}
 .post-body section{scroll-margin-top:calc(var(--hdr,68px) + 58px)}
-.jump-in{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
+.jump-in{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-start}
+@media(max-width:640px){.jump-in{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;padding-bottom:2px}}
 .jump-in::-webkit-scrollbar{display:none}
-.jump a{flex:none;font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;font-weight:600;
+.jump a{flex:none;font-family:var(--mono);font-size:11px;letter-spacing:.03em;font-weight:600;
   color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:999px;
-  padding:8px 14px;white-space:nowrap;transition:all .15s}
+  padding:7px 12px;white-space:nowrap;transition:all .15s}
 .jump a:hover{color:var(--navy);border-color:var(--muted)}
 .jump a.on{background:linear-gradient(135deg,#0FA3A3,#2E7CB8);color:#fff;border-color:transparent}
 
@@ -1171,7 +1172,7 @@ html[data-theme="dark"] .dtbl summary{background:rgba(15,163,163,.12)}
   <div class="post-meta"><span class="meta-ed">EDITION 69</span><span>GOVERNANCE</span><span class="meta-cat">Governance</span><span>9 MIN READ</span><span class="meta-date">Published 7 Aug 2026 &middot; last updated 7 Aug 2026</span></div>
   <h1 class="post-title">Can gig work fix India's healthcare workforce problem?</h1>
   <div class="post-body">
-<nav class="jump"><div class="jump-in"><a href="#s1" data-s="s1">The short answer</a><a href="#s2" data-s="s2">Five numbers</a><a href="#s3" data-s="s3">Four different things</a><a href="#s4" data-s="s4">The case for yes</a><a href="#s5" data-s="s5">Why it's still no</a><a href="#s6" data-s="s6">Risk tiers</a><a href="#s7" data-s="s7">What the law changed</a><a href="#s8" data-s="s8">The fix</a></div></nav>
+<nav class="jump"><div class="jump-in"><a href="#s1" data-s="s1">Short answer</a><a href="#s2" data-s="s2">Five numbers</a><a href="#s3" data-s="s3">Four models</a><a href="#s4" data-s="s4">Case for</a><a href="#s5" data-s="s5">Case against</a><a href="#s6" data-s="s6">Risk tiers</a><a href="#s7" data-s="s7">The law</a><a href="#s8" data-s="s8">The fix</a></div></nav>
 
 <section id="s1">
 <p class="lede">No. Not the problem people think it fixes.</p>
