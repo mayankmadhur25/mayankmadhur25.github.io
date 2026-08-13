@@ -702,6 +702,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 }
 .pick-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(27,58,75,.22); }
 .pick-card.cat-digital-health { background: var(--grad); }
+.pick-card.cat-governance { background: linear-gradient(135deg,#3C5A6E,#5A7A8C); }
 .pick-card.cat-policy { background: linear-gradient(135deg,#E08A3C,#B96A14); }
 .pick-card.cat-strategy { background: linear-gradient(135deg,#6C4AB6,#3A2E7C); }
 .pick-card.cat-pharma { background: linear-gradient(135deg,#2E7CB8,#1B3A4B); }
