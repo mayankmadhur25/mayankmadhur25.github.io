@@ -1397,7 +1397,7 @@ html[data-theme="dark"] .sc-node{background:#16252C;border-color:#25373F}
 <p class="eyebrow">08 &mdash; The number</p>
 <h2>About those efficiency projections</h2>
 <p>MoHFW published unusually specific expectations, which is genuinely welcome, most launches do not. But they were issued within days of launch, which makes them design targets rather than findings.</p>
-<div class="fig"><div class="fig-label">Figure 4</div><div class="fig-title">The three published efficiency projections</div><div class="fig-sub">Stated reduction ranges, issued within days of launch. Bars show the projected band, not a measured result.</div><div class="cwrap" style="height:240px"><canvas id="cEff"></canvas></div><figcaption><b>Read this way:</b> every band starts at 20%, which is a strong hint these are round design targets rather than modelled estimates. The honest response is not to dispute them but to ask for the measurement methodology before year one closes.</figcaption></div><details class="dtbl"><summary>View the data behind this</summary><table><caption>The three published efficiency projections</caption><thead><tr><th scope="col">Area</th><th scope="col">Projected reduction</th><th scope="col">Status</th></tr></thead><tbody><tr><td>Infrastructure load</td><td>20 to 30%</td><td>Ex-ante projection, unaudited</td></tr><tr><td>Data entry effort</td><td>20 to 40%</td><td>Ex-ante projection, unaudited</td></tr><tr><td>HR duplication</td><td>20 to 40%</td><td>Ex-ante projection, unaudited</td></tr><tr><td>Decision-making speed</td><td>Stated as expected to increase</td><td>No numeric range given</td></tr></tbody></table><p class="dsrc">Source: MoHFW efficiency estimates, PIB release 2258283, 6 May 2026. Issued within days of launch.</p></details>
+<div class="fig"><div class="fig-label">Figure 4</div><div class="fig-title">The three published efficiency projections</div><div class="fig-sub">Stated reduction ranges, issued within days of launch. Solid shows the floor of each claim, faded shows how far the band reaches. Not a measured result.</div><div class="cwrap" style="height:240px"><canvas id="cEff"></canvas></div><figcaption><b>Read this way:</b> every band starts at 20%, which is a strong hint these are round design targets rather than modelled estimates. The honest response is not to dispute them but to ask for the measurement methodology before year one closes.</figcaption></div><details class="dtbl"><summary>View the data behind this</summary><table><caption>The three published efficiency projections</caption><thead><tr><th scope="col">Area</th><th scope="col">Projected reduction</th><th scope="col">Status</th></tr></thead><tbody><tr><td>Infrastructure load</td><td>20 to 30%</td><td>Ex-ante projection, unaudited</td></tr><tr><td>Data entry effort</td><td>20 to 40%</td><td>Ex-ante projection, unaudited</td></tr><tr><td>HR duplication</td><td>20 to 40%</td><td>Ex-ante projection, unaudited</td></tr><tr><td>Decision-making speed</td><td>Stated as expected to increase</td><td>No numeric range given</td></tr></tbody></table><p class="dsrc">Source: MoHFW efficiency estimates, PIB release 2258283, 6 May 2026. Issued within days of launch.</p></details>
 <p>The mechanisms are plausible and worth stating: aggregated hosting and compute, demographics entered once, consolidated development and maintenance teams, higher interoperability from the federated design. Each is a real saving. None has been measured.</p>
 <div class="ed-callout"><p><b>Treat the bands as design targets to be audited, not results to be quoted.</b> The most useful thing the Ministry could do in year one is publish the <em>methodology</em> it will use to measure them, before the first measurement exists. That is a governance commitment, not a technical one, and it costs nothing.</p></div>
 </section>
@@ -1466,10 +1466,22 @@ html[data-theme="dark"] .sc-node{background:#16252C;border-color:#25373F}
    scales:{x:{grid:{color:GRID},title:{display:true,text:'crore (portal counters, not unique people)',font:{weight:600}}},y:{grid:{display:false},ticks:{font:{size:12,weight:'600'}}}}}});
  var e2=document.getElementById('cEff');
  if(e2) new Chart(e2,{type:'bar',data:{labels:['Infrastructure load','Data entry effort','HR duplication'],
-  datasets:[{data:[[20,30],[20,40],[20,40]],backgroundColor:['#2E7CB8','#0FA3A3','#E08A3C'],borderRadius:5,barThickness:44}]},
-  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},
-   tooltip:{callbacks:{label:function(c){return ' projected reduction of '+c.raw[0]+' to '+c.raw[1]+'%';}}}},
-   scales:{x:{min:0,max:50,grid:{color:GRID},ticks:{callback:function(v){return v+'%';}},title:{display:true,text:'projected reduction (ex-ante, unaudited)',font:{weight:600}}},y:{grid:{display:false},ticks:{font:{size:12.5,weight:'600'}}}}}});
+  datasets:[
+   {label:'Floor of the claim',data:[20,20,20],backgroundColor:['#2E7CB8','#0FA3A3','#E08A3C'],borderRadius:{topRight:0,bottomRight:0},barThickness:40,stack:'s'},
+   {label:'Up to',data:[10,20,20],backgroundColor:['rgba(46,124,184,.35)','rgba(15,163,163,.35)','rgba(224,138,60,.35)'],borderRadius:{topRight:5,bottomRight:5},barThickness:40,stack:'s'}
+  ]},
+  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+   plugins:{legend:{display:true,position:'bottom',labels:{boxWidth:12,font:{size:11.5},padding:12,
+     generateLabels:function(){return [
+       {text:'Floor of the projection (20%)',fillStyle:'#0FA3A3',strokeStyle:'#0FA3A3',lineWidth:0},
+       {text:'Upper end of the stated band',fillStyle:'rgba(15,163,163,.35)',strokeStyle:'rgba(15,163,163,.35)',lineWidth:0}];}}},
+    tooltip:{callbacks:{title:function(c){return c[0].label;},
+      label:function(c){var hi=[30,40,40][c.dataIndex];
+        return c.datasetIndex===0? ' at least 20% reduction claimed' : ' up to '+hi+
+        (c.dataIndex===0?'% (band: 20 to 30%)':'% (band: 20 to 40%)');}}}},
+   scales:{x:{stacked:true,min:0,max:50,grid:{color:GRID},ticks:{callback:function(v){return v+'%';}},
+     title:{display:true,text:'projected reduction (ex-ante, unaudited)',font:{weight:600}}},
+    y:{stacked:true,grid:{display:false},ticks:{font:{size:12.5,weight:'600'}}}}}});
 })();
 </script>
 
