@@ -1140,8 +1140,22 @@ html[data-theme="dark"] .keyfind{background:rgba(15,163,163,.13);border-color:rg
 html[data-theme="dark"] .dtbl{border-color:#25373F}
 html[data-theme="dark"] .dtbl summary{background:rgba(15,163,163,.12)}
 
+.srcwrap{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);margin:22px 0 14px}
+html[data-theme="dark"] .srcwrap{background:#16252C;border-color:#25373F}
+.srcrow{display:grid;grid-template-columns:96px 1fr;gap:14px;padding:15px 18px;border-bottom:1px solid var(--line);align-items:start}
+.srcrow:last-child{border-bottom:0}
+.srctag{font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 9px;border-radius:6px;text-align:center;margin-top:2px}
+.t-off{background:rgba(55,182,138,.16);color:#2E7D5B}
+.t-proj{background:rgba(224,138,60,.18);color:#A8541A}
+.t-anl{background:rgba(122,83,120,.16);color:#7A5378}
+html[data-theme="dark"] .t-off{color:#7FD6B4}html[data-theme="dark"] .t-proj{color:#F0B27E}html[data-theme="dark"] .t-anl{color:#C9A3C6}
+.srcrow b{font-size:14.5px;color:var(--navy);display:block}
+.srcrow span{display:block;font-size:13.5px;line-height:1.55;color:var(--muted);margin-top:4px}
+.srcnote{font-size:13.5px;color:var(--body-c);background:rgba(194,86,63,.07);border-left:3px solid #C2563F;border-radius:0 8px 8px 0;padding:12px 14px;margin:0}
+.srcnote b{color:var(--navy)}
 .site-footer p{max-width:900px;margin:0 auto;line-height:1.75;font-size:11.5px;overflow-wrap:break-word;text-align:left}
 .site-footer p a{color:var(--teal);text-decoration:none}
+@media(max-width:600px){.srcrow{grid-template-columns:1fr;gap:6px}.srctag{justify-self:start}}
 @media(max-width:640px){.site-footer p{font-size:10.5px;line-height:1.7}}
 </style><script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
@@ -1176,7 +1190,7 @@ html[data-theme="dark"] .dtbl summary{background:rgba(15,163,163,.12)}
   <div class="post-meta"><span class="meta-ed">EDITION 69</span><span>GOVERNANCE</span><span class="meta-cat">Governance</span><span>9 MIN READ</span><span class="meta-date">Published 7 Aug 2026 &middot; last updated 7 Aug 2026</span></div>
   <h1 class="post-title">Can gig work fix India's healthcare workforce problem?</h1>
   <div class="post-body">
-<nav class="jump"><div class="jump-in"><a href="#s1" data-s="s1">Short answer</a><a href="#s2" data-s="s2">Five numbers</a><a href="#s3" data-s="s3">Four models</a><a href="#s4" data-s="s4">Case for</a><a href="#s5" data-s="s5">Case against</a><a href="#s6" data-s="s6">Risk tiers</a><a href="#s7" data-s="s7">The law</a><a href="#s8" data-s="s8">The fix</a></div></nav>
+<nav class="jump"><div class="jump-in"><a href="#s1" data-s="s1">Short answer</a><a href="#s2" data-s="s2">Five numbers</a><a href="#s3" data-s="s3">Four models</a><a href="#s4" data-s="s4">Case for</a><a href="#s5" data-s="s5">Case against</a><a href="#s6" data-s="s6">Risk tiers</a><a href="#s7" data-s="s7">The law</a><a href="#s8" data-s="s8">The fix</a><a href="#s-src" data-s="s-src">Sources</a></div></nav>
 
 <section id="s1">
 <p class="lede">No. Not the problem people think it fixes.</p>
@@ -1366,6 +1380,14 @@ html[data-theme="dark"] .dtbl summary{background:rgba(15,163,163,.12)}
 </section>
 
 
+
+<section id="s-src">
+<p class="eyebrow">10 &mdash; Sources</p>
+<h2>Sources and evidence status</h2>
+<p>What is officially published, and what is my analysis. Nothing above is presented as fact without one of these tags.</p>
+<div class="srcwrap"><div class="srcrow"><span class="srctag t-off">Official</span><div><b>NITI Aayog, India's Booming Gig and Platform Economy (2022)</b><span>Gig workforce projection from 7.7 million in 2020-21 to 23.5 million by 2029-30. Whole gig economy; healthcare's share is not separately published.</span></div></div><div class="srcrow"><span class="srctag t-off">Official</span><div><b>Karan et al., Human Resources for Health (2021)</b><span>Health worker density: 26.5 registered, 16.7 active and 11.0 active and adequately qualified per 10,000, against a WHO benchmark of 44.5. Uses NHWA 2018 and PLFS 2017-18 data.</span></div></div><div class="srcrow"><span class="srctag t-off">Official</span><div><b>PIB releases, 2024 to 2026</b><span>Platform worker social security provisions, Union Budget 2025-26 commitments, and e-Shram registration figures.</span></div></div><div class="srcrow"><span class="srctag t-off">Official</span><div><b>Code on Social Security 2020; Karnataka Platform Based Gig Workers Act 2025; MeitY DPDP Rules 2025</b><span>The legal position, in force from 21 November 2025, including the aggregator contribution of 1 to 2% of turnover capped at 5% of payments to workers.</span></div></div><div class="srcrow"><span class="srctag t-off">Official</span><div><b>ABDM and NHA documentation</b><span>HPR, HFR and ABHA capabilities, used for the credentialing argument.</span></div></div><div class="srcrow"><span class="srctag t-anl">Analysis</span><div><b>Author's contribution</b><span>The Quintuple Aim scores, the green-amber-red clinical risk tiering, the four-model breakdown, the eight-part fix set, and all interpretive commentary.</span></div></div></div>
+<p class="srcnote"><b>Before citing externally:</b> India publishes no reliable healthcare-specific gig workforce data: not headcount, assignment volume, rural share, or safety and continuity outcomes. This edition assesses the model and its governance, not market size.</p>
+</section>
   </div>
   <div class="share-bar"><span class="share-label">Share this perspective:</span><a class="share-btn share-wa" id="shWa" target="_blank" rel="noopener">WhatsApp</a><a class="share-btn share-li" id="shLi" target="_blank" rel="noopener">LinkedIn</a><a class="share-btn share-x" id="shX" target="_blank" rel="noopener">X</a><button class="share-btn" id="shCopy" type="button">Copy link</button></div>
   <section class="related">
@@ -1393,7 +1415,7 @@ html[data-theme="dark"] .dtbl summary{background:rgba(15,163,163,.12)}
   <a class="back-link" href="/perspectives/">&larr; All perspectives</a>
 </article></main>
 <section class="subscribe" id="subscribe"><div class="subscribe-inner"><p class="eyebrow">EVERY FRIDAY &middot; FREE</p><h2>Enjoyed this issue of Healthcare Pulse?</h2><p class="subscribe-sub">Sharp, contrarian reads on India's digital health story, every Friday.</p><div class="subscribe-actions"><a class="btn-li" href="https://www.linkedin.com/newsletters/7311231782241083393/" target="_blank" rel="noopener">Subscribe on LinkedIn</a><a class="btn-ghost" href="https://www.linkedin.com/in/mayank-madhur/" target="_blank" rel="noopener">Connect with Mayank &rarr;</a></div></div></section>
-<footer class="site-footer"><p>&copy; 2026 Healthcare Pulse by Mayank Madhur &middot; <a href="mailto:mayank@mayankmadhur.in">mayank@mayankmadhur.in</a> &middot; Independent analysis and opinion. Sources: NITI Aayog, India's Booming Gig and Platform Economy (2022) and Ministry of Labour replies 2024-2026; WHO SEARO India Health Workforce Country Profile (2024) and Karan et al., Human Resources for Health (2021); PIB on platform worker social security and Union Budget 2025-26; Code on Social Security 2020, in force 21 November 2025; Karnataka Platform Based Gig Workers Act 2025; MeitY DPDP Rules 2025; ABDM / NHA programme updates. Home healthcare market estimates vary materially by definition.</p></footer>
+<footer class="site-footer"><p>&copy; 2026 Healthcare Pulse by Mayank Madhur &middot; <a href="mailto:mayank@mayankmadhur.in">mayank@mayankmadhur.in</a> &middot; Independent analysis and opinion. Full sources and evidence status are set out at the end of this edition.</p></footer>
 <button id="toTop" class="to-top" aria-label="Back to top"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg></button>
 <script>(function(){
   var bar=document.getElementById('prog');

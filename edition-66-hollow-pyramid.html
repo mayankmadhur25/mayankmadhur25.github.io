@@ -1027,8 +1027,22 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .rhp-row p b{color:var(--navy)}
 .rhp-row .serves{display:block;font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-top:4px}
 
+.srcwrap{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);margin:22px 0 14px}
+html[data-theme="dark"] .srcwrap{background:#16252C;border-color:#25373F}
+.srcrow{display:grid;grid-template-columns:96px 1fr;gap:14px;padding:15px 18px;border-bottom:1px solid var(--line);align-items:start}
+.srcrow:last-child{border-bottom:0}
+.srctag{font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 9px;border-radius:6px;text-align:center;margin-top:2px}
+.t-off{background:rgba(55,182,138,.16);color:#2E7D5B}
+.t-proj{background:rgba(224,138,60,.18);color:#A8541A}
+.t-anl{background:rgba(122,83,120,.16);color:#7A5378}
+html[data-theme="dark"] .t-off{color:#7FD6B4}html[data-theme="dark"] .t-proj{color:#F0B27E}html[data-theme="dark"] .t-anl{color:#C9A3C6}
+.srcrow b{font-size:14.5px;color:var(--navy);display:block}
+.srcrow span{display:block;font-size:13.5px;line-height:1.55;color:var(--muted);margin-top:4px}
+.srcnote{font-size:13.5px;color:var(--body-c);background:rgba(194,86,63,.07);border-left:3px solid #C2563F;border-radius:0 8px 8px 0;padding:12px 14px;margin:0}
+.srcnote b{color:var(--navy)}
 .site-footer p{max-width:900px;margin:0 auto;line-height:1.75;font-size:11.5px;overflow-wrap:break-word;text-align:left}
 .site-footer p a{color:var(--teal);text-decoration:none}
+@media(max-width:600px){.srcrow{grid-template-columns:1fr;gap:6px}.srctag{justify-self:start}}
 @media(max-width:640px){.site-footer p{font-size:10.5px;line-height:1.7}}
 </style>
 </head>
@@ -1158,6 +1172,14 @@ a:focus-visible, button:focus-visible, input:focus-visible {
     <div class="ed-callout"><p><b>Explore the evidence yourself.</b> The supporting data dashboard has all four exhibits, plus a state-by-state leaderboard you can toggle between specialist vacancy and nursing shortfall, sorted by rate or by count. <a href="/tools/rural-pyramid/">Open the data dashboard &rarr;</a></p></div>
 
     <div class="ed-callout"><p>India didn't underbuild its rural health system. It built the pyramid <b>upside down</b>: wide and solid where the need is simplest, hollow where the need is greatest. You don't fix that with more foundation. You fix it at the top, or not at all.</p></div>
+
+<section id="s-src">
+<p class="eyebrow">08 &mdash; Sources</p>
+<h2>Sources and evidence status</h2>
+<p>What is officially published, and what is my analysis. Nothing above is presented as fact without one of these tags.</p>
+<div class="srcwrap"><div class="srcrow"><span class="srctag t-off">Official</span><div><b>Health Dynamics of India 2023-24, MoHFW</b><span>Rural workforce and facility data, position as on 31 March 2024. Table 68 and Comparative Statement 6 (CHC specialists, pp. 189 and 90), Comparative Statement 5 (PHC doctors, p. 89), Table 72 (GDMOs at CHCs, p. 193), Table 70 (anaesthetists, p. 191), Comparative Statement 10 (nursing, p. 94), Table 4 (facility shortfall, p. 118).</span></div></div><div class="srcrow"><span class="srctag t-off">Official</span><div><b>NFHS-6 (2023-24), IIPS</b><span>Rural and urban health insurance coverage, used for the funded-demand argument.</span></div></div><div class="srcrow"><span class="srctag t-anl">Analysis</span><div><b>Author's contribution</b><span>The inverted-pyramid framing, the buildings-versus-people distinction, the three-part explanation of why specialists do not come, and all interpretive commentary.</span></div></div></div>
+<p class="srcnote"><b>Before citing externally:</b> Figures were verified against the source publication, including printed page numbers. The 2005 columns exclude states reported as not available, which is why filled and vacant do not sum to sanctioned.</p>
+</section>
   </div>
   <div class="share-bar">
     <span class="share-label">Share this perspective:</span>
@@ -1196,7 +1218,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 </article>
 </main>
 <section class="subscribe" id="subscribe"><div class="subscribe-inner"><p class="eyebrow">EVERY FRIDAY &middot; FREE</p><h2>Enjoyed this issue of Healthcare Pulse?</h2><p class="subscribe-sub">Sharp, contrarian reads on India's digital health story, every Friday.</p><div class="subscribe-actions"><a class="btn-li" href="https://www.linkedin.com/newsletters/7311231782241083393/" target="_blank" rel="noopener">Subscribe on LinkedIn</a><a class="btn-ghost" href="https://www.linkedin.com/in/mayank-madhur/" target="_blank" rel="noopener">Connect with Mayank &rarr;</a></div></div></section>
-<footer class="site-footer"><p>&copy; 2026 Healthcare Pulse by Mayank Madhur &middot; Independent analysis and opinion. Sources: Health Dynamics of India 2023-24 (Infrastructure &amp; Human Resources), MoHFW, rural: Table 68 &amp; Comparative Statement 6 (CHC specialists, pp. 189, 90), Comparative Statement 5 (PHC doctors, p. 89), Table 72 (GDMOs at CHCs, p. 193), Table 70 (anaesthetists at CHCs, p. 191), Comparative Statement 10 (nursing, p. 94), Table 4 (facility shortfall, p. 118); position as on 31 March 2024. Insurance coverage NFHS-6 (2023-24), IIPS. Figures verified against the source publication.</p></footer>
+<footer class="site-footer"><p>&copy; 2026 Healthcare Pulse by Mayank Madhur &middot; <a href="mailto:mayank@mayankmadhur.in">mayank@mayankmadhur.in</a> &middot; Independent analysis and opinion. Full sources and evidence status are set out at the end of this edition.</p></footer>
 <button id="toTop" class="to-top" aria-label="Back to top"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg></button>
 <script>(function(){
   var bar=document.getElementById('prog');

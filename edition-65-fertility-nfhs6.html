@@ -1004,8 +1004,22 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 
 .post-body .eyebrow{font-family:var(--mono);font-size:12px;color:var(--teal);letter-spacing:.05em;font-weight:600;margin:0 0 10px;text-transform:none}
 
+.srcwrap{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);margin:22px 0 14px}
+html[data-theme="dark"] .srcwrap{background:#16252C;border-color:#25373F}
+.srcrow{display:grid;grid-template-columns:96px 1fr;gap:14px;padding:15px 18px;border-bottom:1px solid var(--line);align-items:start}
+.srcrow:last-child{border-bottom:0}
+.srctag{font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 9px;border-radius:6px;text-align:center;margin-top:2px}
+.t-off{background:rgba(55,182,138,.16);color:#2E7D5B}
+.t-proj{background:rgba(224,138,60,.18);color:#A8541A}
+.t-anl{background:rgba(122,83,120,.16);color:#7A5378}
+html[data-theme="dark"] .t-off{color:#7FD6B4}html[data-theme="dark"] .t-proj{color:#F0B27E}html[data-theme="dark"] .t-anl{color:#C9A3C6}
+.srcrow b{font-size:14.5px;color:var(--navy);display:block}
+.srcrow span{display:block;font-size:13.5px;line-height:1.55;color:var(--muted);margin-top:4px}
+.srcnote{font-size:13.5px;color:var(--body-c);background:rgba(194,86,63,.07);border-left:3px solid #C2563F;border-radius:0 8px 8px 0;padding:12px 14px;margin:0}
+.srcnote b{color:var(--navy)}
 .site-footer p{max-width:900px;margin:0 auto;line-height:1.75;font-size:11.5px;overflow-wrap:break-word;text-align:left}
 .site-footer p a{color:var(--teal);text-decoration:none}
+@media(max-width:600px){.srcrow{grid-template-columns:1fr;gap:6px}.srctag{justify-self:start}}
 @media(max-width:640px){.site-footer p{font-size:10.5px;line-height:1.7}}
 </style>
 </head>
@@ -1103,6 +1117,14 @@ a:focus-visible, button:focus-visible, input:focus-visible {
     <div class="ed-callout"><p><b>Explore every state yourself.</b> The interactive fertility tracker sorts all 31 states by fertility, ageing, unmet need and education, with the correlations behind the transition. <a href="/tools/fertility/">Open the tracker &rarr;</a></p></div>
 
     <div class="ed-callout"><p>India did not fail to control its population. It succeeded, and then kept going past the point anyone planned for. The problem is no longer too many births. It is <b>a country ageing at wildly different speeds</b>, with its healthcare capital, its hospital models and its political map all still calibrated for a growth story that has already ended.</p></div>
+
+<section id="s-src">
+<p class="eyebrow">06 &mdash; Sources</p>
+<h2>Sources and evidence status</h2>
+<p>What is officially published, and what is my analysis. Nothing above is presented as fact without one of these tags.</p>
+<div class="srcwrap"><div class="srcrow"><span class="srctag t-off">Official</span><div><b>NFHS-6 (2023-24), IIPS / MoHFW</b><span>State and national total fertility rates, urban and rural splits, the 60+ population share, unmet contraception need and education indicators used across every chart.</span></div></div><div class="srcrow"><span class="srctag t-anl">Analysis</span><div><b>Author's contribution</b><span>The regional groupings, the cross-sectional correlations across 31 states (Pearson's r), the ageing-versus-fertility framing, and all interpretive commentary.</span></div></div></div>
+<p class="srcnote"><b>Before citing externally:</b> NFHS-6 figures are survey estimates with sampling error. Correlations are cross-sectional across 31 states and do not establish causation.</p>
+</section>
   </div>
   <div class="share-bar">
     <span class="share-label">Share this perspective:</span>
@@ -1141,7 +1163,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 </article>
 </main>
 <section class="subscribe" id="subscribe"><div class="subscribe-inner"><p class="eyebrow">EVERY FRIDAY &middot; FREE</p><h2>Enjoyed this issue of Healthcare Pulse?</h2><p class="subscribe-sub">Sharp, contrarian reads on India's digital health story, every Friday.</p><div class="subscribe-actions"><a class="btn-li" href="https://www.linkedin.com/newsletters/7311231782241083393/" target="_blank" rel="noopener">Subscribe on LinkedIn</a><a class="btn-ghost" href="https://www.linkedin.com/in/mayank-madhur/" target="_blank" rel="noopener">Connect with Mayank &rarr;</a></div></div></section>
-<footer class="site-footer"><p>&copy; 2026 Healthcare Pulse by Mayank Madhur &middot; Independent analysis and opinion. Source: NFHS-6 (2023-24), IIPS / MoHFW. State totals; correlations are cross-sectional Pearson's r across 31 states.</p></footer>
+<footer class="site-footer"><p>&copy; 2026 Healthcare Pulse by Mayank Madhur &middot; <a href="mailto:mayank@mayankmadhur.in">mayank@mayankmadhur.in</a> &middot; Independent analysis and opinion. Full sources and evidence status are set out at the end of this edition.</p></footer>
 <button id="toTop" class="to-top" aria-label="Back to top"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg></button>
 <script>
 (function(){
