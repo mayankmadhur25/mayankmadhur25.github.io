@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edition 70: You Cannot Fix an Org Chart With an API &middot; Healthcare Pulse</title>
+<meta name="description" content="The Swasth Bharat Portal puts six national health programmes behind one login. India did not have a digitisation problem, it had an org-chart problem, and an API cannot join budgets. A governance read on what to measure.">
+<link rel="canonical" href="https://mayankmadhur.in/edition-70-swasth-bharat.html">
+<meta name="author" content="Mayank Madhur">
+<meta property="og:type" content="article"><meta property="og:site_name" content="Healthcare Pulse">
+<meta property="og:title" content="Edition 70: You Cannot Fix an Org Chart With an API">
+<meta property="og:description" content="Swasth Bharat converges six programmes on a screen. Whether it converges them in a budget is a governance question.">
+<meta property="og:url" content="https://mayankmadhur.in/edition-70-swasth-bharat.html">
+<meta property="og:image" content="https://mayankmadhur.in/logo.png"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://mayankmadhur.in/logo.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Edition 70: You Cannot Fix an Org Chart With an API","description":"A governance read on India's Swasth Bharat Portal: what convergence at the interface does and does not change.","datePublished":"2026-08-14","dateModified":"2026-08-14","url":"https://mayankmadhur.in/edition-70-swasth-bharat.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mayankmadhur.in/edition-70-swasth-bharat.html"},"image":"https://mayankmadhur.in/logo.png","inLanguage":"en","author":{"@type":"Person","name":"Mayank Madhur","url":"https://www.linkedin.com/in/mayank-madhur/","jobTitle":"Practice Leader, Healthcare & Life Sciences, HFS Research"},"publisher":{"@type":"Organization","name":"Healthcare Pulse","logo":{"@type":"ImageObject","url":"https://mayankmadhur.in/logo.png"}}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"Healthcare Pulse","item":"https://mayankmadhur.in/"},
+{"@type":"ListItem","position":2,"name":"Perspectives","item":"https://mayankmadhur.in/perspectives/"},
+{"@type":"ListItem","position":3,"name":"Edition 70","item":"https://mayankmadhur.in/edition-70-swasth-bharat.html"}]}
+</script>
+<link rel="icon" type="image/png" href="/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<style>
+
+
+
+
+/* Healthcare Pulse — shared edition stylesheet (design system + edition body + carousel + dark mode) */
+/* ==========================================================
+   Healthcare Pulse — design system
+   Brand: navy ink, teal→blue gradient, amber accent.
+   ========================================================== */
+
+:root {
+  --bg: #FAFDFD;
+  --navy: #1B3A4B;
+  --ink: #173441;
+  --body-c: #37505B;
+  --muted: #6E828C;
+  --teal: #0FA3A3;
+  --blue: #2E7CB8;
+  --green: #37B68A;
+  --amber: #E08A3C;
+  --amberdk: #B96A14;
+  --line: #E2EDED;
+  --tintT: #E7F5F4;
+  --grad: linear-gradient(135deg, #0FA3A3 0%, #2E7CB8 100%);
+  --radius: 16px;
+  --mono: 'IBM Plex Mono', monospace;
+  --sans: 'Manrope', 'Segoe UI', system-ui, sans-serif;
+  --shadow: 0 14px 34px rgba(27, 58, 75, .12);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--body-c);
+  font-family: var(--sans);
+  font-size: 17.5px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--blue); }
+
+/* ---------- progress bar ---------- */
+#prog {
+  position: fixed; top: 0; left: 0;
+  height: 4px; width: 0;
+  background: var(--grad);
+  z-index: 99;
+}
+
+/* ---------- utility bar ---------- */
+.util { background: var(--navy); color: #CFE6E6; font-size: 12.5px; letter-spacing: .5px; }
+
+.util-in {
+  max-width: 1240px; margin: 0 auto;
+  padding: 8px 24px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+
+.util b { color: #fff; letter-spacing: 2.5px; font-family: var(--mono); font-weight: 600; }
+
+.util a { color: #9FDEDD; font-weight: 700; text-decoration: none; }
+
+.util a:hover { color: #fff; }
+
+/* ---------- masthead ---------- */
+.site-header {
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  padding: 16px clamp(20px, 4vw, 48px);
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+  position: sticky; top: 0; z-index: 10;
+}
+
+.logo { display: flex; align-items: center; gap: 13px; text-decoration: none; }
+
+.avatar {
+  width: 50px; height: 50px; flex: none;
+  border-radius: 50%;
+  background: var(--grad);
+  color: #fff;
+  font-weight: 800; font-size: 17px; letter-spacing: .5px;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.avatar-sm { width: 44px; height: 44px; font-size: 15px; border-radius: 12px; }
+
+.logo-name {
+  display: block;
+  font-weight: 800; font-size: 22px;
+  color: var(--navy); letter-spacing: -.4px; line-height: 1.1;
+}
+
+.logo-tag { display: block; font-size: 12.5px; color: var(--muted); }
+
+.site-header nav { display: flex; gap: 20px; align-items: center; }
+
+.site-header nav a { text-decoration: none; font-weight: 700; font-size: 15px; color: var(--ink); }
+
+.site-header nav a:hover { color: var(--teal); }
+
+.nav-subscribe {
+  background: var(--grad);
+  color: #fff !important;
+  padding: 9px 20px;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(15, 163, 163, .35);
+}
+
+.nav-subscribe:hover { filter: brightness(1.08); }
+
+/* ---------- hero ---------- */
+.hero {
+  padding: clamp(54px, 8vw, 96px) clamp(20px, 4vw, 48px) clamp(34px, 5vw, 56px);
+  max-width: 1240px; margin: 0 auto;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 11.5px; font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--teal);
+  background: var(--tintT);
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.hero-title {
+  font-weight: 800;
+  font-size: clamp(44px, 7.5vw, 86px);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  color: var(--navy);
+  max-width: 16ch;
+}
+
+.hi-grad {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-ecg { width: min(560px, 100%); height: 64px; margin: 18px 0 4px; display: block; }
+
+.ecg-line {
+  stroke: #2E7CB8;
+  opacity: .9;
+}
+.ecg-dot {
+  filter: drop-shadow(0 0 6px rgba(46,124,184,.85));
+}
+@media (prefers-reduced-motion: reduce) {
+  .ecg-dot { display: none; }
+}
+
+.hero-sub {
+  margin-top: 16px;
+  font-size: clamp(17px, 2vw, 21px);
+  color: var(--ink);
+  max-width: 56ch;
+  line-height: 1.5;
+}
+
+.hero-actions { display: flex; gap: 14px; align-items: center; margin-top: 28px; flex-wrap: wrap; }
+
+.hero-cta {
+  display: inline-block;
+  font-weight: 800; font-size: 17px;
+  text-decoration: none;
+  background: var(--grad);
+  color: #fff;
+  padding: 14px 30px;
+  border-radius: 999px;
+  box-shadow: 0 8px 22px rgba(15, 163, 163, .38);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.hero-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(15, 163, 163, .45); }
+
+.hero-ghost {
+  font-weight: 700; font-size: 16px;
+  text-decoration: none;
+  color: var(--navy);
+  border: 2px solid var(--line);
+  padding: 12px 24px;
+  border-radius: 999px;
+}
+
+.hero-ghost:hover { border-color: var(--teal); color: var(--teal); }
+
+/* ---------- post grid ---------- */
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 26px;
+  padding: 8px clamp(20px, 4vw, 48px) 80px;
+  max-width: 1280px; margin: 0 auto;
+}
+
+.card {
+  text-decoration: none;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  box-shadow: 0 4px 14px rgba(27, 58, 75, .07);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .55s ease, transform .55s ease; }
+
+.reveal.in { opacity: 1; transform: none; }
+
+.card-banner { height: 116px; position: relative; overflow: hidden; }
+
+.card-banner svg, .banner-ecg { width: 100%; height: 100%; display: block; }
+
+.card-ed {
+  position: absolute; top: 12px; right: 12px;
+  font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 1.5px;
+  background: rgba(255, 255, 255, .92);
+  color: var(--navy);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+/* category colors */
+.cat-digital-health .card-banner, .post-banner.cat-digital-health { background: var(--grad); }
+.cat-pharma .card-banner,         .post-banner.cat-pharma         { background: linear-gradient(135deg, #2E7CB8, #1B3A4B); }
+.cat-biotech .card-banner,        .post-banner.cat-biotech        { background: linear-gradient(135deg, #37B68A, #0FA3A3); }
+.cat-policy .card-banner,         .post-banner.cat-policy         { background: linear-gradient(135deg, #E08A3C, #B96A14); }
+.cat-geopolitics .card-banner,    .post-banner.cat-geopolitics    { background: linear-gradient(135deg, #8B2635, #C04A3C); }
+.cat-strategy .card-banner,       .post-banner.cat-strategy       { background: linear-gradient(135deg, #6C4AB6, #3A2E7C); }
+
+.cat-digital-health .card-meta { color: var(--teal); }
+.cat-pharma .card-meta         { color: var(--blue); }
+.cat-biotech .card-meta        { color: var(--green); }
+.cat-policy .card-meta         { color: var(--amberdk); }
+.cat-geopolitics .card-meta   { color: #8B2635; }
+.cat-strategy .card-meta       { color: #6C4AB6; }
+
+.card-body { padding: 20px 22px 24px; display: flex; flex-direction: column; flex: 1; }
+
+.card-meta {
+  font-family: var(--mono);
+  font-size: 12px; font-weight: 600; letter-spacing: .8px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.card-body h2 {
+  font-weight: 800; font-size: 21.5px; line-height: 1.2;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+
+.card-excerpt { font-size: 15px; color: var(--body-c); }
+
+.card-read {
+  margin-top: auto; padding-top: 16px;
+  font-weight: 800; font-size: 14.5px;
+  color: var(--teal);
+}
+
+.card:hover .card-read { color: var(--blue); }
+
+/* ---------- single post ---------- */
+.post { max-width: 780px; margin: 0 auto; padding: 40px 20px 70px; }
+
+.post-banner {
+  height: clamp(140px, 24vw, 220px);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.post-meta {
+  display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center;
+  font-family: var(--mono);
+  font-size: 12.5px; font-weight: 600; letter-spacing: 1px;
+  color: var(--muted);
+  margin: 26px 0 14px;
+}
+
+.meta-ed { color: var(--teal); }
+
+.meta-cat {
+  background: var(--navy);
+  color: #fff;
+  padding: 3px 13px;
+  border-radius: 999px;
+}
+
+.post-title {
+  font-weight: 800;
+  font-size: clamp(32px, 5.5vw, 54px);
+  line-height: 1.06; letter-spacing: -0.02em;
+  color: var(--navy);
+  margin-bottom: 28px;
+}
+
+.post-body h2 {
+  font-weight: 800; font-size: 27px; color: var(--navy);
+  margin: 38px 0 14px;
+}
+
+.post-body h3 { font-weight: 700; font-size: 21px; color: var(--navy); margin: 30px 0 10px; }
+
+.post-body p { margin-bottom: 18px; }
+
+.post-body ul, .post-body ol { margin: 0 0 18px 24px; }
+
+.post-body li { margin-bottom: 8px; }
+
+.post-body blockquote {
+  border-left: 5px solid var(--amber);
+  background: #FBF0E1;
+  color: var(--ink);
+  padding: 16px 22px;
+  border-radius: 0 12px 12px 0;
+  margin: 24px 0;
+  font-weight: 600;
+}
+
+.post-body img { max-width: 100%; border-radius: 12px; box-shadow: var(--shadow); }
+
+.post-body strong { color: var(--navy); }
+
+/* ---------- author box ---------- */
+.author-box {
+  display: flex; gap: 16px; align-items: flex-start;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px;
+  margin-top: 46px;
+  box-shadow: 0 4px 14px rgba(27, 58, 75, .06);
+}
+
+.author-name { font-weight: 800; color: var(--navy); font-size: 17px; }
+
+.author-name span { font-weight: 500; color: var(--muted); font-size: 13px; }
+
+.author-bio { font-size: 13.5px; color: var(--muted); line-height: 1.55; margin: 4px 0 8px; }
+
+.author-box a { font-weight: 800; font-size: 14.5px; text-decoration: none; color: var(--teal); }
+
+.back-link {
+  display: inline-block; margin-top: 34px;
+  font-family: var(--mono); font-size: 14px;
+  text-decoration: none; color: var(--navy);
+  border-bottom: 2px solid var(--teal);
+  padding-bottom: 2px;
+}
+
+/* ---------- subscribe ---------- */
+.subscribe { background: var(--navy); color: #E8F4F4; padding: clamp(50px, 8vw, 90px) clamp(20px, 4vw, 48px); }
+
+.subscribe-inner { max-width: 660px; margin: 0 auto; text-align: center; }
+
+.subscribe .eyebrow { background: rgba(255, 255, 255, .08); color: #FFC987; }
+
+.subscribe h2 {
+  font-weight: 800;
+  font-size: clamp(28px, 4.5vw, 42px);
+  line-height: 1.12;
+  color: #fff;
+}
+
+.subscribe-sub { margin-top: 14px; color: #B9D2D6; }
+
+.subscribe-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 28px; }
+
+.btn-li {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: var(--grad);
+  color: #fff;
+  font-weight: 800; font-size: 16px;
+  text-decoration: none;
+  padding: 14px 26px;
+  border-radius: 999px;
+  box-shadow: 0 8px 22px rgba(15, 163, 163, .4);
+  transition: transform .15s ease;
+}
+
+.btn-li:hover { transform: translateY(-2px); }
+
+.btn-ghost {
+  display: inline-flex; align-items: center;
+  color: #fff; font-weight: 700; font-size: 15px;
+  text-decoration: none;
+  border: 2px solid rgba(255, 255, 255, .25);
+  padding: 12px 22px;
+  border-radius: 999px;
+}
+
+.btn-ghost:hover { border-color: var(--teal); color: #9FDEDD; }
+
+.subscribe-form { margin-top: 22px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+
+.subscribe-form input {
+  font-family: var(--sans); font-size: 16px;
+  padding: 13px 18px;
+  border-radius: 999px; border: none;
+  width: min(320px, 100%);
+}
+
+.subscribe-form button {
+  font-family: var(--sans); font-weight: 800; font-size: 16px;
+  padding: 13px 26px;
+  border-radius: 999px; border: none;
+  background: var(--amber); color: #fff;
+  cursor: pointer;
+}
+
+.rss-line { margin-top: 20px; font-size: 14px; color: #B9D2D6; }
+
+.rss-line a { color: #9FDEDD; }
+
+/* ---------- footer ---------- */
+.site-footer {
+  padding: 24px clamp(20px, 4vw, 48px);
+  font-family: var(--mono);
+  font-size: 12.5px;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+
+/* ---------- about page ---------- */
+.page { max-width: 720px; margin: 0 auto; padding: 60px 20px 80px; }
+
+.page h1 {
+  font-weight: 800;
+  font-size: clamp(34px, 6vw, 56px);
+  color: var(--navy);
+  letter-spacing: -.02em;
+  margin-bottom: 24px;
+}
+
+.page p { margin-bottom: 18px; }
+
+/* ---------- focus & motion ---------- */
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 3px solid var(--amber);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+
+/* ---------- mobile ---------- */
+@media (max-width: 600px) {
+  
+  .post-grid { grid-template-columns: 1fr; }
+  .util-in { flex-direction: column; gap: 4px; }
+}
+
+/* logo image */
+.logo-img{width:48px;height:48px;object-fit:contain;border-radius:10px;}
+/* hp-blocks (used inside posts) */
+.hp-block{background:#fff;border:1px solid #E2EDED;border-radius:16px;padding:28px 26px;margin:32px 0;box-shadow:0 4px 14px rgba(27,58,75,.06)}
+.hp-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:2px;color:#E08A3C;text-transform:uppercase;margin-bottom:8px}
+.hp-h2{font-size:26px;font-weight:800;color:#1B3A4B;margin-bottom:8px;line-height:1.15}
+.hp-sub{color:#37505B;margin-bottom:20px;font-size:15.5px}
+.hp-stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-top:20px}
+.hp-stat{background:#FAFDFD;border:1px solid #E2EDED;border-radius:12px;padding:18px 16px}
+.hp-num{display:block;font-size:32px;font-weight:800;line-height:1.1;margin-bottom:8px}
+.hp-num.up{color:#0FA3A3}.hp-num.down{color:#C0392B}.hp-num.warn{color:#E08A3C}.hp-num.flat{color:#2E7CB8}
+.hp-stat p{font-size:14px;color:#37505B;line-height:1.5}
+.hp-three{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:16px;margin-top:20px}
+.hp-col{border-radius:12px;padding:20px 18px}.hp-col ul{margin:10px 0 0 16px}.hp-col li{font-size:14px;margin-bottom:8px;color:#37505B}
+.hp-gain{background:#E7F5F4;border-top:4px solid #0FA3A3}.hp-stall{background:#FBF0E1;border-top:4px solid #E08A3C}.hp-rev{background:#FDECEA;border-top:4px solid #C0392B}
+.hp-col-head{font-weight:800;font-size:17px;color:#1B3A4B}.hp-col-sub{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:1.5px;color:#6E828C;margin:4px 0 12px}
+.hp-swot{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+.hp-swot-cell{border-radius:12px;padding:18px 16px}.hp-swot-cell ul{margin:10px 0 0 16px}.hp-swot-cell li{font-size:14px;margin-bottom:8px;color:#37505B}
+.hp-swot-label{font-weight:800;font-size:16px;margin-bottom:4px}
+.hp-s{background:#E7F5F4}.hp-s .hp-swot-label{color:#0FA3A3}.hp-w{background:#FDECEA}.hp-w .hp-swot-label{color:#C0392B}
+.hp-o{background:#EEF2FF}.hp-o .hp-swot-label{color:#2E7CB8}.hp-t{background:#FBF0E1}.hp-t .hp-swot-label{color:#E08A3C}
+.hp-balance{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+.hp-pros{background:#E7F5F4;border-radius:12px;padding:20px 18px}.hp-cons{background:#FDECEA;border-radius:12px;padding:20px 18px}
+.hp-pros ul,.hp-cons ul{margin:10px 0 0 0;list-style:none}
+.hp-pros li,.hp-cons li{font-size:14px;margin-bottom:10px;color:#37505B;padding-left:20px;position:relative}
+.hp-pros li::before{content:"+";position:absolute;left:0;color:#0FA3A3;font-weight:800}
+.hp-cons li::before{content:"–";position:absolute;left:0;color:#C0392B;font-weight:800}
+.hp-pros-head{font-weight:800;font-size:17px;color:#0FA3A3}.hp-cons-head{font-weight:800;font-size:17px;color:#C0392B}
+@media(max-width:560px){.hp-swot,.hp-balance{grid-template-columns:1fr}}
+
+/* ── header thinning patch ── */
+.site-header {
+  padding: 10px clamp(16px, 3vw, 40px) !important;
+}
+.logo-img {
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 8px !important;
+}
+.logo-name {
+  font-size: 18px !important;
+}
+.logo-tag {
+  font-size: 11.5px !important;
+}
+.logo {
+  gap: 10px !important;
+}
+.util {
+  font-size: 11.5px !important;
+}
+.util-in {
+  padding: 5px 24px !important;
+}
+
+/* ── header compact v2 ── */
+.site-header {
+  padding: 8px clamp(16px, 3vw, 40px) !important;
+  min-height: unset !important;
+}
+.logo {
+  gap: 8px !important;
+  align-items: center !important;
+}
+.logo-img {
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 6px !important;
+  flex: none !important;
+  object-fit: contain !important;
+}
+.logo-name { font-size: 16px !important; }
+.logo-tag  { font-size: 11px !important; }
+.util-in   { padding: 4px 24px !important; }
+.util      { font-size: 11px !important; }
+.site-header nav a { font-size: 14px !important; }
+.nav-subscribe { padding: 7px 16px !important; font-size: 14px !important; }
+
+
+/* ── wider layout ── */
+.hero, .post-grid { max-width: 1340px; }
+
+/* ── hero split with profile card ── */
+.hero-split {
+  display: grid;
+  grid-template-columns: 1.45fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.hero-left { min-width: 0; }
+
+.profile-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 26px;
+  box-shadow: 0 14px 40px rgba(27,58,75,.12);
+}
+.pc-top { display: flex; gap: 16px; align-items: center; margin-bottom: 16px; }
+.pc-photo {
+  width: 72px; height: 72px; flex: none;
+  border-radius: 16px; object-fit: cover;
+  border: 3px solid var(--tintT);
+}
+.pc-name { font-weight: 800; font-size: 20px; color: var(--navy); line-height: 1.1; }
+.pc-role { font-weight: 700; font-size: 13.5px; color: var(--amber); margin-top: 3px; }
+.pc-bio { font-size: 14px; color: var(--body-c); line-height: 1.6; margin-bottom: 16px; }
+.pc-list { list-style: none; margin: 0 0 18px; padding-top: 14px; border-top: 1px solid var(--line); }
+.pc-list li {
+  font-size: 13px; color: var(--body-c); line-height: 1.5;
+  padding-left: 18px; position: relative; margin-bottom: 9px;
+}
+.pc-list li::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--amber); position: absolute; left: 0; top: 7px;
+}
+.pc-links { display: flex; gap: 10px; align-items: center; padding-top: 14px; border-top: 1px solid var(--line); }
+.pc-links a {
+  width: 34px; height: 34px; border-radius: 9px;
+  background: var(--tintT); color: var(--navy);
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none;
+}
+.pc-links a:hover { background: var(--teal); color: #fff; }
+.pc-full {
+  width: auto !important; padding: 0 14px;
+  font-weight: 700; font-size: 13px; color: var(--teal) !important;
+  margin-left: auto; background: none !important;
+}
+.pc-full:hover { background: none !important; color: var(--blue) !important; }
+
+@media (max-width: 880px) {
+  .hero-split { grid-template-columns: 1fr; gap: 32px; }
+  .profile-card { max-width: 440px; }
+}
+
+
+/* ── share buttons ── */
+.share-bar {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  margin: 36px 0 10px; padding: 18px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+}
+.share-bar .share-label { font-weight: 800; font-size: 14px; color: var(--navy); margin-right: 4px; }
+.share-btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-weight: 700; font-size: 13.5px; text-decoration: none;
+  padding: 8px 15px; border-radius: 999px; border: 1px solid var(--line);
+  color: var(--navy); background: #fff; cursor: pointer;
+}
+.share-btn:hover { border-color: var(--teal); color: var(--teal); }
+.share-wa:hover { border-color:#25D366; color:#1a9e4b; }
+.share-li:hover { border-color:#0A66C2; color:#0A66C2; }
+.share-x:hover  { border-color:#000; color:#000; }
+.share-copied { color: var(--teal) !important; border-color: var(--teal) !important; }
+
+/* ── contact form ── */
+.contact-section { background: var(--tintT); padding: clamp(44px,7vw,80px) clamp(20px,4vw,48px); }
+.contact-inner { max-width: 620px; margin: 0 auto; }
+.contact-inner .eyebrow { display:inline-block; }
+.contact-inner h2 { font-size: clamp(26px,4vw,38px); font-weight: 800; color: var(--navy); margin: 10px 0 8px; }
+.contact-inner > p { color: var(--body-c); margin-bottom: 24px; }
+.cform { display: grid; gap: 14px; }
+.cform input, .cform textarea {
+  font-family: var(--sans); font-size: 15.5px;
+  padding: 14px 16px; border-radius: 12px; border: 1px solid var(--line);
+  background: #fff; width: 100%; color: var(--ink);
+}
+.cform input:focus, .cform textarea:focus { outline: 2px solid var(--teal); border-color: var(--teal); }
+.cform textarea { min-height: 130px; resize: vertical; }
+.cform button {
+  font-family: var(--sans); font-weight: 800; font-size: 16px;
+  padding: 14px 28px; border-radius: 999px; border: none;
+  background: var(--grad); color: #fff; cursor: pointer; justify-self: start;
+  box-shadow: 0 8px 22px rgba(15,163,163,.35);
+}
+.cform button:hover { transform: translateY(-2px); }
+.cform .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media(max-width:520px){ .cform .row2 { grid-template-columns: 1fr; } }
+
+/* ── search / filter bar ── */
+.filter-bar { max-width: 1340px; margin: 0 auto; padding: 8px clamp(20px,4vw,48px) 0; }
+.filter-inner {
+  display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
+  background: #fff; border: 1px solid var(--line); border-radius: 14px;
+  padding: 14px 16px; box-shadow: 0 4px 14px rgba(27,58,75,.05);
+}
+.f-search {
+  flex: 1 1 240px; min-width: 180px;
+  font-family: var(--sans); font-size: 15px;
+  padding: 11px 16px; border-radius: 10px;
+  border: 1px solid var(--line); background: var(--bg); color: var(--ink);
+}
+.f-search:focus { outline: 2px solid var(--teal); border-color: var(--teal); }
+.f-select {
+  font-family: var(--sans); font-size: 14.5px; font-weight: 600;
+  padding: 11px 14px; border-radius: 10px;
+  border: 1px solid var(--line); background: #fff; color: var(--navy); cursor: pointer;
+}
+.f-select:focus { outline: 2px solid var(--teal); border-color: var(--teal); }
+.f-btn {
+  font-family: var(--sans); font-weight: 800; font-size: 14.5px;
+  padding: 11px 24px; border-radius: 10px; border: none;
+  background: var(--grad); color: #fff; cursor: pointer;
+}
+.f-btn:hover { filter: brightness(1.08); }
+.f-clear {
+  font-family: var(--sans); font-weight: 700; font-size: 14.5px;
+  padding: 11px 18px; border-radius: 10px;
+  border: 1px solid var(--line); background: #fff; color: var(--muted); cursor: pointer;
+}
+.f-clear:hover { border-color: var(--teal); color: var(--teal); }
+.f-count {
+  font-family: var(--mono); font-size: 13px; color: var(--muted);
+  margin: 12px 0 0 4px;
+}
+@media(max-width:600px){
+  .f-search, .f-select, .f-btn, .f-clear { flex: 1 1 100%; }
+}
+
+
+
+/* ════════════════════════════════════════
+   NEW FEATURES: picks, views, dark mode
+   ════════════════════════════════════════ */
+
+/* ── Editor's Picks ── */
+.picks { max-width: 1340px; margin: 0 auto; padding: 20px clamp(20px,4vw,48px) 0; }
+.picks-head { margin-bottom: 18px; }
+.picks-title { font-size: 26px; font-weight: 800; color: var(--navy); margin-top: 6px; }
+.picks-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+.pick-card {
+  display: flex; flex-direction: column; gap: 8px;
+  border-radius: 16px; padding: 24px 22px; text-decoration: none;
+  color: #fff; position: relative; overflow: hidden;
+  min-height: 200px; transition: transform .2s ease, box-shadow .2s ease;
+}
+.pick-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(27,58,75,.22); }
+.pick-card.cat-digital-health { background: var(--grad); }
+.pick-card.cat-policy { background: linear-gradient(135deg,#E08A3C,#B96A14); }
+.pick-card.cat-strategy { background: linear-gradient(135deg,#6C4AB6,#3A2E7C); }
+.pick-card.cat-pharma { background: linear-gradient(135deg,#2E7CB8,#1B3A4B); }
+.pick-card.cat-biotech { background: linear-gradient(135deg,#37B68A,#0FA3A3); }
+.pick-ed { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 1.5px; opacity: .9; }
+.pick-card h3 { font-size: 19px; font-weight: 800; line-height: 1.2; }
+.pick-card p { font-size: 13.5px; line-height: 1.5; opacity: .95; flex: 1; }
+.pick-read { font-weight: 800; font-size: 14px; margin-top: auto; }
+@media(max-width:820px){ .picks-grid { grid-template-columns: 1fr; } }
+
+/* ── Card footer with reading time ── */
+.card-foot { margin-top: auto; padding-top: 16px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.card-foot .card-read { padding-top: 0; }
+.card-views { font-family: var(--mono); font-size: 12px; color: var(--muted); white-space: nowrap; }
+
+/* ── Subscribe social proof ── */
+.subscribe-proof { color: #9FDEDD; font-size: 14.5px; font-weight: 600; margin-top: 6px; }
+
+/* ── Theme toggle button ── */
+.theme-toggle {
+  background: none; border: 1px solid var(--line); border-radius: 10px;
+  width: 38px; height: 38px; cursor: pointer; color: var(--navy);
+  display: inline-flex; align-items: center; justify-content: center; padding: 0;
+}
+.theme-toggle:hover { border-color: var(--teal); color: var(--teal); }
+.theme-toggle .t-moon { display: none; }
+[data-theme="dark"] .theme-toggle .t-sun { display: none; }
+[data-theme="dark"] .theme-toggle .t-moon { display: block; }
+
+/* ── DARK MODE THEME ── */
+[data-theme="dark"] {
+  --bg: #0F1B22;
+  --navy: #E8F4F4;
+  --ink: #DCEaEa;
+  --body-c: #B4C7CE;
+  --muted: #7E939B;
+  --line: #25373F;
+  --tintT: #16252C;
+}
+[data-theme="dark"] body { background: var(--bg); }
+[data-theme="dark"] .site-header { background: #13212A; border-bottom-color: #25373F; }
+[data-theme="dark"] .card,
+[data-theme="dark"] .profile-card,
+[data-theme="dark"] .hp-block,
+[data-theme="dark"] .section-block,
+[data-theme="dark"] .about-hero,
+[data-theme="dark"] .filter-inner { background: #16252C; border-color: #25373F; }
+[data-theme="dark"] .f-search { background: #0F1B22; color: var(--ink); }
+[data-theme="dark"] .f-select { background: #16252C; color: var(--ink); }
+[data-theme="dark"] .card-banner svg path { stroke: rgba(255,255,255,.7); }
+[data-theme="dark"] .logo-name { color: #E8F4F4; }
+[data-theme="dark"] .nav-subscribe { color: #fff !important; }
+[data-theme="dark"] .subscribe { background: #0A1418; color: #E8F4F4; }
+[data-theme="dark"] .meta-cat { background: #16252C; color: #E8F4F4; }
+[data-theme="dark"] .card-ed { background: rgba(255,255,255,.92); color: #1B3A4B; }
+[data-theme="dark"] .subscribe h2 { color: #fff; }
+[data-theme="dark"] .util { background: #0A1418; }
+[data-theme="dark"] .contact-section { background: #13212A; }
+[data-theme="dark"] .cform input, [data-theme="dark"] .cform textarea { background: #0F1B22; color: var(--ink); border-color: #25373F; }
+[data-theme="dark"] .pick-card { color: #fff; }
+
+/* ── Archive page ── */
+.archive-wrap { max-width: 860px; margin: 0 auto; padding: 52px 24px 80px; }
+.archive-head { margin-bottom: 30px; }
+.archive-head h1 { font-size: clamp(30px,5vw,44px); font-weight: 800; color: var(--navy); margin: 8px 0; }
+.archive-sub { color: var(--body-c); font-size: 16px; }
+.archive-list { list-style: none; }
+.archive-item { border-bottom: 1px solid var(--line); }
+.archive-item a { display: grid; grid-template-columns: 70px 1fr auto; gap: 16px; align-items: baseline; padding: 18px 4px; text-decoration: none; }
+.archive-item a:hover { background: var(--tintT); }
+.ai-ed { font-family: var(--mono); font-size: 12px; font-weight: 600; color: var(--teal); }
+.ai-title { font-weight: 700; font-size: 16.5px; color: var(--navy); line-height: 1.35; }
+.ai-meta { font-family: var(--mono); font-size: 12px; color: var(--muted); white-space: nowrap; }
+@media(max-width:600px){ .archive-item a { grid-template-columns: 1fr; gap: 4px; } .ai-meta { white-space: normal; } }
+
+/* ── Topic landing pages ── */
+.topic-wrap { max-width: 1340px; margin: 0 auto; padding: 40px clamp(20px,4vw,48px) 60px; }
+.topic-head { margin-bottom: 24px; }
+.topic-head h1 { font-size: clamp(30px,5vw,46px); font-weight: 800; color: var(--navy); margin: 8px 0; }
+.topic-sub { color: var(--body-c); font-size: 16px; margin-bottom: 12px; }
+.topic-back { font-weight: 700; color: var(--teal); text-decoration: none; font-size: 14px; }
+.topic-empty { color: var(--muted); padding: 40px 0; text-align: center; }
+
+/* ── Topic chips (browse by topic) ── */
+.topic-chips { max-width: 1340px; margin: 0 auto; padding: 8px clamp(20px,4vw,48px) 0; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.topic-chips .tc-label { font-family: var(--mono); font-size: 12px; color: var(--muted); margin-right: 4px; }
+.topic-chip { text-decoration: none; font-size: 13px; font-weight: 700; padding: 7px 16px; border-radius: 999px; border: 1px solid var(--line); color: var(--navy); transition: all .15s ease; }
+.topic-chip:hover { border-color: var(--teal); color: var(--teal); }
+.topic-chip-theme { background: #FBF0E1; border-color: #F0D8B4; color: #B96A14; }
+.topic-chip-theme:hover { border-color: var(--amber); color: var(--amber); }
+
+/* ── Related issues ── */
+.related { max-width: 860px; margin: 40px auto 0; padding: 0 24px; }
+.related-label { font-family: var(--mono); font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+.related-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+.related-card { display: flex; flex-direction: column; gap: 8px; padding: 18px 18px; border-radius: 12px; text-decoration: none; color: #fff; min-height: 110px; transition: transform .2s ease; }
+.related-card:hover { transform: translateY(-3px); }
+.related-card.cat-digital-health { background: var(--grad); }
+.related-card.cat-policy { background: linear-gradient(135deg,#E08A3C,#B96A14); }
+.related-card.cat-strategy { background: linear-gradient(135deg,#6C4AB6,#3A2E7C); }
+.related-card.cat-pharma { background: linear-gradient(135deg,#2E7CB8,#1B3A4B); }
+.related-card.cat-biotech { background: linear-gradient(135deg,#37B68A,#0FA3A3); }
+.related-card.cat-geopolitics { background: linear-gradient(135deg,#8B2635,#C04A3C); }
+.rc-ed { font-family: var(--mono); font-size: 11px; font-weight: 600; opacity: .9; }
+.rc-title { font-weight: 700; font-size: 15px; line-height: 1.3; }
+@media(max-width:700px){ .related-grid { grid-template-columns: 1fr; } }
+
+/* ── Ask Me Anything ── */
+.ama-wrap { max-width: 760px; margin: 0 auto; padding: 52px 24px 80px; }
+.ama-head { text-align: center; margin-bottom: 28px; }
+.ama-head h1 { font-size: clamp(30px,5vw,46px); font-weight: 800; color: var(--navy); margin: 8px 0; }
+.ama-sub { color: var(--body-c); font-size: 16px; line-height: 1.6; max-width: 560px; margin: 0 auto; }
+.ama-box { display: flex; gap: 10px; margin-bottom: 16px; }
+.ama-input { flex: 1; padding: 16px 18px; border: 2px solid var(--line); border-radius: 12px; font-size: 16px; font-family: inherit; color: var(--ink); background: #fff; }
+.ama-input:focus { outline: none; border-color: var(--teal); }
+.ama-btn { padding: 0 26px; background: var(--grad); color: #fff; border: none; border-radius: 12px; font-weight: 800; font-size: 15px; cursor: pointer; white-space: nowrap; }
+.ama-btn:hover { filter: brightness(1.08); }
+.ama-suggest { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 30px; }
+.ama-sg-label { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+.ama-chip { background: var(--tintT); border: none; border-radius: 999px; padding: 7px 14px; font-size: 13px; font-weight: 600; color: var(--navy); cursor: pointer; }
+.ama-chip:hover { background: var(--teal); color: #fff; }
+.ama-result { min-height: 40px; }
+.ama-answer { animation: amaFade .3s ease; }
+@keyframes amaFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.ama-found { font-weight: 700; color: var(--navy); margin-bottom: 14px; font-size: 15px; }
+.ama-card { display: flex; flex-direction: column; gap: 5px; padding: 18px 20px; border-radius: 12px; text-decoration: none; color: #fff; margin-bottom: 12px; transition: transform .15s ease; }
+.ama-card:hover { transform: translateX(4px); }
+.ama-card.cat-digital-health { background: var(--grad); }
+.ama-card.cat-policy { background: linear-gradient(135deg,#E08A3C,#B96A14); }
+.ama-card.cat-strategy { background: linear-gradient(135deg,#6C4AB6,#3A2E7C); }
+.ama-card.cat-pharma { background: linear-gradient(135deg,#2E7CB8,#1B3A4B); }
+.ama-card.cat-biotech { background: linear-gradient(135deg,#37B68A,#0FA3A3); }
+.ama-card.cat-geopolitics { background: linear-gradient(135deg,#8B2635,#C04A3C); }
+.amc-ed { font-family: var(--mono); font-size: 11px; font-weight: 600; opacity: .9; }
+.amc-title { font-weight: 800; font-size: 17px; line-height: 1.25; }
+.amc-go { font-size: 13px; font-weight: 700; margin-top: 4px; opacity: .95; }
+.ama-none { background: var(--tintT); border-radius: 14px; padding: 28px 26px; text-align: center; }
+.ama-none-title { font-size: 19px; font-weight: 800; color: var(--navy); margin-bottom: 8px; }
+.ama-none-sub { color: var(--body-c); font-size: 14.5px; line-height: 1.6; margin-bottom: 18px; }
+.ama-suggest-btn { display: inline-block; background: var(--grad); color: #fff; font-weight: 800; font-size: 14px; text-decoration: none; padding: 12px 24px; border-radius: 999px; margin: 0 6px 10px; }
+.ama-browse { display: block; color: var(--teal); font-weight: 700; font-size: 14px; text-decoration: none; margin-top: 6px; }
+[data-theme="dark"] .ama-input { background: #16252C; color: var(--ink); }
+
+/* ── Coverage stats section ── */
+.stats-section { background: var(--tintT); padding: 56px 24px; }
+.stats-inner { max-width: 760px; margin: 0 auto; }
+.stats-inner h2 { font-size: clamp(24px,4vw,34px); font-weight: 800; color: var(--navy); margin: 6px 0 4px; }
+.stats-sub { color: var(--body-c); font-size: 15px; margin-bottom: 28px; }
+.stats-bars { display: flex; flex-direction: column; gap: 16px; }
+.stat-row { display: grid; grid-template-columns: 120px 1fr 64px; gap: 14px; align-items: center; }
+.stat-name { font-size: 14px; font-weight: 700; color: var(--navy); }
+.stat-track { background: rgba(27,58,75,.08); border-radius: 999px; height: 14px; overflow: hidden; }
+.stat-fill { height: 100%; border-radius: 999px; transition: width 1.1s cubic-bezier(.22,1,.36,1); }
+.stat-fill.cat-policy { background: linear-gradient(90deg,#E08A3C,#B96A14); }
+.stat-fill.cat-strategy { background: linear-gradient(90deg,#6C4AB6,#3A2E7C); }
+.stat-fill.cat-digital-health { background: var(--grad); }
+.stat-fill.cat-pharma { background: linear-gradient(90deg,#2E7CB8,#1B3A4B); }
+.stat-fill.cat-biotech { background: linear-gradient(90deg,#37B68A,#0FA3A3); }
+.stat-fill.cat-geopolitics { background: linear-gradient(90deg,#8B2635,#C04A3C); }
+.stat-val { font-family: var(--mono); font-size: 14px; font-weight: 600; color: var(--navy); text-align: right; }
+.stat-count { color: var(--muted); font-size: 12px; }
+.stats-foot { margin-top: 26px; font-size: 14px; color: var(--body-c); }
+.stats-foot a { color: var(--teal); font-weight: 700; text-decoration: none; }
+@media(max-width:540px){ .stat-row { grid-template-columns: 88px 1fr 52px; gap: 10px; } .stat-name { font-size: 12.5px; } }
+[data-theme="dark"] .stats-section { background: #13212A; }
+[data-theme="dark"] .stat-track { background: rgba(255,255,255,.08); }
+
+/* ── Back to top button ── */
+.to-top { position: fixed; bottom: 24px; right: 24px; width: 46px; height: 46px; border-radius: 50%; background: var(--navy); color: #fff; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transform: translateY(10px); transition: opacity .25s ease, transform .25s ease; z-index: 60; box-shadow: 0 6px 18px rgba(27,58,75,.28); }
+.to-top.show { opacity: 1; pointer-events: auto; transform: none; }
+.to-top:hover { background: var(--teal); }
+[data-theme="dark"] .to-top { background: var(--teal); }
+
+.post { max-width: 860px; }
+.lede { font-size: 20px; color: var(--ink); line-height: 1.6; }
+.ed-callout { background: var(--navy); color: #fff; border-radius: 16px; padding: 28px 30px; margin: 34px 0; }
+.ed-callout p { font-size: 19px; line-height: 1.5; margin: 0; color: #fff; }
+.ed-callout b { color: #FFC987; }
+[data-theme="dark"] .ed-callout { background: #16252C; border: 1px solid #2C3F47; }
+[data-theme="dark"] .ed-callout p { color: #EAF6F6; }
+[data-theme="dark"] .ed-callout b { color: #FFC987; }
+[data-theme="dark"] .ed-callout a { color: #5FD0CE; }
+.num-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 14px; margin: 26px 0; }
+.ed-source { font-family: var(--mono); font-size: 13px; color: var(--muted); margin-top: 26px; padding-top: 16px; border-top: 1px solid var(--line); line-height: 1.5; }
+.ed-chart { margin: 28px 0; padding: 22px 24px; background: var(--tintT); border: 1px solid var(--line); border-radius: 14px; }
+.ed-chart svg { width: 100%; height: auto; display: block; }
+.num-card { background: var(--tintT); border-radius: 14px; padding: 18px 16px; }
+.num-big { font-size: 24px; font-weight: 800; color: var(--teal); line-height: 1.1; margin-bottom: 6px; }
+.num-card p { font-size: 13.5px; color: var(--body-c); line-height: 1.5; margin: 0; }
+.row-item { display: grid; grid-template-columns: 40px 1fr; gap: 14px; align-items: start; margin: 12px 0; padding: 16px 18px; background: var(--tintT); border-radius: 12px; }
+.row-item .ri-num { font-family: var(--mono); font-weight: 700; font-size: 18px; color: var(--teal); }
+.row-item h4 { font-size: 15.5px; font-weight: 800; color: var(--navy); margin: 0 0 4px; }
+.row-item p { font-size: 14px; color: var(--body-c); margin: 0; line-height: 1.5; }
+.post-banner.cat-governance { background: linear-gradient(135deg,#3C5A6E,#5A7A8C); }
+.theme-toggle { background:none; border:1px solid var(--line); border-radius:10px; width:38px; height:38px; cursor:pointer; color:var(--navy); display:inline-flex; align-items:center; justify-content:center; padding:0; margin-left:4px; vertical-align:middle; }
+.theme-toggle:hover { border-color:var(--teal); color:var(--teal); }
+.theme-toggle .t-moon { display:none; }
+[data-theme="dark"] .theme-toggle .t-sun { display:none; }
+[data-theme="dark"] .theme-toggle .t-moon { display:block; }
+[data-theme="dark"] { --bg:#0F1B22; --navy:#E8F4F4; --ink:#DCEAEA; --body-c:#B4C7CE; --muted:#7E939B; --line:#25373F; --tintT:#16252C; }
+[data-theme="dark"] body { background:#0F1B22; }
+[data-theme="dark"] .site-header { background:#13212A; border-bottom-color:#25373F; }
+[data-theme="dark"] .util { background:#0A1418; }
+[data-theme="dark"] .logo-name { color:#E8F4F4; }
+[data-theme="dark"] .nav-subscribe { color:#fff !important; }
+[data-theme="dark"] .num-card, [data-theme="dark"] .row-item, [data-theme="dark"] .author-box { background:#16252C !important; border-color:#25373F; }
+.related { margin: 40px 0 10px; }
+.related-label { font-family: var(--mono); font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+.related-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+.related-card { display: flex; flex-direction: column; gap: 8px; padding: 18px 18px; border-radius: 12px; text-decoration: none; color: #fff; min-height: 120px; transition: transform .2s ease, box-shadow .2s ease; }
+.related-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(27,58,75,.20); }
+.related-card.cat-digital-health { background: linear-gradient(135deg,#0FA3A3,#2E7CB8); }
+.related-card.cat-policy { background: linear-gradient(135deg,#E08A3C,#B96A14); }
+.related-card.cat-strategy { background: linear-gradient(135deg,#6C4AB6,#3A2E7C); }
+.related-card.cat-pharma { background: linear-gradient(135deg,#2E7CB8,#1B3A4B); }
+.related-card.cat-biotech { background: linear-gradient(135deg,#37B68A,#0FA3A3); }
+.related-card.cat-general { background: linear-gradient(135deg,#1B3A4B,#2E7CB8); }
+.related-card .rc-ed { font-family: var(--mono); font-size: 11px; font-weight: 600; opacity: .9; }
+.related-card .rc-title { font-weight: 800; font-size: 15px; line-height: 1.3; }
+.related-card .rc-go { font-size: 12.5px; font-weight: 700; margin-top: auto; opacity: .92; }
+@media(max-width:700px){ .related-grid { grid-template-columns: 1fr; } }
+.to-top { position: fixed; bottom: 24px; right: 24px; width: 46px; height: 46px; border-radius: 50%; background: var(--navy); color: #fff; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transform: translateY(10px); transition: opacity .25s ease, transform .25s ease; z-index: 60; box-shadow: 0 6px 18px rgba(27,58,75,.28); }
+.to-top.show { opacity: 1; pointer-events: auto; transform: none; }
+.to-top:hover { background: var(--teal); }
+
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;color:#1B3A4B;padding:4px}
+[data-theme="dark"] .nav-toggle{color:#E8F4F4}
+@media(max-width:820px){
+  .nav-toggle{display:inline-flex;align-items:center}
+  .site-header{position:relative;flex-wrap:wrap}
+  .site-header nav{display:none;flex-direction:column;align-items:flex-start;gap:4px;width:100%;margin-top:14px;padding-top:14px;border-top:1px solid #E2EDED}
+  .site-header nav.open{display:flex}
+  .site-header nav a{font-size:16px;padding:9px 4px;width:100%}
+}
+
+/* ---- related carousel (swipeable) ---- */
+.related-head { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:14px; flex-wrap:wrap; }
+.related-head .related-label { margin-bottom:0; }
+.related-nav { display:flex; align-items:center; gap:8px; }
+.related-seeall { font-family:var(--mono); font-size:12px; font-weight:700; color:var(--teal); text-decoration:none; letter-spacing:.5px; }
+.related-seeall:hover { text-decoration:underline; }
+.rel-arrow { width:34px; height:34px; border-radius:50%; border:1px solid var(--line); background:var(--tintT); color:var(--navy); font-size:16px; cursor:pointer; line-height:1; transition:all .15s ease; display:inline-flex; align-items:center; justify-content:center; }
+.rel-arrow:hover { background:var(--teal); color:#fff; border-color:var(--teal); }
+.related-grid { display:flex !important; grid-template-columns:none !important; gap:14px; overflow-x:auto; scroll-behavior:smooth; scroll-snap-type:x mandatory; padding-bottom:6px; scrollbar-width:thin; }
+.related-grid::-webkit-scrollbar { height:6px; }
+.related-grid::-webkit-scrollbar-thumb { background:var(--line); border-radius:999px; }
+.related-grid .related-card { flex:0 0 clamp(220px,30%,280px); scroll-snap-align:start; min-height:120px; }
+@media(max-width:700px){ .related-grid { grid-template-columns:none !important; } .related-grid .related-card { flex:0 0 78%; } }
+
+/* ---- takeaways box (optional block) ---- */
+.ed-takeaways { background: var(--tintT); border: 1px solid var(--line); border-radius: 16px; padding: 24px 28px; margin: 30px 0; }
+.ed-takeaways .tk-label { font-family: var(--mono); font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--teal); margin: 0 0 14px; }
+.ed-takeaways ul { margin: 0; padding: 0; list-style: none; }
+.ed-takeaways li { position: relative; padding-left: 22px; margin: 11px 0; font-size: 15.5px; line-height: 1.55; color: var(--body-c); }
+.ed-takeaways li::before { content: ""; position: absolute; left: 2px; top: 9px; width: 8px; height: 8px; border-radius: 50%; background: var(--teal); }
+.ed-takeaways li b { color: var(--navy); font-weight: 800; }
+
+
+/* chart figures */
+.fig{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 26px;margin:32px 0;box-shadow:var(--shadow)}
+.fig-label{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);font-weight:600;margin-bottom:5px}
+.fig-title{font-size:19px;font-weight:800;color:var(--navy);margin:0 0 4px;line-height:1.2}
+.fig-sub{font-size:13.5px;color:var(--muted);margin:0 0 18px;line-height:1.5}
+.fig canvas{max-height:430px}
+.fig figcaption{font-size:12.5px;color:var(--muted);margin-top:16px;padding-top:14px;border-top:1px solid var(--line);line-height:1.55}
+.fig figcaption b{color:var(--navy)}
+.fig .clegend{display:flex;gap:14px;margin-bottom:14px;font-size:12px;color:var(--muted);flex-wrap:wrap}
+.fig .clegend span{display:inline-flex;align-items:center;gap:6px}
+.fig .cdot{width:9px;height:9px;border-radius:50%}
+.statrow{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:32px 0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--card)}
+@media(max-width:640px){.statrow{grid-template-columns:1fr}}
+.statrow .s{padding:24px 22px;border-right:1px solid var(--line)}
+.statrow .s:last-child{border-right:none}
+.statrow .n{font-size:42px;font-weight:800;line-height:1;color:var(--teal)}
+.statrow .n small{font-size:18px;color:var(--muted);font-weight:700}
+.statrow .l{font-size:13px;color:var(--muted);margin-top:9px;line-height:1.45}
+
+.post-body .eyebrow{font-family:var(--mono);font-size:12px;color:var(--teal);letter-spacing:.05em;font-weight:600;margin:0 0 10px;text-transform:none}
+
+
+
+.fp{display:flex;flex-direction:column;align-items:center;gap:8px;margin:22px 0 4px}
+.fp-t{height:52px;display:flex;align-items:center;justify-content:center;gap:9px;border-radius:9px;color:#fff;font-weight:800;font-size:15px;letter-spacing:-.01em;box-shadow:var(--shadow)}
+.fp-t small{font-family:var(--mono);font-weight:500;font-size:10.5px;opacity:.9}
+.fp-flow{font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;color:var(--muted);text-align:center;margin-top:4px}
+.fp-key{display:flex;flex-direction:column;margin-top:18px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.fp-row{display:grid;grid-template-columns:auto 1fr;gap:13px;padding:14px 17px;border-bottom:1px solid var(--line);align-items:start}
+.fp-row:last-child{border-bottom:0}
+.fp-badge{font-family:var(--mono);font-size:10.5px;font-weight:700;color:#fff;padding:5px 10px;border-radius:6px;white-space:nowrap;margin-top:1px;min-width:74px;text-align:center}
+.fp-row p{margin:0;font-size:14.5px;line-height:1.55;color:var(--body-c)}
+.fp-row p b{color:var(--navy)}
+@media(max-width:600px){.fp-t{font-size:13px}.fp-t small{display:none}}
+
+
+.fp-pyr{max-width:440px;margin:20px auto 2px}
+.fp-pyr svg{width:100%;height:auto;display:block}
+.fp-pyr .nm{fill:#fff;font-family:var(--sans);font-weight:800;font-size:16px;text-anchor:middle;letter-spacing:-.01em}
+.fp-pyr .ds{fill:rgba(255,255,255,.9);font-family:var(--mono);font-size:10px;text-anchor:middle;letter-spacing:.03em}
+
+
+/* jump selector */
+.jump{position:sticky;top:var(--hdr,68px);z-index:30;background:var(--bg);
+  border-bottom:1px solid var(--line);margin:0 0 30px;padding:10px 0;
+  box-shadow:0 0 0 100vmax var(--bg);clip-path:inset(0 -100vmax)}
+html[data-theme="dark"] .jump{background:#0F1B22;box-shadow:0 0 0 100vmax #0F1B22}
+.site-header{z-index:60}
+.post-body section{scroll-margin-top:calc(var(--hdr,68px) + 58px)}
+.jump-in{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-start}
+@media(max-width:640px){.jump-in{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;padding-bottom:2px}}
+.jump-in::-webkit-scrollbar{display:none}
+.jump a{flex:none;font-family:var(--mono);font-size:11px;letter-spacing:.03em;font-weight:600;
+  color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:999px;
+  padding:7px 12px;white-space:nowrap;transition:all .15s}
+.jump a:hover{color:var(--navy);border-color:var(--muted)}
+.jump a.on{background:linear-gradient(135deg,#0FA3A3,#2E7CB8);color:#fff;border-color:transparent}
+
+/* figures */
+.fig{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin:30px 0;box-shadow:var(--shadow)}
+html[data-theme="dark"] .fig{background:#16252C;border-color:#25373F}
+.fig-label{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);font-weight:600;margin-bottom:5px}
+.fig-title{font-size:19px;font-weight:800;color:var(--navy);margin:0 0 4px;line-height:1.2}
+.fig-sub{font-size:13.5px;color:var(--muted);margin:0 0 16px;line-height:1.5}
+.fig .cwrap{position:relative;height:300px}
+.fig .cwrap.tall{height:380px}
+.fig figcaption{font-size:12.5px;color:var(--muted);margin-top:14px;padding-top:12px;border-top:1px solid var(--line);line-height:1.55}
+.fig figcaption b{color:var(--navy)}
+/* number strip */
+.nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0;margin:28px 0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--card)}
+html[data-theme="dark"] .nums{background:#16252C;border-color:#25373F}
+.nums .n1{padding:20px 18px;border-right:1px solid var(--line)}
+.nums .n1:last-child{border-right:none}
+.nums .nv{font-size:30px;font-weight:800;line-height:1;color:var(--teal);letter-spacing:-.02em}
+.nums .nl{font-size:12.5px;color:var(--muted);margin-top:8px;line-height:1.45}
+/* risk tiers */
+.tier-row{display:grid;grid-template-columns:96px 1fr;gap:14px;padding:16px 18px;border-bottom:1px solid var(--line);align-items:start}
+.tier-row:last-child{border-bottom:0}
+.tier-wrap{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--card);margin:26px 0}
+html[data-theme="dark"] .tier-wrap{background:#16252C;border-color:#25373F}
+.tier-badge{font-family:var(--mono);font-size:10.5px;font-weight:700;color:#fff;padding:6px 10px;border-radius:6px;text-align:center;letter-spacing:.06em}
+.tb-green{background:#37B68A}.tb-amber{background:#E08A3C}.tb-red{background:#C2563F}
+.tier-row p{margin:0;font-size:14.5px;line-height:1.55;color:var(--body-c)}
+.tier-row .gov{display:block;font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-top:5px}
+
+
+.fixgrid{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--card);margin:26px 0}
+html[data-theme="dark"] .fixgrid{background:#16252C;border-color:#25373F}
+.fixrow{display:grid;grid-template-columns:.85fr 1.15fr;gap:16px;padding:16px 18px;border-bottom:1px solid var(--line);align-items:start}
+.fixrow:last-child{border-bottom:0}
+.fixp{font-size:13.5px;font-weight:700;color:var(--coral,#C2563F);line-height:1.45}
+.fixs{font-size:14.5px;line-height:1.6;color:var(--body-c)}
+.fixs b{color:var(--navy)}
+@media(max-width:640px){.fixrow{grid-template-columns:1fr;gap:6px}}
+/* related */
+.related{max-width:820px;margin:44px auto 0;padding:0 clamp(18px,4vw,28px)}
+
+.modelgrid{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--card);margin:26px 0;font-size:13.5px}
+html[data-theme="dark"] .modelgrid{background:#16252C;border-color:#25373F}
+.mrow{display:grid;grid-template-columns:1.15fr 1.2fr 1.1fr 1.05fr;gap:14px;padding:13px 16px;border-bottom:1px solid var(--line);align-items:start;color:var(--body-c);line-height:1.5}
+.mrow:last-child{border-bottom:0}
+.mhead{font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.mname{font-weight:700;color:var(--navy)}
+@media(max-width:720px){.mrow{grid-template-columns:1fr;gap:3px}.mhead{display:none}.mname{margin-top:4px}}
+
+/* Governance category was missing from the design system */
+.related-card.cat-governance{background:linear-gradient(135deg,#3C5A6E,#5A7A8C)}
+.pick-card.cat-governance{background:linear-gradient(135deg,#3C5A6E,#5A7A8C)}
+.card.cat-governance .card-banner{background:linear-gradient(135deg,#3C5A6E,#5A7A8C)}
+.post-banner.cat-governance{background:linear-gradient(135deg,#3C5A6E,#5A7A8C)}
+.stat-fill.cat-governance{background:linear-gradient(90deg,#3C5A6E,#5A7A8C)}
+
+/* solution chain graphic */
+.chain{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 20px 18px;margin:28px 0}
+html[data-theme="dark"] .chain{background:#16252C;border-color:#25373F}
+.chain-lbl{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);font-weight:600;margin-bottom:6px}
+.chain svg{width:100%;height:auto;display:block;overflow:visible}
+.chain .ln{fill:#fff;font-family:var(--sans);font-weight:800;font-size:14px;text-anchor:middle}
+.chain .lt{fill:var(--muted);font-family:var(--mono);font-size:11px;text-anchor:middle}
+.chain-foot{font-size:14px;color:var(--body-c);margin-top:14px;padding-top:12px;border-top:1px solid var(--line);line-height:1.6}
+.chain-foot b{color:var(--navy)}
+/* fix cards */
+.fixcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:14px;margin:22px 0 30px}
+.fixc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 18px 16px;display:flex;flex-direction:column;gap:8px}
+html[data-theme="dark"] .fixc{background:#16252C;border-color:#25373F}
+.fixc-top{display:flex;align-items:flex-start;gap:10px}
+.fixc-no{font-family:var(--mono);font-size:10.5px;font-weight:700;color:#fff;background:#C2563F;border-radius:5px;padding:4px 8px;flex:none;margin-top:1px}
+.fixc-prob{font-size:13px;font-weight:700;color:#C2563F;line-height:1.4}
+.fixc-fix{font-size:17px;font-weight:800;color:var(--navy);line-height:1.25;letter-spacing:-.01em}
+.fixc-how{font-size:13.5px;color:var(--muted);line-height:1.55}
+.fixc-why{font-size:13.5px;color:var(--body-c);line-height:1.6;background:rgba(15,163,163,.07);border-left:3px solid var(--teal);border-radius:0 8px 8px 0;padding:10px 12px;margin-top:auto}
+html[data-theme="dark"] .fixc-why{background:rgba(15,163,163,.13)}
+.fixc-why .wl{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:4px}
+
+.keyfind{background:rgba(15,163,163,.07);border:1px solid rgba(15,163,163,.28);border-radius:14px;padding:18px 20px;margin:26px 0}
+html[data-theme="dark"] .keyfind{background:rgba(15,163,163,.13);border-color:rgba(15,163,163,.35)}
+.kf-lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:10px}
+.keyfind ul{margin:0;padding-left:18px}
+.keyfind li{font-size:14.5px;line-height:1.62;color:var(--body-c);margin-bottom:7px}
+.keyfind li:last-child{margin-bottom:0}
+.keyfind b{color:var(--navy)}
+.meta-date{font-family:var(--mono);font-size:10.5px;color:var(--muted);letter-spacing:.03em}
+.dtbl{margin:16px 0 4px;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.dtbl summary{cursor:pointer;font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;color:var(--teal);font-weight:600;padding:10px 14px;background:rgba(15,163,163,.06);list-style:none}
+.dtbl summary::-webkit-details-marker{display:none}
+.dtbl summary:before{content:"\25B8 "}
+.dtbl[open] summary:before{content:"\25BE "}
+.dtbl table{width:100%;border-collapse:collapse;font-size:13.5px}
+.dtbl caption{text-align:left;font-size:12.5px;color:var(--muted);padding:12px 14px 6px}
+.dtbl th,.dtbl td{padding:9px 14px;border-top:1px solid var(--line);text-align:left;color:var(--body-c)}
+.dtbl th{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.dtbl td:first-child{font-weight:700;color:var(--navy)}
+.dsrc{font-size:12px;color:var(--muted);padding:10px 14px;margin:0;border-top:1px solid var(--line)}
+html[data-theme="dark"] .dtbl{border-color:#25373F}
+html[data-theme="dark"] .dtbl summary{background:rgba(15,163,163,.12)}
+
+
+.cwrap{position:relative}
+.stackd{display:flex;flex-direction:column;gap:6px;margin:18px 0 4px}
+.sl{display:grid;grid-template-columns:34px 168px 1fr;gap:12px;align-items:center;border-radius:9px;padding:13px 15px;color:#fff}
+.sl.focus{box-shadow:0 8px 22px -10px rgba(224,138,60,.7);transform:scale(1.015)}
+.sl .sn{font-family:var(--mono);font-size:11px;opacity:.85;font-weight:700}
+.sl .st{font-weight:800;font-size:14.5px;letter-spacing:-.01em}
+.sl .sc{font-family:var(--mono);font-size:11.5px;opacity:.93}
+@media(max-width:640px){.sl{grid-template-columns:30px 1fr;gap:8px}.sl .sc{grid-column:1/-1;font-size:10.5px}}
+.ladder{display:flex;flex-direction:column;gap:8px;margin:18px 0 4px;position:relative}
+.lr{display:grid;grid-template-columns:34px 1fr auto;gap:13px;align-items:center;background:var(--card);
+  border:1px solid var(--line);border-left:4px solid var(--line);border-radius:10px;padding:13px 15px}
+html[data-theme="dark"] .lr{background:#16252C;border-color:#25373F}
+.lr.done{border-left-color:#37B68A}.lr.mid{border-left-color:#E08A3C}.lr.far{border-left-color:#C2563F}
+.lnum{font-family:var(--mono);font-weight:800;font-size:15px;color:var(--muted);text-align:center}
+.lr b{display:block;font-size:15px;color:var(--navy);letter-spacing:-.01em}
+.lr span:not(.lnum):not(.lst){display:block;font-size:13px;color:var(--muted);margin-top:2px}
+.lst{font-family:var(--mono);font-size:10px;letter-spacing:.07em;text-transform:uppercase;padding:5px 10px;border-radius:999px;white-space:nowrap;font-weight:700}
+.st-a{background:rgba(55,182,138,.16);color:#2E7D5B}.st-b{background:rgba(224,138,60,.18);color:#A8541A}
+.st-c{background:rgba(194,86,63,.16);color:#C2563F}
+html[data-theme="dark"] .st-a{color:#7FD6B4}html[data-theme="dark"] .st-b{color:#F0B27E}html[data-theme="dark"] .st-c{color:#E59583}
+.lstall{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:#C2563F;text-align:right;margin-top:-2px;font-weight:700}
+@media(max-width:600px){.lr{grid-template-columns:28px 1fr}.lst{grid-column:2;justify-self:start;margin-top:6px}}
+
+.sim{border-left:4px solid var(--teal)}
+.sim-ctl{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:4px 0 16px}
+.sim-btn{font-family:var(--sans);font-size:13.5px;font-weight:700;color:var(--navy);background:var(--card);
+  border:1px solid var(--line);border-radius:999px;padding:9px 16px;cursor:pointer;transition:.15s}
+.sim-btn:hover{border-color:var(--teal);color:var(--teal)}
+.sim-btn.primary{background:linear-gradient(135deg,#0FA3A3,#2E7CB8);color:#fff;border-color:transparent}
+.sim-btn:disabled{opacity:.4;cursor:not-allowed}
+html[data-theme="dark"] .sim-btn{background:#16252C;border-color:#25373F;color:#E8F4F4}
+.sim-tog{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);cursor:pointer;
+  border:1px solid var(--line);border-radius:999px;padding:8px 14px}
+.sim-tog b{color:var(--teal);font-family:var(--mono);font-size:11.5px}
+.sim-tog.off b{color:var(--coral,#C2563F)}
+.sim-step{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--muted);margin-left:auto}
+.sim-stage{border-radius:12px;padding:20px 22px;margin-bottom:14px;transition:background .35s ease;
+  background:#EAF6F6;min-height:96px;display:flex;align-items:center}
+html[data-theme="dark"] .sim-stage{background:#16252C}
+.sim-narr{font-size:15px;line-height:1.62;color:var(--body-c)}
+.sim-narr b{color:var(--navy);display:block;margin-bottom:4px;font-size:15.5px}
+.sim-narr .tagp{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;
+  background:rgba(255,255,255,.55);color:var(--navy);padding:3px 9px;border-radius:999px;margin-top:8px}
+html[data-theme="dark"] .sim-narr .tagp{background:rgba(255,255,255,.12);color:#E8F4F4}
+.sim-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:600px){.sim-grid{grid-template-columns:1fr}}
+.sim-panel{border-radius:12px;padding:16px 18px;border:1px solid var(--line);background:var(--card)}
+html[data-theme="dark"] .sim-panel{background:#16252C;border-color:#25373F}
+.sim-panel.silo{border-left:4px solid #C2563F}
+.sim-panel.conv{border-left:4px solid #0FA3A3}
+.sp-h{font-size:14.5px;font-weight:800;color:var(--navy);margin-bottom:12px}
+.sp-h span{display:block;font-family:var(--mono);font-size:10.5px;font-weight:400;color:var(--muted);margin-top:3px;letter-spacing:.03em}
+.sp-nums{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
+.spn{display:block;font-size:30px;font-weight:800;line-height:1;letter-spacing:-.02em;color:var(--navy);transition:color .2s}
+.silo .spn{color:#C2563F}.conv .spn{color:#0FA3A3}
+.spl{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.sim-note{font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--muted);margin:12px 0 0;text-transform:uppercase}
+
+.simchain{margin:0 0 14px}
+.scw{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;position:relative}
+.sc-node{display:flex;flex-direction:column;align-items:center;gap:5px;padding:9px 3px 8px;border-radius:9px;
+  border:1px solid var(--line);background:var(--card);transition:all .3s ease;opacity:.5}
+html[data-theme="dark"] .sc-node{background:#16252C;border-color:#25373F}
+.sc-node .scn{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;
+  font-family:var(--mono);font-size:11px;font-weight:700;background:var(--line);color:var(--muted);transition:all .3s}
+.sc-node .scl{font-family:var(--mono);font-size:9.5px;letter-spacing:.04em;color:var(--muted);text-align:center}
+.sc-node.done{opacity:.85;border-color:rgba(15,163,163,.35)}
+.sc-node.done .scn{background:rgba(15,163,163,.2);color:#0B7F7F}
+.sc-node.on{opacity:1;border-color:transparent;background:linear-gradient(135deg,#0FA3A3,#2E7CB8);
+  transform:translateY(-2px);box-shadow:0 8px 18px -8px rgba(15,163,163,.7)}
+.sc-node.on .scn{background:rgba(255,255,255,.25);color:#fff}
+.sc-node.on .scl{color:#fff;font-weight:700}
+.sc-what{font-family:var(--mono);font-size:11px;letter-spacing:.03em;color:var(--muted);
+  margin-top:9px;text-align:center;line-height:1.5}
+.sc-what b{color:var(--teal)}
+@media(max-width:620px){.sc-node .scl{font-size:8px}.sc-node{padding:7px 2px 6px}.sc-node .scn{width:19px;height:19px;font-size:10px}}
+</style></head>
+<body>
+<script>(function(){try{if(localStorage.getItem('hp-theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+<div id="prog"></div>
+<header class="site-header">
+  <a class="logo" href="/"><img src="/logo.png" alt="Healthcare Pulse" class="logo-img"><span class="logo-text"><span class="logo-name">Healthcare Pulse</span><span class="logo-tag">Digital health, decoded &middot; by Mayank Madhur</span></span></a>
+  <button id="navToggle" class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  <nav id="siteNav">
+    <a href="/perspectives/">Perspectives</a><a href="/about.html">About</a><a href="/podcast.html">Podcast</a><a href="/archive/">Archive</a><a href="/ask/">Ask</a><a href="/research/">Research</a><a href="/index-tool/">Tool</a>
+    <a class="nav-subscribe" href="https://www.linkedin.com/newsletters/7311231782241083393/" target="_blank" rel="noopener">Subscribe</a>
+    <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle dark mode"><svg class="t-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="t-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+  </nav>
+</header>
+<main><article class="post">
+  <div class="post-banner cat-governance">
+    <svg class="banner-ecg" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path d="M0 130 H180 l18 -34 22 64 26 -96 24 120 20 -78 16 24 H420 l18 -34 22 64 26 -96 24 120 20 -78 16 24 H800" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+  <div class="post-meta"><span class="meta-ed">EDITION 70</span><span>GOVERNANCE</span><span class="meta-cat">Governance</span><span>9 MIN READ</span><span class="meta-date">Published 14 Aug 2026</span></div>
+  <h1 class="post-title">You cannot fix an org chart with an API</h1>
+  <div class="post-body">
+<nav class="jump"><div class="jump-in"><a href="#s1" data-s="s1">The claim</a><a href="#s2" data-s="s2">What it is</a><a href="#s3" data-s="s3">The org chart</a><a href="#s4" data-s="s4">The ladder</a><a href="#s5" data-s="s5">Where value leaks</a><a href="#s6" data-s="s6">Four failures</a><a href="#s7" data-s="s7">The equity trap</a><a href="#s8" data-s="s8">The 20-40%</a><a href="#s9" data-s="s9">What to watch</a></div></nav>
+
+<section id="s1">
+<p class="lede">On 30 April 2026, at the 10th National Summit in Chandigarh, the Health Ministry launched the Swasth Bharat Portal: six national health programmes behind one login, on an API-based federated architecture. It is the right thing to build and it is overdue. <b>But India never had a digitisation problem. India digitised at enormous scale. What it had was an org-chart problem, and you cannot fix an org chart with an API.</b></p>
+
+<div class="keyfind">
+<div class="kf-lbl">Key findings</div>
+<ul>
+<li>Swasth Bharat is an <b>aggregator</b>, not a scheme. It does not fund care, cover patients or replace any programme.</li>
+<li>Convergence is real at the <b>interface</b>. Underneath, each programme keeps its own budget, targets, reporting line and definition of a beneficiary.</li>
+<li>The <b>user-mapping step is the tell</b>: existing programme credentials are bridged into the new environment, not retired.</li>
+<li>There are five stages of convergence. Stages 1 and 2 are announced; 3 and 4 are execution-dependent; 5 is not claimed. <b>The likely failure mode is not collapse, it is stalling at Stage 2.</b></li>
+<li>The efficiency projections, 20-30% on infrastructure and 20-40% on data entry and HR duplication, were issued <b>within days of launch</b>. They are design targets, not results.</li>
+</ul></div>
+
+<div class="ed-callout"><p><b>Where I stand:</b> this is the correct diagnosis and the correct architecture. Every serious analysis of Indian public health data has asked for exactly this for a decade. My argument is not that it fails. It is that <b>the part being celebrated is the easy part</b>, and the numbers that would prove the hard part worked are not currently published.</p></div>
+</section>
+
+<section id="s2">
+<p class="eyebrow">02 &mdash; The object</p>
+<h2>What it is, stated plainly</h2>
+<p>Swasth Bharat is a horizontal layer, not a vertical programme. It draws identity from ABDM above and orchestrates existing programme systems below. Its users are ASHAs, ANMs, community health officers, medical officers and programme staff. <b>It is a workplace, not a benefit.</b></p>
+<p>It is <em>not</em> a health insurance or entitlement scheme, not a replacement for PM-JAY, not a replacement for ABDM, and not primarily citizen-facing. The most common error is treating it as an entitlement. It is infrastructure.</p>
+<div class="fig"><div class="fig-label">Figure 1</div><div class="fig-title">Six programmes, wildly different scale</div><div class="fig-sub">Portal counters in crore. These are cumulative programme counters, not unique individuals.</div><div class="cwrap" style="height:300px"><canvas id="cProg"></canvas></div><figcaption><b>Read this way:</b> immunisation alone is larger than the other five combined. A convergence layer has to serve a 15 crore programme and a 31 lakh programme through the same interface, which is a harder design problem than the headline suggests.</figcaption></div><details class="dtbl"><summary>View the data behind this</summary><table><caption>Programme counters displayed on the Swasth Bharat Portal</caption><thead><tr><th scope="col">Programme</th><th scope="col">Domain</th><th scope="col">Counter</th></tr></thead><tbody><tr><td>U-WIN</td><td>Universal Immunization Programme</td><td>15.2 crore beneficiaries immunised</td></tr><tr><td>NCD portal</td><td>Hypertension and diabetes</td><td>9.13 crore under treatment</td></tr><tr><td>Sickle cell</td><td>Sickle Cell Anaemia Elimination</td><td>7.1 crore screened</td></tr><tr><td>Ni-kshay</td><td>National TB Elimination Programme</td><td>1.75 crore cases notified</td></tr><tr><td>JANANI</td><td>Maternal and newborn care</td><td>1.33 crore under maternal health management</td></tr><tr><td>PMNDP</td><td>PM National Dialysis Programme</td><td>31.13 lakh availed dialysis</td></tr></tbody></table><p class="dsrc">Source: swasthbharat.mohfw.gov.in portal counters (official). These are counters, not unique people. One citizen can appear in several.</p></details>
+<div class="ed-callout"><p><b>Two warnings about those counters.</b> First, they are counters, not people: one citizen can appear in four of those rows at once, which is precisely the double counting ABHA linkage exists to resolve. Second, the counters lag. Government reported over <b>7.24 crore</b> sickle cell screenings as of 16 July 2026 while the portal displayed <b>7.1 crore</b>. <b>An aggregator whose own numbers refresh differently from its sources has not finished aggregating.</b></p></div>
+<div class="fig"><div class="fig-label">Figure 2</div>
+<div class="fig-title">Where it sits in the stack</div>
+<div class="fig-sub">A horizontal layer, not a vertical programme. It draws identity from above and orchestrates delivery below.</div>
+<div class="stackd">
+<div class="sl" style="background:#0FA3A3"><span class="sn">L1</span><span class="st">Citizen identity</span><span class="sc">ABHA</span></div>
+<div class="sl" style="background:#1699AE"><span class="sn">L2</span><span class="st">Ecosystem registries</span><span class="sc">HFR &middot; HPR</span></div>
+<div class="sl" style="background:#2E7CB8"><span class="sn">L3</span><span class="st">Interoperability</span><span class="sc">ABDM &middot; consent &middot; exchange</span></div>
+<div class="sl focus" style="background:linear-gradient(90deg,#E08A3C,#C77428)"><span class="sn">L4</span><span class="st">Programme convergence</span><span class="sc">SWASTH BHARAT PORTAL</span></div>
+<div class="sl" style="background:#37B68A"><span class="sn">L5</span><span class="st">Programme systems</span><span class="sc">NCD &middot; JANANI &middot; U-WIN &middot; Ni-kshay &middot; PMNDP &middot; SCD</span></div>
+<div class="sl" style="background:#2E7D5B"><span class="sn">L6</span><span class="st">Care delivery</span><span class="sc">ASHA &middot; ANM &middot; CHO &middot; AAM &middot; PHC &middot; CHC &middot; DH</span></div>
+</div>
+<figcaption><b>Read this way:</b> everything above Level 4 is ABDM's foundation, which Swasth Bharat consumes rather than replaces. Everything below is what it orchestrates. <b>The layer owns no data and funds no care, which is exactly why its authority over the programmes beneath it is the open question.</b></figcaption></div><details class="dtbl"><summary>View the data behind this</summary><table><caption>Where Swasth Bharat sits in India's digital health stack</caption><thead><tr><th scope="col">Level</th><th scope="col">Layer</th><th scope="col">Components</th></tr></thead><tbody><tr><td>1</td><td>Citizen identity</td><td>ABHA</td></tr><tr><td>2</td><td>Ecosystem registries</td><td>HFR, HPR</td></tr><tr><td>3</td><td>Health information interoperability</td><td>ABDM ecosystem, consent, exchange</td></tr><tr><td>4</td><td>Programme convergence</td><td>SWASTH BHARAT PORTAL</td></tr><tr><td>5</td><td>Programme systems</td><td>NCD, JANANI, U-WIN, Ni-kshay, PMNDP, sickle cell</td></tr><tr><td>6</td><td>Care delivery</td><td>ASHA, ANM, CHO, Ayushman Arogya Mandir, PHC, CHC, District Hospital</td></tr></tbody></table><p class="dsrc">Analysis: six-level stack synthesis by the author, built on ABDM and MoHFW documentation.</p></details>
+<p>The problem it was built for is real and well documented: a separate portal per programme, multiple logins per worker, the same patient registered repeatedly, fragmented datasets, duplicated hosting, separate maintenance teams, and administration crowding out service delivery. The government's core insight deserves credit: <b>the problem was never digitisation, it was that every programme digitised separately.</b></p>
+</section>
+
+<section id="s3">
+<p class="eyebrow">03 &mdash; The hard part</p>
+<h2>An API can join the screens. It cannot join the budgets.</h2>
+<p>Each of those six programmes has its own budget line, its own targets, its own reporting chain, its own review meetings and, in practice, its own definition of who counts as a beneficiary. A programme officer is appraised on their programme's numbers. None of that changes when a portal puts six behind one login.</p>
+<p><b>The user-mapping step is the tell.</b> A worker's existing programme credentials are bridged into the Swasth Bharat identity rather than retired. That is what federation means in practice, and it is the honest engineering choice. It also means the old systems, and the old accountabilities, keep running underneath.</p>
+<div class="ed-callout" style="border-left-color:#E08A3C"><p><b>The constraint nobody can engineer around:</b> health is a state subject. State health departments face an integration question they did not choose. A federated API is an invitation, not an instruction. We already know from PM-JAY that household coverage runs from 21% in Bihar to 90% in Chhattisgarh, and that spread tracks state execution rather than income. <b>Convergence will land the same way.</b></p></div>
+</section>
+
+<section id="s4">
+<p class="eyebrow">04 &mdash; The ladder</p>
+<h2>Five stages, and the one where things quietly stop</h2>
+<p>Convergence is not binary. It has stages, and each is harder than the last.</p>
+<div class="fig"><div class="fig-label">Figure 3</div>
+<div class="fig-title">Five stages of convergence, and where each stands</div>
+<div class="fig-sub">Difficulty rises at every step, and the character of the difficulty changes from engineering to institutional.</div>
+<div class="ladder">
+<div class="lr done"><span class="lnum">1</span><div><b>Access convergence</b><span>One login, one interface</span></div><span class="lst st-a">Announced</span></div>
+<div class="lr done"><span class="lnum">2</span><div><b>Data convergence</b><span>Detail entered once</span></div><span class="lst st-a">Announced</span></div>
+<div class="lr mid"><span class="lnum">3</span><div><b>Patient convergence</b><span>One person linked via ABHA</span></div><span class="lst st-b">Execution-dependent</span></div>
+<div class="lr mid"><span class="lnum">4</span><div><b>Clinical convergence</b><span>Longitudinal view at point of care</span></div><span class="lst st-b">Execution-dependent</span></div>
+<div class="lr far"><span class="lnum">5</span><div><b>Intelligence convergence</b><span>Risk stratification and prediction</span></div><span class="lst st-c">Not a live capability</span></div>
+<div class="lstall">Most aggregation layers stop here &darr;</div>
+</div>
+<figcaption><b>Read this way:</b> stages 1 and 2 are engineering problems the platform controls. Stages 3 and 4 turn on ABHA seeding quality and state adoption, which it does not. <b>The portal can succeed completely at everything within its control and still stop at Stage 2.</b></figcaption></div><details class="dtbl"><summary>View the data behind this</summary><table><caption>Five stages of convergence, and where each currently stands</caption><thead><tr><th scope="col">Stage</th><th scope="col">What it means</th><th scope="col">Status</th></tr></thead><tbody><tr><td>1. Access convergence</td><td>One login, one interface across programmes</td><td>Announced</td></tr><tr><td>2. Data convergence</td><td>Demographic and clinical detail entered once</td><td>Announced</td></tr><tr><td>3. Patient convergence</td><td>One person linked across programmes via ABHA</td><td>Announced, execution-dependent</td></tr><tr><td>4. Clinical convergence</td><td>Longitudinal disease and treatment view at point of care</td><td>Announced, execution-dependent</td></tr><tr><td>5. Intelligence convergence</td><td>Risk stratification, predictive intervention, resource allocation</td><td>Future opportunity, not a live capability</td></tr></tbody></table><p class="dsrc">Analysis: five-stage maturity model by the author. Stages 1-4 map to announced capabilities; stage 5 is not claimed by government.</p></details>
+<p>Stage 1 is a login. Stage 2 is entering data once. Stage 3 is knowing that the pregnant woman in JANANI and the hypertensive in the NCD portal are the same person. Stage 4 is a clinician seeing that at the point of care. Stage 5 is the system telling you who to visit next week.</p>
+<div class="ed-callout"><p><b>This is the sentence the whole edition turns on.</b> The likely failure mode here is not collapse. It is a perfectly functioning portal that never gets past Stage 2, which is the most common outcome for aggregation layers everywhere. <b>Nobody writes a press release about stalling.</b> The platform keeps working, the logins keep counting, and the clinical convergence that justified it never arrives.</p></div>
+<p>And notice where the difficulty changes character. Stages 1 and 2 are engineering. Stages 3 and 4 are execution-dependent, meaning they turn on ABHA seeding quality and state adoption, neither of which the platform controls. <b>The portal can succeed completely at everything it can control and still stop at Stage 2.</b></p>
+</section>
+
+<section id="s5">
+<p class="eyebrow">05 &mdash; The chain</p>
+<h2>Seven links, and where the value leaks at each one</h2>
+<div class="fig sim" id="simBox">
+<div class="fig-label">Interactive</div>
+<div class="fig-title">Watch the value chain run</div>
+<div class="fig-sub">One woman in a rural block. She is pregnant, hypertensive, due for vaccination, being screened for diabetes, and lives in a district running sickle cell screening. Five programmes will touch her this year. Step through it and watch what the frontline worker actually does.</div>
+
+<div class="sim-ctl">
+  <button class="sim-btn" id="simBack" type="button">&lsaquo; Back</button>
+  <button class="sim-btn primary" id="simNext" type="button">Start &rsaquo;</button>
+  <button class="sim-btn" id="simReset" type="button">Reset</button>
+  <label class="sim-tog"><input type="checkbox" id="simAbha" checked><span>ABHA linkage <b id="simAbhaState">ON</b></span></label>
+  <span class="sim-step" id="simStep">STEP 0 / 7</span>
+</div>
+
+<div class="simchain" id="simChain">
+  <div class="scw">
+    <div class="sc-node" data-k="0"><span class="scn">1</span><span class="scl">Identify</span></div>
+    <div class="sc-node" data-k="1"><span class="scn">2</span><span class="scl">Capture</span></div>
+    <div class="sc-node" data-k="2"><span class="scn">3</span><span class="scl">Converge</span></div>
+    <div class="sc-node" data-k="3"><span class="scn">4</span><span class="scl">Exchange</span></div>
+    <div class="sc-node" data-k="4"><span class="scn">5</span><span class="scl">Analyse</span></div>
+    <div class="sc-node" data-k="5"><span class="scn">6</span><span class="scl">Act</span></div>
+    <div class="sc-node" data-k="6"><span class="scn">7</span><span class="scl">Outcome</span></div>
+  </div>
+  <div class="sc-what" id="scWhat">The seven links of the chain. Start the run to see which one you are in.</div>
+</div>
+<div class="sim-stage" id="simStage">
+  <div class="sim-narr" id="simNarr"><b>Ready.</b> Press start to begin her year.</div>
+</div>
+
+<div class="sim-grid">
+  <div class="sim-panel silo">
+    <div class="sp-h">Silo model <span>today: each programme registers her separately</span></div>
+    <div class="sp-nums">
+      <div><span class="spn" id="sLog">0</span><span class="spl">Logins</span></div>
+      <div><span class="spn" id="sEnt">0</span><span class="spl">Entries</span></div>
+      <div><span class="spn" id="sRec">0</span><span class="spl">Records</span></div>
+    </div>
+  </div>
+  <div class="sim-panel conv">
+    <div class="sp-h">Swasth Bharat <span>one interface, one identity</span></div>
+    <div class="sp-nums">
+      <div><span class="spn" id="cLog">0</span><span class="spl">Logins</span></div>
+      <div><span class="spn" id="cEnt">0</span><span class="spl">Entries</span></div>
+      <div><span class="spn" id="cRec">0</span><span class="spl">Records</span></div>
+    </div>
+  </div>
+</div>
+<p class="sim-note">Illustrative model. Counters are structural (five programmes means five registrations), not published statistics.</p>
+<figcaption><b>Read this way:</b> turn ABHA linkage off and watch the third counter. Logins still fall and entries still fall, so the workload case survives. But she stays five separate records, which means no longitudinal view and no cross-programme analytics. <b>That is the difference between administrative convergence and clinical convergence, and it is the whole argument of this edition in one toggle.</b></figcaption>
+</div>
+<p>Trace it end to end, from identity to outcome. Every link creates something real. Every link also has a specific way of failing, and the failures compound.</p>
+<div class="fixcards">
+<div class="fixc"><div class="fixc-top"><span class="fixc-no">01</span><span class="fixc-prob">Identify &mdash; ABHA-linked identity resolution</span></div><div class="fixc-fix">A single verified identity is what turns six programme records into one person.</div><div class="fixc-why"><span class="wl">Why it leaks</span>Weak or inconsistent ABHA seeding means the same citizen stays four separate records, and every downstream link inherits the error.</div></div><div class="fixc"><div class="fixc-top"><span class="fixc-no">02</span><span class="fixc-prob">Capture &mdash; Single entry at the point of care</span></div><div class="fixc-fix">Duplicate entry eliminated at source. The single largest time saving and the clearest part of the government's case.</div><div class="fixc-why"><span class="wl">Why it leaks</span>If workers keep using familiar programme apps alongside the portal, dual entry appears and workload rises instead of falling.</div></div><div class="fixc"><div class="fixc-top"><span class="fixc-no">03</span><span class="fixc-prob">Converge &mdash; Programme aggregation via APIs</span></div><div class="fixc-fix">Hosting, storage, compute and maintenance teams collapse across programme divisions.</div><div class="fixc-why"><span class="wl">Why it leaks</span>Federation preserves programme autonomy. If divisional roadmaps diverge, integration depth plateaus at whatever shipped in year one.</div></div><div class="fixc"><div class="fixc-top"><span class="fixc-no">04</span><span class="fixc-prob">Exchange &mdash; ABDM-compliant record sharing</span></div><div class="fixc-fix">Records become portable across programmes and eventually across facilities through the ABDM exchange layer.</div><div class="fixc-why"><span class="wl">Why it leaks</span>Linkage without true interoperability produces a directory of pointers, not a usable longitudinal record.</div></div><div class="fixc"><div class="fixc-top"><span class="fixc-no">05</span><span class="fixc-prob">Analyse &mdash; Cross-programme analytics</span></div><div class="fixc-fix">Comorbidity patterns become visible at population scale for the first time: TB with diabetes, pregnancy with hypertension.</div><div class="fixc-why"><span class="wl">Why it leaks</span>Aggregating poor-quality programme data produces confident dashboards built on unreliable denominators.</div></div><div class="fixc"><div class="fixc-top"><span class="fixc-no">06</span><span class="fixc-prob">Act &mdash; Coordinated clinical intervention</span></div><div class="fixc-fix">Risk identified in one programme triggers action in another, at the same point of contact.</div><div class="fixc-why"><span class="wl">Why it leaks</span>Analytics with no change in clinical workflow yields dashboards, not outcomes. This is where most data platforms stop.</div></div><div class="fixc"><div class="fixc-top"><span class="fixc-no">07</span><span class="fixc-prob">Outcome &mdash; Continuity, cost, equity</span></div><div class="fixc-fix">Continuity of care, lower infrastructure and HR cost, and better identification of vulnerable populations.</div><div class="fixc-why"><span class="wl">Why it leaks</span>Without private provider participation, journeys break the moment a patient goes outside the public system.</div></div>
+</div>
+<div class="ed-callout"><p>Read those leaks in order and a pattern appears. <b>The early links fail on data quality; the late links fail on institutional will.</b> Link 6 is where most health data platforms in every country come to rest: the analytics exist, the clinical workflow does not change, and the dashboard becomes the deliverable.</p></div>
+</section>
+
+<section id="s6">
+<p class="eyebrow">06 &mdash; Failure modes</p>
+<h2>Four ways this quietly fails</h2>
+<div class="tier-wrap">
+<div class="tier-row"><span class="tier-badge tb-red">IDENTITY</span><p>Weak or inconsistent ABHA seeding.<span class="gov">Convergence delivers a shared login and nothing clinical. The platform becomes an administrative convenience with a strategic label.</span></p></div>
+<div class="tier-row"><span class="tier-badge tb-amber">FEDERATION</span><p>Programme divisions keep control of their own systems and roadmaps.<span class="gov">APIs exist but priorities diverge, and integration depth plateaus at whatever was built in year one.</span></p></div>
+<div class="tier-row"><span class="tier-badge tb-amber">ADOPTION</span><p>Frontline workers keep using familiar programme apps.<span class="gov">Dual entry appears, old portal plus new one, and workload rises rather than falls.</span></p></div>
+<div class="tier-row"><span class="tier-badge tb-red">TRUST</span><p>Cross-programme visibility without visible consent controls.<span class="gov">TB and maternal data are sensitive. A single incident sets adoption back years.</span></p></div>
+</div>
+<p>None of these is dramatic. That is the point. <b>Each one produces a platform that still works, still reports, and quietly stops delivering the thing it was built for.</b></p>
+</section>
+
+<section id="s7">
+<p class="eyebrow">07 &mdash; The tension</p>
+<h2>The equity problem nobody is naming</h2>
+<p>Three of the six integrated programmes sit squarely in equity territory. Sickle cell screening targets tribal districts. Dialysis support was built for households that cannot afford it. Maternal care is where India's outcome gaps are widest. On its programme mix, this is an equity platform.</p>
+<p>And yet. <b>Identity-anchored systems concentrate their benefits on people with clean identity records.</b> ABHA seeding is likely to be weakest exactly where health need is highest: remote blocks, migrant households, women without independent documentation, tribal populations. The convergence dividend accrues first to the people already easiest to find.</p>
+<div class="ed-callout" style="border-left-color:#E08A3C"><p><b>What to demand:</b> ABHA seeding rates disaggregated by district, tribal block and gender. If that number is never published, the equity question stays unanswerable. <b>And unanswerable is not the same as fine.</b></p></div>
+</section>
+
+<section id="s8">
+<p class="eyebrow">08 &mdash; The number</p>
+<h2>About those efficiency projections</h2>
+<p>MoHFW published unusually specific expectations, which is genuinely welcome, most launches do not. But they were issued within days of launch, which makes them design targets rather than findings.</p>
+<div class="fig"><div class="fig-label">Figure 4</div><div class="fig-title">The three published efficiency projections</div><div class="fig-sub">Stated reduction ranges, issued within days of launch. Bars show the projected band, not a measured result.</div><div class="cwrap" style="height:240px"><canvas id="cEff"></canvas></div><figcaption><b>Read this way:</b> every band starts at 20%, which is a strong hint these are round design targets rather than modelled estimates. The honest response is not to dispute them but to ask for the measurement methodology before year one closes.</figcaption></div><details class="dtbl"><summary>View the data behind this</summary><table><caption>The three published efficiency projections</caption><thead><tr><th scope="col">Area</th><th scope="col">Projected reduction</th><th scope="col">Status</th></tr></thead><tbody><tr><td>Infrastructure load</td><td>20 to 30%</td><td>Ex-ante projection, unaudited</td></tr><tr><td>Data entry effort</td><td>20 to 40%</td><td>Ex-ante projection, unaudited</td></tr><tr><td>HR duplication</td><td>20 to 40%</td><td>Ex-ante projection, unaudited</td></tr><tr><td>Decision-making speed</td><td>Stated as expected to increase</td><td>No numeric range given</td></tr></tbody></table><p class="dsrc">Source: MoHFW efficiency estimates, PIB release 2258283, 6 May 2026. Issued within days of launch.</p></details>
+<p>The mechanisms are plausible and worth stating: aggregated hosting and compute, demographics entered once, consolidated development and maintenance teams, higher interoperability from the federated design. Each is a real saving. None has been measured.</p>
+<div class="ed-callout"><p><b>Treat the bands as design targets to be audited, not results to be quoted.</b> The most useful thing the Ministry could do in year one is publish the <em>methodology</em> it will use to measure them, before the first measurement exists. That is a governance commitment, not a technical one, and it costs nothing.</p></div>
+</section>
+
+<section id="s9">
+<p class="eyebrow">09 &mdash; So what</p>
+<h2>Ten questions, answerable within a year</h2>
+<p>These are analytical questions, not reported deficiencies. The portal is months old. Every one of these becomes answerable inside twelve months, and each one is a question an oversight committee should be asking.</p>
+<div class="tier-wrap">
+<div class="tier-row"><span class="tier-badge tb-red">01</span><p><b>Integration depth</b><span class="gov">How many programmes move from linked to genuinely integrated? Six at launch sets the floor, not the ceiling.</span></p></div><div class="tier-row"><span class="tier-badge tb-red">02</span><p><b>ABHA seeding quality</b><span class="gov">Consistent ABHA use determines whether patient matching is real or nominal.</span></p></div><div class="tier-row"><span class="tier-badge tb-red">03</span><p><b>Interoperable or merely linked</b><span class="gov">A directory of records is not a longitudinal record. The distinction decides clinical value.</span></p></div><div class="tier-row"><span class="tier-badge tb-red">04</span><p><b>Synchronisation lag</b><span class="gov">The sickle cell counter gap already shows programme dashboards and portal counters refreshing differently.</span></p></div><div class="tier-row"><span class="tier-badge tb-red">05</span><p><b>Frontline adoption</b><span class="gov">What share of ASHAs, ANMs and CHOs actually use it daily, rather than reverting to programme apps?</span></p></div><div class="tier-row"><span class="tier-badge tb-red">06</span><p><b>Does duplication actually fall</b><span class="gov">The 20 to 40% claim needs an independent audit against baseline, not a press release.</span></p></div><div class="tier-row"><span class="tier-badge tb-red">07</span><p><b>Consent and privacy</b><span class="gov">Cross-programme visibility raises the stakes on consent architecture considerably.</span></p></div><div class="tier-row"><span class="tier-badge tb-red">08</span><p><b>State system integration</b><span class="gov">Health is a state subject. State-run portals have to integrate willingly for this to scale.</span></p></div><div class="tier-row"><span class="tier-badge tb-red">09</span><p><b>Private provider participation</b><span class="gov">Without it, patient journeys break the moment someone goes private, which in India is most of the time.</span></p></div><div class="tier-row"><span class="tier-badge tb-red">10</span><p><b>Analytics and AI layer</b><span class="gov">Whether anyone builds intelligence on top, or it settles into being a very tidy data lake.</span></p></div>
+</div>
+<div class="ed-callout"><p>ABDM built much of India's digital health foundation. Swasth Bharat is the layer that could finally make that foundation usable across national programmes. <b>The architecture is right. The projections are unaudited. And the difference between the two is a year of published measurement that nobody has yet committed to.</b></p></div>
+<p>India has repeatedly built excellent rails and then declined to publish whether anyone rode them. The portal converges six programmes on a screen. Whether it converges them in a budget, a review meeting and an ASHA's evening is a governance question, and governance questions are settled by what gets measured, not by what gets launched.</p>
+<p><b>The question I would put to an oversight committee:</b> if the only numbers ever published about this platform are logins, integrations and cumulative counters, how would anybody, inside or outside government, ever know whether it got past Stage 2?</p>
+</section>
+  </div>
+  <div class="share-bar"><span class="share-label">Share this perspective:</span><a class="share-btn share-wa" id="shWa" target="_blank" rel="noopener">WhatsApp</a><a class="share-btn share-li" id="shLi" target="_blank" rel="noopener">LinkedIn</a><a class="share-btn share-x" id="shX" target="_blank" rel="noopener">X</a><button class="share-btn" id="shCopy" type="button">Copy link</button></div>
+  <aside class="author-box"><img src="/logo.png" alt="Healthcare Pulse" style="width:52px;height:52px;border-radius:10px;object-fit:contain;flex:none;"><div><p class="author-name">Mayank Madhur <span>He/Him</span></p><p class="author-bio">PMP&reg;, SCR&reg; &middot; MBA &amp; PGPM (Healthcare) &middot; Practice Leader, Healthcare &amp; Life Sciences at HFS Research &middot; 11+ years across payer, provider &amp; digital health.</p><a href="https://www.linkedin.com/in/mayank-madhur/" target="_blank" rel="noopener">Connect on LinkedIn &rarr;</a></div></aside>
+  <a class="back-link" href="/perspectives/">&larr; All perspectives</a>
+</article></main>
+<section class="subscribe" id="subscribe"><div class="subscribe-inner"><p class="eyebrow">EVERY FRIDAY &middot; FREE</p><h2>Enjoyed this issue of Healthcare Pulse?</h2><p class="subscribe-sub">Sharp, contrarian reads on India's digital health story, every Friday.</p><div class="subscribe-actions"><a class="btn-li" href="https://www.linkedin.com/newsletters/7311231782241083393/" target="_blank" rel="noopener">Subscribe on LinkedIn</a><a class="btn-ghost" href="https://www.linkedin.com/in/mayank-madhur/" target="_blank" rel="noopener">Connect with Mayank &rarr;</a></div></div></section>
+<footer class="site-footer"><p>&copy; 2026 Healthcare Pulse by Mayank Madhur &middot; <a href="mailto:mayank@mayankmadhur.in">mayank@mayankmadhur.in</a> &middot; Independent analysis and opinion. Sources: PIB release 2258283 (6 May 2026) for the aggregator framing, federated architecture, ABDM and ABHA compliance, HPR and HFR intent and the efficiency projections; PIB release 2256956 (30 April 2026) for the summit launch and co-launches including JANANI, RBSK 2.0, the 17th CRM report and the Best Practice Compendium; swasthbharat.mohfw.gov.in for programme counters, user roles and the login and user-mapping flow; PIB release 2287698 (16 July 2026) for sickle cell screening figures, used here only for the counter-lag comparison; NFHS-6 for state coverage spread. Efficiency figures are ex-ante, unaudited projections. The six-level stack, seven-link value chain, five-stage maturity model, risk register and watchlist are the author's analysis. Portal counters are point-in-time displays; re-check at source before citing.</p></footer>
+<button id="toTop" class="to-top" aria-label="Back to top"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg></button>
+<script>(function(){
+  var bar=document.getElementById('prog');
+  if(bar)addEventListener('scroll',function(){var h=document.documentElement;bar.style.width=((h.scrollTop/(h.scrollHeight-h.clientHeight)*100)||0)+'%';},{passive:true});
+  var tt=document.getElementById('themeToggle');
+  if(tt)tt.addEventListener('click',function(){var r=document.documentElement;if(r.getAttribute('data-theme')==='dark'){r.removeAttribute('data-theme');try{localStorage.setItem('hp-theme','light');}catch(e){}}else{r.setAttribute('data-theme','dark');try{localStorage.setItem('hp-theme','dark');}catch(e){}}});
+  var t=document.getElementById('navToggle'),n=document.getElementById('siteNav');
+  if(t&&n)t.addEventListener('click',function(){var o=n.classList.toggle('open');t.setAttribute('aria-expanded',o?'true':'false');});
+  var toTop=document.getElementById('toTop');
+  if(toTop){addEventListener('scroll',function(){if(window.scrollY>600)toTop.classList.add('show');else toTop.classList.remove('show');},{passive:true});toTop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});}
+  (function(){var hd=document.querySelector('.site-header');
+    function setH(){if(hd)document.documentElement.style.setProperty('--hdr',hd.offsetHeight+'px');}
+    setH();addEventListener('resize',setH);addEventListener('load',setH);})();
+  var links=[].slice.call(document.querySelectorAll('.jump a'));
+  var secs=links.map(function(a){return document.getElementById(a.getAttribute('data-s'));});
+  function spy(){var hd=document.querySelector('.site-header');var off=(hd?hd.offsetHeight:68)+90;
+    var y=window.scrollY+off, idx=0;
+    secs.forEach(function(s,i){if(s&&s.offsetTop<=y)idx=i;});
+    links.forEach(function(a,i){a.classList.toggle('on',i===idx);});}
+  addEventListener('scroll',spy,{passive:true}); spy();
+  document.querySelectorAll('.related').forEach(function(sec){var track=sec.querySelector('.related-grid');if(!track)return;
+    sec.querySelectorAll('.rel-arrow').forEach(function(btn){btn.addEventListener('click',function(){
+      var dir=parseInt(btn.getAttribute('data-dir'),10)||1;var card=track.querySelector('.related-card');
+      var step=card?(card.offsetWidth+14)*2:300;track.scrollBy({left:dir*step,behavior:'smooth'});});});});
+  var url=encodeURIComponent(location.href),txt=encodeURIComponent("You cannot fix an org chart with an API. Healthcare Pulse Edition 70");
+  var wa=document.getElementById('shWa');if(wa)wa.href="https://wa.me/?text="+txt+"%20"+url;
+  var li=document.getElementById('shLi');if(li)li.href="https://www.linkedin.com/sharing/share-offsite/?url="+url;
+  var x=document.getElementById('shX');if(x)x.href="https://twitter.com/intent/tweet?text="+txt+"&url="+url;
+  var cp=document.getElementById('shCopy');if(cp)cp.addEventListener('click',function(){navigator.clipboard.writeText(location.href).then(function(){cp.textContent='Copied!';});});
+})();</script>
+
+<script>
+(function(){
+ var dk=document.documentElement.getAttribute('data-theme')==='dark';
+ Chart.defaults.font.family="'Manrope',system-ui,sans-serif";
+ Chart.defaults.color=dk?'#AFC2C8':'#5A6B72';
+ var GRID=dk?'rgba(175,194,200,.14)':'#E6EBEE';
+ var C=['#0FA3A3','#2E7CB8','#7A5378','#E08A3C','#37B68A','#C2563F'];
+ var el=document.getElementById('cProg');
+ if(el) new Chart(el,{type:'bar',data:{labels:['U-WIN','NCD portal','Sickle cell','Ni-kshay','JANANI','PMNDP'],
+  datasets:[{data:[15.2,9.13,7.1,1.75,1.33,0.31],backgroundColor:C,borderRadius:5,barThickness:30}]},
+  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},
+   tooltip:{callbacks:{label:function(c){var d=['15.2 crore immunised','9.13 crore under treatment','7.1 crore screened','1.75 crore cases notified','1.33 crore under maternal management','31.13 lakh availed dialysis'];return ' '+d[c.dataIndex];}}}},
+   scales:{x:{grid:{color:GRID},title:{display:true,text:'crore (portal counters, not unique people)',font:{weight:600}}},y:{grid:{display:false},ticks:{font:{size:12,weight:'600'}}}}}});
+ var e2=document.getElementById('cEff');
+ if(e2) new Chart(e2,{type:'bar',data:{labels:['Infrastructure load','Data entry effort','HR duplication'],
+  datasets:[{data:[[20,30],[20,40],[20,40]],backgroundColor:['#2E7CB8','#0FA3A3','#E08A3C'],borderRadius:5,barThickness:44}]},
+  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},
+   tooltip:{callbacks:{label:function(c){return ' projected reduction of '+c.raw[0]+' to '+c.raw[1]+'%';}}}},
+   scales:{x:{min:0,max:50,grid:{color:GRID},ticks:{callback:function(v){return v+'%';}},title:{display:true,text:'projected reduction (ex-ante, unaudited)',font:{weight:600}}},y:{grid:{display:false},ticks:{font:{size:12.5,weight:'600'}}}}}});
+})();
+</script>
+
+<script>
+(function(){
+  var box=document.getElementById('simBox'); if(!box) return;
+  var STEPS=[
+   {t:"Ready",n:"Press start to begin her year.",p:"",c:"#EAF6F6",k:[],kw:"The seven links of the chain. Start the run to see which one you are in.",
+    silo:[0,0,0],conv:[0,0,0],convNo:[0,0,0]},
+   {t:"First antenatal visit",n:"The ASHA registers her in the maternal programme. Name, age, address, husband's name, phone, village code. In the silo model this is the first of five separate registrations.",p:"JANANI",c:"#E8F3EC",k:[0,1],kw:"Link 1-2 &middot; <b>Identify and Capture</b>. Her identity is created and her details are entered for the first time.",
+    silo:[1,4,1],conv:[1,4,1],convNo:[1,4,1]},
+   {t:"Blood pressure is high",n:"She is referred for hypertension follow-up. A second programme, a second login, and her demographics are re-keyed from scratch. Under convergence she is retrieved, not re-registered.",p:"NCD PORTAL",c:"#FBEEDE",k:[1],kw:"Link 2 &middot; <b>Capture</b>. This is where duplicate entry either happens or does not.",
+    silo:[2,8,2],conv:[1,6,1],convNo:[1,6,2]},
+   {t:"Diabetes screening",n:"The same NCD contact adds a diabetes screen. In the silo model this is another form. Under convergence the clinical detail is added to a person who already exists.",p:"NCD PORTAL",c:"#FBEEDE",k:[1,2],kw:"Link 2-3 &middot; <b>Capture and Converge</b>. Clinical detail is added to a person who already exists.",
+    silo:[3,11,3],conv:[1,7,1],convNo:[1,7,3]},
+   {t:"Immunisation due",n:"Her child's vaccination is recorded in the immunisation system. A separate portal, a separate login, her details entered once more.",p:"U-WIN",c:"#E7F0F8",k:[2],kw:"Link 3 &middot; <b>Converge</b>. A third programme joins the same record, or starts a new one.",
+    silo:[4,15,4],conv:[1,9,1],convNo:[1,9,4]},
+   {t:"District sickle cell camp",n:"Her block is running sickle cell screening. Fifth programme, fifth registration in the silo model.",p:"SICKLE CELL",c:"#F1E9F5",k:[3],kw:"Link 4 &middot; <b>Exchange</b>. Records become portable across programmes, if the identity holds.",
+    silo:[5,19,5],conv:[1,10,1],convNo:[1,10,5]},
+   {t:"Follow-up, six months on",n:"She returns. In the silo model the worker cannot see that the pregnant woman and the hypertensive are the same person, because nothing joins them. Under convergence with ABHA, hypertension in pregnancy becomes visible inside the maternal workflow.",p:"CROSS-PROGRAMME",c:"#EAF6F6",k:[4,5],kw:"Link 5-6 &middot; <b>Analyse and Act</b>. This is the link most platforms never reach.",
+    silo:[6,23,5],conv:[1,11,1],convNo:[1,11,5]},
+   {t:"Her year, totalled",n:"Same woman. Same five care needs. The difference is not clinical effort, it is administrative friction, and it is borne entirely by the frontline worker.",p:"YEAR END",c:"#EAF6F6",k:[6],kw:"Link 7 &middot; <b>Outcome</b>. Continuity, cost and equity, or none of them.",
+    silo:[6,23,5],conv:[1,11,1],convNo:[1,11,5]}
+  ];
+  var i=0, abha=true;
+  var el={stage:document.getElementById('simStage'),narr:document.getElementById('simNarr'),
+    step:document.getElementById('simStep'),next:document.getElementById('simNext'),
+    back:document.getElementById('simBack'),reset:document.getElementById('simReset'),
+    ab:document.getElementById('simAbha'),abs:document.getElementById('simAbhaState'),
+    sL:document.getElementById('sLog'),sE:document.getElementById('sEnt'),sR:document.getElementById('sRec'),
+    cL:document.getElementById('cLog'),cE:document.getElementById('cEnt'),cR:document.getElementById('cRec')};
+  function render(){
+    var s=STEPS[i], c=abha?s.conv:s.convNo;
+    el.stage.style.background=s.c;
+    el.narr.innerHTML='<b>'+s.t+'</b>'+s.n+(s.p?'<span class="tagp">'+s.p+'</span>':'');
+    el.step.textContent='STEP '+i+' / 7';
+    var nodes=document.querySelectorAll('#simChain .sc-node');
+    var maxK = s.k.length? Math.max.apply(null,s.k) : -1;
+    nodes.forEach(function(nd,ix){
+      nd.classList.remove('on','done');
+      if(s.k.indexOf(ix)>-1) nd.classList.add('on');
+      else if(ix<maxK) nd.classList.add('done');
+    });
+    var w=document.getElementById('scWhat'); if(w) w.innerHTML=s.kw||'';
+    el.sL.textContent=s.silo[0]; el.sE.textContent=s.silo[1]; el.sR.textContent=s.silo[2];
+    el.cL.textContent=c[0]; el.cE.textContent=c[1]; el.cR.textContent=c[2];
+    el.back.disabled=(i===0); el.next.disabled=(i===STEPS.length-1);
+    el.next.textContent = i===0 ? 'Start \u203A' : (i===STEPS.length-1?'Done':'Next \u203A');
+    if(i===STEPS.length-1 && !abha){
+      el.narr.innerHTML+='<br><br><b style="color:#C2563F;display:inline;font-size:14.5px">Without ABHA linkage she is still five records.</b> One login, fewer entries, no joined-up patient. That is administrative convergence, and it is where this stops.';
+    }
+  }
+  el.next.addEventListener('click',function(){ if(i<STEPS.length-1){i++;render();} });
+  el.back.addEventListener('click',function(){ if(i>0){i--;render();} });
+  el.reset.addEventListener('click',function(){ i=0; render(); });
+  el.ab.addEventListener('change',function(){
+    abha=el.ab.checked; el.abs.textContent=abha?'ON':'OFF';
+    el.ab.closest('.sim-tog').classList.toggle('off',!abha); render();
+  });
+  render();
+})();
+</script>
+<script data-goatcounter="https://mayankmadhur.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body></html>

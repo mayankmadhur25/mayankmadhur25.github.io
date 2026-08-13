@@ -1022,6 +1022,21 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .fp-pyr svg{width:100%;height:auto;display:block}
 .fp-pyr .nm{fill:#fff;font-family:var(--sans);font-weight:800;font-size:16px;text-anchor:middle;letter-spacing:-.01em}
 .fp-pyr .ds{fill:rgba(255,255,255,.9);font-family:var(--mono);font-size:10px;text-anchor:middle;letter-spacing:.03em}
+
+.dtbl{margin:16px 0 4px;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.dtbl summary{cursor:pointer;font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;color:var(--teal);
+  font-weight:600;padding:10px 14px;background:rgba(15,163,163,.06);list-style:none}
+.dtbl summary::-webkit-details-marker{display:none}
+.dtbl summary:before{content:"\25B8 ";}
+.dtbl[open] summary:before{content:"\25BE ";}
+.dtbl table{width:100%;border-collapse:collapse;font-size:13.5px}
+.dtbl caption{text-align:left;font-size:12.5px;color:var(--muted);padding:12px 14px 6px}
+.dtbl th,.dtbl td{padding:9px 14px;border-top:1px solid var(--line);text-align:left;color:var(--body-c)}
+.dtbl th{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.dtbl td:first-child{font-weight:700;color:var(--navy)}
+.dsrc{font-size:12px;color:var(--muted);padding:10px 14px;margin:0;border-top:1px solid var(--line)}
+html[data-theme="dark"] .dtbl{border-color:#25373F}
+html[data-theme="dark"] .dtbl summary{background:rgba(15,163,163,.12)}
 </style></head>
 <body>
 <script>(function(){try{if(localStorage.getItem('hp-theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
@@ -1077,7 +1092,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
       <div class="fig-title">The break point moves by tier</div>
       <div class="fig-sub">A simple read of how far the money flow carries before it stops, along the six-step chain, by tier. Higher is further.</div>
       <canvas id="breakChart" height="240"></canvas>
-      <figcaption><b>Read this way:</b> there is no single "the gap." Widen hospital cover and you help the tier already covered for hospitals. The other three snap earlier, at the first visit, the test, the medicine, exactly where a hospitalisation-shaped scheme never reaches.</figcaption>
+      <details class="dtbl"><summary>View the data behind this chart</summary><table><caption>How far the money flow carries, by tier (of six steps)</caption><thead><tr><th scope="col">Tier</th><th scope="col">Steps covered</th><th scope="col">Where it stops</th></tr></thead><tbody><tr><td>India A</td><td>5 of 6</td><td>Carries to discharge, then follow-up drops</td></tr><tr><td>India B1</td><td>1 of 6</td><td>Stops at the first visit, outpatient excluded</td></tr><tr><td>India B2</td><td>0.5 of 6</td><td>Stops almost everywhere except the admission</td></tr><tr><td>India C</td><td>1.5 of 6</td><td>Free once admitted, pays every step before</td></tr></tbody></table><p class="dsrc">Author's assessment based on scheme design and NFHS-6 coverage data.</p></details><figcaption><b>Read this way:</b> there is no single "the gap." Widen hospital cover and you help the tier already covered for hospitals. The other three snap earlier, at the first visit, the test, the medicine, exactly where a hospitalisation-shaped scheme never reaches.</figcaption>
     </div>
     <p class="eyebrow">03 &mdash; Why one fix can't fit all</p>
     <h2>The favourite fixes each help one tier and miss three</h2>
@@ -1088,7 +1103,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
       <div class="fig-title">"Covered" is a state lottery, not a national floor</div>
       <div class="fig-sub">Household health-insurance coverage, selected states, NFHS-6. The national average conceals a 4&times; spread.</div>
       <canvas id="stateChart" height="230"></canvas>
-      <figcaption><b>Read this way:</b> the gap between states does not track income; it tracks whether a state government built and enrolled a scheme. No single national intervention lands the same way in Bihar and in Chhattisgarh, which is the whole problem with one-size reform.</figcaption>
+      <details class="dtbl"><summary>View the data behind this chart</summary><table><caption>Household health insurance coverage by state, NFHS-6 (2023-24)</caption><thead><tr><th scope="col">State</th><th scope="col">Households with any health cover</th></tr></thead><tbody><tr><td>Chhattisgarh</td><td>90.5%</td></tr><tr><td>Rajasthan</td><td>87.5%</td></tr><tr><td>Andhra Pradesh</td><td>80.0%</td></tr><tr><td>India (average)</td><td>60.2%</td></tr><tr><td>Maharashtra</td><td>35.0%</td></tr><tr><td>Uttar Pradesh</td><td>24.0%</td></tr><tr><td>Bihar</td><td>21.1%</td></tr></tbody></table><p class="dsrc">Source: NFHS-6 (2023-24) India and State Fact Sheets, IIPS.</p></details><figcaption><b>Read this way:</b> the gap between states does not track income; it tracks whether a state government built and enrolled a scheme. No single national intervention lands the same way in Bihar and in Chhattisgarh, which is the whole problem with one-size reform.</figcaption>
     </div>
     <p class="eyebrow">04 &mdash; The one bill they all pay</p>
     <h2>Medicines are the shared exposure. The fix is not shared.</h2>
@@ -1100,7 +1115,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
       <div class="fig-title">What the household actually pays out of pocket, outpatient</div>
       <div class="fig-sub">Medicines dominate outpatient out-of-pocket spending. It is the biggest shared exposure across the four tiers, which is why it is the right place to start, not the whole answer.</div>
       <canvas id="medChart" height="220"></canvas>
-      <figcaption><b>Read this way:</b> insurance debates fixate on the hospital bill. The recurring drain is the pharmacy counter. Note the other 40% too, consults and diagnostics, which repeat tests for diabetes or cardiac care make just as punishing for the missing middle.</figcaption>
+      <details class="dtbl"><summary>View the data behind this chart</summary><table><caption>Composition of outpatient out-of-pocket spending, India</caption><thead><tr><th scope="col">Component</th><th scope="col">Share of outpatient OOP</th></tr></thead><tbody><tr><td>Medicines</td><td>60.3%</td></tr><tr><td>Consultations, tests and other</td><td>39.7%</td></tr></tbody></table><p class="dsrc">Source: JAMA Network Open cross-sectional study of Indian out-of-pocket expenditure.</p></details><figcaption><b>Read this way:</b> insurance debates fixate on the hospital bill. The recurring drain is the pharmacy counter. Note the other 40% too, consults and diagnostics, which repeat tests for diabetes or cardiac care make just as punishing for the missing middle.</figcaption>
     </div>
     <div class="ed-callout"><p><b>So the honest version is this.</b> Medicines are the one exposure all four Indias share, which makes them the right place to start. But molecule-name prescribing on its own is a fix for India A and B1. B2 needs substitution rules that make the cheap option the profitable one. C needs public procurement that does not run dry. <b>Same bill, three different levers, and none of them costs what a new insurance pool would.</b></p></div>
     <p class="eyebrow">05 &mdash; So what</p>
