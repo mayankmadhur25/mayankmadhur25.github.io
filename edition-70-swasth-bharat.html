@@ -1247,6 +1247,70 @@ html[data-theme="dark"] .t-off{color:#7FD6B4}html[data-theme="dark"] .t-proj{col
   border-radius:0 8px 8px 0;padding:12px 14px;margin:0}
 .srcnote b{color:var(--navy)}
 @media(max-width:600px){.srcrow{grid-template-columns:1fr;gap:6px}.srctag{justify-self:start}}
+
+/* reference architecture diagram */
+.arch{margin:20px 0 6px;font-family:var(--sans)}
+.arch-band{display:grid;grid-template-columns:118px 1fr;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)}
+html[data-theme="dark"] .arch-band{background:#16252C;border-color:#25373F}
+.ab-rail{display:flex;flex-direction:column;justify-content:center;gap:3px;padding:16px 14px;border-right:1px solid var(--line)}
+html[data-theme="dark"] .ab-rail{border-right-color:#25373F}
+.ab-rail span{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;font-weight:700;line-height:1.3}
+.ab-rail em{font-family:var(--mono);font-size:10px;font-style:normal;color:var(--muted);letter-spacing:.04em}
+.b-found .ab-rail{background:rgba(46,124,184,.07)}.b-found .ab-rail span{color:#2E7CB8}
+.b-conv .ab-rail{background:rgba(224,138,60,.1)}.b-conv .ab-rail span{color:#B06A25}
+.b-exec .ab-rail{background:rgba(55,182,138,.08)}.b-exec .ab-rail span{color:#2E7D5B}
+.b-conv{border-color:rgba(224,138,60,.55);box-shadow:0 10px 26px -14px rgba(224,138,60,.55)}
+.ab-rows{padding:6px 0}
+.ar{display:grid;grid-template-columns:34px minmax(120px,1.05fr) 1.35fr;gap:12px;align-items:center;padding:11px 18px}
+.ar+.ar{border-top:1px solid var(--line)}
+html[data-theme="dark"] .ar+.ar{border-top-color:#25373F}
+.ar-l{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+.ar-n{font-size:14.5px;font-weight:700;color:var(--navy);letter-spacing:-.01em;line-height:1.3}
+.ar-c{font-family:var(--mono);font-size:11.5px;color:var(--muted);letter-spacing:.02em;line-height:1.45}
+.ar-focus .ar-l{color:#B06A25}
+.ar-focus .ar-n{font-size:15.5px}
+.ar-focus .ar-c{font-weight:600;color:#B06A25;letter-spacing:.06em}
+.ar-note{margin:0;padding:0 18px 12px 64px;font-size:13px;line-height:1.55;color:var(--muted)}
+.arch-flow{display:flex;align-items:center;gap:10px;padding:9px 0}
+.af-line{flex:1;height:1px;background:var(--line)}
+.af-txt{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--muted);white-space:nowrap}
+@media(max-width:620px){
+ .arch-band{grid-template-columns:1fr}
+ .ab-rail{flex-direction:row;align-items:baseline;gap:8px;border-right:0;border-bottom:1px solid var(--line)}
+ .ar{grid-template-columns:30px 1fr;gap:8px;padding:10px 14px}
+ .ar-c{grid-column:1/-1;padding-left:38px}
+ .ar-note{padding:0 14px 12px 14px}
+ .af-txt{font-size:9.5px;white-space:normal}
+}
+
+.proglist{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card);margin:18px 0}
+html[data-theme="dark"] .proglist{background:#16252C;border-color:#25373F}
+.pl{display:grid;grid-template-columns:88px 1fr;gap:14px;padding:13px 17px;align-items:baseline}
+.pl+.pl{border-top:1px solid var(--line)}
+html[data-theme="dark"] .pl+.pl{border-top-color:#25373F}
+.pl-a{font-family:var(--mono);font-size:11.5px;font-weight:700;color:var(--teal);letter-spacing:.04em}
+.pl b{display:block;font-size:14.5px;color:var(--navy);line-height:1.35;letter-spacing:-.01em}
+.pl span:not(.pl-a){display:block;font-size:13px;color:var(--muted);margin-top:3px;line-height:1.5}
+@media(max-width:600px){.pl{grid-template-columns:1fr;gap:3px}}
+
+/* failure mode cards */
+.fmgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin:24px 0}
+.fm{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 20px 18px}
+html[data-theme="dark"] .fm{background:#16252C;border-color:#25373F}
+.fm-risk{border-top:4px solid #C2563F}
+.fm-warn{border-top:4px solid #E08A3C}
+.fm-h{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:700;margin-bottom:10px}
+.fm-risk .fm-h{color:#C2563F}.fm-warn .fm-h{color:#B06A25}
+.fm-t{font-size:16.5px;font-weight:800;color:var(--navy);line-height:1.3;letter-spacing:-.01em;margin-bottom:9px}
+.fm-c{font-size:14px;line-height:1.6;color:var(--body-c)}
+/* ten question cards */
+.qgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:13px;margin:24px 0}
+.qc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 18px 16px;position:relative}
+html[data-theme="dark"] .qc{background:#16252C;border-color:#25373F}
+.qc-n{font-family:var(--mono);font-size:11px;font-weight:700;color:#fff;background:var(--teal);
+  border-radius:6px;padding:4px 9px;display:inline-block;margin-bottom:10px}
+.qc-t{font-size:16px;font-weight:800;color:var(--navy);line-height:1.3;letter-spacing:-.01em;margin-bottom:8px}
+.qc-d{font-size:14px;line-height:1.6;color:var(--body-c)}
 </style></head>
 <body>
 <script>(function(){try{if(localStorage.getItem('hp-theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
@@ -1287,24 +1351,54 @@ html[data-theme="dark"] .t-off{color:#7FD6B4}html[data-theme="dark"] .t-proj{col
 
 <section id="s2">
 <p class="eyebrow">02 &mdash; The object</p>
-<h2>What it is, stated plainly</h2>
+<h2>What it is</h2>
 <p>Swasth Bharat is a horizontal layer, not a vertical programme. It draws identity from ABDM above and orchestrates existing programme systems below. Its users are ASHAs, ANMs, community health officers, medical officers and programme staff. <b>It is a workplace for health staff.</b></p>
 <p>It is <em>not</em> a health insurance or entitlement scheme of its own, not a replacement for ABDM, and not primarily citizen-facing. The most common error is treating it as an entitlement. It is infrastructure.</p>
-<p>What the portal currently surfaces, by their actual names: <b>NCD</b> (non-communicable disease screening), <b>JANANI</b> (maternal and newborn care), <b>U-WIN</b> (immunisation), <b>Ni-kshay</b> (tuberculosis), <b>PMNDP</b> (dialysis) and <b>SCD</b> (sickle cell screening). Read from the rendered portal in August 2026.</p>
-<p>This will grow. The Ministry describes this as an evolving aggregator intended to bring in further programme systems and the national registries over time, so treat the number as a snapshot. <b>A wider MoHFW ecosystem graphic circulating online shows a much larger set including AAM, PM-JAY, RBSK and e-RaktKosh; that is the ministry's programme landscape, not the current Swasth Bharat integration list.</b> Worth separating the two, because conflating them overstates what has actually been integrated.</p>
+<p>The programmes on the portal as of August 2026, with their full names:</p>
+<div class="proglist">
+  <div class="pl"><span class="pl-a">NCD</span><div><b>National Programme for Prevention and Control of Non-Communicable Diseases</b><span>Hypertension and diabetes screening and treatment</span></div></div>
+  <div class="pl"><span class="pl-a">JANANI</span><div><b>JANANI</b><span>Antenatal, natal and neonatal care, co-launched at the same summit</span></div></div>
+  <div class="pl"><span class="pl-a">U-WIN</span><div><b>Universal Immunization Programme, digital platform</b><span>Routine childhood and maternal immunisation</span></div></div>
+  <div class="pl"><span class="pl-a">Ni-kshay</span><div><b>National Tuberculosis Elimination Programme, case management system</b><span>TB notification, treatment and follow-up</span></div></div>
+  <div class="pl"><span class="pl-a">PMNDP</span><div><b>Pradhan Mantri National Dialysis Programme</b><span>Free dialysis for patients who cannot afford it</span></div></div>
+  <div class="pl"><span class="pl-a">SCD</span><div><b>National Sickle Cell Anaemia Elimination Mission</b><span>Screening in tribal and high-burden districts</span></div></div>
+</div>
+<p>That list will grow. The Ministry has said it plans to bring in more programme systems and the national registries over time, so the count today says little about where this ends up. <b>A wider MoHFW ecosystem graphic circulating online shows a much larger set including AAM, PM-JAY, RBSK and e-RaktKosh; that is the ministry's programme landscape, not the current Swasth Bharat integration list.</b> Worth separating the two, because conflating them overstates what has actually been integrated.</p>
 
-<div class="fig"><div class="fig-label">Figure 1</div><div class="fig-title">The programmes with published counters, by scale</div><div class="fig-sub">Portal counters in crore for the programmes currently surfaced: NCD, JANANI, U-WIN, Ni-kshay, PMNDP and SCD. Cumulative counters, not unique individuals.</div><div class="cwrap" style="height:300px"><canvas id="cProg"></canvas></div><figcaption><b>Read this way:</b> immunisation alone is larger than the other five combined. A convergence layer has to serve a 15 crore programme and a 31 lakh programme through the same interface, which is a harder design problem than the headline suggests.</figcaption></div><details class="dtbl"><summary>View the data behind this</summary><table><caption>Programme counters displayed on the Swasth Bharat Portal</caption><thead><tr><th scope="col">Programme</th><th scope="col">Domain</th><th scope="col">Counter</th></tr></thead><tbody><tr><td>U-WIN</td><td>Universal Immunization Programme</td><td>15.2 crore beneficiaries immunised</td></tr><tr><td>NCD portal</td><td>Hypertension and diabetes</td><td>9.13 crore under treatment</td></tr><tr><td>Sickle cell</td><td>Sickle Cell Anaemia Elimination</td><td>7.1 crore screened</td></tr><tr><td>Ni-kshay</td><td>National TB Elimination Programme</td><td>1.75 crore cases notified</td></tr><tr><td>JANANI</td><td>Maternal and newborn care</td><td>1.33 crore under maternal health management</td></tr><tr><td>PMNDP</td><td>PM National Dialysis Programme</td><td>31.13 lakh availed dialysis</td></tr></tbody></table><p class="dsrc">Source: swasthbharat.mohfw.gov.in portal counters (official). These are counters, not unique people. One citizen can appear in several.</p></details>
+<div class="fig"><div class="fig-label">Figure 1</div><div class="fig-title">Very different programmes, very different scale</div><div class="fig-sub">Portal counters in crore for NCD, JANANI, U-WIN, Ni-kshay, PMNDP and SCD. These are cumulative counts, so one person can appear more than once.</div><div class="cwrap" style="height:300px"><canvas id="cProg"></canvas></div><figcaption><b>Read this way:</b> immunisation alone is larger than the other five combined. A convergence layer has to serve a 15 crore programme and a 31 lakh programme through the same interface, which is a harder design problem than the headline suggests.</figcaption></div><details class="dtbl"><summary>View the data behind this</summary><table><caption>Programme counters displayed on the Swasth Bharat Portal</caption><thead><tr><th scope="col">Programme</th><th scope="col">Domain</th><th scope="col">Counter</th></tr></thead><tbody><tr><td>U-WIN</td><td>Universal Immunization Programme</td><td>15.2 crore beneficiaries immunised</td></tr><tr><td>NCD portal</td><td>Hypertension and diabetes</td><td>9.13 crore under treatment</td></tr><tr><td>Sickle cell</td><td>Sickle Cell Anaemia Elimination</td><td>7.1 crore screened</td></tr><tr><td>Ni-kshay</td><td>National TB Elimination Programme</td><td>1.75 crore cases notified</td></tr><tr><td>JANANI</td><td>Maternal and newborn care</td><td>1.33 crore under maternal health management</td></tr><tr><td>PMNDP</td><td>PM National Dialysis Programme</td><td>31.13 lakh availed dialysis</td></tr></tbody></table><p class="dsrc">Source: swasthbharat.mohfw.gov.in portal counters (official). These are counters, not unique people. One citizen can appear in several.</p></details>
 <div class="ed-callout"><p><b>Two caveats.</b> First, they are cumulative counters: one citizen can appear in four of those rows at once, which is precisely the double counting ABHA linkage exists to resolve. Second, the counters lag. Government reported over <b>7.24 crore</b> sickle cell screenings as of 16 July 2026 while the portal displayed <b>7.1 crore</b>. <b>An aggregator whose own numbers refresh differently from its sources has not finished aggregating.</b></p></div>
 <div class="fig"><div class="fig-label">Figure 2</div>
 <div class="fig-title">Where it sits in the stack</div>
-<div class="fig-sub">A horizontal layer, not a vertical programme. It draws identity from above and orchestrates delivery below.</div>
-<div class="stackd">
-<div class="sl" style="background:#0FA3A3"><span class="sn">L1</span><span class="st">Citizen identity</span><span class="sc">ABHA</span></div>
-<div class="sl" style="background:#1699AE"><span class="sn">L2</span><span class="st">Ecosystem registries</span><span class="sc">HFR &middot; HPR</span></div>
-<div class="sl" style="background:#2E7CB8"><span class="sn">L3</span><span class="st">Interoperability</span><span class="sc">ABDM &middot; consent &middot; exchange</span></div>
-<div class="sl focus" style="background:linear-gradient(90deg,#E08A3C,#C77428)"><span class="sn">L4</span><span class="st">Programme convergence</span><span class="sc">SWASTH BHARAT PORTAL</span></div>
-<div class="sl" style="background:#37B68A"><span class="sn">L5</span><span class="st">Programme systems</span><span class="sc">NCD &middot; JANANI &middot; U-WIN &middot; Ni-kshay &middot; PMNDP &middot; SCD</span></div>
-<div class="sl" style="background:#2E7D5B"><span class="sn">L6</span><span class="st">Care delivery</span><span class="sc">ASHA &middot; ANM &middot; CHO &middot; AAM &middot; PHC &middot; CHC &middot; DH</span></div>
+<div class="fig-sub">Swasth Bharat is a horizontal layer between two things that already existed. It consumes ABDM's identity rails above and orchestrates programme systems below.</div>
+<div class="arch">
+  <div class="arch-band b-found">
+    <div class="ab-rail"><span>Foundation</span><em>ABDM</em></div>
+    <div class="ab-rows">
+      <div class="ar"><span class="ar-l">L1</span><span class="ar-n">Citizen identity</span><span class="ar-c">ABHA</span></div>
+      <div class="ar"><span class="ar-l">L2</span><span class="ar-n">Ecosystem registries</span><span class="ar-c">HFR &middot; HPR</span></div>
+      <div class="ar"><span class="ar-l">L3</span><span class="ar-n">Health information interoperability</span><span class="ar-c">Consent &middot; exchange</span></div>
+    </div>
+  </div>
+
+  <div class="arch-flow"><span class="af-line"></span><span class="af-txt">&darr;&nbsp; verified identity and consent</span><span class="af-line"></span></div>
+
+  <div class="arch-band b-conv">
+    <div class="ab-rail"><span>Convergence</span><em>this edition</em></div>
+    <div class="ab-rows">
+      <div class="ar ar-focus"><span class="ar-l">L4</span><span class="ar-n">Programme convergence</span><span class="ar-c">SWASTH BHARAT PORTAL</span></div>
+      <p class="ar-note">Owns no data. Funds no care. Its authority over the layers below is delegated, which is the open question of this edition.</p>
+    </div>
+  </div>
+
+  <div class="arch-flow"><span class="af-line"></span><span class="af-txt">&uarr;&nbsp; programme records and beneficiary data</span><span class="af-line"></span></div>
+
+  <div class="arch-band b-exec">
+    <div class="ab-rail"><span>Execution</span><em>states and programmes</em></div>
+    <div class="ab-rows">
+      <div class="ar"><span class="ar-l">L5</span><span class="ar-n">Programme systems</span><span class="ar-c">NCD &middot; JANANI &middot; U-WIN &middot; Ni-kshay &middot; PMNDP &middot; SCD</span></div>
+      <div class="ar"><span class="ar-l">L6</span><span class="ar-n">Care delivery</span><span class="ar-c">ASHA &middot; ANM &middot; CHO &middot; AAM &middot; PHC &middot; CHC &middot; DH</span></div>
+    </div>
+  </div>
 </div>
 <figcaption><b>Read this way:</b> everything above Level 4 is ABDM's foundation, which Swasth Bharat builds on. Everything below is what it orchestrates. <b>The layer owns no data and funds no care, which is exactly why its authority over the programmes beneath it is the open question.</b></figcaption></div><details class="dtbl"><summary>View the data behind this</summary><table><caption>Where Swasth Bharat sits in India's digital health stack</caption><thead><tr><th scope="col">Level</th><th scope="col">Layer</th><th scope="col">Components</th></tr></thead><tbody><tr><td>1</td><td>Citizen identity</td><td>ABHA</td></tr><tr><td>2</td><td>Ecosystem registries</td><td>HFR, HPR</td></tr><tr><td>3</td><td>Health information interoperability</td><td>ABDM ecosystem, consent, exchange</td></tr><tr><td>4</td><td>Programme convergence</td><td>SWASTH BHARAT PORTAL</td></tr><tr><td>5</td><td>Programme systems</td><td>NCD, JANANI, U-WIN, Ni-kshay, PMNDP, sickle cell</td></tr><tr><td>6</td><td>Care delivery</td><td>ASHA, ANM, CHO, Ayushman Arogya Mandir, PHC, CHC, District Hospital</td></tr></tbody></table><p class="dsrc">Analysis: six-level stack synthesis by the author, built on ABDM and MoHFW documentation.</p></details>
 <p>The problem it was built for is real and well documented: a separate portal per programme, multiple logins per worker, the same patient registered repeatedly, fragmented datasets, duplicated hosting, separate maintenance teams, and administration crowding out service delivery. The government's diagnosis is right: <b>the problem was never digitisation, it was that every programme digitised separately.</b></p>
@@ -1403,12 +1497,7 @@ html[data-theme="dark"] .t-off{color:#7FD6B4}html[data-theme="dark"] .t-proj{col
 <section id="s6">
 <p class="eyebrow">06 &mdash; Failure modes</p>
 <h2>Four ways this quietly fails</h2>
-<div class="tier-wrap">
-<div class="tier-row"><span class="tier-badge tb-red">IDENTITY</span><p>Weak or inconsistent ABHA seeding.<span class="gov">Convergence delivers a shared login and nothing clinical. The platform becomes an administrative convenience with a strategic label.</span></p></div>
-<div class="tier-row"><span class="tier-badge tb-amber">FEDERATION</span><p>Programme divisions keep control of their own systems and roadmaps.<span class="gov">APIs exist but priorities diverge, and integration depth plateaus at whatever was built in year one.</span></p></div>
-<div class="tier-row"><span class="tier-badge tb-amber">ADOPTION</span><p>Frontline workers keep using familiar programme apps.<span class="gov">Dual entry appears, old portal plus new one, and workload goes up.</span></p></div>
-<div class="tier-row"><span class="tier-badge tb-red">TRUST</span><p>Cross-programme visibility without visible consent controls.<span class="gov">TB and maternal data are sensitive. A single incident sets adoption back years.</span></p></div>
-</div>
+<div class="fmgrid"><div class="fm fm-risk"><div class="fm-h">Identity</div><div class="fm-t">Weak or inconsistent ABHA seeding</div><div class="fm-c">Convergence delivers a shared login and nothing clinical. The platform becomes an administrative convenience with a strategic label.</div></div><div class="fm fm-warn"><div class="fm-h">Federation</div><div class="fm-t">Programme divisions keep control of their own systems and roadmaps</div><div class="fm-c">The APIs exist but priorities diverge, and integration depth plateaus at whatever was built in year one.</div></div><div class="fm fm-warn"><div class="fm-h">Adoption</div><div class="fm-t">Frontline workers keep using the familiar programme apps</div><div class="fm-c">Dual entry appears, old portal plus new one, and workload goes up.</div></div><div class="fm fm-risk"><div class="fm-h">Trust</div><div class="fm-t">Cross-programme visibility without visible consent controls</div><div class="fm-c">TB and maternal data are sensitive. A single incident sets adoption back years.</div></div></div>
 <p>None of these is dramatic, which is why they are easy to miss. <b>Each one produces a platform that still works, still reports, and quietly stops delivering the thing it was built for.</b></p>
 </section>
 
@@ -1433,9 +1522,7 @@ html[data-theme="dark"] .t-off{color:#7FD6B4}html[data-theme="dark"] .t-proj{col
 <p class="eyebrow">09 &mdash; So what</p>
 <h2>Ten questions, answerable within a year</h2>
 <p>These are open questions, not reported failures. The portal is months old. Each one becomes answerable inside twelve months.</p>
-<div class="tier-wrap">
-<div class="tier-row"><span class="tier-badge tb-red">01</span><p><b>Integration depth</b><span class="gov">How many programmes move from linked to genuinely integrated? The current set will grow, so the count on its own says little.</span></p></div><div class="tier-row"><span class="tier-badge tb-red">02</span><p><b>ABHA seeding quality</b><span class="gov">Consistent ABHA use determines whether patient matching is real or nominal.</span></p></div><div class="tier-row"><span class="tier-badge tb-red">03</span><p><b>Interoperable or merely linked</b><span class="gov">A directory of records is not a longitudinal record. The distinction decides clinical value.</span></p></div><div class="tier-row"><span class="tier-badge tb-red">04</span><p><b>Synchronisation lag</b><span class="gov">The sickle cell counter gap already shows programme dashboards and portal counters refreshing differently.</span></p></div><div class="tier-row"><span class="tier-badge tb-red">05</span><p><b>Frontline adoption</b><span class="gov">What share of ASHAs, ANMs and CHOs actually use it daily, and how many go back to the programme apps?</span></p></div><div class="tier-row"><span class="tier-badge tb-red">06</span><p><b>Does duplication actually fall</b><span class="gov">The 20 to 40% claim needs an independent audit against a baseline.</span></p></div><div class="tier-row"><span class="tier-badge tb-red">07</span><p><b>Consent and privacy</b><span class="gov">Cross-programme visibility raises the stakes on consent architecture considerably.</span></p></div><div class="tier-row"><span class="tier-badge tb-red">08</span><p><b>State system integration</b><span class="gov">Health is a state subject. State-run portals have to integrate willingly for this to scale.</span></p></div><div class="tier-row"><span class="tier-badge tb-red">09</span><p><b>Private provider participation</b><span class="gov">Without it, patient journeys break the moment someone goes private, which in India is most of the time.</span></p></div><div class="tier-row"><span class="tier-badge tb-red">10</span><p><b>Analytics and AI layer</b><span class="gov">Whether anyone builds intelligence on top, or it settles into being a very tidy data lake.</span></p></div>
-</div>
+<div class="qgrid"><div class="qc"><span class="qc-n">01</span><div class="qc-t">Integration depth</div><div class="qc-d">How many programmes move from linked to genuinely integrated? The current set will grow, so the count today says little.</div></div><div class="qc"><span class="qc-n">02</span><div class="qc-t">ABHA seeding quality</div><div class="qc-d">Consistent ABHA use decides whether patient matching is real or only nominal.</div></div><div class="qc"><span class="qc-n">03</span><div class="qc-t">Interoperable or only linked</div><div class="qc-d">A directory of records is not a longitudinal record. That distinction decides the clinical value.</div></div><div class="qc"><span class="qc-n">04</span><div class="qc-t">Synchronisation lag</div><div class="qc-d">The sickle cell counter gap already shows programme dashboards and portal counters refreshing at different speeds.</div></div><div class="qc"><span class="qc-n">05</span><div class="qc-t">Frontline adoption</div><div class="qc-d">What share of ASHAs, ANMs and CHOs use it daily, and how many go back to the programme apps?</div></div><div class="qc"><span class="qc-n">06</span><div class="qc-t">Does duplication actually fall</div><div class="qc-d">The 20 to 40% claim needs an independent audit against a baseline.</div></div><div class="qc"><span class="qc-n">07</span><div class="qc-t">Consent and privacy</div><div class="qc-d">Cross-programme visibility raises the stakes on consent architecture considerably.</div></div><div class="qc"><span class="qc-n">08</span><div class="qc-t">State system integration</div><div class="qc-d">Health is a state subject. State-run portals have to integrate willingly for this to scale.</div></div><div class="qc"><span class="qc-n">09</span><div class="qc-t">Private provider participation</div><div class="qc-d">Without it, patient journeys break the moment someone goes private, which in India is most of the time.</div></div><div class="qc"><span class="qc-n">10</span><div class="qc-t">Analytics and AI layer</div><div class="qc-d">Whether anyone builds intelligence on top, or it settles into being a very tidy data lake.</div></div></div>
 <div class="ed-callout"><p>ABDM built much of India's digital health foundation. Swasth Bharat is the layer that could finally make that foundation usable across national programmes. <b>The architecture is right. The projections are unaudited. The gap between the two is a year of measurement nobody has committed to publishing.</b></p></div>
 <p>India has repeatedly built excellent rails and then declined to publish whether anyone rode them. The portal converges multiple programmes on a screen. Whether it converges them in a budget, a review meeting and an ASHA's evening is a governance question, and governance questions are settled by what gets measured, not by what gets launched.</p>
 <p><b>The question I would put to an oversight committee:</b> if the only numbers ever published about this platform are logins, integrations and cumulative counters, how would anybody, inside or outside government, ever know whether it got past Stage 2?</p>
@@ -1448,13 +1535,13 @@ html[data-theme="dark"] .t-off{color:#7FD6B4}html[data-theme="dark"] .t-proj{col
 <div class="srcwrap">
   <div class="srcrow"><span class="srctag t-off">Official</span><div><b>PIB release 2258283</b> &middot; 6 May 2026<span>Confirmed by MoHFW statements carried in national coverage. Aggregator framing, API-based federated architecture, ABDM and ABHA compliance, HPR and HFR intent, the efficiency projections, and frontline workload rationale.</span></div></div>
   <div class="srcrow"><span class="srctag t-off">Official</span><div><b>PIB release 2256956</b> &middot; 30 April 2026<span>Summit inauguration and the full list of co-launches: JANANI, RBSK 2.0, the 17th CRM report, the Best Practice Compendium and the integrated training module.</span></div></div>
-  <div class="srcrow"><span class="srctag t-off">Official</span><div><b>swasthbharat.mohfw.gov.in</b><span>The programmes currently surfaced (NCD, JANANI, U-WIN, Ni-kshay, PMNDP, SCD), their beneficiary counters, user roles and the login and user-mapping flow. Read from the rendered portal in August 2026. Portal counters are point-in-time displays and should be re-checked at source before citing.</span></div></div>
+  <div class="srcrow"><span class="srctag t-off">Official</span><div><b>swasthbharat.mohfw.gov.in</b><span>The programme list (NCD, JANANI, U-WIN, Ni-kshay, PMNDP, SCD), the beneficiary counters, user roles and the login and user-mapping flow. Checked in August 2026. The counters change, so check them again before quoting them.</span></div></div>
   <div class="srcrow"><span class="srctag t-off">Official</span><div><b>PIB release 2287698</b> &middot; 16 July 2026<span>Sickle cell screening figures, used here only for the counter-lag comparison.</span></div></div>
   <div class="srcrow"><span class="srctag t-off">Official</span><div><b>NFHS-6 (2023-24), IIPS</b><span>State-level health insurance coverage spread, used for the federal execution point.</span></div></div>
   <div class="srcrow"><span class="srctag t-proj">Projection</span><div><b>MoHFW efficiency estimates</b><span>Around 20 to 30% infrastructure reduction, 20 to 40% data entry reduction, 20 to 40% HR duplication reduction, and faster decision-making. Ex-ante and unaudited, issued within days of launch.</span></div></div>
   <div class="srcrow"><span class="srctag t-anl">Analysis</span><div><b>Author's contribution</b><span>The six-level stack, the seven-link value chain, the five-stage maturity model, the four failure modes, the interactive simulation, the ten-question watchlist, and all interpretive commentary.</span></div></div>
 </div>
-<p class="srcnote"><b>Before citing externally:</b> portal counters are point-in-time displays. Re-check them at source. Figures here reflect the position as reported to August 2026.</p>
+<p class="srcnote"><b>Before citing externally:</b> the portal counters move. Check them again at source. Everything here reflects the position as of August 2026.</p>
 </section>
   </div>
   <div class="share-bar"><span class="share-label">Share this perspective:</span><a class="share-btn share-wa" id="shWa" target="_blank" rel="noopener">WhatsApp</a><a class="share-btn share-li" id="shLi" target="_blank" rel="noopener">LinkedIn</a><a class="share-btn share-x" id="shX" target="_blank" rel="noopener">X</a><button class="share-btn" id="shCopy" type="button">Copy link</button></div>
