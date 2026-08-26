@@ -198,6 +198,31 @@ th:nth-child(1),td:nth-child(1){width:auto}
 th:nth-child(2),td:nth-child(2){width:auto}
 th:nth-child(3),td:nth-child(3){width:auto}
 table{table-layout:auto!important}
+
+/* tight column widths, no wasted space */
+table{table-layout:fixed!important}
+th:nth-child(1),td:nth-child(1){width:23%}
+th:nth-child(2),td:nth-child(2){width:15%}
+th:nth-child(3),td:nth-child(3){width:24%}
+th:nth-child(4),td:nth-child(4),th:nth-child(5),td:nth-child(5),th:nth-child(6),td:nth-child(6){width:8.5%}
+th:nth-child(7),td:nth-child(7){width:6.5%}
+th:nth-child(8),td:nth-child(8){width:7%}
+th,td{padding:11px 10px!important}
+td:nth-child(1){padding-left:14px!important}
+.country{font-size:14px}
+.metric{font-size:12.5px}
+.metric .yr{font-size:9px}
+.detailbtn{padding:5px 11px;font-size:12px}
+.mstatus .ld{display:inline-block;width:10px;height:10px;border:2px solid rgba(15,163,163,.3);
+  border-top-color:#0FA3A3;border-radius:50%;margin-right:7px;vertical-align:-1px;animation:sp .7s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.retry{font-family:'Manrope',sans-serif;font-size:11.5px;font-weight:700;color:#0FA3A3;background:transparent;
+  border:1px solid rgba(15,163,163,.45);border-radius:999px;padding:4px 11px;margin-left:8px;cursor:pointer}
+@media(max-width:900px){
+ th:nth-child(1),td:nth-child(1){width:30%}
+ th:nth-child(2),td:nth-child(2){width:18%}
+ th:nth-child(3),td:nth-child(3){width:26%}
+}
 </style>
 </head>
 <body>
@@ -226,7 +251,7 @@ table{table-layout:auto!important}
 </div></section>
 <section id="atlas" class="section"><div class="wrap"><h2>180-country financing atlas</h2><p class="lead">Search any country, or filter by region and architecture. Five columns so the table stays readable. Press <b>Open</b> on any row for the full picture: revenue base, pooling and purchasing, mechanisms and reform status.</p>
 <div class="callout"><strong>Metric correction:</strong> the old edition said "Gov % CHE". This edition uses the technically correct label <b>GGHE-D % CHE</b>. WHO defines this as domestic general-government health expenditure relative to current health expenditure; it includes government domestic revenue and social-insurance contributions. It is not simply "tax share".</div>
-<div class="tablebar"><input id="q" placeholder="Search country, mechanism, reform..."><select id="region"><option value="">All regions</option><option>Africa</option><option>Americas</option><option>Asia</option><option>Europe</option><option>Oceania</option></select><select id="arch"><option value="">All architectures</option></select><button class="btn" id="load">Load latest GHED-mirror metrics</button><button class="btn secondary" id="csv">Download classification CSV</button><span class="mini" id="status">Metrics not loaded yet.</span></div>
+<div class="tablebar"><input id="q" placeholder="Search country, mechanism, reform..."><select id="region"><option value="">All regions</option><option>Africa</option><option>Americas</option><option>Asia</option><option>Europe</option><option>Oceania</option></select><select id="arch"><option value="">All architectures</option></select><button class="btn secondary" id="csv">Download classification CSV</button></div>
 <details class="lgbox" open>
 <summary class="lgsum">How to read the table <span>architecture labels and evidence grades</span></summary>
 <div class="lgbody">
@@ -392,12 +417,19 @@ document.addEventListener('click',function(e){
 document.addEventListener('keydown',function(e){if(e.key==='Escape'){const p=document.getElementById('defpop');if(p)p.classList.remove('on');}});
 
 const metrics={};
-async function fetchIndicator(code,key){const url=`https://api.worldbank.org/v2/country/all/indicator/${code}?format=json&per_page=20000`;const res=await fetch(url);if(!res.ok)throw new Error('HTTP '+res.status);const j=await res.json();if(!Array.isArray(j)||!j[1])throw new Error('Unexpected API response');for(const row of j[1]){if(!row.countryiso3code||row.value===null)continue;const iso=row.countryiso3code;if(!metrics[iso])metrics[iso]={};if(!metrics[iso][key]||Number(row.date)>Number(metrics[iso][key].year))metrics[iso][key]={value:row.value,year:row.date}}}
-async function loadMetrics(){const s=document.getElementById('mstatus');if(s)s.textContent='Loading spending shares from the World Bank mirror of WHO GHED…';
- try{await Promise.all([fetchIndicator('SH.XPD.OOPC.CH.ZS','oop'),fetchIndicator('SH.XPD.GHED.CH.ZS','gov'),fetchIndicator('SH.XPD.EHEX.CH.ZS','ext')]);
-  document.querySelectorAll('.mcol').forEach(function(e){e.classList.add('on')});
-  if(s)s.textContent='Spending shares loaded. Each cell shows its own latest available year.';render();
- }catch(e){if(s)s.textContent='Spending shares could not load in this browser, so those three columns are hidden. The classification below is offline and complete.'}}
+async function fetchIndicator(code,key){const url='https://api.worldbank.org/v2/country/all/indicator/'+code+'?format=json&per_page=400&mrnev=1';const res=await fetch(url);if(!res.ok)throw new Error('HTTP '+res.status);const j=await res.json();if(!Array.isArray(j)||!j[1])throw new Error('Unexpected API response');for(const row of j[1]){if(!row.countryiso3code||row.value===null)continue;const iso=row.countryiso3code;if(!metrics[iso])metrics[iso]={};metrics[iso][key]={value:row.value,year:row.date}}}
+async function loadMetrics(){const s=document.getElementById('mstatus');
+ if(s)s.innerHTML='<span class="ld"></span>Loading spending shares from the World Bank mirror of WHO GHED\u2026';
+ try{
+  await Promise.all([fetchIndicator('SH.XPD.OOPC.CH.ZS','oop'),fetchIndicator('SH.XPD.GHED.CH.ZS','gov'),fetchIndicator('SH.XPD.EHEX.CH.ZS','ext')]);
+  const n=Object.keys(metrics).length;
+  if(n>0){document.querySelectorAll('.mcol').forEach(function(e){e.classList.add('on')});
+   if(s)s.textContent='Spending shares loaded for '+n+' countries. Each cell shows its own latest available year.';
+   render();}
+  else{if(s)s.textContent='No spending shares returned. The classification below is complete and works offline.';}
+ }catch(e){
+  if(s)s.innerHTML='Spending shares could not load, so those three columns stay hidden. The classification below is complete and works offline. <button class="retry" onclick="loadMetrics()">Try again</button>';
+ }}
 function metricCell(iso,key){const m=(metrics[iso]||{})[key];return m?'<span class="metric">'+Number(m.value).toFixed(1)+'<span class="yr">'+m.year+'</span></span>':'<span class="nf">&mdash;</span>'}
 function evClass(e){return e.startsWith('A')?'evA':e.startsWith('C')?'evC':'evB'}
 function filtered(){const q=document.getElementById('q').value.toLowerCase().trim(),r=document.getElementById('region').value,a=document.getElementById('arch').value;return countries.filter(c=>(!r||c.region===r)&&(!a||c.architecture===a)&&(!q||JSON.stringify(c).toLowerCase().includes(q)))}
@@ -406,8 +438,6 @@ function evChip(e){const g=String(e||'').trim().charAt(0);return '<span class="e
 function render(){const data=filtered();document.getElementById('rows').innerHTML=data.map(c=>'<tr><td><div class="country">'+c.country+'</div><div class="sub">'+c.region+' &middot; '+c.iso3+'</div></td><td>'+archChip(c.architecture)+'</td><td>'+fmtTags(c.tags)+'</td><td class="tc mcol">'+metricCell(c.iso3,'oop')+'</td><td class="tc mcol">'+metricCell(c.iso3,'gov')+'</td><td class="tc mcol">'+metricCell(c.iso3,'ext')+'</td><td class="tc">'+evChip(c.evidence)+'</td><td class="tc"><button class="detailbtn" onclick="openDrawer(\''+c.iso3+'\')">Open</button></td></tr>').join('');const n=document.getElementById('resultCount');if(n)n.textContent=data.length+' of '+countries.length+' countries';}
 function openDrawer(iso){const c=countries.find(x=>x.iso3===iso);document.getElementById('drawerBody').innerHTML=`<div class="eyebrow" style="color:#0FA3A3">${c.region} | ${c.iso3}</div><h2>${c.country}</h2><p>${c.note}</p><div class="kv"><b>Structural shorthand</b><div>${c.architectureLabel}</div><b>Primary revenue</b><div>${c.primaryRevenue}</div><b>Pooling / purchaser</b><div>${c.pooling}</div><b>Mechanisms</b><div>${c.mechanisms}<br>${fmtTags(c.tags)}</div><b>Reform status</b><div>${c.reform}</div><b>OOP % CHE</b><div>${metricCell(c.iso3,'oop')}</div><b>GGHE-D % CHE</b><div>${metricCell(c.iso3,'gov')}</div><b>External % CHE</b><div>${metricCell(c.iso3,'ext')}</div><b>Evidence grade</b><div>${c.evidence}</div></div><p class="mini" style="margin-top:18px">This shorthand is an educational synthesis. For formal use, describe the actual financing functions rather than treating the label as an official WHO classification.</p>`;document.getElementById('drawer').classList.add('open')}
 function closeDrawer(){document.getElementById('drawer').classList.remove('open')}
-async function fetchIndicator(code,key){const url=`https://api.worldbank.org/v2/country/all/indicator/${code}?format=json&per_page=20000`;const res=await fetch(url);if(!res.ok)throw new Error('HTTP '+res.status);const j=await res.json();if(!Array.isArray(j)||!j[1])throw new Error('Unexpected API response');for(const row of j[1]){if(!row.countryiso3code||row.value===null)continue;const iso=row.countryiso3code;if(!metrics[iso])metrics[iso]={};if(!metrics[iso][key]||Number(row.date)>Number(metrics[iso][key].year))metrics[iso][key]={value:row.value,year:row.date}}}
-async function loadMetrics(){const b=document.getElementById('load'),s=document.getElementById('status');b.disabled=true;s.textContent='Loading latest available WHO-GHED mirror values...';try{await Promise.all([fetchIndicator('SH.XPD.OOPC.CH.ZS','oop'),fetchIndicator('SH.XPD.GHED.CH.ZS','gov'),fetchIndicator('SH.XPD.EHEX.CH.ZS','ext')]);s.textContent='Loaded. Each cell shows its own latest available year.';render()}catch(e){s.textContent='Could not load live metrics in this browser. The classification remains available offline.'}finally{b.disabled=false}}
 function csv(){const head=['country','region','iso3','architecture','primary_revenue','pooling_purchaser','mechanisms','tags','reform','evidence','oop_pct_che','oop_year','gghed_pct_che','gghed_year','external_pct_che','external_year'];const esc=v=>'"'+String(v??'').replaceAll('"','""')+'"';const lines=[head.join(',')];for(const c of filtered()){lines.push([c.country,c.region,c.iso3,c.architectureLabel,c.primaryRevenue,c.pooling,c.mechanisms,(c.tags||[]).join('; '),c.reform,c.evidence,(metrics[c.iso3]||{}).oop?.value,(metrics[c.iso3]||{}).oop?.year,(metrics[c.iso3]||{}).gov?.value,(metrics[c.iso3]||{}).gov?.year,(metrics[c.iso3]||{}).ext?.value,(metrics[c.iso3]||{}).ext?.year].map(esc).join(','))}const blob=new Blob([lines.join('\n')],{type:'text/csv'});const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download='healthcare_financing_atlas_180_countries.csv';a.click()}
 document.getElementById('q').addEventListener('input',render);document.getElementById('region').addEventListener('change',render);document.getElementById('arch').addEventListener('change',render);document.getElementById('csv').addEventListener('click',csv);renderArchCards();render();loadMetrics();
 </script>
