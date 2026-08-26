@@ -172,6 +172,32 @@ html[data-theme="dark"] .lgnote{border-top-color:#22333B}
  .lgrow{grid-template-columns:118px 1fr 34px;gap:9px}
  .lgd{font-size:12.5px}
 }
+
+/* metric columns, hidden until data arrives */
+th.mcol,td.mcol{display:none}
+th.mcol.on,td.mcol.on{display:table-cell}
+.metric{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:700;color:var(--ink);white-space:nowrap}
+.metric .yr{display:block;font-size:9.5px;font-weight:400;color:var(--muted);letter-spacing:.03em}
+.mstatus{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);margin:0 0 10px;line-height:1.5}
+/* clickable chips */
+.achip,.badge,.evchip{cursor:pointer;transition:transform .12s,box-shadow .12s}
+.achip:hover,.badge:hover,.evchip:hover{transform:translateY(-1px);box-shadow:0 3px 9px rgba(27,58,75,.22)}
+.achip:focus-visible,.badge:focus-visible,.evchip:focus-visible{outline:2px solid #0FA3A3;outline-offset:2px}
+/* definition popover */
+#defpop{position:fixed;inset:0;background:rgba(11,21,32,.55);display:none;align-items:center;justify-content:center;z-index:9999;padding:20px}
+#defpop.on{display:flex}
+#defpop .dp-in{position:relative;max-width:430px;background:#fff;border-radius:16px;padding:26px 28px;
+  box-shadow:0 30px 70px -20px rgba(11,21,32,.6);font-family:'Manrope',sans-serif}
+html[data-theme="dark"] #defpop .dp-in{background:#16252C}
+#defpop .dp-x{position:absolute;top:12px;right:14px;background:none;border:0;font-size:24px;line-height:1;
+  color:var(--muted);cursor:pointer;padding:4px 8px}
+#defpop .dp-t{font-size:19px;font-weight:800;color:var(--ink);letter-spacing:-.015em;margin-bottom:9px;padding-right:24px}
+#defpop .dp-d{font-size:14.5px;line-height:1.65;color:var(--muted)}
+/* widen table when metric columns show */
+th:nth-child(1),td:nth-child(1){width:auto}
+th:nth-child(2),td:nth-child(2){width:auto}
+th:nth-child(3),td:nth-child(3){width:auto}
+table{table-layout:auto!important}
 </style>
 </head>
 <body>
@@ -206,17 +232,18 @@ html[data-theme="dark"] .lgnote{border-top-color:#22333B}
 <div class="lgbody">
   <div class="lgcol">
     <div class="lgtitle">Architecture <em>180 countries</em></div>
-    <div class="lgrow"><span class="achip ac-mix">Mixed</span><span class="lgd">No single mechanism describes it</span><span class="lgc">95</span></div><div class="lgrow"><span class="achip ac-tax">Tax-funded</span><span class="lgd">General revenues fund public services</span><span class="lgc">27</span></div><div class="lgrow"><span class="achip ac-pub">Public insurance</span><span class="lgd">A public insurer or national purchaser</span><span class="lgc">27</span></div><div class="lgrow"><span class="achip ac-shi">Social insurance</span><span class="lgd">Compulsory payroll contributions</span><span class="lgc">25</span></div><div class="lgrow"><span class="achip ac-st">State budget</span><span class="lgd">Budget-financed and state-delivered</span><span class="lgc">3</span></div><div class="lgrow"><span class="achip ac-mpi">Mandatory private</span><span class="lgd">Everyone buys a regulated basic plan</span><span class="lgc">2</span></div><div class="lgrow"><span class="achip ac-msa">Savings + insurance</span><span class="lgd">Medical savings plus pooled cover</span><span class="lgc">1</span></div>
+    <div class="lgrow"><span class="achip ac-mix" data-def="MIX" role="button" tabindex="0">Mixed</span><span class="lgd">No single mechanism describes it</span><span class="lgc">95</span></div><div class="lgrow"><span class="achip ac-tax" data-def="TAX" role="button" tabindex="0">Tax-funded</span><span class="lgd">General revenues fund public services</span><span class="lgc">27</span></div><div class="lgrow"><span class="achip ac-pub" data-def="PUBINS" role="button" tabindex="0">Public insurance</span><span class="lgd">A public insurer or national purchaser</span><span class="lgc">27</span></div><div class="lgrow"><span class="achip ac-shi" data-def="SHI" role="button" tabindex="0">Social insurance</span><span class="lgd">Compulsory payroll contributions</span><span class="lgc">25</span></div><div class="lgrow"><span class="achip ac-st" data-def="STATE" role="button" tabindex="0">State budget</span><span class="lgd">Budget-financed and state-delivered</span><span class="lgc">3</span></div><div class="lgrow"><span class="achip ac-mpi" data-def="MPI" role="button" tabindex="0">Mandatory private</span><span class="lgd">Everyone buys a regulated basic plan</span><span class="lgc">2</span></div><div class="lgrow"><span class="achip ac-msa" data-def="MSA" role="button" tabindex="0">Savings + insurance</span><span class="lgd">Medical savings plus pooled cover</span><span class="lgc">1</span></div>
   </div>
   <div class="lgcol">
     <div class="lgtitle">Evidence grade <em>confidence per row</em></div>
-    <div class="lgrow"><span class="evchip ev-A">A</span><span class="lgd">Directly rechecked</span><span class="lgc">41</span></div><div class="lgrow"><span class="evchip ev-B">B</span><span class="lgd">Stable architecture, secondary cross-check</span><span class="lgc">101</span></div><div class="lgrow"><span class="evchip ev-C">C</span><span class="lgd">Broad label because the system is mixed, reforming or fragile</span><span class="lgc">38</span></div>
+    <div class="lgrow"><span class="evchip ev-A" data-def="A" role="button" tabindex="0">A</span><span class="lgd">Directly rechecked</span><span class="lgc">41</span></div><div class="lgrow"><span class="evchip ev-B" data-def="B" role="button" tabindex="0">B</span><span class="lgd">Stable architecture, secondary cross-check</span><span class="lgc">101</span></div><div class="lgrow"><span class="evchip ev-C" data-def="C" role="button" tabindex="0">C</span><span class="lgd">Broad label because the system is mixed, reforming or fragile</span><span class="lgc">38</span></div>
     <p class="lgnote">Grade C rows are indicative. Check at source before citing.</p>
   </div>
 </div>
 </details>
 <p class="rescount" id="resultCount"></p>
-<table><thead><tr><th>Country</th><th>Architecture</th><th>Flags</th><th class="tc">Evidence</th><th class="tc">Detail</th></tr></thead><tbody id="rows"></tbody></table></div>
+<p class="mstatus" id="mstatus"></p>
+<table><thead><tr><th>Country</th><th>Architecture</th><th>Flags</th><th class="tc mcol">OOP %</th><th class="tc mcol">Gov %</th><th class="tc mcol">External %</th><th class="tc">Evidence</th><th class="tc">Detail</th></tr></thead><tbody id="rows"></tbody></table></div>
 <p class="mini" style="margin-top:12px">Scope: 180 UN member states selected for this atlas. It excludes 13 small UN member states from the display set: Andorra, Antigua and Barbuda, Dominica, Grenada, Kiribati, Liechtenstein, Marshall Islands, Micronesia, Monaco, Nauru, Palau, San Marino and Tuvalu. Exclusion is only to keep the requested 180-country scope; it is not a judgment about their systems.</p>
 </div></section><section id="start" class="section"><div class="wrap">
 <h2>The 60-second mental model</h2><p class="lead">WHO recommends looking through the financing functions rather than relying only on labels such as "tax-funded" or "social insurance". This is the backbone of the newsletter.</p>
@@ -327,21 +354,62 @@ STATE:{label:'State-budget integrated system',desc:'State budget financing is ti
 MIX:{label:'Mixed / segmented system',desc:'Several financing and pooling channels coexist at scale; no single mechanism describes the system safely.'}
 };
 const SHORT={'External financing important':'Aid-funded','Fragile/aid-sensitive':'Fragile','OOP-heavy':'High OOP','Conflict/fragility affects financing':'Conflict','Active financing reform':'Reforming','CBHI important':'Community','Private insurance important':'Private ins.','Employer financing important':'Employer'};
-const fmtTags=(x)=>(!x||!x.length)?'<span class="nf">&mdash;</span>':x.map(t=>`<span class="badge ${/OOP|Fragile|Conflict/.test(t)?'warn':''}" title="${t}">${SHORT[t]||t}</span>`).join('');
+const fmtTags=(x)=>(!x||!x.length)?'<span class="nf">&mdash;</span>':x.map(t=>`<span class="badge ${/OOP|Fragile|Conflict/.test(t)?'warn':''}" data-def="${t}" role="button" tabindex="0" title="Click for the definition">${SHORT[t]||t}</span>`).join('');
 function renderArchCards(){const box=document.getElementById('archCards');box.innerHTML=Object.entries(archMeta).map(([k,v])=>`<div class="card"><span class="code">${k}</span><h3>${v.label}</h3><p>${v.desc}</p><div class="sub" style="margin-top:10px">Countries in this 180-country shorthand: <b>${counts[k]||0}</b></div></div>`).join('');const s=document.getElementById('arch');Object.entries(archMeta).forEach(([k,v])=>{const o=document.createElement('option');o.value=k;o.textContent=v.label;s.appendChild(o)})}
+
+const DEFS={
+ 'MIX':['Mixed / segmented system','No single mechanism describes the country. Several coexist, by design or by history. This is the largest group in the atlas at 95 of 180 countries.'],
+ 'TAX':['Tax-funded public system','General government revenues fund public health services. The arrangement usually described as Beveridge.'],
+ 'PUBINS':['Public / national health insurance','A public insurer or national purchaser finances an entitlement, drawing on taxes, contributions or both.'],
+ 'SHI':['Social health insurance','Compulsory contributions from employees and employers, often topped up by government transfers. The arrangement usually described as Bismarck.'],
+ 'STATE':['State-budget integrated system','Financing and delivery run as one state system, funded from the budget.'],
+ 'MPI':['Mandatory regulated private insurance','Everyone must buy a regulated basic plan from private insurers, with subsidies and risk equalisation protecting access. Netherlands and Switzerland.'],
+ 'MSA':['Medical savings plus insurance','Savings shift money across time while insurance pools risk across people. Singapore combines both with subsidies.'],
+ 'External financing important':['Aid-funded','External sources fund a significant share of health spending: bilateral aid, multilateral funds and global health initiatives. 29 countries carry this flag.'],
+ 'Fragile/aid-sensitive':['Fragile / aid-sensitive','Financing is exposed to changes in aid flows and to institutional fragility. 29 countries.'],
+ 'OOP-heavy':['High out-of-pocket','Households pay a large share directly at the point of care, with limited risk pooling. Only 9 countries carry this flag, and none is classified by it.'],
+ 'Conflict/fragility affects financing':['Conflict','Active conflict or severe fragility disrupts both financing and delivery. 8 countries.'],
+ 'Active financing reform':['Reforming','A major financing transition is under way, so the end-state design is not yet operational. 6 countries.'],
+ 'CBHI important':['Community-based insurance','Community or mutual insurance covers a meaningful share, often for informal-sector populations. 3 countries.'],
+ 'Private insurance important':['Private insurance significant','Voluntary or private insurance plays a substantial role alongside public arrangements. 5 countries.'],
+ 'Employer financing important':['Employer financing significant','Employers buy insurance, self-fund benefits or run their own clinics. 4 countries.'],
+ 'A':['Evidence grade A','Directly rechecked against a primary source. 41 countries.'],
+ 'B':['Evidence grade B','Stable architecture, cross-checked against a secondary source. 101 countries, including India.'],
+ 'C':['Evidence grade C','A broad label was used because the system is mixed, reforming or fragile. Treat as indicative and check at source. 38 countries.']
+};
+function showDef(k){const d=DEFS[k];if(!d)return;
+ let p=document.getElementById('defpop');
+ if(!p){p=document.createElement('div');p.id='defpop';document.body.appendChild(p);}
+ p.innerHTML='<div class="dp-in"><button class="dp-x" aria-label="Close">&times;</button><div class="dp-t">'+d[0]+'</div><div class="dp-d">'+d[1]+'</div></div>';
+ p.classList.add('on');
+ p.querySelector('.dp-x').onclick=function(){p.classList.remove('on')};
+ p.onclick=function(e){if(e.target===p)p.classList.remove('on')};
+}
+document.addEventListener('click',function(e){
+ const c=e.target.closest('.achip,.badge,.evchip');
+ if(c&&c.dataset.def){e.stopPropagation();showDef(c.dataset.def);}
+});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){const p=document.getElementById('defpop');if(p)p.classList.remove('on');}});
+
 const metrics={};
-function metricCell(iso,key){const m=metrics[iso]?.[key];return m?`<span class="metric">${Number(m.value).toFixed(1)}%<span class="yr">${m.year}</span></span>`:'<span class="sub">--</span>'}
+async function fetchIndicator(code,key){const url=`https://api.worldbank.org/v2/country/all/indicator/${code}?format=json&per_page=20000`;const res=await fetch(url);if(!res.ok)throw new Error('HTTP '+res.status);const j=await res.json();if(!Array.isArray(j)||!j[1])throw new Error('Unexpected API response');for(const row of j[1]){if(!row.countryiso3code||row.value===null)continue;const iso=row.countryiso3code;if(!metrics[iso])metrics[iso]={};if(!metrics[iso][key]||Number(row.date)>Number(metrics[iso][key].year))metrics[iso][key]={value:row.value,year:row.date}}}
+async function loadMetrics(){const s=document.getElementById('mstatus');if(s)s.textContent='Loading spending shares from the World Bank mirror of WHO GHED…';
+ try{await Promise.all([fetchIndicator('SH.XPD.OOPC.CH.ZS','oop'),fetchIndicator('SH.XPD.GHED.CH.ZS','gov'),fetchIndicator('SH.XPD.EHEX.CH.ZS','ext')]);
+  document.querySelectorAll('.mcol').forEach(function(e){e.classList.add('on')});
+  if(s)s.textContent='Spending shares loaded. Each cell shows its own latest available year.';render();
+ }catch(e){if(s)s.textContent='Spending shares could not load in this browser, so those three columns are hidden. The classification below is offline and complete.'}}
+function metricCell(iso,key){const m=(metrics[iso]||{})[key];return m?'<span class="metric">'+Number(m.value).toFixed(1)+'<span class="yr">'+m.year+'</span></span>':'<span class="nf">&mdash;</span>'}
 function evClass(e){return e.startsWith('A')?'evA':e.startsWith('C')?'evC':'evB'}
 function filtered(){const q=document.getElementById('q').value.toLowerCase().trim(),r=document.getElementById('region').value,a=document.getElementById('arch').value;return countries.filter(c=>(!r||c.region===r)&&(!a||c.architecture===a)&&(!q||JSON.stringify(c).toLowerCase().includes(q)))}
-function archChip(a){const m={MIX:'ac-mix',TAX:'ac-tax',PUBINS:'ac-pub',SHI:'ac-shi',STATE:'ac-st',MPI:'ac-mpi',MSA:'ac-msa'},s={MIX:'Mixed',TAX:'Tax-funded',PUBINS:'Public insurance',SHI:'Social insurance',STATE:'State budget',MPI:'Mandatory private',MSA:'Savings + insurance'};return '<span class="achip '+(m[a]||'')+'">'+(s[a]||a)+'</span>'}
-function evChip(e){const g=String(e||'').trim().charAt(0);return '<span class="evchip ev-'+g+'">'+g+'</span>'}
-function render(){const data=filtered();document.getElementById('rows').innerHTML=data.map(c=>'<tr><td><div class="country">'+c.country+'</div><div class="sub">'+c.region+' &middot; '+c.iso3+'</div></td><td>'+archChip(c.architecture)+'</td><td>'+fmtTags(c.tags)+'</td><td class="tc">'+evChip(c.evidence)+'</td><td class="tc"><button class="detailbtn" onclick="openDrawer(\''+c.iso3+'\')">Open</button></td></tr>').join('');const n=document.getElementById('resultCount');if(n)n.textContent=data.length+' of '+countries.length+' countries';}
+function archChip(a){const m={MIX:'ac-mix',TAX:'ac-tax',PUBINS:'ac-pub',SHI:'ac-shi',STATE:'ac-st',MPI:'ac-mpi',MSA:'ac-msa'},s={MIX:'Mixed',TAX:'Tax-funded',PUBINS:'Public insurance',SHI:'Social insurance',STATE:'State budget',MPI:'Mandatory private',MSA:'Savings + insurance'};return '<span class="achip '+(m[a]||'')+'" data-def="'+a+'" role="button" tabindex="0" title="What does this mean?">'+(s[a]||a)+'</span>'}
+function evChip(e){const g=String(e||'').trim().charAt(0);return '<span class="evchip ev-'+g+'" data-def="'+g+'" role="button" tabindex="0" title="What does this grade mean?">'+g+'</span>'}
+function render(){const data=filtered();document.getElementById('rows').innerHTML=data.map(c=>'<tr><td><div class="country">'+c.country+'</div><div class="sub">'+c.region+' &middot; '+c.iso3+'</div></td><td>'+archChip(c.architecture)+'</td><td>'+fmtTags(c.tags)+'</td><td class="tc mcol">'+metricCell(c.iso3,'oop')+'</td><td class="tc mcol">'+metricCell(c.iso3,'gov')+'</td><td class="tc mcol">'+metricCell(c.iso3,'ext')+'</td><td class="tc">'+evChip(c.evidence)+'</td><td class="tc"><button class="detailbtn" onclick="openDrawer(\''+c.iso3+'\')">Open</button></td></tr>').join('');const n=document.getElementById('resultCount');if(n)n.textContent=data.length+' of '+countries.length+' countries';}
 function openDrawer(iso){const c=countries.find(x=>x.iso3===iso);document.getElementById('drawerBody').innerHTML=`<div class="eyebrow" style="color:#0FA3A3">${c.region} | ${c.iso3}</div><h2>${c.country}</h2><p>${c.note}</p><div class="kv"><b>Structural shorthand</b><div>${c.architectureLabel}</div><b>Primary revenue</b><div>${c.primaryRevenue}</div><b>Pooling / purchaser</b><div>${c.pooling}</div><b>Mechanisms</b><div>${c.mechanisms}<br>${fmtTags(c.tags)}</div><b>Reform status</b><div>${c.reform}</div><b>OOP % CHE</b><div>${metricCell(c.iso3,'oop')}</div><b>GGHE-D % CHE</b><div>${metricCell(c.iso3,'gov')}</div><b>External % CHE</b><div>${metricCell(c.iso3,'ext')}</div><b>Evidence grade</b><div>${c.evidence}</div></div><p class="mini" style="margin-top:18px">This shorthand is an educational synthesis. For formal use, describe the actual financing functions rather than treating the label as an official WHO classification.</p>`;document.getElementById('drawer').classList.add('open')}
 function closeDrawer(){document.getElementById('drawer').classList.remove('open')}
 async function fetchIndicator(code,key){const url=`https://api.worldbank.org/v2/country/all/indicator/${code}?format=json&per_page=20000`;const res=await fetch(url);if(!res.ok)throw new Error('HTTP '+res.status);const j=await res.json();if(!Array.isArray(j)||!j[1])throw new Error('Unexpected API response');for(const row of j[1]){if(!row.countryiso3code||row.value===null)continue;const iso=row.countryiso3code;if(!metrics[iso])metrics[iso]={};if(!metrics[iso][key]||Number(row.date)>Number(metrics[iso][key].year))metrics[iso][key]={value:row.value,year:row.date}}}
 async function loadMetrics(){const b=document.getElementById('load'),s=document.getElementById('status');b.disabled=true;s.textContent='Loading latest available WHO-GHED mirror values...';try{await Promise.all([fetchIndicator('SH.XPD.OOPC.CH.ZS','oop'),fetchIndicator('SH.XPD.GHED.CH.ZS','gov'),fetchIndicator('SH.XPD.EHEX.CH.ZS','ext')]);s.textContent='Loaded. Each cell shows its own latest available year.';render()}catch(e){s.textContent='Could not load live metrics in this browser. The classification remains available offline.'}finally{b.disabled=false}}
-function csv(){const head=['country','region','iso3','architecture','primary_revenue','pooling_purchaser','mechanisms','tags','reform','evidence'];const esc=v=>'"'+String(v??'').replaceAll('"','""')+'"';const lines=[head.join(',')];for(const c of filtered()){lines.push([c.country,c.region,c.iso3,c.architectureLabel,c.primaryRevenue,c.pooling,c.mechanisms,(c.tags||[]).join('; '),c.reform,c.evidence].map(esc).join(','))}const blob=new Blob([lines.join('\n')],{type:'text/csv'});const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download='healthcare_financing_atlas_180_countries.csv';a.click()}
-document.getElementById('q').addEventListener('input',render);document.getElementById('region').addEventListener('change',render);document.getElementById('arch').addEventListener('change',render);document.getElementById('csv').addEventListener('click',csv);renderArchCards();render();
+function csv(){const head=['country','region','iso3','architecture','primary_revenue','pooling_purchaser','mechanisms','tags','reform','evidence','oop_pct_che','oop_year','gghed_pct_che','gghed_year','external_pct_che','external_year'];const esc=v=>'"'+String(v??'').replaceAll('"','""')+'"';const lines=[head.join(',')];for(const c of filtered()){lines.push([c.country,c.region,c.iso3,c.architectureLabel,c.primaryRevenue,c.pooling,c.mechanisms,(c.tags||[]).join('; '),c.reform,c.evidence,(metrics[c.iso3]||{}).oop?.value,(metrics[c.iso3]||{}).oop?.year,(metrics[c.iso3]||{}).gov?.value,(metrics[c.iso3]||{}).gov?.year,(metrics[c.iso3]||{}).ext?.value,(metrics[c.iso3]||{}).ext?.year].map(esc).join(','))}const blob=new Blob([lines.join('\n')],{type:'text/csv'});const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download='healthcare_financing_atlas_180_countries.csv';a.click()}
+document.getElementById('q').addEventListener('input',render);document.getElementById('region').addEventListener('change',render);document.getElementById('arch').addEventListener('change',render);document.getElementById('csv').addEventListener('click',csv);renderArchCards();render();loadMetrics();
 </script>
 <script>
 (function(){var tt=document.getElementById('themeToggle');
