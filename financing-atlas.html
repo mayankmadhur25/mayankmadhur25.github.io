@@ -157,7 +157,7 @@ html[data-theme="dark"] .lgcol+.lgcol{border-left-color:#2C3F47}
 .lgtitle{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;
   color:#0FA3A3;font-weight:700;margin-bottom:10px;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
 .lgtitle em{font-style:normal;color:var(--muted);letter-spacing:.03em;font-weight:400}
-.lgrow{display:grid!important;grid-template-columns:132px 1fr 38px;gap:12px;align-items:center;
+.lgrow{display:grid!important;grid-template-columns:150px 1fr 42px;gap:12px;align-items:center;
   padding:7px 0;border-bottom:1px solid var(--line)}
 html[data-theme="dark"] .lgrow{border-bottom-color:#22333B}
 .lgrow:last-of-type{border-bottom:0}
@@ -169,13 +169,13 @@ html[data-theme="dark"] .lgnote{border-top-color:#22333B}
 @media(max-width:820px){
  .lgbody{grid-template-columns:1fr}
  .lgcol+.lgcol{border-left:0;border-top:1px solid var(--line)}
- .lgrow{grid-template-columns:118px 1fr 34px;gap:9px}
+ .lgrow{grid-template-columns:132px 1fr 36px;gap:9px}
  .lgd{font-size:12.5px}
 }
 
 /* metric columns, hidden until data arrives */
 th.mcol,td.mcol{display:none}
-th.mcol.on,td.mcol.on{display:table-cell}
+html.metrics-on th.mcol,html.metrics-on td.mcol{display:table-cell}
 .metric{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:700;color:var(--ink);white-space:nowrap}
 .metric .yr{display:block;font-size:9.5px;font-weight:400;color:var(--muted);letter-spacing:.03em}
 .mstatus{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);margin:0 0 10px;line-height:1.5}
@@ -223,6 +223,18 @@ td:nth-child(1){padding-left:14px!important}
  th:nth-child(2),td:nth-child(2){width:18%}
  th:nth-child(3),td:nth-child(3){width:26%}
 }
+
+.lgrow .achip{width:100%;text-align:center;box-sizing:border-box;padding:5px 6px;font-size:10px;letter-spacing:.02em;white-space:nowrap;overflow:visible}
+.lgrow .evchip{justify-self:center}
+/* controls sit right above the table */
+.tablebar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:14px 0 10px}
+.tablebar input{flex:1 1 240px;min-width:200px}
+.tablebar input,.tablebar select{padding:11px 13px;border-radius:10px;border:1px solid var(--line);
+  background:var(--card);font-family:'Manrope',sans-serif;font-size:14px;color:var(--ink)}
+html[data-theme="dark"] .tablebar input,html[data-theme="dark"] .tablebar select{background:#16252C;border-color:#2C3F47;color:#EAF6F6}
+.tablebar button{padding:11px 18px;border-radius:999px;border:1px solid rgba(15,163,163,.4);background:rgba(15,163,163,.07);
+  font-family:'Manrope',sans-serif;font-size:13.5px;font-weight:700;color:#0FA3A3;cursor:pointer;white-space:nowrap}
+.tablebar button:hover{background:rgba(15,163,163,.14)}
 </style>
 </head>
 <body>
@@ -251,7 +263,6 @@ td:nth-child(1){padding-left:14px!important}
 </div></section>
 <section id="atlas" class="section"><div class="wrap"><h2>180-country financing atlas</h2><p class="lead">Search any country, or filter by region and architecture. Five columns so the table stays readable. Press <b>Open</b> on any row for the full picture: revenue base, pooling and purchasing, mechanisms and reform status.</p>
 <div class="callout"><strong>Metric correction:</strong> the old edition said "Gov % CHE". This edition uses the technically correct label <b>GGHE-D % CHE</b>. WHO defines this as domestic general-government health expenditure relative to current health expenditure; it includes government domestic revenue and social-insurance contributions. It is not simply "tax share".</div>
-<div class="tablebar"><input id="q" placeholder="Search country, mechanism, reform..."><select id="region"><option value="">All regions</option><option>Africa</option><option>Americas</option><option>Asia</option><option>Europe</option><option>Oceania</option></select><select id="arch"><option value="">All architectures</option></select><button class="btn secondary" id="csv">Download classification CSV</button></div>
 <details class="lgbox" open>
 <summary class="lgsum">How to read the table <span>architecture labels and evidence grades</span></summary>
 <div class="lgbody">
@@ -266,6 +277,7 @@ td:nth-child(1){padding-left:14px!important}
   </div>
 </div>
 </details>
+<div class="tablebar"><input id="q" placeholder="Search country, mechanism, reform..."><select id="region"><option value="">All regions</option><option>Africa</option><option>Americas</option><option>Asia</option><option>Europe</option><option>Oceania</option></select><select id="arch"><option value="">All architectures</option></select><button class="btn secondary" id="csv">Download classification CSV</button></div>
 <p class="rescount" id="resultCount"></p>
 <p class="mstatus" id="mstatus"></p>
 <table><thead><tr><th>Country</th><th>Architecture</th><th>Flags</th><th class="tc mcol">OOP %</th><th class="tc mcol">Gov %</th><th class="tc mcol">External %</th><th class="tc">Evidence</th><th class="tc">Detail</th></tr></thead><tbody id="rows"></tbody></table></div>
@@ -422,11 +434,11 @@ async function loadMetrics(){const s=document.getElementById('mstatus');
  if(s)s.innerHTML='<span class="ld"></span>Loading spending shares from the World Bank mirror of WHO GHED\u2026';
  try{
   await Promise.all([fetchIndicator('SH.XPD.OOPC.CH.ZS','oop'),fetchIndicator('SH.XPD.GHED.CH.ZS','gov'),fetchIndicator('SH.XPD.EHEX.CH.ZS','ext')]);
-  const n=Object.keys(metrics).length;
-  if(n>0){document.querySelectorAll('.mcol').forEach(function(e){e.classList.add('on')});
-   if(s)s.textContent='Spending shares loaded for '+n+' countries. Each cell shows its own latest available year.';
+  var hit=countries.filter(function(c){return metrics[c.iso3]}).length;
+  if(hit>0){document.documentElement.classList.add('metrics-on');
+   if(s)s.textContent='Spending shares loaded for '+hit+' of '+countries.length+' countries. Each cell shows its own latest available year.';
    render();}
-  else{if(s)s.textContent='No spending shares returned. The classification below is complete and works offline.';}
+  else{if(s)s.textContent='No spending shares matched these countries. The classification below is complete and works offline.';}
  }catch(e){
   if(s)s.innerHTML='Spending shares could not load, so those three columns stay hidden. The classification below is complete and works offline. <button class="retry" onclick="loadMetrics()">Try again</button>';
  }}
