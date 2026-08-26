@@ -192,6 +192,23 @@ html[data-theme="dark"] .how{background:rgba(224,138,60,.14)}
  .frow-lab{font-size:11px;gap:6px}
  .vpanel .th h3{font-size:21px}
 }
+
+/* hero band, matched to the financing atlas */
+.vc-hero{background:linear-gradient(135deg,#1B3A4B 0%,#2E7CB8 52%,#0FA3A3 100%)!important;
+  color:#fff;padding:56px 0 44px!important;border-bottom:0!important;position:relative;overflow:hidden}
+.vc-hero:before{content:"";position:absolute;inset:0;
+  background:radial-gradient(900px 340px at 88% -20%,rgba(255,255,255,.14),transparent 62%);pointer-events:none}
+.vc-hero .wrap{position:relative}
+.vc-hero .kicker{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:rgba(255,255,255,.86);margin:0 0 10px}
+.vc-hero h1{font-size:clamp(32px,5vw,62px);line-height:1.03;font-weight:800;letter-spacing:-.03em;
+  color:#fff;margin:0 0 16px;max-width:900px}
+.vc-hero .dek{font-size:17px;line-height:1.6;color:rgba(255,255,255,.93);max-width:74ch;margin:0}
+.vc-hero .stamp{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.vc-hero .pill{display:inline-flex;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.04em;border:1px solid rgba(255,255,255,.26);background:rgba(255,255,255,.12);
+  padding:8px 13px;border-radius:999px;backdrop-filter:blur(4px)}
+@media(max-width:640px){.vc-hero{padding:40px 0 32px!important}.vc-hero .dek{font-size:15.5px}}
 </style></head><body>
 <script>(function(){try{if(localStorage.getItem('hp-theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
 <header class="site-header">
@@ -205,10 +222,16 @@ html[data-theme="dark"] .how{background:rgba(224,138,60,.14)}
 </header>
 <div class="tool-backlink"><a href="/edition-68-one-fix-four-indias.html">&larr; Read Edition 68: One fix for four Indias</a></div>
 
-<header><div class="wrap">
-<p class="kicker">Healthcare Pulse &middot; the argument</p>
+<header class="vc-hero"><div class="wrap">
+<p class="kicker">Interactive tool &middot; Healthcare Pulse</p>
 <h1>The value chain, tier by tier</h1>
 <p class="dek">India runs four health systems under one name. Each breaks in a different place, so each needs a different fix. Here is what every tier has now, what it should have, why, and how.</p>
+<div class="stamp">
+  <span class="pill">4 tiers</span>
+  <span class="pill">6 stages, 3 flows</span>
+  <span class="pill">NFHS-6 and NHA 2022-23</span>
+  <span class="pill">Every figure sourced</span>
+</div>
 </div></header>
 
 <div class="wrap">
