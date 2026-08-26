@@ -1442,6 +1442,23 @@ html[data-theme="dark"] .eg{background:#16252C;border-color:#25373F}
 html[data-theme="dark"] .frame{background:rgba(15,163,163,.13)}
 .frame b{color:var(--navy)}
 
+
+.rg{margin:18px 0 4px;display:flex;flex-direction:column;gap:11px}
+.rgr{display:grid;grid-template-columns:130px 2fr 92px;gap:14px;align-items:center}
+.rgl{font-size:14.5px;font-weight:700;color:var(--navy)}
+.rgl span{display:block;font-family:var(--mono);font-size:10.5px;font-weight:400;color:var(--muted);margin-top:2px}
+.rgt{height:26px;background:rgba(90,107,114,.12);border-radius:5px;overflow:hidden}
+html[data-theme="dark"] .rgt{background:rgba(175,194,200,.13)}
+.rgf{height:100%;border-radius:5px}
+.rg-hi{background:linear-gradient(90deg,#C2563F,#E08A3C)}.rg-mid{background:#E08A3C}.rg-lo{background:#2E7D5B}
+.rgv{font-family:var(--mono);font-size:16px;font-weight:700;color:var(--navy);text-align:right}
+.rgv span{display:block;font-size:10.5px;font-weight:400;color:var(--muted)}
+@media(max-width:640px){.rgr{grid-template-columns:1fr 78px}.rgt{grid-column:1/-1}}
+.flgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:11px;margin:20px 0}
+.fl{border:1px solid var(--line);border-radius:12px;padding:15px 16px;background:var(--card);display:flex;align-items:baseline;gap:11px}
+html[data-theme="dark"] .fl{background:#16252C;border-color:#25373F}
+.fl-v{font-size:26px;font-weight:800;color:var(--teal);line-height:1;letter-spacing:-.02em;flex:none}
+.fl-l{font-size:13.5px;line-height:1.45;color:var(--body-c)}
 </style></head>
 <body>
 <script>(function(){try{if(localStorage.getItem('hp-theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
@@ -1462,7 +1479,7 @@ html[data-theme="dark"] .frame{background:rgba(15,163,163,.13)}
   <div class="post-meta"><span class="meta-ed">EDITION 72</span><span>STRATEGY</span><span class="meta-cat">Strategy</span><span>8 MIN READ</span><span class="meta-date">Published 28 Aug 2026 &middot; last updated 28 Aug 2026</span></div>
   <h1 class="post-title">India doesn't have a financing model. Nor do 94 other countries.</h1>
   <div class="post-body">
-<nav class="jump"><div class="jump-in"><a href="#s1" data-s="s1">The wrong question</a><a href="#s2" data-s="s2">The 180</a><a href="#s3" data-s="s3">Four functions</a><a href="#s4" data-s="s4">India</a><a href="#s5" data-s="s5">What it changes</a><a href="#s6" data-s="s6">Evidence</a><a href="#s7" data-s="s7">So what</a><a href="#s8" data-s="s8">Sources</a></div></nav>
+<nav class="jump"><div class="jump-in"><a href="#s1" data-s="s1">The wrong question</a><a href="#s2" data-s="s2">The 180</a><a href="#s3" data-s="s3">Four functions</a><a href="#s4" data-s="s4">A European idea</a><a href="#s5" data-s="s5">India</a><a href="#s6" data-s="s6">What it changes</a><a href="#s7" data-s="s7">Flags</a><a href="#s8" data-s="s8">Evidence</a><a href="#s9" data-s="s9">So what</a><a href="#s10" data-s="s10">Sources</a></div></nav>
 
 <section id="s1">
 <p class="lede">Every discussion of Indian health financing eventually reaches the same question: is India a tax-funded system or an insurance system, Beveridge or Bismarck? I built an atlas of 180 countries to answer it properly, and the finding is that <b>the question does not work for most of the world.</b> Ninety-five of the 180 have no single financing model. India is one of them, and so is over half the planet.</p>
@@ -1476,6 +1493,7 @@ html[data-theme="dark"] .frame{background:rgba(15,163,163,.13)}
 <li>The three textbook models between them cover <b>79 countries</b>: 27 tax-funded, 27 public insurance, 25 social health insurance. Less than half the world.</li>
 <li><b>Out-of-pocket spending is not a model.</b> Only 9 countries carry an out-of-pocket flag, and none is classified by it. Nor is donor dependence a model, though 29 countries are aid-sensitive.</li>
 <li>India sits in the largest group, with <b>five pooling arrangements running side by side</b>: central and state budgets, PM-JAY and state schemes, ESIC, employer and private insurance, and household payment.</li>
+<li>The framing is regional. <b>Europe is 3 per cent mixed; Africa is 81 per cent.</b> Beveridge and Bismarck describe the one region where the categories hold.</li>
 <li>Every row carries an <b>evidence grade</b>. 41 are A, 101 B, 38 C. The grades are published because a 180-country claim should show its own confidence.</li>
 </ul></div>
 </section>
@@ -1483,6 +1501,13 @@ html[data-theme="dark"] .frame{background:rgba(15,163,163,.13)}
 <section id="s2">
 <p class="eyebrow">02 &mdash; The distribution</p>
 <h2>What 180 countries actually look like</h2>
+<div class="nums">
+<div class="n1"><div class="nv">195</div><div class="nl">Countries and territories covered by the WHO Global Health Expenditure Database</div></div>
+<div class="n1"><div class="nv">4.6<small>bn</small></div><div class="nl">People not fully covered by essential health services in 2023</div></div>
+<div class="n1"><div class="nv">2.1<small>bn</small></div><div class="nl">People facing financial hardship from health costs in 2022</div></div>
+<div class="n1"><div class="nv">95<small>/180</small></div><div class="nl">Countries with no single financing model. The largest group by far</div></div>
+</div>
+<p>Those first three numbers are why the classification matters rather than being a filing exercise. <b>Financial hardship from health costs is not a rare event affecting a minority; it is the experience of roughly a quarter of humanity.</b> And it is produced by financing design, which is the thing the single-model question is too coarse to examine.</p>
 <p>Classified using the SHA 2011 health-care financing schemes, the official framework, rather than the country labels that circulate in textbooks and consulting decks.</p>
 <div class="fig">
 <div class="fig-label">Figure 1</div>
@@ -1503,8 +1528,24 @@ html[data-theme="dark"] .frame{background:rgba(15,163,163,.13)}
 <p>And provider payment is its own layer, routinely confused with the others. Where the money came from and how the hospital gets paid are different questions. A tax-funded system can pay by DRG; an insurance system can pay by salary.</p>
 </section>
 
+
 <section id="s4">
-<p class="eyebrow">04 &mdash; India</p>
+<p class="eyebrow">04 &mdash; The finding I did not expect</p>
+<h2>The single-model idea is a European artefact</h2>
+<p>Break the 180 countries down by region and the pattern is not subtle. Europe is the only place where clean models dominate. Everywhere else, mixed is the norm.</p>
+<div class="fig">
+<div class="fig-label">Figure 2</div>
+<div class="fig-title">Share of countries that are mixed or segmented, by region</div>
+<div class="fig-sub">Same 180 countries, split five ways.</div>
+<div class="rg"><div class="rgr"><div class="rgl">Africa<span>n = 54</span></div><div class="rgt"><div class="rgf rg-hi" style="width:81%"></div></div><div class="rgv">81%<span>44 of 54</span></div></div><div class="rgr"><div class="rgl">Americas<span>n = 32</span></div><div class="rgt"><div class="rgf rg-hi" style="width:69%"></div></div><div class="rgv">69%<span>22 of 32</span></div></div><div class="rgr"><div class="rgl">Asia<span>n = 47</span></div><div class="rgt"><div class="rgf rg-mid" style="width:51%"></div></div><div class="rgv">51%<span>24 of 47</span></div></div><div class="rgr"><div class="rgl">Oceania<span>n = 8</span></div><div class="rgt"><div class="rgf rg-mid" style="width:50%"></div></div><div class="rgv">50%<span>4 of 8</span></div></div><div class="rgr"><div class="rgl">Europe<span>n = 39</span></div><div class="rgt"><div class="rgf rg-lo" style="width:3%"></div></div><div class="rgv">3%<span>1 of 39</span></div></div></div>
+<figcaption><b>Read this way:</b> in Africa, 44 of 54 countries are mixed. In Europe, <b>one of 39</b> is. Europe's 39 countries split cleanly into social health insurance (14), tax-funded (12), public insurance (9), and two mandatory-private outliers in the Netherlands and Switzerland.</figcaption>
+</div>
+<div class="ed-callout"><p><b>Which explains why the framing feels so natural.</b> Beveridge and Bismarck are European names, describing European arrangements, in the one region where the categories actually hold. Then they were exported as a universal template to a world where <b>53 per cent of countries do not fit either</b>.</p>
+<p style="margin-top:12px">So when an Indian policy discussion asks whether the country should follow the UK or Germany, it is importing a taxonomy from the least representative region on earth. <b>India's real peer group is the 24 other mixed systems in Asia</b>, and the 44 in Africa, not the two European countries that get named most often.</p></div>
+</section>
+
+<section id="s5">
+<p class="eyebrow">05 &mdash; India</p>
 <h2>India's actual row</h2>
 <p>Not a model. Five arrangements coexisting, by history rather than by design.</p>
 <details class="dtbl"><summary>View the data behind this</summary><table><caption>India's row in the atlas</caption><thead><tr><th scope="col">Field</th><th scope="col">Value</th></tr></thead><tbody><tr><td>Architecture</td><td>Mixed / segmented system</td></tr><tr><td>Primary revenue</td><td>Taxes + government-financed insurance + social insurance + private and employer premiums + out-of-pocket</td></tr><tr><td>Pooling and purchasing</td><td>Central and state public budgets, PM-JAY and state schemes, ESIC, employer and private insurance, household out-of-pocket</td></tr><tr><td>Flags</td><td>Private insurance important; employer financing important</td></tr><tr><td>Evidence grade</td><td>B, stable architecture, secondary cross-check</td></tr></tbody></table><p class="dsrc">From the companion atlas. Grade B means the architecture is stable and cross-checked against a secondary source, not that every detail is primary-sourced.</p></details>
@@ -1512,14 +1553,22 @@ html[data-theme="dark"] .frame{background:rgba(15,163,163,.13)}
 <p>Which is exactly the four-Indias picture from Edition 68, arrived at from the opposite direction. That edition traced how a household experiences the segmentation. This one shows that the segmentation is India's actual classification, and that most of the world shares it.</p>
 </section>
 
-<section id="s5">
-<p class="eyebrow">05 &mdash; The consequences</p>
+<section id="s6">
+<p class="eyebrow">06 &mdash; The consequences</p>
 <h2>Four things this reframing kills</h2>
 <div class="mygrid"><div class="my"><div class="my-c">“India should move to a single-payer system”</div><div class="my-a">India already runs five pooling arrangements that will not merge by decree. The question is not which one wins; it is whether they share identity, benefits and claims rails. That is the argument of Edition 68.</div></div><div class="my"><div class="my-c">“High out-of-pocket spending is India's model”</div><div class="my-a">Out-of-pocket payment is a <em>mechanism</em>, and a symptom. Only 9 of 180 countries carry an out-of-pocket flag, and none of them is classified by it. Treating it as a model makes the outcome sound like the design.</div></div><div class="my"><div class="my-c">“Donor-dependent countries have a donor model”</div><div class="my-a">29 countries carry an external-financing flag and 29 are aid-sensitive. External finance shapes what gets funded; it does not describe how the system is structured. Conflating the two produces bad benchmarking.</div></div><div class="my"><div class="my-c">“India is Bismarckian because of ESIC”</div><div class="my-a">ESIC is one contributory pool covering part of the formal sector. Naming a whole system after its smallest pool is how the single-model habit fails.</div></div></div>
 </section>
 
-<section id="s6">
-<p class="eyebrow">06 &mdash; The honest part</p>
+<section id="s7">
+<p class="eyebrow">07 &mdash; The flags</p>
+<h2>What gets flagged rather than classified</h2>
+<p>Eight conditions are recorded as flags on a country row instead of becoming its label, because each describes a pressure on financing rather than a structure.</p>
+<div class="flgrid"><div class="fl"><span class="fl-v">29</span><span class="fl-l">External financing important</span></div><div class="fl"><span class="fl-v">29</span><span class="fl-l">Fragile / aid-sensitive</span></div><div class="fl"><span class="fl-v">9</span><span class="fl-l">Out-of-pocket heavy</span></div><div class="fl"><span class="fl-v">8</span><span class="fl-l">Conflict or fragility affects financing</span></div><div class="fl"><span class="fl-v">6</span><span class="fl-l">Active financing reform</span></div><div class="fl"><span class="fl-v">5</span><span class="fl-l">Private insurance important</span></div><div class="fl"><span class="fl-v">4</span><span class="fl-l">Employer financing important</span></div><div class="fl"><span class="fl-v">3</span><span class="fl-l">Community-based health insurance important</span></div></div>
+<div class="ed-callout"><p><b>The two largest flags are the same 29 countries seen twice</b>, once for external financing mattering and once for aid sensitivity. That pairing is the real finding: where donor money matters most, the financing system is also most exposed to it changing. <b>Out-of-pocket heavy applies to only 9 countries</b>, which is worth remembering next time someone calls high out-of-pocket spending a model.</p></div>
+</section>
+
+<section id="s8">
+<p class="eyebrow">08 &mdash; The honest part</p>
 <h2>What I am less sure about</h2>
 <p>A 180-country claim invites a fair question: how would anyone verify it? So every row carries a grade rather than an implied uniform confidence.</p>
 <div class="evgrid">
@@ -1531,8 +1580,8 @@ html[data-theme="dark"] .frame{background:rgba(15,163,163,.13)}
 <div class="ed-callout" style="border-left-color:#E08A3C"><p><b>What the atlas does not do.</b> It classifies architecture. It does not rank countries, does not score performance, and the archetype labels are a navigation aid rather than official WHO designations. If you need out-of-pocket or government-spending shares for a specific country, take them from the WHO Global Health Expenditure Database directly.</p></div>
 </section>
 
-<section id="s7">
-<p class="eyebrow">07 &mdash; So what</p>
+<section id="s9">
+<p class="eyebrow">09 &mdash; So what</p>
 <h2>What to do with this</h2>
 <div class="row-item"><div class="ri-num">1</div><div><h4>Stop benchmarking India against the wrong comparators</h4><p>Britain and Germany are 15 and 14 per cent of the world respectively, and neither is segmented the way India is. <b>The useful comparators are the other 94 mixed systems</b>, particularly those that have made segmented pools interoperate rather than merge.</p></div></div>
 <div class="row-item"><div class="ri-num">2</div><div><h4>Argue about functions, not models</h4><p>"Should India move to single payer" is unanswerable. "Should India's five pools share one identity, one benefit floor and one claims rail" is answerable, and it is the actual reform question.</p></div></div>
@@ -1541,15 +1590,16 @@ html[data-theme="dark"] .frame{background:rgba(15,163,163,.13)}
 <div class="ed-callout"><p><b>Explore it yourself.</b> The full atlas covers all 180 countries with revenue, pooling, mechanisms, flags, reform status and the evidence grade, filterable by region and architecture, with a CSV export. <a href="/tools/health-financing/">Open the financing atlas &rarr;</a></p></div>
 </section>
 
-<section id="s8">
-<p class="eyebrow">08 &mdash; Sources</p>
+<section id="s10">
+<p class="eyebrow">10 &mdash; Sources</p>
 <h2>Sources and evidence status</h2>
 <p>What is official, what is derived, and what is my classification. Nothing here is presented as an official designation unless it is one.</p>
 <div class="srcwrap">
 <div class="srcrow"><span class="srctag t-off">Official</span><div><b>SHA 2011, System of Health Accounts</b><span>The health-care financing scheme classification (HF.1 government and compulsory, HF.2 voluntary, HF.3 household out-of-pocket, HF.4 rest of world) used as the classification backbone throughout.</span></div></div>
 <div class="srcrow"><span class="srctag t-off">Official</span><div><b>WHO Global Health Expenditure Database</b><span>Country coverage and the expenditure framework referenced for the atlas. Out-of-pocket, government and external financing shares should be taken from GHED directly rather than from this edition.</span></div></div>
 <div class="srcrow"><span class="srctag t-off">Official</span><div><b>WHO guidance on health financing functions</b><span>The recommendation to analyse revenue raising, pooling, purchasing and provider payment separately rather than relying on country model labels.</span></div></div>
-<div class="srcrow"><span class="srctag t-anl">Analysis</span><div><b>Author's contribution</b><span>The 180-country classification and every architecture label; the seven archetypes, which are a navigation aid and not official designations; the per-row evidence grades; the corrections listed in the atlas audit; and the argument that segmentation is the normal case rather than a transitional one.</span></div></div>
+<div class="srcrow"><span class="srctag t-off">Official</span><div><b>WHO global coverage and hardship figures</b><span>195 countries and territories in the Global Health Expenditure Database; 4.6 billion people not fully covered by essential health services in 2023; 2.1 billion facing financial hardship from health costs in 2022.</span></div></div>
+  <div class="srcrow"><span class="srctag t-anl">Analysis</span><div><b>Author's contribution</b><span>The 180-country classification and every architecture label; the seven archetypes, which are a navigation aid and not official designations; the per-row evidence grades; the corrections listed in the atlas audit; and the argument that segmentation is the normal case rather than a transitional one.</span></div></div>
 </div>
 <p class="srcnote"><b>Before citing externally:</b> the archetype labels are mine, not WHO's. 38 of the 180 rows are graded C and should be treated as indicative. Financing architecture changes with reform, so check the position at source before quoting any single country.</p>
 </section>
