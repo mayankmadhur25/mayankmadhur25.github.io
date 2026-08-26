@@ -1459,6 +1459,35 @@ html[data-theme="dark"] .rgt{background:rgba(175,194,200,.13)}
 html[data-theme="dark"] .fl{background:#16252C;border-color:#25373F}
 .fl-v{font-size:26px;font-weight:800;color:var(--teal);line-height:1;letter-spacing:-.02em;flex:none}
 .fl-l{font-size:13.5px;line-height:1.45;color:var(--body-c)}
+
+/* India's row, surfaced */
+.indiacard{border:1px solid var(--line);border-radius:16px;background:var(--card);overflow:hidden;margin:22px 0;
+  box-shadow:0 14px 40px -30px rgba(27,58,75,.55)}
+html[data-theme="dark"] .indiacard{background:#16252C;border-color:#25373F}
+.ic-top{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;
+  padding:16px 20px;background:linear-gradient(135deg,#1B3A4B,#2E7CB8);color:#fff}
+.ic-name{font-size:21px;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.ic-name span{display:block;font-family:var(--mono);font-size:10.5px;font-weight:400;opacity:.82;margin-top:3px;letter-spacing:.05em}
+.ic-badges{display:flex;gap:7px;flex-wrap:wrap}
+.ic-arch,.ic-ev{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.05em;
+  padding:6px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.15)}
+.ic-rows{padding:4px 0}
+.ic-r{display:grid;grid-template-columns:150px 1fr;gap:14px;padding:13px 20px;border-bottom:1px solid var(--line);align-items:start}
+html[data-theme="dark"] .ic-r{border-bottom-color:#22333B}
+.ic-k{font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);font-weight:700;padding-top:2px}
+.ic-v{font-size:14.5px;line-height:1.55;color:var(--body-c)}
+.ic-v b{color:var(--navy)}
+.ic-pools{padding:16px 20px 6px;background:rgba(15,163,163,.05)}
+html[data-theme="dark"] .ic-pools{background:rgba(15,163,163,.1)}
+.icp{display:grid;grid-template-columns:30px 1fr;gap:12px;align-items:start;padding:9px 0;border-bottom:1px solid var(--line)}
+html[data-theme="dark"] .icp{border-bottom-color:#22333B}
+.icp:last-of-type{border-bottom:0}
+.icp-n{font-family:var(--mono);font-size:11px;font-weight:700;color:#fff;background:var(--teal);
+  border-radius:6px;text-align:center;padding:5px 0;margin-top:1px}
+.icp b{display:block;font-size:14.5px;color:var(--navy);letter-spacing:-.01em;line-height:1.3}
+.icp span:not(.icp-n){display:block;font-size:13px;color:var(--muted);line-height:1.45;margin-top:2px}
+.ic-src{font-family:var(--mono);font-size:10.5px;line-height:1.55;color:var(--muted);margin:0;padding:12px 20px 15px}
+@media(max-width:620px){.ic-r{grid-template-columns:1fr;gap:4px}.ic-name{font-size:18px}}
 </style></head>
 <body>
 <script>(function(){try{if(localStorage.getItem('hp-theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
@@ -1548,7 +1577,25 @@ html[data-theme="dark"] .fl{background:#16252C;border-color:#25373F}
 <p class="eyebrow">05 &mdash; India</p>
 <h2>India's actual row</h2>
 <p>Not a model. Five arrangements coexisting, by history rather than by design.</p>
-<details class="dtbl"><summary>View the data behind this</summary><table><caption>India's row in the atlas</caption><thead><tr><th scope="col">Field</th><th scope="col">Value</th></tr></thead><tbody><tr><td>Architecture</td><td>Mixed / segmented system</td></tr><tr><td>Primary revenue</td><td>Taxes + government-financed insurance + social insurance + private and employer premiums + out-of-pocket</td></tr><tr><td>Pooling and purchasing</td><td>Central and state public budgets, PM-JAY and state schemes, ESIC, employer and private insurance, household out-of-pocket</td></tr><tr><td>Flags</td><td>Private insurance important; employer financing important</td></tr><tr><td>Evidence grade</td><td>B, stable architecture, secondary cross-check</td></tr></tbody></table><p class="dsrc">From the companion atlas. Grade B means the architecture is stable and cross-checked against a secondary source, not that every detail is primary-sourced.</p></details>
+<div class="indiacard">
+  <div class="ic-top">
+    <div class="ic-name">India <span>Asia &middot; IND</span></div>
+    <div class="ic-badges"><span class="ic-arch">Mixed / segmented</span><span class="ic-ev">Evidence B</span></div>
+  </div>
+  <div class="ic-rows">
+    <div class="ic-r"><span class="ic-k">Revenue comes from</span><span class="ic-v">Taxes &middot; government-financed insurance &middot; social insurance &middot; private and employer premiums &middot; out-of-pocket</span></div>
+    <div class="ic-r"><span class="ic-k">Risk is pooled in</span><span class="ic-v"><b>Five separate arrangements</b>, listed below</span></div>
+    <div class="ic-r"><span class="ic-k">Flags</span><span class="ic-v">Private insurance important &middot; employer financing important</span></div>
+  </div>
+  <div class="ic-pools">
+    <div class="icp"><span class="icp-n">1</span><div><b>Central and state public budgets</b><span>Eligibility by residence. Purchaser is the health department</span></div></div>
+    <div class="icp"><span class="icp-n">2</span><div><b>PM-JAY and state schemes</b><span>Eligibility by means test. Purchaser is a state health agency</span></div></div>
+    <div class="icp"><span class="icp-n">3</span><div><b>ESIC</b><span>Eligibility by formal employment. Contributory, own facilities</span></div></div>
+    <div class="icp"><span class="icp-n">4</span><div><b>Employer and private insurance</b><span>Eligibility by ability to pay or by employer. Purchaser is an insurer</span></div></div>
+    <div class="icp"><span class="icp-n">5</span><div><b>Household out-of-pocket</b><span>No eligibility rule and no pooling. The household is the purchaser</span></div></div>
+  </div>
+  <p class="ic-src">From the companion atlas. Grade B means the architecture is stable and cross-checked against a secondary source, not that every detail is primary-sourced.</p>
+</div>
 <div class="ed-callout"><p><b>Read that pooling line again.</b> Central and state budgets, PM-JAY and state schemes, ESIC, employer and private insurance, and household out-of-pocket. That is five pools, each with its own eligibility rule, its own benefit definition and its own purchaser. <b>Nobody designed that.</b> It accumulated.</p></div>
 <p>Which is exactly the four-Indias picture from Edition 68, arrived at from the opposite direction. That edition traced how a household experiences the segmentation. This one shows that the segmentation is India's actual classification, and that most of the world shares it.</p>
 </section>
