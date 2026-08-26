@@ -1,0 +1,2083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edition 72: Two Boys Who Wouldn't Talk &middot; Healthcare Pulse</title>
+<meta name="description" content="Reading notes on Simon Baron-Cohen's The Pattern Seekers. The pattern-seeking and autism genetic overlap is real at 26 per cent of common variants. The next-stage-of-evolution claim is not in the book. And India measures autism prevalence but publishes no employment figure at all.">
+<link rel="canonical" href="https://mayankmadhur.in/edition-72-pattern-seekers.html">
+<meta name="author" content="Mayank Madhur">
+<meta property="og:type" content="article"><meta property="og:site_name" content="Healthcare Pulse">
+<meta property="og:title" content="Edition 72: Two Boys Who Wouldn't Talk">
+<meta property="og:description" content="Reading notes on The Pattern Seekers: what the evidence supports, four places it goes too far, and where India stops counting.">
+<meta property="og:url" content="https://mayankmadhur.in/edition-72-pattern-seekers.html">
+<meta property="og:image" content="https://mayankmadhur.in/logo.png"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://mayankmadhur.in/logo.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Edition 72: Two Boys Who Wouldn't Talk","description":"Reading notes on Simon Baron-Cohen's The Pattern Seekers, the evidence behind it, and what it means for India.","datePublished":"2026-08-28","dateModified":"2026-08-28","url":"https://mayankmadhur.in/edition-72-pattern-seekers.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mayankmadhur.in/edition-72-pattern-seekers.html"},"image":"https://mayankmadhur.in/logo.png","inLanguage":"en","author":{"@type":"Person","name":"Mayank Madhur","url":"https://www.linkedin.com/in/mayank-madhur/","jobTitle":"Practice Leader, Healthcare & Life Sciences, HFS Research"},"publisher":{"@type":"Organization","name":"Healthcare Pulse","logo":{"@type":"ImageObject","url":"https://mayankmadhur.in/logo.png"}}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"Healthcare Pulse","item":"https://mayankmadhur.in/"},
+{"@type":"ListItem","position":2,"name":"Perspectives","item":"https://mayankmadhur.in/perspectives/"},
+{"@type":"ListItem","position":3,"name":"Edition 72","item":"https://mayankmadhur.in/edition-72-pattern-seekers.html"}]}
+</script>
+<link rel="icon" type="image/png" href="/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+
+
+
+
+
+/* Healthcare Pulse — shared edition stylesheet (design system + edition body + carousel + dark mode) */
+/* ==========================================================
+   Healthcare Pulse — design system
+   Brand: navy ink, teal→blue gradient, amber accent.
+   ========================================================== */
+
+:root {
+  --bg: #FAFDFD;
+  --navy: #1B3A4B;
+  --ink: #173441;
+  --body-c: #37505B;
+  --muted: #6E828C;
+  --teal: #0FA3A3;
+  --blue: #2E7CB8;
+  --green: #37B68A;
+  --amber: #E08A3C;
+  --amberdk: #B96A14;
+  --line: #E2EDED;
+  --tintT: #E7F5F4;
+  --grad: linear-gradient(135deg, #0FA3A3 0%, #2E7CB8 100%);
+  --radius: 16px;
+  --mono: 'IBM Plex Mono', monospace;
+  --sans: 'Manrope', 'Segoe UI', system-ui, sans-serif;
+  --shadow: 0 14px 34px rgba(27, 58, 75, .12);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--body-c);
+  font-family: var(--sans);
+  font-size: 17.5px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--blue); }
+
+/* ---------- progress bar ---------- */
+#prog {
+  position: fixed; top: 0; left: 0;
+  height: 4px; width: 0;
+  background: var(--grad);
+  z-index: 99;
+}
+
+/* ---------- utility bar ---------- */
+.util { background: var(--navy); color: #CFE6E6; font-size: 12.5px; letter-spacing: .5px; }
+
+.util-in {
+  max-width: 1240px; margin: 0 auto;
+  padding: 8px 24px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+
+.util b { color: #fff; letter-spacing: 2.5px; font-family: var(--mono); font-weight: 600; }
+
+.util a { color: #9FDEDD; font-weight: 700; text-decoration: none; }
+
+.util a:hover { color: #fff; }
+
+/* ---------- masthead ---------- */
+.site-header {
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  padding: 16px clamp(20px, 4vw, 48px);
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+  position: sticky; top: 0; z-index: 10;
+}
+
+.logo { display: flex; align-items: center; gap: 13px; text-decoration: none; }
+
+.avatar {
+  width: 50px; height: 50px; flex: none;
+  border-radius: 50%;
+  background: var(--grad);
+  color: #fff;
+  font-weight: 800; font-size: 17px; letter-spacing: .5px;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.avatar-sm { width: 44px; height: 44px; font-size: 15px; border-radius: 12px; }
+
+.logo-name {
+  display: block;
+  font-weight: 800; font-size: 22px;
+  color: var(--navy); letter-spacing: -.4px; line-height: 1.1;
+}
+
+.logo-tag { display: block; font-size: 12.5px; color: var(--muted); }
+
+.site-header nav { display: flex; gap: 20px; align-items: center; }
+
+.site-header nav a { text-decoration: none; font-weight: 700; font-size: 15px; color: var(--ink); }
+
+.site-header nav a:hover { color: var(--teal); }
+
+.nav-subscribe {
+  background: var(--grad);
+  color: #fff !important;
+  padding: 9px 20px;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(15, 163, 163, .35);
+}
+
+.nav-subscribe:hover { filter: brightness(1.08); }
+
+/* ---------- hero ---------- */
+.hero {
+  padding: clamp(54px, 8vw, 96px) clamp(20px, 4vw, 48px) clamp(34px, 5vw, 56px);
+  max-width: 1240px; margin: 0 auto;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 11.5px; font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--teal);
+  background: var(--tintT);
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.hero-title {
+  font-weight: 800;
+  font-size: clamp(44px, 7.5vw, 86px);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  color: var(--navy);
+  max-width: 16ch;
+}
+
+.hi-grad {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-ecg { width: min(560px, 100%); height: 64px; margin: 18px 0 4px; display: block; }
+
+.ecg-line {
+  stroke: #2E7CB8;
+  opacity: .9;
+}
+.ecg-dot {
+  filter: drop-shadow(0 0 6px rgba(46,124,184,.85));
+}
+@media (prefers-reduced-motion: reduce) {
+  .ecg-dot { display: none; }
+}
+
+.hero-sub {
+  margin-top: 16px;
+  font-size: clamp(17px, 2vw, 21px);
+  color: var(--ink);
+  max-width: 56ch;
+  line-height: 1.5;
+}
+
+.hero-actions { display: flex; gap: 14px; align-items: center; margin-top: 28px; flex-wrap: wrap; }
+
+.hero-cta {
+  display: inline-block;
+  font-weight: 800; font-size: 17px;
+  text-decoration: none;
+  background: var(--grad);
+  color: #fff;
+  padding: 14px 30px;
+  border-radius: 999px;
+  box-shadow: 0 8px 22px rgba(15, 163, 163, .38);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.hero-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(15, 163, 163, .45); }
+
+.hero-ghost {
+  font-weight: 700; font-size: 16px;
+  text-decoration: none;
+  color: var(--navy);
+  border: 2px solid var(--line);
+  padding: 12px 24px;
+  border-radius: 999px;
+}
+
+.hero-ghost:hover { border-color: var(--teal); color: var(--teal); }
+
+/* ---------- post grid ---------- */
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 26px;
+  padding: 8px clamp(20px, 4vw, 48px) 80px;
+  max-width: 1280px; margin: 0 auto;
+}
+
+.card {
+  text-decoration: none;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  box-shadow: 0 4px 14px rgba(27, 58, 75, .07);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .55s ease, transform .55s ease; }
+
+.reveal.in { opacity: 1; transform: none; }
+
+.card-banner { height: 116px; position: relative; overflow: hidden; }
+
+.card-banner svg, .banner-ecg { width: 100%; height: 100%; display: block; }
+
+.card-ed {
+  position: absolute; top: 12px; right: 12px;
+  font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 1.5px;
+  background: rgba(255, 255, 255, .92);
+  color: var(--navy);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+/* category colors */
+.cat-digital-health .card-banner, .post-banner.cat-digital-health { background: var(--grad); }
+.cat-pharma .card-banner,         .post-banner.cat-pharma         { background: linear-gradient(135deg, #2E7CB8, #1B3A4B); }
+.cat-biotech .card-banner,        .post-banner.cat-biotech        { background: linear-gradient(135deg, #37B68A, #0FA3A3); }
+.cat-policy .card-banner,         .post-banner.cat-policy         { background: linear-gradient(135deg, #E08A3C, #B96A14); }
+.cat-geopolitics .card-banner,    .post-banner.cat-geopolitics    { background: linear-gradient(135deg, #8B2635, #C04A3C); }
+.cat-strategy .card-banner,       .post-banner.cat-strategy       { background: linear-gradient(135deg, #6C4AB6, #3A2E7C); }
+
+.cat-digital-health .card-meta { color: var(--teal); }
+.cat-pharma .card-meta         { color: var(--blue); }
+.cat-biotech .card-meta        { color: var(--green); }
+.cat-policy .card-meta         { color: var(--amberdk); }
+.cat-geopolitics .card-meta   { color: #8B2635; }
+.cat-strategy .card-meta       { color: #6C4AB6; }
+
+.card-body { padding: 20px 22px 24px; display: flex; flex-direction: column; flex: 1; }
+
+.card-meta {
+  font-family: var(--mono);
+  font-size: 12px; font-weight: 600; letter-spacing: .8px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.card-body h2 {
+  font-weight: 800; font-size: 21.5px; line-height: 1.2;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+
+.card-excerpt { font-size: 15px; color: var(--body-c); }
+
+.card-read {
+  margin-top: auto; padding-top: 16px;
+  font-weight: 800; font-size: 14.5px;
+  color: var(--teal);
+}
+
+.card:hover .card-read { color: var(--blue); }
+
+/* ---------- single post ---------- */
+.post { max-width: 780px; margin: 0 auto; padding: 40px 20px 70px; }
+
+.post-banner {
+  height: clamp(140px, 24vw, 220px);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.post-meta {
+  display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center;
+  font-family: var(--mono);
+  font-size: 12.5px; font-weight: 600; letter-spacing: 1px;
+  color: var(--muted);
+  margin: 26px 0 14px;
+}
+
+.meta-ed { color: var(--teal); }
+
+.meta-cat {
+  background: var(--navy);
+  color: #fff;
+  padding: 3px 13px;
+  border-radius: 999px;
+}
+
+.post-title {
+  font-weight: 800;
+  font-size: clamp(32px, 5.5vw, 54px);
+  line-height: 1.06; letter-spacing: -0.02em;
+  color: var(--navy);
+  margin-bottom: 28px;
+}
+
+.post-body h2 {
+  font-weight: 800; font-size: 27px; color: var(--navy);
+  margin: 38px 0 14px;
+}
+
+.post-body h3 { font-weight: 700; font-size: 21px; color: var(--navy); margin: 30px 0 10px; }
+
+.post-body p { margin-bottom: 18px; }
+
+.post-body ul, .post-body ol { margin: 0 0 18px 24px; }
+
+.post-body li { margin-bottom: 8px; }
+
+.post-body blockquote {
+  border-left: 5px solid var(--amber);
+  background: #FBF0E1;
+  color: var(--ink);
+  padding: 16px 22px;
+  border-radius: 0 12px 12px 0;
+  margin: 24px 0;
+  font-weight: 600;
+}
+
+.post-body img { max-width: 100%; border-radius: 12px; box-shadow: var(--shadow); }
+
+.post-body strong { color: var(--navy); }
+
+/* ---------- author box ---------- */
+.author-box {
+  display: flex; gap: 16px; align-items: flex-start;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px;
+  margin-top: 46px;
+  box-shadow: 0 4px 14px rgba(27, 58, 75, .06);
+}
+
+.author-name { font-weight: 800; color: var(--navy); font-size: 17px; }
+
+.author-name span { font-weight: 500; color: var(--muted); font-size: 13px; }
+
+.author-bio { font-size: 13.5px; color: var(--muted); line-height: 1.55; margin: 4px 0 8px; }
+
+.author-box a { font-weight: 800; font-size: 14.5px; text-decoration: none; color: var(--teal); }
+
+.back-link {
+  display: inline-block; margin-top: 34px;
+  font-family: var(--mono); font-size: 14px;
+  text-decoration: none; color: var(--navy);
+  border-bottom: 2px solid var(--teal);
+  padding-bottom: 2px;
+}
+
+/* ---------- subscribe ---------- */
+.subscribe { background: var(--navy); color: #E8F4F4; padding: clamp(50px, 8vw, 90px) clamp(20px, 4vw, 48px); }
+
+.subscribe-inner { max-width: 660px; margin: 0 auto; text-align: center; }
+
+.subscribe .eyebrow { background: rgba(255, 255, 255, .08); color: #FFC987; }
+
+.subscribe h2 {
+  font-weight: 800;
+  font-size: clamp(28px, 4.5vw, 42px);
+  line-height: 1.12;
+  color: #fff;
+}
+
+.subscribe-sub { margin-top: 14px; color: #B9D2D6; }
+
+.subscribe-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 28px; }
+
+.btn-li {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: var(--grad);
+  color: #fff;
+  font-weight: 800; font-size: 16px;
+  text-decoration: none;
+  padding: 14px 26px;
+  border-radius: 999px;
+  box-shadow: 0 8px 22px rgba(15, 163, 163, .4);
+  transition: transform .15s ease;
+}
+
+.btn-li:hover { transform: translateY(-2px); }
+
+.btn-ghost {
+  display: inline-flex; align-items: center;
+  color: #fff; font-weight: 700; font-size: 15px;
+  text-decoration: none;
+  border: 2px solid rgba(255, 255, 255, .25);
+  padding: 12px 22px;
+  border-radius: 999px;
+}
+
+.btn-ghost:hover { border-color: var(--teal); color: #9FDEDD; }
+
+.subscribe-form { margin-top: 22px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+
+.subscribe-form input {
+  font-family: var(--sans); font-size: 16px;
+  padding: 13px 18px;
+  border-radius: 999px; border: none;
+  width: min(320px, 100%);
+}
+
+.subscribe-form button {
+  font-family: var(--sans); font-weight: 800; font-size: 16px;
+  padding: 13px 26px;
+  border-radius: 999px; border: none;
+  background: var(--amber); color: #fff;
+  cursor: pointer;
+}
+
+.rss-line { margin-top: 20px; font-size: 14px; color: #B9D2D6; }
+
+.rss-line a { color: #9FDEDD; }
+
+/* ---------- footer ---------- */
+.site-footer {
+  padding: 24px clamp(20px, 4vw, 48px);
+  font-family: var(--mono);
+  font-size: 12.5px;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+
+/* ---------- about page ---------- */
+.page { max-width: 720px; margin: 0 auto; padding: 60px 20px 80px; }
+
+.page h1 {
+  font-weight: 800;
+  font-size: clamp(34px, 6vw, 56px);
+  color: var(--navy);
+  letter-spacing: -.02em;
+  margin-bottom: 24px;
+}
+
+.page p { margin-bottom: 18px; }
+
+/* ---------- focus & motion ---------- */
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 3px solid var(--amber);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+
+/* ---------- mobile ---------- */
+@media (max-width: 600px) {
+  
+  .post-grid { grid-template-columns: 1fr; }
+  .util-in { flex-direction: column; gap: 4px; }
+}
+
+/* logo image */
+.logo-img{width:48px;height:48px;object-fit:contain;border-radius:10px;}
+/* hp-blocks (used inside posts) */
+.hp-block{background:#fff;border:1px solid #E2EDED;border-radius:16px;padding:28px 26px;margin:32px 0;box-shadow:0 4px 14px rgba(27,58,75,.06)}
+.hp-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:2px;color:#E08A3C;text-transform:uppercase;margin-bottom:8px}
+.hp-h2{font-size:26px;font-weight:800;color:#1B3A4B;margin-bottom:8px;line-height:1.15}
+.hp-sub{color:#37505B;margin-bottom:20px;font-size:15.5px}
+.hp-stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-top:20px}
+.hp-stat{background:#FAFDFD;border:1px solid #E2EDED;border-radius:12px;padding:18px 16px}
+.hp-num{display:block;font-size:32px;font-weight:800;line-height:1.1;margin-bottom:8px}
+.hp-num.up{color:#0FA3A3}.hp-num.down{color:#C0392B}.hp-num.warn{color:#E08A3C}.hp-num.flat{color:#2E7CB8}
+.hp-stat p{font-size:14px;color:#37505B;line-height:1.5}
+.hp-three{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:16px;margin-top:20px}
+.hp-col{border-radius:12px;padding:20px 18px}.hp-col ul{margin:10px 0 0 16px}.hp-col li{font-size:14px;margin-bottom:8px;color:#37505B}
+.hp-gain{background:#E7F5F4;border-top:4px solid #0FA3A3}.hp-stall{background:#FBF0E1;border-top:4px solid #E08A3C}.hp-rev{background:#FDECEA;border-top:4px solid #C0392B}
+.hp-col-head{font-weight:800;font-size:17px;color:#1B3A4B}.hp-col-sub{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:1.5px;color:#6E828C;margin:4px 0 12px}
+.hp-swot{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+.hp-swot-cell{border-radius:12px;padding:18px 16px}.hp-swot-cell ul{margin:10px 0 0 16px}.hp-swot-cell li{font-size:14px;margin-bottom:8px;color:#37505B}
+.hp-swot-label{font-weight:800;font-size:16px;margin-bottom:4px}
+.hp-s{background:#E7F5F4}.hp-s .hp-swot-label{color:#0FA3A3}.hp-w{background:#FDECEA}.hp-w .hp-swot-label{color:#C0392B}
+.hp-o{background:#EEF2FF}.hp-o .hp-swot-label{color:#2E7CB8}.hp-t{background:#FBF0E1}.hp-t .hp-swot-label{color:#E08A3C}
+.hp-balance{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+.hp-pros{background:#E7F5F4;border-radius:12px;padding:20px 18px}.hp-cons{background:#FDECEA;border-radius:12px;padding:20px 18px}
+.hp-pros ul,.hp-cons ul{margin:10px 0 0 0;list-style:none}
+.hp-pros li,.hp-cons li{font-size:14px;margin-bottom:10px;color:#37505B;padding-left:20px;position:relative}
+.hp-pros li::before{content:"+";position:absolute;left:0;color:#0FA3A3;font-weight:800}
+.hp-cons li::before{content:"–";position:absolute;left:0;color:#C0392B;font-weight:800}
+.hp-pros-head{font-weight:800;font-size:17px;color:#0FA3A3}.hp-cons-head{font-weight:800;font-size:17px;color:#C0392B}
+@media(max-width:560px){.hp-swot,.hp-balance{grid-template-columns:1fr}}
+
+/* ── header thinning patch ── */
+.site-header {
+  padding: 10px clamp(16px, 3vw, 40px) !important;
+}
+.logo-img {
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 8px !important;
+}
+.logo-name {
+  font-size: 18px !important;
+}
+.logo-tag {
+  font-size: 11.5px !important;
+}
+.logo {
+  gap: 10px !important;
+}
+.util {
+  font-size: 11.5px !important;
+}
+.util-in {
+  padding: 5px 24px !important;
+}
+
+/* ── header compact v2 ── */
+.site-header {
+  padding: 8px clamp(16px, 3vw, 40px) !important;
+  min-height: unset !important;
+}
+.logo {
+  gap: 8px !important;
+  align-items: center !important;
+}
+.logo-img {
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 6px !important;
+  flex: none !important;
+  object-fit: contain !important;
+}
+.logo-name { font-size: 16px !important; }
+.logo-tag  { font-size: 11px !important; }
+.util-in   { padding: 4px 24px !important; }
+.util      { font-size: 11px !important; }
+.site-header nav a { font-size: 14px !important; }
+.nav-subscribe { padding: 7px 16px !important; font-size: 14px !important; }
+
+
+/* ── wider layout ── */
+.hero, .post-grid { max-width: 1340px; }
+
+/* ── hero split with profile card ── */
+.hero-split {
+  display: grid;
+  grid-template-columns: 1.45fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.hero-left { min-width: 0; }
+
+.profile-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 26px;
+  box-shadow: 0 14px 40px rgba(27,58,75,.12);
+}
+.pc-top { display: flex; gap: 16px; align-items: center; margin-bottom: 16px; }
+.pc-photo {
+  width: 72px; height: 72px; flex: none;
+  border-radius: 16px; object-fit: cover;
+  border: 3px solid var(--tintT);
+}
+.pc-name { font-weight: 800; font-size: 20px; color: var(--navy); line-height: 1.1; }
+.pc-role { font-weight: 700; font-size: 13.5px; color: var(--amber); margin-top: 3px; }
+.pc-bio { font-size: 14px; color: var(--body-c); line-height: 1.6; margin-bottom: 16px; }
+.pc-list { list-style: none; margin: 0 0 18px; padding-top: 14px; border-top: 1px solid var(--line); }
+.pc-list li {
+  font-size: 13px; color: var(--body-c); line-height: 1.5;
+  padding-left: 18px; position: relative; margin-bottom: 9px;
+}
+.pc-list li::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--amber); position: absolute; left: 0; top: 7px;
+}
+.pc-links { display: flex; gap: 10px; align-items: center; padding-top: 14px; border-top: 1px solid var(--line); }
+.pc-links a {
+  width: 34px; height: 34px; border-radius: 9px;
+  background: var(--tintT); color: var(--navy);
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none;
+}
+.pc-links a:hover { background: var(--teal); color: #fff; }
+.pc-full {
+  width: auto !important; padding: 0 14px;
+  font-weight: 700; font-size: 13px; color: var(--teal) !important;
+  margin-left: auto; background: none !important;
+}
+.pc-full:hover { background: none !important; color: var(--blue) !important; }
+
+@media (max-width: 880px) {
+  .hero-split { grid-template-columns: 1fr; gap: 32px; }
+  .profile-card { max-width: 440px; }
+}
+
+
+/* ── share buttons ── */
+.share-bar {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  margin: 36px 0 10px; padding: 18px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+}
+.share-bar .share-label { font-weight: 800; font-size: 14px; color: var(--navy); margin-right: 4px; }
+.share-btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-weight: 700; font-size: 13.5px; text-decoration: none;
+  padding: 8px 15px; border-radius: 999px; border: 1px solid var(--line);
+  color: var(--navy); background: #fff; cursor: pointer;
+}
+.share-btn:hover { border-color: var(--teal); color: var(--teal); }
+.share-wa:hover { border-color:#25D366; color:#1a9e4b; }
+.share-li:hover { border-color:#0A66C2; color:#0A66C2; }
+.share-x:hover  { border-color:#000; color:#000; }
+.share-copied { color: var(--teal) !important; border-color: var(--teal) !important; }
+
+/* ── contact form ── */
+.contact-section { background: var(--tintT); padding: clamp(44px,7vw,80px) clamp(20px,4vw,48px); }
+.contact-inner { max-width: 620px; margin: 0 auto; }
+.contact-inner .eyebrow { display:inline-block; }
+.contact-inner h2 { font-size: clamp(26px,4vw,38px); font-weight: 800; color: var(--navy); margin: 10px 0 8px; }
+.contact-inner > p { color: var(--body-c); margin-bottom: 24px; }
+.cform { display: grid; gap: 14px; }
+.cform input, .cform textarea {
+  font-family: var(--sans); font-size: 15.5px;
+  padding: 14px 16px; border-radius: 12px; border: 1px solid var(--line);
+  background: #fff; width: 100%; color: var(--ink);
+}
+.cform input:focus, .cform textarea:focus { outline: 2px solid var(--teal); border-color: var(--teal); }
+.cform textarea { min-height: 130px; resize: vertical; }
+.cform button {
+  font-family: var(--sans); font-weight: 800; font-size: 16px;
+  padding: 14px 28px; border-radius: 999px; border: none;
+  background: var(--grad); color: #fff; cursor: pointer; justify-self: start;
+  box-shadow: 0 8px 22px rgba(15,163,163,.35);
+}
+.cform button:hover { transform: translateY(-2px); }
+.cform .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media(max-width:520px){ .cform .row2 { grid-template-columns: 1fr; } }
+
+/* ── search / filter bar ── */
+.filter-bar { max-width: 1340px; margin: 0 auto; padding: 8px clamp(20px,4vw,48px) 0; }
+.filter-inner {
+  display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
+  background: #fff; border: 1px solid var(--line); border-radius: 14px;
+  padding: 14px 16px; box-shadow: 0 4px 14px rgba(27,58,75,.05);
+}
+.f-search {
+  flex: 1 1 240px; min-width: 180px;
+  font-family: var(--sans); font-size: 15px;
+  padding: 11px 16px; border-radius: 10px;
+  border: 1px solid var(--line); background: var(--bg); color: var(--ink);
+}
+.f-search:focus { outline: 2px solid var(--teal); border-color: var(--teal); }
+.f-select {
+  font-family: var(--sans); font-size: 14.5px; font-weight: 600;
+  padding: 11px 14px; border-radius: 10px;
+  border: 1px solid var(--line); background: #fff; color: var(--navy); cursor: pointer;
+}
+.f-select:focus { outline: 2px solid var(--teal); border-color: var(--teal); }
+.f-btn {
+  font-family: var(--sans); font-weight: 800; font-size: 14.5px;
+  padding: 11px 24px; border-radius: 10px; border: none;
+  background: var(--grad); color: #fff; cursor: pointer;
+}
+.f-btn:hover { filter: brightness(1.08); }
+.f-clear {
+  font-family: var(--sans); font-weight: 700; font-size: 14.5px;
+  padding: 11px 18px; border-radius: 10px;
+  border: 1px solid var(--line); background: #fff; color: var(--muted); cursor: pointer;
+}
+.f-clear:hover { border-color: var(--teal); color: var(--teal); }
+.f-count {
+  font-family: var(--mono); font-size: 13px; color: var(--muted);
+  margin: 12px 0 0 4px;
+}
+@media(max-width:600px){
+  .f-search, .f-select, .f-btn, .f-clear { flex: 1 1 100%; }
+}
+
+
+
+/* ════════════════════════════════════════
+   NEW FEATURES: picks, views, dark mode
+   ════════════════════════════════════════ */
+
+/* ── Editor's Picks ── */
+.picks { max-width: 1340px; margin: 0 auto; padding: 20px clamp(20px,4vw,48px) 0; }
+.picks-head { margin-bottom: 18px; }
+.picks-title { font-size: 26px; font-weight: 800; color: var(--navy); margin-top: 6px; }
+.picks-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+.pick-card {
+  display: flex; flex-direction: column; gap: 8px;
+  border-radius: 16px; padding: 24px 22px; text-decoration: none;
+  color: #fff; position: relative; overflow: hidden;
+  min-height: 200px; transition: transform .2s ease, box-shadow .2s ease;
+}
+.pick-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(27,58,75,.22); }
+.pick-card.cat-digital-health { background: var(--grad); }
+.pick-card.cat-policy { background: linear-gradient(135deg,#E08A3C,#B96A14); }
+.pick-card.cat-strategy { background: linear-gradient(135deg,#6C4AB6,#3A2E7C); }
+.pick-card.cat-pharma { background: linear-gradient(135deg,#2E7CB8,#1B3A4B); }
+.pick-card.cat-biotech { background: linear-gradient(135deg,#37B68A,#0FA3A3); }
+.pick-ed { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 1.5px; opacity: .9; }
+.pick-card h3 { font-size: 19px; font-weight: 800; line-height: 1.2; }
+.pick-card p { font-size: 13.5px; line-height: 1.5; opacity: .95; flex: 1; }
+.pick-read { font-weight: 800; font-size: 14px; margin-top: auto; }
+@media(max-width:820px){ .picks-grid { grid-template-columns: 1fr; } }
+
+/* ── Card footer with reading time ── */
+.card-foot { margin-top: auto; padding-top: 16px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.card-foot .card-read { padding-top: 0; }
+.card-views { font-family: var(--mono); font-size: 12px; color: var(--muted); white-space: nowrap; }
+
+/* ── Subscribe social proof ── */
+.subscribe-proof { color: #9FDEDD; font-size: 14.5px; font-weight: 600; margin-top: 6px; }
+
+/* ── Theme toggle button ── */
+.theme-toggle {
+  background: none; border: 1px solid var(--line); border-radius: 10px;
+  width: 38px; height: 38px; cursor: pointer; color: var(--navy);
+  display: inline-flex; align-items: center; justify-content: center; padding: 0;
+}
+.theme-toggle:hover { border-color: var(--teal); color: var(--teal); }
+.theme-toggle .t-moon { display: none; }
+[data-theme="dark"] .theme-toggle .t-sun { display: none; }
+[data-theme="dark"] .theme-toggle .t-moon { display: block; }
+
+/* ── DARK MODE THEME ── */
+[data-theme="dark"] {
+  --bg: #0F1B22;
+  --navy: #E8F4F4;
+  --ink: #DCEaEa;
+  --body-c: #B4C7CE;
+  --muted: #7E939B;
+  --line: #25373F;
+  --tintT: #16252C;
+}
+[data-theme="dark"] body { background: var(--bg); }
+[data-theme="dark"] .site-header { background: #13212A; border-bottom-color: #25373F; }
+[data-theme="dark"] .card,
+[data-theme="dark"] .profile-card,
+[data-theme="dark"] .hp-block,
+[data-theme="dark"] .section-block,
+[data-theme="dark"] .about-hero,
+[data-theme="dark"] .filter-inner { background: #16252C; border-color: #25373F; }
+[data-theme="dark"] .f-search { background: #0F1B22; color: var(--ink); }
+[data-theme="dark"] .f-select { background: #16252C; color: var(--ink); }
+[data-theme="dark"] .card-banner svg path { stroke: rgba(255,255,255,.7); }
+[data-theme="dark"] .logo-name { color: #E8F4F4; }
+[data-theme="dark"] .nav-subscribe { color: #fff !important; }
+[data-theme="dark"] .subscribe { background: #0A1418; color: #E8F4F4; }
+[data-theme="dark"] .meta-cat { background: #16252C; color: #E8F4F4; }
+[data-theme="dark"] .card-ed { background: rgba(255,255,255,.92); color: #1B3A4B; }
+[data-theme="dark"] .subscribe h2 { color: #fff; }
+[data-theme="dark"] .util { background: #0A1418; }
+[data-theme="dark"] .contact-section { background: #13212A; }
+[data-theme="dark"] .cform input, [data-theme="dark"] .cform textarea { background: #0F1B22; color: var(--ink); border-color: #25373F; }
+[data-theme="dark"] .pick-card { color: #fff; }
+
+/* ── Archive page ── */
+.archive-wrap { max-width: 860px; margin: 0 auto; padding: 52px 24px 80px; }
+.archive-head { margin-bottom: 30px; }
+.archive-head h1 { font-size: clamp(30px,5vw,44px); font-weight: 800; color: var(--navy); margin: 8px 0; }
+.archive-sub { color: var(--body-c); font-size: 16px; }
+.archive-list { list-style: none; }
+.archive-item { border-bottom: 1px solid var(--line); }
+.archive-item a { display: grid; grid-template-columns: 70px 1fr auto; gap: 16px; align-items: baseline; padding: 18px 4px; text-decoration: none; }
+.archive-item a:hover { background: var(--tintT); }
+.ai-ed { font-family: var(--mono); font-size: 12px; font-weight: 600; color: var(--teal); }
+.ai-title { font-weight: 700; font-size: 16.5px; color: var(--navy); line-height: 1.35; }
+.ai-meta { font-family: var(--mono); font-size: 12px; color: var(--muted); white-space: nowrap; }
+@media(max-width:600px){ .archive-item a { grid-template-columns: 1fr; gap: 4px; } .ai-meta { white-space: normal; } }
+
+/* ── Topic landing pages ── */
+.topic-wrap { max-width: 1340px; margin: 0 auto; padding: 40px clamp(20px,4vw,48px) 60px; }
+.topic-head { margin-bottom: 24px; }
+.topic-head h1 { font-size: clamp(30px,5vw,46px); font-weight: 800; color: var(--navy); margin: 8px 0; }
+.topic-sub { color: var(--body-c); font-size: 16px; margin-bottom: 12px; }
+.topic-back { font-weight: 700; color: var(--teal); text-decoration: none; font-size: 14px; }
+.topic-empty { color: var(--muted); padding: 40px 0; text-align: center; }
+
+/* ── Topic chips (browse by topic) ── */
+.topic-chips { max-width: 1340px; margin: 0 auto; padding: 8px clamp(20px,4vw,48px) 0; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.topic-chips .tc-label { font-family: var(--mono); font-size: 12px; color: var(--muted); margin-right: 4px; }
+.topic-chip { text-decoration: none; font-size: 13px; font-weight: 700; padding: 7px 16px; border-radius: 999px; border: 1px solid var(--line); color: var(--navy); transition: all .15s ease; }
+.topic-chip:hover { border-color: var(--teal); color: var(--teal); }
+.topic-chip-theme { background: #FBF0E1; border-color: #F0D8B4; color: #B96A14; }
+.topic-chip-theme:hover { border-color: var(--amber); color: var(--amber); }
+
+/* ── Related issues ── */
+.related { max-width: 860px; margin: 40px auto 0; padding: 0 24px; }
+.related-label { font-family: var(--mono); font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+.related-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+.related-card { display: flex; flex-direction: column; gap: 8px; padding: 18px 18px; border-radius: 12px; text-decoration: none; color: #fff; min-height: 110px; transition: transform .2s ease; }
+.related-card:hover { transform: translateY(-3px); }
+.related-card.cat-digital-health { background: var(--grad); }
+.related-card.cat-policy { background: linear-gradient(135deg,#E08A3C,#B96A14); }
+.related-card.cat-strategy { background: linear-gradient(135deg,#6C4AB6,#3A2E7C); }
+.related-card.cat-pharma { background: linear-gradient(135deg,#2E7CB8,#1B3A4B); }
+.related-card.cat-biotech { background: linear-gradient(135deg,#37B68A,#0FA3A3); }
+.related-card.cat-geopolitics { background: linear-gradient(135deg,#8B2635,#C04A3C); }
+.rc-ed { font-family: var(--mono); font-size: 11px; font-weight: 600; opacity: .9; }
+.rc-title { font-weight: 700; font-size: 15px; line-height: 1.3; }
+@media(max-width:700px){ .related-grid { grid-template-columns: 1fr; } }
+
+/* ── Ask Me Anything ── */
+.ama-wrap { max-width: 760px; margin: 0 auto; padding: 52px 24px 80px; }
+.ama-head { text-align: center; margin-bottom: 28px; }
+.ama-head h1 { font-size: clamp(30px,5vw,46px); font-weight: 800; color: var(--navy); margin: 8px 0; }
+.ama-sub { color: var(--body-c); font-size: 16px; line-height: 1.6; max-width: 560px; margin: 0 auto; }
+.ama-box { display: flex; gap: 10px; margin-bottom: 16px; }
+.ama-input { flex: 1; padding: 16px 18px; border: 2px solid var(--line); border-radius: 12px; font-size: 16px; font-family: inherit; color: var(--ink); background: #fff; }
+.ama-input:focus { outline: none; border-color: var(--teal); }
+.ama-btn { padding: 0 26px; background: var(--grad); color: #fff; border: none; border-radius: 12px; font-weight: 800; font-size: 15px; cursor: pointer; white-space: nowrap; }
+.ama-btn:hover { filter: brightness(1.08); }
+.ama-suggest { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 30px; }
+.ama-sg-label { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+.ama-chip { background: var(--tintT); border: none; border-radius: 999px; padding: 7px 14px; font-size: 13px; font-weight: 600; color: var(--navy); cursor: pointer; }
+.ama-chip:hover { background: var(--teal); color: #fff; }
+.ama-result { min-height: 40px; }
+.ama-answer { animation: amaFade .3s ease; }
+@keyframes amaFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.ama-found { font-weight: 700; color: var(--navy); margin-bottom: 14px; font-size: 15px; }
+.ama-card { display: flex; flex-direction: column; gap: 5px; padding: 18px 20px; border-radius: 12px; text-decoration: none; color: #fff; margin-bottom: 12px; transition: transform .15s ease; }
+.ama-card:hover { transform: translateX(4px); }
+.ama-card.cat-digital-health { background: var(--grad); }
+.ama-card.cat-policy { background: linear-gradient(135deg,#E08A3C,#B96A14); }
+.ama-card.cat-strategy { background: linear-gradient(135deg,#6C4AB6,#3A2E7C); }
+.ama-card.cat-pharma { background: linear-gradient(135deg,#2E7CB8,#1B3A4B); }
+.ama-card.cat-biotech { background: linear-gradient(135deg,#37B68A,#0FA3A3); }
+.ama-card.cat-geopolitics { background: linear-gradient(135deg,#8B2635,#C04A3C); }
+.amc-ed { font-family: var(--mono); font-size: 11px; font-weight: 600; opacity: .9; }
+.amc-title { font-weight: 800; font-size: 17px; line-height: 1.25; }
+.amc-go { font-size: 13px; font-weight: 700; margin-top: 4px; opacity: .95; }
+.ama-none { background: var(--tintT); border-radius: 14px; padding: 28px 26px; text-align: center; }
+.ama-none-title { font-size: 19px; font-weight: 800; color: var(--navy); margin-bottom: 8px; }
+.ama-none-sub { color: var(--body-c); font-size: 14.5px; line-height: 1.6; margin-bottom: 18px; }
+.ama-suggest-btn { display: inline-block; background: var(--grad); color: #fff; font-weight: 800; font-size: 14px; text-decoration: none; padding: 12px 24px; border-radius: 999px; margin: 0 6px 10px; }
+.ama-browse { display: block; color: var(--teal); font-weight: 700; font-size: 14px; text-decoration: none; margin-top: 6px; }
+[data-theme="dark"] .ama-input { background: #16252C; color: var(--ink); }
+
+/* ── Coverage stats section ── */
+.stats-section { background: var(--tintT); padding: 56px 24px; }
+.stats-inner { max-width: 760px; margin: 0 auto; }
+.stats-inner h2 { font-size: clamp(24px,4vw,34px); font-weight: 800; color: var(--navy); margin: 6px 0 4px; }
+.stats-sub { color: var(--body-c); font-size: 15px; margin-bottom: 28px; }
+.stats-bars { display: flex; flex-direction: column; gap: 16px; }
+.stat-row { display: grid; grid-template-columns: 120px 1fr 64px; gap: 14px; align-items: center; }
+.stat-name { font-size: 14px; font-weight: 700; color: var(--navy); }
+.stat-track { background: rgba(27,58,75,.08); border-radius: 999px; height: 14px; overflow: hidden; }
+.stat-fill { height: 100%; border-radius: 999px; transition: width 1.1s cubic-bezier(.22,1,.36,1); }
+.stat-fill.cat-policy { background: linear-gradient(90deg,#E08A3C,#B96A14); }
+.stat-fill.cat-strategy { background: linear-gradient(90deg,#6C4AB6,#3A2E7C); }
+.stat-fill.cat-digital-health { background: var(--grad); }
+.stat-fill.cat-pharma { background: linear-gradient(90deg,#2E7CB8,#1B3A4B); }
+.stat-fill.cat-biotech { background: linear-gradient(90deg,#37B68A,#0FA3A3); }
+.stat-fill.cat-geopolitics { background: linear-gradient(90deg,#8B2635,#C04A3C); }
+.stat-val { font-family: var(--mono); font-size: 14px; font-weight: 600; color: var(--navy); text-align: right; }
+.stat-count { color: var(--muted); font-size: 12px; }
+.stats-foot { margin-top: 26px; font-size: 14px; color: var(--body-c); }
+.stats-foot a { color: var(--teal); font-weight: 700; text-decoration: none; }
+@media(max-width:540px){ .stat-row { grid-template-columns: 88px 1fr 52px; gap: 10px; } .stat-name { font-size: 12.5px; } }
+[data-theme="dark"] .stats-section { background: #13212A; }
+[data-theme="dark"] .stat-track { background: rgba(255,255,255,.08); }
+
+/* ── Back to top button ── */
+.to-top { position: fixed; bottom: 24px; right: 24px; width: 46px; height: 46px; border-radius: 50%; background: var(--navy); color: #fff; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transform: translateY(10px); transition: opacity .25s ease, transform .25s ease; z-index: 60; box-shadow: 0 6px 18px rgba(27,58,75,.28); }
+.to-top.show { opacity: 1; pointer-events: auto; transform: none; }
+.to-top:hover { background: var(--teal); }
+[data-theme="dark"] .to-top { background: var(--teal); }
+
+.post { max-width: 860px; }
+.lede { font-size: 20px; color: var(--ink); line-height: 1.6; }
+.ed-callout { background: var(--navy); color: #fff; border-radius: 16px; padding: 28px 30px; margin: 34px 0; }
+.ed-callout p { font-size: 19px; line-height: 1.5; margin: 0; color: #fff; }
+.ed-callout b { color: #FFC987; }
+[data-theme="dark"] .ed-callout { background: #16252C; border: 1px solid #2C3F47; }
+[data-theme="dark"] .ed-callout p { color: #EAF6F6; }
+[data-theme="dark"] .ed-callout b { color: #FFC987; }
+[data-theme="dark"] .ed-callout a { color: #5FD0CE; }
+.num-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 14px; margin: 26px 0; }
+.ed-source { font-family: var(--mono); font-size: 13px; color: var(--muted); margin-top: 26px; padding-top: 16px; border-top: 1px solid var(--line); line-height: 1.5; }
+.ed-chart { margin: 28px 0; padding: 22px 24px; background: var(--tintT); border: 1px solid var(--line); border-radius: 14px; }
+.ed-chart svg { width: 100%; height: auto; display: block; }
+.num-card { background: var(--tintT); border-radius: 14px; padding: 18px 16px; }
+.num-big { font-size: 24px; font-weight: 800; color: var(--teal); line-height: 1.1; margin-bottom: 6px; }
+.num-card p { font-size: 13.5px; color: var(--body-c); line-height: 1.5; margin: 0; }
+.row-item { display: grid; grid-template-columns: 40px 1fr; gap: 14px; align-items: start; margin: 12px 0; padding: 16px 18px; background: var(--tintT); border-radius: 12px; }
+.row-item .ri-num { font-family: var(--mono); font-weight: 700; font-size: 18px; color: var(--teal); }
+.row-item h4 { font-size: 15.5px; font-weight: 800; color: var(--navy); margin: 0 0 4px; }
+.row-item p { font-size: 14px; color: var(--body-c); margin: 0; line-height: 1.5; }
+.post-banner.cat-governance { background: linear-gradient(135deg,#3C5A6E,#5A7A8C); }
+.theme-toggle { background:none; border:1px solid var(--line); border-radius:10px; width:38px; height:38px; cursor:pointer; color:var(--navy); display:inline-flex; align-items:center; justify-content:center; padding:0; margin-left:4px; vertical-align:middle; }
+.theme-toggle:hover { border-color:var(--teal); color:var(--teal); }
+.theme-toggle .t-moon { display:none; }
+[data-theme="dark"] .theme-toggle .t-sun { display:none; }
+[data-theme="dark"] .theme-toggle .t-moon { display:block; }
+[data-theme="dark"] { --bg:#0F1B22; --navy:#E8F4F4; --ink:#DCEAEA; --body-c:#B4C7CE; --muted:#7E939B; --line:#25373F; --tintT:#16252C; }
+[data-theme="dark"] body { background:#0F1B22; }
+[data-theme="dark"] .site-header { background:#13212A; border-bottom-color:#25373F; }
+[data-theme="dark"] .util { background:#0A1418; }
+[data-theme="dark"] .logo-name { color:#E8F4F4; }
+[data-theme="dark"] .nav-subscribe { color:#fff !important; }
+[data-theme="dark"] .num-card, [data-theme="dark"] .row-item, [data-theme="dark"] .author-box { background:#16252C !important; border-color:#25373F; }
+.related { margin: 40px 0 10px; }
+.related-label { font-family: var(--mono); font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+.related-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+.related-card { display: flex; flex-direction: column; gap: 8px; padding: 18px 18px; border-radius: 12px; text-decoration: none; color: #fff; min-height: 120px; transition: transform .2s ease, box-shadow .2s ease; }
+.related-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(27,58,75,.20); }
+.related-card.cat-digital-health { background: linear-gradient(135deg,#0FA3A3,#2E7CB8); }
+.related-card.cat-policy { background: linear-gradient(135deg,#E08A3C,#B96A14); }
+.related-card.cat-strategy { background: linear-gradient(135deg,#6C4AB6,#3A2E7C); }
+.related-card.cat-pharma { background: linear-gradient(135deg,#2E7CB8,#1B3A4B); }
+.related-card.cat-biotech { background: linear-gradient(135deg,#37B68A,#0FA3A3); }
+.related-card.cat-general { background: linear-gradient(135deg,#1B3A4B,#2E7CB8); }
+.related-card .rc-ed { font-family: var(--mono); font-size: 11px; font-weight: 600; opacity: .9; }
+.related-card .rc-title { font-weight: 800; font-size: 15px; line-height: 1.3; }
+.related-card .rc-go { font-size: 12.5px; font-weight: 700; margin-top: auto; opacity: .92; }
+@media(max-width:700px){ .related-grid { grid-template-columns: 1fr; } }
+.to-top { position: fixed; bottom: 24px; right: 24px; width: 46px; height: 46px; border-radius: 50%; background: var(--navy); color: #fff; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transform: translateY(10px); transition: opacity .25s ease, transform .25s ease; z-index: 60; box-shadow: 0 6px 18px rgba(27,58,75,.28); }
+.to-top.show { opacity: 1; pointer-events: auto; transform: none; }
+.to-top:hover { background: var(--teal); }
+
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;color:#1B3A4B;padding:4px}
+[data-theme="dark"] .nav-toggle{color:#E8F4F4}
+@media(max-width:820px){
+  .nav-toggle{display:inline-flex;align-items:center}
+  .site-header{position:relative;flex-wrap:wrap}
+  .site-header nav{display:none;flex-direction:column;align-items:flex-start;gap:4px;width:100%;margin-top:14px;padding-top:14px;border-top:1px solid #E2EDED}
+  .site-header nav.open{display:flex}
+  .site-header nav a{font-size:16px;padding:9px 4px;width:100%}
+}
+
+/* ---- related carousel (swipeable) ---- */
+.related-head { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:14px; flex-wrap:wrap; }
+.related-head .related-label { margin-bottom:0; }
+.related-nav { display:flex; align-items:center; gap:8px; }
+.related-seeall { font-family:var(--mono); font-size:12px; font-weight:700; color:var(--teal); text-decoration:none; letter-spacing:.5px; }
+.related-seeall:hover { text-decoration:underline; }
+.rel-arrow { width:34px; height:34px; border-radius:50%; border:1px solid var(--line); background:var(--tintT); color:var(--navy); font-size:16px; cursor:pointer; line-height:1; transition:all .15s ease; display:inline-flex; align-items:center; justify-content:center; }
+.rel-arrow:hover { background:var(--teal); color:#fff; border-color:var(--teal); }
+.related-grid { display:flex !important; grid-template-columns:none !important; gap:14px; overflow-x:auto; scroll-behavior:smooth; scroll-snap-type:x mandatory; padding-bottom:6px; scrollbar-width:thin; }
+.related-grid::-webkit-scrollbar { height:6px; }
+.related-grid::-webkit-scrollbar-thumb { background:var(--line); border-radius:999px; }
+.related-grid .related-card { flex:0 0 clamp(220px,30%,280px); scroll-snap-align:start; min-height:120px; }
+@media(max-width:700px){ .related-grid { grid-template-columns:none !important; } .related-grid .related-card { flex:0 0 78%; } }
+
+/* ---- takeaways box (optional block) ---- */
+.ed-takeaways { background: var(--tintT); border: 1px solid var(--line); border-radius: 16px; padding: 24px 28px; margin: 30px 0; }
+.ed-takeaways .tk-label { font-family: var(--mono); font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--teal); margin: 0 0 14px; }
+.ed-takeaways ul { margin: 0; padding: 0; list-style: none; }
+.ed-takeaways li { position: relative; padding-left: 22px; margin: 11px 0; font-size: 15.5px; line-height: 1.55; color: var(--body-c); }
+.ed-takeaways li::before { content: ""; position: absolute; left: 2px; top: 9px; width: 8px; height: 8px; border-radius: 50%; background: var(--teal); }
+.ed-takeaways li b { color: var(--navy); font-weight: 800; }
+
+
+/* chart figures */
+.fig{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 26px;margin:32px 0;box-shadow:var(--shadow)}
+.fig-label{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);font-weight:600;margin-bottom:5px}
+.fig-title{font-size:19px;font-weight:800;color:var(--navy);margin:0 0 4px;line-height:1.2}
+.fig-sub{font-size:13.5px;color:var(--muted);margin:0 0 18px;line-height:1.5}
+.fig canvas{max-height:430px}
+.fig figcaption{font-size:12.5px;color:var(--muted);margin-top:16px;padding-top:14px;border-top:1px solid var(--line);line-height:1.55}
+.fig figcaption b{color:var(--navy)}
+.fig .clegend{display:flex;gap:14px;margin-bottom:14px;font-size:12px;color:var(--muted);flex-wrap:wrap}
+.fig .clegend span{display:inline-flex;align-items:center;gap:6px}
+.fig .cdot{width:9px;height:9px;border-radius:50%}
+.statrow{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:32px 0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--card)}
+@media(max-width:640px){.statrow{grid-template-columns:1fr}}
+.statrow .s{padding:24px 22px;border-right:1px solid var(--line)}
+.statrow .s:last-child{border-right:none}
+.statrow .n{font-size:42px;font-weight:800;line-height:1;color:var(--teal)}
+.statrow .n small{font-size:18px;color:var(--muted);font-weight:700}
+.statrow .l{font-size:13px;color:var(--muted);margin-top:9px;line-height:1.45}
+
+.post-body .eyebrow{font-family:var(--mono);font-size:12px;color:var(--teal);letter-spacing:.05em;font-weight:600;margin:0 0 10px;text-transform:none}
+
+
+
+.fp{display:flex;flex-direction:column;align-items:center;gap:8px;margin:22px 0 4px}
+.fp-t{height:52px;display:flex;align-items:center;justify-content:center;gap:9px;border-radius:9px;color:#fff;font-weight:800;font-size:15px;letter-spacing:-.01em;box-shadow:var(--shadow)}
+.fp-t small{font-family:var(--mono);font-weight:500;font-size:10.5px;opacity:.9}
+.fp-flow{font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;color:var(--muted);text-align:center;margin-top:4px}
+.fp-key{display:flex;flex-direction:column;margin-top:18px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.fp-row{display:grid;grid-template-columns:auto 1fr;gap:13px;padding:14px 17px;border-bottom:1px solid var(--line);align-items:start}
+.fp-row:last-child{border-bottom:0}
+.fp-badge{font-family:var(--mono);font-size:10.5px;font-weight:700;color:#fff;padding:5px 10px;border-radius:6px;white-space:nowrap;margin-top:1px;min-width:74px;text-align:center}
+.fp-row p{margin:0;font-size:14.5px;line-height:1.55;color:var(--body-c)}
+.fp-row p b{color:var(--navy)}
+@media(max-width:600px){.fp-t{font-size:13px}.fp-t small{display:none}}
+
+
+.fp-pyr{max-width:440px;margin:20px auto 2px}
+.fp-pyr svg{width:100%;height:auto;display:block}
+.fp-pyr .nm{fill:#fff;font-family:var(--sans);font-weight:800;font-size:16px;text-anchor:middle;letter-spacing:-.01em}
+.fp-pyr .ds{fill:rgba(255,255,255,.9);font-family:var(--mono);font-size:10px;text-anchor:middle;letter-spacing:.03em}
+
+
+/* jump selector */
+.jump{position:sticky;top:var(--hdr,68px);z-index:30;background:var(--bg);
+  border-bottom:1px solid var(--line);margin:0 0 30px;padding:10px 0;
+  box-shadow:0 0 0 100vmax var(--bg);clip-path:inset(0 -100vmax)}
+html[data-theme="dark"] .jump{background:#0F1B22;box-shadow:0 0 0 100vmax #0F1B22}
+.site-header{z-index:60}
+.post-body section{scroll-margin-top:calc(var(--hdr,68px) + 58px)}
+.jump-in{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-start}
+@media(max-width:640px){.jump-in{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;padding-bottom:2px}}
+.jump-in::-webkit-scrollbar{display:none}
+.jump a{flex:none;font-family:var(--mono);font-size:11px;letter-spacing:.03em;font-weight:600;
+  color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:999px;
+  padding:7px 12px;white-space:nowrap;transition:all .15s}
+.jump a:hover{color:var(--navy);border-color:var(--muted)}
+.jump a.on{background:linear-gradient(135deg,#0FA3A3,#2E7CB8);color:#fff;border-color:transparent}
+
+/* figures */
+.fig{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin:30px 0;box-shadow:var(--shadow)}
+html[data-theme="dark"] .fig{background:#16252C;border-color:#25373F}
+.fig-label{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);font-weight:600;margin-bottom:5px}
+.fig-title{font-size:19px;font-weight:800;color:var(--navy);margin:0 0 4px;line-height:1.2}
+.fig-sub{font-size:13.5px;color:var(--muted);margin:0 0 16px;line-height:1.5}
+.fig .cwrap{position:relative;height:300px}
+.fig .cwrap.tall{height:380px}
+.fig figcaption{font-size:12.5px;color:var(--muted);margin-top:14px;padding-top:12px;border-top:1px solid var(--line);line-height:1.55}
+.fig figcaption b{color:var(--navy)}
+/* number strip */
+.nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0;margin:28px 0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--card)}
+html[data-theme="dark"] .nums{background:#16252C;border-color:#25373F}
+.nums .n1{padding:20px 18px;border-right:1px solid var(--line)}
+.nums .n1:last-child{border-right:none}
+.nums .nv{font-size:30px;font-weight:800;line-height:1;color:var(--teal);letter-spacing:-.02em}
+.nums .nl{font-size:12.5px;color:var(--muted);margin-top:8px;line-height:1.45}
+/* risk tiers */
+.tier-row{display:grid;grid-template-columns:96px 1fr;gap:14px;padding:16px 18px;border-bottom:1px solid var(--line);align-items:start}
+.tier-row:last-child{border-bottom:0}
+.tier-wrap{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--card);margin:26px 0}
+html[data-theme="dark"] .tier-wrap{background:#16252C;border-color:#25373F}
+.tier-badge{font-family:var(--mono);font-size:10.5px;font-weight:700;color:#fff;padding:6px 10px;border-radius:6px;text-align:center;letter-spacing:.06em}
+.tb-green{background:#37B68A}.tb-amber{background:#E08A3C}.tb-red{background:#C2563F}
+.tier-row p{margin:0;font-size:14.5px;line-height:1.55;color:var(--body-c)}
+.tier-row .gov{display:block;font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-top:5px}
+
+
+.fixgrid{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--card);margin:26px 0}
+html[data-theme="dark"] .fixgrid{background:#16252C;border-color:#25373F}
+.fixrow{display:grid;grid-template-columns:.85fr 1.15fr;gap:16px;padding:16px 18px;border-bottom:1px solid var(--line);align-items:start}
+.fixrow:last-child{border-bottom:0}
+.fixp{font-size:13.5px;font-weight:700;color:var(--coral,#C2563F);line-height:1.45}
+.fixs{font-size:14.5px;line-height:1.6;color:var(--body-c)}
+.fixs b{color:var(--navy)}
+@media(max-width:640px){.fixrow{grid-template-columns:1fr;gap:6px}}
+/* related */
+.related{max-width:820px;margin:44px auto 0;padding:0 clamp(18px,4vw,28px)}
+
+.modelgrid{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--card);margin:26px 0;font-size:13.5px}
+html[data-theme="dark"] .modelgrid{background:#16252C;border-color:#25373F}
+.mrow{display:grid;grid-template-columns:1.15fr 1.2fr 1.1fr 1.05fr;gap:14px;padding:13px 16px;border-bottom:1px solid var(--line);align-items:start;color:var(--body-c);line-height:1.5}
+.mrow:last-child{border-bottom:0}
+.mhead{font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.mname{font-weight:700;color:var(--navy)}
+@media(max-width:720px){.mrow{grid-template-columns:1fr;gap:3px}.mhead{display:none}.mname{margin-top:4px}}
+
+/* Governance category was missing from the design system */
+.related-card.cat-governance{background:linear-gradient(135deg,#3C5A6E,#5A7A8C)}
+.pick-card.cat-governance{background:linear-gradient(135deg,#3C5A6E,#5A7A8C)}
+.card.cat-governance .card-banner{background:linear-gradient(135deg,#3C5A6E,#5A7A8C)}
+.post-banner.cat-governance{background:linear-gradient(135deg,#3C5A6E,#5A7A8C)}
+.stat-fill.cat-governance{background:linear-gradient(90deg,#3C5A6E,#5A7A8C)}
+
+/* solution chain graphic */
+.chain{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 20px 18px;margin:28px 0}
+html[data-theme="dark"] .chain{background:#16252C;border-color:#25373F}
+.chain-lbl{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);font-weight:600;margin-bottom:6px}
+.chain svg{width:100%;height:auto;display:block;overflow:visible}
+.chain .ln{fill:#fff;font-family:var(--sans);font-weight:800;font-size:14px;text-anchor:middle}
+.chain .lt{fill:var(--muted);font-family:var(--mono);font-size:11px;text-anchor:middle}
+.chain-foot{font-size:14px;color:var(--body-c);margin-top:14px;padding-top:12px;border-top:1px solid var(--line);line-height:1.6}
+.chain-foot b{color:var(--navy)}
+/* fix cards */
+.fixcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:14px;margin:22px 0 30px}
+.fixc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 18px 16px;display:flex;flex-direction:column;gap:8px}
+html[data-theme="dark"] .fixc{background:#16252C;border-color:#25373F}
+.fixc-top{display:flex;align-items:flex-start;gap:10px}
+.fixc-no{font-family:var(--mono);font-size:10.5px;font-weight:700;color:#fff;background:#C2563F;border-radius:5px;padding:4px 8px;flex:none;margin-top:1px}
+.fixc-prob{font-size:13px;font-weight:700;color:#C2563F;line-height:1.4}
+.fixc-fix{font-size:17px;font-weight:800;color:var(--navy);line-height:1.25;letter-spacing:-.01em}
+.fixc-how{font-size:13.5px;color:var(--muted);line-height:1.55}
+.fixc-why{font-size:13.5px;color:var(--body-c);line-height:1.6;background:rgba(15,163,163,.07);border-left:3px solid var(--teal);border-radius:0 8px 8px 0;padding:10px 12px;margin-top:auto}
+html[data-theme="dark"] .fixc-why{background:rgba(15,163,163,.13)}
+.fixc-why .wl{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:4px}
+
+.keyfind{background:rgba(15,163,163,.07);border:1px solid rgba(15,163,163,.28);border-radius:14px;padding:18px 20px;margin:26px 0}
+html[data-theme="dark"] .keyfind{background:rgba(15,163,163,.13);border-color:rgba(15,163,163,.35)}
+.kf-lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:10px}
+.keyfind ul{margin:0;padding-left:18px}
+.keyfind li{font-size:14.5px;line-height:1.62;color:var(--body-c);margin-bottom:7px}
+.keyfind li:last-child{margin-bottom:0}
+.keyfind b{color:var(--navy)}
+.meta-date{font-family:var(--mono);font-size:10.5px;color:var(--muted);letter-spacing:.03em}
+.dtbl{margin:16px 0 4px;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.dtbl summary{cursor:pointer;font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;color:var(--teal);font-weight:600;padding:10px 14px;background:rgba(15,163,163,.06);list-style:none}
+.dtbl summary::-webkit-details-marker{display:none}
+.dtbl summary:before{content:"\25B8 "}
+.dtbl[open] summary:before{content:"\25BE "}
+.dtbl table{width:100%;border-collapse:collapse;font-size:13.5px}
+.dtbl caption{text-align:left;font-size:12.5px;color:var(--muted);padding:12px 14px 6px}
+.dtbl th,.dtbl td{padding:9px 14px;border-top:1px solid var(--line);text-align:left;color:var(--body-c)}
+.dtbl th{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.dtbl td:first-child{font-weight:700;color:var(--navy)}
+.dsrc{font-size:12px;color:var(--muted);padding:10px 14px;margin:0;border-top:1px solid var(--line)}
+html[data-theme="dark"] .dtbl{border-color:#25373F}
+html[data-theme="dark"] .dtbl summary{background:rgba(15,163,163,.12)}
+
+
+.cwrap{position:relative}
+.stackd{display:flex;flex-direction:column;gap:6px;margin:18px 0 4px}
+.sl{display:grid;grid-template-columns:34px 168px 1fr;gap:12px;align-items:center;border-radius:9px;padding:13px 15px;color:#fff}
+.sl.focus{box-shadow:0 8px 22px -10px rgba(224,138,60,.7);transform:scale(1.015)}
+.sl .sn{font-family:var(--mono);font-size:11px;opacity:.85;font-weight:700}
+.sl .st{font-weight:800;font-size:14.5px;letter-spacing:-.01em}
+.sl .sc{font-family:var(--mono);font-size:11.5px;opacity:.93}
+@media(max-width:640px){.sl{grid-template-columns:30px 1fr;gap:8px}.sl .sc{grid-column:1/-1;font-size:10.5px}}
+.ladder{display:flex;flex-direction:column;gap:8px;margin:18px 0 4px;position:relative}
+.lr{display:grid;grid-template-columns:34px 1fr auto;gap:13px;align-items:center;background:var(--card);
+  border:1px solid var(--line);border-left:4px solid var(--line);border-radius:10px;padding:13px 15px}
+html[data-theme="dark"] .lr{background:#16252C;border-color:#25373F}
+.lr.done{border-left-color:#37B68A}.lr.mid{border-left-color:#E08A3C}.lr.far{border-left-color:#C2563F}
+.lnum{font-family:var(--mono);font-weight:800;font-size:15px;color:var(--muted);text-align:center}
+.lr b{display:block;font-size:15px;color:var(--navy);letter-spacing:-.01em}
+.lr span:not(.lnum):not(.lst){display:block;font-size:13px;color:var(--muted);margin-top:2px}
+.lst{font-family:var(--mono);font-size:10px;letter-spacing:.07em;text-transform:uppercase;padding:5px 10px;border-radius:999px;white-space:nowrap;font-weight:700}
+.st-a{background:rgba(55,182,138,.16);color:#2E7D5B}.st-b{background:rgba(224,138,60,.18);color:#A8541A}
+.st-c{background:rgba(194,86,63,.16);color:#C2563F}
+html[data-theme="dark"] .st-a{color:#7FD6B4}html[data-theme="dark"] .st-b{color:#F0B27E}html[data-theme="dark"] .st-c{color:#E59583}
+.lstall{font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;color:#C2563F;text-align:center;font-weight:700;padding:6px 0;border-top:1px dashed rgba(194,86,63,.5);border-bottom:1px dashed rgba(194,86,63,.5);margin:2px 0}
+@media(max-width:600px){.lr{grid-template-columns:28px 1fr}.lst{grid-column:2;justify-self:start;margin-top:6px}}
+
+.sim{border-left:4px solid var(--teal)}
+.sim-ctl{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:4px 0 16px}
+.sim-btn{font-family:var(--sans);font-size:13.5px;font-weight:700;color:var(--navy);background:var(--card);
+  border:1px solid var(--line);border-radius:999px;padding:9px 16px;cursor:pointer;transition:.15s}
+.sim-btn:hover{border-color:var(--teal);color:var(--teal)}
+.sim-btn.primary{background:linear-gradient(135deg,#0FA3A3,#2E7CB8);color:#fff;border-color:transparent}
+.sim-btn:disabled{opacity:.4;cursor:not-allowed}
+html[data-theme="dark"] .sim-btn{background:#16252C;border-color:#25373F;color:#E8F4F4}
+.sim-tog{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);cursor:pointer;
+  border:1px solid var(--line);border-radius:999px;padding:8px 14px}
+.sim-tog b{color:var(--teal);font-family:var(--mono);font-size:11.5px}
+.sim-tog.off b{color:var(--coral,#C2563F)}
+.sim-step{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--muted);margin-left:auto}
+.sim-stage{border-radius:12px;padding:20px 22px;margin-bottom:14px;transition:background .35s ease;
+  background:#EAF6F6;min-height:96px;display:flex;align-items:center}
+html[data-theme="dark"] .sim-stage{background:#16252C}
+.sim-narr{font-size:15px;line-height:1.62;color:var(--body-c)}
+.sim-narr b{color:var(--navy);display:block;margin-bottom:4px;font-size:15.5px}
+.sim-narr .tagp{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;
+  background:rgba(255,255,255,.55);color:var(--navy);padding:3px 9px;border-radius:999px;margin-top:8px}
+html[data-theme="dark"] .sim-narr .tagp{background:rgba(255,255,255,.12);color:#E8F4F4}
+.sim-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:600px){.sim-grid{grid-template-columns:1fr}}
+.sim-panel{border-radius:12px;padding:16px 18px;border:1px solid var(--line);background:var(--card)}
+html[data-theme="dark"] .sim-panel{background:#16252C;border-color:#25373F}
+.sim-panel.silo{border-left:4px solid #C2563F}
+.sim-panel.conv{border-left:4px solid #0FA3A3}
+.sp-h{font-size:14.5px;font-weight:800;color:var(--navy);margin-bottom:12px}
+.sp-h span{display:block;font-family:var(--mono);font-size:10.5px;font-weight:400;color:var(--muted);margin-top:3px;letter-spacing:.03em}
+.sp-nums{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
+.spn{display:block;font-size:30px;font-weight:800;line-height:1;letter-spacing:-.02em;color:var(--navy);transition:color .2s}
+.silo .spn{color:#C2563F}.conv .spn{color:#0FA3A3}
+.spl{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.sim-note{font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--muted);margin:12px 0 0;text-transform:uppercase}
+
+.simchain{margin:0 0 14px}
+.scw{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;position:relative}
+.sc-node{display:flex;flex-direction:column;align-items:center;gap:5px;padding:9px 3px 8px;border-radius:9px;
+  border:1px solid var(--line);background:var(--card);transition:all .3s ease;opacity:.5}
+html[data-theme="dark"] .sc-node{background:#16252C;border-color:#25373F}
+.sc-node .scn{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;
+  font-family:var(--mono);font-size:11px;font-weight:700;background:var(--line);color:var(--muted);transition:all .3s}
+.sc-node .scl{font-family:var(--mono);font-size:9.5px;letter-spacing:.04em;color:var(--muted);text-align:center}
+.sc-node.done{opacity:.85;border-color:rgba(15,163,163,.35)}
+.sc-node.done .scn{background:rgba(15,163,163,.2);color:#0B7F7F}
+.sc-node.on{opacity:1;border-color:transparent;background:linear-gradient(135deg,#0FA3A3,#2E7CB8);
+  transform:translateY(-2px);box-shadow:0 8px 18px -8px rgba(15,163,163,.7)}
+.sc-node.on .scn{background:rgba(255,255,255,.25);color:#fff}
+.sc-node.on .scl{color:#fff;font-weight:700}
+.sc-what{font-family:var(--mono);font-size:11px;letter-spacing:.03em;color:var(--muted);
+  margin-top:9px;text-align:center;line-height:1.5}
+.sc-what b{color:var(--teal)}
+@media(max-width:620px){.sc-node .scl{font-size:8px}.sc-node{padding:7px 2px 6px}.sc-node .scn{width:19px;height:19px;font-size:10px}}
+
+.site-footer p{max-width:900px;margin:0 auto;line-height:1.75;font-size:11.5px;
+  overflow-wrap:break-word;word-break:normal;text-align:left}
+.site-footer p a{color:var(--teal);text-decoration:none}
+@media(max-width:640px){.site-footer p{font-size:10.5px;line-height:1.7}}
+.related{max-width:820px;margin:44px auto 0;padding:0 clamp(18px,4vw,28px)}
+
+.srcwrap{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);margin:22px 0 14px}
+html[data-theme="dark"] .srcwrap{background:#16252C;border-color:#25373F}
+.srcrow{display:grid;grid-template-columns:96px 1fr;gap:14px;padding:15px 18px;border-bottom:1px solid var(--line);align-items:start}
+.srcrow:last-child{border-bottom:0}
+.srctag{font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:5px 9px;border-radius:6px;text-align:center;margin-top:2px}
+.t-off{background:rgba(55,182,138,.16);color:#2E7D5B}
+.t-proj{background:rgba(224,138,60,.18);color:#A8541A}
+.t-anl{background:rgba(122,83,120,.16);color:#7A5378}
+html[data-theme="dark"] .t-off{color:#7FD6B4}html[data-theme="dark"] .t-proj{color:#F0B27E}html[data-theme="dark"] .t-anl{color:#C9A3C6}
+.srcrow b{font-size:14.5px;color:var(--navy);display:block}
+.srcrow span{display:block;font-size:13.5px;line-height:1.55;color:var(--muted);margin-top:4px}
+.srcnote{font-size:13.5px;color:var(--body-c);background:rgba(194,86,63,.07);border-left:3px solid #C2563F;
+  border-radius:0 8px 8px 0;padding:12px 14px;margin:0}
+.srcnote b{color:var(--navy)}
+@media(max-width:600px){.srcrow{grid-template-columns:1fr;gap:6px}.srctag{justify-self:start}}
+
+/* reference architecture diagram */
+.arch{margin:20px 0 6px;font-family:var(--sans)}
+.arch-band{display:grid;grid-template-columns:118px 1fr;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)}
+html[data-theme="dark"] .arch-band{background:#16252C;border-color:#25373F}
+.ab-rail{display:flex;flex-direction:column;justify-content:center;gap:3px;padding:16px 14px;border-right:1px solid var(--line)}
+html[data-theme="dark"] .ab-rail{border-right-color:#25373F}
+.ab-rail span{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;font-weight:700;line-height:1.3}
+.ab-rail em{font-family:var(--mono);font-size:10px;font-style:normal;color:var(--muted);letter-spacing:.04em}
+.b-found .ab-rail{background:rgba(46,124,184,.07)}.b-found .ab-rail span{color:#2E7CB8}
+.b-conv .ab-rail{background:rgba(224,138,60,.1)}.b-conv .ab-rail span{color:#B06A25}
+.b-exec .ab-rail{background:rgba(55,182,138,.08)}.b-exec .ab-rail span{color:#2E7D5B}
+.b-conv{border-color:rgba(224,138,60,.55);box-shadow:0 10px 26px -14px rgba(224,138,60,.55)}
+.ab-rows{padding:6px 0}
+.ar{display:grid;grid-template-columns:34px minmax(120px,1.05fr) 1.35fr;gap:12px;align-items:center;padding:11px 18px}
+.ar+.ar{border-top:1px solid var(--line)}
+html[data-theme="dark"] .ar+.ar{border-top-color:#25373F}
+.ar-l{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+.ar-n{font-size:14.5px;font-weight:700;color:var(--navy);letter-spacing:-.01em;line-height:1.3}
+.ar-c{font-family:var(--mono);font-size:11.5px;color:var(--muted);letter-spacing:.02em;line-height:1.45}
+.ar-focus .ar-l{color:#B06A25}
+.ar-focus .ar-n{font-size:15.5px}
+.ar-focus .ar-c{font-weight:600;color:#B06A25;letter-spacing:.06em}
+.ar-note{margin:0;padding:0 18px 12px 64px;font-size:13px;line-height:1.55;color:var(--muted)}
+.arch-flow{display:flex;align-items:center;gap:10px;padding:9px 0}
+.af-line{flex:1;height:1px;background:var(--line)}
+.af-txt{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--muted);white-space:nowrap}
+@media(max-width:620px){
+ .arch-band{grid-template-columns:1fr}
+ .ab-rail{flex-direction:row;align-items:baseline;gap:8px;border-right:0;border-bottom:1px solid var(--line)}
+ .ar{grid-template-columns:30px 1fr;gap:8px;padding:10px 14px}
+ .ar-c{grid-column:1/-1;padding-left:38px}
+ .ar-note{padding:0 14px 12px 14px}
+ .af-txt{font-size:9.5px;white-space:normal}
+}
+
+.proglist{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card);margin:18px 0}
+html[data-theme="dark"] .proglist{background:#16252C;border-color:#25373F}
+.pl{display:grid;grid-template-columns:88px 1fr;gap:14px;padding:13px 17px;align-items:baseline}
+.pl+.pl{border-top:1px solid var(--line)}
+html[data-theme="dark"] .pl+.pl{border-top-color:#25373F}
+.pl-a{font-family:var(--mono);font-size:11.5px;font-weight:700;color:var(--teal);letter-spacing:.04em}
+.pl b{display:block;font-size:14.5px;color:var(--navy);line-height:1.35;letter-spacing:-.01em}
+.pl span:not(.pl-a){display:block;font-size:13px;color:var(--muted);margin-top:3px;line-height:1.5}
+@media(max-width:600px){.pl{grid-template-columns:1fr;gap:3px}}
+
+/* failure mode cards */
+.fmgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin:24px 0}
+.fm{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 20px 18px}
+html[data-theme="dark"] .fm{background:#16252C;border-color:#25373F}
+.fm-risk{border-top:4px solid #C2563F}
+.fm-warn{border-top:4px solid #E08A3C}
+.fm-h{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:700;margin-bottom:10px}
+.fm-risk .fm-h{color:#C2563F}.fm-warn .fm-h{color:#B06A25}
+.fm-t{font-size:16.5px;font-weight:800;color:var(--navy);line-height:1.3;letter-spacing:-.01em;margin-bottom:9px}
+.fm-c{font-size:14px;line-height:1.6;color:var(--body-c)}
+/* ten question cards */
+.qgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:13px;margin:24px 0}
+.qc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 18px 16px;position:relative}
+html[data-theme="dark"] .qc{background:#16252C;border-color:#25373F}
+.qc-n{font-family:var(--mono);font-size:11px;font-weight:700;color:#fff;background:var(--teal);
+  border-radius:6px;padding:4px 9px;display:inline-block;margin-bottom:10px}
+.qc-t{font-size:16px;font-weight:800;color:var(--navy);line-height:1.3;letter-spacing:-.01em;margin-bottom:8px}
+.qc-d{font-size:14px;line-height:1.6;color:var(--body-c)}
+
+
+/* drop-off chart */
+.leak{margin:18px 0 4px}
+.lkr{display:grid;grid-template-columns:minmax(150px,1.25fr) 2fr 54px;gap:12px;align-items:center;padding:7px 0}
+.lkl{font-size:13.5px;color:var(--body-c);line-height:1.35}
+.lkt{height:20px;background:rgba(90,107,114,.13);border-radius:5px;overflow:hidden}
+html[data-theme="dark"] .lkt{background:rgba(175,194,200,.14)}
+.lkf{height:100%;border-radius:5px}
+.lk-g{background:#2E7D5B}.lk-a{background:#E08A3C}.lk-r{background:#C2563F}
+.lkv{font-family:var(--mono);font-size:12.5px;font-weight:700;text-align:right}
+.lkv-g{color:#2E7D5B}.lkv-a{color:#B06A25}.lkv-r{color:#C2563F}
+@media(max-width:620px){.lkr{grid-template-columns:1fr 44px;gap:6px}.lkt{grid-column:1/-1}}
+/* nine step cards */
+.stepgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px;margin:24px 0}
+.stc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 18px 16px;border-top:4px solid var(--line)}
+html[data-theme="dark"] .stc{background:#16252C;border-color:#25373F}
+.stc-g{border-top-color:#2E7D5B}.stc-a{border-top-color:#E08A3C}.stc-r{border-top-color:#C2563F}
+.stc-none{border-top-color:#8A9BA0;border-top-style:dashed}
+.stc-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:9px;flex-wrap:wrap}
+.stc-n{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--muted)}
+.stc-m{font-family:var(--mono);font-size:11px;font-weight:700}
+.stc-m-g{color:#2E7D5B}.stc-m-a{color:#B06A25}.stc-m-r{color:#C2563F}.stc-m-none{color:#8A9BA0}
+.stc-t{font-size:16.5px;font-weight:800;color:var(--navy);line-height:1.3;letter-spacing:-.01em;margin-bottom:8px}
+.stc-s{font-size:14px;line-height:1.6;color:var(--muted);margin-bottom:10px}
+.stc-b{font-size:13.5px;line-height:1.6;color:var(--body-c);background:rgba(194,86,63,.06);
+  border-left:3px solid rgba(194,86,63,.55);border-radius:0 8px 8px 0;padding:10px 12px}
+html[data-theme="dark"] .stc-b{background:rgba(194,86,63,.12)}
+.stc-b .bl{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#C2563F;font-weight:700;margin-bottom:4px}
+/* launch blocks */
+.lch{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:16px 0}
+html[data-theme="dark"] .lch{background:#16252C;border-color:#25373F}
+.lch-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.lch-n{font-size:20px;font-weight:800;color:var(--navy);letter-spacing:-.015em}
+.lch-d{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--teal);font-weight:600}
+.lch-f{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin:5px 0 12px;line-height:1.5}
+.lch ul{margin:0 0 12px;padding-left:19px}
+.lch li{font-size:14px;line-height:1.62;color:var(--body-c);margin-bottom:6px}
+.lch-k{font-size:14px;line-height:1.6;color:var(--body-c);background:rgba(15,163,163,.07);
+  border-left:3px solid var(--teal);border-radius:0 8px 8px 0;padding:12px 14px}
+html[data-theme="dark"] .lch-k{background:rgba(15,163,163,.13)}
+/* newborn ladder */
+.nbgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:13px;margin:22px 0}
+.nbc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:17px}
+html[data-theme="dark"] .nbc{background:#16252C;border-color:#25373F}
+.nbc-n{font-family:var(--mono);font-size:11px;font-weight:700;color:#fff;background:var(--navy);border-radius:6px;padding:4px 9px;display:inline-block;margin-bottom:9px}
+.nbc-t{font-size:16px;font-weight:800;color:var(--navy);line-height:1.3;letter-spacing:-.01em}
+.nbc-a{font-family:var(--mono);font-size:10.5px;color:var(--teal);letter-spacing:.05em;margin:4px 0 8px}
+.nbc-d{font-size:13.5px;line-height:1.6;color:var(--body-c)}
+/* count swap */
+.swgrid{display:flex;flex-direction:column;gap:12px;margin:22px 0}
+.sw{display:grid;grid-template-columns:1fr 34px 1fr;gap:12px;align-items:stretch}
+.sw-a,.sw-b{border-radius:12px;padding:15px 17px;font-size:15px;font-weight:700;line-height:1.35}
+.sw-a{background:rgba(194,86,63,.08);border:1px solid rgba(194,86,63,.3);color:var(--navy)}
+.sw-b{background:rgba(15,163,163,.08);border:1px solid rgba(15,163,163,.35);color:var(--navy)}
+html[data-theme="dark"] .sw-a{background:rgba(194,86,63,.14)}
+html[data-theme="dark"] .sw-b{background:rgba(15,163,163,.14)}
+.sw-a span,.sw-b span{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;font-weight:700;margin-bottom:6px}
+.sw-a span{color:#C2563F}.sw-b span{color:#0B7F7F}
+.sw-x{display:grid;place-items:center;font-size:20px;color:var(--muted)}
+@media(max-width:620px){.sw{grid-template-columns:1fr}.sw-x{transform:rotate(90deg);padding:2px 0}}
+
+
+/* clinical continuum staircase */
+.cont{display:flex;flex-direction:column;gap:10px;margin:20px 0 6px}
+.ct{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:stretch;position:relative}
+.ct-1{margin-left:0}.ct-2{margin-left:5%}.ct-3{margin-left:10%}.ct-4{margin-left:15%}.ct-5{margin-left:20%}
+.ct-n{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;align-self:center;
+  font-family:var(--mono);font-size:15px;font-weight:800;color:#fff;flex:none}
+.ct-1 .ct-n{background:#0FA3A3}.ct-2 .ct-n{background:#1B9BB0}
+.ct-3 .ct-n{background:#2E7CB8}.ct-4 .ct-n{background:#E08A3C}.ct-5 .ct-n{background:#37B68A}
+.ct-b{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 17px}
+html[data-theme="dark"] .ct-b{background:#16252C;border-color:#25373F}
+.ct-t{font-size:16px;font-weight:800;color:var(--navy);letter-spacing:-.01em;line-height:1.3}
+.ct-d{font-size:13.5px;color:var(--muted);line-height:1.55;margin-top:4px}
+.ct:not(:last-child):after{content:"";position:absolute;left:21px;top:100%;height:10px;width:2px;background:var(--line)}
+@media(max-width:640px){.ct-2,.ct-3,.ct-4,.ct-5{margin-left:0}.ct{grid-template-columns:36px 1fr;gap:10px}
+ .ct-n{width:36px;height:36px;font-size:13px}.ct:not(:last-child):after{left:17px}}
+
+.frame{font-size:16.5px;line-height:1.6;color:var(--body-c);background:rgba(15,163,163,.07);
+  border-left:3px solid var(--teal);border-radius:0 10px 10px 0;padding:14px 16px;margin:20px 0 0}
+html[data-theme="dark"] .frame{background:rgba(15,163,163,.13)}
+.frame b{color:var(--navy)}
+.closer{margin:28px 0 0;padding:22px 24px;border-radius:14px;background:var(--navy);color:#EAF6F6;
+  font-size:19px;font-weight:800;line-height:1.35;letter-spacing:-.015em}
+html[data-theme="dark"] .closer{background:#132029}
+.closer span{display:block;margin-top:10px;padding-top:12px;border-top:1px solid rgba(255,255,255,.18);
+  font-size:17px;font-weight:700;color:#8FD9D9}
+
+
+/* pull quotes */
+.quote{margin:26px 0;padding:20px 24px;background:var(--card);border-left:4px solid var(--teal);border-radius:0 12px 12px 0}
+html[data-theme="dark"] .quote{background:#16252C}
+.quote p{margin:0;font-size:18px;line-height:1.55;color:var(--navy);font-weight:600;letter-spacing:-.01em}
+.quote cite{display:block;margin-top:10px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--muted);font-style:normal}
+/* single stat line */
+.statline{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;margin:24px 0;
+  background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+html[data-theme="dark"] .statline{background:#16252C;border-color:#25373F}
+.sl-v{font-size:44px;font-weight:800;color:var(--teal);line-height:1;letter-spacing:-.03em}
+.sl-l{font-size:14.5px;line-height:1.6;color:var(--body-c)}
+.sl-l b{color:var(--navy)}
+/* evidence ladder */
+.evl{display:flex;flex-direction:column;gap:11px;margin:22px 0}
+.evr{display:grid;grid-template-columns:minmax(180px,1.5fr) 2fr 118px;gap:14px;align-items:center}
+.evc .evt{font-size:14.5px;font-weight:700;color:var(--navy);line-height:1.35}
+.evc .evn{font-size:12.5px;color:var(--muted);line-height:1.45;margin-top:3px}
+.evb{height:22px;background:rgba(90,107,114,.12);border-radius:5px;overflow:hidden}
+html[data-theme="dark"] .evb{background:rgba(175,194,200,.13)}
+.evf{height:100%;border-radius:5px}
+.ev-proven{background:#2E7D5B}.ev-fair{background:#2E7CB8}.ev-guess{background:#E08A3C}.ev-none{background:#C2563F}
+.evg{font-family:var(--mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;font-weight:700;
+  padding:5px 8px;border-radius:5px;text-align:center}
+.ev-g-proven{background:rgba(46,125,91,.16);color:#2E7D5B}
+.ev-g-fair{background:rgba(46,124,184,.16);color:#2E7CB8}
+.ev-g-guess{background:rgba(224,138,60,.18);color:#B06A25}
+.ev-g-none{background:rgba(194,86,63,.16);color:#C2563F}
+@media(max-width:680px){.evr{grid-template-columns:1fr;gap:6px}.evg{justify-self:start}}
+/* four words */
+.fwgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:13px;margin:22px 0}
+.fw{border-radius:14px;padding:18px;border:1px solid var(--line);background:var(--card)}
+html[data-theme="dark"] .fw{background:#16252C;border-color:#25373F}
+.fw-not-med{border-top:4px solid #37B68A}.fw-med{border-top:4px solid #2E7CB8}
+.fw-t{font-size:18px;font-weight:800;color:var(--navy);letter-spacing:-.015em}
+.fw-d{font-size:13.5px;line-height:1.55;color:var(--muted);margin:7px 0 12px}
+.fw-a{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+  border-top:1px solid var(--line);padding-top:10px}
+.fw-a span{display:block;font-family:var(--sans);font-size:15px;font-weight:800;letter-spacing:-.01em;margin-top:4px}
+.fw-not-med .fw-a span{color:#2E7D5B}.fw-med .fw-a span{color:#2E7CB8}
+/* can-do vs gets */
+.gapgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:22px 0 10px}
+.gp{border-radius:14px;padding:18px;border:1px solid var(--line);background:var(--card)}
+html[data-theme="dark"] .gp{background:#16252C;border-color:#25373F}
+.gp-can{border-left:4px solid #0FA3A3}.gp-get{border-left:4px solid #C2563F}
+.gp-v{font-size:34px;font-weight:800;line-height:1;letter-spacing:-.03em}
+.gp-can .gp-v{color:#0FA3A3}.gp-get .gp-v{color:#C2563F}
+.gp-l{font-size:13.5px;line-height:1.5;color:var(--body-c);margin-top:8px}
+.gapnote{font-size:12.5px;color:var(--muted);line-height:1.6;margin:0 0 6px}
+/* india pipeline */
+.ppgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:11px;margin:22px 0}
+.pp{border-radius:12px;padding:16px;border:1px solid var(--line);background:var(--card)}
+html[data-theme="dark"] .pp{background:#16252C;border-color:#25373F}
+.pp-have{border-top:4px solid #2E7D5B}.pp-part{border-top:4px solid #E08A3C}.pp-none{border-top:4px solid #C2563F}
+.pp-s{font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;font-weight:700;color:var(--muted)}
+.pp-w{font-size:15px;font-weight:800;color:var(--navy);line-height:1.3;margin:7px 0 8px;letter-spacing:-.01em}
+.pp-n{font-size:12.5px;line-height:1.5;color:var(--muted)}
+.pp-none .pp-n{color:#C2563F;font-weight:700}
+/* four moves */
+.mvgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:13px;margin:20px 0}
+.mv{border-radius:14px;padding:18px;border:1px solid var(--line);background:var(--card)}
+html[data-theme="dark"] .mv{background:#16252C;border-color:#25373F}
+.mv-now{border-left:4px solid #E08A3C}.mv-study{border-left:4px solid #2E7CB8}.mv-fund{border-left:4px solid #C2563F}
+.mv-h{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;margin-bottom:8px}
+.mv-now .mv-h{color:#B06A25}.mv-study .mv-h{color:#2E7CB8}.mv-fund .mv-h{color:#C2563F}
+.mv-t{font-size:16.5px;font-weight:800;color:var(--navy);line-height:1.3;letter-spacing:-.01em;margin-bottom:8px}
+.mv-d{font-size:14px;line-height:1.6;color:var(--body-c)}
+/* support note */
+.support{margin-top:22px;background:rgba(15,163,163,.07);border:1px solid rgba(15,163,163,.3);border-radius:12px;padding:16px 18px}
+html[data-theme="dark"] .support{background:rgba(15,163,163,.13)}
+.support p{margin:0;font-size:14px;line-height:1.6;color:var(--body-c)}
+.support b{color:var(--teal)}
+
+
+/* fig 1 two boys */
+.twoboys{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:12px;margin:20px 0 4px;align-items:stretch}
+.tb{border-radius:12px;padding:16px;text-align:center;color:#fff}
+.tb-l{background:linear-gradient(135deg,#1B3A4B,#2E5A6E)}
+.tb-r{background:linear-gradient(135deg,#7A5378,#A63D52)}
+.tb-n{font-size:22px;font-weight:800;letter-spacing:.04em}
+.tb-y{font-family:var(--mono);font-size:11px;opacity:.9;margin-top:3px}
+.tb-mid{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+html[data-theme="dark"] .tb-mid{background:#16252C;border-color:#25373F}
+.tb-h{font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--teal);font-weight:700;text-align:center;margin-bottom:8px}
+.tb-mid ul{margin:0;padding-left:16px}
+.tb-mid li{font-size:12.5px;line-height:1.55;color:var(--body-c)}
+.tb-out{border-radius:12px;padding:14px 16px;border:1px solid var(--line);background:var(--card);text-align:center}
+html[data-theme="dark"] .tb-out{background:#16252C;border-color:#25373F}
+.tb-out-l{border-top:4px solid #1B3A4B}.tb-out-r{border-top:4px solid #A63D52}
+.tbo-v{font-size:28px;font-weight:800;letter-spacing:-.02em;line-height:1}
+.tb-out-l .tbo-v{color:#1B3A4B}.tb-out-r .tbo-v{color:#A63D52}
+html[data-theme="dark"] .tb-out-l .tbo-v{color:#7FB8CC}
+.tbo-l{font-size:13px;font-weight:700;color:var(--navy);margin-top:6px}
+.tbo-l span{display:block;font-weight:400;font-size:12px;color:var(--muted);margin-top:2px}
+.tb-vs{display:grid;place-items:center;font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);font-weight:700}
+@media(max-width:640px){.twoboys{grid-template-columns:1fr 1fr}.tb-mid{grid-column:1/-1}.tb-vs{grid-column:1/-1;padding:4px 0}}
+/* svg figure wrappers */
+.curvewrap svg,.tlwrap svg,.vennwrap svg{width:100%;height:auto;display:block;margin:8px 0 4px;overflow:visible}
+.cv-t text{font-family:var(--mono);font-size:11px;fill:var(--navy);font-weight:700;text-anchor:middle}
+.cv-s text{font-family:var(--mono);font-size:9px;fill:var(--muted);text-anchor:middle}
+.cv-j{font-family:var(--mono);font-size:11px;fill:#0FA3A3;font-weight:700}
+.cv-a{font-family:var(--sans);font-size:12px;fill:var(--muted);text-anchor:middle}
+.tl-band{font-family:var(--mono);font-size:10px;fill:#B06A25;font-weight:700;letter-spacing:.1em;text-anchor:middle}
+.tl-bandsub{font-family:var(--mono);font-size:9px;fill:var(--muted);text-anchor:middle}
+.tl-t text{font-family:var(--mono);font-size:10px;fill:var(--muted);text-anchor:middle}
+.tl-e text{font-family:var(--mono);font-size:8.5px;fill:var(--muted);text-anchor:start}
+.tl-y{font-family:var(--mono);font-size:9.5px;fill:var(--muted);letter-spacing:.08em}
+.vn-t{font-family:var(--sans);font-size:13px;font-weight:700;fill:var(--navy)}
+.vn-s{font-family:var(--mono);font-size:10px;fill:var(--muted)}
+.vn-v{font-family:var(--sans);font-size:34px;font-weight:800;fill:var(--teal);letter-spacing:-.02em}
+.vn-o{font-family:var(--mono);font-size:10px;fill:var(--teal);letter-spacing:.14em;font-weight:700}
+.vn-n{font-family:var(--mono);font-size:9.5px;fill:var(--muted)}
+/* eindhoven bars */
+.ehwrap{margin:18px 0 4px;display:flex;flex-direction:column;gap:10px}
+.ehr{display:grid;grid-template-columns:150px 1fr;gap:14px;align-items:center}
+.ehl{font-size:14px;font-weight:700;color:var(--navy);line-height:1.25}
+.ehl span{display:block;font-family:var(--mono);font-size:9.5px;font-weight:400;color:var(--muted);margin-top:2px}
+.eht{height:34px;background:rgba(90,107,114,.1);border-radius:6px;overflow:hidden}
+html[data-theme="dark"] .eht{background:rgba(175,194,200,.12)}
+.ehf{height:100%;border-radius:6px;display:flex;align-items:center;justify-content:flex-end;padding-right:11px;
+  color:#fff;font-family:var(--mono);font-size:13px;font-weight:700}
+.ehf-1{background:linear-gradient(90deg,#0FA3A3,#2E7CB8)}
+.ehf-2{background:#8A9BA0}.ehf-3{background:#A8B5BA}
+@media(max-width:600px){.ehr{grid-template-columns:1fr}.ehl span{display:inline;margin-left:6px}}
+
+/* causation grid */
+.cgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:13px;margin:22px 0}
+.cc{border-radius:14px;padding:18px;border:1px solid var(--line);background:var(--card)}
+html[data-theme="dark"] .cc{background:#16252C;border-color:#25373F}
+.cc-yes{border-left:4px solid #2E7D5B}.cc-part{border-left:4px solid #E08A3C}.cc-no{border-left:4px solid #C2563F}
+.cc-h{font-family:var(--mono);font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;font-weight:700;margin-bottom:8px}
+.cc-yes .cc-h{color:#2E7D5B}.cc-part .cc-h{color:#B06A25}.cc-no .cc-h{color:#C2563F}
+.cc-t{font-size:16px;font-weight:800;color:var(--navy);line-height:1.3;letter-spacing:-.01em;margin-bottom:8px}
+.cc-d{font-size:13.5px;line-height:1.6;color:var(--body-c)}
+/* takeaways */
+.tkgrid{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);margin:22px 0}
+html[data-theme="dark"] .tkgrid{background:#16252C;border-color:#25373F}
+.tk{display:grid;grid-template-columns:44px 1fr;gap:14px;padding:16px 18px;border-bottom:1px solid var(--line);align-items:start}
+html[data-theme="dark"] .tk{border-bottom-color:#25373F}
+.tk-last{border-bottom:0}
+.tk-n{font-family:var(--mono);font-size:11px;font-weight:700;color:#fff;background:var(--teal);
+  border-radius:6px;padding:5px 0;text-align:center;margin-top:2px}
+.tk div{font-size:14.5px;line-height:1.62;color:var(--body-c)}
+.tk div b{color:var(--navy)}
+@media(max-width:600px){.tk{grid-template-columns:36px 1fr;gap:10px}}
+
+.viewgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0}
+.vw{border-radius:14px;padding:20px;border:1px solid var(--line);background:var(--card)}
+html[data-theme="dark"] .vw{background:#16252C;border-color:#25373F}
+.vw-yes{border-top:4px solid #2E7D5B}.vw-no{border-top:4px solid #C2563F}
+.vw-h{font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;font-weight:700;margin-bottom:12px}
+.vw-yes .vw-h{color:#2E7D5B}.vw-no .vw-h{color:#C2563F}
+.vw ul{margin:0;padding-left:18px}
+.vw li{font-size:14px;line-height:1.62;color:var(--body-c);margin-bottom:11px}
+.vw li:last-child{margin-bottom:0}
+.vw li b{color:var(--navy)}
+@media(max-width:700px){.viewgrid{grid-template-columns:1fr}}
+
+.dbgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+.db{border-radius:14px;padding:19px;border:1px solid var(--line);background:var(--card);border-top:4px solid #2E7CB8}
+html[data-theme="dark"] .db{background:#16252C;border-color:#25373F;border-top-color:#2E7CB8}
+.db-alt{border-top-color:#C2563F}
+.db-own{border-top-color:#0FA3A3}
+.db-h{font-family:var(--mono);font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;font-weight:700;color:var(--muted);margin-bottom:8px}
+.db-t{font-size:16.5px;font-weight:800;color:var(--navy);line-height:1.3;letter-spacing:-.01em;margin-bottom:9px}
+.db-d{font-size:14px;line-height:1.62;color:var(--body-c)}
+.db-d b{color:var(--navy)}
+@media(max-width:700px){.dbgrid{grid-template-columns:1fr}}
+.post-body h3{font-size:18px;font-weight:800;color:var(--navy);letter-spacing:-.015em;margin:0 0 6px}
+
+.lvgrid{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);margin:20px 0}
+html[data-theme="dark"] .lvgrid{background:#16252C;border-color:#25373F}
+.lvhead{display:grid;grid-template-columns:110px 1.35fr 1fr;gap:14px;padding:11px 18px;border-bottom:1px solid var(--line);
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.lv{display:grid;grid-template-columns:110px 1.35fr 1fr;gap:14px;padding:15px 18px;border-bottom:1px solid var(--line);align-items:start}
+html[data-theme="dark"] .lv,html[data-theme="dark"] .lvhead{border-bottom-color:#25373F}
+.lv:last-child{border-bottom:0}
+.lv-n{font-family:var(--mono);font-size:11px;font-weight:700;color:#fff;border-radius:6px;padding:6px 0;text-align:center}
+.lv-1 .lv-n{background:#37B68A}.lv-2 .lv-n{background:#E08A3C}.lv-3 .lv-n{background:#C2563F}
+.lv b{font-size:15px;color:var(--navy);display:block;line-height:1.3}
+.lv span:not(.lv-n){display:block;font-size:13px;color:var(--muted);line-height:1.5;margin-top:4px}
+.lv-x{font-size:13px;color:var(--body-c);line-height:1.55}
+.lv-x b{font-size:13px;display:inline;color:var(--navy)}
+@media(max-width:700px){.lvhead{display:none}.lv{grid-template-columns:96px 1fr}.lv-x{grid-column:1/-1;padding-top:6px}}
+</style></head>
+<body>
+<script>(function(){try{if(localStorage.getItem('hp-theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+<div id="prog"></div>
+<header class="site-header">
+  <a class="logo" href="/"><img src="/logo.png" alt="Healthcare Pulse" class="logo-img"><span class="logo-text"><span class="logo-name">Healthcare Pulse</span><span class="logo-tag">Digital health, decoded &middot; by Mayank Madhur</span></span></a>
+  <button id="navToggle" class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  <nav id="siteNav">
+    <a href="/perspectives/">Perspectives</a><a href="/about.html">About</a><a href="/podcast.html">Podcast</a><a href="/archive/">Archive</a><a href="/ask/">Ask</a><a href="/research/">Research</a><a href="/index-tool/">Tool</a>
+    <a class="nav-subscribe" href="https://www.linkedin.com/newsletters/7311231782241083393/" target="_blank" rel="noopener">Subscribe</a>
+    <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle dark mode"><svg class="t-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="t-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+  </nav>
+</header>
+<main><article class="post">
+  <div class="post-banner cat-policy">
+    <svg class="banner-ecg" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path d="M0 130 H180 l18 -34 22 64 26 -96 24 120 20 -78 16 24 H420 l18 -34 22 64 26 -96 24 120 20 -78 16 24 H800" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+  <div class="post-meta"><span class="meta-ed">EDITION 72</span><span>READING NOTES</span><span class="meta-cat">Policy</span><span>12 MIN READ</span><span class="meta-date">Published 28 Aug 2026 &middot; last updated 28 Aug 2026</span></div>
+  <h1 class="post-title">Two boys who wouldn't talk</h1>
+  <div class="post-body">
+<nav class="jump"><div class="jump-in"><a href="#s1" data-s="s1">Two boys</a><a href="#s2" data-s="s2">The engine</a><a href="#s3" data-s="s3">The cave</a><a href="#s4" data-s="s4">The genes</a><a href="#s5" data-s="s5">The puzzle</a><a href="#s6" data-s="s6">Why it happens</a><a href="#s7" data-s="s7">Eindhoven</a><a href="#s8" data-s="s8">What holds up</a><a href="#s9" data-s="s9">Where I stop</a><a href="#s10" data-s="s10">The field</a><a href="#s11" data-s="s11">The spectrum</a><a href="#s12" data-s="s12">My view</a><a href="#s13" data-s="s13">Four words</a><a href="#s14" data-s="s14">Jonah</a><a href="#s15" data-s="s15">India</a><a href="#s16" data-s="s16">Takeaways</a><a href="#s17" data-s="s17">Sources</a></div></nav>
+
+<section id="s1">
+<p class="lede">Simon Baron-Cohen's <em>The Pattern Seekers</em> opens with two small boys, and refuses to tell you who they are. Both are late to talk. Both question everything, sort everything, repeat experiments, love rules, ignore what other children do, have few friends. One of them holds 1,093 US patents. The other is unemployed and lives with his parents. <b>Nothing in the shared list explains the difference in those two lives.</b></p>
+
+<div class="keyfind">
+<div class="kf-lbl">What this edition is</div>
+<ul>
+<li>Reading notes on one book and one finding inside it: <b>the wiring that makes humans inventors overlaps with the wiring behind autism.</b></li>
+<li>The strong claims hold up. <b>Autistic people do score higher on pattern-seeking</b>, tested across 671,606 people, and the genetic overlap with autism is real at <b>26 per cent</b> of common variants.</li>
+<li>The popular version does not hold up. The book <b>never</b> says autism is the next stage of evolution, and there is no evidence for it.</li>
+<li>Four places where I stop agreeing, including the one that matters most: <b>only the articulate, high-IQ success stories are in the book.</b></li>
+<li>For India, the same pattern I keep finding: prevalence is measured, entitlements are published, and <b>employment has no national figure at all.</b></li>
+</ul></div>
+
+<div class="fig">
+<div class="fig-label">Figure 1</div><div class="fig-title">Two boys, a century apart</div>
+<div class="fig-sub">Everything in the middle column is true of both. Only the bottom row differs.</div>
+<div class="twoboys">
+  <div class="tb tb-l"><div class="tb-n">AL</div><div class="tb-y">born 1847</div></div>
+  <div class="tb-mid">
+    <div class="tb-h">Same kind of mind</div>
+    <ul><li>Late to talk</li><li>Questions everything</li><li>Sorts everything</li><li>Repeats experiments</li><li>Loves rules</li><li>Ignores what others do</li><li>Few or no friends</li></ul>
+  </div>
+  <div class="tb tb-r"><div class="tb-n">JONAH</div><div class="tb-y">born 1988</div></div>
+  <div class="tb-out tb-out-l"><div class="tbo-v">1,093</div><div class="tbo-l">US patents<span>Thomas Alva Edison</span></div></div>
+  <div class="tb-vs">Very different lives</div>
+  <div class="tb-out tb-out-r"><div class="tbo-v">0</div><div class="tbo-l">Unemployed<span>Lives with his parents</span></div></div>
+</div>
+<figcaption><b>Read this way:</b> Baron-Cohen withholds both names until the end of chapter one, and by then the point is made. <b>Nothing in the shared column predicts the bottom row.</b> What differs is not the mind. It is what the world around it did next.</figcaption>
+</div>
+<p>The first boy is Al. Slow to start talking, then never stops asking questions. A teacher calls his brain addled. The second boy is Jonah, two years old, also not talking. His mother is frightened. The paediatrician draws a chart of how children learn to speak, marks an X below the lowest line, and tells her she has seen many children sitting right there. Some became engineers. Some became artists.</p>
+
+<div class="quote"><p>Be proud of Jonah. He's just on a different track. And if other parents ask why he's not talking yet, just say, he's different, but not worse.</p><cite>The paediatrician, chapter one</cite></div>
+
+<p>Jonah starts talking just before three, and does it oddly. He points at things and names them, not to show anyone, just for himself. He spends hours flicking one switch at the top of the stairs while leaving every other switch in the house up, checking, again and again, which light it controls.</p>
+
+<p>Al turns out to be Thomas Alva Edison. Jonah grows into a man who drives to the coast every weekend and can read a shoal of fish through the ripples on the surface. When Baron-Cohen calls the other fishermen his friends, Jonah corrects him.</p>
+
+<div class="quote"><p>They like me because I show them where the fish are. But after the fishing trips they go to the pub, and I go home alone, and still live with my parents.</p><cite>Jonah, chapter one</cite></div>
+
+<p>Jonah is autistic. You are told at the end of the chapter, by which point the argument no longer needs making.</p>
+</section>
+
+<section id="s2">
+<p class="eyebrow">02 &mdash; The argument</p>
+<h2>The book is not really about autism</h2>
+<p>I picked it up expecting a book about autism and it is a book about invention. Autism is the evidence.</p>
+<p>The question is one I had not thought about: how does anything get invented? Not who invented what, but what the mind is doing at that moment. Baron-Cohen's answer is that there is one engine and it does one thing. It looks for <b>if-and-then</b> patterns.</p>
+<p>If I put a seed in the ground, and it rains, then a plant grows. If I make a hole in this bone, and cover the hole and blow, then the note changes. If I press this switch, and the wiring runs to that lamp, then the light goes on. The engine finds the rule, then varies one part of it and checks what happens. That last step, systematic variation, is the whole thing.</p>
+<div class="ed-callout"><p>Which reframes the boy on the stairs. <b>A four-year-old flicking a light switch three hundred times is either a symptom to be managed or an experiment being run three hundred times.</b> The behaviour is identical. What changes is what you think is happening.</p></div>
+</section>
+
+<section id="s3">
+<div class="fig">
+<div class="fig-label">Figure 2</div><div class="fig-title">Everyone is somewhere on one curve</div>
+<div class="fig-sub">Systemizing score across the population. The five labels are cut-off lines drawn on a smooth curve, not five different kinds of people.</div>
+<div class="curvewrap">
+<svg viewBox="0 0 720 250" role="img" aria-label="Bell curve of systemizing scores across the population, with five bands from extreme empathizing to extreme systemizing">
+ <defs>
+  <linearGradient id="cg72" x1="0" x2="1">
+   <stop offset="0" stop-color="#A63D52"/><stop offset="0.5" stop-color="#8A9BA0"/><stop offset="1" stop-color="#0FA3A3"/>
+  </linearGradient>
+ </defs>
+ <path d="M40 200 C 140 200, 180 40, 360 40 C 540 40, 580 200, 680 200 L 680 200 L 40 200 Z" fill="url(#cg72)" opacity="0.18"/>
+ <path d="M40 200 C 140 200, 180 40, 360 40 C 540 40, 580 200, 680 200" fill="none" stroke="url(#cg72)" stroke-width="3"/>
+ <line x1="40" y1="200" x2="680" y2="200" stroke="var(--line)" stroke-width="1.5"/>
+ <g class="cv-t">
+  <text x="70" y="222">Extreme E</text><text x="185" y="222">Type E</text><text x="360" y="222">Type B</text>
+  <text x="535" y="222">Type S</text><text x="650" y="222">Extreme S</text>
+ </g>
+ <g class="cv-s">
+  <text x="185" y="238">early talkers, sociable</text><text x="360" y="238">balanced middle</text>
+  <text x="535" y="238">late talkers, patterns, space, music</text>
+ </g>
+ <line x1="632" y1="60" x2="632" y2="200" stroke="#0FA3A3" stroke-width="1.5" stroke-dasharray="4 3"/>
+ <circle cx="632" cy="60" r="5" fill="#0FA3A3"/>
+ <text x="626" y="50" class="cv-j" text-anchor="end">Jonah is here</text>
+ <text x="360" y="18" class="cv-a">Most people sit in the middle. The tails are thin, and both tails are real.</text>
+</svg>
+</div>
+<figcaption><b>Read this way:</b> Type B is simply everyone between the 35th and 65th percentile. <b>Nobody is "a systemizer" or "an empathizer" as a category.</b> Drawing five boxes on a smooth curve is a convenience, and treating those boxes as real is the first mistake most summaries of this book make.</figcaption>
+</div>
+<p class="eyebrow">03 &mdash; The cave</p>
+<h2>The best part of the book has nothing to do with autism</h2>
+<p>Baron-Cohen goes to the Hohle Fels cave in southern Germany, where the oldest musical instrument ever found was recovered, a flute made from bone. An archaeologist points at a layer in the rock wall: this line is twenty thousand years ago. This one is forty.</p>
+<p>Somebody down there picked up a hollow bone and wondered what sound it made. Covered the hole. Uncovered it. Drilled a second hole and started again.</p>
+<p>The timing matters because of what came before. For roughly three million years, stone tools barely change. Then, somewhere between 100,000 and 70,000 years ago, everything changes at once: bows and arrows, shell beads, cave art, the flute.</p>
+<div class="fig">
+<div class="fig-label">Figure 3</div><div class="fig-title">Three million years of almost nothing, then everything at once</div>
+<div class="fig-sub">How complex human tools got over time. Log scale, so the right-hand side is compressed.</div>
+<div class="tlwrap">
+<svg viewBox="0 0 720 190" role="img" aria-label="Timeline showing stone tool stasis for three million years then rapid change between 100,000 and 70,000 years ago">
+ <line x1="40" y1="140" x2="690" y2="140" stroke="var(--line)" stroke-width="2"/>
+ <rect x="150" y="60" width="180" height="80" fill="#E08A3C" opacity="0.14"/>
+ <text x="240" y="48" class="tl-band">THE COGNITIVE REVOLUTION</text>
+ <text x="240" y="62" class="tl-bandsub">100k to 70k years ago</text>
+ <path d="M40 132 L150 128 L200 118 L260 92 L330 74 L440 62 L560 50 L690 40" fill="none" stroke="#0FA3A3" stroke-width="3" stroke-linejoin="round"/>
+ <g class="tl-t">
+  <text x="40" y="158">3.3m</text><text x="150" y="158">100k</text><text x="260" y="158">70k</text>
+  <text x="400" y="158">40k</text><text x="530" y="158">12k</text><text x="690" y="158">5k</text>
+ </g>
+ <g class="tl-e">
+  <text x="46" y="176">first stone tools, then near-stasis</text>
+  <text x="300" y="176">bow and arrow, shell beads</text>
+  <text x="470" y="176">bone flute, cave art</text>
+  <text x="630" y="176">farming, writing</text>
+ </g>
+ <text x="40" y="26" class="tl-y">HOW COMPLEX TOOLS ARE</text>
+</svg>
+</div>
+<figcaption><b>Read this way:</b> the flat stretch on the left is the part that needs explaining. Hominins made recognisably similar stone tools for millions of years, then within a few tens of thousands of years produced arrows, beads, art and music. <b>Something changed in the mind, not in the hands.</b> A 2026 finding from central China may push that window earlier, which is caveat two below.</figcaption>
+</div>
+<p><b>The counting argument is the clearest thing in the book.</b> A spear with a stone tip takes six steps, and they have to happen in a workable order. Six steps can be arranged 720 ways, and almost all of them produce nothing. Getting from one working sequence to a longer working sequence is not trial and error at random. It is a mind holding a rule and changing one variable at a time.</p>
+</section>
+
+<section id="s4">
+<p class="eyebrow">04 &mdash; The genes</p>
+<h2>The part I could actually check</h2>
+<p>Most evolutionary psychology stops once the story sounds good. This book does not, which is why I kept reading.</p>
+<p>Working with 23andMe, the Cambridge team looked at the DNA of people who had taken empathy and systemizing tests. Fifty thousand had taken the systemizing test. Three separate genes came back linked to it. Twin studies put around 28 per cent of the differences in empathy down to inheritance. Under 5 per cent of autism comes from rare mutations, which means the overwhelming majority comes from many common variants each with a tiny effect.</p>
+<p>Then the question the whole book depends on. Do the variants linked to strong systemizing overlap with the variants linked to autism?</p>
+<div class="fig">
+<div class="fig-label">Figure 4</div><div class="fig-title">Shared genes, and not the same thing</div>
+<div class="fig-sub">Common gene variants linked to strong systemizing, against those linked to autism.</div>
+<div class="vennwrap">
+<svg viewBox="0 0 620 250" role="img" aria-label="Two overlapping circles showing 26 per cent overlap between gene variants for systemizing and for autism">
+ <circle cx="235" cy="120" r="105" fill="#0FA3A3" opacity="0.2" stroke="#0FA3A3" stroke-width="2"/>
+ <circle cx="385" cy="120" r="105" fill="#2E7CB8" opacity="0.2" stroke="#2E7CB8" stroke-width="2"/>
+ <text x="150" y="112" class="vn-t" text-anchor="middle">Variants for</text>
+ <text x="150" y="130" class="vn-t" text-anchor="middle">systemizing</text>
+ <text x="150" y="150" class="vn-s" text-anchor="middle">n = 50,000</text>
+ <text x="470" y="112" class="vn-t" text-anchor="middle">Variants for</text>
+ <text x="470" y="130" class="vn-t" text-anchor="middle">autism</text>
+ <text x="470" y="150" class="vn-s" text-anchor="middle">from GWAS</text>
+ <text x="310" y="115" class="vn-v" text-anchor="middle">26%</text>
+ <text x="310" y="138" class="vn-o" text-anchor="middle">OVERLAP</text>
+ <text x="310" y="238" class="vn-n" text-anchor="middle">3 genes linked to systemizing &middot; 28% of empathy differences inherited &middot; under 5% of autism from rare mutations</text>
+</svg>
+</div>
+<figcaption><b>Read this way:</b> a quarter of the common variants are shared, which is a real and substantial finding. It is not the same as saying pattern-seeking causes autism, or that autistic people are natural engineers. <b>And the overlap sits on the repetitive, detail-focused side of autism rather than the social side</b>, which is the detail that almost never survives into a summary.</figcaption>
+</div>
+<div class="statline"><span class="sl-v">26%</span><span class="sl-l">of common gene variants linked to strong systemizing line up with variants linked to autism. Later work sharpens it further: the overlap sits on the <b>repetitive and detail-focused</b> side of autism, not the social side.</span></div>
+<p>That last detail is the one that gets lost, and it is the one that matters. The genetic story connects pattern-seeking to the repetitive traits, not to the social difficulties. Which means the popular summary, autistic people are natural engineers, is doing something the evidence does not support.</p>
+</section>
+
+<section id="s5">
+<p class="eyebrow">05 &mdash; The puzzle</p>
+<h2>So why is autism still here?</h2>
+<p>Put the pieces together and something does not add up. Autism runs strongly in families, so much of it is inherited. It also comes with much lower rates of having a partner, holding a job and living independently. In plain evolutionary terms, a trait like that should thin out over generations.</p>
+<p>It has not. WHO puts autism at about 1 in 127 people worldwide in 2021. A global review lands near 1 per cent. US surveillance finds about 1 in 31 among eight-year-olds.</p>
+<details class="dtbl"><summary>View the data behind this</summary><table><caption>Autism prevalence estimates cited in this edition</caption><thead><tr><th scope="col">Source</th><th scope="col">Estimate</th></tr></thead><tbody><tr><td>WHO, 2021</td><td>About 1 in 127 people worldwide</td></tr><tr><td>Global review of studies</td><td>Middle estimate near 1 per cent</td></tr><tr><td>US surveillance (CDC ADDM)</td><td>About 1 in 31 among 8-year-olds</td></tr><tr><td>INCLEN survey, India, ages 2 to 6</td><td>1 in 125</td></tr><tr><td>INCLEN survey, India, ages 6 to 9</td><td>1 in 80</td></tr><tr><td>INCLEN survey, India, overall</td><td>Roughly 1 in 89. Range 0.4% in urban North Goa to 1.8% in rural Palwal</td></tr></tbody></table><p class="dsrc">Different methods and age bands give different answers. These are not directly comparable with each other.</p></details>
+<p>That gap, between what simple evolution would predict and what we actually observe, is the interesting part of this book. It is also the part people skip when they say autism is the next stage of evolution.</p>
+<p>Three possible answers, all testable, none settled. <b>One</b>, the effects are tiny: about 95 per cent of autism comes from many common genes, each so small that selection barely sees it. <b>Two</b>, a useful trade-off: if empathy and systemizing trade off against each other, the useful middle of the curve carries the tail along with it. <b>Three</b>, like marries like: put strong systemizers in one city, they pair up, and the tail gets thicker within a generation.</p>
+<div class="ed-callout"><p><b>The third answer is the only one with evidence behind it, and it makes a testable prediction about geography.</b> If strong systemizers cluster in particular places, meet each other and have children, then autism should be measurably more common in those places. That is the claim the next section examines, and it is where the book goes looking.</p></div>
+</section>
+
+
+<section id="s6">
+<p class="eyebrow">06 &mdash; The evidence on cause</p>
+<h2>What the data actually says about why autism happens</h2>
+<p>The book is about invention, so it treats causation lightly. But the argument only works if the genetics hold, and this is a subject where the popular version and the evidence have drifted a long way apart. So here is what the data supports, and what it rules out.</p>
+
+<div class="cgrid">
+  <div class="cc cc-yes"><div class="cc-h">Strongly supported</div>
+    <div class="cc-t">It is largely inherited</div>
+    <div class="cc-d">Twin and family studies consistently find autism among the most heritable of neurodevelopmental conditions. Siblings of autistic children have a markedly raised likelihood compared with the general population.</div></div>
+  <div class="cc cc-yes"><div class="cc-h">Strongly supported</div>
+    <div class="cc-t">Many small genes, not one big one</div>
+    <div class="cc-d">About <b>95 per cent</b> of the genetic contribution comes from many common variants, each with an effect so small that natural selection barely registers it. Under <b>5 per cent</b> comes from rare mutations. There is no single autism gene.</div></div>
+  <div class="cc cc-yes"><div class="cc-h">Strongly supported</div>
+    <div class="cc-t">It overlaps with pattern-seeking, partly</div>
+    <div class="cc-d"><b>26 per cent</b> of common variants linked to strong systemizing overlap with variants linked to autism, and the overlap sits on the repetitive and detail-focused traits rather than the social ones.</div></div>
+  <div class="cc cc-part"><div class="cc-h">Associated, not proven causal</div>
+    <div class="cc-t">Some pregnancy and birth factors</div>
+    <div class="cc-d">Higher parental age, very premature birth and low birth weight all show statistical associations in large cohort studies. Association is not mechanism, and none of these explains more than a small share.</div></div>
+  <div class="cc cc-no"><div class="cc-h">Ruled out</div>
+    <div class="cc-t">Vaccines do not cause autism</div>
+    <div class="cc-d">Tested repeatedly across millions of children in multiple countries, including a Danish cohort of over 650,000. The original 1998 paper was retracted and its author struck off the UK medical register. This is one of the most thoroughly investigated questions in modern epidemiology, and the answer has not changed.</div></div>
+  <div class="cc cc-no"><div class="cc-h">Ruled out</div>
+    <div class="cc-t">Parenting does not cause it</div>
+    <div class="cc-d">The mid-century "refrigerator mother" theory, that cold parenting caused autism, was abandoned decades ago. It caused real harm to a generation of families and has no evidential basis.</div></div>
+</div>
+
+<div class="ed-callout"><p><b>The honest summary is uncomfortable for everyone.</b> Autism is mostly inherited, through hundreds of common gene variants that each do almost nothing on their own, interacting in ways nobody can yet trace from gene to trait. <b>We can say with confidence what does not cause it. We cannot yet say, for any individual child, what did.</b></p>
+<p style="margin-top:12px">Which is also why the evolutionary question in this edition is genuinely open rather than settled. A trait with hundreds of tiny genetic contributors behaves very differently under selection than a trait with one big one.</p></div>
+</section>
+
+<section id="s7">
+<p class="eyebrow">07 &mdash; The test</p>
+<h2>Eindhoven, where you can watch it happen</h2>
+<p>This is the <b>assortative mating</b> hypothesis, which is a formal way of saying that people tend to pair up with people like themselves. Eindhoven is the technology capital of the Netherlands, built around its technical university and a century of Philips. If strong systemizers move to technology cities and have children with each other, recorded autism should be higher there than in comparable Dutch cities.</p>
+<details class="dtbl"><summary>View the data behind this</summary><table><caption>Recorded autism per 10,000 children, Netherlands</caption><thead><tr><th scope="col">City</th><th scope="col">Recorded rate</th></tr></thead><tbody><tr><td>Eindhoven (technology hub)</td><td>229</td></tr><tr><td>Haarlem (control)</td><td>84</td></tr><tr><td>Utrecht (control)</td><td>57</td></tr></tbody></table><p class="dsrc">Source: as reported in The Pattern Seekers. These are recorded diagnoses from school special needs registers, not measured prevalence.</p></details>
+<div class="fig">
+<div class="fig-label">Figure 5</div><div class="fig-title">Eindhoven, where you can watch it happen</div>
+<div class="fig-sub">Recorded autism per 10,000 children. Eindhoven is the Netherlands' technology hub; the other two are comparison cities.</div>
+<div class="ehwrap">
+<div class="ehr"><div class="ehl">Eindhoven<span>technology hub</span></div><div class="eht"><div class="ehf ehf-1" style="width:100%">229</div></div></div>
+<div class="ehr"><div class="ehl">Haarlem<span>comparison city</span></div><div class="eht"><div class="ehf ehf-2" style="width:36.7%">84</div></div></div>
+<div class="ehr"><div class="ehl">Utrecht<span>comparison city</span></div><div class="eht"><div class="ehf ehf-3" style="width:24.9%">57</div></div></div>
+</div>
+<figcaption><b>Read this way:</b> Eindhoven records roughly <b>2.7 times</b> the rate of Haarlem and <b>4 times</b> Utrecht. But this counts diagnoses, not autism. School special needs registers only capture children who were noticed, referred, assessed and labelled, and a wealthy technology city has more of all four. <b>A striking result, and a weaker proof than it first looks.</b></figcaption>
+</div>
+<div class="ed-callout" style="border-left-color:#E08A3C"><p><b>What this counts is recorded diagnoses, not autism itself.</b> School special needs registers capture children who were noticed, referred, assessed and labelled. A wealthy technology city has more of all four. The finding is real and interesting. It is not clean evidence of a genetic mechanism, and the book is more confident about it than the method allows.</p></div>
+</section>
+
+<section id="s8">
+<p class="eyebrow">08 &mdash; The evidence</p>
+<h2>How far each claim actually reaches</h2>
+<p>Before the caveats, the whole book plotted against the strength of its evidence. Longer bar, stronger evidence.</p>
+<div class="evl"><div class="evr"><div class="evc"><div class="evt">Autistic people are stronger pattern-seekers, on average</div><div class="evn">Tested on 671,606 people, 36,648 of them autistic</div></div><div class="evb"><div class="evf ev-proven" style="width:96%"></div></div><div class="evg ev-g-proven">Proven</div></div><div class="evr"><div class="evc"><div class="evt">Pattern-seeking and autism share some of the same genes</div><div class="evn">26% overlap, on the repetitive side of autism, not the social side</div></div><div class="evb"><div class="evf ev-proven" style="width:88%"></div></div><div class="evg ev-g-proven">Proven</div></div><div class="evr"><div class="evc"><div class="evt">Evolution favoured pattern-seeking</div><div class="evn">Possible for any inherited trait. Not yet tested here.</div></div><div class="evb"><div class="evf ev-fair" style="width:58%"></div></div><div class="evg ev-g-fair">A fair guess</div></div><div class="evr"><div class="evc"><div class="evt">Strong pattern-seekers caused the tool explosion</div><div class="evn">Plausible, and the counting argument is elegant. Still a story.</div></div><div class="evb"><div class="evf ev-guess" style="width:34%"></div></div><div class="evg ev-g-guess">A guess</div></div><div class="evr"><div class="evc"><div class="evt">Autism is "the next stage of human evolution"</div><div class="evn">The book never says this. There is no evidence for it.</div></div><div class="evb"><div class="evf ev-none" style="width:8%"></div></div><div class="evg ev-g-none">No evidence</div></div></div>
+<div class="ed-callout"><p><b>Almost all public argument about this book happens in the bottom two bars.</b> The top two are where the actual science is. It is also a quick test for anything you read on the subject: work out which bar the writer is actually standing on.</p></div>
+</section>
+
+<section id="s9">
+<p class="eyebrow">09 &mdash; The caveats</p>
+<h2>Where I stopped agreeing</h2>
+<p>Four things worth holding onto, because the book is convincing enough that you might slide past them.</p>
+<div class="fmgrid"><div class="fm fm-warn"><div class="fm-h">Caveat 01</div><div class="fm-t">The "male brain" idea is shaky</div><div class="fm-c">The male and female differences come mostly from questionnaires people fill in about themselves, which is exactly where social expectation leaks into the data. You can discard this part of the theory entirely and the rest of the book still stands.</div></div><div class="fm fm-warn"><div class="fm-h">Caveat 02</div><div class="fm-t">The 70,000-year date is slipping</div><div class="fm-c">A 2026 paper in Nature Communications describes the Xigou site in central China, where people were making planned stone tools and fitting them to handles far earlier than the cognitive revolution window allows. If the date moves, the story around it has to move too.</div></div><div class="fm fm-warn"><div class="fm-h">Caveat 03</div><div class="fm-t">One number is doing too much work</div><div class="fm-c">A 26 per cent overlap in common gene variants is a real finding. It is a long way from the version that reaches a policy note. The damage happens in the summarising, not in the study.</div></div><div class="fm fm-warn"><div class="fm-h">Caveat 04</div><div class="fm-t">Only the success stories are in the book</div><div class="fm-c">Every figure held up as an example speaks well and has a high IQ. Across global studies, roughly a third of autistic people also have an intellectual disability, and many are non-speaking. A theory of invention built on the most articulate slice of a population tells you very little about the rest of it.</div></div></div>
+<div class="ed-callout" style="border-left-color:#C2563F"><p>The fourth is the one I would press hardest. <b>A theory of human invention built on the most articulate slice of a population tells you very little about the rest of it</b>, and it creates a specific risk: that autistic people become interesting to policymakers only insofar as they are useful. That is a bad reason to support anyone.</p></div>
+</section>
+
+
+
+<section id="s10">
+<p class="eyebrow">10 &mdash; The wider field</p>
+<h2>What the rest of the research actually thinks</h2>
+<p>Baron-Cohen's is one theory among several, and reading only his book gives a misleading sense of consensus. So before my own view, here is the field: where it agrees, where it splits, and which theories autistic researchers themselves have put forward.</p>
+
+<h3 style="margin-top:26px">Where there is broad agreement</h3>
+<div class="cgrid">
+  <div class="cc cc-yes"><div class="cc-h">Settled</div><div class="cc-t">It is strongly heritable</div>
+  <div class="cc-d">A meta-analysis of twin studies puts heritability at <b>64 to 91 per cent</b>, and estimates of 70 to 90 per cent are routinely cited. This has held up across decades and multiple methods.</div></div>
+  <div class="cc cc-yes"><div class="cc-h">Settled</div><div class="cc-t">Prevalence around 1 to 2 per cent</div>
+  <div class="cc-d">With a male-to-female ratio commonly reported near <b>4 to 1</b>, though how much of that ratio is biology and how much is diagnostic bias is actively disputed.</div></div>
+  <div class="cc cc-yes"><div class="cc-h">Settled</div><div class="cc-t">No single autism gene</div>
+  <div class="cc-d">Many genes are implicated. Common variants contribute substantially to heritability; rare and de novo gene-disrupting variants account for a minority. Polygenic risk scores predict only weakly at the individual level.</div></div>
+  <div class="cc cc-part"><div class="cc-h">Emerging</div><div class="cc-t">It may not be one condition</div>
+  <div class="cc-d">A 2025 study from Princeton and the Simons Foundation used data from over 5,000 children to identify <b>four biologically distinct subtypes</b>, each with different traits, developmental paths and genetic signatures. If that holds, "autism" may be a label sitting on several different things.</div></div>
+</div>
+
+<h3 style="margin-top:30px">Where the field splits</h3>
+<div class="dbgrid">
+  <div class="db">
+    <div class="db-h">Baron-Cohen's position</div>
+    <div class="db-t">Empathizing&ndash;Systemizing, and the extreme male brain</div>
+    <div class="db-d">Autistic people show below-average empathizing alongside intact or superior systemizing, which he framed in 2002 as an extreme of the typical male profile. The SQ and EQ questionnaires operationalise it, and <em>The Pattern Seekers</em> extends systemizing into a theory of human invention.</div>
+  </div>
+  <div class="db db-alt">
+    <div class="db-h">The main objections</div>
+    <div class="db-t">Stereotype in, stereotype out</div>
+    <div class="db-d">Critics argue the male-female contrast rests on self-report questionnaires, exactly where social expectation contaminates the measure. The stronger charge is practical: it helped produce a diagnostic picture modelled on a boy with technical interests, so <b>women, non-binary people and anyone who masks were systematically missed</b>. A 2021 critical-neurodiversity paper went further, drawing an uncomfortable parallel with Galton's habit of theorising from "talented men at Cambridge". Autistic critics also note that autistic people who do <em>not</em> systemise simply do not appear in the theory at all.</div>
+  </div>
+</div>
+
+<h3 style="margin-top:30px">The theories autistic researchers built instead</h3>
+<div class="dbgrid">
+  <div class="db db-own">
+    <div class="db-h">Damian Milton, 2012</div>
+    <div class="db-t">The double empathy problem</div>
+    <div class="db-d">Social difficulty is not a deficit sitting inside the autistic person. It is a <b>mutual</b> failure of understanding between people with different ways of processing the world. The evidence is that autistic people communicate well with other autistic people, and non-autistic people with each other; the breakdown happens across the two groups. That reframes the whole question of whose deficit it is.</div>
+  </div>
+  <div class="db db-own">
+    <div class="db-h">Murray, Lesser and Lawson, 2005</div>
+    <div class="db-t">Monotropism</div>
+    <div class="db-d">Attention is the unit, not empathy. Autistic minds tend toward a <b>single-minded, deep focus</b> on whatever holds interest, with real difficulty pulling away from it. It was the first theory of autism built from autistic subjective experience rather than from observed behaviour, and it accounts for the sensory aspects the older cognitive theories left out.</div>
+  </div>
+</div>
+<p style="margin-top:16px">There is also Uta Frith's <b>weak central coherence</b> account, that autistic cognition favours local detail over global context, which can sit alongside the systemizing account rather than against it. And the broader <b>neurodiversity</b> position holds that disability emerges from the interaction between a person and their environment, which makes interventions aimed at normalising autistic behaviour both ineffective and, in several studies, harmful to mental health.</p>
+
+<div class="ed-callout" style="border-left-color:#E08A3C"><p><b>And one finding that should make everyone cautious about prevalence numbers.</b> A forensic analysis of reported autism across 206 countries from 1990 to 2019 found that inflows of official development aid predicted rising reported cases, with the effect strongest in low-income countries with weaker health systems and government effectiveness. The authors are careful: genuine increases and diagnostic inflation leave the same statistical footprint, so this cannot settle which is happening. <b>But it means cross-country prevalence comparisons carry a funding signal as well as a health signal</b>, which is worth remembering before treating any national figure as a measure of the underlying trait.</p></div>
+
+<div class="ed-callout"><p><b>What this changes about the book.</b> Baron-Cohen's theory is genuinely productive and it is genuinely contested, and both of those are true at once. The invention argument does not depend on the male brain claim, which is why I said earlier you can discard that part and keep the rest. But the double empathy problem does something the systemizing account cannot: <b>it explains why the same person can be socially fluent in one room and lost in another.</b> Any serious reading of this subject has to hold both.</p></div>
+</section>
+
+
+<section id="s11">
+<p class="eyebrow">11 &mdash; The spectrum</p>
+<h2>What "spectrum" actually means, and who the book leaves out</h2>
+<p>The word spectrum gets used as though it means a line from mild to severe. It does not. The diagnostic manual assesses two things separately, and a person can sit at opposite ends of them.</p>
+
+<div class="lvgrid">
+  <div class="lvhead"><span>Level</span><span>What it describes</span><span>Assessed separately for</span></div>
+  <div class="lv lv-1"><span class="lv-n">Level 1</span><div><b>Requiring support</b><span>Difficulties are noticeable without support in place, and get in the way of social and organisational life.</span></div><div class="lv-x"><b>Social communication</b><span>and, separately</span><b>Restricted, repetitive behaviour</b></div></div>
+  <div class="lv lv-2"><span class="lv-n">Level 2</span><div><b>Requiring substantial support</b><span>Marked difficulties that are obvious even with support in place.</span></div><div class="lv-x">A person can be assessed at <b>Level 1</b> for one and <b>Level 3</b> for the other.</div></div>
+  <div class="lv lv-3"><span class="lv-n">Level 3</span><div><b>Requiring very substantial support</b><span>Severe difficulties, very limited initiation of social interaction, great distress at change.</span></div><div class="lv-x">Which is why a single label rarely describes anybody accurately.</div></div>
+</div>
+<p style="margin-top:14px">Two consequences follow. A person described as "high functioning" may need very substantial support in one domain and almost none in another. And the level can move: it describes support needs now, not a fixed capacity.</p>
+
+<h3 style="margin-top:30px">On speech, and a correction worth making</h3>
+<p>There is a widespread impression that most autistic people do not speak. <b>The research does not support that.</b></p>
+<div class="statline"><span class="sl-v">25&ndash;30%</span><span class="sl-l">of autistic children do not develop functional speech and remain <b>minimally verbal</b> beyond about age five. It is a substantial minority, not a majority. Around 30 per cent of autistic adults are minimally verbal.</span></div>
+<p>The terms matter. <b>Minimally verbal</b> usually means a small number of spoken words or fixed phrases. <b>Non-speaking</b> or non-verbal means little or no speech. Neither describes intelligence, and neither is necessarily permanent: one longitudinal study found roughly 30 per cent of children who were non-speaking at age two had developed phrase or fluent speech by eight.</p>
+
+<h3 style="margin-top:26px">Why speech does not develop, when it does not</h3>
+<div class="cgrid">
+  <div class="cc cc-part"><div class="cc-h">Motor</div><div class="cc-t">The mouth, not the mind</div>
+  <div class="cc-d">Childhood apraxia of speech and related motor conditions affect the physical production of speech. The intention to communicate is intact; the mechanism for producing sound is not.</div></div>
+  <div class="cc cc-part"><div class="cc-h">Language processing</div><div class="cc-t">Different route to language</div>
+  <div class="cc-d">Differences in how spoken language is processed, including echolalia, where speech is repeated rather than generated. Brain imaging work finds music paired with words increases attention to speech, which is why music-assisted approaches are being trialled.</div></div>
+  <div class="cc cc-part"><div class="cc-h">Co-occurring</div><div class="cc-t">Associated genetic conditions</div>
+  <div class="cc-d">In one clinical series, identifiable genetic syndromes were found in <b>22.6 per cent</b> of minimally verbal autistic individuals, roughly twice the rate in the general autistic population.</div></div>
+  <div class="cc cc-no"><div class="cc-h">Not the reason</div><div class="cc-t">It is not a measure of intelligence</div>
+  <div class="cc-d">Nonverbal IQ is lower on average in this group, but not uniformly: several studies find minimally verbal children with typical or borderline nonverbal IQ, which points to a genuine split between verbal and nonverbal functioning. <b>Non-speaking is not non-thinking.</b></div></div>
+</div>
+
+<div class="ed-callout" style="border-left-color:#C2563F"><p><b>And this is where the book's blind spot has consequences.</b> Almost all cognitive research on autism, including the pattern-seeking work, has been done with people who speak fluently and score well on verbal tests. Minimally verbal autistic people are roughly a quarter to a third of the population and a very small share of the literature.</p>
+<p style="margin-top:12px">So when a theory of human invention is built on systemizing scores from questionnaires, remember what a questionnaire requires. <b>The people least represented in the evidence are the people whose support needs are greatest</b>, and no evolutionary argument, mine included, should be allowed to obscure that.</p></div>
+</section>
+
+<section id="s12">
+<p class="eyebrow">12 &mdash; My own view</p>
+<h2>Why I think autism is an evolutionary story, and what that does not mean</h2>
+<p>Everything up to here has been the book and the evidence. This section is my own reading, and I want to separate it clearly from both.</p>
+
+<p>Start with the deep timeline, because it changes the scale of the question. Anatomically modern humans have been around for roughly <b>300,000 years</b>. For most of that, stone tools barely changed. Then, somewhere between 100,000 and 70,000 years ago, tools, ornaments, art and music appear across the record in a rush. Farming is about 12,000 years old. Writing is about 5,000. <b>Almost everything we call civilisation sits in the last four per cent of our species' existence</b>, and it all runs on the same cognitive machinery that was assembled long before any of it.</p>
+
+<p>Against that scale, the framing of autism as a modern condition looks odd. The genes involved are common variants, present across populations, inherited through hundreds of small contributions. Those were not manufactured by modern life. They are old.</p>
+
+<div class="viewgrid">
+  <div class="vw vw-yes">
+    <div class="vw-h">What I do think</div>
+    <ul>
+      <li><b>Autism sits inside human evolutionary history, not outside it.</b> A highly heritable trait carried on common variants across every population is part of the species' standing variation, not a deviation from it.</li>
+      <li><b>Its persistence is a genuine evolutionary puzzle.</b> A trait this heritable, with these effects on partnership and independent living, should have thinned. It has not. That gap demands an explanation, and "modern diagnosis" does not cover it.</li>
+      <li><b>The most plausible answers are ordinary population genetics.</b> Hundreds of variants with effects too small for selection to see; a trade-off where the useful middle of the curve carries the tail; and assortative mating thickening the tail locally. None is exotic and all are testable.</li>
+      <li><b>Pattern-seeking looks like something that was selected for.</b> The counting argument about tool sequences is the strongest part of the book. A mind that holds a rule and varies one element at a time is a plausible target of selection, and autism shares some of its genetic basis.</li>
+    </ul>
+  </div>
+  <div class="vw vw-no">
+    <div class="vw-h">What I do not think, and will not argue</div>
+    <ul>
+      <li><b>Autism is not the "next stage" of anything.</b> Evolution has no direction, no ladder and no next. That phrasing imports a Victorian idea of progress that biology abandoned a century ago.</li>
+      <li><b>Autistic people do not exist in order to invent things.</b> A trait having consequences is not the same as a trait having a purpose. The moment you argue people exist for a function, you have made their standing conditional on their output.</li>
+      <li><b>Sharing genes with a useful trait is not a justification for anything.</b> Support is owed on the basis of need. If the evolutionary argument turned out to be wrong tomorrow, not one person's entitlement should change.</li>
+      <li><b>The invention story does not describe most autistic people.</b> Roughly a third also have an intellectual disability, and many are non-speaking. Any evolutionary account built only on the articulate, high-IQ cases is describing a slice and calling it the whole.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="ed-callout"><p><b>The distinction I care about is between two sentences that sound similar and are not.</b></p>
+<p style="margin-top:10px">&ldquo;Autism is the next step in human evolution&rdquo; is unfalsifiable, teleological and used mostly to flatter. <b>&ldquo;Autism is an outcome of human evolution, and its survival is a question worth answering&rdquo;</b> is a research programme with testable predictions. The first is a slogan. The second is why I found this book worth eleven thousand words.</p></div>
+
+<p>And there is a practical reason the distinction matters beyond the science. If autism is framed as an upgrade, support looks optional. If it is framed as a disease, difference looks like damage. <b>The evolutionary reading, done carefully, supports neither.</b> It says this variation is old, it is part of us, it carries real costs to real people, and the costs are ours to address regardless of what the variation ever contributed to anyone's invention.</p>
+</section>
+
+<section id="s13">
+<p class="eyebrow">13 &mdash; The useful part</p>
+<h2>Four words, all true at once</h2>
+<p>The most useful thing in this book for policy is not the evolution story. It is a four-way split that ends the argument about whether autism is a difference or a disease. The answer is that it is all four, about different things, in the same person.</p>
+<div class="fwgrid"><div class="fw fw-not-med"><div class="fw-t">Difference</div><div class="fw-d">A different mix of strengths. Neither better nor worse.</div><div class="fw-a">Asks for<span>Respect</span></div></div><div class="fw fw-not-med"><div class="fw-t">Disability</div><div class="fw-d">Below average at a skill, and needs help in daily life.</div><div class="fw-a">Asks for<span>Support</span></div></div><div class="fw fw-med"><div class="fw-t">Disorder</div><div class="fw-d">Something that hurts, and we do not yet know why.</div><div class="fw-a">Asks for<span>Research</span></div></div><div class="fw fw-med"><div class="fw-t">Disease</div><div class="fw-d">Something that hurts, and we know why. Epilepsy, for instance.</div><div class="fw-a">Asks for<span>Treatment</span></div></div></div>
+<div class="ed-callout"><p><b>Difference or disease is a false choice.</b> The useful part is the bottom row: each column asks for a different response, so a policy that picks one word and applies it to everything will be wrong three times out of four. <b>You can throw out the male brain theory completely and still keep this frame</b>, which is why it is the part of the book most likely to survive the arguments about it.</p></div>
+</section>
+
+<section id="s14">
+<p class="eyebrow">14 &mdash; The gap</p>
+<h2>Back to Jonah</h2>
+<p>Which brings us back to a man who can spot a shoal of fish through the surface of the water and cannot get a job.</p>
+<div class="gapgrid"><div class="gp gp-can"><div class="gp-v">62%</div><div class="gp-l">of autistic males are Type S or Extreme Type S</div></div><div class="gp gp-can"><div class="gp-v">50%</div><div class="gp-l">of autistic females, roughly twice the typical rate</div></div><div class="gp gp-get"><div class="gp-v">16%</div><div class="gp-l">in full-time employment</div></div><div class="gp gp-get"><div class="gp-v">66%</div><div class="gp-l">had experienced suicidal feelings, in a clinic sample of 400</div></div></div>
+<p class="gapnote">All four on the same 0 to 100 per cent scale. The employment figure comes from a survey of autistic adults. The mental health figure comes from a clinic sample of 400, so it does not represent all autistic people; clinic samples skew toward those already seeking help.</p>
+<p>The fix already exists and it is not glamorous. <b>Specialisterne in Denmark replaced the job interview with a task:</b> build and program a Lego robot, and let the pattern-seeking speak for itself. The interview is a social performance test. For a large number of capable people it screens out exactly the wrong thing.</p>
+</section>
+
+<section id="s15">
+<p class="eyebrow">15 &mdash; India</p>
+<h2>Where India stops counting</h2>
+<p>India has the population, the tech hubs and the laws. What it does not have is the measurement in between. This is the same problem I keep finding across Indian health programmes: big ambition at the front, entitlements written down, and nothing recorded in the middle.</p>
+<div class="ppgrid"><div class="pp pp-have"><div class="pp-s">Prevalence</div><div class="pp-w">1 in 89</div><div class="pp-n">We have a national number</div></div><div class="pp pp-part"><div class="pp-s">Screening</div><div class="pp-w">RBSK, DEIC, Anganwadi, ASHA</div><div class="pp-n">The programme exists, the numbers do not</div></div><div class="pp pp-part"><div class="pp-s">Diagnosis</div><div class="pp-w">INDT-ASD tool, RCI-registered staff</div><div class="pp-n">Capacity is countable, throughput is not</div></div><div class="pp pp-part"><div class="pp-s">Entitlement</div><div class="pp-w">UDID, RPwD 2016, Niramaya cover</div><div class="pp-n">Entitlements are published, uptake is not</div></div><div class="pp pp-none"><div class="pp-s">Employment</div><div class="pp-w">No national figure exists</div><div class="pp-n">The measuring stops here</div></div></div>
+<div class="ed-callout" style="border-left-color:#E08A3C"><p><b>And India's own numbers cut against the tidy version of this story.</b> The INCLEN survey found autism ranging from <b>0.4 per cent in urban North Goa to 1.8 per cent in rural Palwal</b>, a four-and-a-half-fold gap running in the <em>opposite</em> direction to the Eindhoven finding. Rural, not urban. No technology hub involved.</p>
+<p style="margin-top:12px">The most likely explanation is not biology but method: different survey teams, different awareness, different thresholds for what gets recorded. Which is the same lesson as Eindhoven, arriving from the other side. <b>When the measurement varies more than the trait plausibly does, you are measuring the measurement.</b> Anyone planning to run the Eindhoven comparison across Bengaluru or Hyderabad should settle that first, or the result will be unreadable.</p></div>
+
+<div class="ed-callout" style="border-left-color:#C2563F"><p><b>The measuring stops exactly where accountability would start.</b> India can tell you how common autism is. It can tell you what an autistic person is entitled to. It cannot tell you how many autistic children who were screened went on to be diagnosed, or how many diagnosed adults are working. Around 1 in 8 Indian children carry at least one neurodevelopmental condition, and the pathway after screening is unrecorded.</p></div>
+<h3 style="margin-top:26px">Four moves. Two of them are cheap.</h3>
+<div class="mvgrid"><div class="mv mv-now"><div class="mv-h">Low effort, high leverage</div><div class="mv-t">Instrument the pathway</div><div class="mv-d">Publish RBSK screening yield, DEIC referral completion and UDID issuance as one linked annual series. A reporting rule, not new money.</div></div><div class="mv mv-now"><div class="mv-h">Low effort, high leverage</div><div class="mv-t">Fix the front door of hiring</div><div class="mv-d">Swap the interview for a work sample across GCC testing, data quality, coding and security roles. Specialisterne in Denmark did exactly this and it works.</div></div><div class="mv mv-study"><div class="mv-h">Higher effort, worth commissioning</div><div class="mv-t">Watch the hubs</div><div class="mv-d">Run the Eindhoven comparison across Bengaluru, Hyderabad, Pune and Chennai. If assortative mating is real, India's tech cities are where it shows.</div></div><div class="mv mv-fund"><div class="mv-h">Higher effort, fund it anyway</div><div class="mv-t">Separate support from productivity</div><div class="mv-d">Fund Niramaya, Samarth and Gharaunda on need alone. The employment argument must never become the reason someone deserves support.</div></div></div>
+<div class="ed-callout"><p><b>The two moves with the most impact are also the two cheapest</b>, because both change a process rather than adding spending. Instrumenting the pathway costs a reporting rule. Replacing the interview with a work sample costs a hiring manager's afternoon.</p></div>
+</section>
+
+
+<section id="s16">
+<p class="eyebrow">16 &mdash; Takeaways</p>
+<h2>Key takeaways</h2>
+<div class="tkgrid">
+  <div class="tk"><span class="tk-n">01</span><div><b>The strong claim is true and narrower than the headline.</b> Autistic people do score higher on pattern-seeking, tested across 671,606 people, and share 26 per cent of common gene variants with it. But that overlap sits on the repetitive traits, not the social ones, so "autistic people are natural engineers" is doing something the evidence does not support.</div></div>
+  <div class="tk"><span class="tk-n">02</span><div><b>The book never claims autism is the next stage of evolution.</b> That line comes from its readers. There is no evidence for it, and repeating it makes the real finding harder to defend.</div></div>
+  <div class="tk"><span class="tk-n">03</span><div><b>Autism is mostly inherited through hundreds of tiny genetic effects.</b> Roughly 95 per cent from common variants, under 5 per cent from rare mutations. Vaccines and parenting are ruled out. What caused it in any individual child remains untraceable.</div></div>
+  <div class="tk"><span class="tk-n">04</span><div><b>The evolutionary puzzle is real and unresolved.</b> A trait this heritable, with these outcomes, should thin out. It has not. Assortative mating is the explanation with actual evidence behind it, and Eindhoven is the test, though it measures diagnoses rather than autism.</div></div>
+  <div class="tk"><span class="tk-n">05</span><div><b>Difference, disability, disorder and disease are all true at once, about different things.</b> Each asks for something different: respect, support, research, treatment. A policy that picks one word and applies it to everything is wrong three times out of four. This survives even if the male brain theory is discarded entirely.</div></div>
+  <div class="tk"><span class="tk-n">06</span><div><b>The employment gap is a sorting failure, not a welfare statistic.</b> 62 per cent of autistic males are strong systemizers; 16 per cent are in full-time work. Specialisterne replaced the interview with a work sample, which tests the skill rather than the social performance.</div></div>
+  <div class="tk"><span class="tk-n">07</span><div><b>India measures the beginning and the entitlement, and nothing in between.</b> Prevalence is known at roughly 1 in 89. There is no national figure for how many diagnosed adults are employed. The measuring stops exactly where accountability would start.</div></div>
+  <div class="tk"><span class="tk-n">08</span><div><b>This book is one theory in a contested field.</b> Heritability at 64 to 91 per cent is settled. The extreme male brain framing is not, and it helped produce a diagnostic picture that missed women and anyone who masks. Autistic researchers built alternatives: the double empathy problem locates social difficulty <em>between</em> people rather than inside one of them, and monotropism starts from attention rather than empathy.</div></div>
+  <div class="tk"><span class="tk-n">09</span><div><b>Roughly 25 to 30 per cent of autistic people are minimally verbal, not a majority</b>, and speech is not a measure of intelligence. Reasons include motor speech conditions, language processing differences and co-occurring genetic syndromes. These are the people least represented in the research and most in need of support.</div></div>
+  <div class="tk"><span class="tk-n">10</span><div><b>"An outcome of evolution" and "the next stage of evolution" are different sentences.</b> The first is a testable research question. The second is a slogan that makes support look optional. I hold the first and reject the second.</div></div>
+  <div class="tk tk-last"><span class="tk-n">11</span><div><b>The two highest-leverage fixes are the two cheapest.</b> Publish the screening-to-diagnosis-to-entitlement pathway as one linked series, and replace the interview with a work sample. Both change a process rather than adding spending. <b>And support must be funded on need alone, never on productivity.</b></div></div>
+</div>
+</section>
+
+<section id="s17">
+<p class="eyebrow">17 &mdash; Sources</p>
+<h2>Sources and evidence status</h2>
+<p>What the book claims, what the underlying studies show, and what is my reading. Nothing above is presented as settled science without one of these tags.</p>
+<div class="srcwrap">
+<div class="srcrow"><span class="srctag t-off">Primary source</span><div><b>Simon Baron-Cohen, <em>The Pattern Seekers: A New Theory of Human Invention</em></b><span>Allen Lane, 2020, 241 pages. The two-boys opening, the if-and-then engine, the Hohle Fels visit, the brain-types framing, the Eindhoven comparison and the four-way difference-to-disease split all come from the book. Figures here are rebuilt from data reported in the text, including the UK Brain Types Study of over 600,000 people.</span></div></div>
+<div class="srcrow"><span class="srctag t-off">Published</span><div><b>Warrier et al., <em>Communications Biology</em>, 2019</b><span>The genetic dissociation between social and non-social autism domains, which is why the 26 per cent overlap sits on the repetitive side rather than the social side.</span></div></div>
+<div class="srcrow"><span class="srctag t-off">Published</span><div><b>Yue et al., <em>Nature Communications</em> 17, 615, 27 January 2026</b><span>Hafted stone tools at the Xigou site in central China, which pushes the planned-toolmaking date earlier than the cognitive revolution window the book relies on.</span></div></div>
+<div class="srcrow"><span class="srctag t-off">Official</span><div><b>WHO, and US CDC ADDM surveillance</b><span>Global prevalence of about 1 in 127 in 2021, and about 1 in 31 among eight-year-olds in the United States.</span></div></div>
+<div class="srcrow"><span class="srctag t-off">Published</span><div><b>INCLEN survey, India</b><span>1 in 125 at ages 2 to 6, 1 in 80 at ages 6 to 9, roughly 1 in 89 overall, ranging from 0.4 per cent in urban North Goa to 1.8 per cent in rural Palwal.</span></div></div>
+<div class="srcrow"><span class="srctag t-off">Published</span><div><b>Evidence on autism causation, added by the author</b><span>Twin and sibling heritability studies; the common-variant versus rare-mutation split reported in the book; large vaccine-safety cohorts including a Danish study of over 650,000 children; the retraction of the 1998 Wakefield paper; and cohort associations for parental age and preterm birth. This section is context I added because the book treats causation lightly, and because the subject attracts misinformation.</span></div></div>
+  <div class="srcrow"><span class="srctag t-off">Published</span><div><b>The wider research field, added by the author</b><span>Tick et al., <em>Journal of Child Psychology and Psychiatry</em>, meta-analysis of twin studies, for heritability of 64 to 91 per cent. Whole-genome and GWAS work on autism's genetic architecture including polygenic score performance. Princeton and Simons Foundation, 2025, on four biologically distinct subtypes from over 5,000 children. Baron-Cohen, 2002 and 2010, for the extreme male brain and E-S theory. Damian Milton, 2012, for the double empathy problem. Murray, Lesser and Lawson, 2005, for monotropism. Frith on weak central coherence. Botha, Chapman, Giwa Onaiwu, Kapp, Stannard Ashley and Walker, <em>Autism</em>, 2024, on the collective origins of the neurodiversity concept. A 2025 forensic analysis of reported prevalence across 206 countries, 1990 to 2019, on the association between development aid and reported case growth.</span></div></div>
+  <div class="srcrow"><span class="srctag t-off">Published</span><div><b>Spectrum levels and minimally verbal autism, added by the author</b><span>DSM-5 severity levels, specified separately for social communication and for restricted and repetitive behaviour. Estimates of 25 to 30 per cent minimally verbal beyond age five (Tager-Flusberg and Kasari; Frontiers in Psychiatry, 2025, n=189 minimally verbal against n=184 verbal); around 30 per cent of autistic adults minimally verbal; a longitudinal study finding roughly 30 per cent of children non-speaking at two developed phrase or fluent speech by eight; genetic syndromes in 22.6 per cent of a minimally verbal series against roughly 10 per cent in the general autistic population; and evidence of typical or borderline nonverbal IQ in some minimally verbal children.</span></div></div>
+  <div class="srcrow"><span class="srctag t-anl">Analysis</span><div><b>Author's contribution</b><span>The evidence-strength ladder, the four caveats, the evolutionary reading in section 10 and the distinction it draws, the India measurement pipeline, the four proposed moves, and all interpretive commentary. The judgement that the popular version of this book is weaker than the actual finding is mine.</span></div></div>
+</div>
+<p class="srcnote"><b>Before citing externally:</b> prevalence figures across these sources use different methods and age bands and are not directly comparable. The Eindhoven figures are recorded diagnoses, not measured prevalence. The 66 per cent figure comes from a clinic sample and does not describe the autistic population as a whole.</p>
+<div class="support"><p>If anything here is close to home for you or someone you support, it is worth speaking to a doctor or a mental health professional. India has free helplines available around the clock, including Tele-MANAS on <b>14416</b>.</p></div>
+</section>
+  </div>
+  <div class="share-bar"><span class="share-label">Share this perspective:</span><a class="share-btn share-wa" id="shWa" target="_blank" rel="noopener">WhatsApp</a><a class="share-btn share-li" id="shLi" target="_blank" rel="noopener">LinkedIn</a><a class="share-btn share-x" id="shX" target="_blank" rel="noopener">X</a><button class="share-btn" id="shCopy" type="button">Copy link</button></div>
+  <section class="related">
+    <div class="related-head">
+      <p class="related-label">More on autism and neurodevelopment</p>
+      <div class="related-nav">
+        <a class="related-seeall" href="/topics/policy/">See all &rarr;</a>
+        <button class="rel-arrow" data-dir="-1" aria-label="Scroll left" type="button">&larr;</button>
+        <button class="rel-arrow" data-dir="1" aria-label="Scroll right" type="button">&rarr;</button>
+      </div>
+    </div>
+    <div class="related-grid">
+      <a class="related-card cat-strategy" href="/edition-67-autism-measurement.html"><span class="rc-ed">ED. 67</span><span class="rc-title">The Number India Doesn't Have</span><span class="rc-go">Read this perspective &rarr;</span></a>
+      <a class="related-card cat-policy" href="/edition-51-autism.html"><span class="rc-ed">ED. 51</span><span class="rc-title">Autism is a system design failure India can no lon…</span><span class="rc-go">Read this perspective &rarr;</span></a>
+      <a class="related-card cat-policy" href="/edition-23-autism-2025.html"><span class="rc-ed">ED. 23</span><span class="rc-title">Autism 2025: Rising prevalence, real impact, enter…</span><span class="rc-go">Read this perspective &rarr;</span></a>
+      <a class="related-card cat-digital-health" href="/edition-3-iot-autism.html"><span class="rc-ed">ED. 3</span><span class="rc-title">Harness IoT to revolutionize autism care</span><span class="rc-go">Read this perspective &rarr;</span></a>
+      <a class="related-card cat-governance" href="/edition-69-gig-healthcare.html"><span class="rc-ed">ED. 69</span><span class="rc-title">Can Gig Work Fix India's Healthcare Workforce?</span><span class="rc-go">Read this perspective &rarr;</span></a>
+      <a class="related-card cat-strategy" href="/edition-68-one-fix-four-indias.html"><span class="rc-ed">ED. 68</span><span class="rc-title">One Fix for Four Indias</span><span class="rc-go">Read this perspective &rarr;</span></a>
+      <a class="related-card cat-strategy" href="/edition-66-hollow-pyramid.html"><span class="rc-ed">ED. 66</span><span class="rc-title">The Hollow Pyramid</span><span class="rc-go">Read this perspective &rarr;</span></a>
+      <a class="related-card cat-strategy" href="/edition-65-fertility-nfhs6.html"><span class="rc-ed">ED. 65</span><span class="rc-title">India Already Stopped Growing</span><span class="rc-go">Read this perspective &rarr;</span></a>
+      <a class="related-card cat-policy" href="/edition-64-csection-nfhs6.html"><span class="rc-ed">ED. 64</span><span class="rc-title">India's C-Section Surge Is a Payment-Design Problem</span><span class="rc-go">Read this perspective &rarr;</span></a>
+      <a class="related-card cat-strategy" href="/edition-63-oncology-margin-burden.html"><span class="rc-ed">ED. 63</span><span class="rc-title">Hospitals Don't Follow Patients. They Follow the R…</span><span class="rc-go">Read this perspective &rarr;</span></a>
+    </div>
+  </section>
+  <aside class="author-box"><img src="/logo.png" alt="Healthcare Pulse" style="width:52px;height:52px;border-radius:10px;object-fit:contain;flex:none;"><div><p class="author-name">Mayank Madhur <span>He/Him</span></p><p class="author-bio">PMP&reg;, SCR&reg; &middot; MBA &amp; PGPM (Healthcare) &middot; IICA Independent Director proficiency test qualified &middot; Practice Leader, Healthcare &amp; Life Sciences at HFS Research.</p><a href="https://www.linkedin.com/in/mayank-madhur/" target="_blank" rel="noopener">Connect on LinkedIn &rarr;</a></div></aside>
+  <a class="back-link" href="/perspectives/">&larr; All perspectives</a>
+</article></main>
+<section class="subscribe" id="subscribe"><div class="subscribe-inner"><p class="eyebrow">EVERY FRIDAY &middot; FREE</p><h2>Enjoyed this issue of Healthcare Pulse?</h2><p class="subscribe-sub">Sharp, contrarian reads on India's digital health story, every Friday.</p><div class="subscribe-actions"><a class="btn-li" href="https://www.linkedin.com/newsletters/7311231782241083393/" target="_blank" rel="noopener">Subscribe on LinkedIn</a><a class="btn-ghost" href="https://www.linkedin.com/in/mayank-madhur/" target="_blank" rel="noopener">Connect with Mayank &rarr;</a></div></div></section>
+<footer class="site-footer"><p>&copy; 2026 Healthcare Pulse by Mayank Madhur &middot; <a href="mailto:mayank@mayankmadhur.in">mayank@mayankmadhur.in</a> &middot; Independent analysis and opinion. Full sources and evidence status are set out at the end of this edition.</p></footer>
+<button id="toTop" class="to-top" aria-label="Back to top"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg></button>
+<script>(function(){
+  var bar=document.getElementById('prog');
+  if(bar)addEventListener('scroll',function(){var h=document.documentElement;bar.style.width=((h.scrollTop/(h.scrollHeight-h.clientHeight)*100)||0)+'%';},{passive:true});
+  var tt=document.getElementById('themeToggle');
+  if(tt)tt.addEventListener('click',function(){var r=document.documentElement;if(r.getAttribute('data-theme')==='dark'){r.removeAttribute('data-theme');try{localStorage.setItem('hp-theme','light');}catch(e){}}else{r.setAttribute('data-theme','dark');try{localStorage.setItem('hp-theme','dark');}catch(e){}}});
+  var t=document.getElementById('navToggle'),n=document.getElementById('siteNav');
+  if(t&&n)t.addEventListener('click',function(){var o=n.classList.toggle('open');t.setAttribute('aria-expanded',o?'true':'false');});
+  var toTop=document.getElementById('toTop');
+  if(toTop){addEventListener('scroll',function(){if(window.scrollY>600)toTop.classList.add('show');else toTop.classList.remove('show');},{passive:true});toTop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});}
+  (function(){var hd=document.querySelector('.site-header');
+    function setH(){if(hd)document.documentElement.style.setProperty('--hdr',hd.offsetHeight+'px');}
+    setH();addEventListener('resize',setH);addEventListener('load',setH);})();
+  var links=[].slice.call(document.querySelectorAll('.jump a'));
+  var secs=links.map(function(a){return document.getElementById(a.getAttribute('data-s'));});
+  function spy(){var hd=document.querySelector('.site-header');var off=(hd?hd.offsetHeight:68)+90;
+    var y=window.scrollY+off, idx=0;
+    secs.forEach(function(s,i){if(s&&s.offsetTop<=y)idx=i;});
+    links.forEach(function(a,i){a.classList.toggle('on',i===idx);});}
+  addEventListener('scroll',spy,{passive:true}); spy();
+  document.querySelectorAll('.related').forEach(function(sec){var track=sec.querySelector('.related-grid');if(!track)return;
+    sec.querySelectorAll('.rel-arrow').forEach(function(btn){btn.addEventListener('click',function(){
+      var dir=parseInt(btn.getAttribute('data-dir'),10)||1;var card=track.querySelector('.related-card');
+      var step=card?(card.offsetWidth+14)*2:300;track.scrollBy({left:dir*step,behavior:'smooth'});});});});
+  var url=encodeURIComponent(location.href),txt=encodeURIComponent("Two boys who wouldn't talk. Reading notes on The Pattern Seekers. Healthcare Pulse Edition 72");
+  var wa=document.getElementById('shWa');if(wa)wa.href="https://wa.me/?text="+txt+"%20"+url;
+  var li=document.getElementById('shLi');if(li)li.href="https://www.linkedin.com/sharing/share-offsite/?url="+url;
+  var x=document.getElementById('shX');if(x)x.href="https://twitter.com/intent/tweet?text="+txt+"&url="+url;
+  var cp=document.getElementById('shCopy');if(cp)cp.addEventListener('click',function(){navigator.clipboard.writeText(location.href).then(function(){cp.textContent='Copied!';});});
+})();</script>
+<script data-goatcounter="https://mayankmadhur.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body></html>
