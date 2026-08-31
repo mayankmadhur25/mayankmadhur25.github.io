@@ -146,6 +146,40 @@ h3{font-family:var(--sans);font-weight:800;font-size:19px;line-height:1.3;color:
 @media (prefers-reduced-motion:reduce){.up{animation:none}}
 .direction .note b{color:var(--navy)}
 .direction .note{font-size:13px;line-height:1.6}
+
+/* exam history */
+.xlead{font-size:16px;line-height:1.65;color:var(--muted);max-width:70ch;margin:0 0 22px}
+.xrail{display:flex;flex-direction:column;gap:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--card)}
+html[data-theme="dark"] .xrail{background:#16252C;border-color:#25373F}
+.xstage{display:grid;grid-template-columns:210px 1fr;gap:20px;padding:18px 22px;border-bottom:1px solid var(--line);align-items:start}
+html[data-theme="dark"] .xstage{border-bottom-color:#22333B}
+.xstage:last-child{border-bottom:0}
+.xstage:last-child .xs-t{color:var(--teal)}
+.xs-age{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.xs-t{display:block;font-size:16px;font-weight:800;color:var(--navy);letter-spacing:-.015em;line-height:1.25;margin:5px 0 6px}
+.xs-score{display:inline-block;font-family:var(--mono);font-size:10.5px;color:var(--muted);
+  background:var(--soft,rgba(15,163,163,.07));padding:4px 10px;border-radius:999px}
+.xs-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:9px}
+.xc{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.02em;
+  padding:5px 11px;border-radius:6px;white-space:nowrap}
+.xc-yes{background:rgba(46,125,91,.15);color:#2E7D5B}
+.xc-mid{background:rgba(46,124,184,.14);color:#2E7CB8}
+.xc-no{background:rgba(194,86,63,.14);color:#C2563F}
+html[data-theme="dark"] .xc-yes{background:rgba(46,125,91,.24);color:#7FD6B4}
+html[data-theme="dark"] .xc-mid{background:rgba(46,124,184,.24);color:#8FC4EC}
+html[data-theme="dark"] .xc-no{background:rgba(194,86,63,.24);color:#E89A88}
+.xs-note{font-size:14px;line-height:1.6;color:var(--muted);margin:0}
+.xlegend{display:flex;flex-wrap:wrap;gap:10px 20px;margin:14px 0 0}
+.xlegend span{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10.5px;color:var(--muted)}
+.xlegend i.xc{width:26px;height:12px;padding:0;border-radius:4px}
+.xclose{font-size:16px;line-height:1.65;color:var(--body-c);margin:20px 0 0;max-width:72ch;
+  background:rgba(15,163,163,.07);border-left:3px solid var(--teal);border-radius:0 10px 10px 0;padding:15px 18px}
+html[data-theme="dark"] .xclose{background:rgba(15,163,163,.13)}
+.xclose b{color:var(--navy)}
+@media(max-width:700px){.xstage{grid-template-columns:1fr;gap:10px;padding:16px 16px}}
+
+.xc em{display:block;font-style:normal;font-size:9.5px;font-weight:400;opacity:.85;margin-top:2px;letter-spacing:.03em}
+.xclose2{font-size:15.5px;line-height:1.65;color:var(--muted);margin:14px 0 0;max-width:72ch}
 </style>
 </head>
 <body>
@@ -261,7 +295,6 @@ h3{font-family:var(--sans);font-weight:800;font-size:19px;line-height:1.3;color:
         <div class="creds">
           <span class="cred">PMP® <u>· PMI</u></span>
           <span class="cred">UGC NET, Management <u>&middot; 97.7 percentile, eligible for Assistant Professor</u></span>
-            <span class="cred">CSIR NET, Mathematics <u>&middot; 89.2 percentile</u></span>
           <span class="cred">IIM · strategic management</span>
           <span class="cred">IIT Bombay <u>· design &amp; innovation</u></span>
           <span class="cred">IIT Kanpur / Kharagpur <u>· blockchain, Industry 4.0</u></span>
@@ -299,6 +332,17 @@ h3{font-family:var(--sans);font-weight:800;font-size:19px;line-height:1.3;color:
       </div>
     </div>
   </section>
+
+<section>
+<h2>Exams, including the ones I failed</h2>
+<p class="xlead">Twenty years of sitting tests, grouped by when. The failures stay on the list, because a list with only passes on it tells you nothing about anybody.</p>
+<div class="xrail"><div class="xstage"><div class="xs-l"><span class="xs-age">17 to 18</span><span class="xs-t">School and the engineering entrances</span><span class="xs-score">4 of 7 cleared</span></div><div class="xs-r"><div class="xs-chips"><span class="xc xc-no">IIT-JEE</span><span class="xc xc-no">AIEEE</span><span class="xc xc-no">WBJEE</span><span class="xc xc-yes">Orissa JEE</span><span class="xc xc-yes">COMEDK</span><span class="xc xc-yes">AMRITA</span><span class="xc xc-yes">UPSC CDS</span></div><p class="xs-note">Seven sittings in roughly one year. The three that carried the most weight went badly.</p></div></div><div class="xstage"><div class="xs-l"><span class="xs-age">21 to 23</span><span class="xs-t">Engineering years and the first job</span><span class="xs-score">1 of 2 cleared</span></div><div class="xs-r"><div class="xs-chips"><span class="xc xc-no">GATE</span><span class="xc xc-yes">AFCAT</span></div><p class="xs-note">Missed the postgraduate research route. Cleared the air force selection.</p></div></div><div class="xstage"><div class="xs-l"><span class="xs-age">Early career</span><span class="xs-t">Banking and management screens</span><span class="xs-score">4 of 6 cleared</span></div><div class="xs-r"><div class="xs-chips"><span class="xc xc-mid">CAT</span><span class="xc xc-mid">CMAT</span><span class="xc xc-yes">IBPS PO</span><span class="xc xc-yes">IBPS RRB</span><span class="xc xc-yes">IBPS Clerk</span><span class="xc xc-yes">LIC AAO</span></div><p class="xs-note">Four banking and insurance selections cleared. Two management entrance scores decent rather than exceptional.</p></div></div><div class="xstage"><div class="xs-l"><span class="xs-age">Mid career</span><span class="xs-t">Professional accreditation</span><span class="xs-score">2 of 2 cleared</span></div><div class="xs-r"><div class="xs-chips"><span class="xc xc-yes">PMP</span><span class="xc xc-yes">SCR</span></div><p class="xs-note">Project delivery, then sustainability and climate risk. Both taken for the work rather than the certificate.</p></div></div><div class="xstage"><div class="xs-l"><span class="xs-age">Now</span><span class="xs-t">Academic and governance</span><span class="xs-score">2 of 3 cleared</span></div><div class="xs-r"><div class="xs-chips"><span class="xc xc-yes">UGC NET Management<em>97.7 pc</em></span><span class="xc xc-no">CSIR NET Mathematics<em>89.2 pc</em></span><span class="xc xc-yes">IICA Independent Director</span></div><p class="xs-note">UGC NET cleared at 97.7 percentile, eligible for Assistant Professor. CSIR NET Mathematics at 89.2 percentile, short of the cut-off. The IICA proficiency test for the Independent Director databank, cleared.</p></div></div></div>
+<div class="xlegend"><span><i class="xc xc-yes"></i>Cleared</span><span><i class="xc xc-mid"></i>Decent score, not a selection</span><span><i class="xc xc-no"></i>Did not clear</span></div>
+<p class="xclose"><b>Every red line on this page sent me somewhere else.</b> The engineering entrances I missed are why I ended up writing software that clinicians hold in their hands, which is why I can tell when a health-tech claim does not survive contact with how care is actually delivered. I have never cleared an exam that taught me as much as the ones I did not.</p>
+<p class="xclose2">The shape matters more than any single row. The early years are mostly misses and the recent ones mostly hits, not because the exams got easier, but because it took me a while to work out what I was actually good at.</p>
+</section>
+
+
 
   <div class="sub">
     <h3>One sharp read, every Friday.</h3>
