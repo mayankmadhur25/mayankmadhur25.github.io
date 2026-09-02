@@ -1685,6 +1685,34 @@ html[data-theme="dark"] .statbox{background:#16252C;border-color:#25373F}
 html[data-theme="dark"] .sb-e{border-top-color:#22333B}
 .sb-n{font-size:13.5px;line-height:1.6;color:var(--muted);margin:14px 0 0;padding-top:12px;border-top:1px solid var(--line)}
 html[data-theme="dark"] .sb-n{border-top-color:#22333B}
+
+.related{max-width:820px;margin:44px auto 0;padding:0 clamp(18px,4vw,28px)}
+.related-head{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+.related-label{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:0}
+.related-nav{display:flex;align-items:center;gap:8px}
+.related-seeall{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--teal);text-decoration:none}
+.rel-arrow{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:var(--card);
+  color:var(--navy);cursor:pointer;font-size:14px;line-height:1;display:grid;place-items:center}
+html[data-theme="dark"] .rel-arrow{background:#16252C;border-color:#25373F;color:#EAF6F6}
+.rel-arrow:hover{border-color:var(--teal);color:var(--teal)}
+.related-grid{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 14px;
+  scrollbar-width:thin}
+.related-grid::-webkit-scrollbar{height:6px}
+.related-grid::-webkit-scrollbar-thumb{background:var(--line);border-radius:3px}
+.related-card{flex:0 0 232px;scroll-snap-align:start;display:flex;flex-direction:column;
+  border-radius:14px;padding:17px 18px;text-decoration:none;color:#fff;min-height:150px;
+  transition:transform .18s,box-shadow .18s}
+.related-card:hover{transform:translateY(-3px);box-shadow:0 16px 34px -20px rgba(27,58,75,.6)}
+.rc-ed{font-family:var(--mono);font-size:10px;letter-spacing:.11em;font-weight:700;opacity:.86;margin-bottom:8px}
+.rc-title{font-size:15px;font-weight:800;line-height:1.3;letter-spacing:-.015em;margin-bottom:auto}
+.rc-go{font-family:var(--mono);font-size:10px;letter-spacing:.06em;opacity:.9;margin-top:14px}
+.related-card.cat-strategy{background:linear-gradient(135deg,#1B3A4B,#2E7CB8)}
+.related-card.cat-policy{background:linear-gradient(135deg,#0B7F7F,#0FA3A3)}
+.related-card.cat-governance{background:linear-gradient(135deg,#3C5A6E,#5A7A8C)}
+.related-card.cat-digital-health{background:linear-gradient(135deg,#7A5378,#A63D52)}
+.related-card.cat-pharma{background:linear-gradient(135deg,#2E7D5B,#5FA88A)}
+.related-card.cat-geopolitics{background:linear-gradient(135deg,#B06A25,#E08A3C)}
+.related-card.cat-biotech{background:linear-gradient(135deg,#4A5D8C,#7A8CC0)}
 </style></head>
 <body>
 <script>(function(){try{if(localStorage.getItem('hp-theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
@@ -1784,7 +1812,7 @@ html[data-theme="dark"] .sb-n{border-top-color:#22333B}
 </div>
 <div class="ed-callout"><p><b>The sign flips.</b> In the same six chains, Pearson occupancy–margin correlation moves from about −0.30 in FY25 to +0.30 in FY26. Both confidence intervals are enormous and cross zero. <b>The defensible conclusion is not that occupancy is bad or good. It is that a one-year cross-company correlation cannot identify the causal operating lever.</b></p></div>
 <details class="dtbl"><summary>View the same-six FY25/FY26 data</summary><table><caption>Occupancy and company-reported EBITDA margins; definitions vary across companies</caption><thead><tr><th>Chain</th><th>FY25 occupancy</th><th>FY25 EBITDA margin</th><th>FY26 occupancy</th><th>FY26 EBITDA margin</th></tr></thead><tbody><tr><td>Apollo</td><td>68.0%</td><td>13.90%</td><td>67.0%</td><td>14.90%</td></tr><tr><td>Max</td><td>74.0%</td><td>26.80%</td><td>76.0%</td><td>26.20%</td></tr><tr><td>Fortis</td><td>69.0%</td><td>21.30%</td><td>68.0%</td><td>23.40%</td></tr><tr><td>Aster</td><td>65.0%</td><td>19.50%</td><td>61.0%</td><td>20.40%</td></tr><tr><td>Medanta</td><td>62.0%</td><td>25.40%</td><td>61.6%</td><td>23.40%</td></tr><tr><td>KIMS</td><td>50.1%</td><td>26.57%</td><td>50.5%</td><td>21.07%</td></tr></tbody></table><p class="dsrc">Source: CRISIL peer tables reproduced in the KIMS preliminary placement document. CRISIL explicitly cautions that reported EBITDA definitions differ across peers.</p></details>
-<details class="dtbl"><summary>Retain the original FY25 seven-chain snapshot</summary><table><caption>Original Edition 73 dataset — retained for transparency</caption><thead><tr><th>Chain</th><th>Beds</th><th>Occupancy</th><th>ARPOB/day</th><th>EBITDA margin</th><th>ROCE</th></tr></thead><tbody><tr><td>Max Healthcare</td><td>5,100</td><td>74%</td><td>₹73,900</td><td>26.8%</td><td>29.2%</td></tr><tr><td>Fortis</td><td>4,750</td><td>69%</td><td>₹66,300</td><td>20.1%</td><td>20.2%</td></tr><tr><td>Apollo</td><td>9,458</td><td>68%</td><td>₹60,600</td><td>14.0%</td><td>21.9%</td></tr><tr><td>Park</td><td>2,800</td><td>62%</td><td>₹26,206</td><td>26.7%</td><td>17.5%</td></tr><tr><td>Yatharth</td><td>1,605</td><td>61%</td><td>₹30,800</td><td>26.0%</td><td>13.3%</td></tr><tr><td>Narayana</td><td>5,282</td><td>51%</td><td>₹43,600</td><td>23.9%</td><td>22.4%</td></tr><tr><td>KIMS</td><td>4,492</td><td>50%</td><td>₹39,200</td><td>26.7%</td><td>19.7%</td></tr></tbody></table><p class="dsrc">Original compilation from FY25 disclosures / Value Research. Original Pearson occupancy–margin r ≈ −0.33; excluding Apollo ≈ −0.17. Apollo's consolidated margin includes lower-margin pharmacy/digital activity.</p></details>
+<details class="dtbl"><summary>Retain the original FY25 seven-chain snapshot</summary><table><caption>Original Edition 73 dataset — retained for transparency</caption><thead><tr><th>Chain</th><th>Beds</th><th>Occupancy</th><th>ARPOB/day</th><th>EBITDA margin, change</th><th>ROCE</th></tr></thead><tbody><tr><td>Max Healthcare</td><td>5,100</td><td>74%</td><td>₹73,900</td><td>26.8%</td><td>29.2%</td></tr><tr><td>Fortis</td><td>4,750</td><td>69%</td><td>₹66,300</td><td>20.1%</td><td>20.2%</td></tr><tr><td>Apollo</td><td>9,458</td><td>68%</td><td>₹60,600</td><td>14.0%</td><td>21.9%</td></tr><tr><td>Park</td><td>2,800</td><td>62%</td><td>₹26,206</td><td>26.7%</td><td>17.5%</td></tr><tr><td>Yatharth</td><td>1,605</td><td>61%</td><td>₹30,800</td><td>26.0%</td><td>13.3%</td></tr><tr><td>Narayana</td><td>5,282</td><td>51%</td><td>₹43,600</td><td>23.9%</td><td>22.4%</td></tr><tr><td>KIMS</td><td>4,492</td><td>50%</td><td>₹39,200</td><td>26.7%</td><td>19.7%</td></tr></tbody></table><p class="dsrc">Original compilation from FY25 disclosures / Value Research. Original Pearson occupancy–margin r ≈ −0.33; excluding Apollo ≈ −0.17. Apollo's consolidated margin includes lower-margin pharmacy/digital activity.</p></details>
 <div class="mathnote">Why use both Pearson and Spearman? Pearson tests linear association; Spearman tests whether the ranking moves together. With only six observations and inconsistent accounting definitions, neither should be treated as causal evidence.</div>
 </section>
 <section id="s5">
@@ -1816,8 +1844,8 @@ html[data-theme="dark"] .sb-n{border-top-color:#22333B}
 <section id="s7">
 <p class="eyebrow">07 — What capital changed</p><h2>Capital changes scale quickly. Economics change more slowly.</h2>
 <p>The original four-event study remains useful when its limitations are kept explicit.</p>
-<div class="evw"><div class="ev-key"><span><i class="ed ed-up"></i>Improved</span><span><i class="ed ed-dn"></i>Worsened</span><span><i class="ed ed-nd"></i>Not disclosed</span><span class="ev-keyn">Pre/post periods differ; this is descriptive, not causal.</span></div>
-<div class="ev-h"><span>Platform</span><span>Event</span><span>Revenue</span><span>Beds</span><span>Rev / bed</span><span>ARPOB</span><span>Occupancy</span><span>EBITDA margin</span></div>
+<div class="evw"><div class="ev-key"><span><i class="ed ed-up"></i>Improved</span><span><i class="ed ed-dn"></i>Worsened</span><span><i class="ed ed-nd"></i>Not disclosed</span><span class="ev-keyn"><b>Every figure in this table is a change, not a level.</b> Revenue and beds are percentage changes; occupancy and EBITDA margin are changes in percentage points. So &minus;0.2 pts means the margin fell by two tenths of a point, from 26.5% to 26.3%. It does not mean the margin was negative. Pre and post periods differ, so this is descriptive rather than causal.</span></div>
+<div class="ev-h"><span>Platform</span><span>Event</span><span>Revenue</span><span>Beds</span><span>Rev / bed</span><span>ARPOB</span><span>Occupancy</span><span>EBITDA margin, change</span></div>
 <div class="ev-r"><span class="ev-p">Manipal<em>Apr 2023</em></span><span class="ev-e">Temasek to 59%<em>FY23 → FY25</em></span><span class="ev-v v-up">+70.3%</span><span class="ev-v v-up">+51.3%</span><span class="ev-v v-up">+12.6%</span><span class="ev-v v-up">+7.6%</span><span class="ev-v v-up">+3.6 pts</span><span class="ev-v v-dn">−0.2 pts</span></div>
 <div class="ev-r"><span class="ev-p">Quality Care<em>Oct 2023</em></span><span class="ev-e">Blackstone control<em>FY23 → 9M FY26</em></span><span class="ev-v v-up">+147.1%</span><span class="ev-v v-up">+93.8%</span><span class="ev-v v-up">+27.5%</span><span class="ev-v v-nd">n/d</span><span class="ev-v v-nd">n/d</span><span class="ev-v v-dn">−2.0 pts</span></div>
 <div class="ev-r"><span class="ev-p">Max Healthcare<em>FY24–25</em></span><span class="ev-e">Sahara, Alexis, Jaypee<em>FY24 → FY25</em></span><span class="ev-v v-up">+30.0%</span><span class="ev-v v-up">+40.9%</span><span class="ev-v v-dn">−7.7%</span><span class="ev-v v-dn">−6.4%</span><span class="ev-v v-nd">n/d</span><span class="ev-v v-nd">n/d</span></div>
@@ -1907,7 +1935,17 @@ html[data-theme="dark"] .sb-n{border-top-color:#22333B}
 </div>
 </div>
 <div class="related-grid">
-</div>
+      <a class="related-card cat-governance" href="/edition-69-gig-healthcare.html"><span class="rc-ed">ED. 69</span><span class="rc-title">Can Gig Work Fix India's Healthcare Workforce?</span><span class="rc-go">Read this perspective &rarr;</span></a>
+      <a class="related-card cat-strategy" href="/edition-68-one-fix-four-indias.html"><span class="rc-ed">ED. 68</span><span class="rc-title">One Fix for Four Indias</span><span class="rc-go">Read this perspective &rarr;</span></a>
+      <a class="related-card cat-strategy" href="/edition-66-hollow-pyramid.html"><span class="rc-ed">ED. 66</span><span class="rc-title">The Hollow Pyramid</span><span class="rc-go">Read this perspective &rarr;</span></a>
+      <a class="related-card cat-strategy" href="/edition-65-fertility-nfhs6.html"><span class="rc-ed">ED. 65</span><span class="rc-title">India Already Stopped Growing</span><span class="rc-go">Read this perspective &rarr;</span></a>
+      <a class="related-card cat-strategy" href="/edition-63-oncology-margin-burden.html"><span class="rc-ed">ED. 63</span><span class="rc-title">Hospitals Don't Follow Patients. They Follow the R…</span><span class="rc-go">Read this perspective &rarr;</span></a>
+      <a class="related-card cat-strategy" href="/edition-67-autism-measurement.html"><span class="rc-ed">ED. 67</span><span class="rc-title">The Number India Doesn't Have</span><span class="rc-go">Read this perspective &rarr;</span></a>
+      <a class="related-card cat-policy" href="/edition-64-csection-nfhs6.html"><span class="rc-ed">ED. 64</span><span class="rc-title">India's C-Section Surge Is a Payment-Design Problem</span><span class="rc-go">Read this perspective &rarr;</span></a>
+      <a class="related-card cat-digital-health" href="/the-100-crore-illusion.html"><span class="rc-ed">ED. 61</span><span class="rc-title">The 100 Crore Illusion</span><span class="rc-go">Read this perspective &rarr;</span></a>
+      <a class="related-card cat-biotech" href="/edition-58-ebola.html"><span class="rc-ed">ED. 58</span><span class="rc-title">Ebola is back — why India should pay attention</span><span class="rc-go">Read this perspective &rarr;</span></a>
+      <a class="related-card cat-pharma" href="/edition-57-pharma-fmcg.html"><span class="rc-ed">ED. 57</span><span class="rc-title">The 1% Problem Every Indian Pharma CEO Is Ignoring</span><span class="rc-go">Read this perspective &rarr;</span></a>
+    </div>
 </section>
 <aside class="author-box"><img alt="Healthcare Pulse" src="/logo.png" style="width:52px;height:52px;border-radius:10px;object-fit:contain;flex:none;"/><div><p class="author-name">Mayank Madhur <span>He/Him</span></p><p class="author-bio">PMP®, SCR® · MBA &amp; PGPM (Healthcare) · IICA Independent Director proficiency test qualified · Practice Leader, Healthcare &amp; Life Sciences at HFS Research.</p><a href="https://www.linkedin.com/in/mayank-madhur/" rel="noopener" target="_blank">Connect on LinkedIn →</a></div></aside>
 <a class="back-link" href="/perspectives/">← All perspectives</a>
