@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Edition 74: Stop Asking What Healthcare Costs. Ask What It Buys."
+title: "Edition 74: A Cheaper Treatment Can Still Waste Money"
 category: Strategy
 tags: [Policy]
 edition: 74
