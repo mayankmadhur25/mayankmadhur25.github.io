@@ -1853,8 +1853,8 @@ html[data-theme="dark"] .ref-warn{background:rgba(194,86,63,.13)}
 (function(){
   var tt=document.getElementById('themeToggle');
   if(tt)tt.addEventListener('click',function(){var r=document.documentElement;if(r.getAttribute('data-theme')==='dark'){r.removeAttribute('data-theme');try{localStorage.setItem('hp-theme','light');}catch(e){}}else{r.setAttribute('data-theme','dark');try{localStorage.setItem('hp-theme','dark');}catch(e){}}});
-  var t=document.getElementById('navToggle'),n=document.getElementById('siteNav');
-  if(t&&n)t.addEventListener('click',function(){var o=n.classList.toggle('open');t.setAttribute('aria-expanded',o?'true':'false');});
+  var navBtn=document.getElementById('navToggle'),navEl=document.getElementById('siteNav');
+  if(navBtn&&navEl)navBtn.addEventListener('click',function(){var o=navEl.classList.toggle('open');navBtn.setAttribute('aria-expanded',o?'true':'false');});
 
   var IDS=['ca','cb','ea','eb','sv','pop','up','bud','thr'];
   var DEF={ca:100000,cb:150000,ea:1.0,eb:1.6,sv:80000,pop:200000,up:40,bud:500,thr:200000};

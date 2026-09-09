@@ -24,7 +24,7 @@ Site: https://mayankmadhur.in
 
 ## Recent editions
 
-- [Edition 74: Stop Asking What Healthcare Costs. Ask What It Buys.](https://mayankmadhur.in/edition-74-healthcare-cost-effectiveness.html): Price tells you what one unit costs, not what it achieves. Nine ways of asking whether a health intervention is worth it, and why they give different answers to the same question.
+- [Edition 74: A Cheaper Treatment Can Still Waste Money](https://mayankmadhur.in/edition-74-healthcare-cost-effectiveness.html): Price tells you what one unit costs, not what it achieves. Nine ways of asking whether a health intervention is worth it, and why they give different answers to the same question.
 - [Edition 73: Adding Beds Is the Easy Part](https://mayankmadhur.in/edition-73-hospital-capital.html): Indian hospital groups grew revenue 21% and beds 15% while margins stayed near 23%. A new bed loses money before it makes any. The claim that filling beds widens margins does not survive testing.
 - [Edition 72: India Doesn't Have a Financing Model](https://mayankmadhur.in/edition-72-india-financing-180.html): 95 of 180 countries are mixed or segmented. Europe is the only region where the textbook models dominate, which is where they were written.
 - [Edition 71: India Reaches Almost Every Pregnant Woman Once](https://mayankmadhur.in/edition-71-mother-baby-journey.html): 95.9% see a health worker once, 65.2% complete four visits, 15.3% of toddlers eat an adequate diet. India solved arrival and still measures arrival.
