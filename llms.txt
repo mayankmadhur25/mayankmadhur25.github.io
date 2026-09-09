@@ -18,15 +18,18 @@ Site: https://mayankmadhur.in
 - [India Digital Health Adoption Index](https://mayankmadhur.in/tools/health-stack/): Adoption of India's digital health stack.
 - [Which of the Four Indias Are You In?](https://mayankmadhur.in/tools/which-india/): Six questions that place a household in one of India's four health financing tiers.
 - [The Value Chain, Tier by Tier](https://mayankmadhur.in/tools/health-value-chain/): Where the patient, the money and the medical record break across six steps of care, for each of the four financing tiers.
+- [Healthcare Financing Atlas](https://mayankmadhur.in/tools/health-financing/): How 180 countries finance health, classified with the official SHA 2011 financing schemes rather than Beveridge and Bismarck labels. 95 of the 180 are mixed or segmented. Europe is 3% mixed; Africa is 81%. Every row carries an evidence grade, and live out-of-pocket, government and external spending shares load from the WHO GHED mirror.
+- [The Value Lens](https://mayankmadhur.in/tools/value-lens/): Nine health economics lenses applied to the same two options at once, so they can be seen to disagree. Cost-effectiveness, cost-utility, cost-benefit, cost-minimisation, budget impact, ROI, cost of illness, cost-consequence and efficiency, each with its formula, when to use it, where it breaks and how it gets misused.
 - [All tools](https://mayankmadhur.in/index-tool/): Full index of interactive trackers.
 
 ## Recent editions
 
-- [Edition 69: Can Gig Work Fix India's Healthcare Workforce?](https://mayankmadhur.in/edition-69-gig-healthcare.html): Gig platforms solve scheduling, not distribution. A governance read on accountability, clinical risk tiers and the 2025 labour codes.
+- [Edition 74: Stop Asking What Healthcare Costs. Ask What It Buys.](https://mayankmadhur.in/edition-74-healthcare-cost-effectiveness.html): Price tells you what one unit costs, not what it achieves. Nine ways of asking whether a health intervention is worth it, and why they give different answers to the same question.
+- [Edition 73: Adding Beds Is the Easy Part](https://mayankmadhur.in/edition-73-hospital-capital.html): Indian hospital groups grew revenue 21% and beds 15% while margins stayed near 23%. A new bed loses money before it makes any. The claim that filling beds widens margins does not survive testing.
+- [Edition 72: India Doesn't Have a Financing Model](https://mayankmadhur.in/edition-72-india-financing-180.html): 95 of 180 countries are mixed or segmented. Europe is the only region where the textbook models dominate, which is where they were written.
+- [Edition 71: India Reaches Almost Every Pregnant Woman Once](https://mayankmadhur.in/edition-71-mother-baby-journey.html): 95.9% see a health worker once, 65.2% complete four visits, 15.3% of toddlers eat an adequate diet. India solved arrival and still measures arrival.
+- [Edition 70: You Cannot Fix an Org Chart With an API](https://mayankmadhur.in/edition-70-swasth-bharat.html): The Swasth Bharat Portal is the right architecture. Convergence is real at the interface and absent underneath, because budgets and reporting lines did not move.
 - [Edition 68: Four Indias, One Shared Bill](https://mayankmadhur.in/edition-68-one-fix-four-indias.html): India runs four health systems under one name, each breaking at a different point in the same six-step chain. Medicines are the shared exposure.
-- [Edition 67: The Number India Doesn't Have](https://mayankmadhur.in/edition-67-autism-measurement.html): India runs no routine autism count. The measurement void is itself the policy failure.
-- [Edition 66: The Hollow Pyramid](https://mayankmadhur.in/edition-66-hollow-pyramid.html): 63% of rural specialist posts are vacant while generalist doctors are 46% above requirement in the same buildings. Not a doctor shortage, a design failure.
-- [Edition 65: India Already Stopped Growing](https://mayankmadhur.in/edition-65-fertility-nfhs6.html): NFHS-6 puts fertility at 2.0, below replacement, with a four-times spread between states.
 - [Edition 54: The Four Indias of Healthcare](https://mayankmadhur.in/edition-54-four-indias.html): Why "pan-India" is usually a lie. Four markets with different economics and failure modes.
 
 ## Key site sections
