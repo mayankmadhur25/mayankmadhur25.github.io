@@ -1710,6 +1710,30 @@ html[data-theme="dark"] .topbar{background:linear-gradient(135deg,rgba(15,163,16
 .tb-g{flex:none;white-space:nowrap;font-family:var(--mono);font-size:11.5px;font-weight:700;
   color:#fff;background:linear-gradient(135deg,#0FA3A3,#2E7CB8);padding:9px 15px;border-radius:999px}
 @media(max-width:700px){.topbar{grid-template-columns:auto 1fr;gap:11px}.tb-g{grid-column:1/-1;justify-self:start}}
+
+.abbrkey{background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:17px 19px;margin:18px 0 22px}
+html[data-theme="dark"] .abbrkey{background:#1B3A44;border-color:#25373F}
+.ak-h{font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:12px}
+.ak-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:11px 20px}
+.ak-g>div{font-size:13.5px;line-height:1.55;color:var(--body-c)}
+.ak-g b{display:block;font-family:var(--mono);font-size:12px;color:var(--navy);letter-spacing:.02em;margin-bottom:2px}
+.ak-g span{color:var(--muted)}
+
+.akey{max-width:820px;margin:16px auto 0;padding:0 clamp(18px,4vw,28px)}
+.akey>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:11px 16px;border:1px solid var(--line);border-radius:11px;background:var(--soft)}
+html[data-theme="dark"] .akey>summary{background:#1B3A44;border-color:#25373F}
+.akey>summary::-webkit-details-marker{display:none}
+.ak-t{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);font-weight:700}
+.ak-c{font-family:var(--mono);font-size:10px;color:var(--muted)}
+.akey>summary:after{content:"\25BE";color:var(--muted);font-size:11px;transition:transform .2s}
+.akey[open]>summary:after{transform:rotate(180deg)}
+.ak-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:10px 20px;
+  padding:15px 17px;border:1px solid var(--line);border-top:0;border-radius:0 0 11px 11px;margin-top:-2px}
+html[data-theme="dark"] .ak-g{border-color:#25373F}
+.ak-g>div{font-size:13px;line-height:1.5;color:var(--body-c)}
+.ak-g b{display:block;font-family:var(--mono);font-size:11.5px;color:var(--navy);letter-spacing:.02em;margin-bottom:2px}
+.ak-g span{color:var(--muted)}
 </style>
 </head><body>
 <script>(function(){try{if(localStorage.getItem('hp-theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
@@ -1734,6 +1758,16 @@ html[data-theme="dark"] .topbar{background:linear-gradient(135deg,rgba(15,163,16
   <span class="tb-t"><b>Want each method explained in detail?</b> The companion tool covers all nine, with the formula, when to use it, where it breaks and how it gets misused.</span>
   <span class="tb-g">Open the Value Lens &rarr;</span>
 </a>
+<details class="akey" open>
+<summary><span class="ak-t">Short forms used in this edition</span><span class="ak-c">6 terms</span></summary>
+<div class="ak-g">
+  <div><b>QALY</b><span>Quality-adjusted life year. One year of life in full health. Half a year in full health, or a year at half quality, both count as 0.5.</span></div>
+  <div><b>DALY</b><span>Disability-adjusted life year. The mirror image: one year of healthy life lost to illness or early death.</span></div>
+  <div><b>ICER</b><span>Incremental cost-effectiveness ratio. Extra cost divided by extra benefit, so it reads as a cost per unit of outcome.</span></div>
+  <div><b>HTA</b><span>Health technology assessment. The formal process of weighing whether a treatment, device or programme is worth funding.</span></div>
+  <div><b>Comparator</b><span>What you are measuring against. Change it and every number below changes with it.</span></div>
+  <div><b>Threshold</b><span>The most a payer will spend for one unit of health. India has not set an official figure.</span></div>
+</div></details>
 <div class="post-body">
 <nav class="jump"><div class="jump-in"><a data-s="s1" href="#s1">The mistake</a><a data-s="s2" href="#s2">Six lenses</a><a data-s="s3" href="#s3">Worked example</a><a data-s="s4" href="#s4">Live calculator</a><a data-s="s5" href="#s5">Decision plane</a><a data-s="s6" href="#s6">The traps</a><a data-s="s7" href="#s7">India</a><a data-s="s8" href="#s8">Use cases</a><a data-s="s9" href="#s9">Checklist</a><a data-s="s10" href="#s10">So what</a><a data-s="s11" href="#s11">Sources</a></div></nav>
 
@@ -1741,7 +1775,7 @@ html[data-theme="dark"] .topbar{background:linear-gradient(135deg,rgba(15,163,16
 <p class="lede">Imagine two treatments for the same condition. Standard care costs <b>₹40,000</b> per patient. A new option costs <b>₹70,000</b>. If the conversation ends there, the answer looks obvious: the new treatment is 75% more expensive. But healthcare does not buy treatments. <b>It buys health outcomes.</b></p>
 <div class="value-strip">
 <div class="value-step"><div class="vs-n">Question 1 · Clinical</div><div class="vs-q">Does it work?</div><div class="vs-a">Safety, mortality, complications, symptoms, quality of life.</div></div>
-<div class="value-step"><div class="vs-n">Question 2 · Economic</div><div class="vs-q">Is the extra outcome worth the extra cost?</div><div class="vs-a">Incremental cost-effectiveness, QALYs, DALYs, cost per event avoided.</div></div>
+<div class="value-step"><div class="vs-n">Question 2 · Economic</div><div class="vs-q">Is the extra outcome worth the extra cost?</div><div class="vs-a">Incremental cost-effectiveness, quality-adjusted life years, disability-adjusted life years, cost per event avoided.</div></div>
 <div class="value-step"><div class="vs-n">Question 3 · Fiscal</div><div class="vs-q">Can we afford it at scale?</div><div class="vs-a">Eligible population, uptake, total budget impact and system capacity.</div></div>
 </div>
 <p class="frame"><b>Price answers none of these questions on its own.</b> It tells us only what one unit costs. Value needs a comparator, an outcome and a time horizon. Affordability needs scale.</p>
@@ -1750,8 +1784,8 @@ html[data-theme="dark"] .topbar{background:linear-gradient(135deg,rgba(15,163,16
 <section id="s2">
 <p class="eyebrow">02 — Nine lenses</p><h2>Healthcare has nine ways to ask “is this worth it?”</h2>
 <div class="lens-grid">
-<div class="lens"><div class="tag">CEA · Cost-effectiveness</div><h3>What does one more unit of health cost?</h3><p>Compares cost with a natural health outcome: admissions avoided, life-years gained, cases detected, BP controlled. <b>Best when outcomes are clinically specific.</b></p></div>
-<div class="lens"><div class="tag">CUA · Cost-utility</div><h3>What does better quantity + quality of life cost?</h3><p>Uses a common measure such as <b>QALYs</b>, allowing unlike interventions to be compared on one health-value scale.</p></div>
+<div class="lens"><div class="tag">CEA · Cost-effectiveness</div><h3>What does one more unit of health cost?</h3><p>Compares cost with a natural health outcome: admissions avoided, life-years gained, cases detected, blood pressure controlled. <b>Best when outcomes are clinically specific.</b></p></div>
+<div class="lens"><div class="tag">CUA · Cost-utility</div><h3>What does better quantity + quality of life cost?</h3><p>Uses a common measure such as the <b>quality-adjusted life year</b>, or QALY, which combines how long someone lives with how well, allowing unlike interventions to be compared on one health-value scale.</p></div>
 <div class="lens"><div class="tag">CBA · Cost-benefit</div><h3>Do monetary benefits exceed monetary costs?</h3><p>Converts benefits into money where feasible. Useful for broad programmes, productivity or societal returns, but the monetisation assumptions matter.</p></div>
 <div class="lens"><div class="tag">BIA · Budget impact</div><h3>What happens to the actual budget?</h3><p>Asks what adoption costs over a defined period for the eligible population. <b>A cost-effective intervention can still fail this test.</b></p></div>
 <div class="lens"><div class="tag">CMA · Cost-minimisation</div><h3>If outcomes are equivalent, which option costs less?</h3><p>Valid only when there is credible evidence that outcomes are meaningfully equivalent.</p></div>
@@ -1760,7 +1794,7 @@ html[data-theme="dark"] .topbar{background:linear-gradient(135deg,rgba(15,163,16
   <div class="lens lens-add">
     <div class="lens-k">ROI &middot; Return on investment</div>
     <div class="lens-q">What does the money come back as?</div>
-    <div class="lens-d">Savings divided by spend, expressed as a ratio or a payback period. It is the language a CFO and a procurement committee already use, and it is the only lens on this page that ignores health outcomes entirely. <b>Useful for making a case internally, dangerous as the sole basis for a clinical decision.</b></div>
+    <div class="lens-d">Savings divided by spend, expressed as a ratio or a payback period. It is the language a chief financial officer and a procurement committee already use, and it is the only lens on this page that ignores health outcomes entirely. <b>Useful for making a case internally, dangerous as the sole basis for a clinical decision.</b></div>
   </div>
   <div class="lens lens-add">
     <div class="lens-k">CCA &middot; Cost-consequence</div>
@@ -1846,7 +1880,7 @@ html[data-theme="dark"] .topbar{background:linear-gradient(135deg,rgba(15,163,16
 
 <section id="s7">
 <p class="eyebrow">07 — India already has the machinery</p><h2>India already has the machinery for this</h2>
-<p>India has an institutional HTA system under the Department of Health Research. HTAIn exists to bring clinical effectiveness, safety, health economics and resource allocation into healthcare decisions. Its remit spans medicines, devices, diagnostics, procedures, public-health programmes and digital technologies, including AI.</p>
+<p>India has an institutional health technology assessment system, HTA for short, under the Department of Health Research. HTAIn exists to bring clinical effectiveness, safety, health economics and resource allocation into healthcare decisions. Its remit spans medicines, devices, diagnostics, procedures, public-health programmes and digital technologies, including AI.</p>
 <div class="num-grid">
 <div class="num-card"><div class="num-big">HTAIn</div><p>Government of India institutional arrangement for evidence-informed health-technology decisions.</p></div>
 <div class="num-card"><div class="num-big">Clinical + economic</div><p>Evaluation is not only “does it work?” but also whether it represents value for money.</p></div>
@@ -1894,7 +1928,7 @@ html[data-theme="dark"] .topbar{background:linear-gradient(135deg,rgba(15,163,16
 <div class="srcwrap source-links">
 <div class="srcrow"><span class="srctag t-off">Official</span><div><b>Health Technology Assessment in India (HTAIn), Department of Health Research</b><span>HTAIn describes HTA as a systematic way to evaluate health technologies and programmes using clinical, epidemiological, economic and other evidence to support resource allocation. <a href="https://htain.dhr.gov.in/about-htain.php" target="_blank" rel="noopener">About HTAIn</a>.</span></div></div>
 <div class="srcrow"><span class="srctag t-off">Official</span><div><b>HTAIn Manual and FAQ</b><span>The manual explains ICERs, cost-effectiveness thresholds and the difference between value-for-money signals and affordability; the FAQ describes users including policy-makers, providers and insurers. <a href="https://htain.dhr.gov.in/htain-manual.php" target="_blank" rel="noopener">Manual</a> · <a href="https://htain.dhr.gov.in/faq.php" target="_blank" rel="noopener">FAQ</a>.</span></div></div>
-<div class="srcrow"><span class="srctag t-off">Official</span><div><b>NICE HealthTech programme manual</b><span>Useful international comparator showing how decision bodies combine ICERs with uncertainty, uncaptured benefits, non-health factors and health inequalities rather than treating a threshold as a mechanical yes/no rule. <a href="https://www.nice.org.uk/process/pmg48/chapter/methods-for-guidance-produced-in-the-nice-healthtech-programme" target="_blank" rel="noopener">NICE methods</a>.</span></div></div>
+<div class="srcrow"><span class="srctag t-off">Official</span><div><b>the UK's National Institute for Health and Care Excellence (NICE) HealthTech programme manual</b><span>Useful international comparator showing how decision bodies combine ICERs with uncertainty, uncaptured benefits, non-health factors and health inequalities rather than treating a threshold as a mechanical yes/no rule. <a href="https://www.nice.org.uk/process/pmg48/chapter/methods-for-guidance-produced-in-the-nice-healthtech-programme" target="_blank" rel="noopener">NICE methods</a>.</span></div></div>
 <div class="srcrow"><span class="srctag t-anl">Projection</span><div><b>Worked example and interactive calculator</b><span>₹40,000 vs ₹70,000, 0.70 vs 0.85 QALY, the ₹2.5 lakh/QALY benchmark, 100,000 eligible patients and 20% uptake are teaching assumptions created for this edition. They are not estimates for a named disease, product or Indian reimbursement decision.</span></div></div>
 <div class="srcrow"><span class="srctag t-anl">Analysis</span><div><b>Example arithmetic</b><span>Incremental cost ₹30,000; incremental effect 0.15 QALY; ICER ₹2,00,000/QALY. At 20,000 treated patients, incremental year-one budget impact is ₹60 crore.</span></div></div>
 <div class="srcrow"><span class="srctag t-anl">Analysis</span><div><b>Author's contribution</b><span>The six-lens framework, the worked example and its arithmetic, the interactive model and its assumptions, the four-quadrant decision plane, the four terminology traps, the seven-question test, and all interpretive commentary.</span></div></div>
