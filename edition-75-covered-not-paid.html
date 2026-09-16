@@ -1745,32 +1745,33 @@ html[data-theme="dark"] .ak-g{border-color:#25373F}
 
 
 :root{
-  --paper:#EDF0F3;--paper2:#E4E9EE;--card:#F7F9FA;
-  --ink:#12212E;--ink2:#4C5C6A;--ink3:#7C8B98;
-  --rule:#C3CDD6;--rule2:#D8E0E6;
-  --paid:#227C88;--cut:#C0762B;--rej:#B5122E;--pend:#8A5487;
-  --govt:#384E9E;--grp:#227C88;--ind:#C0762B;
-  --flag:#B5122E;
-  --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
-  --disp:'Archivo','Helvetica Neue',sans-serif;
-  --body:'Newsreader',Georgia,serif;
+  /* chart colours only. Core tokens come from the site design system above. */
+  --paid:#0FA3A3;--cut:#E08A3C;--rej:#C2563F;--pend:#7A5378;
+  --govt:#2E7CB8;--grp:#0FA3A3;--ind:#E08A3C;--flag:#C2563F;
+  --paper2:var(--soft);--ink2:var(--muted);--ink3:var(--muted);
+  --rule:var(--line);--rule2:var(--line);
+  --disp:var(--sans);--body-font:var(--sans);
+}
+html[data-theme="dark"]{
+  --paid:#16B3B3;--cut:#F0A868;--rej:#D9705A;--pend:#A67BA3;
+  --govt:#5B9BD5;--grp:#16B3B3;--ind:#F0A868;--flag:#D9705A;
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;
+body{margin:0;/*bg*/background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;
   background-image:linear-gradient(var(--paper2) 1px,transparent 1px);background-size:100% 34px;background-attachment:fixed;}
 .wrap{max-width:1040px;margin:0 auto;padding:0 22px 80px}
 .eyebrow{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3)}
 header.top{padding:36px 0 0;border-bottom:1px solid var(--ink);margin-bottom:38px}
 .mast{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:40px}
-h1{font-family:var(--disp);font-weight:800;font-size:clamp(40px,8vw,84px);line-height:.94;letter-spacing:-.04em;margin:0 0 22px;max-width:13ch}
+h1{font-family:var(--sans);font-weight:800;font-size:clamp(40px,8vw,84px);line-height:.94;letter-spacing:-.04em;margin:0 0 22px;max-width:13ch}
 h1 em{font-style:normal;color:var(--flag)}
 .standfirst{font-size:clamp(18px,2.2vw,23px);line-height:1.45;max-width:58ch;color:var(--ink2);margin:0 0 40px}
 .duo{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);margin-bottom:12px}
 .duo>div{padding:24px 18px 24px 0}
 .duo>div+div{border-left:1px solid var(--rule);padding-left:26px}
 .duo .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink3);margin-bottom:12px;line-height:1.5}
-.duo .v{font-family:var(--disp);font-weight:800;font-size:clamp(36px,6.5vw,62px);letter-spacing:-.04em;line-height:1}
+.duo .v{font-family:var(--sans);font-weight:800;font-size:clamp(36px,6.5vw,62px);letter-spacing:-.04em;line-height:1}
 .duo .s{font-family:var(--mono);font-size:12.5px;color:var(--ink2);margin-top:9px;line-height:1.6}
 .duo .red{color:var(--flag)}
 .dline{font-family:var(--mono);font-size:12px;color:var(--ink3);margin:10px 0 54px}
@@ -1778,10 +1779,10 @@ h1 em{font-style:normal;color:var(--flag)}
 section{margin:0 0 62px}
 .sechead{border-top:1px solid var(--ink);padding-top:12px;margin-bottom:22px}
 .sechead .eyebrow{display:block;margin-bottom:11px}
-h2{font-family:var(--disp);font-weight:600;font-size:clamp(22px,3.1vw,30px);letter-spacing:-.022em;margin:0 0 7px;line-height:1.15}
+h2{font-family:var(--sans);font-weight:600;font-size:clamp(22px,3.1vw,30px);letter-spacing:-.022em;margin:0 0 7px;line-height:1.15}
 .dek{color:var(--ink2);font-size:16.5px;max-width:64ch;margin:0 0 6px}
 .prose p{max-width:64ch}
-.prose h3{font-family:var(--disp);font-weight:600;font-size:18px;margin:26px 0 6px;letter-spacing:-.01em}
+.prose h3{font-family:var(--sans);font-weight:600;font-size:18px;margin:26px 0 6px;letter-spacing:-.01em}
 
 .panel{background:var(--card);border:1px solid var(--rule);padding:22px 20px}
 /* funnel */
@@ -1791,7 +1792,7 @@ h2{font-family:var(--disp);font-weight:600;font-size:clamp(22px,3.1vw,30px);lett
 .fk{padding:15px 12px 4px 0;border-top:2px solid transparent}
 .fk .n{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);display:flex;gap:6px;align-items:center;margin-bottom:7px;line-height:1.35}
 .fk .n i{width:8px;height:8px;flex:0 0 8px}
-.fk .v{font-family:var(--disp);font-weight:800;font-size:clamp(18px,2.5vw,26px);letter-spacing:-.03em;line-height:1}
+.fk .v{font-family:var(--sans);font-weight:800;font-size:clamp(18px,2.5vw,26px);letter-spacing:-.03em;line-height:1}
 .fk .p{font-family:var(--mono);font-size:12px;color:var(--ink2);margin-top:4px}
 
 .ctrl{display:flex;border:1px solid var(--rule);width:fit-content;max-width:100%;flex-wrap:wrap;margin-bottom:16px}
@@ -1858,13 +1859,13 @@ tr.hi td{background:rgba(181,18,46,.055)}
 
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule2);border:1px solid var(--rule2)}
 .grid2>div{background:var(--card);padding:20px}
-.grid2 .big{font-family:var(--disp);font-weight:800;font-size:34px;letter-spacing:-.03em;line-height:1;color:var(--flag);margin-bottom:8px}
+.grid2 .big{font-family:var(--sans);font-weight:800;font-size:34px;letter-spacing:-.03em;line-height:1;color:var(--flag);margin-bottom:8px}
 .grid2 .l{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px}
 .grid2 p{font-size:15px;line-height:1.5;color:var(--ink2);margin:0}
 
 .voids{border-top:1px solid var(--ink)}
 .void{display:grid;grid-template-columns:34px 1fr;gap:14px;padding:13px 0;border-bottom:1px solid var(--rule2)}
-.void .num{font-family:var(--disp);font-weight:800;font-size:20px;color:var(--rule);line-height:1.2}
+.void .num{font-family:var(--sans);font-weight:800;font-size:20px;color:var(--rule);line-height:1.2}
 .void .t{font-family:var(--mono);font-size:12.5px;font-weight:600;margin-bottom:4px}
 .void .d{font-size:15px;color:var(--ink2);line-height:1.45}
 
@@ -2019,7 +2020,7 @@ html[data-theme="dark"] .lookfor{background:rgba(15,163,163,.13)}
   <div class="panel">
     <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:8px">
       <span class="eyebrow">Total health claims, FY25</span>
-      <span style="font-family:var(--disp);font-weight:800;font-size:clamp(22px,3.6vw,34px);letter-spacing:-.03em">&#8377;1,32,488 cr</span>
+      <span style="font-family:var(--sans);font-weight:800;font-size:clamp(22px,3.6vw,34px);letter-spacing:-.03em">&#8377;1,32,488 cr</span>
     </div>
     <div class="howto" style="margin:14px 0 12px">
       <b>How to read this.</b> The whole bar is every rupee that Indian health insurers were asked to pay in FY25.
@@ -2168,7 +2169,7 @@ html[data-theme="dark"] .lookfor{background:rgba(15,163,163,.13)}
   </div>
 <div class="takeaway"><div class="lb">The short version</div><p>More people got insured. Fewer of them gave birth in a government hospital.</p><p>And once inside a private hospital, <b>more than half of all births are now by caesarean</b>, against 1 in 6 in government hospitals.</p></div>  <p class="prose" style="margin-top:20px">In urban India the public share of institutional births is now <strong>48.2%</strong>. A majority of urban institutional births happen in private facilities, a threshold crossed without announcement. The urban caesarean rate is 40.5%, and in urban private facilities it is <strong>57.4%</strong>.</p>
 
-  <h3 style="font-family:var(--disp);font-weight:600;font-size:19px;margin:34px 0 8px">Twenty-one states, no exceptions</h3>
+  <h3 style="font-family:var(--sans);font-weight:600;font-size:19px;margin:34px 0 8px">Twenty-one states, no exceptions</h3>
   <div class="howto" style="margin-bottom:16px">
     <b>How to read this.</b> One row per state. Each row shows two rates side by side on a scale of 0% to 100%.
     A dot sitting at 50% means half of all births there were caesarean.
