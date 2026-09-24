@@ -24,6 +24,8 @@ Site: https://mayankmadhur.in
 
 ## Recent editions
 
+- [Edition 76: Nobody Will Mandate NHCX](https://mayankmadhur.in/edition-76-nhcx-mandate.html): NHA's dashboard shows 46,996 government-scheme hospitals and 8.89 crore claim messages on the National Health Claims Exchange, against 867 private hospitals and 30,246 messages. Adoption will come through the data law, the regulators and insurer economics, not one mandate.
+- [Edition 75: Covered, Not Paid](https://mayankmadhur.in/edition-75-covered-not-paid.html): Insurers settled 87.5% of health claims by count but 71.1% by value. Of ₹1,32,488 crore claimed in FY25, ₹29,933 crore was refused, mostly as disallowance that never shows up as a rejected claim.
 - [Edition 74: A Cheaper Treatment Can Still Waste Money](https://mayankmadhur.in/edition-74-healthcare-cost-effectiveness.html): Price tells you what one unit costs, not what it achieves. Nine ways of asking whether a health intervention is worth it, and why they give different answers to the same question.
 - [Edition 73: Adding Beds Is the Easy Part](https://mayankmadhur.in/edition-73-hospital-capital.html): Indian hospital groups grew revenue 21% and beds 15% while margins stayed near 23%. A new bed loses money before it makes any. The claim that filling beds widens margins does not survive testing.
 - [Edition 72: India Doesn't Have a Financing Model](https://mayankmadhur.in/edition-72-india-financing-180.html): 95 of 180 countries are mixed or segmented. Europe is the only region where the textbook models dominate, which is where they were written.
