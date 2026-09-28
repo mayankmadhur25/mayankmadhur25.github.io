@@ -24,6 +24,7 @@ Site: https://mayankmadhur.in
 
 ## Recent editions
 
+- [Edition 77: The UPI of Health Has Launched](https://mayankmadhur.in/edition-77-uhi.html): Three months after UHI launched, two official pages disagree on what is live, the government's own app is missing from the list of connected apps, and there are no fee rules or booking numbers. Includes a 29-step patient value chain across UHI, the consent manager and NHCX.
 - [Edition 76: Nobody Will Mandate NHCX](https://mayankmadhur.in/edition-76-nhcx-mandate.html): NHA's dashboard shows 46,996 government-scheme hospitals and 8.89 crore claim messages on the National Health Claims Exchange, against 867 private hospitals and 30,246 messages. Adoption will come through the data law, the regulators and insurer economics, not one mandate.
 - [Edition 75: Covered, Not Paid](https://mayankmadhur.in/edition-75-covered-not-paid.html): Insurers settled 87.5% of health claims by count but 71.1% by value. Of ₹1,32,488 crore claimed in FY25, ₹29,933 crore was refused, mostly as disallowance that never shows up as a rejected claim.
 - [Edition 74: A Cheaper Treatment Can Still Waste Money](https://mayankmadhur.in/edition-74-healthcare-cost-effectiveness.html): Price tells you what one unit costs, not what it achieves. Nine ways of asking whether a health intervention is worth it, and why they give different answers to the same question.
