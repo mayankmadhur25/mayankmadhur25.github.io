@@ -70,7 +70,8 @@ layout: default
 
 <section class="latest">
   {% assign p = site.posts.first %}
-  {% assign clean = p.title | remove_first: 'Edition ' | split: ': ' %}
+  {% capture ed_prefix %}Edition {{ p.edition }}: {% endcapture %}
+  {% assign clean_title = p.title | remove_first: ed_prefix %}
   <div class="latest-grid">
     <a class="latest-card" href="{% if p.external_link %}{{ p.external_link }}{% else %}{{ p.url }}{% endif %}">
       <div class="lc-meta">
@@ -78,7 +79,7 @@ layout: default
         <span class="lc-when">LATEST &middot; {{ p.date | date: "%a %-d %b %Y" | upcase }}</span>
         <span class="lc-cat">{{ p.category | default: "Policy" }}</span>
       </div>
-      <h2 class="lc-title">{% if clean.size > 1 %}{{ clean | last }}{% else %}{{ p.title }}{% endif %}</h2>
+      <h2 class="lc-title">{{ clean_title }}</h2>
       <p class="lc-dek">{{ p.excerpt | strip_html | truncate: 165 }}</p>
       <span class="lc-go">Read this edition &rarr;</span>
     </a>
