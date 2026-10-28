@@ -24,6 +24,7 @@ Site: https://mayankmadhur.in
 
 ## Recent editions
 
+- [Edition 81: Autism Is in Our Classrooms and Offices](https://mayankmadhur.in/edition-81-autism-handbook-lessons.html): Part one of two on Autism For Dummies. Chapter-by-chapter takeaways, autism as a profile, communication, overload, masking, genetics and twelve details for health care.
 - [Edition 80: Amazon Built a Front Door to American Healthcare. Who Will Build India's?](https://mayankmadhur.in/edition-80-amazon-health-front-door.html): How Amazon bought, built and closed its way to a linked app-doctor-pharmacy loop in the US, what Amazon Medical already does in India, which Indian players hold which pieces, and why India's front door will be a national app over local providers.
 - [Edition 79: The Hard Part of India's Digital Health](https://mayankmadhur.in/edition-79-data-is-the-hard-part.html): India has built health IDs, registries and exchanges, but good data is the hard part. Why QR registration worked and clinical records and claims stall, who does the work versus who benefits, and five fixes.
 - [Edition 78: Insurers Want You to Pay 10% of Your Hospital Bill](https://mayankmadhur.in/edition-78-who-pays-the-hospital-bill.html): The reported 10% co-pay proposal from general insurers, which IRDAI has not approved, set against the Supreme Court case on hospital drug markups and the government's 8 October decision to cap trade margins on about 110 cancer drugs at 30% of MRP. Includes claim-by-claim costs and how Switzerland, Taiwan and Germany limit patient payments.
