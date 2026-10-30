@@ -5,6 +5,16 @@
    and follows the site's light and dark themes. */
 (function () {
   if (window.__hpCursorWeb) return; window.__hpCursorWeb = true;
+  // Cursor: a magnifying glass with a heartbeat line, teal by default and amber over links
+  // and buttons. The centre of the lens is the pointing spot. Text fields keep the text cursor.
+  if (window.matchMedia && window.matchMedia('(pointer: fine)').matches && !document.getElementById('hp-lens-cursor')) {
+    var cs = document.createElement('style'); cs.id = 'hp-lens-cursor';
+    cs.textContent =
+      'html,body{cursor:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2232%22 height=%2232%22 viewBox=%220 0 32 32%22%3E %3Cg stroke-linecap=%22round%22 stroke-linejoin=%22round%22 fill=%22none%22%3E %3Ccircle cx=%2212%22 cy=%2212%22 r=%229.5%22 stroke=%22#FFFFFF%22 stroke-width=%225%22/%3E %3Cpath d=%22M19 19 L29 29%22 stroke=%22#FFFFFF%22 stroke-width=%227%22/%3E %3Cpath d=%22M19.5 19.5 L28.5 28.5%22 stroke=%22#1B3A4B%22 stroke-width=%224.2%22/%3E %3Ccircle cx=%2212%22 cy=%2212%22 r=%229%22 fill=%22#FFFFFF%22 fill-opacity=%22.92%22 stroke=%22#1B3A4B%22 stroke-width=%222.4%22/%3E %3Cpath d=%22M5 12.5 L8.4 12.5 L10 9.5 L12.3 16 L14.3 7.5 L16 12.5 L19 12.5%22 stroke=%22#0FA3A3%22 stroke-width=%221.9%22/%3E %3C/g%3E %3C/svg%3E") 12 12, auto;}' +
+      'a,button,[role="button"],summary,label,select,.related-card{cursor:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2232%22 height=%2232%22 viewBox=%220 0 32 32%22%3E %3Cg stroke-linecap=%22round%22 stroke-linejoin=%22round%22 fill=%22none%22%3E %3Ccircle cx=%2212%22 cy=%2212%22 r=%229.5%22 stroke=%22#FFFFFF%22 stroke-width=%225%22/%3E %3Cpath d=%22M19 19 L29 29%22 stroke=%22#FFFFFF%22 stroke-width=%227%22/%3E %3Cpath d=%22M19.5 19.5 L28.5 28.5%22 stroke=%22#1B3A4B%22 stroke-width=%224.2%22/%3E %3Ccircle cx=%2212%22 cy=%2212%22 r=%229%22 fill=%22#FFFFFF%22 fill-opacity=%22.92%22 stroke=%22#1B3A4B%22 stroke-width=%222.4%22/%3E %3Cpath d=%22M5 12.5 L8.4 12.5 L10 9.5 L12.3 16 L14.3 7.5 L16 12.5 L19 12.5%22 stroke=%22#E08A3C%22 stroke-width=%221.9%22/%3E %3C/g%3E %3C/svg%3E") 12 12, pointer;}' +
+      'input,textarea,[contenteditable="true"]{cursor:text;}';
+    document.head.appendChild(cs);
+  }
   var noMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var finePointer = window.matchMedia && window.matchMedia('(pointer: fine)').matches;
   if (noMotion || !finePointer) return;
