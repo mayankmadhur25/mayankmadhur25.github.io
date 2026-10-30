@@ -1,6 +1,6 @@
 /* Healthcare Pulse: cursor web effect
    Drop-in, no dependencies. Adds a transparent layer that draws a small web of
-   dots and lines around the cursor. It never blocks clicks, never changes layout,
+   dots and lines around the cursor. It stays visible while the cursor is on the page. It never blocks clicks, never changes layout,
    switches off on touch screens and for visitors who prefer reduced motion,
    and follows the site's light and dark themes. */
 (function () {
@@ -17,7 +17,7 @@
   cv.style.cssText = 'position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:-1;';
   document.body.appendChild(cv);
   var ctx = cv.getContext('2d'), W, H, dpr, dots = [];
-  var mouse = { x: -9999, y: -9999 }, hub = { x: -9999, y: -9999 }, energy = 0, lastMove = 0, running = false;
+  var mouse = { x: -9999, y: -9999 }, hub = { x: -9999, y: -9999 }, energy = 0, inside = false, running = false;
 
   function isDark() {
     var t = document.documentElement.getAttribute('data-theme');
@@ -32,8 +32,7 @@
       c: COLORS[i % COLORS.length], ph: Math.random() * 6.28, sp: 0.5 + Math.random() });
   }
   function frame(now) {
-    var idle = now - lastMove;
-    var targetEnergy = idle < 900 ? 1 : 0;
+    var targetEnergy = inside ? 1 : 0;
     energy += (targetEnergy - energy) * 0.06;
     hub.x += (mouse.x - hub.x) * 0.18; hub.y += (mouse.y - hub.y) * 0.18;
     ctx.clearRect(0, 0, W, H);
@@ -55,14 +54,16 @@
       ctx.fillStyle = dark ? 'rgba(232,241,242,' + (0.9 * energy) + ')' : 'rgba(27,58,75,' + (0.75 * energy) + ')';
       ctx.beginPath(); ctx.arc(hub.x, hub.y, 4.5, 0, 6.283); ctx.fill();
     }
-    if (energy > 0.01 || idle < 900) requestAnimationFrame(frame); else { running = false; ctx.clearRect(0, 0, W, H); }
+    if (energy > 0.01 || inside) requestAnimationFrame(frame); else { running = false; ctx.clearRect(0, 0, W, H); }
   }
   function wake() { if (!running) { running = true; requestAnimationFrame(frame); } }
   window.addEventListener('mousemove', function (e) {
     if (hub.x < -1000) { hub.x = e.clientX; hub.y = e.clientY; }
-    mouse.x = e.clientX; mouse.y = e.clientY; lastMove = performance.now(); wake();
+    mouse.x = e.clientX; mouse.y = e.clientY; inside = true; wake();
   }, { passive: true });
-  document.addEventListener('mouseleave', function () { lastMove = 0; });
+  document.documentElement.addEventListener('mouseleave', function () { inside = false; });
+  window.addEventListener('blur', function () { inside = false; });
+  document.addEventListener('visibilitychange', function () { if (document.hidden) inside = false; });
   window.addEventListener('resize', size);
   size();
 })();
