@@ -10,8 +10,8 @@
   if (noMotion || !finePointer) return;
 
   var COLORS = ['#0FA3A3', '#E08A3C', '#2E7CB8', '#0FA3A3', '#5A9FC9'];
-  var RADIUS = 230;          // how far the web reaches from the cursor (px)
-  var DENSITY = 1 / 7000;    // dots per square pixel of screen
+  var RADIUS = 260;          // how far the web reaches from the cursor (px)
+  var DENSITY = 1 / 5200;    // dots per square pixel of screen
   var cv = document.createElement('canvas');
   cv.setAttribute('aria-hidden', 'true');
   cv.style.cssText = 'position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:-1;';
@@ -28,7 +28,7 @@
     dpr = Math.min(window.devicePixelRatio || 1, 2); W = window.innerWidth; H = window.innerHeight;
     cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     var n = Math.round(W * H * DENSITY); dots = [];
-    for (var i = 0; i < n; i++) dots.push({ x: Math.random() * W, y: Math.random() * H, r: Math.random() * 1.6 + 1.2,
+    for (var i = 0; i < n; i++) dots.push({ x: Math.random() * W, y: Math.random() * H, r: Math.random() * 1.8 + 2.0,
       c: COLORS[i % COLORS.length], ph: Math.random() * 6.28, sp: 0.5 + Math.random() });
   }
   function frame(now) {
@@ -38,22 +38,22 @@
     hub.x += (mouse.x - hub.x) * 0.18; hub.y += (mouse.y - hub.y) * 0.18;
     ctx.clearRect(0, 0, W, H);
     if (energy > 0.01) {
-      var dark = isDark(), lineCol = dark ? '232,241,242' : '27,58,75';
+      var dark = isDark(), lineCol = dark ? '160,220,220' : '15,110,120';
       for (var i = 0; i < dots.length; i++) {
         var d = dots[i];
         var x = d.x + Math.sin(now / (1800 * d.sp) + d.ph) * 4, y = d.y + Math.cos(now / (2100 * d.sp) + d.ph) * 4;
         var dx = x - hub.x, dy = y - hub.y, dist = Math.sqrt(dx * dx + dy * dy);
         if (dist > RADIUS) continue;
         var k = (1 - dist / RADIUS) * energy;
-        ctx.strokeStyle = 'rgba(' + lineCol + ',' + (0.5 * k).toFixed(3) + ')';
-        ctx.lineWidth = 0.6 + 0.6 * k;
+        ctx.strokeStyle = 'rgba(' + lineCol + ',' + (0.15 + 0.7 * k).toFixed(3) + ')';
+        ctx.lineWidth = 0.9 + 1.1 * k;
         ctx.beginPath(); ctx.moveTo(hub.x, hub.y); ctx.lineTo(x, y); ctx.stroke();
-        ctx.globalAlpha = Math.min(1, 0.35 + k);
+        ctx.globalAlpha = Math.min(1, 0.65 + k);
         ctx.fillStyle = d.c; ctx.beginPath(); ctx.arc(x, y, d.r * (0.7 + 0.5 * k), 0, 6.283); ctx.fill();
         ctx.globalAlpha = 1;
       }
       ctx.fillStyle = dark ? 'rgba(232,241,242,' + (0.9 * energy) + ')' : 'rgba(27,58,75,' + (0.75 * energy) + ')';
-      ctx.beginPath(); ctx.arc(hub.x, hub.y, 3.2, 0, 6.283); ctx.fill();
+      ctx.beginPath(); ctx.arc(hub.x, hub.y, 4.5, 0, 6.283); ctx.fill();
     }
     if (energy > 0.01 || idle < 900) requestAnimationFrame(frame); else { running = false; ctx.clearRect(0, 0, W, H); }
   }
