@@ -167,7 +167,7 @@ html[data-theme="dark"] .hpa-in{background:#0F1B22;border-color:#2C3F47;color:#D
   <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9 9 0 0 1-3.6-.7L3 21l1.9-5A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4z"/></svg>Ask</button>\
 <div class="hpa-panel" id="hpaPanel" role="dialog" aria-label="Ask Healthcare Pulse">\
   <div class="hpa-head">\
-    <div><div class="hpa-title">Ask Healthcare Pulse</div><div class="hpa-sub">Answers grounded in the archive</div></div>\
+    <div><div class="hpa-title">Ask Healthcare Pulse</div><div class="hpa-sub">Answers from the archive. Questions saved anonymously</div></div>\
     <button class="hpa-x" id="hpaClose" type="button" aria-label="Close">\
       <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>\
   </div>\
@@ -214,8 +214,7 @@ html[data-theme="dark"] .hpa-in{background:#0F1B22;border-color:#2C3F47;color:#D
     if(!qt.length){ notCovered(q); return; }
     var ranked=EDITIONS.map(function(ed){return {ed:ed,s:score(qt,ed)};})
       .filter(function(x){return x.s>0;}).sort(function(a,b){return b.s-a.s;});
-    if(!ranked.length || ranked[0].s<2){ notCovered(q); return; }
-    var top=ranked.slice(0,3);
+    var top=ranked.filter(function(x){return x.s>=2;}).slice(0,3);
     var thinking=add('hpa-a','Thinking through what I have written…');
 
     var context=top.map(function(x){
@@ -227,11 +226,12 @@ html[data-theme="dark"] .hpa-in{background:#0F1B22;border-color:#2C3F47;color:#D
     .then(function(r){ if(!r.ok) throw 0; return r.json(); })
     .then(function(d){
       var a=(d&&d.answer)?d.answer:""; if(!a) throw 0;
-      thinking.innerHTML=esc(a).replace(/\n/g,'<br>')+cites(top)
+      thinking.innerHTML=esc(a).replace(/\n/g,'<br>')+(top.length?cites(top):'')
         +'<a class="hpa-more" href="/ask/">Open the full Ask page &rarr;</a>';
       body.scrollTop=body.scrollHeight;
     })
     .catch(function(){
+      if(!top.length){ thinking.remove(); notCovered(q); return; }
       thinking.innerHTML='Here is what I have written that covers it:'+cites(top);
       body.scrollTop=body.scrollHeight;
     });
