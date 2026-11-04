@@ -14,6 +14,7 @@ permalink: /ask/
     <input type="text" id="amaInput" class="ama-input" placeholder="e.g. What's happening with pharma pricing? or How does ABHA work?" autocomplete="off">
     <button id="amaBtn" class="ama-btn" type="button">Ask →</button>
   </div>
+  <p class="ama-sub" style="font-size:12.5px;margin-top:8px;opacity:.8">Questions are saved without your name, email or location, to improve this site. Please do not type personal health details.</p>
 
   <div class="ama-suggest">
     <span class="ama-sg-label">TRY:</span>
@@ -145,6 +146,16 @@ permalink: /ask/
   // Leave empty ("") to keep the free recommendation-only mode.
   var WORKER_URL = "https://healthcare-pulse-ask.mayankmadhur25.workers.dev";
 
+  // While typing: show matching editions only (no AI call, nothing saved)
+  function preview(){
+    var q = input.value.trim();
+    if(!q){ result.innerHTML=""; return; }
+    var qt = tokenize(q);
+    var top = EDITIONS.map(function(ed){ return {ed:ed, s:score(qt, ed)}; })
+      .filter(function(x){ return x.s >= 2; }).sort(function(a,b){ return b.s - a.s; }).slice(0,3);
+    if(top.length){ showResults(top, q); } else { result.innerHTML=""; }
+  }
+
   function ask(){
     var q = input.value.trim();
     if(!q){ result.innerHTML=""; return; }
@@ -156,12 +167,11 @@ permalink: /ask/
       .filter(function(x){ return x.s > 0; })
       .sort(function(a,b){ return b.s - a.s; });
 
-    if(ranked.length === 0 || ranked[0].s < 2){
+    var top = ranked.filter(function(x){ return x.s >= 2; }).slice(0,3);
+    if(!WORKER_URL && top.length === 0){
       showNotCovered(q);
       return;
     }
-
-    var top = ranked.slice(0,3);
     if(WORKER_URL){
       askAI(q, top);          // AI-written answer grounded in top editions
     } else {
@@ -190,15 +200,15 @@ permalink: /ask/
     })
     .catch(function(){
       // graceful fallback to recommendations if the AI call fails
-      showResults(top, q);
+      if(top.length){ showResults(top, q); } else { showNotCovered(q); }
     });
   }
 
   function showAIAnswer(answer, top){
     var safe = answer.replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/\n/g,"<br>");
     var html = '<div class="ama-answer">';
-    html += '<div class="ama-ai"><p class="ama-ai-label">Based on what I\'ve written:</p><p class="ama-ai-text">'+safe+'</p></div>';
-    html += '<p class="ama-found">Read the full perspectives:</p>';
+    html += '<div class="ama-ai"><p class="ama-ai-label">'+(top.length ? 'Based on what I\'ve written' : 'My answer')+'. Estimates are marked as such.</p><p class="ama-ai-text">'+safe+'</p></div>';
+    if(top.length){ html += '<p class="ama-found">Read the full perspectives:</p>'; }
     top.forEach(function(x){
       var ed = x.ed;
       html += '<a class="ama-card cat-'+ed.cat.toLowerCase().replace(/ /g,"-")+'" href="'+ed.url+'">'
@@ -240,7 +250,7 @@ permalink: /ask/
   input.addEventListener('keydown', function(e){ if(e.key==='Enter') ask(); });
   // live as they type (debounced)
   var t;
-  input.addEventListener('input', function(){ clearTimeout(t); t=setTimeout(ask, 350); });
+  input.addEventListener('input', function(){ clearTimeout(t); t=setTimeout(preview, 350); });
 
   document.querySelectorAll('.ama-chip').forEach(function(chip){
     chip.addEventListener('click', function(){ input.value = chip.textContent; ask(); input.focus(); });
