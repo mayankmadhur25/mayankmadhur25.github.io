@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% if page.title %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }} — Digital health, decoded{% endif %}</title>
+  <title>{% if page.title %}{{ page.title }} · {{ site.title }}{% else %}Healthcare Pulse by Mayank Madhur | India's healthcare, decoded{% endif %}</title>
   <meta name="description" content="{{ page.description | default: page.excerpt | default: site.description | strip_html | truncate: 160 }}">
 
   <!-- Favicon -->
@@ -11,23 +11,24 @@
   <link rel="apple-touch-icon" href="/logo.png">
 
   <!-- Open Graph (LinkedIn, WhatsApp, Facebook) -->
-  <meta property="og:type" content="article">
+  <meta property="og:type" content="{% if page.url == '/' %}website{% else %}article{% endif %}">
   <meta property="og:site_name" content="Healthcare Pulse">
-  <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}Healthcare Pulse — Digital health, decoded{% endif %}">
+  <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}Healthcare Pulse by Mayank Madhur{% endif %}">
   <meta property="og:description" content="{{ page.description | default: page.excerpt | default: site.description | strip_html | truncate: 160 }}">
   <meta property="og:image" content="{{ site.url }}/logo.png">
   <meta property="og:url" content="{{ site.url }}{{ page.url }}">
 
   <!-- Twitter / X card -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}Healthcare Pulse{% endif %}">
+  <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}Healthcare Pulse by Mayank Madhur{% endif %}">
   <meta name="twitter:description" content="{{ page.description | default: page.excerpt | default: site.description | strip_html | truncate: 160 }}">
   <meta name="twitter:image" content="{{ site.url }}/logo.png">
 
   <!-- Canonical -->
   <link rel="canonical" href="{{ site.url }}{{ page.url }}">
 
-  <!-- Site-wide structured data -->
+  <!-- Site name for Google (homepage only, as Google recommends) -->
+  {% if page.url == '/' %}<meta name="application-name" content="Healthcare Pulse">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -50,7 +51,7 @@
       "jobTitle": "Practice Leader, Healthcare & Life Sciences, HFS Research"
     }
   }
-  </script>
+  </script>{% endif %}
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
