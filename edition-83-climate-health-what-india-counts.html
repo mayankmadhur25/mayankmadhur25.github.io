@@ -258,7 +258,14 @@ tr.clash th, tr.clash td { background: rgba(224,138,60,.07); }
 
 
 .cx-layout { display: block; }
+@media (min-width: 1000px) {
+  .cx { width: min(1120px, calc(100vw - 48px)); position: relative; left: 50%; transform: translateX(-50%); }
+  .cx-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 26px; align-items: start; }
+  .cx-wheelbox { position: sticky; top: 90px; margin: 0 !important; max-width: none !important; }
+  .cx-layout .cx-nav { justify-content: flex-start !important; }
+}
 .cx-wheelbox { max-width: 600px; margin: 0 auto 6px; text-align: center; }
+@media (max-width: 999px) { .cx-side { scroll-margin-top: 80px; } }
 .w-legend { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 18px; font-size: 12px; font-weight: 700; color: var(--muted); margin-bottom: 6px; }
 .w-legend i { display: inline-block; width: 22px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
 .w-legend .lg1 { background: linear-gradient(90deg,#B8432E,#E76F51); }
@@ -988,7 +995,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--amber); outline
     }
     function byKey(k){ for(var i=0;i<tabs.length;i++){ if(tabs[i].getAttribute('data-k')===k) return tabs[i]; } }
     segsW.forEach(function(g){
-      g.addEventListener('click',function(){ show(byKey(g.getAttribute('data-k'))); });
+      g.addEventListener('click',function(){ show(byKey(g.getAttribute('data-k'))); if(window.innerWidth<1000){ var sd=root.querySelector('.cx-side'); if(sd) sd.scrollIntoView({behavior:'smooth',block:'start'}); } });
       g.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); show(byKey(g.getAttribute('data-k'))); } });
     });
     show(byKey('heat'));
