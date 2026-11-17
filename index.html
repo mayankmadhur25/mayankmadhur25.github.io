@@ -280,44 +280,94 @@ description: "Healthcare Pulse by Mayank Madhur: a weekly newsletter on India's 
     }
   }
 
+  // ---- smarter search: every word must match (title, summary, topic, edition number or Ask keywords) ----
+  var SYN = {
+    'ai':['ai','artificial intelligence','genai','machine learning'], 'abdm':['abdm','abha','digital health mission','health id'],
+    'abha':['abha','abdm','health id'], 'pmjay':['pmjay','pm-jay','ayushman'], 'ayushman':['ayushman','pmjay','pm-jay'],
+    'insurance':['insurance','insurer','claim','irdai','cover'], 'claim':['claim','insurance','nhcx'], 'medicine':['medicine','drug','pharma'],
+    'drug':['drug','medicine','pharma'], 'doctor':['doctor','physician','clinician'], 'heat':['heat','heatwave','heatstroke'],
+    'climate':['climate','heat','flood'], 'hospital':['hospital','facility'], 'price':['price','pricing','cost'], 'cost':['cost','price','spend']
+  };
+  var STOPW = {'the':1,'a':1,'an':1,'and':1,'or':1,'of':1,'in':1,'on':1,'for':1,'to':1,'is':1,'are':1,'what':1,'how':1,'why':1,'india':1,'indian':1,'about':1,'with':1};
+  function norm(s){ return ' ' + String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim() + ' '; }
+  function stem(w){ if(w.length>4 && /ies$/.test(w)) return w.slice(0,-3)+'y'; if(w.length>3 && /s$/.test(w) && !/ss$/.test(w)) return w.slice(0,-1); return w; }
+  var kwReady = false;
+  function buildHay(){
+    var byUrl = {};
+    (window.HP_EDITIONS || []).forEach(function(e){ byUrl[e.url] = (e.kw||'') + ' ' + (e.sum||''); });
+    cards.forEach(function(card){
+      var ed = card.querySelector('.card-ed'); var n = ed ? ed.textContent.replace(/[^0-9]/g,'') : '';
+      card._t = norm(card.getAttribute('data-title'));
+      card._x = norm((card.getAttribute('data-excerpt')||'') + ' ' + (card.getAttribute('data-topic')||''));
+      card._k = norm(byUrl[card.getAttribute('href')] || '');
+      card._n = n;
+    });
+    kwReady = !!window.HP_EDITIONS;
+  }
+  function has(h, w){ return w.length <= 3 ? h.indexOf(' ' + w + ' ') > -1 : h.indexOf(' ' + w) > -1; }   // short words must match whole
+  function scoreCard(card, words){
+    var total = 0;
+    for (var i = 0; i < words.length; i++){
+      var w = words[i], best = 0;
+      if (/^\d+$/.test(w)) { if (card._n === w) best = 6; else if (card._t.indexOf(' ' + w + ' ') > -1 || card._x.indexOf(' ' + w) > -1) best = 1; }
+      else {
+        var alts = [w, stem(w)].concat(SYN[stem(w)] || SYN[w] || []);
+        alts.forEach(function(a){ a = a.toLowerCase();
+          if (has(card._t, a)) best = Math.max(best, 3);
+          else if (has(card._k, a)) best = Math.max(best, 2);
+          else if (has(card._x, a)) best = Math.max(best, 1); });
+      }
+      if (!best) return 0;                                                    // every word must match somewhere
+      total += best;
+    }
+    return total;
+  }
+  var noRes = document.createElement('p'); noRes.className = 'f-count'; noRes.style.display = 'none';
+  if (count && count.parentNode) count.parentNode.insertBefore(noRes, count.nextSibling);
+  var grid = document.getElementById('postGrid'), original = cards.slice();
+
   function runFilter(){
     var q = (search.value || '').trim().toLowerCase();
     var y = year.value;
     var t = topic.value;
     var filtering = !!(q || y || t);
+    noRes.style.display = 'none';
 
     if(!filtering){
-      // No search/filter active → show first N with Load more
+      original.forEach(function(c){ grid.appendChild(c); });                 // restore newest-first order
       applyLimit();
       count.textContent = '';
       return;
     }
+    if (!kwReady) buildHay();
+    var words = norm(q).trim().split(' ').filter(function(w){ return w && !STOPW[w]; });
+    if (q && !words.length) words = norm(q).trim().split(' ');
 
-    // Search/filter active → show ALL matches, hide the Load more button
     if(loadMoreBtn) loadMoreBtn.style.display = 'none';
-    var shown = 0;
+    var hits = [];
     cards.forEach(function(card){
-      var title = card.getAttribute('data-title') || '';
-      var excerpt = card.getAttribute('data-excerpt') || '';
       var cardYear = card.getAttribute('data-year') || '';
       var cardTopic = card.getAttribute('data-topic') || '';
-      var matchText = !q || title.indexOf(q) > -1 || excerpt.indexOf(q) > -1;
-      var matchYear = !y || cardYear === y;
-      var matchTopic = !t || cardTopic.split(',').map(function(s){return s.trim();}).indexOf(t) > -1;
-      if(matchText && matchYear && matchTopic){
-        card.style.display = '';
-        shown++;
-      } else {
-        card.style.display = 'none';
-      }
+      var sc = words.length ? scoreCard(card, words) : 1;
+      var ok = sc > 0 && (!y || cardYear === y) && (!t || cardTopic.split(',').map(function(s){return s.trim();}).indexOf(t) > -1);
+      card.style.display = ok ? '' : 'none';
+      if (ok) hits.push({c: card, s: sc, n: parseInt(card._n || '0', 10)});
     });
-    count.textContent = shown + (shown === 1 ? ' perspective found' : ' perspectives found');
+    if (words.length) { hits.sort(function(a,b){ return (b.s - a.s) || (b.n - a.n); }); hits.forEach(function(h){ grid.appendChild(h.c); }); }
+    var shown = hits.length;
+    count.textContent = shown + (shown === 1 ? ' perspective found' : ' perspectives found') + (q ? ' for "' + search.value.trim() + '"' + (words.length && shown > 1 ? ', best matches first' : '') : '');
+    if (!shown && q) {
+      noRes.innerHTML = 'No edition matches every word. Try fewer words, or <a href="/ask/" style="color:#0FA3A3;font-weight:700">ask the archive a question &rarr;</a>';
+      noRes.style.display = '';
+    }
     revealVisible();
   }
 
   function clearFilter(){
     search.value = ''; year.value = ''; topic.value = '';
     visibleLimit = PAGE;
+    original.forEach(function(c){ grid.appendChild(c); });
+    if (noRes) noRes.style.display = 'none';
     applyLimit();
     count.textContent = '';
   }
@@ -341,6 +391,7 @@ description: "Healthcare Pulse by Mayank Madhur: a weekly newsletter on India's 
 
   // real-time filtering as the user types or changes dropdowns
   if(search) search.addEventListener('input', runFilter);
+  if(search) search.addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); runFilter(); } });
   if(year) year.addEventListener('change', runFilter);
   if(topic) topic.addEventListener('change', runFilter);
   if(btn) btn.addEventListener('click', runFilter);

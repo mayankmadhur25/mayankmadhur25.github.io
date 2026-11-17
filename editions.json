@@ -1,0 +1,7 @@
+---
+layout: null
+permalink: /editions.json
+sitemap: false
+---
+[{% for p in site.posts %}{"e":{{ p.edition | default: 0 }},"t":{{ p.title | jsonify }},"u":{% if p.external_link %}{{ p.external_link | jsonify }}{% else %}{{ p.url | jsonify }}{% endif %},"c":{{ p.category | default: "Policy" | jsonify }},"g":{{ p.tags | jsonify }},"x":{{ p.excerpt | strip_html | strip_newlines | truncate: 320 | jsonify }},"d":"{{ p.date | date: '%Y-%m-%d' }}"}{% unless forloop.last %},{% endunless %}
+{% endfor %}]

@@ -24,6 +24,7 @@ Site: https://mayankmadhur.in
 
 ## Recent editions
 
+- [Edition 84: In Public Hospitals, Digital Health Loses the Patient](https://mayankmadhur.in/edition-84-digital-health-loses-the-patient.html): How far India's public-sector digital health record follows a patient, from registration to pharmacy and the next visit; Kerala, Tamil Nadu, Delhi, Bihar and a 36-state evidence grid.
 - [Edition 83: Climate Is Reaching India's Hospitals](https://mayankmadhur.in/edition-83-climate-health-what-india-counts.html): How climate change reaches Indian healthcare in eight ways, what India measures (heat surveillance, hospital readiness) and misses, and six tests for a climate-ready district.
 - [Edition 82: One Autistic Life, Six Systems](https://mayankmadhur.in/edition-82-autism-india-what-to-change.html): Part two on autism, applied to India: how support thins from childhood to adult life, the diagnosis and certification route, an autism-ready clinic and school, a communication passport, work, and what India should do.
 - [Edition 81: Autism Is in Our Classrooms and Offices](https://mayankmadhur.in/edition-81-autism-handbook-lessons.html): Part one of two on Autism For Dummies. Chapter-by-chapter takeaways, autism as a profile, communication, overload, masking, genetics and twelve details for health care.

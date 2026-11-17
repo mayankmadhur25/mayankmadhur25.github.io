@@ -1265,5 +1265,6 @@ const srows=SPEC.map(([s,sa,va])=>({s,rate:Math.round(va/sa*100),va,sa})).sort((
 new Chart(stateChart,{type:'bar',data:{labels:srows.map(r=>r.s),datasets:[{data:srows.map(r=>r.rate),backgroundColor:srows.map((r,i)=>i<3?RED:(r.rate>=63?'#D08A7F':'#C9C7C0')),borderRadius:3,barThickness:13}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.raw}% vacant \u00b7 ${fmt(srows[c.dataIndex].va)} of ${fmt(srows[c.dataIndex].sa)} empty`}}},scales:{x:{min:0,max:100,grid:{color:GRID},ticks:{callback:v=>v+'%'}},y:{grid:{display:false},ticks:{font:{size:10.5}}}}},plugins:[refLine('x',63,'national 63%')]});
 </script>
 <script data-goatcounter="https://mayankmadhur.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="/assets/hp-related.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edition 84: In public hospitals, digital health follows the patient to the doctor. Then it starts losing them. · Healthcare Pulse</title>
+<meta name="description" content="In India's public hospitals and health centres, patients now register online and doctors enter most consultations. The digital record thins at the pharmacy, inside bigger hospitals and on the next visit. Evidence from Kerala, Tamil Nadu, Delhi, Bihar and 32 more states and UTs, with six measures that would show what works.">
+<link rel="icon" type="image/png" href="/logo.png">
+<link rel="apple-touch-icon" href="/logo.png">
+<link rel="canonical" href="https://mayankmadhur.in/edition-84-digital-health-loses-the-patient.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Healthcare Pulse">
+<meta property="og:title" content="Edition 84: In public hospitals, digital health follows the patient to the doctor. Then it starts losing them.">
+<meta property="og:description" content="In India's public hospitals and health centres, patients now register online and doctors enter most consultations. The digital record thins at the pharmacy, inside bigger hospitals and on the next visit. Evidence from Kerala, Tamil Nadu, Delhi, Bihar and 32 more states and UTs, with six measures that would show what works.">
+<meta property="og:image" content="https://mayankmadhur.in/logo.png">
+<meta property="og:url" content="https://mayankmadhur.in/edition-84-digital-health-loses-the-patient.html">
+<meta property="article:published_time" content="2026-11-20T08:00:00+05:30">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mayankmadhur.in/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://mayankmadhur.in/edition-84-digital-health-loses-the-patient.html#article",
+      "headline": "In public hospitals, digital health follows the patient to the doctor. Then it starts losing them.",
+      "alternativeHeadline": "Edition 84 of Healthcare Pulse",
+      "description": "In India's public hospitals and health centres, patients now register online and doctors enter most consultations. The digital record thins at the pharmacy, inside bigger hospitals and on the next visit. Evidence from Kerala, Tamil Nadu, Delhi, Bihar and 32 more states and UTs, with six measures that would show what works.",
+      "datePublished": "2026-11-20T08:00:00+05:30",
+      "dateModified": "2026-11-20T08:00:00+05:30",
+      "author": {"@type": "Person", "name": "Mayank Madhur", "url": "https://www.linkedin.com/in/mayank-madhur/"},
+      "publisher": {"@type": "Organization", "name": "Healthcare Pulse", "logo": {"@type": "ImageObject", "url": "https://mayankmadhur.in/logo.png"}},
+      "mainEntityOfPage": "https://mayankmadhur.in/edition-84-digital-health-loses-the-patient.html",
+      "image": "https://mayankmadhur.in/logo.png",
+      "articleSection": "Digital Health",
+      "keywords": ["hospital information system", "HMIS", "EMR", "eHealth Kerala", "NextGen eHospital", "eSushrut", "BHAVYA", "Tamil Nadu HMIS 3.0", "ABDM", "digital health India", "states"]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://mayankmadhur.in/"},
+        {"@type": "ListItem", "position": 2, "name": "Perspectives", "item": "https://mayankmadhur.in/perspectives/"},
+        {"@type": "ListItem", "position": 3, "name": "Edition 84", "item": "https://mayankmadhur.in/edition-84-digital-health-loses-the-patient.html"}
+      ]
+    }
+  ]
+}
+</script>
+<style>
+/* ==========================================================
+   Healthcare Pulse — design system
+   Brand: navy ink, teal→blue gradient, amber accent.
+   ========================================================== */
+:root {
+  --bg: #FAFDFD; --navy: #1B3A4B; --ink: #173441; --body-c: #37505B; --muted: #6E828C;
+  --teal: #0FA3A3; --blue: #2E7CB8; --green: #37B68A; --amber: #E08A3C; --amberdk: #B96A14;
+  --line: #E2EDED; --tintT: #E7F5F4; --card: #FFFFFF;
+  --grad: linear-gradient(135deg, #0FA3A3 0%, #2E7CB8 100%);
+  --radius: 16px; --mono: 'IBM Plex Mono', monospace; --sans: 'Manrope', 'Segoe UI', system-ui, sans-serif;
+  --shadow: 0 14px 34px rgba(27, 58, 75, .12);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--body-c); font-family: var(--sans); font-size: 17.5px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+a { color: var(--blue); }
+#prog { position: fixed; top: 0; left: 0; height: 4px; width: 0; background: var(--grad); z-index: 99; }
+
+/* masthead */
+.site-header { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 16px clamp(20px, 4vw, 48px); background: #fff; border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 10; }
+.logo { display: flex; align-items: center; gap: 13px; text-decoration: none; }
+.logo-img { width: 48px; height: 48px; object-fit: contain; border-radius: 10px; }
+.logo-name { display: block; font-weight: 800; font-size: 22px; color: var(--navy); letter-spacing: -.4px; line-height: 1.1; }
+.logo-tag { display: block; font-size: 12.5px; color: var(--muted); }
+.site-header nav { display: flex; gap: 20px; align-items: center; }
+.site-header nav a { text-decoration: none; font-weight: 700; font-size: 15px; color: var(--ink); }
+.site-header nav a:hover { color: var(--teal); }
+.nav-subscribe { background: var(--grad); color: #fff !important; padding: 9px 20px; border-radius: 999px; box-shadow: 0 4px 12px rgba(15,163,163,.35); }
+.theme-toggle { background: none; border: 1px solid var(--line); border-radius: 10px; width: 38px; height: 38px; cursor: pointer; color: var(--navy); display: inline-flex; align-items: center; justify-content: center; padding: 0; margin-left: 4px; vertical-align: middle; }
+.theme-toggle:hover { border-color: var(--teal); color: var(--teal); }
+.theme-toggle .t-moon { display: none; }
+.nav-toggle { display: none; background: none; border: none; cursor: pointer; color: #1B3A4B; padding: 4px; }
+@media (max-width: 820px) {
+  .nav-toggle { display: inline-flex; align-items: center; }
+  .site-header { position: relative; flex-wrap: wrap; }
+  .site-header nav { display: none; flex-direction: column; align-items: flex-start; gap: 4px; width: 100%; margin-top: 14px; padding-top: 14px; border-top: 1px solid #E2EDED; }
+  .site-header nav.open { display: flex; }
+  .site-header nav a { font-size: 16px; padding: 9px 4px; width: 100%; }
+}
+
+/* article */
+main { max-width: 860px; margin: 0 auto; padding: 36px 24px 60px; }
+.post { max-width: 860px; }
+.post-banner { position: relative; height: 200px; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.post-banner.cat-digital-health { background: var(--grad); }
+.post-banner.cat-policy { background: linear-gradient(135deg,#E08A3C,#B96A14); }
+.post-banner.cat-strategy { background: linear-gradient(135deg,#6C4AB6,#3A2E7C); }
+.banner-ecg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.post-meta { display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; font-family: var(--mono); font-size: 12.5px; font-weight: 600; letter-spacing: 1px; color: var(--muted); margin: 26px 0 14px; }
+.meta-ed { color: var(--teal); }
+.meta-cat { background: var(--navy); color: #fff; padding: 3px 13px; border-radius: 999px; }
+.post-title { font-weight: 800; font-size: clamp(30px, 5vw, 50px); line-height: 1.08; letter-spacing: -0.02em; color: var(--navy); margin-bottom: 26px; }
+.post-body h2 { font-weight: 800; font-size: 27px; color: var(--navy); margin: 42px 0 14px; scroll-margin-top: 96px; }
+.post-body h3 { font-weight: 700; font-size: 20px; color: var(--navy); margin: 28px 0 10px; }
+.post-body p { margin-bottom: 18px; }
+.post-body ul, .post-body ol { margin: 0 0 18px 24px; }
+.post-body li { margin-bottom: 8px; }
+.post-body strong { color: var(--navy); }
+.lede { font-size: 20px; color: var(--ink); line-height: 1.6; }
+
+/* key findings */
+.key-findings { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 28px; margin: 30px 0 8px; box-shadow: 0 4px 14px rgba(27,58,75,.06); }
+.kf-eyebrow { font-family: var(--mono); font-size: 11.5px; font-weight: 600; letter-spacing: 2px; color: var(--amber); text-transform: uppercase; margin-bottom: 10px; }
+.key-findings ol { list-style: none; margin: 0; counter-reset: kf; }
+.key-findings li { counter-increment: kf; position: relative; padding-left: 40px; margin-bottom: 12px; font-size: 16px; color: var(--body-c); line-height: 1.55; }
+.key-findings li::before { content: counter(kf); position: absolute; left: 0; top: 1px; width: 28px; height: 28px; border-radius: 50%; background: var(--tintT); color: var(--teal); font-family: var(--mono); font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+.key-findings li b { color: var(--navy); }
+
+/* jump nav */
+.jump { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 22px 0 6px; padding: 14px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.jump .jl { font-family: var(--mono); font-size: 11.5px; letter-spacing: 1.5px; color: var(--muted); text-transform: uppercase; margin-right: 6px; }
+.jump a { font-size: 13px; font-weight: 700; color: var(--navy); text-decoration: none; padding: 6px 13px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); }
+.jump a:hover { border-color: var(--teal); color: var(--teal); }
+
+/* blocks */
+.ed-callout { background: var(--navy); color: #fff; border-radius: 16px; padding: 28px 30px; margin: 34px 0; }
+.ed-callout p { font-size: 19px; line-height: 1.5; margin: 0; color: #fff; }
+.ed-callout b { color: #FFC987; }
+.num-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px,1fr)); gap: 14px; margin: 26px 0; }
+.num-card { background: var(--tintT); border-radius: 14px; padding: 18px 16px; }
+.num-big { font-size: 24px; font-weight: 800; color: var(--teal); line-height: 1.1; margin-bottom: 6px; }
+.num-card p { font-size: 13.5px; color: var(--body-c); line-height: 1.5; margin: 0; }
+.num-card small { display: block; font-family: var(--mono); font-size: 11px; color: var(--muted); margin-top: 6px; }
+.ed-chart { margin: 28px 0; padding: 22px 24px; background: var(--tintT); border: 1px solid var(--line); border-radius: 14px; }
+.ed-chart svg { width: 100%; height: auto; display: block; }
+.ed-chart .cap { font-size: 13px; color: var(--muted); margin: 12px 0 0; font-style: italic; }
+.stat-wrap { margin: 26px 0; padding: 20px 22px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 4px 14px rgba(27,58,75,.06); overflow-x: auto; }
+.stat-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+.stat-head b { font-size: 14px; color: var(--navy); }
+.stat-upd { font-family: var(--mono); font-size: 11.5px; color: var(--teal); font-weight: 600; letter-spacing: .5px; }
+table.stat { width: 100%; min-width: 560px; border-collapse: collapse; font-size: 14.5px; }
+table.stat th, table.stat td { padding: 11px 10px; text-align: right; border-top: 1px solid var(--line); }
+table.stat thead th { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: .8px; text-transform: uppercase; color: var(--muted); border-top: none; padding-top: 0; }
+table.stat th:first-child, table.stat td:first-child { text-align: left; }
+table.stat tbody th { font-weight: 800; color: var(--navy); }
+table.stat td { font-family: var(--mono); font-weight: 600; color: var(--ink); }
+table.stat tr.pvt td { color: var(--amberdk); }
+table.stat tr.gov td { color: var(--teal); }
+table.stat td small { display: block; font-family: var(--sans); font-weight: 400; font-size: 11.5px; color: var(--muted); }
+.stat-wrap .cap { font-size: 13px; color: var(--muted); margin: 12px 0 0; font-style: italic; }
+.stat-swipe { display: none; font-family: var(--mono); font-size: 11px; color: var(--teal); margin-bottom: 8px; }
+@media (max-width: 640px) { .stat-swipe { display: block; } }
+.door { display: grid; grid-template-columns: 56px 1fr; gap: 16px; align-items: start; margin: 26px 0 8px; }
+.door .dn { width: 56px; height: 56px; border-radius: 14px; background: var(--grad); color: #fff; font-family: var(--mono); font-weight: 700; font-size: 22px; display: flex; align-items: center; justify-content: center; }
+.door h2 { margin: 6px 0 4px !important; }
+.door .dsub { font-size: 15px; color: var(--muted); margin: 0; }
+.row-item { display: grid; grid-template-columns: 40px 1fr; gap: 14px; align-items: start; margin: 12px 0; padding: 16px 18px; background: var(--tintT); border-radius: 12px; }
+.row-item .ri-num { font-family: var(--mono); font-weight: 700; font-size: 18px; color: var(--teal); }
+.row-item h4 { font-size: 15.5px; font-weight: 800; color: var(--navy); margin: 0 0 4px; }
+.row-item p { font-size: 14px; color: var(--body-c); margin: 0; line-height: 1.5; }
+.aside-note { border-left: 5px solid var(--amber); background: #FBF0E1; color: var(--ink); padding: 16px 22px; border-radius: 0 12px 12px 0; margin: 24px 0; font-size: 16px; }
+.aside-note b { color: var(--amberdk); }
+
+/* comparison tables */
+.cmp-wrap { margin: 26px 0; padding: 20px 22px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 4px 14px rgba(27,58,75,.06); overflow-x: auto; }
+.cmp-wrap .cmp-title { font-size: 14px; font-weight: 800; color: var(--navy); margin: 0 0 10px; }
+table.cmp { width: 100%; min-width: 560px; border-collapse: collapse; font-size: 14.5px; }
+table.cmp th, table.cmp td { padding: 10px 10px; text-align: left; border-top: 1px solid var(--line); vertical-align: top; }
+table.cmp thead th { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: .8px; text-transform: uppercase; color: var(--muted); border-top: none; padding-top: 0; }
+table.cmp tbody th { font-weight: 800; color: var(--navy); }
+.st { display: inline-block; font-family: var(--mono); font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+.st.live { background: var(--tintT); color: var(--teal); }
+.st.soon { background: #FBF0E1; color: var(--amberdk); }
+.st.none { background: #EEF0F3; color: #5A6C78; }
+.st.gap { background: #F7E1E3; color: #A93745; }
+tr.clash th, tr.clash td { background: rgba(224,138,60,.07); }
+.cmp-wrap .cap { font-size: 13px; color: var(--muted); margin: 12px 0 0; font-style: italic; }
+
+/* detailed value chain */
+.vc { margin: 22px 0 26px; }
+.vc-phase { display: flex; align-items: baseline; gap: 10px; margin: 22px 0 8px; }
+.vc-phase:first-child { margin-top: 0; }
+.vc-phase b { font-family: var(--mono); font-size: 12px; letter-spacing: 1.4px; color: #fff; background: #1B3A4B; padding: 5px 11px; border-radius: 6px; }
+.vc-phase span { font-size: 13.5px; color: var(--muted); }
+.vc-row { display: grid; grid-template-columns: 34px 1.05fr 2fr 1.05fr 1fr; gap: 10px; align-items: start; padding: 11px 12px; background: var(--card); border: 1px solid var(--line); border-radius: 10px; margin-bottom: 6px; }
+.vc-head { background: transparent; border: none; padding: 0 12px 4px; font-family: var(--mono); font-size: 10.5px; font-weight: 700; letter-spacing: 1px; color: var(--muted); text-transform: uppercase; }
+.vc-row .n { font-family: var(--mono); font-weight: 700; font-size: 13px; color: var(--teal); padding-top: 1px; }
+.vc-row .st-name { font-weight: 800; color: var(--navy); font-size: 14.5px; line-height: 1.35; }
+.vc-row .what { font-size: 13.5px; color: var(--body-c); line-height: 1.5; }
+.rail { display: inline-block; font-size: 11.5px; font-weight: 800; padding: 3px 9px; border-radius: 6px; margin: 0 4px 4px 0; line-height: 1.3; }
+.rail.uhi { background: #D3F0ED; color: #0B6E6E; border: 1px solid #0FA3A3; }
+.rail.hie { background: #DCE8F5; color: #1F5F92; border: 1px solid #2E7CB8; }
+.rail.nhcx { background: #FBE4C8; color: #9A560F; border: 1px solid #E08A3C; }
+.rail.reg { background: #1B3A4B; color: #fff; }
+.rail.sw { background: #EEF0F3; color: #3C5A6E; }
+.rail.oth { background: #ECE6F5; color: #5B3E8C; }
+.rail.none { background: transparent; color: #A93745; border: 1px dashed #A93745; }
+.vc-row .st { margin-bottom: 4px; }
+.vc-row small.sd { display: block; font-size: 11.5px; color: var(--muted); margin-top: 2px; line-height: 1.4; }
+.vc-key { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; margin: 14px 0 0; font-size: 12.5px; color: var(--muted); }
+@media (max-width: 720px) {
+  .vc-head { display: none; }
+  .vc-row { grid-template-columns: 30px 1fr; }
+  .vc-row .what, .vc-row .r, .vc-row .s { grid-column: 2; }
+}
+
+.ch-table th:first-child { width: 34%; }
+.ch-table tr.clash th { font-family: var(--mono); font-size: 11.5px; letter-spacing: .8px; text-transform: uppercase; color: var(--navy); }
+
+.etag { display: inline-block; vertical-align: middle; margin-left: 10px; font-family: var(--mono); font-size: 10.5px; font-weight: 700; letter-spacing: .8px; padding: 3px 8px; border-radius: 6px; }
+.etag.book { background: #DCE8F5; color: #1F5F92; }
+.etag.mine { background: #FBE4C8; color: #9A560F; }
+.etag.india { background: #D3F0ED; color: #0B6E6E; }
+[data-theme="dark"] .etag.book { background: #1A2C44; color: #9CC3EA; }
+[data-theme="dark"] .etag.mine { background: #3A2A16; color: #FFC987; }
+[data-theme="dark"] .etag.india { background: #173A3A; color: #7FD3CF; }
+
+[data-theme="dark"] #clinicPlan rect[fill="#DCE8F5"] { fill: #1A2C44; }
+[data-theme="dark"] #clinicPlan rect[fill="#D3F0ED"] { fill: #173A3A; }
+[data-theme="dark"] #clinicPlan text[fill="#1F5F92"] { fill: #9CC3EA; }
+[data-theme="dark"] #clinicPlan text[fill="#0B6E6E"] { fill: #7FD3CF; }
+
+
+/* climate-health explorer */
+.cx { margin: 26px 0 30px; border: 1px solid var(--line); border-radius: 16px; background: var(--card); padding: 18px; }
+.cx-nav { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.cx-btn { font: inherit; font-size: 13.5px; font-weight: 700; color: var(--navy); background: var(--bg); border: 1.5px solid var(--line); border-radius: 999px; padding: 8px 14px 8px 10px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: border-color .15s, background .15s; }
+.cx-btn:hover { border-color: var(--c); }
+.cx-btn[aria-selected="true"] { background: var(--c); border-color: var(--c); color: #fff; }
+.cx-btn:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+.cx-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--c); flex: none; }
+.cx-btn[aria-selected="true"] .cx-dot { background: #fff; }
+.cx-panel { border-left: 5px solid var(--c); padding: 4px 0 4px 18px; }
+.cx-panel h3 { margin: 0 0 12px; font-size: 20px; color: var(--navy); }
+.cx-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; margin-bottom: 14px; }
+.cx-stat { background: var(--tintT); border-radius: 12px; padding: 12px 14px; position: relative; }
+.cx-stat b { display: block; font-size: 24px; font-weight: 800; color: var(--c); line-height: 1.1; margin-bottom: 4px; }
+.cx-stat span { display: block; font-size: 13px; color: var(--body-c); line-height: 1.4; }
+.cx-stat i { display: inline-block; margin-top: 8px; font-style: normal; font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; color: var(--muted); border: 1px solid var(--line); border-radius: 5px; padding: 1px 6px; }
+.cx-grid { display: grid; grid-template-columns: 190px 1fr; gap: 8px 16px; margin: 0; }
+.cx-grid dt { font-weight: 800; font-size: 13.5px; color: var(--navy); }
+.cx-grid dd { margin: 0; font-size: 14.5px; color: var(--body-c); line-height: 1.5; }
+@media (max-width: 640px) { .cx-grid { grid-template-columns: 1fr; } .cx-grid dd { margin-bottom: 8px; } }
+[data-theme="dark"] .cx { background: var(--card); }
+[data-theme="dark"] .cx-stat { background: #1F3238; }
+[data-theme="dark"] .cx-stat b { filter: brightness(1.7) saturate(.9); }
+[data-theme="dark"] .cx-panel h3 { color: var(--navy); }
+.cx .cap { margin: 14px 0 0; font-size: 12.5px; font-style: italic; color: var(--muted); line-height: 1.5; }
+[data-theme="dark"] #threeCounts rect[fill="#FBE4C8"] { fill: #3A2A16; }
+[data-theme="dark"] #threeCounts text[fill="#7A440C"] { fill: #FFC987; }
+[data-theme="dark"] #threeCounts text[fill="#9A560F"], [data-theme="dark"] #coverageChart text[fill="#9A560F"], [data-theme="dark"] #leakPath text[fill="#9A560F"] { fill: #FFC987; }
+[data-theme="dark"] #threeCounts text[fill="#1F5F92"] { fill: #9CC3EA; }
+[data-theme="dark"] #threeCounts text[fill="#0B6E6E"], [data-theme="dark"] #leakPath text[fill="#0B6E6E"] { fill: #7FD3CF; }
+[data-theme="dark"] #leakPath text[fill="#B8432E"], [data-theme="dark"] #readyChart text[fill="#B8432E"] { fill: #F2A08E; }
+
+
+.cx-layout { display: block; }
+.cx-wheelbox { max-width: 600px; margin: 0 auto 6px; text-align: center; }
+.w-legend { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 18px; font-size: 12px; font-weight: 700; color: var(--muted); margin-bottom: 6px; }
+.w-legend i { display: inline-block; width: 22px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+.w-legend .lg1 { background: linear-gradient(90deg,#B8432E,#E76F51); }
+.w-legend .lg2 { background: #E76F51; opacity: .3; }
+.w-hint { margin: 2px 0 0; font-family: var(--mono); font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--teal); }
+.wheel { width: 100%; height: auto; display: block; overflow: visible; }
+.w-halo { fill: none; stroke: var(--line); stroke-width: 1; stroke-dasharray: 2 5; }
+.wseg { cursor: pointer; outline: none; transition: transform .25s cubic-bezier(.2,.8,.2,1); }
+.wseg .wo { opacity: .16; transition: opacity .2s; }
+.wseg .wi { transition: filter .2s; }
+.wseg .wl { font-size: 13px; font-weight: 800; fill: #fff; letter-spacing: .2px; pointer-events: none; }
+.wseg .wt { font-size: 12.5px; font-weight: 700; fill: var(--navy); pointer-events: none; }
+.wseg .wic { pointer-events: none; }
+.wseg:hover .wi, .wseg:focus-visible .wi { filter: brightness(1.12) saturate(1.1); }
+.wseg:hover .wo, .wseg:focus-visible .wo { opacity: .3; }
+.wseg.on { transform: translate(var(--dx), var(--dy)); }
+.wseg.on .wo { opacity: .42; }
+.wseg.on .wi { filter: brightness(1.08) saturate(1.15); }
+.w-k { font-size: 10px; font-weight: 800; letter-spacing: 1.5px; fill: #0B6E6E; }
+.w-c { font-size: 24px; font-weight: 800; fill: #173441; }
+.w-s { font-size: 11px; font-weight: 600; fill: #37505B; }
+.w-pulse { transform-origin: 330px 330px; animation: wpulse 3.2s ease-out infinite; opacity: 0; }
+@keyframes wpulse { 0% { transform: scale(1); opacity: .55; } 100% { transform: scale(1.28); opacity: 0; } }
+.wsegs { animation: wspin .9s cubic-bezier(.2,.8,.2,1) both; transform-origin: 330px 330px; }
+@keyframes wspin { from { transform: rotate(-25deg) scale(.92); opacity: 0; } to { transform: none; opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .w-pulse, .wsegs { animation: none; } .wseg { transition: none; } }
+.cx-layout .cx-nav { justify-content: center; }
+.cx-head { display: flex; align-items: center; gap: 14px; border-radius: 14px; padding: 14px 18px; margin: 0 0 14px; color: #fff; box-shadow: 0 6px 18px rgba(11,42,53,.15); }
+.cx-head svg { width: 52px; height: 52px; flex: none; background: rgba(255,255,255,.16); border-radius: 12px; padding: 6px; }
+.cx-head h3 { margin: 2px 0 0 !important; color: #fff !important; font-size: 21px; }
+.cx-kick { font-family: var(--mono); font-size: 10.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; opacity: .85; }
+.cx-panel { border-left: 0 !important; padding: 0 !important; animation: cxin .3s ease both; }
+@keyframes cxin { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .cx-panel { animation: none; } }
+[data-theme="dark"] .wseg .wo { opacity: .26; }
+[data-theme="dark"] .wseg .wt { fill: #E8F1F2; }
+[data-theme="dark"] #climateFlow rect[fill="#173F5F"] { fill: #0E2A3D; }
+.sub-h { font-size: 19px; color: var(--navy); margin: 26px 0 8px; }
+[data-theme="dark"] .w-core { stroke: #16252C; }
+[data-theme="dark"] #g-core stop:nth-child(1) { stop-color: #2A4650; }
+[data-theme="dark"] #g-core stop:nth-child(2) { stop-color: #1C3138; }
+[data-theme="dark"] #g-core stop:nth-child(3) { stop-color: #142429; }
+[data-theme="dark"] .w-c { fill: #E8F1F2; } [data-theme="dark"] .w-s { fill: #9FB3BC; } [data-theme="dark"] .w-k { fill: #7FD3CF; }
+
+
+/* state grid */
+.sg { margin: 22px 0 28px; border: 1px solid var(--line); border-radius: 16px; background: var(--card); padding: 18px; }
+@media (min-width: 1000px) {
+  .sg { width: min(1080px, calc(100vw - 48px)); position: relative; left: 50%; transform: translateX(-50%); }
+}
+.sg-body { display: grid; grid-template-columns: 1fr; gap: 16px; align-items: start; }
+@media (min-width: 860px) {
+  .sg-body { grid-template-columns: minmax(0, 1fr) 360px; }
+  .sg-right { position: sticky; top: 96px; }
+  .sg-panel { margin-top: 0 !important; }
+}
+@media (max-width: 859px) { .sg-right { order: -1; } }
+.sg-legend { display: grid !important; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px !important; }
+.sg-li { display: flex; flex-direction: column; gap: 4px; }
+.sg-li small { font-size: 12px; line-height: 1.4; color: var(--body-c); padding-left: 4px; }
+.sg-pill { align-self: flex-start; }
+.sg-hint { font-size: 12px !important; color: var(--muted) !important; font-style: italic; margin-top: 8px !important; }
+.sg-panel { border-radius: 12px !important; border-left-width: 6px !important; }
+.sg-legend { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.sg-pill { display: inline-flex; align-items: center; gap: 8px; background: var(--c); color: #fff; font-size: 13px; font-weight: 700; border-radius: 999px; padding: 6px 14px 6px 6px; }
+.sg-pill b { background: #fff; color: var(--c); border-radius: 999px; min-width: 26px; height: 26px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; }
+.sg-reg { margin-bottom: 12px; }
+.sg-rl { font-family: var(--mono); font-size: 10.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); margin: 0 0 6px; }
+.sg-tiles { display: flex; flex-wrap: wrap; gap: 6px; }
+.sg-tile { font: inherit; cursor: pointer; display: flex; flex-direction: column; align-items: flex-start; gap: 1px; min-width: 92px; max-width: 150px; padding: 7px 10px; border-radius: 10px; border: 2px solid var(--c); border-left-width: 6px; background: #fff; color: #173441; text-align: left; transition: background .15s, transform .15s; }
+.sg-tile.sg-A { background: #E3F4EF; } .sg-tile.sg-B { background: #E5EEFA; } .sg-tile.sg-C { background: #FBEBDD; } .sg-tile.sg-D { background: #EEF0F2; border-style: dashed; border-left-style: solid; }
+.sg-tile b { font-size: 14px; font-weight: 800; color: var(--c); }
+.sg-tile span { font-size: 11px; line-height: 1.25; color: #2C4350; }
+.sg-tile:hover { transform: translateY(-1px); }
+.sg-tile.on { background: var(--c) !important; }
+.sg-tile.on b, .sg-tile.on span { color: #fff; }
+.sg-tile:focus-visible { outline: 3px solid #0FA3A3; outline-offset: 2px; }
+[data-theme="dark"] .sg-tile.sg-A { background: #12352E; } [data-theme="dark"] .sg-tile.sg-B { background: #16273F; } [data-theme="dark"] .sg-tile.sg-C { background: #3A2414; } [data-theme="dark"] .sg-tile.sg-D { background: #232B31; }
+[data-theme="dark"] .sg-tile span { color: #DCE6EA; }
+[data-theme="dark"] .sg-tile.on b, [data-theme="dark"] .sg-tile.on span { color: #fff !important; }
+[data-theme="dark"] .sg-tile.sg-A b { color: #5FD3B5; } [data-theme="dark"] .sg-tile.sg-B b { color: #8DB6F0; } [data-theme="dark"] .sg-tile.sg-C b { color: #F3A46A; } [data-theme="dark"] .sg-tile.sg-D b { color: #B4BEC6; }
+.sg-panel { margin-top: 10px; border-left: 5px solid var(--c, #0FA3A3); background: var(--tintT); border-radius: 0 12px 12px 0; padding: 12px 16px; min-height: 120px; }
+.sg-panel h3 { margin: 2px 0 8px; font-size: 19px; color: var(--navy); }
+.sg-panel p { margin: 0 0 8px; font-size: 14.5px; line-height: 1.55; color: var(--body-c); }
+.sg-k { font-family: var(--mono); font-size: 10.5px !important; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted) !important; margin: 0 !important; }
+.sg .cap { margin: 12px 0 0; font-size: 12.5px; font-style: italic; color: var(--muted); line-height: 1.5; }
+[data-theme="dark"] .sg-panel { background: #1F3238; }
+[data-theme="dark"] #zoomChart text[fill="#0B6E6E"] { fill: #7FD3CF; }
+
+
+.sg-chips { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-top: 6px; }
+.sg-chl { font-size: 12.5px; font-weight: 800; color: var(--navy); margin-right: 2px; }
+.sg-ch { font-size: 12px; font-weight: 700; border-radius: 999px; padding: 3px 10px; }
+.sg-chv { background: #0B8A6F; color: #fff; }
+.sg-chr { background: transparent; color: var(--navy); border: 1.5px solid var(--muted); }
+.sg-chn { color: var(--muted); border: 1.5px dashed var(--muted); }
+.mx-wrap { margin-top: 14px; border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; background: var(--bg); }
+.mx-wrap summary { cursor: pointer; font-weight: 800; color: var(--teal); font-size: 14.5px; }
+.mx-key { font-size: 12.5px; color: var(--body-c); margin: 10px 0 8px; }
+.mx-scroll { overflow-x: auto; }
+.mx { border-collapse: collapse; width: 100%; min-width: 600px; font-size: 12.5px; table-layout: fixed; }
+.mx thead th:first-child, .mx tbody th { width: 150px; }
+.mx tbody th { white-space: normal !important; }
+.mx th, .mx td { padding: 5px 6px; border-bottom: 1px solid var(--line); text-align: center; }
+.mx tbody th { text-align: left; font-weight: 700; color: var(--navy); white-space: nowrap; }
+.mx thead th { vertical-align: bottom; font-size: 11px; font-weight: 800; color: var(--muted); line-height: 1.2; }
+.mx thead th:first-child { text-align: left; }
+.mx-g th { text-align: left !important; background: var(--c); color: #fff !important; font-size: 11.5px; letter-spacing: .6px; text-transform: uppercase; padding: 4px 8px; }
+td.mx-v, span.mx-v { color: #0B8A6F; font-size: 15px; } td.mx-r, span.mx-r { color: #1F5FB8; font-size: 15px; } td.mx-n, span.mx-n { color: var(--muted); }
+[data-theme="dark"] td.mx-v, [data-theme="dark"] span.mx-v { color: #5FD3B5; } [data-theme="dark"] td.mx-r, [data-theme="dark"] span.mx-r { color: #8DB6F0; }
+
+#chainChart .cn { cursor: help; }
+#chainChart .cn:hover circle { filter: brightness(1.15); }
+/* sources */
+.sources { margin-top: 44px; padding-top: 10px; }
+.src { display: grid; grid-template-columns: 96px 1fr; gap: 12px; align-items: start; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 14.5px; }
+.src:last-of-type { border-bottom: none; }
+.tag { display: inline-block; font-family: var(--mono); font-size: 10.5px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 4px 8px; border-radius: 6px; text-align: center; }
+.tag.official { background: var(--tintT); color: var(--teal); }
+.tag.secondary { background: #FBF0E1; color: var(--amberdk); }
+.tag.analysis { background: #EEF0F3; color: #3C5A6E; }
+.src b { color: var(--navy); }
+.src small { display: block; color: var(--muted); font-size: 13px; margin-top: 2px; }
+.caveat { margin-top: 18px; padding: 16px 20px; background: var(--card); border: 1px dashed var(--amber); border-radius: 12px; font-size: 14.5px; color: var(--body-c); }
+.caveat b { color: var(--amberdk); }
+
+/* share */
+.share-bar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 36px 0 10px; padding: 18px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.share-bar .share-label { font-weight: 800; font-size: 14px; color: var(--navy); margin-right: 4px; }
+.share-btn { display: inline-flex; align-items: center; gap: 7px; font-family: var(--sans); font-weight: 700; font-size: 13px; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--navy); text-decoration: none; cursor: pointer; }
+.share-btn:hover { border-color: var(--teal); color: var(--teal); }
+.share-btn.share-wa:hover { border-color: #25D366; color: #128C7E; }
+.share-btn.share-li:hover { border-color: #0A66C2; color: #0A66C2; }
+.share-copied { background: var(--teal) !important; color: #fff !important; border-color: var(--teal) !important; }
+
+/* related */
+.related { margin: 40px 0 10px; }
+.related-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+.related-label { font-family: var(--mono); font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin: 0; }
+.related-nav { display: flex; align-items: center; gap: 8px; }
+.related-seeall { font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--teal); text-decoration: none; letter-spacing: .5px; }
+.rel-arrow { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--line); background: var(--tintT); color: var(--navy); font-size: 16px; cursor: pointer; line-height: 1; display: inline-flex; align-items: center; justify-content: center; }
+.rel-arrow:hover { background: var(--teal); color: #fff; border-color: var(--teal); }
+.related-grid { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px; scrollbar-width: thin; }
+.related-card { flex: 0 0 240px; scroll-snap-align: start; display: flex; flex-direction: column; gap: 8px; padding: 18px; border-radius: 12px; text-decoration: none; color: #fff; min-height: 120px; transition: transform .2s ease; }
+.related-card:hover { transform: translateY(-3px); }
+.related-card.cat-digital-health { background: var(--grad); }
+.related-card.cat-policy { background: linear-gradient(135deg,#E08A3C,#B96A14); }
+.related-card.cat-governance { background: linear-gradient(135deg,#3C5A6E,#5A7A8C); }
+.related-card.cat-strategy { background: linear-gradient(135deg,#6C4AB6,#3A2E7C); }
+.related-card .rc-ed { font-family: var(--mono); font-size: 11px; font-weight: 600; opacity: .9; }
+.related-card .rc-title { font-weight: 800; font-size: 15px; line-height: 1.3; }
+.related-card .rc-go { font-size: 12.5px; font-weight: 700; margin-top: auto; opacity: .92; }
+
+/* author, subscribe, footer */
+.author-box { display: flex; gap: 16px; align-items: flex-start; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; margin-top: 46px; box-shadow: 0 4px 14px rgba(27,58,75,.06); }
+.author-name { font-weight: 800; color: var(--navy); font-size: 17px; }
+.author-name span { font-weight: 500; color: var(--muted); font-size: 13px; }
+.author-bio { font-size: 13.5px; color: var(--muted); line-height: 1.55; margin: 4px 0 8px; }
+.author-box a { font-weight: 800; font-size: 14.5px; text-decoration: none; color: var(--teal); }
+.back-link { display: inline-block; margin-top: 34px; font-family: var(--mono); font-size: 14px; text-decoration: none; color: var(--navy); border-bottom: 2px solid var(--teal); padding-bottom: 2px; }
+.subscribe { background: var(--navy); color: #E8F4F4; padding: clamp(50px, 8vw, 90px) clamp(20px, 4vw, 48px); }
+.subscribe-inner { max-width: 660px; margin: 0 auto; text-align: center; }
+.eyebrow { display: inline-block; font-family: var(--mono); font-size: 11.5px; font-weight: 600; letter-spacing: 2px; padding: 6px 12px; border-radius: 999px; background: var(--tintT); color: var(--teal); margin-bottom: 14px; }
+.subscribe .eyebrow { background: rgba(255,255,255,.08); color: #FFC987; }
+.subscribe h2 { font-weight: 800; font-size: clamp(28px, 4.5vw, 42px); line-height: 1.12; color: #fff; }
+.subscribe-sub { margin-top: 14px; color: #B9D2D6; }
+.subscribe-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 28px; }
+.btn-li { display: inline-flex; align-items: center; gap: 9px; background: var(--grad); color: #fff; font-weight: 800; font-size: 16px; text-decoration: none; padding: 14px 26px; border-radius: 999px; box-shadow: 0 8px 22px rgba(15,163,163,.4); transition: transform .15s ease; }
+.btn-li:hover { transform: translateY(-2px); }
+.btn-ghost { display: inline-flex; align-items: center; color: #fff; font-weight: 700; font-size: 15px; text-decoration: none; border: 2px solid rgba(255,255,255,.25); padding: 12px 22px; border-radius: 999px; }
+.btn-ghost:hover { border-color: var(--teal); color: #9FDEDD; }
+.site-footer { padding: 24px clamp(20px, 4vw, 48px); font-family: var(--mono); font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--line); text-align: center; }
+.site-footer a { color: var(--teal); text-decoration: none; }
+.to-top { position: fixed; bottom: 24px; right: 24px; width: 46px; height: 46px; border-radius: 50%; background: var(--navy); color: #fff; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transform: translateY(10px); transition: opacity .25s ease, transform .25s ease; z-index: 60; box-shadow: 0 6px 18px rgba(27,58,75,.28); }
+.to-top.show { opacity: 1; pointer-events: auto; transform: none; }
+.to-top:hover { background: var(--teal); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
+
+/* ── DARK MODE ── every surface gets an explicit override ── */
+[data-theme="dark"] { --bg: #0F1B22; --navy: #E8F4F4; --ink: #DCEAEA; --body-c: #B4C7CE; --muted: #7E939B; --line: #25373F; --tintT: #16252C; --card: #16252C; }
+[data-theme="dark"] body { background: #0F1B22; }
+[data-theme="dark"] .site-header { background: #13212A; border-bottom-color: #25373F; }
+[data-theme="dark"] .logo-name { color: #E8F4F4; }
+[data-theme="dark"] .nav-subscribe { color: #fff !important; }
+[data-theme="dark"] .nav-toggle { color: #E8F4F4; }
+[data-theme="dark"] .theme-toggle .t-sun { display: none; }
+[data-theme="dark"] .theme-toggle .t-moon { display: block; }
+[data-theme="dark"] .meta-cat { background: #16252C; color: #E8F4F4; }
+[data-theme="dark"] .post-body, [data-theme="dark"] .lede { color: #DCEAEA; }
+[data-theme="dark"] .vc-row:not(.vc-head), [data-theme="dark"] .cmp-wrap, [data-theme="dark"] .stat-wrap, [data-theme="dark"] .key-findings, [data-theme="dark"] .jump a, [data-theme="dark"] .num-card, [data-theme="dark"] .row-item, [data-theme="dark"] .ed-chart, [data-theme="dark"] .author-box, [data-theme="dark"] .share-btn, [data-theme="dark"] .caveat, [data-theme="dark"] .rel-arrow { background: #16252C !important; border-color: #25373F; }
+[data-theme="dark"] .key-findings li::before { background: #1F3238; }
+[data-theme="dark"] .aside-note { background: #2A2419; color: #E8E0D0; border-left-color: #E08A3C; }
+[data-theme="dark"] .aside-note b { color: #FFC987; }
+[data-theme="dark"] .tag.secondary { background: #2A2419; color: #FFC987; }
+[data-theme="dark"] table.stat tr.pvt td { color: #FFC987; }
+[data-theme="dark"] .st.live { background: #173A3A; color: #7FD3CF; }
+[data-theme="dark"] .st.soon { background: #2A2419; color: #FFC987; }
+[data-theme="dark"] .st.none { background: #1F2A33; color: #A9BFD0; }
+[data-theme="dark"] .st.gap { background: #3A2024; color: #E07A86; }
+[data-theme="dark"] tr.clash th, [data-theme="dark"] tr.clash td { background: rgba(224,138,60,.10); }
+[data-theme="dark"] .tag.analysis { background: #1F2A33; color: #A9BFD0; }
+[data-theme="dark"] .ed-callout { background: #0A1418; }
+[data-theme="dark"] .door .dn { color: #fff; }
+[data-theme="dark"] .to-top { background: var(--teal); }
+[data-theme="dark"] .vc-phase b { background: #0A1418; }
+[data-theme="dark"] .rail.uhi { background: #173A3A; color: #7FD3CF; }
+[data-theme="dark"] .rail.hie { background: #1A2C44; color: #9CC3EA; }
+[data-theme="dark"] .rail.nhcx { background: #3A2A16; color: #FFC987; }
+[data-theme="dark"] .rail.reg { background: #2A4A5C; }
+[data-theme="dark"] .rail.sw { background: #1F2A33; color: #A9BFD0; }
+[data-theme="dark"] .rail.oth { background: #2A2340; color: #C4B2E6; }
+[data-theme="dark"] .rail.none { color: #E07A86; border-color: #E07A86; }
+[data-theme="dark"] #valueChain rect[fill="#E7F5F4"] { fill: #173A3A; }
+[data-theme="dark"] #valueChain rect[fill="#C9ECE8"] { fill: #1F4A48; }
+[data-theme="dark"] #valueChain rect[fill="#DDE3E8"] { fill: #2A3842; }
+[data-theme="dark"] #valueChain rect[fill="#F8DDBA"] { fill: #4A3518; }
+[data-theme="dark"] #valueChain rect[fill="#F2CDD1"] { fill: #4A262B; }
+[data-theme="dark"] #valueChain rect[fill="#E6EEF7"] { fill: #1A2C44; }
+[data-theme="dark"] #valueChain rect[fill="#FBF0E1"] { fill: #3A2A16; }
+[data-theme="dark"] #valueChain rect[fill="#F7E1E3"] { fill: #3A2024; }
+[data-theme="dark"] #valueChain rect[fill="#EEF0F3"] { fill: #1F2A33; }
+[data-theme="dark"] #valueChain text[fill="#0B7F7F"] { fill: #4FB3AF; }
+[data-theme="dark"] #valueChain text[fill="#1F5F92"] { fill: #8FB8E0; }
+[data-theme="dark"] #valueChain text[fill="#B96A14"] { fill: #FFC987; }
+[data-theme="dark"] #valueChain text[fill="#A93745"] { fill: #E07A86; }
+[data-theme="dark"] #valueChain text[fill="#3C5A6E"] { fill: #A9BFD0; }
+[data-theme="dark"] .share-copied { background: var(--teal) !important; }
+</style>
+</head>
+<body>
+<script>(function(){try{if(localStorage.getItem('hp-theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+<div id="prog"></div>
+<header class="site-header">
+  <a class="logo" href="/">
+    <img src="/logo.png" alt="Healthcare Pulse" class="logo-img">
+    <span class="logo-text"><span class="logo-name">Healthcare Pulse</span><span class="logo-tag">Digital health, decoded &middot; by Mayank Madhur</span></span>
+  </a>
+  <button id="navToggle" class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+    <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+  </button>
+  <nav id="siteNav">
+    <a href="/perspectives/">Perspectives</a>
+    <a href="/about.html">About</a>
+    <a href="/podcast.html">Podcast</a>
+    <a href="/archive/">Archive</a>
+    <a href="/ask/">Ask</a>
+    <a href="/research/">Research</a>
+    <a href="/index-tool/">Tool</a>
+    <a class="nav-subscribe" href="https://www.linkedin.com/newsletters/7311231782241083393/" target="_blank" rel="noopener">Subscribe</a>
+    <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle dark mode">
+      <svg class="t-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <svg class="t-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+  </nav>
+</header>
+<main>
+<article class="post">
+  <div class="post-banner cat-digital-health">
+    <svg class="banner-ecg" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <path d="M0 130 H180 l18 -34 22 64 26 -96 24 120 20 -78 16 24 H420 l18 -34 22 64 26 -96 24 120 20 -78 16 24 H800" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <div class="post-meta">
+    <span class="meta-ed">EDITION 84</span>
+    <span>FRI 20 NOV 2026</span>
+    <span class="meta-cat">Digital Health</span>
+    <span>12 MIN READ</span>
+  </div>
+  <h1 class="post-title">In public hospitals, digital health follows the patient to the doctor. Then it starts losing them.</h1>
+
+  <div class="post-body">
+    <p class="lede">Earlier this year, a patient was reportedly turned away from a Delhi government hospital's ICU even though the online portal showed a free bed. The Delhi High Court ordered a surprise audit. NIC's teams visited all 38 Delhi government hospitals, which all run the same hospital software. 18 were using more than ten of its parts (modules), such as registration, lab and pharmacy. 20 were using only five to ten.</p>
+    <p class="lede">Same software. Same city. Very different use. The same pattern shows up across India: the digital record follows the patient to the registration desk and usually to the doctor. Then it starts losing them: at the pharmacy, inside the bigger hospitals, and on the next visit.</p>
+
+    <div class="key-findings">
+      <p class="kf-eyebrow">In short</p>
+      <ol>
+        <li>Registration is nearly solved. Bihar says about <b>92%</b> of its government OPD registrations are online.</li>
+        <li>The record thins out at the pharmacy. In 13 Tamil Nadu health centres, only <b>59%</b> of prescriptions with medicines had a dispensing entry.</li>
+        <li>In Kerala's Malappuram district, the typical government health centre enters about <b>99%</b> of consultations in the system. The district hospital enters <b>4%</b>.</li>
+        <li>The next visit is the weakest step. Only about <b>a third</b> of Malappuram visits are linked to the patient's own ID.</li>
+        <li>All of this is about <b>government</b> facilities. No private hospital publishes how its systems are used.</li>
+        <li>No state can be ranked yet, because almost none publishes how the system is used. Tap any state below to see what each has shown.</li>
+      </ol>
+    </div>
+
+    <div class="jump">
+      <span class="jl">In this edition</span>
+      <a href="#follow">The patient's journey</a>
+      <a href="#states">Every state</a>
+      <a href="#kerala">Kerala</a>
+      <a href="#playbook">Kerala's playbook</a>
+      <a href="#tamilnadu">Tamil Nadu</a>
+      <a href="#delhi">Delhi</a>
+      <a href="#chain">Five states compared</a>
+      <a href="#connect">How to connect</a>
+      <a href="#private">Private hospitals</a>
+      <a href="#nonumber">No single number</a>
+      <a href="#measures">Six measures</a>
+      <a href="#sources">Sources</a>
+    </div>
+
+    <p><b>One thing to know before reading:</b> everything in this edition is about <b>government</b> health centres and hospitals. They are the only ones whose use of digital systems has been measured anywhere. Private hospitals are covered at the end.</p>
+
+    <h2 id="follow">How far the digital record follows the patient</h2>
+    <p>Think of one visit to a government health centre. You register. The doctor sees you and writes a prescription. You give a sample at the lab. You collect medicines at the pharmacy. A month later, you come back. A digital system is useful only if it follows you through all five steps.</p>
+    <p>No state publishes all five for the same patients. But the best public evidence for each step tells a clear story.</p>
+    <div class="ed-chart" id="followChart">
+      <svg viewBox="0 0 680 244" role="img" xmlns="http://www.w3.org/2000/svg" aria-label="How far the digital record follows the patient, using the best public evidence for each step. Registered online: 92%, Bihar OPD registrations, June 2025, state-reported. Prescription recorded: 77% of consultations, 13 Tamil Nadu primary health centres. Lab report recorded: 83%, same centres. Medicines recorded at the pharmacy: 59% of prescriptions with medicines, same centres. Return visit linked to the patient's ID: 34% of visits, Malappuram district, Kerala, February 2026.">
+        <title>How far the digital record follows the patient</title>
+        <g font-family="Manrope, sans-serif"><text x="0" y="25" font-size="12.5" font-weight="700" fill="var(--navy)">1. Registered online</text><text x="0" y="41" font-size="10.5" fill="var(--muted)">Bihar, OPD registrations, Jun 2025*</text><rect x="230" y="10" width="430" height="24" rx="6" fill="var(--tintT)"/><rect x="230" y="10" width="395.6" height="24" rx="6" fill="#0FA3A3"/><text x="633.6" y="27" font-size="13" font-weight="800" fill="var(--navy)">92%</text><text x="0" y="71" font-size="12.5" font-weight="700" fill="var(--navy)">2. Prescription recorded</text><text x="0" y="87" font-size="10.5" fill="var(--muted)">Tamil Nadu, 13 PHCs, 2024–25</text><rect x="230" y="56" width="430" height="24" rx="6" fill="var(--tintT)"/><rect x="230" y="56" width="331.1" height="24" rx="6" fill="#0FA3A3"/><text x="569.1" y="73" font-size="13" font-weight="800" fill="var(--navy)">77%</text><text x="0" y="117" font-size="12.5" font-weight="700" fill="var(--navy)">3. Lab report recorded</text><text x="0" y="133" font-size="10.5" fill="var(--muted)">Tamil Nadu, same 13 PHCs</text><rect x="230" y="102" width="430" height="24" rx="6" fill="var(--tintT)"/><rect x="230" y="102" width="356.9" height="24" rx="6" fill="#2E7CB8"/><text x="594.9" y="119" font-size="13" font-weight="800" fill="var(--navy)">83%</text><text x="0" y="163" font-size="12.5" font-weight="700" fill="var(--navy)">4. Medicines recorded at pharmacy</text><text x="0" y="179" font-size="10.5" fill="var(--muted)">Tamil Nadu, prescriptions with medicines</text><rect x="230" y="148" width="430" height="24" rx="6" fill="var(--tintT)"/><rect x="230" y="148" width="253.7" height="24" rx="6" fill="#E08A3C"/><text x="491.7" y="165" font-size="13" font-weight="800" fill="var(--navy)">59%</text><text x="0" y="209" font-size="12.5" font-weight="700" fill="var(--navy)">5. Return visit linked to patient's ID</text><text x="0" y="225" font-size="10.5" fill="var(--muted)">Kerala, Malappuram, Feb 2026</text><rect x="230" y="194" width="430" height="24" rx="6" fill="var(--tintT)"/><rect x="230" y="194" width="146.2" height="24" rx="6" fill="#C2553B"/><text x="384.2" y="211" font-size="13" font-weight="800" fill="var(--navy)">34%</text></g>
+      </svg>
+      <p class="cap">Five steps, five different measures from three states. Read each bar on its own; they are not one group of patients. *Bihar's figure is the state government's own statement. Sources: Bihar health department (June 2025); Prabakaran et al., Tamil Nadu Journal of Public Health and Medical Research, 2025; eHealth Kerala district factsheet, February 2026.</p>
+    </div>
+
+    <p>The front of the journey is strong. Registration and the doctor's prescription are mostly digital wherever anyone has checked. The back of the journey is weak. The pharmacy and the return visit are where the record breaks, and these are the two steps that matter most for safety and continuity of care.</p>
+
+    <h2 id="states">Every state and UT: what has been shown</h2>
+    <p>India has no league table for hospital digitisation, and this grid does not try to be one. Each state's evidence is different: some publish monthly use reports, some have only a launch photo. Tap any state or union territory to see what the evidence shows, which data points exist, and the one thing it should measure next. The table under the grid shows every state's data points at a glance.</p>
+    <div class="sg" id="sg">
+      <div class="sg-legend"><div class="sg-li" style="--c:#0B8A6F"><span class="sg-pill"><b>4</b>Use measured publicly</span><small>The state or a published study shows how much the system is actually used.</small></div><div class="sg-li" style="--c:#1F5FB8"><span class="sg-pill"><b>11</b>Software installed, use not shown</span><small>The state says the software is installed in many places, but publishes nothing on how much it is used.</small></div><div class="sg-li" style="--c:#C8580E"><span class="sg-pill"><b>8</b>Problems found by reviewers</span><small>National review teams, auditors or a court found specific problems on the ground.</small></div><div class="sg-li" style="--c:#5B6672"><span class="sg-pill"><b>13</b>Too little evidence</span><small>Only old, one-off or launch news. This does not mean the state is doing badly.</small></div></div>
+      <div class="sg-body">
+        <div class="sg-left"><div class="sg-reg"><p class="sg-rl">South</p><div class="sg-tiles"><button class="sg-tile sg-A" type="button" data-i="0" style="--c:#0B8A6F" aria-label="Kerala: Use measured publicly"><b>KL</b><span>Kerala</span></button><button class="sg-tile sg-A" type="button" data-i="1" style="--c:#0B8A6F" aria-label="Tamil Nadu: Use measured publicly"><b>TN</b><span>Tamil Nadu</span></button><button class="sg-tile sg-B" type="button" data-i="2" style="--c:#1F5FB8" aria-label="Karnataka: Software installed, use not shown"><b>KA</b><span>Karnataka</span></button><button class="sg-tile sg-B" type="button" data-i="3" style="--c:#1F5FB8" aria-label="Andhra Pradesh: Software installed, use not shown"><b>AP</b><span>Andhra Pradesh</span></button><button class="sg-tile sg-B" type="button" data-i="4" style="--c:#1F5FB8" aria-label="Telangana: Software installed, use not shown"><b>TG</b><span>Telangana</span></button><button class="sg-tile sg-D" type="button" data-i="5" style="--c:#5B6672" aria-label="Puducherry: Too little evidence"><b>PY</b><span>Puducherry</span></button><button class="sg-tile sg-D" type="button" data-i="6" style="--c:#5B6672" aria-label="Lakshadweep: Too little evidence"><b>LD</b><span>Lakshadweep</span></button><button class="sg-tile sg-D" type="button" data-i="7" style="--c:#5B6672" aria-label="Andaman &amp; Nicobar: Too little evidence"><b>AN</b><span>Andaman &amp; Nicobar</span></button></div></div><div class="sg-reg"><p class="sg-rl">West</p><div class="sg-tiles"><button class="sg-tile sg-B" type="button" data-i="8" style="--c:#1F5FB8" aria-label="Maharashtra: Software installed, use not shown"><b>MH</b><span>Maharashtra</span></button><button class="sg-tile sg-A" type="button" data-i="9" style="--c:#0B8A6F" aria-label="Gujarat: Use measured publicly"><b>GJ</b><span>Gujarat</span></button><button class="sg-tile sg-B" type="button" data-i="10" style="--c:#1F5FB8" aria-label="Rajasthan: Software installed, use not shown"><b>RJ</b><span>Rajasthan</span></button><button class="sg-tile sg-D" type="button" data-i="11" style="--c:#5B6672" aria-label="Goa: Too little evidence"><b>GA</b><span>Goa</span></button><button class="sg-tile sg-D" type="button" data-i="12" style="--c:#5B6672" aria-label="Dadra, Nagar Haveli, Daman, Diu: Too little evidence"><b>DD</b><span>Dadra, Nagar Haveli, Daman, Diu</span></button></div></div><div class="sg-reg"><p class="sg-rl">Central</p><div class="sg-tiles"><button class="sg-tile sg-B" type="button" data-i="13" style="--c:#1F5FB8" aria-label="Madhya Pradesh: Software installed, use not shown"><b>MP</b><span>Madhya Pradesh</span></button><button class="sg-tile sg-C" type="button" data-i="14" style="--c:#C8580E" aria-label="Chhattisgarh: Problems found by reviewers"><b>CG</b><span>Chhattisgarh</span></button></div></div><div class="sg-reg"><p class="sg-rl">North</p><div class="sg-tiles"><button class="sg-tile sg-A" type="button" data-i="15" style="--c:#0B8A6F" aria-label="Uttar Pradesh: Use measured publicly"><b>UP</b><span>Uttar Pradesh</span></button><button class="sg-tile sg-C" type="button" data-i="16" style="--c:#C8580E" aria-label="Delhi: Problems found by reviewers"><b>DL</b><span>Delhi</span></button><button class="sg-tile sg-B" type="button" data-i="17" style="--c:#1F5FB8" aria-label="Haryana: Software installed, use not shown"><b>HR</b><span>Haryana</span></button><button class="sg-tile sg-C" type="button" data-i="18" style="--c:#C8580E" aria-label="Punjab: Problems found by reviewers"><b>PB</b><span>Punjab</span></button><button class="sg-tile sg-D" type="button" data-i="19" style="--c:#5B6672" aria-label="Himachal Pradesh: Too little evidence"><b>HP</b><span>Himachal Pradesh</span></button><button class="sg-tile sg-C" type="button" data-i="20" style="--c:#C8580E" aria-label="Uttarakhand: Problems found by reviewers"><b>UK</b><span>Uttarakhand</span></button><button class="sg-tile sg-D" type="button" data-i="21" style="--c:#5B6672" aria-label="Jammu &amp; Kashmir: Too little evidence"><b>JK</b><span>Jammu &amp; Kashmir</span></button><button class="sg-tile sg-D" type="button" data-i="22" style="--c:#5B6672" aria-label="Ladakh: Too little evidence"><b>LA</b><span>Ladakh</span></button><button class="sg-tile sg-D" type="button" data-i="23" style="--c:#5B6672" aria-label="Chandigarh: Too little evidence"><b>CH</b><span>Chandigarh</span></button></div></div><div class="sg-reg"><p class="sg-rl">East</p><div class="sg-tiles"><button class="sg-tile sg-B" type="button" data-i="24" style="--c:#1F5FB8" aria-label="Bihar: Software installed, use not shown"><b>BR</b><span>Bihar</span></button><button class="sg-tile sg-C" type="button" data-i="25" style="--c:#C8580E" aria-label="Jharkhand: Problems found by reviewers"><b>JH</b><span>Jharkhand</span></button><button class="sg-tile sg-B" type="button" data-i="26" style="--c:#1F5FB8" aria-label="Odisha: Software installed, use not shown"><b>OD</b><span>Odisha</span></button><button class="sg-tile sg-D" type="button" data-i="27" style="--c:#5B6672" aria-label="West Bengal: Too little evidence"><b>WB</b><span>West Bengal</span></button></div></div><div class="sg-reg"><p class="sg-rl">Northeast</p><div class="sg-tiles"><button class="sg-tile sg-B" type="button" data-i="28" style="--c:#1F5FB8" aria-label="Assam: Software installed, use not shown"><b>AS</b><span>Assam</span></button><button class="sg-tile sg-B" type="button" data-i="29" style="--c:#1F5FB8" aria-label="Tripura: Software installed, use not shown"><b>TR</b><span>Tripura</span></button><button class="sg-tile sg-C" type="button" data-i="30" style="--c:#C8580E" aria-label="Meghalaya: Problems found by reviewers"><b>ML</b><span>Meghalaya</span></button><button class="sg-tile sg-C" type="button" data-i="31" style="--c:#C8580E" aria-label="Nagaland: Problems found by reviewers"><b>NL</b><span>Nagaland</span></button><button class="sg-tile sg-C" type="button" data-i="32" style="--c:#C8580E" aria-label="Sikkim: Problems found by reviewers"><b>SK</b><span>Sikkim</span></button><button class="sg-tile sg-D" type="button" data-i="33" style="--c:#5B6672" aria-label="Mizoram: Too little evidence"><b>MZ</b><span>Mizoram</span></button><button class="sg-tile sg-D" type="button" data-i="34" style="--c:#5B6672" aria-label="Arunachal Pradesh: Too little evidence"><b>AR</b><span>Arunachal Pradesh</span></button><button class="sg-tile sg-D" type="button" data-i="35" style="--c:#5B6672" aria-label="Manipur: Too little evidence"><b>MN</b><span>Manipur</span></button></div></div></div>
+        <div class="sg-right"><div class="sg-panel" id="sgPanel" aria-live="polite"></div></div>
+      </div>
+      <details class="mx-wrap">
+        <summary>See which data points exist for every state</summary>
+        <p class="mx-key"><span class="mx-v">&#9679;</span> number checked at the original source &nbsp; <span class="mx-r">&#9675;</span> reported or described, not checked at source &nbsp; <span class="mx-n">&#183;</span> nothing public found</p>
+        <div class="mx-scroll"><table class="mx"><thead><tr><th>State / UT</th><th><span>Online registration</span></th><th><span>Rollout count</span></th><th><span>Parts used</span></th><th><span>Consults recorded</span></th><th><span>Lab linked</span></th><th><span>Medicines followed</span></th><th><span>Return visit linked</span></th><th><span>Time or waiting</span></th><th><span>Reviewer problems</span></th></tr></thead><tbody><tr class="mx-g"><th colspan="10" style="--c:#0B8A6F">Use measured publicly</th></tr><tr><th>Kerala</th><td class="mx-v" title="Number checked at source">&#9679;</td><td class="mx-v" title="Number checked at source">&#9679;</td><td class="mx-v" title="Number checked at source">&#9679;</td><td class="mx-v" title="Number checked at source">&#9679;</td><td class="mx-v" title="Number checked at source">&#9679;</td><td class="mx-v" title="Number checked at source">&#9679;</td><td class="mx-v" title="Number checked at source">&#9679;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td></tr><tr><th>Tamil Nadu</th><td class="mx-n">&#183;</td><td class="mx-v" title="Number checked at source">&#9679;</td><td class="mx-v" title="Number checked at source">&#9679;</td><td class="mx-v" title="Number checked at source">&#9679;</td><td class="mx-v" title="Number checked at source">&#9679;</td><td class="mx-v" title="Number checked at source">&#9679;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td></tr><tr><th>Gujarat</th><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-v" title="Number checked at source">&#9679;</td><td class="mx-n">&#183;</td></tr><tr><th>Uttar Pradesh</th><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td></tr><tr class="mx-g"><th colspan="10" style="--c:#1F5FB8">Software installed, use not shown</th></tr><tr><th>Karnataka</th><td class="mx-n">&#183;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td></tr><tr><th>Andhra Pradesh</th><td class="mx-n">&#183;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td></tr><tr><th>Telangana</th><td class="mx-n">&#183;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td></tr><tr><th>Maharashtra</th><td class="mx-n">&#183;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td></tr><tr><th>Rajasthan</th><td class="mx-n">&#183;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td></tr><tr><th>Madhya Pradesh</th><td class="mx-n">&#183;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td></tr><tr><th>Haryana</th><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td></tr><tr><th>Bihar</th><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td><td class="mx-n">&#183;</td></tr><tr><th>Odisha</th><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td></tr><tr><th>Assam</th><td class="mx-n">&#183;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td></tr><tr><th>Tripura</th><td class="mx-n">&#183;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td><td class="mx-n">&#183;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td></tr><tr class="mx-g"><th colspan="10" style="--c:#C8580E">Problems found by reviewers</th></tr><tr><th>Chhattisgarh</th><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td></tr><tr><th>Delhi</th><td class="mx-n">&#183;</td><td class="mx-v" title="Number checked at source">&#9679;</td><td class="mx-v" title="Number checked at source">&#9679;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-v" title="Number checked at source">&#9679;</td></tr><tr><th>Punjab</th><td class="mx-n">&#183;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td></tr><tr><th>Uttarakhand</th><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td></tr><tr><th>Jharkhand</th><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td></tr><tr><th>Meghalaya</th><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td></tr><tr><th>Nagaland</th><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td></tr><tr><th>Sikkim</th><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td></tr><tr class="mx-g"><th colspan="10" style="--c:#5B6672">Too little evidence</th></tr><tr><th>Puducherry</th><td class="mx-n">&#183;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td></tr><tr><th>Lakshadweep</th><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td></tr><tr><th>Andaman & Nicobar</th><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td></tr><tr><th>Goa</th><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td></tr><tr><th>Dadra, Nagar Haveli, Daman, Diu</th><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td></tr><tr><th>Himachal Pradesh</th><td class="mx-n">&#183;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td></tr><tr><th>Jammu & Kashmir</th><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td></tr><tr><th>Ladakh</th><td class="mx-n">&#183;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td></tr><tr><th>Chandigarh</th><td class="mx-n">&#183;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td></tr><tr><th>West Bengal</th><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td></tr><tr><th>Mizoram</th><td class="mx-n">&#183;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td></tr><tr><th>Arunachal Pradesh</th><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td></tr><tr><th>Manipur</th><td class="mx-n">&#183;</td><td class="mx-r" title="Reported or described, not checked at source">&#9675;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td><td class="mx-n">&#183;</td></tr></tbody></table></div>
+      </details>
+
+      <p class="cap">Colours show the type of evidence found, not a ranking. "Too little evidence" does not mean a state is doing badly; it means no current public measure of use was found. Sources: state dashboards and reports, NIC and C-DAC accounts, the 16th (2024) and 17th (2025) Common Review Missions of the National Health Mission, CAG, court records and published studies, as listed at the end.</p>
+    </div>
+    <script>
+    (function(){
+      var D=[{"n": "Kerala", "c": "A", "e": "Publishes monthly use reports by institution. February 2026: doctor consultation module working in 89% of 708 institutions; pharmacy 84%; lab 81%. Small family health centres near 99%; some district and taluk hospitals far lower.", "x": "Use in district and taluk hospitals, shown separately, and the share of returning patients recognised.", "m": {"reg": "v", "roll": "v", "parts": "v", "consult": "v", "lab": "v", "pharm": "v", "ret": "v"}}, {"n": "Tamil Nadu", "c": "A", "e": "A 13-centre study (2024–25) found 77% of consultations had a digital prescription, but only 59% of prescriptions with medicines had a dispensing entry.", "x": "Share of prescriptions with a pharmacy entry, statewide, as HMIS 3.0 scales up.", "m": {"roll": "v", "parts": "v", "consult": "v", "lab": "v", "pharm": "v"}}, {"n": "Karnataka", "c": "B", "e": "eHospital in many state facilities (state Economic Survey). A 2024 national review flagged slow internet and servers.", "x": "How fast the system responds during the morning OPD rush.", "m": {"roll": "r", "review": "r"}}, {"n": "Andhra Pradesh", "c": "B", "e": "NIC reports nearly all programme hospitals moved to NextGen eHospital (2025). A 2025 national review found digital and physical drug stock did not match.", "x": "Share of dispensed medicines that match stock records, in a sample check.", "m": {"roll": "r", "review": "r"}}, {"n": "Telangana", "c": "B", "e": "State eHMIS programme. A CAG audit found only part of the planned outpatient modules running in the first phase.", "x": "Number of planned modules actually in daily use, hospital by hospital.", "m": {"roll": "r", "parts": "r", "review": "r"}}, {"n": "Puducherry", "c": "D", "e": "JIPMER launched a new hospital information system from January 2026. A launch is not proof of use.", "x": "Share of JIPMER consultations entered in the new system.", "m": {"roll": "r"}}, {"n": "Lakshadweep", "c": "D", "e": "Old evidence only: registration and clinic modules at the Kavaratti hospital (2021).", "x": "Which parts still work, and whether referred patients' records reach the mainland hospital.", "m": {"parts": "r"}}, {"n": "Andaman & Nicobar", "c": "D", "e": "Took part in the early ABDM pilot. No current hospital-use data found.", "x": "Share of inter-island referrals where the record travels with the patient.", "m": {}}, {"n": "Maharashtra", "c": "B", "e": "eSushrut in a large number of facilities (C-DAC, 2025). The 2025 national review found incomplete entries and training gaps.", "x": "Share of facilities with complete daily entries.", "m": {"roll": "r", "review": "r"}}, {"n": "Gujarat", "c": "A", "e": "Strongest time-saving evidence, from frontline work: the TeCHO+ app saved nurses 1.7 hours a day and raised maternal data accuracy from 69% to 81% (2022 study, two districts).", "x": "Staff time saved by hospital systems, measured the same way.", "m": {"time": "v"}}, {"n": "Rajasthan", "c": "B", "e": "Large iHMS hospital programme. The 2025 national review reported dozens of separate state platforms and duplicate data entry.", "x": "Number of separate platforms staff fill in, and minutes spent on duplicate entry.", "m": {"roll": "r", "review": "r"}}, {"n": "Goa", "c": "D", "e": "A showcase PHC demonstrated registration to pharmacy in one flow (2023). No statewide use data.", "x": "Use in ordinary PHCs, not only the showcase centre.", "m": {"parts": "r"}}, {"n": "Dadra, Nagar Haveli, Daman, Diu", "c": "D", "e": "Phased staff training and voluntary digital prescribing described by NHA. No current use rate.", "x": "Share of consultations with a digital prescription.", "m": {"consult": "r"}}, {"n": "Madhya Pradesh", "c": "B", "e": "NIC reports eHospital in dozens of hospitals with migration to NextGen (2026). Maternal app not linked to the national system in the 2025 review.", "x": "Share of maternal records that reach every required system from one entry.", "m": {"roll": "r", "review": "r"}}, {"n": "Chhattisgarh", "c": "C", "e": "NextGen registration working, but primary-care drug stock still largely manual (2025 review).", "x": "Share of prescriptions linked to dispensing and stock.", "m": {"reg": "r", "review": "r"}}, {"n": "Uttar Pradesh", "c": "A", "e": "Public dashboard shows, facility by facility, which modules are actually switched on: registration often yes, prescription, lab and pharmacy often no.", "x": "Monthly use volumes for each part that is switched on.", "m": {"parts": "r"}}, {"n": "Delhi", "c": "C", "e": "Court-ordered NIC audit, July 2026: of 38 government hospitals, 18 used more than ten modules of the system and 20 used only five to ten.", "x": "Parts in use in each hospital at NIC's second surprise inspection.", "m": {"roll": "v", "parts": "v", "review": "v"}}, {"n": "Haryana", "c": "B", "e": "State reports laboratory and X-ray machines linked directly to e-Upchaar (Economic Survey 2024–25).", "x": "Time from sample to result reaching the doctor.", "m": {"lab": "r"}}, {"n": "Punjab", "c": "C", "e": "eHospital documented at Patiala's Rajindra Hospital. ASHAs in Faridkot limited to a few apps in the 2025 review.", "x": "Number of apps each frontline worker fills in, and time spent.", "m": {"roll": "r", "review": "r"}}, {"n": "Himachal Pradesh", "c": "D", "e": "HMIS documented at IGMC Shimla, but the account is old.", "x": "A current list of parts in use, hospital by hospital.", "m": {"roll": "r"}}, {"n": "Uttarakhand", "c": "C", "e": "Reporting platforms in use, but some reports listed newborn and nutrition units that were not available (2025 review).", "x": "Share of facility reports that match what the facility can actually do.", "m": {"review": "r"}}, {"n": "Jammu & Kashmir", "c": "D", "e": "Online OPD appointments through eSahaj. No data on what happens after the appointment.", "x": "Share of eSahaj appointments that lead to a recorded consultation.", "m": {"reg": "r"}}, {"n": "Ladakh", "c": "D", "e": "Health department reports facilities onboarded; no date or use data.", "x": "Active use across remote facilities.", "m": {"roll": "r"}}, {"n": "Chandigarh", "c": "D", "e": "PGIMER is migrating its hospital system. Institution-level only.", "x": "Share of PGIMER's old records still available after the move.", "m": {"roll": "r"}}, {"n": "Bihar", "c": "B", "e": "State reports about 92% of government OPD registrations done online (June 2025) and shorter waits. Registration is not the full record.", "x": "Share of registered visits that also have a recorded prescription, test and follow-up.", "m": {"reg": "r", "roll": "r", "time": "r"}}, {"n": "Jharkhand", "c": "C", "e": "Programme portals used, but hospital HMIS rollout was incomplete in the 2024 review.", "x": "Facilities where one full patient journey runs in the system.", "m": {"review": "r"}}, {"n": "Odisha", "c": "B", "e": "Official hospital service portal and state HMIS support. Some primary sites less connected (2025 review).", "x": "Internet uptime at primary centres, and discharges with a follow-up record.", "m": {"review": "r"}}, {"n": "West Bengal", "c": "D", "e": "A lab in South 24 Parganas sent analyser results straight into the hospital system (2024 review). One site only.", "x": "Share of labs sending results straight into the system, and turnaround time.", "m": {"lab": "r"}}, {"n": "Assam", "c": "B", "e": "NIC says eHospital runs in many facilities (2025). A national review team found weak internet and little use of the data inside facilities (2025).", "x": "Share of overdue follow-ups that facilities track and complete.", "m": {"roll": "r", "review": "r"}}, {"n": "Tripura", "c": "B", "e": "eHospital in medical colleges, district and subdivision hospitals (NIC). In 2024, reviewers found no way to track the same patient on a later visit.", "x": "Share of return visits where the system recognises the patient.", "m": {"roll": "r", "ret": "r", "review": "r"}}, {"n": "Meghalaya", "c": "C", "e": "Staff used personal internet (2025 review). An October 2026 tender covers power, networks, devices and maintenance.", "x": "System uptime and repair time, facility by facility.", "m": {"review": "r"}}, {"n": "Nagaland", "c": "C", "e": "NextGen training in 2025, but visited facilities had no fixed-line internet (2025 review).", "x": "Share of trained facilities with a working fixed internet line.", "m": {"review": "r"}}, {"n": "Sikkim", "c": "C", "e": "HMIS works, but remote connectivity and OTP failures disrupted use (2025 review).", "x": "Share of failed logins and transactions, facility by facility.", "m": {"review": "r"}}, {"n": "Mizoram", "c": "D", "e": "State Cancer Institute went live with HMIS and EMR in 2024, after an earlier system stopped working and staff went back to paper.", "x": "Whether the new system is still in daily use a year after launch.", "m": {"roll": "r"}}, {"n": "Arunachal Pradesh", "c": "D", "e": "Appointment apps and ABHA Scan and Share at TRIHMS (2024). Access, not full records.", "x": "Share of district referrals whose record reaches TRIHMS and comes back.", "m": {"reg": "r"}}, {"n": "Manipur", "c": "D", "e": "Old evidence only: eHospital launched at JNIMS in 2019.", "x": "Whether eHospital is in daily use at JNIMS today.", "m": {"roll": "r"}}];
+      var C={"A": "Use measured publicly", "B": "Software installed, use not shown", "C": "Problems found by reviewers", "D": "Too little evidence"};
+      var COLS=[["reg", "Online registration"], ["roll", "Rollout count"], ["parts", "Which parts are used"], ["consult", "Consultations recorded"], ["lab", "Lab results linked"], ["pharm", "Medicines followed"], ["ret", "Return visit linked"], ["time", "Time or waiting"], ["review", "Problems found by reviewers"]];
+      var P=document.getElementById('sgPanel'), tiles=[].slice.call(document.querySelectorAll('.sg-tile'));
+      function chips(m){
+        var h='<div class="sg-chips"><span class="sg-chl">Data points we have:</span>'; var any=false;
+        COLS.forEach(function(c){ var v=m[c[0]]; if(!v) return; any=true;
+          h+='<span class="sg-ch '+(v==='v'?'sg-chv':'sg-chr')+'">'+(v==='v'?'&#9679; ':'&#9675; ')+c[1]+'</span>'; });
+        if(!any) h+='<span class="sg-ch sg-chn">None found</span>';
+        return h+'</div>';
+      }
+      function show(i){
+        var d=D[i];
+        tiles.forEach(function(t){ t.classList.toggle('on', +t.dataset.i===i); t.setAttribute('aria-pressed', +t.dataset.i===i ? 'true':'false'); });
+        P.style.setProperty('--c', getComputedStyle(tiles.filter(function(t){return +t.dataset.i===i;})[0]).getPropertyValue('--c'));
+        P.innerHTML='<p class="sg-k">'+C[d.c]+'</p><h3>'+d.n+'</h3><p><b>What we know:</b> '+d.e+'</p><p><b>What should be measured next:</b> '+d.x+'</p>'+chips(d.m)+'<p class="sg-hint">Tap another state to compare.</p>';
+      }
+      tiles.forEach(function(t){ t.addEventListener('click', function(){ show(+t.dataset.i); if(window.innerWidth<860){ P.scrollIntoView({behavior:'smooth', block:'start'}); } }); });
+      show(0);
+    })();
+    </script>
+
+    <p>Only four states have shown how much the system is actually used: Kerala and Uttar Pradesh through their own dashboards, Tamil Nadu and Gujarat through published studies. Eleven say the software is installed widely but show no use data. Eight have specific problems found by national review teams, auditors or a court. Thirteen have too little evidence to judge.</p>
+
+    <h2 id="kerala">Kerala: inside one district</h2>
+    <p>Kerala does something no other state does at this scale. Every month, it publishes how each government health facility uses its eHealth system: how many patient visits were registered, how many consultations the doctor entered, and how many medicine and lab orders went through the system. Across the state, in February 2026, the doctor's consultation screen was in regular use in 89% of 708 government facilities, the medicine order screen in 84% and the lab order screen in 81%.</p>
+    <p>To see what this looks like on the ground, zoom into one district: Malappuram, in north Kerala.</p>
+    <div class="ed-chart" id="zoomChart">
+      <svg viewBox="0 0 680 196" role="img" xmlns="http://www.w3.org/2000/svg" aria-label="Where this data comes from. India: 36 states and union territories. Kerala: 14 districts, 708 government health institutions on the eHealth system (medical colleges not included). Malappuram district: 70 government institutions on eHealth in February 2026, of which 65 health centres and 4 hospitals have usable data.">
+        <title>From India to one district</title>
+        <g font-family="Manrope, sans-serif">
+          <rect x="0" y="10" width="200" height="150" rx="14" fill="var(--card)" stroke="var(--line)" stroke-width="2"/>
+          <text x="100" y="44" font-size="11" font-weight="800" fill="var(--muted)" text-anchor="middle" letter-spacing="1.2">COUNTRY</text>
+          <text x="100" y="80" font-size="26" font-weight="800" fill="var(--navy)" text-anchor="middle">India</text>
+          <text x="100" y="108" font-size="12.5" fill="var(--body-c)" text-anchor="middle">36 states and UTs</text>
+          <text x="100" y="128" font-size="12.5" fill="var(--body-c)" text-anchor="middle">each with its own system</text>
+          <path d="M208 85 H236" stroke="#0FA3A3" stroke-width="3"/><path d="M230 77 L240 85 L230 93" fill="none" stroke="#0FA3A3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="240" y="10" width="200" height="150" rx="14" fill="var(--card)" stroke="#0FA3A3" stroke-width="2"/>
+          <text x="340" y="44" font-size="11" font-weight="800" fill="#0B6E6E" text-anchor="middle" letter-spacing="1.2">STATE</text>
+          <text x="340" y="80" font-size="26" font-weight="800" fill="var(--navy)" text-anchor="middle">Kerala</text>
+          <text x="340" y="108" font-size="12.5" fill="var(--body-c)" text-anchor="middle">14 districts</text>
+          <text x="340" y="128" font-size="12.5" fill="var(--body-c)" text-anchor="middle">708 govt institutions on eHealth</text>
+          <path d="M448 85 H476" stroke="#E08A3C" stroke-width="3"/><path d="M470 77 L480 85 L470 93" fill="none" stroke="#E08A3C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="480" y="10" width="200" height="150" rx="14" fill="#E08A3C"/>
+          <text x="580" y="44" font-size="11" font-weight="800" fill="#FFF3E6" text-anchor="middle" letter-spacing="1.2">ONE DISTRICT</text>
+          <text x="580" y="80" font-size="24" font-weight="800" fill="#fff" text-anchor="middle">Malappuram</text>
+          <text x="580" y="108" font-size="12.5" fill="#fff" text-anchor="middle">65 health centres</text>
+          <text x="580" y="128" font-size="12.5" fill="#fff" text-anchor="middle">4 hospitals</text>
+          <text x="340" y="186" font-size="11.5" fill="var(--muted)" text-anchor="middle">All government facilities. Medical colleges are not in these reports. Data for February 2026.</text>
+        </g>
+      </svg>
+    </div>
+
+    <p>Malappuram's February report lists every government health centre and hospital in the district on eHealth. Most small health centres enter almost every consultation. All four hospitals enter far fewer.</p>
+    <div class="ed-chart" id="keralaChart">
+      <svg viewBox="0 0 680 270" role="img" xmlns="http://www.w3.org/2000/svg" aria-label="Malappuram district, Kerala, February 2026. Share of patient visits where the doctor's consultation was entered in the eHealth system. Typical government health centre: 98.6%, with 49 of 65 centres at 90% or more. Taluk headquarters hospital Tirurangadi 54.83%. Women and children's hospital Ponnani 43.79%. Taluk headquarters hospital Malappuram 10.58%. District hospital Tirur 4.44%.">
+        <title>Health centres against hospitals, one district</title>
+        <g font-family="Manrope, sans-serif">
+          <text x="0" y="25" font-size="12.5" font-weight="700" fill="var(--navy)">Typical health centre</text><text x="0" y="41" font-size="10.5" fill="var(--muted)">middle of 65 centres; 49 of 65 at 90% or more</text><rect x="250" y="10" width="360" height="24" rx="6" fill="var(--tintT)"/><rect x="250" y="10" width="355.0" height="24" rx="6" fill="#0FA3A3"/><text x="613.0" y="27" font-size="13" font-weight="800" fill="var(--navy)">98.6%</text><text x="0" y="71" font-size="12.5" font-weight="700" fill="var(--navy)">Taluk HQ Hospital, Tirurangadi</text><text x="0" y="87" font-size="10.5" fill="var(--muted)">hospital</text><rect x="250" y="56" width="360" height="24" rx="6" fill="var(--tintT)"/><rect x="250" y="56" width="197.4" height="24" rx="6" fill="#E08A3C"/><text x="455.4" y="73" font-size="13" font-weight="800" fill="var(--navy)">54.83%</text><text x="0" y="117" font-size="12.5" font-weight="700" fill="var(--navy)">Women & Children's Hospital, Ponnani</text><text x="0" y="133" font-size="10.5" fill="var(--muted)">hospital</text><rect x="250" y="102" width="360" height="24" rx="6" fill="var(--tintT)"/><rect x="250" y="102" width="157.6" height="24" rx="6" fill="#E08A3C"/><text x="415.6" y="119" font-size="13" font-weight="800" fill="var(--navy)">43.79%</text><text x="0" y="163" font-size="12.5" font-weight="700" fill="var(--navy)">Taluk HQ Hospital, Malappuram</text><text x="0" y="179" font-size="10.5" fill="var(--muted)">hospital</text><rect x="250" y="148" width="360" height="24" rx="6" fill="var(--tintT)"/><rect x="250" y="148" width="38.1" height="24" rx="6" fill="#E08A3C"/><text x="296.1" y="165" font-size="13" font-weight="800" fill="var(--navy)">10.58%</text><text x="0" y="209" font-size="12.5" font-weight="700" fill="var(--navy)">District Hospital, Tirur</text><text x="0" y="225" font-size="10.5" fill="var(--muted)">hospital</text><rect x="250" y="194" width="360" height="24" rx="6" fill="var(--tintT)"/><rect x="250" y="194" width="16.0" height="24" rx="6" fill="#E08A3C"/><text x="274.0" y="211" font-size="13" font-weight="800" fill="var(--navy)">4.44%</text>
+          <circle cx="8" cy="254" r="6" fill="#0FA3A3"/><text x="20" y="258" font-size="11.5" fill="var(--body-c)">Health centres (65)</text>
+          <circle cx="170" cy="254" r="6" fill="#E08A3C"/><text x="182" y="258" font-size="11.5" fill="var(--body-c)">Hospitals (all 4 in the report)</text>
+        </g>
+      </svg>
+      <p class="cap">Malappuram district, Kerala. Share of patient visits where the doctor entered the consultation in the system. "Typical" means the middle value of all 65 health centres. Five centres were below 50%, two at zero. Source: eHealth Kerala, Malappuram district factsheet, February 2026.</p>
+    </div>
+
+    <p>Not every small centre is good: five of 65 were below 50%, and two had not entered a single consultation. But the typical health centre is near 100%, and every hospital is far below it. The same pattern shows up in Wayanad district: its General Hospital in Kalpetta is the district's lowest performer, with medicine orders entered for only 31% of patient visits, while most of Wayanad's health centres are between 80% and 95%.</p>
+    <p>The reports do not say why. Hospitals see more patients per doctor, have more departments and more handovers, and may run some work on other systems. But for patients, the result is the same: the place where the sickest patients go is where the record is thinnest.</p>
+    <p>Kerala's reports also show the weakest step. Only about a third of Malappuram's patient visits in early 2026 were linked to the patient's own hospital ID. Wayanad managed about 62%. If a visit is not linked to the patient's ID, the next doctor cannot easily find the last one.</p>
+    <p>This is one state and one month. Kerala is unusual because it publishes this at all. Most states could not show a chart like this even if they wanted to.</p>
+
+    <h2 id="playbook">What Kerala does that other states can copy</h2>
+    <p>Kerala is not perfect. Its own reports show weak hospitals and weak return-visit links. But it is the only state that shows its weaknesses every month, and it has built its system in a way other states can learn from. The project started with central government funding and went live from 2016–17. It now supports about 50,000 health staff, according to the national e-governance directory.</p>
+    <div class="ed-chart" id="keralaTimeline">
+      <svg viewBox="0 0 680 270" role="img" xmlns="http://www.w3.org/2000/svg" aria-label="Kerala eHealth growth, as stated by the state government. Government institutions on eHealth: 509 in February 2023, 570 in March 2023, 653 in 2024, 751 in April 2025, 800 in July 2025 and 1,001 in November 2025. People with a permanent unique health ID: 0.34 crore in March 2023, 1.93 crore in 2024, 2.62 crore in July 2025 and 2.63 crore in November 2025.">
+        <title>Kerala eHealth growth</title>
+        <g font-family="Manrope, sans-serif"><line x1="60" y1="210.0" x2="640" y2="210.0" stroke="var(--line)"/><text x="52" y="214.0" font-size="10.5" fill="var(--muted)" text-anchor="end">0</text><line x1="60" y1="171.4" x2="640" y2="171.4" stroke="var(--line)"/><text x="52" y="175.4" font-size="10.5" fill="var(--muted)" text-anchor="end">250</text><line x1="60" y1="132.7" x2="640" y2="132.7" stroke="var(--line)"/><text x="52" y="136.7" font-size="10.5" fill="var(--muted)" text-anchor="end">500</text><line x1="60" y1="94.1" x2="640" y2="94.1" stroke="var(--line)"/><text x="52" y="98.1" font-size="10.5" fill="var(--muted)" text-anchor="end">750</text><line x1="60" y1="55.5" x2="640" y2="55.5" stroke="var(--line)"/><text x="52" y="59.5" font-size="10.5" fill="var(--muted)" text-anchor="end">1000</text><path d="M60.0 131.3 L176.0 121.9 L292.0 109.1 L408.0 93.9 L524.0 86.4 L640.0 55.3" fill="none" stroke="#0FA3A3" stroke-width="3"/><circle cx="60.0" cy="131.3" r="5" fill="#0FA3A3"/><text x="60.0" y="121.3" font-size="11.5" font-weight="800" fill="var(--navy)" text-anchor="middle">509</text><text x="60.0" y="228" font-size="11" fill="var(--muted)" text-anchor="middle">Feb 2023</text><circle cx="176.0" cy="121.9" r="5" fill="#0FA3A3"/><text x="176.0" y="111.9" font-size="11.5" font-weight="800" fill="var(--navy)" text-anchor="middle">570</text><text x="176.0" y="228" font-size="11" fill="var(--muted)" text-anchor="middle">Mar 2023</text><rect x="146.0" y="238" width="60" height="22" rx="11" fill="#E08A3C"/><text x="176.0" y="253" font-size="11" font-weight="800" fill="#fff" text-anchor="middle">0.34 cr</text><circle cx="292.0" cy="109.1" r="5" fill="#0FA3A3"/><text x="292.0" y="99.1" font-size="11.5" font-weight="800" fill="var(--navy)" text-anchor="middle">653</text><text x="292.0" y="228" font-size="11" fill="var(--muted)" text-anchor="middle">2024</text><rect x="262.0" y="238" width="60" height="22" rx="11" fill="#E08A3C"/><text x="292.0" y="253" font-size="11" font-weight="800" fill="#fff" text-anchor="middle">1.93 cr</text><circle cx="408.0" cy="93.9" r="5" fill="#0FA3A3"/><text x="408.0" y="83.9" font-size="11.5" font-weight="800" fill="var(--navy)" text-anchor="middle">751</text><text x="408.0" y="228" font-size="11" fill="var(--muted)" text-anchor="middle">Apr 2025</text><circle cx="524.0" cy="86.4" r="5" fill="#0FA3A3"/><text x="524.0" y="76.4" font-size="11.5" font-weight="800" fill="var(--navy)" text-anchor="middle">800</text><text x="524.0" y="228" font-size="11" fill="var(--muted)" text-anchor="middle">Jul 2025</text><rect x="494.0" y="238" width="60" height="22" rx="11" fill="#E08A3C"/><text x="524.0" y="253" font-size="11" font-weight="800" fill="#fff" text-anchor="middle">2.62 cr</text><circle cx="640.0" cy="55.3" r="5" fill="#0FA3A3"/><text x="640.0" y="45.3" font-size="11.5" font-weight="800" fill="var(--navy)" text-anchor="middle">1,001</text><text x="640.0" y="228" font-size="11" fill="var(--muted)" text-anchor="middle">Nov 2025</text><rect x="610.0" y="238" width="60" height="22" rx="11" fill="#E08A3C"/><text x="640.0" y="253" font-size="11" font-weight="800" fill="#fff" text-anchor="middle">2.63 cr</text><text x="0" y="16" font-size="11" font-weight="800" fill="var(--muted)" letter-spacing="1">GOVERNMENT INSTITUTIONS ON eHEALTH (line) · PEOPLE WITH A PERMANENT HEALTH ID (orange)</text></g>
+      </svg>
+      <p class="cap">Figures as stated by Kerala's health minister and department, reported by Onmanorama (March 2023), Kerala Kaumudi, Deshabhimani and others (2023–2025). Points are evenly spaced, not to scale in time. Not checked against a single official series; counts may include medical college wings.</p>
+    </div>
+
+    <p>Three things stand out in that growth. The number of facilities doubled in under three years. The number of people with a <b>permanent</b> health ID grew almost eight times, from 0.34 crore in March 2023 to 2.63 crore by November 2025. And this second number matters most, because in Kerala a doctor can see your earlier visits only if you use your permanent ID, not a temporary token. That explains much of the weak return-visit link: in March 2023, about 3.2 crore people were registered, but only 10.6% had a permanent ID.</p>
+    <div class="row-item"><div class="ri-num">1</div><div><h4>The state owns the software</h4><p>The code belongs to the Kerala government, built on open-source tools, and the state says other states can ask to use it. No state is locked to one vendor.</p></div></div>
+    <div class="row-item"><div class="ri-num">2</div><div><h4>Start with what saves staff time</h4><p>The rollout began with OP registration, pharmacy, lab and the queue, the parts that remove daily drudgery. Doctors' clinical notes came later, once staff were used to the system.</p></div></div>
+    <div class="row-item"><div class="ri-num">3</div><div><h4>A backup for when the internet fails</h4><p>Each hospital has a small local server with a copy of its patients' data, so work continues when the network drops. Several northeastern states in our grid stall on exactly this problem.</p></div></div>
+    <div class="row-item"><div class="ri-num">4</div><div><h4>Monthly public report cards</h4><p>Every district gets a monthly factsheet with use rates for every facility, minimum activity thresholds, and a district ranking. Wayanad ranks second; Ernakulam, the state's commercial capital, ranks last.</p></div></div>
+    <div class="row-item"><div class="ri-num">5</div><div><h4>A push for permanent IDs</h4><p>From 0.34 crore to 2.63 crore permanent IDs in under three years, so that records can follow the person.</p></div></div>
+    <div class="row-item"><div class="ri-num">6</div><div><h4>Standard medical codes</h4><p>The system uses international coding standards for diagnoses and lab tests, so records can move between hospitals.</p></div></div>
+    <p><b>What Kerala still misses:</b> its bigger hospitals lag well behind its health centres, as the Malappuram data shows. Online OP booking is still under 2% of visits in every district. Medical colleges are reported separately. And private hospitals, which the project once hoped to bring onto the same health cloud, are not part of the monthly reports. If India wants one state to learn from, Kerala is the best example available. Its own data says it is not finished.</p>
+
+    <h2 id="tamilnadu">Tamil Nadu: the record stops at the pharmacy</h2>
+    <p>Tamil Nadu has run a hospital information system since 2007 and is moving to a new version, HMIS 3.0. Its own public health directorate studied the pilot in 13 primary health centres in Poonamallee, from February 2024 to March 2025. The setup was good: every centre had computers, tablets and broadband, every staff member was trained, and 54 of 56 reported software problems were fixed.</p>
+    <div class="ed-chart" id="tnChart">
+      <svg viewBox="0 0 680 236" role="img" xmlns="http://www.w3.org/2000/svg" aria-label="Tamil Nadu, 13 primary health centres in Poonamallee, February 2024 to March 2025. 4,72,520 outpatient consultations. 3,63,026 digital prescriptions. 3,16,782 prescriptions with medicines. 1,88,485 with a dispensing entry at the pharmacy, 59% of prescriptions with medicines.">
+        <title>From consultation to pharmacy</title>
+        <g font-family="Manrope, sans-serif">
+          <rect x="0" y="6" width="680" height="40" rx="8" fill="#B9DCEB"/><text x="14" y="31" font-size="13" font-weight="800" fill="#173441">4,72,520 consultations</text>
+          <rect x="0" y="56" width="522.4" height="40" rx="8" fill="#7FB7DE"/><text x="14" y="81" font-size="13" font-weight="800" fill="#173441">3,63,026 digital prescriptions (77%)</text>
+          <rect x="0" y="106" width="455.9" height="40" rx="8" fill="#2E7CB8"/><text x="14" y="131" font-size="13" font-weight="800" fill="#fff">3,16,782 with medicines</text>
+          <rect x="0" y="156" width="271.2" height="40" rx="8" fill="#E08A3C"/><text x="14" y="181" font-size="13" font-weight="800" fill="#fff">1,88,485 dispensed (59%)</text>
+          <text x="285" y="181" font-size="12" fill="var(--body-c)">1,28,297 prescriptions with medicines had no pharmacy entry</text>
+          <text x="0" y="224" font-size="11.5" fill="var(--muted)">Bars drawn to scale against all consultations.</text>
+        </g>
+      </svg>
+      <p class="cap">A missing pharmacy entry does not mean the patient did not get the medicine. It means the record does not show it. Source: Prabakaran J et al., "Formative evaluation of HMIS 3.0 pilot, Poonamallee HUD", Tamil Nadu Journal of Public Health and Medical Research, 2025.</p>
+    </div>
+
+    <p>So even with good infrastructure, the record lost 41% of the medicine trail between the doctor's desk and the pharmacy counter. The study also found ABHA IDs being created in only 3 of the 13 centres, and 7 of the 16 software modules still not switched on. The authors are clear: fix these gaps before scaling up statewide.</p>
+
+    <h2 id="delhi">Delhi: the audit that a missing ICU bed started</h2>
+    <p>Delhi's 38 government hospitals all have NextGen eHospital, built by NIC. In July 2026, the High Court asked NIC to check how it is really used. Two teams visited all 38 hospitals between 13 and 24 July. NIC told the court the modules were set up and training was ongoing, but use varied from hospital to hospital: 18 hospitals used more than ten modules, and 20 used five to ten. The court allowed a second surprise inspection to see if anything changed.</p>
+    <p>This is the most useful kind of evidence India has: someone walked in, unannounced, and checked. It happened only because a court asked.</p>
+
+    <h2 id="chain">Five states side by side: where the chain holds and breaks</h2>
+    <p>Why is Kerala's data so much more useful than other states'? The answer is that its data is <b>connected</b>. The same state-owned system runs in every facility. The patient's permanent ID ties the visits together. The doctor's screen, the pharmacy and the lab sit in the same system, so an order and its result belong to one record. And every month, the state publishes how each facility uses it, then ranks districts on it.</p>
+    <p>Here is the same chain for the five states with the most public evidence. Each circle is one link. The line between two circles is only as strong as the weaker of the two.</p>
+    <div class="ed-chart" id="chainChart">
+      <svg viewBox="0 0 690 402" role="img" xmlns="http://www.w3.org/2000/svg" aria-label="Where the data chain holds and breaks in five states. Seven links: patient ID, registration, doctor's record, lab and pharmacy, return visit, public report, action on gaps. Kerala: strong on registration, doctor's record, lab and pharmacy, public report and action; partial on patient ID and return visit. Tamil Nadu: strong on registration and doctor's record; partial on patient ID, lab and pharmacy, public report and action; return visit not shown. Bihar: strong on patient ID and registration; partial on public report and action; doctor's record, lab and pharmacy and return visit not shown. Uttar Pradesh: strong on registration; partial on doctor's record, lab and pharmacy and public report; patient ID, return visit and action not shown. Delhi: strong on registration and action through the court; partial on doctor's record and lab and pharmacy; patient ID, return visit and public report not shown.">
+        <title>Where the data chain holds and breaks</title>
+        <g font-family="Manrope, sans-serif"><text x="128" y="29" font-size="10.5" font-weight="800" fill="var(--muted)" text-anchor="middle">Patient ID</text><text x="217" y="29" font-size="10.5" font-weight="800" fill="var(--muted)" text-anchor="middle">Registration</text><text x="306" y="22" font-size="10.5" font-weight="800" fill="var(--muted)" text-anchor="middle">Doctor's</text><text x="306" y="36" font-size="10.5" font-weight="800" fill="var(--muted)" text-anchor="middle">record</text><text x="395" y="22" font-size="10.5" font-weight="800" fill="var(--muted)" text-anchor="middle">Lab</text><text x="395" y="36" font-size="10.5" font-weight="800" fill="var(--muted)" text-anchor="middle">and pharmacy</text><text x="484" y="29" font-size="10.5" font-weight="800" fill="var(--muted)" text-anchor="middle">Return visit</text><text x="573" y="22" font-size="10.5" font-weight="800" fill="var(--muted)" text-anchor="middle">Public</text><text x="573" y="36" font-size="10.5" font-weight="800" fill="var(--muted)" text-anchor="middle">report</text><text x="662" y="22" font-size="10.5" font-weight="800" fill="var(--muted)" text-anchor="middle">Action</text><text x="662" y="36" font-size="10.5" font-weight="800" fill="var(--muted)" text-anchor="middle">on gaps</text><text x="0" y="75" font-size="13.5" font-weight="800" fill="var(--navy)">Kerala</text><g class="cn"><title>Kerala, Patient ID: 2.63 crore permanent health IDs (2025), but only 34–62% of visits linked in two districts</title><circle cx="128" cy="70" r="15" fill="#D9731A"/><text x="128" y="75" font-size="14" font-weight="800" fill="#fff" text-anchor="middle">~</text></g><line x1="145" y1="70" x2="200" y2="70" stroke="#D9731A" stroke-width="3" stroke-dasharray="6 4" stroke-linecap="round"/><g class="cn"><title>Kerala, Registration: Reception in regular use in 97% of 708 institutions (Feb 2026)</title><circle cx="217" cy="70" r="15" fill="#0B8A6F"/><text x="217" y="75" font-size="14" font-weight="800" fill="#fff" text-anchor="middle">✓</text></g><line x1="234" y1="70" x2="289" y2="70" stroke="#0B8A6F" stroke-width="3" stroke-linecap="round"/><g class="cn"><title>Kerala, Doctor's record: Doctor's consultation screen in regular use in 89% of institutions</title><circle cx="306" cy="70" r="15" fill="#0B8A6F"/><text x="306" y="75" font-size="14" font-weight="800" fill="#fff" text-anchor="middle">✓</text></g><line x1="323" y1="70" x2="378" y2="70" stroke="#0B8A6F" stroke-width="3" stroke-linecap="round"/><g class="cn"><title>Kerala, Lab and pharmacy: Pharmacy orders in 84% and lab orders in 81% of institutions</title><circle cx="395" cy="70" r="15" fill="#0B8A6F"/><text x="395" y="75" font-size="14" font-weight="800" fill="#fff" text-anchor="middle">✓</text></g><line x1="412" y1="70" x2="467" y2="70" stroke="#D9731A" stroke-width="3" stroke-dasharray="6 4" stroke-linecap="round"/><g class="cn"><title>Kerala, Return visit: Visits linked to patient ID: 34% Malappuram, 62% Wayanad</title><circle cx="484" cy="70" r="15" fill="#D9731A"/><text x="484" y="75" font-size="14" font-weight="800" fill="#fff" text-anchor="middle">~</text></g><line x1="501" y1="70" x2="556" y2="70" stroke="#D9731A" stroke-width="3" stroke-dasharray="6 4" stroke-linecap="round"/><g class="cn"><title>Kerala, Public report: Monthly public factsheet for every district and facility</title><circle cx="573" cy="70" r="15" fill="#0B8A6F"/><text x="573" y="75" font-size="14" font-weight="800" fill="#fff" text-anchor="middle">✓</text></g><line x1="590" y1="70" x2="645" y2="70" stroke="#0B8A6F" stroke-width="3" stroke-linecap="round"/><g class="cn"><title>Kerala, Action on gaps: District rankings and minimum activity thresholds every month</title><circle cx="662" cy="70" r="15" fill="#0B8A6F"/><text x="662" y="75" font-size="14" font-weight="800" fill="#fff" text-anchor="middle">✓</text></g><text x="0" y="141" font-size="13.5" font-weight="800" fill="var(--navy)">Tamil Nadu</text><g class="cn"><title>Tamil Nadu, Patient ID: ABHA IDs created in only 3 of 13 pilot centres</title><circle cx="128" cy="136" r="15" fill="#D9731A"/><text x="128" y="141" font-size="14" font-weight="800" fill="#fff" text-anchor="middle">~</text></g><line x1="145" y1="136" x2="200" y2="136" stroke="#D9731A" stroke-width="3" stroke-dasharray="6 4" stroke-linecap="round"/><g class="cn"><title>Tamil Nadu, Registration: Over 98% compliance in OP registration in the 13-centre pilot</title><circle cx="217" cy="136" r="15" fill="#0B8A6F"/><text x="217" y="141" font-size="14" font-weight="800" fill="#fff" text-anchor="middle">✓</text></g><line x1="234" y1="136" x2="289" y2="136" stroke="#0B8A6F" stroke-width="3" stroke-linecap="round"/><g class="cn"><title>Tamil Nadu, Doctor's record: 77% of consultations had a digital prescription</title><circle cx="306" cy="136" r="15" fill="#0B8A6F"/><text x="306" y="141" font-size="14" font-weight="800" fill="#fff" text-anchor="middle">✓</text></g><line x1="323" y1="136" x2="378" y2="136" stroke="#D9731A" stroke-width="3" stroke-dasharray="6 4" stroke-linecap="round"/><g class="cn"><title>Tamil Nadu, Lab and pharmacy: Lab reports 83% digital, but medicines dispensed recorded for only 59%</title><circle cx="395" cy="136" r="15" fill="#D9731A"/><text x="395" y="141" font-size="14" font-weight="800" fill="#fff" text-anchor="middle">~</text></g><line x1="412" y1="136" x2="467" y2="136" stroke="#9AA6AF" stroke-width="3" stroke-dasharray="2 5" stroke-linecap="round"/><g class="cn"><title>Tamil Nadu, Return visit: Not measured in the study</title><circle cx="484" cy="136" r="15" fill="var(--card)" stroke="#9AA6AF" stroke-width="2" stroke-dasharray="3 3"/><text x="484" y="141" font-size="14" font-weight="800" fill="#7A8792" text-anchor="middle">?</text></g><line x1="501" y1="136" x2="556" y2="136" stroke="#9AA6AF" stroke-width="3" stroke-dasharray="2 5" stroke-linecap="round"/><g class="cn"><title>Tamil Nadu, Public report: One published study of 13 centres; no regular public report</title><circle cx="573" cy="136" r="15" fill="#D9731A"/><text x="573" y="141" font-size="14" font-weight="800" fill="#fff" text-anchor="middle">~</text></g><line x1="590" y1="136" x2="645" y2="136" stroke="#D9731A" stroke-width="3" stroke-dasharray="6 4" stroke-linecap="round"/><g class="cn"><title>Tamil Nadu, Action on gaps: Study says fix gaps before statewide scale-up</title><circle cx="662" cy="136" r="15" fill="#D9731A"/><text x="662" y="141" font-size="14" font-weight="800" fill="#fff" text-anchor="middle">~</text></g><text x="0" y="207" font-size="13.5" font-weight="800" fill="var(--navy)">Bihar</text><g class="cn"><title>Bihar, Patient ID: ABHA Scan and Share at the registration counter (state-reported)</title><circle cx="128" cy="202" r="15" fill="#0B8A6F"/><text x="128" y="207" font-size="14" font-weight="800" fill="#fff" text-anchor="middle">✓</text></g><line x1="145" y1="202" x2="200" y2="202" stroke="#0B8A6F" stroke-width="3" stroke-linecap="round"/><g class="cn"><title>Bihar, Registration: About 92% of OPD registrations online (state-reported, June 2025)</title><circle cx="217" cy="202" r="15" fill="#0B8A6F"/><text x="217" y="207" font-size="14" font-weight="800" fill="#fff" text-anchor="middle">✓</text></g><line x1="234" y1="202" x2="289" y2="202" stroke="#9AA6AF" stroke-width="3" stroke-dasharray="2 5" stroke-linecap="round"/><g class="cn"><title>Bihar, Doctor's record: No public data; state says it will track consultation time (2026)</title><circle cx="306" cy="202" r="15" fill="var(--card)" stroke="#9AA6AF" stroke-width="2" stroke-dasharray="3 3"/><text x="306" y="207" font-size="14" font-weight="800" fill="#7A8792" text-anchor="middle">?</text></g><line x1="323" y1="202" x2="378" y2="202" stroke="#9AA6AF" stroke-width="3" stroke-dasharray="2 5" stroke-linecap="round"/><g class="cn"><title>Bihar, Lab and pharmacy: No public data</title><circle cx="395" cy="202" r="15" fill="var(--card)" stroke="#9AA6AF" stroke-width="2" stroke-dasharray="3 3"/><text x="395" y="207" font-size="14" font-weight="800" fill="#7A8792" text-anchor="middle">?</text></g><line x1="412" y1="202" x2="467" y2="202" stroke="#9AA6AF" stroke-width="3" stroke-dasharray="2 5" stroke-linecap="round"/><g class="cn"><title>Bihar, Return visit: No public data</title><circle cx="484" cy="202" r="15" fill="var(--card)" stroke="#9AA6AF" stroke-width="2" stroke-dasharray="3 3"/><text x="484" y="207" font-size="14" font-weight="800" fill="#7A8792" text-anchor="middle">?</text></g><line x1="501" y1="202" x2="556" y2="202" stroke="#9AA6AF" stroke-width="3" stroke-dasharray="2 5" stroke-linecap="round"/><g class="cn"><title>Bihar, Public report: State statements and national rankings, not facility reports</title><circle cx="573" cy="202" r="15" fill="#D9731A"/><text x="573" y="207" font-size="14" font-weight="800" fill="#fff" text-anchor="middle">~</text></g><line x1="590" y1="202" x2="645" y2="202" stroke="#D9731A" stroke-width="3" stroke-dasharray="6 4" stroke-linecap="round"/><g class="cn"><title>Bihar, Action on gaps: Directive for 100% digital OPD registration (Sept 2026, reported)</title><circle cx="662" cy="202" r="15" fill="#D9731A"/><text x="662" y="207" font-size="14" font-weight="800" fill="#fff" text-anchor="middle">~</text></g><text x="0" y="273" font-size="13.5" font-weight="800" fill="var(--navy)">Uttar Pradesh</text><g class="cn"><title>Uttar Pradesh, Patient ID: No public data</title><circle cx="128" cy="268" r="15" fill="var(--card)" stroke="#9AA6AF" stroke-width="2" stroke-dasharray="3 3"/><text x="128" y="273" font-size="14" font-weight="800" fill="#7A8792" text-anchor="middle">?</text></g><line x1="145" y1="268" x2="200" y2="268" stroke="#9AA6AF" stroke-width="3" stroke-dasharray="2 5" stroke-linecap="round"/><g class="cn"><title>Uttar Pradesh, Registration: Dashboard shows registration switched on at many facilities</title><circle cx="217" cy="268" r="15" fill="#0B8A6F"/><text x="217" y="273" font-size="14" font-weight="800" fill="#fff" text-anchor="middle">✓</text></g><line x1="234" y1="268" x2="289" y2="268" stroke="#D9731A" stroke-width="3" stroke-dasharray="6 4" stroke-linecap="round"/><g class="cn"><title>Uttar Pradesh, Doctor's record: Dashboard shows the prescription part often switched off</title><circle cx="306" cy="268" r="15" fill="#D9731A"/><text x="306" y="273" font-size="14" font-weight="800" fill="#fff" text-anchor="middle">~</text></g><line x1="323" y1="268" x2="378" y2="268" stroke="#D9731A" stroke-width="3" stroke-dasharray="6 4" stroke-linecap="round"/><g class="cn"><title>Uttar Pradesh, Lab and pharmacy: Lab and pharmacy often marked 'No' on the dashboard</title><circle cx="395" cy="268" r="15" fill="#D9731A"/><text x="395" y="273" font-size="14" font-weight="800" fill="#fff" text-anchor="middle">~</text></g><line x1="412" y1="268" x2="467" y2="268" stroke="#9AA6AF" stroke-width="3" stroke-dasharray="2 5" stroke-linecap="round"/><g class="cn"><title>Uttar Pradesh, Return visit: No public data</title><circle cx="484" cy="268" r="15" fill="var(--card)" stroke="#9AA6AF" stroke-width="2" stroke-dasharray="3 3"/><text x="484" y="273" font-size="14" font-weight="800" fill="#7A8792" text-anchor="middle">?</text></g><line x1="501" y1="268" x2="556" y2="268" stroke="#9AA6AF" stroke-width="3" stroke-dasharray="2 5" stroke-linecap="round"/><g class="cn"><title>Uttar Pradesh, Public report: Public dashboard of switches (yes/no), not use volumes</title><circle cx="573" cy="268" r="15" fill="#D9731A"/><text x="573" y="273" font-size="14" font-weight="800" fill="#fff" text-anchor="middle">~</text></g><line x1="590" y1="268" x2="645" y2="268" stroke="#9AA6AF" stroke-width="3" stroke-dasharray="2 5" stroke-linecap="round"/><g class="cn"><title>Uttar Pradesh, Action on gaps: No public data</title><circle cx="662" cy="268" r="15" fill="var(--card)" stroke="#9AA6AF" stroke-width="2" stroke-dasharray="3 3"/><text x="662" y="273" font-size="14" font-weight="800" fill="#7A8792" text-anchor="middle">?</text></g><text x="0" y="339" font-size="13.5" font-weight="800" fill="var(--navy)">Delhi</text><g class="cn"><title>Delhi, Patient ID: No public data</title><circle cx="128" cy="334" r="15" fill="var(--card)" stroke="#9AA6AF" stroke-width="2" stroke-dasharray="3 3"/><text x="128" y="339" font-size="14" font-weight="800" fill="#7A8792" text-anchor="middle">?</text></g><line x1="145" y1="334" x2="200" y2="334" stroke="#9AA6AF" stroke-width="3" stroke-dasharray="2 5" stroke-linecap="round"/><g class="cn"><title>Delhi, Registration: NextGen eHospital set up in all 38 government hospitals</title><circle cx="217" cy="334" r="15" fill="#0B8A6F"/><text x="217" y="339" font-size="14" font-weight="800" fill="#fff" text-anchor="middle">✓</text></g><line x1="234" y1="334" x2="289" y2="334" stroke="#D9731A" stroke-width="3" stroke-dasharray="6 4" stroke-linecap="round"/><g class="cn"><title>Delhi, Doctor's record: Use varies: 18 hospitals use more than 10 parts, 20 use 5 to 10</title><circle cx="306" cy="334" r="15" fill="#D9731A"/><text x="306" y="339" font-size="14" font-weight="800" fill="#fff" text-anchor="middle">~</text></g><line x1="323" y1="334" x2="378" y2="334" stroke="#D9731A" stroke-width="3" stroke-dasharray="6 4" stroke-linecap="round"/><g class="cn"><title>Delhi, Lab and pharmacy: Part of the same varied use</title><circle cx="395" cy="334" r="15" fill="#D9731A"/><text x="395" y="339" font-size="14" font-weight="800" fill="#fff" text-anchor="middle">~</text></g><line x1="412" y1="334" x2="467" y2="334" stroke="#9AA6AF" stroke-width="3" stroke-dasharray="2 5" stroke-linecap="round"/><g class="cn"><title>Delhi, Return visit: No public data</title><circle cx="484" cy="334" r="15" fill="var(--card)" stroke="#9AA6AF" stroke-width="2" stroke-dasharray="3 3"/><text x="484" y="339" font-size="14" font-weight="800" fill="#7A8792" text-anchor="middle">?</text></g><line x1="501" y1="334" x2="556" y2="334" stroke="#9AA6AF" stroke-width="3" stroke-dasharray="2 5" stroke-linecap="round"/><g class="cn"><title>Delhi, Public report: Only through a court-ordered audit</title><circle cx="573" cy="334" r="15" fill="var(--card)" stroke="#9AA6AF" stroke-width="2" stroke-dasharray="3 3"/><text x="573" y="339" font-size="14" font-weight="800" fill="#7A8792" text-anchor="middle">?</text></g><line x1="590" y1="334" x2="645" y2="334" stroke="#9AA6AF" stroke-width="3" stroke-dasharray="2 5" stroke-linecap="round"/><g class="cn"><title>Delhi, Action on gaps: High Court ordered NIC audit and a second surprise inspection</title><circle cx="662" cy="334" r="15" fill="#0B8A6F"/><text x="662" y="339" font-size="14" font-weight="800" fill="#fff" text-anchor="middle">✓</text></g><circle cx="10" cy="386" r="10" fill="#0B8A6F"/><text x="10" y="390" font-size="11" font-weight="800" fill="#fff" text-anchor="middle">✓</text><text x="26" y="390" font-size="12" fill="var(--body-c)">Strong</text><circle cx="140" cy="386" r="10" fill="#D9731A"/><text x="140" y="390" font-size="11" font-weight="800" fill="#fff" text-anchor="middle">~</text><text x="156" y="390" font-size="12" fill="var(--body-c)">Partial</text><circle cx="270" cy="386" r="10" fill="var(--card)" stroke="#9AA6AF" stroke-width="2" stroke-dasharray="3 3"/><text x="270" y="390" font-size="11" font-weight="800" fill="#7A8792" text-anchor="middle">?</text><text x="286" y="390" font-size="12" fill="var(--body-c)">Not shown</text><text x="680" y="390" font-size="11.5" fill="var(--muted)" text-anchor="end">On a computer, hover over a circle for the evidence</text></g>
+      </svg>
+      <p class="cap">My assessment from the evidence in this edition. Solid line: both links strong. Dashed: at least one partial. Dotted: at least one not shown. "Not shown" means no public data was found, not that the link is missing on the ground. Bihar and Uttar Pradesh entries rely partly on state statements and dashboard flags.</p>
+    </div>
+
+    <p>Kerala's chain is the most complete, but even it breaks at the patient ID and the return visit. Tamil Nadu is strong at the doctor's desk but loses the medicine trail and publishes nothing regularly. Bihar has the best front door in India and almost no public evidence of what happens after it. Uttar Pradesh shows switches, not use. Delhi's chain became visible only because a court asked.</p>
+
+    <h2 id="connect">How any state can connect its chain</h2>
+    <p>Kerala's experience and the gaps in the other states point to the same six steps. They work as a loop, not a one-time project: measure, publish, fix, measure again.</p>
+    <div class="ed-chart" id="loopChart">
+      <svg viewBox="0 0 690 530" role="img" xmlns="http://www.w3.org/2000/svg" aria-label="How any state can connect its data chain, as a loop of six steps around a connected record. 1, one permanent ID: make it the default at the counter. 2, record at the point of care, starting with screens that save staff time. 3, link every order to its result: prescriptions to dispensing, tests to results. 4, recognise the return visit so the next doctor opens the last one. 5, publish use every month by facility, with hospitals shown separately. 6, rank districts, support the weakest facilities and check again next month.">
+        <title>How a state can connect its data chain</title>
+        <defs><marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0FA3A3"/></marker></defs>
+        <g font-family="Manrope, sans-serif"><path d="M345 82 Q458 113 549 172" fill="none" stroke="#0FA3A3" stroke-width="2.5" stroke-opacity=".55" marker-end="url(#arr)"/><path d="M549 172 Q567 262 549 352" fill="none" stroke="#0FA3A3" stroke-width="2.5" stroke-opacity=".55" marker-end="url(#arr)"/><path d="M549 352 Q458 411 345 442" fill="none" stroke="#0FA3A3" stroke-width="2.5" stroke-opacity=".55" marker-end="url(#arr)"/><path d="M345 442 Q232 411 141 352" fill="none" stroke="#0FA3A3" stroke-width="2.5" stroke-opacity=".55" marker-end="url(#arr)"/><path d="M141 352 Q123 262 141 172" fill="none" stroke="#0FA3A3" stroke-width="2.5" stroke-opacity=".55" marker-end="url(#arr)"/><path d="M141 172 Q232 113 345 82" fill="none" stroke="#0FA3A3" stroke-width="2.5" stroke-opacity=".55" marker-end="url(#arr)"/><circle cx="345" cy="262" r="62" fill="#0FA3A3"/><text x="345" y="256" font-size="13" font-weight="800" fill="#fff" text-anchor="middle">A connected</text><text x="345" y="274" font-size="13" font-weight="800" fill="#fff" text-anchor="middle">record</text><rect x="242" y="37" width="206" height="90" rx="12" fill="var(--card)" stroke="#0FA3A3" stroke-width="2"/><circle cx="260" cy="55" r="11" fill="#173F5F"/><text x="260" y="59" font-size="11.5" font-weight="800" fill="#fff" text-anchor="middle">1</text><text x="278" y="60" font-size="12" font-weight="800" fill="var(--navy)">One permanent ID</text><text x="254" y="79" font-size="10.8" fill="var(--body-c)">Make the permanent ID the default</text><text x="254" y="93" font-size="10.8" fill="var(--body-c)">at the counter, not a temporary</text><text x="254" y="107" font-size="10.8" fill="var(--body-c)">token.</text><rect x="446" y="127" width="206" height="90" rx="12" fill="var(--card)" stroke="#0FA3A3" stroke-width="2"/><circle cx="464" cy="145" r="11" fill="#173F5F"/><text x="464" y="149" font-size="11.5" font-weight="800" fill="#fff" text-anchor="middle">2</text><text x="482" y="150" font-size="12" font-weight="800" fill="var(--navy)">Record at the point of care</text><text x="458" y="169" font-size="10.8" fill="var(--body-c)">Start with screens that save staff</text><text x="458" y="183" font-size="10.8" fill="var(--body-c)">time: registration, queue,</text><text x="458" y="197" font-size="10.8" fill="var(--body-c)">pharmacy, lab.</text><rect x="446" y="307" width="206" height="90" rx="12" fill="var(--card)" stroke="#0FA3A3" stroke-width="2"/><circle cx="464" cy="325" r="11" fill="#173F5F"/><text x="464" y="329" font-size="11.5" font-weight="800" fill="#fff" text-anchor="middle">3</text><text x="482" y="330" font-size="12" font-weight="800" fill="var(--navy)">Link order to result</text><text x="458" y="349" font-size="10.8" fill="var(--body-c)">Every prescription to a dispensing</text><text x="458" y="363" font-size="10.8" fill="var(--body-c)">entry, every test to a result in</text><text x="458" y="377" font-size="10.8" fill="var(--body-c)">the record.</text><rect x="242" y="397" width="206" height="90" rx="12" fill="var(--card)" stroke="#0FA3A3" stroke-width="2"/><circle cx="260" cy="415" r="11" fill="#173F5F"/><text x="260" y="419" font-size="11.5" font-weight="800" fill="#fff" text-anchor="middle">4</text><text x="278" y="420" font-size="12" font-weight="800" fill="var(--navy)">Recognise the return visit</text><text x="254" y="439" font-size="10.8" fill="var(--body-c)">The next doctor opens the last</text><text x="254" y="453" font-size="10.8" fill="var(--body-c)">visit, in every hospital.</text><rect x="38" y="307" width="206" height="90" rx="12" fill="var(--card)" stroke="#0FA3A3" stroke-width="2"/><circle cx="56" cy="325" r="11" fill="#173F5F"/><text x="56" y="329" font-size="11.5" font-weight="800" fill="#fff" text-anchor="middle">5</text><text x="74" y="330" font-size="12" font-weight="800" fill="var(--navy)">Publish use every month</text><text x="50" y="349" font-size="10.8" fill="var(--body-c)">By facility, with hospitals shown</text><text x="50" y="363" font-size="10.8" fill="var(--body-c)">separately from health centres.</text><rect x="38" y="127" width="206" height="90" rx="12" fill="var(--card)" stroke="#0FA3A3" stroke-width="2"/><circle cx="56" cy="145" r="11" fill="#173F5F"/><text x="56" y="149" font-size="11.5" font-weight="800" fill="#fff" text-anchor="middle">6</text><text x="74" y="150" font-size="12" font-weight="800" fill="var(--navy)">Rank, support, repeat</text><text x="50" y="169" font-size="10.8" fill="var(--body-c)">Rank districts, send help to the</text><text x="50" y="183" font-size="10.8" fill="var(--body-c)">weakest facilities, check again</text><text x="50" y="197" font-size="10.8" fill="var(--body-c)">next month.</text></g>
+      </svg>
+      <p class="cap">My analysis, based on how Kerala's system is built and reported, and on the gaps found in the other states.</p>
+    </div>
+
+    <p>No state needs to do all six at once. Each can start where its chain is weakest:</p>
+    <div class="cmp-wrap">
+      <table class="cmp">
+        <thead><tr><th>State</th><th>Strongest link today</th><th>Where to start next</th></tr></thead>
+        <tbody>
+          <tr><th>Kerala</th><td>Monthly public report and district rankings (steps 5 and 6)</td><td>Step 1 and 4: make the permanent ID the default, and bring district and taluk hospitals up to health-centre levels</td></tr>
+          <tr><th>Tamil Nadu</th><td>Doctor's prescription recorded (step 2)</td><td>Step 3 and 5: link every prescription to the pharmacy, and publish use as HMIS 3.0 scales</td></tr>
+          <tr><th>Bihar</th><td>Registration and patient ID at the counter (step 1)</td><td>Step 2 and 5: show how many registered visits get a recorded consultation, test and medicine</td></tr>
+          <tr><th>Uttar Pradesh</th><td>A public dashboard exists (step 5, partly)</td><td>Step 2 and 5: turn on the prescription, lab and pharmacy parts, and publish use volumes, not yes/no switches</td></tr>
+          <tr><th>Delhi</th><td>Outside audit by order of the court (step 6)</td><td>Step 2 and 5: get every hospital using the applicable parts, and publish use without waiting for a court</td></tr>
+        </tbody>
+      </table>
+      <p class="cap">My recommendations, based on the evidence in this edition.</p>
+    </div>
+
+    <h2 id="private">What about private hospitals?</h2>
+    <p>Private hospitals treat a large share of India's patients, and many big chains run modern hospital software. But no private hospital group or industry body publishes how its systems are actually used, in the way Kerala does for government facilities. The one public signal points the other way: in October 2024, only 1.3% of ABHA Scan and Share registrations were at private facilities (<a href="/edition-79-data-is-the-hard-part.html">Edition 79</a>). So the gaps in this edition cannot be compared with private hospitals. They are simply not measured there.</p>
+
+    <h2 id="nonumber">Why no one can say how digital Indian hospitals are</h2>
+    <p>Ask "what share of Indian hospitals are digital?" and you will get very different answers. Industry surveys published in 2026 disagree widely, because each defines "digital" differently and samples a different group of hospitals. One counts any hospital with billing software. Another counts only hospitals where doctors write notes on screen. National ABDM figures count health IDs and linked records, which is a different thing again.</p>
+    <p>All of these can be true at once. None of them tells you whether the next doctor sees your last prescription. That is the number India does not have.</p>
+
+    <h2 id="measures">Six measures that would show if it works</h2>
+    <p>The states that publish use data, Kerala and Uttar Pradesh, show it can be done. These six measures, published every month by facility type, would let any state show real progress:</p>
+    <div class="row-item"><div class="ri-num">1</div><div><h4>Consultations recorded</h4><p>Doctor consultations entered in the system, out of all patient visits. Kerala already publishes this.</p></div></div>
+    <div class="row-item"><div class="ri-num">2</div><div><h4>Medicines followed to the pharmacy</h4><p>Prescriptions with medicines that have a dispensing entry. Tamil Nadu's pilot shows how to count it.</p></div></div>
+    <div class="row-item"><div class="ri-num">3</div><div><h4>Lab results back to the doctor</h4><p>Tests with a verified result in the patient's record, and the time it took.</p></div></div>
+    <div class="row-item"><div class="ri-num">4</div><div><h4>Returning patients recognised</h4><p>Visits linked to the patient's own ID, so the doctor can see the last visit.</p></div></div>
+    <div class="row-item"><div class="ri-num">5</div><div><h4>Big hospitals reported separately</h4><p>District hospitals, taluk hospitals and medical colleges shown on their own, not hidden in a state average.</p></div></div>
+    <div class="row-item"><div class="ri-num">6</div><div><h4>Time saved, not added</h4><p>Staff documentation minutes and patient waiting time, before and after. Gujarat's frontline study found 1.7 hours a day saved for each nurse; hospital systems should prove the same.</p></div></div>
+
+    <p>India has built the registration desk of digital health very well. The harder part starts after the patient sits down with the doctor. Until states publish what happens at the pharmacy, inside the district hospital and on the next visit, "digital" will keep meaning "registered".</p>
+    <p>For why linked records and sharing are the hard part, read <a href="/edition-79-data-is-the-hard-part.html">Edition 79</a>. For what India counts and misses in climate and health, <a href="/edition-83-climate-health-what-india-counts.html">Edition 83</a>.</p>
+
+    <section class="sources" id="sources">
+      <h2>Sources and evidence status</h2>
+      <div class="src"><span class="tag official">Official</span><div><b>eHealth Kerala, district factsheets, February 2026 (Malappuram and Wayanad)</b><small>Statewide module status for 708 live institutions (excluding medical colleges): reception 97%, consultation 89%, pharmacy 84%, lab 81%, with activity thresholds. Malappuram: consultation 72.6%, UHID-linked visits 32–34%, institution-level figures including District Hospital Tirur 4.44% and Taluk HQ Hospital Malappuram 10.58%. Wayanad: consultation 97.0%, UHID about 62%, General Hospital Kalpetta pharmacy 31.39%.</small></div></div>
+      <div class="src"><span class="tag official">Official</span><div><b>National e-Governance Division (MeitY), India Stack Local directory entry: eHealth Kerala</b><small>State-owned source code (Java, PostgreSQL), available to other states on request; phased rollout starting with registration, pharmacy, lab and queue; local backup server per hospital; SNOMED-CT and LOINC; about 50,000 staff supported; initial implementation in 590 institutions across two phases of seven districts.</small></div></div>
+      <div class="src"><span class="tag secondary">Reported</span><div><b>Kerala health minister and department statements, 2023–2025, as reported by Onmanorama (23 March 2023), Kerala Kaumudi, Deshabhimani and others</b><small>Institutions on eHealth: 509 (Feb 2023), 570 of about 1,300 (Mar 2023), 653, 751 (Apr 2025), 800 (Jul 2025), 1,001 (Nov 2025). Permanent UHIDs: 33,98,519 of 3,21,09,120 registered, 10.58% (Mar 2023); 1.93 crore; 2.62–2.63 crore (2025). Treatment history visible only with a permanent UHID. Under 1,000 online OP tickets a day (Mar 2023).</small></div></div>
+      <div class="src"><span class="tag official">Academic</span><div><b>Prabakaran J, Selvanesan N et al., "Formative evaluation of HMIS 3.0 pilot, Poonamallee HUD, Tamil Nadu", Tamil Nadu Journal of Public Health and Medical Research, Vol 5 Issue 2, 2025</b><small>13 public health facilities, 16 Feb 2024 to 31 Mar 2025: 4,72,520 consultations; 3,63,026 digital prescriptions; 3,16,782 with drug advice; 1,88,485 with dispensing entries; 1,13,247 of 1,34,856 lab reports digital; ABHA creation in 3 of 13 facilities; 9 of 16 modules active.</small></div></div>
+      <div class="src"><span class="tag official">Official</span><div><b>Delhi High Court, Court on its own motion v. Union of India, W.P.(C) 3903/2017, orders of 3 July and 7 August 2026</b><small>NIC surprise audit of 38 Delhi government hospitals, 13–24 July 2026: 18 using more than ten NextGen eHospital modules, 20 using five to ten; second inspection permitted. Audit triggered by a reported ICU bed denial despite the portal showing availability.</small></div></div>
+      <div class="src"><span class="tag official">Academic</span><div><b>Saha S and Quazi ZS, "Does digitally enabling frontline health workers improve coverage and quality of maternal and child health services? Findings from a mixed methods evaluation of TECHO+ in Gujarat", Frontiers in Public Health, 2022</b><small>Two districts: ANM time saved 1.7 hours a day; data entry operator 1.5 hours; maternal data concordance 69.1% to 80.5%.</small></div></div>
+      <div class="src"><span class="tag secondary">Reported</span><div><b>Bihar health department statements, June 2025, as reported by UNI and ThePrint</b><small>About 92% of government OPD registrations online; average waiting before the doctor 58 to 35 minutes and total visit 70 to 47 minutes (August 2023 to May 2025); 592 facilities. State-reported; the PIB page could not be opened.</small></div></div>
+      <div class="src"><span class="tag official">Official</span><div><b>Ministry of Health and Family Welfare, 16th (2024) and 17th (2025) Common Review Mission reports; NIC and C-DAC programme accounts; CAG audit of Telangana; state economic surveys; Uttar Pradesh HMIS facility dashboard</b><small>Used for the qualitative state entries in the grid. Counts from these sources that I could not open at source are left out.</small></div></div>
+      <div class="src"><span class="tag analysis">Analysis</span><div><b>The five-step journey, the state evidence categories, the five-state chain, the six-step loop and the six measures</b><small>My analysis, built from the sources above.</small></div></div>
+      <div class="caveat"><b>Before citing externally:</b> the five steps in the main chart come from three different states and measures; they are not one group of patients. Kerala's figures exclude medical colleges and cover one month. Tamil Nadu's figures are from a 13-centre pilot. A missing pharmacy entry does not mean a missing medicine. Bihar's figure is state-reported. The state grid shows types of evidence, not a ranking.</div>
+    </section>
+  </div>
+
+
+  <script>
+  (function(){
+    var root=document.getElementById('cx'); if(!root) return;
+    var tabs=[].slice.call(root.querySelectorAll('.cx-btn'));
+    var segsW=[].slice.call(root.querySelectorAll('.wseg'));
+    function show(btn,focus){
+      tabs.forEach(function(t){
+        var on=t===btn; t.setAttribute('aria-selected',on?'true':'false'); t.tabIndex=on?0:-1;
+        var p=document.getElementById(t.getAttribute('aria-controls')); if(p){ if(on) p.removeAttribute('hidden'); else p.setAttribute('hidden',''); }
+      });
+      var k=btn.getAttribute('data-k'); segsW.forEach(function(g){ g.classList.toggle('on', g.getAttribute('data-k')===k); g.setAttribute('aria-pressed', g.getAttribute('data-k')===k?'true':'false'); });
+      if(focus) btn.focus();
+    }
+    function byKey(k){ for(var i=0;i<tabs.length;i++){ if(tabs[i].getAttribute('data-k')===k) return tabs[i]; } }
+    segsW.forEach(function(g){
+      g.addEventListener('click',function(){ show(byKey(g.getAttribute('data-k'))); });
+      g.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); show(byKey(g.getAttribute('data-k'))); } });
+    });
+    show(byKey('heat'));
+    tabs.forEach(function(t,i){
+      t.tabIndex=t.getAttribute('aria-selected')==='true'?0:-1;
+      t.addEventListener('click',function(){ show(t); });
+      t.addEventListener('keydown',function(e){
+        var k=e.key, j=null;
+        if(k==='ArrowRight'||k==='ArrowDown') j=(i+1)%tabs.length;
+        if(k==='ArrowLeft'||k==='ArrowUp') j=(i-1+tabs.length)%tabs.length;
+        if(k==='Home') j=0; if(k==='End') j=tabs.length-1;
+        if(j!==null){ e.preventDefault(); show(tabs[j],true); }
+      });
+    });
+  })();
+  </script>
+
+  <div class="share-bar">
+    <span class="share-label">Share this perspective:</span>
+    <a class="share-btn share-wa" id="shWa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.6.2-.2.3-.7.9-.8 1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.2-.6-1.5-.9-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.3 0 1.4 1 2.7 1.1 2.9.2.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3M12 22a10 10 0 0 1-5.1-1.4l-3.6 1 1-3.5A10 10 0 1 1 12 22"/></svg>WhatsApp</a>
+    <a class="share-btn share-li" id="shLi" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45z"/></svg>LinkedIn</a>
+    <a class="share-btn share-x" id="shX" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>X</a>
+    <button class="share-btn" id="shCopy" type="button"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copy link</button>
+  </div>
+  <script>
+  (function(){
+    var url=encodeURIComponent(location.href);
+    var txt=encodeURIComponent("Edition 84: In public hospitals, digital health follows the patient to the doctor. Then it starts losing them. - Healthcare Pulse by Mayank Madhur");
+    var wa=document.getElementById('shWa'); if(wa) wa.href="https://wa.me/?text="+txt+"%20"+url;
+    var li=document.getElementById('shLi'); if(li) li.href="https://www.linkedin.com/sharing/share-offsite/?url="+url;
+    var x=document.getElementById('shX'); if(x) x.href="https://twitter.com/intent/tweet?text="+txt+"&url="+url;
+    var cp=document.getElementById('shCopy');
+    if(cp) cp.addEventListener('click',function(){ navigator.clipboard.writeText(location.href).then(function(){ var o=cp.innerHTML; cp.classList.add('share-copied'); cp.innerHTML='Copied!'; setTimeout(function(){cp.classList.remove('share-copied');cp.innerHTML=o;},1600); }); });
+  })();
+  </script>
+
+  <section class="related">
+    <div class="related-head">
+      <p class="related-label">Related perspectives</p>
+      <div class="related-nav">
+        <a class="related-seeall" href="/topics/digital-health/">See all &rarr;</a>
+        <button class="rel-arrow" data-dir="-1" aria-label="Scroll left" type="button">&larr;</button>
+        <button class="rel-arrow" data-dir="1" aria-label="Scroll right" type="button">&rarr;</button>
+      </div>
+    </div>
+    <div class="related-grid" id="relTrack">
+      <a class="related-card cat-digital-health" href="/edition-79-data-is-the-hard-part.html"><span class="rc-ed">ED. 79</span><span class="rc-title">The hard part of India's digital health: the problem, and five fixes</span><span class="rc-go">Read this perspective &rarr;</span></a>
+      <a class="related-card cat-digital-health" href="/the-100-crore-illusion.html"><span class="rc-ed">ED. 61</span><span class="rc-title">The 100 Crore Illusion</span><span class="rc-go">Read this perspective &rarr;</span></a>
+      <a class="related-card cat-policy" href="/edition-41-hospital-readiness.html"><span class="rc-ed">ED. 41</span><span class="rc-title">Hospital readiness</span><span class="rc-go">Read this perspective &rarr;</span></a>
+      <a class="related-card cat-strategy" href="/edition-80-amazon-health-front-door.html"><span class="rc-ed">ED. 80</span><span class="rc-title">Amazon built a front door to American healthcare. Who will build India's?</span><span class="rc-go">Read this perspective &rarr;</span></a>
+      <a class="related-card cat-policy" href="/edition-83-climate-health-what-india-counts.html"><span class="rc-ed">ED. 83</span><span class="rc-title">Climate is reaching India's hospitals. The health system counts only part of it.</span><span class="rc-go">Read this perspective &rarr;</span></a>
+    </div>
+  </section>
+  <script>
+  (function(){ var tr=document.getElementById('relTrack'); document.querySelectorAll('.rel-arrow').forEach(function(b){ b.addEventListener('click',function(){ tr.scrollBy({left: 260*parseInt(b.dataset.dir,10), behavior:'smooth'}); }); }); })();
+  </script>
+
+  <aside class="author-box">
+    <img src="/logo.png" alt="Healthcare Pulse" style="width:52px;height:52px;border-radius:10px;object-fit:contain;flex:none;">
+    <div>
+      <p class="author-name">Mayank Madhur <span>He/Him</span></p>
+      <p class="author-bio">PMP&reg;, SCR&reg; &middot; MBA &amp; PGPM (Healthcare) &middot; Practice Leader, Healthcare &amp; Life Sciences at HFS Research &middot; 11+ years across payer, provider &amp; digital health &middot; UGC NET qualified (97.7 percentile) &middot; Ex HCL (Medical Devices) &amp; Altimetrik. Passionate about making healthcare better.</p>
+      <a href="https://www.linkedin.com/in/mayank-madhur/" target="_blank">Connect on LinkedIn &rarr;</a>
+    </div>
+  </aside>
+  <a class="back-link" href="/perspectives/">&larr; All perspectives</a>
+</article>
+</main>
+
+<section class="subscribe" id="subscribe">
+  <div class="subscribe-inner">
+    <p class="eyebrow">EVERY FRIDAY &middot; FREE</p>
+    <h2>Enjoyed this issue of Healthcare Pulse?</h2>
+    <p class="subscribe-sub">Sharp, contrarian reads on India's digital health story, every Friday.</p>
+    <div class="subscribe-actions">
+      <a class="btn-li" href="https://www.linkedin.com/newsletters/7311231782241083393/" target="_blank">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45z"/></svg>
+        Subscribe on LinkedIn
+      </a>
+      <a class="btn-ghost" href="https://www.linkedin.com/in/mayank-madhur/" target="_blank">Connect with Mayank &rarr;</a>
+    </div>
+  </div>
+</section>
+<footer class="site-footer"><p>&copy; 2026 Healthcare Pulse by Mayank Madhur &middot; Independent analysis and opinion &middot; <a href="/about.html#contact">Get in touch</a></p></footer>
+<button id="toTop" class="to-top" aria-label="Back to top"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg></button>
+<script>
+(function(){
+  var bar=document.getElementById('prog');
+  if(bar) addEventListener('scroll',function(){ var h=document.documentElement; bar.style.width=((h.scrollTop/(h.scrollHeight-h.clientHeight)*100)||0)+'%'; },{passive:true});
+  var tt=document.getElementById('themeToggle');
+  if(tt) tt.addEventListener('click',function(){ var r=document.documentElement; if(r.getAttribute('data-theme')==='dark'){r.removeAttribute('data-theme');try{localStorage.setItem('hp-theme','light');}catch(e){}} else {r.setAttribute('data-theme','dark');try{localStorage.setItem('hp-theme','dark');}catch(e){}} });
+  var toTop=document.getElementById('toTop');
+  if(toTop){addEventListener('scroll',function(){if(window.scrollY>600)toTop.classList.add('show');else toTop.classList.remove('show');},{passive:true});toTop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});}
+})();
+</script>
+<script data-goatcounter="https://mayankmadhur.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+(function(){var navBtn=document.getElementById('navToggle'),navEl=document.getElementById('siteNav');if(navBtn&&navEl){navBtn.addEventListener('click',function(){var o=navEl.classList.toggle('open');navBtn.setAttribute('aria-expanded',o?'true':'false');});}})();
+</script>
+<script src="/assets/hp-related.js" defer></script>
+</body></html>
